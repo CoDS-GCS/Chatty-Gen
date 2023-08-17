@@ -14,13 +14,13 @@ from collections import deque
 rdf_dump_file = None
 sparql_endpoint_url = "http://206.12.95.86:8894/sparql/"
 
-num_iterations = 2  # Set the number of iterations
+num_iterations = 100  # Set the number of iterations
 
 # Number of nodes to include in the subgraph
 subgraph_size = 10
 
 # Define the number of random seed nodes you want
-num_random_seed_nodes = 1
+num_random_seed_nodes = 50
 
 
 # Function to load RDF data from a file or SPARQL endpoint
@@ -42,7 +42,7 @@ async def load_rdf_data(rdf_graph):
                     ?person a <https://dblp.org/rdf/schema#Person> .
                     ?paper <https://dblp.org/rdf/schema#authoredBy> ?person .
                     ?person <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation .
-                    } LIMIT 1000
+                    } LIMIT 10000
         """
         )
         sparql.setReturnFormat(JSON)
