@@ -2,7 +2,7 @@
 # Author: @ozx1812
 # Date: 2023/08/18
 
-# The following code has been adopted and modified from [alpaca-loara].
+# The following code has been adopted and modified from [alpaca-lora].
 # Source: https://github.com/tloen/alpaca-lora
 
 # Modifications:
