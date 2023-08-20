@@ -1,3 +1,8 @@
+"""
+dblp_to_webnlg.py
+
+from dblp subgraphs to webnlg format required for jointGT model.
+"""
 import jsonlines
 import os
 import json
