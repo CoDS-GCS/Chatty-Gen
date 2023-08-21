@@ -123,5 +123,35 @@ class ModelSingleton:
         s = generation_output.sequences[0]
         output = self.tokenizer.decode(s)
         return output.strip()
+
+    def generate_response_batch(
+        self,
+        instruction_batch,
+        temperature=0.1,
+        top_p=0.75,
+        top_k=40,
+        num_beams=4,
+        max_new_tokens=128,
+        **kwargs,
+    ):
+        encodings = self.tokenizer(instruction_batch, return_tensors="pt").to(self.model.device)
+        generation_config = GenerationConfig(
+            temperature=temperature,
+            top_p=top_p,
+            top_k=top_k,
+            num_beams=num_beams,
+            **kwargs,
+        )
+
+        # Without streaming
+        with torch.no_grad():
+            generation_outputs = self.model.generate(
+                **encodings,
+                generation_config=generation_config,
+                return_dict_in_generate=True,
+                output_scores=True,
+                max_new_tokens=max_new_tokens,
+            )
+        return self.tokenizer.batch_decode(generation_outputs)
 # Usage:
 # model_instance = ModelSingleton()
