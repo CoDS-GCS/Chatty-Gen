@@ -1,0 +1,130 @@
+[
+    {
+        "dialogue": [
+            "Can you list the actors in the movie '71?",
+            "How many actors are in the movie '71?",
+            "Did Charlie Murphy act in the movie '71?",
+            "Who directed the movie '71?",
+            "Was the movie '71' released before or after 2015?"
+        ],
+        "cost": {
+            "total_tokens": 1695,
+            "prompt_tokens": 1539,
+            "completion_tokens": 156,
+            "successful_requests": 3,
+            "total_cost": 0.0339
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the actors in the film '71?",
+            "How many actors are in it?",
+            "Did Charlie Murphy act in it?",
+            "Who directed it?",
+            "When was it released?"
+        ],
+        "cost": {
+            "total_tokens": 1672,
+            "prompt_tokens": 1536,
+            "completion_tokens": 136,
+            "successful_requests": 3,
+            "total_cost": 0.03344
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the actors in the movie '71?",
+            "How many actors starred in the movie '71?",
+            "Did Charlie Murphy act in the movie '71?",
+            "Who directed the movie '71?",
+            "When was the movie '71' released?"
+        ],
+        "cost": {
+            "total_tokens": 1687,
+            "prompt_tokens": 1536,
+            "completion_tokens": 151,
+            "successful_requests": 3,
+            "total_cost": 0.03374
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the actors in the movie '71?",
+            "How many actors starred in it?",
+            "Is Charlie Murphy an actor in it?",
+            "Who is the director of it?",
+            "What is the release date of it?"
+        ],
+        "cost": {
+            "total_tokens": 1701,
+            "prompt_tokens": 1552,
+            "completion_tokens": 149,
+            "successful_requests": 3,
+            "total_cost": 0.03402
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the actors in the movie '71?",
+            "How many actors are in it?",
+            "Did Charlie Murphy star in it?",
+            "Who directed it?",
+            "When was it released?"
+        ],
+        "cost": {
+            "total_tokens": 1664,
+            "prompt_tokens": 1528,
+            "completion_tokens": 136,
+            "successful_requests": 3,
+            "total_cost": 0.033280000000000004
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the actors in the movie '71?",
+            "How many actors starred in the movie 'It'?",
+            "Did Charlie Murphy act in the movie 'It'?",
+            "Who directed the movie 'It'?",
+            "When was the movie 'It' released?"
+        ],
+        "cost": {
+            "total_tokens": 1681,
+            "prompt_tokens": 1532,
+            "completion_tokens": 149,
+            "successful_requests": 3,
+            "total_cost": 0.03362
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the actors in the movie '71?",
+            "How many actors are in the movie '71?",
+            "Is Charlie Murphy an actor in the movie '71?",
+            "Who directed the movie '71?",
+            "When was the movie '71 released?"
+        ],
+        "cost": {
+            "total_tokens": 1694,
+            "prompt_tokens": 1543,
+            "completion_tokens": 151,
+            "successful_requests": 3,
+            "total_cost": 0.03388
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the actors in the movie '71?",
+            "How many actors are in the movie '71?",
+            "Did they act in the movie '71?",
+            "Who directed the movie '71?",
+            "When was the movie '71' released?"
+        ],
+        "cost": {
+            "total_tokens": 1701,
+            "prompt_tokens": 1546,
+            "completion_tokens": 155,
+            "successful_requests": 3,
+            "total_cost": 0.03402
+        }
+    }
+]

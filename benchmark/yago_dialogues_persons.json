@@ -1,0 +1,66 @@
+[
+    {
+        "dialogue": [
+            "Was Aleksander Jan Jab\u0142onowski a part of the Lengyel\u2013Litv\u00e1n Uni\u00f3?",
+            "Who was the spouse of Aleksander Jan Jab\u0142onowski?",
+            "How many people in the subgraph were part of the Lengyel\u2013Litv\u00e1n Uni\u00f3?",
+            "Can you name all the people in the subgraph who were part of the Lengyel\u2013Litv\u00e1n Uni\u00f3?",
+            "What is the nationality of He?"
+        ],
+        "cost": {
+            "total_tokens": 1846,
+            "prompt_tokens": 1589,
+            "completion_tokens": 257,
+            "successful_requests": 3,
+            "total_cost": 0.03692
+        }
+    },
+    {
+        "dialogue": [
+            "Was Aleksander Micha\u0142 Lubomirski a citizen of the Grand Duchy of Lithuania?",
+            "How many nationalities did he have?",
+            "Who was the spouse of Helena Tekla Ossoli\u0144ska?",
+            "Who were the Polish-Lithuanian citizens among him, Aleksandra Franciszka Lubomirska, Aleksander Jan Jab\u0142onowski, and Alfred Potocki?",
+            "Was he a citizen of the Polish\u2013Lithuanian Commonwealth?"
+        ],
+        "cost": {
+            "total_tokens": 2100,
+            "prompt_tokens": 1828,
+            "completion_tokens": 272,
+            "successful_requests": 3,
+            "total_cost": 0.042
+        }
+    },
+    {
+        "dialogue": [
+            "Is Allan McKeown a national of the United Kingdom?",
+            "How many nationalities does He have?",
+            "Who is the spouse of Tracey Ullman?",
+            "Are Alice Muriel Williamson, Albert de Courville, Alan Ian Percy, Alfred Hickman, and Alice Dudeney all British nationals?",
+            "What is the nationality of Him?"
+        ],
+        "cost": {
+            "total_tokens": 1809,
+            "prompt_tokens": 1612,
+            "completion_tokens": 197,
+            "successful_requests": 3,
+            "total_cost": 0.036180000000000004
+        }
+    },
+    {
+        "dialogue": [
+            "Is Alyssa Miller a US national?",
+            "Who is the spouse of Cam Avery?",
+            "How many US nationals are mentioned in the subgraph?",
+            "What are the names of the US nationals in the subgraph?",
+            "Is Alyssa Miller a US national?"
+        ],
+        "cost": {
+            "total_tokens": 1805,
+            "prompt_tokens": 1645,
+            "completion_tokens": 160,
+            "successful_requests": 3,
+            "total_cost": 0.0361
+        }
+    }
+]
