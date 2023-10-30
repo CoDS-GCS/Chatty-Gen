@@ -1,0 +1,82 @@
+[
+    {
+        "dialogue": [
+            "Can you list the papers authored by Xia Hong 0001?",
+            "How many papers did she co-author with other researchers?",
+            "Did she author a paper titled 'Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate' in 2006?",
+            "What is her primary affiliation?",
+            "What is the date of the most recent paper authored by her?"
+        ],
+        "cost": {
+            "total_tokens": 2061,
+            "prompt_tokens": 1828,
+            "completion_tokens": 233,
+            "successful_requests": 3,
+            "total_cost": 0.04122000000000001
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Hiok Chai Quek?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Rough set-based neuro-fuzzy system' in 2006?",
+            "What is his primary affiliation?",
+            "Did he author a paper titled 'Clinical Diagnosis Using Proteomics and Complementary Learning' in 2006?"
+        ],
+        "cost": {
+            "total_tokens": 2078,
+            "prompt_tokens": 1825,
+            "completion_tokens": 253,
+            "successful_requests": 3,
+            "total_cost": 0.04156
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Sarah M. Erfani?",
+            "How many papers did she co-author with other researchers?",
+            "Did she author a paper titled 'Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns' in 2021?",
+            "What is her primary affiliation?",
+            "What year was the paper titled 'Robust and Accurate Short-Term Load Forecasting: A Cluster Oriented Ensemble Learning Approach' authored by her published?"
+        ],
+        "cost": {
+            "total_tokens": 2120,
+            "prompt_tokens": 1848,
+            "completion_tokens": 272,
+            "successful_requests": 3,
+            "total_cost": 0.0424
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by T. Martin McGinnity?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Transfer Entropy Based Connectivity Estimation of Spontaneously Firing Hippocampal Cultures on Multi Electrode Arrays' in 2019?",
+            "What is his primary affiliation?",
+            "What year was the paper 'A novel approach to robot vision using a hexagonal grid and spiking neural networks' authored by him?"
+        ],
+        "cost": {
+            "total_tokens": 2022,
+            "prompt_tokens": 1753,
+            "completion_tokens": 269,
+            "successful_requests": 3,
+            "total_cost": 0.040440000000000004
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Klaus Obermayer?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'A New Method for Tracking Modulations in Tonal Music in Audio Data Format' in 2000?",
+            "What is his primary affiliation?",
+            "Did he author a paper titled 'On the sample mean of graphs' in 2008?"
+        ],
+        "cost": {
+            "total_tokens": 1866,
+            "prompt_tokens": 1648,
+            "completion_tokens": 218,
+            "successful_requests": 3,
+            "total_cost": 0.03732
+        }
+    }
+]

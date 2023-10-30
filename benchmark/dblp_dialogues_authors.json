@@ -1,0 +1,530 @@
+[
+    {
+        "dialogue": [
+            "Can you list the papers authored by Parisa Memarmoshrefi?",
+            "How many papers did she co-author with other researchers?",
+            "Did she author a paper titled 'Investigating the Learning Phase of an Autonomous Authentication in Mobile Ad-hoc Networks' in 2016?",
+            "Did she author a paper titled 'A Bio-Inspired Autonomous Authentication Mechanism in Mobile Ad Hoc Networks' in 2012?",
+            "What is the most recent paper she has authored?"
+        ],
+        "cost": {
+            "total_tokens": 2119,
+            "prompt_tokens": 1854,
+            "completion_tokens": 265,
+            "successful_requests": 3,
+            "total_cost": 0.042379999999999994
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Jasper van de Ven?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'The Spatial Interaction Laboratory' in 2017?",
+            "When was the paper 'Translation of String-and-Pin-based Shortest Path Construction into Data-Scalable Agent-based Computational Models' authored by him published?",
+            "Did he author a paper titled 'Qualitative Privacy Description Language - Integrating Privacy Concepts, Languages, and Technologies' in 2016?"
+        ],
+        "cost": {
+            "total_tokens": 2105,
+            "prompt_tokens": 1828,
+            "completion_tokens": 277,
+            "successful_requests": 3,
+            "total_cost": 0.0421
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Bernhard Sch\u00e4tz?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Bericht des AK Requirements Engineering f\u00fcr eingebettete Systeme' in 2008?",
+            "Did he author a paper titled 'mbeddr - Extensible Languages for Embedded Software Development' in 2014?",
+            "Did he author a paper titled 'Model-based software in-the-loop-test of autonomous systems' in 2012?"
+        ],
+        "cost": {
+            "total_tokens": 2134,
+            "prompt_tokens": 1847,
+            "completion_tokens": 287,
+            "successful_requests": 3,
+            "total_cost": 0.042679999999999996
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Michael A. Kochte?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Trustworthy reconfigurable access to on-chip infrastructure' in 2017?",
+            "What is his primary affiliation?",
+            "In what year did he co-author a paper titled 'Accurate QBF-based test pattern generation in presence of unknown values?'"
+        ],
+        "cost": {
+            "total_tokens": 2046,
+            "prompt_tokens": 1809,
+            "completion_tokens": 237,
+            "successful_requests": 3,
+            "total_cost": 0.04092
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Gerhard Kramer?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Information rates of precoding for massive MIMO and base station cooperation in an indoor scenario' in 2020?",
+            "Did he author a paper titled 'Polar Decomposition of Mutual Information and Applications to Partially Coherent Channels' in 2010?",
+            "Did he author a paper titled 'Interference Focusing for Mitigating Cross-Phase Modulation in Optical Fiber' in 2010?"
+        ],
+        "cost": {
+            "total_tokens": 2090,
+            "prompt_tokens": 1812,
+            "completion_tokens": 278,
+            "successful_requests": 3,
+            "total_cost": 0.0418
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the books authored by Regina Fischer 0001?",
+            "How many books did she author?",
+            "Did she author a book titled 'Datenbankgest\u00fctztes Kosten- und Erl\u00f6scontrolling: Konzept und Realisierung einer entscheidungsorienerten Erfolgsrechnung' in 1995?",
+            "Is she affiliated with the University of Bremen?",
+            "What are the names of the researchers affiliated with the University of Bremen?"
+        ],
+        "cost": {
+            "total_tokens": 1991,
+            "prompt_tokens": 1720,
+            "completion_tokens": 271,
+            "successful_requests": 3,
+            "total_cost": 0.03982
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Nazario Cipriani?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'ProRea: live database migration for multi-tenant RDBMS with snapshot isolation' in 2013?",
+            "What is his primary affiliation?",
+            "When did he publish 'Design Considerations of a Flexible Data Stream Processing Middleware'?"
+        ],
+        "cost": {
+            "total_tokens": 2090,
+            "prompt_tokens": 1851,
+            "completion_tokens": 239,
+            "successful_requests": 3,
+            "total_cost": 0.0418
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Martin Hirt?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'MPC vs. SFE: Perfect Security in a Unified Corruption Model' in 2007?",
+            "Did he author a paper titled 'Detectable byzantine agreement secure against faulty majorities' in 2002?",
+            "What year was the paper 'Unconditionally Secure Asynchronous Multiparty Computation with Linear Communication Complexity' authored by him published?"
+        ],
+        "cost": {
+            "total_tokens": 2071,
+            "prompt_tokens": 1811,
+            "completion_tokens": 260,
+            "successful_requests": 3,
+            "total_cost": 0.04142
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Nico Potyka?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Interpreting Neural Networks as Gradual Argumentation Frameworks' in 2020?",
+            "Did he author a paper titled 'Towards a Theory of Faithfulness' in 2022?",
+            "Did he author a paper titled 'Towards a General Framework for Maximum Entropy Reasoning' in 2012?"
+        ],
+        "cost": {
+            "total_tokens": 2097,
+            "prompt_tokens": 1833,
+            "completion_tokens": 264,
+            "successful_requests": 3,
+            "total_cost": 0.04194
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Tobias J\u00e4kel?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Role-based Data Management' in 2017?",
+            "Did he author a paper titled 'The Role Concept for Relational Database Management Systems' in 2013?",
+            "Did he author a paper titled 'Pack Indexing for Time-Constrained In-Memory Query Processing' in 2013?"
+        ],
+        "cost": {
+            "total_tokens": 2015,
+            "prompt_tokens": 1773,
+            "completion_tokens": 242,
+            "successful_requests": 3,
+            "total_cost": 0.0403
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Susanne Strahringer?",
+            "How many papers did she co-author with other researchers?",
+            "Did she author a paper titled 'Willkommen im Elfenbeinturm!' in 2020?",
+            "Did she author a paper titled 'Cyber-physical Systems - Von jeder mit jedem zu alles mit allem.' in 2014?",
+            "What is her primary affiliation?"
+        ],
+        "cost": {
+            "total_tokens": 2140,
+            "prompt_tokens": 1874,
+            "completion_tokens": 266,
+            "successful_requests": 3,
+            "total_cost": 0.042800000000000005
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Michael May 0003?",
+            "How many researchers have a primary affiliation with Technical University Munich, Germany?",
+            "Did he author a paper with Thomas Schiekofer in 1996?",
+            "Was Michael Mauderer 0002 affiliated with Technical University Munich, Germany?",
+            "Did Cornelius Diekmann have a primary affiliation with Technical University Munich, Germany?"
+        ],
+        "cost": {
+            "total_tokens": 1896,
+            "prompt_tokens": 1691,
+            "completion_tokens": 205,
+            "successful_requests": 3,
+            "total_cost": 0.03792
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Siyu Tang 0001?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'A Multi-cut Formulation for Joint Segmentation and Tracking of Multiple Objects' in 2016?",
+            "Did he author a paper titled 'Learning People Detectors for Tracking in Crowded Scenes' in 2013?",
+            "Did he author a paper titled 'On Self-Contact and Human Pose' in 2021?"
+        ],
+        "cost": {
+            "total_tokens": 2078,
+            "prompt_tokens": 1816,
+            "completion_tokens": 262,
+            "successful_requests": 3,
+            "total_cost": 0.04155999999999999
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Michael J. Klaiber?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Across the Stack Opportunities for Deep Learning Acceleration' in 2018?",
+            "Did he author a paper titled 'Zig-Zag Based Single-Pass Connected Components Analysis' in 2019?",
+            "Did he author a paper titled 'A parallel and resource-efficient single lookup connected components analysis architecture for reconfigurable hardware' in 2016?"
+        ],
+        "cost": {
+            "total_tokens": 2148,
+            "prompt_tokens": 1872,
+            "completion_tokens": 276,
+            "successful_requests": 3,
+            "total_cost": 0.042960000000000005
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Max E. Kramer?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'A Controlled Experiment Template for Evaluating the Understandability of Model Transformation Languages' in 2016?",
+            "Did he author a paper titled 'Mapping Aspect-Oriented Models to Aspect-Oriented Code' in 2010?",
+            "What is the most recent paper authored by him?"
+        ],
+        "cost": {
+            "total_tokens": 2068,
+            "prompt_tokens": 1824,
+            "completion_tokens": 244,
+            "successful_requests": 3,
+            "total_cost": 0.04136
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Pawel Swierczynski?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Keccak und der SHA-2' in 2013?",
+            "Did he author a paper titled 'Bitstream Fault Injections (BiFI) - Automated Fault Attacks against SRAM-based FPGAs' in 2016?",
+            "Did he author a paper titled 'Protecting against Cryptographic Trojans in FPGAs' in 2015?"
+        ],
+        "cost": {
+            "total_tokens": 2177,
+            "prompt_tokens": 1879,
+            "completion_tokens": 298,
+            "successful_requests": 3,
+            "total_cost": 0.04354
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Stefan Neumann 0002?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Modular timing analysis of component-based real-time embedded systems' in 2013?",
+            "Did he author a paper titled 'Incremental Model Synchronization for Efficient Run-Time Monitoring' in 2009?",
+            "What is the primary affiliation of him?"
+        ],
+        "cost": {
+            "total_tokens": 2047,
+            "prompt_tokens": 1792,
+            "completion_tokens": 255,
+            "successful_requests": 3,
+            "total_cost": 0.04094
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Louisa Kessi?",
+            "How many papers did she co-author with other researchers?",
+            "Did she author a paper titled 'AColDSS: Robust Unsupervised Automatic Color Segmentation System for Noisy Heterogeneous Document Images' in 2015?",
+            "What is her primary affiliation?",
+            "When did she publish her paper titled 'Unsupervised Recognition of the Logical Structure of Business Documents Based on Spatial Relationships'?"
+        ],
+        "cost": {
+            "total_tokens": 2110,
+            "prompt_tokens": 1846,
+            "completion_tokens": 264,
+            "successful_requests": 3,
+            "total_cost": 0.042199999999999994
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Martin Becker 0001?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Towards Source-Level Timing Analysis of Embedded Software Using Functional Verification Methods' in 2020?",
+            "Did he author a paper titled 'WCET Analysis meets Virtual Prototyping: Improving Source-Level Timing Annotations' in 2019?",
+            "Did he author a paper titled 'Optimizing Worst-Case Execution Times Using Mainstream Compilers' in 2018?"
+        ],
+        "cost": {
+            "total_tokens": 2097,
+            "prompt_tokens": 1817,
+            "completion_tokens": 280,
+            "successful_requests": 3,
+            "total_cost": 0.041940000000000005
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Ralf-Christian H\u00e4rting?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Impacts of the Implementation of the General Data Protection Regulations (GDPR) in SME Business Models - An Empirical Study with a Quantitative Design.' in 2020?",
+            "Was his paper titled 'Impacts of the Implementation of the General Data Protection Regulations (GDPR) in SME Business Models - An Empirical Study with a Quantitative Design.' published before 2021?",
+            "What is the latest publication authored by him?"
+        ],
+        "cost": {
+            "total_tokens": 2260,
+            "prompt_tokens": 1914,
+            "completion_tokens": 346,
+            "successful_requests": 3,
+            "total_cost": 0.045200000000000004
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Markus M. Berg?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'NADIA: A Simplified Approach Towards the Development of Natural Dialogue Systems' in 2015?",
+            "When was the paper 'Ontologiespeicherung in Datenbanken im Kontext nat\u00fcrlichsprachlicher Dialogsysteme' authored by him published?",
+            "Did he author a paper titled 'Integration of Dialogue Patterns into the Conceptual Model of Storyboard Design' in 2010?"
+        ],
+        "cost": {
+            "total_tokens": 2153,
+            "prompt_tokens": 1860,
+            "completion_tokens": 293,
+            "successful_requests": 3,
+            "total_cost": 0.04306
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Timo Kehrer?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'An Adaptable Tool Environment for High-level Differencing of Textual Models' in 2015?",
+            "When was the paper 'Generating Edit Operations for Profiled UML Models' authored by him published?",
+            "What is the title of the most recent paper authored by him?"
+        ],
+        "cost": {
+            "total_tokens": 2085,
+            "prompt_tokens": 1818,
+            "completion_tokens": 267,
+            "successful_requests": 3,
+            "total_cost": 0.0417
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Alexander Ulrich?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'The Flatter, the Better: Query Compilation Based on the Flattening Transformation' in 2015?",
+            "What is his primary affiliation?",
+            "Which year did he author a paper titled 'Query Flattening and the Nested Data Parallelism Paradigm'?"
+        ],
+        "cost": {
+            "total_tokens": 2033,
+            "prompt_tokens": 1804,
+            "completion_tokens": 229,
+            "successful_requests": 3,
+            "total_cost": 0.04066
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Udo J\u00f6rges?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'A macromodel of the transfer characteristics of chopper-stabilized operational amplifiers oriented by the circuit structure' in 1997?",
+            "Did he author a paper titled 'Nonlinear Analysis of Cross-Coupled Super-Regenerative Oscillators' in 2021?",
+            "Did he author a paper titled 'A 2 GHz low noise amplifier with transformer input matching in 28 nm CMOS' in 2016?"
+        ],
+        "cost": {
+            "total_tokens": 2212,
+            "prompt_tokens": 1910,
+            "completion_tokens": 302,
+            "successful_requests": 3,
+            "total_cost": 0.04424
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Andres Goens?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Implicit Data-Parallelism in Kahn Process Networks: Bridging the MacQueen Gap' in 2018?",
+            "Did he author a paper titled 'Mocasin - Rapid Prototyping of Rapid Prototyping Tools: A Framework for Exploring New Approaches in Mapping Software to Heterogeneous Multi-cores' in 2021?",
+            "Did he author a paper titled 'Optimized buffer allocation in multicore platforms' in 2014?"
+        ],
+        "cost": {
+            "total_tokens": 2183,
+            "prompt_tokens": 1860,
+            "completion_tokens": 323,
+            "successful_requests": 3,
+            "total_cost": 0.04366
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Sri Aravinda Krishnan Thyagarajan?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Redactable Blockchain in the Permissionless Setting' in 2019?",
+            "What year was the paper titled 'Universal Atomic Swaps: Secure Exchange of Coins Across All Blockchains' authored by him?",
+            "Did he author a paper titled 'Fully Secure Inner-Product Proxy Re-Encryption with Constant Size Ciphertext' in 2015?"
+        ],
+        "cost": {
+            "total_tokens": 2262,
+            "prompt_tokens": 1921,
+            "completion_tokens": 341,
+            "successful_requests": 3,
+            "total_cost": 0.04524
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Alexander Roth 0004?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Modelings Architectures of Cyber-Physical Systems' in 2017?",
+            "Did he author a paper titled 'An Extended Symbol Table Infrastructure to Manage the Composition of Output-Specific Generator Information' in 2016?",
+            "What is his primary affiliation?"
+        ],
+        "cost": {
+            "total_tokens": 2003,
+            "prompt_tokens": 1781,
+            "completion_tokens": 222,
+            "successful_requests": 3,
+            "total_cost": 0.04006
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Georgia Albuquerque?",
+            "How many papers did she co-author with other researchers?",
+            "Did she author a paper titled 'View and Time Interpolation in Image Space' in 2008?",
+            "When did she publish her thesis 'Visual analysis of high-dimensional spaces'?",
+            "Which papers authored by her were published in 2014?"
+        ],
+        "cost": {
+            "total_tokens": 1922,
+            "prompt_tokens": 1725,
+            "completion_tokens": 197,
+            "successful_requests": 3,
+            "total_cost": 0.03844
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Hannes Hartenstein?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Traffic Telematics' in 2008?",
+            "Did he author a paper titled 'Value sensitive design of Internet-based services' in 2016?",
+            "Did he author a paper titled 'Schl\u00fcsselverwaltung f\u00fcr sichere Gruppeninteraktionen \u00fcber beliebigen Speicheranbietern' in 2013?"
+        ],
+        "cost": {
+            "total_tokens": 2190,
+            "prompt_tokens": 1910,
+            "completion_tokens": 280,
+            "successful_requests": 3,
+            "total_cost": 0.04379999999999999
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Waqas Rehan?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'FRP: A novel fast rerouting protocol with multi-link-failure recovery for mission-critical WSN' in 2018?",
+            "When was the paper 'ZGLS: a novel flat quorum-based and reliable location management protocol for VANETs' authored by him published?",
+            "Did he author a paper titled 'Machine-Learning Based Channel Quality and Stability Estimation for Stream-Based Multichannel Wireless Sensor Networks' in 2016?"
+        ],
+        "cost": {
+            "total_tokens": 2219,
+            "prompt_tokens": 1899,
+            "completion_tokens": 320,
+            "successful_requests": 3,
+            "total_cost": 0.04438
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Rudolf Mester?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Wiener crosses borders: interpolation based on second order models.' in 2011?",
+            "Was he affiliated with Goethe University Frankfurt am Main in 2021?",
+            "What is the earliest year he published a paper?"
+        ],
+        "cost": {
+            "total_tokens": 2069,
+            "prompt_tokens": 1836,
+            "completion_tokens": 233,
+            "successful_requests": 3,
+            "total_cost": 0.04138
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Jil Kl\u00fcnder?",
+            "How many papers did she co-author with other researchers?",
+            "Did she author a paper titled 'Defining Frames to Structure Agile Development in Hybrid Settings' in 2022?",
+            "Did she author a paper titled 'Is Task Board Customization Beneficial?' in 2017?",
+            "When was the paper 'How to Identify Changing Contexts of Use with Creativity Workshops' authored by her published?"
+        ],
+        "cost": {
+            "total_tokens": 2108,
+            "prompt_tokens": 1842,
+            "completion_tokens": 266,
+            "successful_requests": 3,
+            "total_cost": 0.04216
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the papers authored by Peter Nyhuis?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Supply Chain Management in Small and Medium-Sized Enterprises' in 2006?",
+            "Did he author a paper titled 'Ensuring the Consistency of Competitive Strategy and Logistic Performance Management' in 2007?",
+            "Did he author a paper titled 'A systematic approach to analysis and design of global production networks' in 2009?"
+        ],
+        "cost": {
+            "total_tokens": 2092,
+            "prompt_tokens": 1814,
+            "completion_tokens": 278,
+            "successful_requests": 3,
+            "total_cost": 0.041839999999999995
+        }
+    }
+]
