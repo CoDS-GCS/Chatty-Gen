@@ -26,7 +26,7 @@ langchain.debug = True
 response_schemas = [
     ResponseSchema(
         name="output",
-        description="a tuple of an Entity and its pronouns",
+        description="list of question templates",
         type="List[string]",
     )
 ]
