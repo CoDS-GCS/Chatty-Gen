@@ -1,0 +1,416 @@
+[
+    {
+        "dialogue": [
+            "Can you list the parents of William Shakespeare?",
+            "How many children did he have?",
+            "Was he born in Stratford-upon-Avon?",
+            "What was his home location?",
+            "What nationality was he?",
+            "Which school did he attend?",
+            "What language did he know?",
+            "Who was his spouse?",
+            "Where did he die?",
+            "What year did he die?"
+        ],
+        "original": [
+            "Can you list the parents of William Shakespeare?",
+            "How many children did William Shakespeare have?",
+            "Was William Shakespeare born in Stratford-upon-Avon?",
+            "What was William Shakespeare's home location?",
+            "What nationality was William Shakespeare?",
+            "Which school did William Shakespeare attend?",
+            "What language did William Shakespeare know?",
+            "Who was William Shakespeare's spouse?",
+            "Where did William Shakespeare die?",
+            "What year did William Shakespeare die?"
+        ],
+        "filtered": [
+            "List the parents of William Shakespeare",
+            "How many children did he have?",
+            "Was he born in Stratford-upon-Avon?",
+            "What nationality was he?",
+            "Which school did he attend?",
+            "Who was his spouse?",
+            "Where did he die?"
+        ],
+        "cost": {
+            "total_tokens": 1948,
+            "prompt_tokens": 1701,
+            "completion_tokens": 247
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the films in which Con Lennon acted?",
+            "How many films did he direct?",
+            "Was he the founder of 'Northern Songs'?",
+            "How many awards did he receive?",
+            "Where was he born?",
+            "Where did he live?",
+            "What was the nationality of him?",
+            "How many children did he have?",
+            "Who were his spouses?",
+            "What was the date of his death?"
+        ],
+        "original": [
+            "Can you list the films in which Con Lennon acted?",
+            "How many films did Con Lennon direct?",
+            "Was Con Lennon the founder of 'Northern Songs'?",
+            "How many awards did Con Lennon receive?",
+            "Where was Con Lennon born?",
+            "Where did Con Lennon live?",
+            "What was the nationality of Con Lennon?",
+            "How many children did Con Lennon have?",
+            "Who were Con Lennon's spouses?",
+            "What was the date of Con Lennon's death?"
+        ],
+        "filtered": [
+            "List the films in which Con Lennon acted",
+            "How many films did he direct?",
+            "Was he the founder of 'Northern Songs'?",
+            "Where did he live?",
+            "What was the nationality of him?",
+            "Who were his spouses?"
+        ],
+        "cost": {
+            "total_tokens": 3087,
+            "prompt_tokens": 2866,
+            "completion_tokens": 221
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the movies in which Stephen King acted?",
+            "How many awards has he won?",
+            "Is he a member of the Democratic Party?",
+            "What is his birth date?",
+            "How many children does he have?",
+            "Can you list his alma maters?",
+            "Does he know the English language?",
+            "Was he in the movie 'Dead On: The Life and Cinema of George A. Romero'?",
+            "What is his spouse's name?",
+            "What are the places he has called home?"
+        ],
+        "original": [
+            "Can you list the movies in which Stephen King acted?",
+            "How many awards has Stephen King won?",
+            "Is Stephen King a member of the Democratic Party?",
+            "What is Stephen King's birth date?",
+            "How many children does Stephen King have?",
+            "Can you list Stephen King's alma maters?",
+            "Does Stephen King know the English language?",
+            "Was Stephen King in the movie 'Dead On: The Life and Cinema of George A. Romero'?",
+            "What is Stephen King's spouse's name?",
+            "What are the places Stephen King has called home?"
+        ],
+        "filtered": [
+            "List his alma maters",
+            "How many children does he have?",
+            "Is he a member of the Democratic Party?",
+            "What are the places he has called home?",
+            "Does he know the English language?",
+            "Was he in the movie 'Dead On: The Life and Cinema of George A. Romero'?"
+        ],
+        "cost": {
+            "total_tokens": 2611,
+            "prompt_tokens": 2348,
+            "completion_tokens": 263
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the organizations that the United States is a member of?",
+            "How many organizations is it a member of?",
+            "Is it a member of the G-20?",
+            "Is it a member of the Organisation for Economic Co-operation and Development?",
+            "Is it a member of the Combined Communications Electronics Board?",
+            "Is it a member of the AUSCANNZUKUS?",
+            "Is it a member of the World Bank?",
+            "Is it a member of the International Hydrographic Organization?",
+            "Is it a member of the International Energy Agency?",
+            "Is it a member of the Strategic Air Command?"
+        ],
+        "original": [
+            "Can you list the organizations that the United States is a member of?",
+            "How many organizations is the United States a member of?",
+            "Is the United States a member of the G-20?",
+            "Is the United States a member of the Organisation for Economic Co-operation and Development?",
+            "Is the United States a member of the Combined Communications Electronics Board?",
+            "Is the United States a member of the AUSCANNZUKUS?",
+            "Is the United States a member of the World Bank?",
+            "Is the United States a member of the International Hydrographic Organization?",
+            "Is the United States a member of the International Energy Agency?",
+            "Is the United States a member of the Strategic Air Command?"
+        ],
+        "filtered": [
+            "List the organizations that the United States is a member of",
+            "How many organizations is it a member of?",
+            "Is it a member of the Strategic Air Command?"
+        ],
+        "cost": {
+            "total_tokens": 4208,
+            "prompt_tokens": 3898,
+            "completion_tokens": 310
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the organizations that Germany is a member of?",
+            "How many organizations is it a member of?",
+            "Does it belong to the United Nations?",
+            "Is it a member of the G-20?",
+            "Is it a member of the European Union?",
+            "Is it a member of the Organisation for Economic Co-operation and Development?",
+            "Is it a member of the Group on Earth Observations?",
+            "Is it a member of the European Payments Union?",
+            "Is it a member of the Triangle de Weimar?",
+            "Is it a member of the International Telecommunication Union?"
+        ],
+        "original": [
+            "Can you list the organizations that Germany is a member of?",
+            "How many organizations is Germany a member of?",
+            "Does Germany belong to the United Nations?",
+            "Is Germany a member of the G-20?",
+            "Is Germany a member of the European Union?",
+            "Is Germany a member of the Organisation for Economic Co-operation and Development?",
+            "Is Germany a member of the Group on Earth Observations?",
+            "Is Germany a member of the European Payments Union?",
+            "Is Germany a member of the Triangle de Weimar?",
+            "Is Germany a member of the International Telecommunication Union?"
+        ],
+        "filtered": [
+            "List the organizations that Germany is a member of",
+            "How many organizations is it a member of?",
+            "Does it belong to the United Nations?",
+            "Is it a member of the Group on Earth Observations?"
+        ],
+        "cost": {
+            "total_tokens": 4775,
+            "prompt_tokens": 4463,
+            "completion_tokens": 312
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the organizations that Naren Tamhane is a member of?",
+            "How many organizations is he a member of?",
+            "Is he a member of Interpol?",
+            "Is he a member of the World Postal Union?",
+            "Is he a member of the Shanghai Cooperation Organization?",
+            "Is he a member of the United Nations Educational, Scientific and Cultural Organization?",
+            "Is he a member of the Group on Earth Observations?",
+            "Is he a member of the International Hydrographic Organization?",
+            "Is he a member of the G-20?",
+            "Is he a member of the International Investment Guarantee Agency?"
+        ],
+        "original": [
+            "Can you list the organizations that Naren Tamhane is a member of?",
+            "How many organizations is India a member of?",
+            "Is India a member of Interpol?",
+            "Is India a member of the World Postal Union?",
+            "Is India a member of the Shanghai Cooperation Organization?",
+            "Is India a member of the United Nations Educational, Scientific and Cultural Organization?",
+            "Is India a member of the Group on Earth Observations?",
+            "Is India a member of the International Hydrographic Organization?",
+            "Is India a member of the G-20?",
+            "Is India a member of the International Investment Guarantee Agency?"
+        ],
+        "filtered": [
+            "List the organizations that Naren Tamhane is a member of",
+            "How many organizations is he a member of?",
+            "Is he a member of the International Investment Guarantee Agency?"
+        ],
+        "cost": {
+            "total_tokens": 3405,
+            "prompt_tokens": 3112,
+            "completion_tokens": 293
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the organizations that Australia is a member of?",
+            "How many organizations are they a member of?",
+            "Are they a member of the European Bank for Reconstruction and Development?",
+            "Are they a member of the Group on Earth Observations?",
+            "Are they a member of the Nuclear Suppliers Group?",
+            "Are they a member of Interpol?",
+            "Are they a member of the ANZUK?",
+            "Are they a member of the G-20?",
+            "Are they a member of the International Hydrographic Organization?",
+            "Are they a member of the Commonwealth of Nations?"
+        ],
+        "original": [
+            "Can you list the organizations that Australia is a member of?",
+            "How many organizations is Australia a member of?",
+            "Is Australia a member of the European Bank for Reconstruction and Development?",
+            "Is Australia a member of the Group on Earth Observations?",
+            "Is Australia a member of the Nuclear Suppliers Group?",
+            "Is Australia a member of Interpol?",
+            "Is Australia a member of the ANZUK?",
+            "Is Australia a member of the G-20?",
+            "Is Australia a member of the International Hydrographic Organization?",
+            "Is Australia a member of the Commonwealth of Nations?"
+        ],
+        "filtered": [
+            "List the organizations that Australia is a member of",
+            "How many organizations are they a member of?",
+            "Are they a member of the Commonwealth of Nations?"
+        ],
+        "cost": {
+            "total_tokens": 4015,
+            "prompt_tokens": 3696,
+            "completion_tokens": 319
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the organizations that Japan is a member of?",
+            "How many organizations is it a member of?",
+            "Is it a member of the United Nations?",
+            "Is it a member of the Group on Earth Observations?",
+            "Is it a member of the Organisation for Economic Co-operation an Development?",
+            "Is it a member of the Interpol?",
+            "Is it a member of the Investment Guarantee Agency?",
+            "Is it a member of the World Trade Organisation?",
+            "Is it a member of the G-20?",
+            "Is it a member of the International Hydrographic Organization?"
+        ],
+        "original": [
+            "Can you list the organizations that Japan is a member of?",
+            "How many organizations is Japan a member of?",
+            "Is Japan a member of the United Nations?",
+            "Is Japan a member of the Group on Earth Observations?",
+            "Is Japan a member of the Organisation for Economic Co-operation an Development?",
+            "Is Japan a member of the Interpol?",
+            "Is Japan a member of the Investment Guarantee Agency?",
+            "Is Japan a member of the World Trade Organisation?",
+            "Is Japan a member of the G-20?",
+            "Is Japan a member of the International Hydrographic Organization?"
+        ],
+        "filtered": [
+            "List the organizations that Japan is a member of",
+            "How many organizations is it a member of?",
+            "Is it a member of the Interpol?"
+        ],
+        "cost": {
+            "total_tokens": 3103,
+            "prompt_tokens": 2822,
+            "completion_tokens": 281
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the children of \u0410\u043d\u043d\u0430 \u041c\u0430\u0440\u0456\u044f \u0412\u0430\u043b\u044c\u0431\u0443\u0440\u0433\u0430 \u041c\u043e\u0446\u0430\u0440\u0442 and Leopold Mocart?",
+            "Where were they born?",
+            "What is their nationality?",
+            "What award did they receive?",
+            "When did they die?",
+            "Who did they work for?",
+            "Can you list the languages they were fluent in?",
+            "Who was their spouse?",
+            "Where did they die?",
+            "When were they born?"
+        ],
+        "original": [
+            "Can you list the children of \u0410\u043d\u043d\u0430 \u041c\u0430\u0440\u0456\u044f \u0412\u0430\u043b\u044c\u0431\u0443\u0440\u0433\u0430 \u041c\u043e\u0446\u0430\u0440\u0442 and Leopold Mocart?",
+            "Where was Wolfgang Amadeus Mozart born?",
+            "What is Wolfgang Amadeus Mozart's nationality?",
+            "What award did Wolfgang Amadeus Mozart receive?",
+            "When did Wolfgang Amadeus Mozart die?",
+            "Who did Wolfgang Amadeus Mozart work for?",
+            "Can you list the languages Wolfgang Amadeus Mozart was fluent in?",
+            "Who was Wolfgang Amadeus Mozart's spouse?",
+            "Where did Wolfgang Amadeus Mozart die?",
+            "When was Wolfgang Amadeus Mozart born?"
+        ],
+        "filtered": [
+            "List the children of \u0410\u043d\u043d\u0430 \u041c\u0430\u0440\u0456\u044f \u0412\u0430\u043b\u044c\u0431\u0443\u0440\u0433\u0430 \u041c\u043e\u0446\u0430\u0440\u0442 and Leopold Mocart",
+            "Where were they born?",
+            "What award did they receive?",
+            "When were they born?",
+            "Who did they work for?"
+        ],
+        "cost": {
+            "total_tokens": 2502,
+            "prompt_tokens": 2126,
+            "completion_tokens": 376
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the movies in which Con Lennon acted?",
+            "How many awards did he receive?",
+            "Did he direct a movie titled 'Up Your Legs Forever'?",
+            "How many children did he have?",
+            "Was he born in Liverpool?",
+            "Did he have any spouses?",
+            "When did he die?",
+            "What are the languages that he knew?",
+            "What universities did he attend?",
+            "What was the last movie in which he acted?"
+        ],
+        "original": [
+            "Can you list the movies in which Con Lennon acted?",
+            "How many awards did Con Lennon receive?",
+            "Did Con Lennon direct a movie titled 'Up Your Legs Forever'?",
+            "How many children did Con Lennon have?",
+            "Was Con Lennon born in Liverpool?",
+            "Did Con Lennon have any spouses?",
+            "When did Con Lennon die?",
+            "What are the languages that Con Lennon knew?",
+            "What universities did Con Lennon attend?",
+            "What was the last movie in which Con Lennon acted?"
+        ],
+        "filtered": [
+            "List the movies in which Con Lennon acted",
+            "How many awards did he receive?",
+            "Did he have any spouses?",
+            "Was he born in Liverpool?",
+            "When did he die?",
+            "What are the languages that he knew?"
+        ],
+        "cost": {
+            "total_tokens": 3143,
+            "prompt_tokens": 2872,
+            "completion_tokens": 271
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the books edited by Aizeks Azimovs?",
+            "How many awards did he receive?",
+            "Was he a member of the Democratic Party?",
+            "What was the birth date of him?",
+            "What languages did he know?",
+            "What universities did he attend?",
+            "Who was the spouse of him?",
+            "What was the birth place of him?",
+            "What was the home location of him?",
+            "What nationalities did he have?"
+        ],
+        "original": [
+            "Can you list the books edited by Aizeks Azimovs?",
+            "How many awards did Aizeks Azimovs receive?",
+            "Was Aizeks Azimovs a member of the Democratic Party?",
+            "What was the birth date of Aizeks Azimovs?",
+            "What languages did Aizeks Azimovs know?",
+            "What universities did Aizeks Azimovs attend?",
+            "Who was the spouse of Aizeks Azimovs?",
+            "What was the birth place of Aizeks Azimovs?",
+            "What was the home location of Aizeks Azimovs?",
+            "What nationalities did Aizeks Azimovs have?"
+        ],
+        "filtered": [
+            "List the books edited by Aizeks Azimovs",
+            "How many awards did he receive?",
+            "Was he a member of the Democratic Party?",
+            "What languages did he know?",
+            "Who was the spouse of him?"
+        ],
+        "cost": {
+            "total_tokens": 4265,
+            "prompt_tokens": 3921,
+            "completion_tokens": 344
+        }
+    }
+]

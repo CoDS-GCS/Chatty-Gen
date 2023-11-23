@@ -20,7 +20,7 @@ num_iterations = 100  # Set the number of iterations
 subgraph_size = 10
 
 # Define the number of random seed nodes you want
-num_random_seed_nodes = 50
+num_random_seed_nodes = 2
 
 
 # Function to load RDF data from a file or SPARQL endpoint
@@ -32,14 +32,26 @@ async def load_rdf_data(rdf_graph):
             all_nodes.add(subj)
     else:
         sparql = SPARQLWrapper(sparql_endpoint_url)
+        # sparql.setQuery(
+        #     """
+        #     CONSTRUCT {
+        #         ?person a <https://dblp.org/rdf/schema#Person> .
+        #         ?paper <https://dblp.org/rdf/schema#authoredBy> ?person .
+        #         ?person <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation .
+        #         } WHERE {
+        #             ?person a <https://dblp.org/rdf/schema#Person> .
+        #             ?paper <https://dblp.org/rdf/schema#authoredBy> ?person .
+        #             ?person <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation .
+        #             } LIMIT 10000
+        # """
         sparql.setQuery(
             """
             CONSTRUCT {
-                ?person a <https://dblp.org/rdf/schema#Person> .
+                ?paper a <https://dblp.org/rdf/schema#Publication> .
                 ?paper <https://dblp.org/rdf/schema#authoredBy> ?person .
                 ?person <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation .
                 } WHERE {
-                    ?person a <https://dblp.org/rdf/schema#Person> .
+                    ?paper a <https://dblp.org/rdf/schema#Publication> .
                     ?paper <https://dblp.org/rdf/schema#authoredBy> ?person .
                     ?person <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation .
                     } LIMIT 10000
@@ -70,8 +82,6 @@ async def load_rdf_data(rdf_graph):
                 obj = Literal(obj_value)
 
             rdf_graph.add((subject, predicate, obj))
-
-    # print(len(rdf_graph))
 
 
 # Define a function to retrieve triples for a given node
@@ -176,14 +186,29 @@ def get_labels_for_triple(triple):
     return subject_label, predicate_label, obj_label
 
 
+# def get_seed_subjects(rdf_graph):
+#     DBLP = Namespace("https://dblp.org/rdf/schema#")
+#
+#     # Get a list of all subjects from the RDF graph
+#     seed_subjects = set()
+#     for sub, pred, obj in rdf_graph:
+#         if pred == RDF.type and obj == DBLP.Person:
+#             seed_subjects.add(sub)
+#
+#     # Randomly select seed subjects
+#     seed_subjects = random.sample(seed_subjects, num_random_seed_nodes)
+#     # print(seed_subjects)
+#     return seed_subjects
+
 def get_seed_subjects(rdf_graph):
     DBLP = Namespace("https://dblp.org/rdf/schema#")
 
     # Get a list of all subjects from the RDF graph
     seed_subjects = set()
     for sub, pred, obj in rdf_graph:
-        if pred == RDF.type and obj == DBLP.Person:
+        if pred == RDF.type and obj == DBLP.Publication:
             seed_subjects.add(sub)
+
 
     # Randomly select seed subjects
     seed_subjects = random.sample(seed_subjects, num_random_seed_nodes)
@@ -255,7 +280,7 @@ async def write_subgraphs_to_file(subgraphs, file_name):
 
 # Function to write subgraphs to a JSONL file using jsonlines library
 def write_subgraphs_to_jsonl(subgraphs):
-    with jsonlines.open("subgraphs.jsonl", mode="a") as writer:
+    with jsonlines.open("subgraphs_publication.jsonl", mode="a") as writer:
         for seed_node, triples in subgraphs.items():
             filtered_triplets = []
 
@@ -284,6 +309,7 @@ async def generate():
     # Write subgraphs to separate text files
     tasks = []
     for idx, (seed_node, triples) in enumerate(subgraphs.items()):
+        # print(seed_node, triples)
         file_name = f"subgraphs_{idx}.txt"
         task = asyncio.create_task(write_subgraphs_to_file(subgraphs, file_name))
         tasks.append(task)

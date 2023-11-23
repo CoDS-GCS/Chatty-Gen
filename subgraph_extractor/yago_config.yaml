@@ -1,0 +1,7 @@
+experiment_name: yago_subgraphs
+log_file: logs.log
+output_subgraph_file: yago_subgraphs.jsonl
+kg: yago
+seed_node_types:
+  - "Person"
+  - "Organization"

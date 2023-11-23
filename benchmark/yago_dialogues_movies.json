@@ -1,130 +1,163 @@
 [
     {
         "dialogue": [
-            "Can you list the actors in the movie '71?",
-            "How many actors are in the movie '71?",
-            "Did Charlie Murphy act in the movie '71?",
-            "Who directed the movie '71?",
-            "Was the movie '71' released before or after 2015?"
+            "Does Marcia Furnilla have any children?",
+            "Where was she born?",
+            "What is her home location?",
+            "What is her nationality?",
+            "Who is her spouse?"
         ],
         "cost": {
-            "total_tokens": 1695,
-            "prompt_tokens": 1539,
-            "completion_tokens": 156,
+            "total_tokens": 1729,
+            "prompt_tokens": 1594,
+            "completion_tokens": 135,
             "successful_requests": 3,
-            "total_cost": 0.0339
+            "total_cost": 0.03458
         }
     },
     {
         "dialogue": [
-            "Can you list the actors in the film '71?",
-            "How many actors are in it?",
-            "Did Charlie Murphy act in it?",
-            "Who directed it?",
-            "When was it released?"
+            "Can you list the children of Quint Marci Barea Sura?",
+            "Where was he born?",
+            "Where does he live currently?",
+            "What is the nationality of him?",
+            "How many children does he have?"
         ],
         "cost": {
-            "total_tokens": 1672,
-            "prompt_tokens": 1536,
-            "completion_tokens": 136,
+            "total_tokens": 1744,
+            "prompt_tokens": 1594,
+            "completion_tokens": 150,
             "successful_requests": 3,
-            "total_cost": 0.03344
+            "total_cost": 0.03488
         }
     },
     {
         "dialogue": [
-            "Can you list the actors in the movie '71?",
-            "How many actors starred in the movie '71?",
-            "Did Charlie Murphy act in the movie '71?",
-            "Who directed the movie '71?",
-            "When was the movie '71' released?"
+            "Can you list the films Desiree Cousteau acted in?",
+            "What awards has she received?",
+            "What is the birthplace of her?",
+            "Is she an American citizen?",
+            "What language does she know?"
         ],
         "cost": {
-            "total_tokens": 1687,
-            "prompt_tokens": 1536,
-            "completion_tokens": 151,
+            "total_tokens": 1737,
+            "prompt_tokens": 1587,
+            "completion_tokens": 150,
             "successful_requests": 3,
-            "total_cost": 0.03374
+            "total_cost": 0.03474000000000001
         }
     },
     {
         "dialogue": [
-            "Can you list the actors in the movie '71?",
-            "How many actors starred in it?",
-            "Is Charlie Murphy an actor in it?",
-            "Who is the director of it?",
-            "What is the release date of it?"
+            "What is Attil\u00e2 \u0130lhan's nationality?",
+            "In what place was he born?",
+            "What award did he receive?",
+            "What language did he know?",
+            "When was he born?"
         ],
         "cost": {
-            "total_tokens": 1701,
+            "total_tokens": 1688,
+            "prompt_tokens": 1531,
+            "completion_tokens": 157,
+            "successful_requests": 3,
+            "total_cost": 0.03376
+        }
+    },
+    {
+        "dialogue": [
+            "Where was Olwen Brogan born?",
+            "What is the nationality of her?",
+            "When did she die?",
+            "What languages did she know?",
+            "Who was the spouse of her?"
+        ],
+        "cost": {
+            "total_tokens": 1838,
+            "prompt_tokens": 1699,
+            "completion_tokens": 139,
+            "successful_requests": 3,
+            "total_cost": 0.03676
+        }
+    },
+    {
+        "dialogue": [
+            "Where was Thomas Dempster born?",
+            "When did he die?",
+            "What institutions did he attend?",
+            "Which languages did he know?",
+            "Where did he die?"
+        ],
+        "cost": {
+            "total_tokens": 1623,
+            "prompt_tokens": 1489,
+            "completion_tokens": 134,
+            "successful_requests": 3,
+            "total_cost": 0.03246
+        }
+    },
+    {
+        "dialogue": [
+            "What is the birth place of \u0412\u0435\u043b\u044c\u0441\u043a\u043e\u043f\u0444-\u0413\u0435\u043d\u0440\u0438\u0445, \u041b\u0438\u0437\u0435\u043b\u043e\u0442\u0442\u0430?",
+            "What is the nationality of him?",
+            "How many awards did he receive?",
+            "When did he die?",
+            "Does he know German?"
+        ],
+        "cost": {
+            "total_tokens": 2697,
+            "prompt_tokens": 2387,
+            "completion_tokens": 310,
+            "successful_requests": 3,
+            "total_cost": 0.053939999999999995
+        }
+    },
+    {
+        "dialogue": [
+            "Can you list the languages that Elfriede Knauer knows?",
+            "Where was she born?",
+            "When did she die?",
+            "Which university did she attend?",
+            "Was she a member of the American Philosophical Society?"
+        ],
+        "cost": {
+            "total_tokens": 1952,
+            "prompt_tokens": 1799,
+            "completion_tokens": 153,
+            "successful_requests": 3,
+            "total_cost": 0.039040000000000005
+        }
+    },
+    {
+        "dialogue": [
+            "What is Basshunter's birth place?",
+            "Where does he currently live?",
+            "How many countries does he call home?",
+            "Is he a Swedish national?",
+            "What languages does he know?",
+            "What is his birth date?"
+        ],
+        "cost": {
+            "total_tokens": 1723,
             "prompt_tokens": 1552,
-            "completion_tokens": 149,
+            "completion_tokens": 171,
             "successful_requests": 3,
-            "total_cost": 0.03402
+            "total_cost": 0.03446
         }
     },
     {
         "dialogue": [
-            "Can you list the actors in the movie '71?",
-            "How many actors are in it?",
-            "Did Charlie Murphy star in it?",
-            "Who directed it?",
-            "When was it released?"
+            "Where was Jess Wade born?",
+            "How many awards has she received from Nature?",
+            "What is the name of the award that she received?",
+            "What university did she attend?",
+            "When was she born?"
         ],
         "cost": {
-            "total_tokens": 1664,
-            "prompt_tokens": 1528,
-            "completion_tokens": 136,
+            "total_tokens": 1642,
+            "prompt_tokens": 1504,
+            "completion_tokens": 138,
             "successful_requests": 3,
-            "total_cost": 0.033280000000000004
-        }
-    },
-    {
-        "dialogue": [
-            "Can you list the actors in the movie '71?",
-            "How many actors starred in the movie 'It'?",
-            "Did Charlie Murphy act in the movie 'It'?",
-            "Who directed the movie 'It'?",
-            "When was the movie 'It' released?"
-        ],
-        "cost": {
-            "total_tokens": 1681,
-            "prompt_tokens": 1532,
-            "completion_tokens": 149,
-            "successful_requests": 3,
-            "total_cost": 0.03362
-        }
-    },
-    {
-        "dialogue": [
-            "Can you list the actors in the movie '71?",
-            "How many actors are in the movie '71?",
-            "Is Charlie Murphy an actor in the movie '71?",
-            "Who directed the movie '71?",
-            "When was the movie '71 released?"
-        ],
-        "cost": {
-            "total_tokens": 1694,
-            "prompt_tokens": 1543,
-            "completion_tokens": 151,
-            "successful_requests": 3,
-            "total_cost": 0.03388
-        }
-    },
-    {
-        "dialogue": [
-            "Can you list the actors in the movie '71?",
-            "How many actors are in the movie '71?",
-            "Did they act in the movie '71?",
-            "Who directed the movie '71?",
-            "When was the movie '71' released?"
-        ],
-        "cost": {
-            "total_tokens": 1701,
-            "prompt_tokens": 1546,
-            "completion_tokens": 155,
-            "successful_requests": 3,
-            "total_cost": 0.03402
+            "total_cost": 0.03284
         }
     }
 ]

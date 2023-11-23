@@ -1,0 +1,1006 @@
+Yosra Zguira Bahri: Study and development of wireless sensor network architecture tolerant to delays. (Etude et développement d'une architecture de réseaux de capteurs tolérante aux délais). (2018) authored by Yosra Zguira
+Yosra Zguira primary affiliation University of Lyon, France
+Yosra Zguira Bahri: Study and development of wireless sensor network architecture tolerant to delays. (Etude et développement d'une architecture de réseaux de capteurs tolérante aux délais). (2018) authored by Yosra Zguira
+
+---
+Michael J. Carey: Modeling and Evaluation of Database Concurrency Control Algorithms (1983) authored by Michael J. Carey 0001
+
+---
+Andreas Geiger: Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion. (2021) authored by Andreas Geiger 0002
+
+---
+Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006) authored by Xia Hong 0001
+Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006) authored by Christopher J. Harris 0001
+Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006) authored by Sheng Chen 0001
+Xia Hong 0001 primary affiliation University of Reading
+Sheng Chen et al.: Probability Density Function Estimation Using Orthogonal Forward Regression. (2007) authored by Xia Hong 0001
+Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006) authored by Xia Hong 0001
+Xia Hong and Junbin Gao: Manifold optimization for nonnegative coefficient logistic regression. (2016) authored by Xia Hong 0001
+Xia Hong and Junbin Gao: Sparse density estimation on multinomial manifold combining local component analysis. (2015) authored by Xia Hong 0001
+Xia Hong and Yu Gong: A constrained recursive least squares algorithm for adaptive combination of multiple models. (2015) authored by Xia Hong 0001
+
+---
+Wieland Holfelder: Aufzeichnung und Wiedergabe von Internet-Videokonferenzen. (1998) authored by Wieland Holfelder
+
+---
+Rui Sa Shibasaki: Lagrangian Decomposition Methods for Large-Scale Fixed-Charge Capacitated Multicommodity Network Design Problem. (Méthodes de Décomposition Lagrangienne pour le Problème à Grande Échelle de Synthèse de Réseaux Multi-Flot Avec Coûts Fixes et Capacités). (2020) authored by Rui Sa Shibasaki
+
+---
+Kai Keng Ang and Chai Quek: Rough set-based neuro-fuzzy system. (2006) authored by Hiok Chai Quek
+Hiok Chai Quek primary affiliation Nanyang Technological University, Singapore
+Eng-Yeow Cheu et al.: TNFIS: Tree-based neural fuzzy inference system. (2008) authored by Hiok Chai Quek
+Mahnaz Arvaneh et al.: Robust EEG channel selection across sessions in brain-computer interface involving stroke patients. (2012) authored by Hiok Chai Quek
+Kai Keng Ang and Chai Quek: Rough set-based neuro-fuzzy system. (2006) authored by Hiok Chai Quek
+Chai Quek et al.: A Novel Recurrent Neural Network Based Prediction System for Trading. (2006) authored by Hiok Chai Quek
+Ngoc Nam Nguyen and Chai Quek: Stock price prediction using Generic Self-Evolving Takagi-Sugeno-Kang (GSETSK) fuzzy neural network. (2010) authored by Hiok Chai Quek
+Tuan Zea Tan et al.: Improving tractability of Clinical Decision Support system. (2008) authored by Hiok Chai Quek
+Tuan Zea Tan et al.: Clinical Diagnosis Using Proteomics and Complementary Learning. (2006) authored by Hiok Chai Quek
+
+---
+Ata Kabán: Compressive Learning of Multi-layer Perceptrons: An Error Analysis. (2019) authored by Ata Kabán
+Ata Kabán primary affiliation University of Birmingham, School of Computer Science, UK
+Ata Kabán: Compressive Learning of Multi-layer Perceptrons: An Error Analysis. (2019) authored by Ata Kabán
+
+---
+Peter Thiemann: Konzepte zur effizienten Implementierung strukturell rekursiver Programme. (1991) authored by Peter Thiemann 0001
+
+---
+Ning Jin et al.: Wavelet Basis Function Neural Networks. (2007) authored by Derong Liu 0001
+Derong Liu 0001 primary affiliation University of Science and Technology Beijing, School of Automation and Electrical Engineering, China
+Hongwen Ma et al.: Distributed control of second-order nonlinear time-delayed multiagent systems with disturbance using neural networks. (2016) authored by Derong Liu 0001
+Ning Jin et al.: Wavelet Basis Function Neural Networks. (2007) authored by Derong Liu 0001
+Derong Liu and Qinglai Wei: Adaptive dynamic programming for a class of discrete-time non-affine nonlinear systems with time-delays. (2010) authored by Derong Liu 0001
+
+---
+Caio J. B. V. Guimarães et al.: Optimization of MLP Neural Networks in 8-bit Microcontrollers using Program Memory. (2021) authored by Matheus F. Torquato
+Matheus F. Torquato primary affiliation Swansea University, College of Engineering, UK
+Caio J. B. V. Guimarães et al.: Optimization of MLP Neural Networks in 8-bit Microcontrollers using Program Memory. (2021) authored by Matheus F. Torquato
+
+---
+Milton Roberto Heinen et al.: Using a Gaussian mixture neural network for incremental learning and robotics. (2012) authored by Paulo Martins Engel
+Paulo Martins Engel primary affiliation Federal University of Rio Grande do Sul, Porto Alegre, Brazil
+Milton Roberto Heinen et al.: Using a Gaussian mixture neural network for incremental learning and robotics. (2012) authored by Paulo Martins Engel
+
+---
+Mashud Rana et al.: Prediction intervals for electricity load forecasting using neural networks. (2013) authored by Irena Koprinska
+Irena Koprinska primary affiliation University of Sydney, Australia
+Mashud Rana et al.: Forecasting hourly electricity load profile using neural networks. (2014) authored by Irena Koprinska
+Mashud Rana et al.: Solar power forecasting using weather type clustering and ensembles of neural networks. (2016) authored by Irena Koprinska
+Mashud Rana et al.: Prediction intervals for electricity load forecasting using neural networks. (2013) authored by Irena Koprinska
+Rim Haidar et al.: Convolutional Neural Networks on Multiple Respiratory Channels to Detect Hypopnea and Obstructive Apnea Events. (2018) authored by Irena Koprinska
+Irena Koprinska et al.: Convolutional Neural Networks for Energy Time Series Forecasting. (2018) authored by Irena Koprinska
+Tommaso Colombo et al.: Maximum Length Weighted Nearest Neighbor approach for electricity load forecasting. (2015) authored by Irena Koprinska
+
+---
+Houssam Salmane: Reconstruction et analyse de trajectoires 2D d'objets mobiles par modélisation Markovienne et la théorie de l'évidence à partir de séquences d'images monoculaires - Application à l'évaluation de situations potentiellement dangereuses aux passages à niveau. (Reconstruction and analysis of moving objects trajectoiries from monocular images sequences, using Hidden Markov Model and Dempster-Shafer Theory-Application for evaluating dangerous situations in level crossings). (2013) authored by Houssam Salmane
+
+---
+Olivier Ferret: ANTHAPSI : un système d'analyse thématique et d'apprentissage de connaissances pragmatiques fondé sur l'amorçage. (ANTHAPSI: a system for thematic analysis and learning pragmatic knowledge which relies on bootstrapping). (1998) authored by Olivier Ferret
+
+---
+Kamill Panitzek: Mobile service provision in harsh environments = Bereitstellung mobiler Dienste in rauen Umgebungen. (2014) authored by Kamill Panitzek
+Kamill Panitzek primary affiliation TU Darmstadt, Telecooperation Lab, Germany
+Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016) authored by Kamill Panitzek
+Kamill Panitzek: Mobile service provision in harsh environments = Bereitstellung mobiler Dienste in rauen Umgebungen. (2014) authored by Kamill Panitzek
+
+---
+Sergiy Bogomolov: Abstraction-based analysis of hybrid automata = Abstraktions-basierte Analyse von Hybrid-Automaten. (2015) authored by Sergiy Bogomolov
+Sergiy Bogomolov primary affiliation IST Austria, Klosterneuburg, Austria
+Sergiy Bogomolov: Abstraction-based analysis of hybrid automata = Abstraktions-basierte Analyse von Hybrid-Automaten. (2015) authored by Sergiy Bogomolov
+
+---
+Abderrahim Ait Wakrime: Une approche par composants pour l'analyse visuelle interactive de résultats issus de simulations numériques. (A component-based approach for interactive visual analysis of numerical simulation results). (2015) authored by Abderrahim Ait Wakrime
+Abderrahim Ait Wakrime primary affiliation Mohammed V University, Rabat, Morocco
+Abderrahim Ait Wakrime: Une approche par composants pour l'analyse visuelle interactive de résultats issus de simulations numériques. (A component-based approach for interactive visual analysis of numerical simulation results). (2015) authored by Abderrahim Ait Wakrime
+
+---
+Luciana P. P. Bueno and Aluizio F. R. Araújo: Controlling Chaos in Chaotic Bidirectional Associative Memories. (2006) authored by Aluizio F. R. Araújo
+
+---
+Daewon Lee and Jaewook Lee: Support Vector Classifier Using Basin-Based Sampling for Security Assessment of Nonlinear Power and Control Systems. (2006) authored by Jaewook Lee 0001
+
+---
+Frank Müller: Bewegungssteuerung in Verarbeitungsmaschinen mittels dezentraler Servoantriebssysteme: Untersuchungen am Einzelantrieb und zur Beschreibung der Bewegungssteuerung basierend auf einem Petrinetzkonzept. (1993) authored by Frank Müller 0005
+Frank Müller 0005 primary affiliation Dresden University of Technology, Germany
+Frank Müller: Bewegungssteuerung in Verarbeitungsmaschinen mittels dezentraler Servoantriebssysteme: Untersuchungen am Einzelantrieb und zur Beschreibung der Bewegungssteuerung basierend auf einem Petrinetzkonzept. (1993) authored by Frank Müller 0005
+
+---
+Manuel Gámez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011) authored by Edgar N. Sánchez
+
+---
+Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011) authored by Juyang Weng
+
+---
+Falak Sher: Abstraction and refinement of probabilistic automata using modal stochastic games. (2015) authored by Falak Sher
+
+---
+Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen. (1980) authored by Wolfram Sperber
+
+---
+Martin Spüler: Assessing the Benefit of Adaptive Brain-Computer Interfacing. (2013) authored by Martin Spüler
+
+---
+Michael Braun: Affective automotive user interfaces. (2020) authored by Michael Braun 0003
+Michael Braun 0003 primary affiliation BMW Group Research, Munich, Germany
+Michael Braun: Affective automotive user interfaces. (2020) authored by Michael Braun 0003
+
+---
+Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020) authored by Meng Chen 0006
+
+---
+Gert Heinrich: Entwicklung und Anwendung einer Theorie polymerer Netzwerke und Schmelzen unter Molekularfeld-theoretischer Berücksichtigung der Topologieerhaltung. (1985) authored by Gert Heinrich 0002
+
+---
+T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016) authored by Viswanath Pulabaigari
+Viswanath Pulabaigari primary affiliation IIIT, Sri City, Chittoor District, A.P., India
+T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016) authored by Viswanath Pulabaigari
+
+---
+Elaheh Alipour Chavary et al.: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021) authored by Sarah M. Erfani
+Elaheh Alipour Chavary et al.: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021) authored by Christopher Leckie
+Sarah M. Erfani primary affiliation University of Melbourne, School of Computing and Information Systems, Australia
+Elaheh Alipour Chavary et al.: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021) authored by Sarah M. Erfani
+Zahra Ghafoori et al.: Anomaly detection in non-stationary data: Ensemble based self-adaptive OCSVM. (2016) authored by Sarah M. Erfani
+Fateme Fahiman et al.: Improving load forecasting based on deep learning and K-shape clustering. (2017) authored by Sarah M. Erfani
+Fateme Fahiman et al.: Robust and Accurate Short-Term Load Forecasting: A Cluster Oriented Ensemble Learning Approach. (2019) authored by Sarah M. Erfani
+Yixin Su et al.: MMF: Attribute Interpretable Collaborative Filtering. (2019) authored by Sarah M. Erfani
+Yujing Jiang et al.: Dual Head Adversarial Training. (2021) authored by Sarah M. Erfani
+
+---
+Tegawendé F. Bissyandé: Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions à l'Amélioration du Débogage des Services Noyau dans un Système d'Exploitation Monolithique). (2013) authored by Tegawendé F. Bissyandé
+
+---
+Christa Womser-Hacker: Der PADOK-Retrievaltest: zur Methode und Verwendung statistischer Verfahren bei der Bewertung von Information-Retrieval-Systemen. (1989) authored by Christa Womser-Hacker
+
+---
+David Lucas: Secure and efficient outsourced computation protocols for linear algebra. (Protocoles de calculs externalisés efficaces et sécurisés pour l'algèbre linéaire). (2020) authored by David Lucas 0001
+David Lucas 0001 primary affiliation Grenoble Alpes University, France
+David Lucas: Secure and efficient outsourced computation protocols for linear algebra. (Protocoles de calculs externalisés efficaces et sécurisés pour l'algèbre linéaire). (2020) authored by David Lucas 0001
+
+---
+Beatriz Remeseiro et al.: Objective quality assessment of retinal images based on texture features. (2017) authored by Aurélio J. C. Campilho
+
+---
+Marcílio Carlos Pereira de Souto et al.: Encoding of Probabilistic Automata into RAM-Based Neural Networks. (2000) authored by Teresa Bernarda Ludermir
+Teresa Bernarda Ludermir primary affiliation Federal University of Pernambuco, Recife, Brazil
+Robercy Alves da Silva et al.: Using Meta-learning in the Selection of the Combination Method of a Classifier Ensemble. (2018) authored by Teresa Bernarda Ludermir
+Ricardo Bezerra de Andrade e Silva and Teresa Bernarda Ludermir: Neural network methods for rule induction. (1999) authored by Teresa Bernarda Ludermir
+Anderson Tenório Sergio and Teresa Bernarda Ludermir: Reservoir Computing optimization with a hybrid method. (2014) authored by Teresa Bernarda Ludermir
+Marcílio Carlos Pereira de Souto et al.: Comparative study on normalization procedures for cluster analysis of gene expression datasets. (2008) authored by Teresa Bernarda Ludermir
+Marcílio Carlos Pereira de Souto et al.: Ranking and selecting clustering algorithms using a meta-learning approach. (2008) authored by Teresa Bernarda Ludermir
+Marcílio Carlos Pereira de Souto et al.: Encoding of Probabilistic Automata into RAM-Based Neural Networks. (2000) authored by Teresa Bernarda Ludermir
+Rodrigo G. F. Soares et al.: An evolutionary approach for the clustering data problem. (2008) authored by Teresa Bernarda Ludermir
+
+---
+Nikesh Lama et al.: Transfer Entropy Based Connectivity Estimation of Spontaneously Firing Hippocampal Cultures on Multi Electrode Arrays. (2019) authored by T. Martin McGinnity
+T. Martin McGinnity primary affiliation Ulster University, Coleraine, UK
+Vaibhav Gandhi et al.: EEG denoising with a recurrent quantum neural network for a brain-computer interface. (2011) authored by T. Martin McGinnity
+Emmett Kerr et al.: Towards pulse detection and rhythm analysis using a biomimetic fingertip. (2015) authored by T. Martin McGinnity
+Dermot Kerr et al.: A novel approach to robot vision using a hexagonal grid and spiking neural networks. (2012) authored by T. Martin McGinnity
+Nikesh Lama et al.: Transfer Entropy Based Connectivity Estimation of Spontaneously Firing Hippocampal Cultures on Multi Electrode Arrays. (2019) authored by T. Martin McGinnity
+Nikesh Lama et al.: Spike Train Synchrony Analysis of Neuronal Cultures. (2018) authored by T. Martin McGinnity
+
+---
+Beate Navarro Bullock: Privacy aware social information retrieval and spam filtering using folksonomies. (2015) authored by Beate Krause
+Beate Krause primary affiliation University of Kassel, Interdisciplinary Research Center for Information System Design (ITeG)
+Beate Navarro Bullock: Privacy aware social information retrieval and spam filtering using folksonomies. (2015) authored by Beate Krause
+
+---
+Christian Kuhlmann: Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen. (2001) authored by Christian Kuhlmann 0001
+Christian Kuhlmann 0001 primary affiliation Ruhr University Bochum, Germany
+Christian Kuhlmann: Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen. (2001) authored by Christian Kuhlmann 0001
+
+---
+Oliver Kramer: Dimensionality reduction in continuous evolutionary optimization. (2015) authored by Oliver Kramer 0001
+Oliver Kramer 0001 primary affiliation University of Oldenburg, Department of Computing Science
+Oliver Kramer: Dimensionality reduction in continuous evolutionary optimization. (2015) authored by Oliver Kramer 0001
+Tim Cofala et al.: Spatial Generation of Molecules with Transformers. (2021) authored by Oliver Kramer 0001
+
+---
+Simon Frederik Völker: Towards interactive desk workspaces. (2016) authored by Simon Voelker
+
+---
+Jürgen Börstler: Programmieren-im-Grossen: Sprachen, Werkzeuge, Wiederverwendung. (1994) authored by Jürgen Börstler
+Jürgen Börstler primary affiliation Blekinge Institute of Technology (BTH), Sweden
+Jürgen Börstler: Programmieren-im-Grossen: Sprachen, Werkzeuge, Wiederverwendung. (1994) authored by Jürgen Börstler
+
+---
+Ben Goertzel and Gino Yu: From here to AGI: A roadmap to the realization of human-level artificial general intelligence. (2014) authored by Ben Goertzel
+Ben Goertzel primary affiliation OpenCog Foundation, Sha Tin, Hong Kong
+Deborah Duong et al.: Support Vector Machines to Weight Voters in a Voting System of Entity Extractors. (2006) authored by Ben Goertzel
+Ben Goertzel and Gino Yu: From here to AGI: A roadmap to the realization of human-level artificial general intelligence. (2014) authored by Ben Goertzel
+Min Jiang et al.: Improving machine vision via incorporating expectation-maximization into Deep Spatio-Temporal learning. (2014) authored by Ben Goertzel
+
+---
+Yue Hu: The role of compliance in humans and humanoid robots locomotion. (2017) authored by Yue Hu 0001
+
+---
+Hendrik Purwins et al.: A New Method for Tracking Modulations in Tonal Music in Audio Data Format. (2000) authored by Klaus Obermayer
+Klaus Obermayer primary affiliation Technical University of Berlin, Department of Mathematics, Germany
+Johannes Mohr et al.: A classifier-based association test for imbalanced data derived from prediction theory. (2014) authored by Klaus Obermayer
+Hendrik Purwins et al.: A New Method for Tracking Modulations in Tonal Music in Audio Data Format. (2000) authored by Klaus Obermayer
+Brijnesh J. Jain et al.: Multiple alignment of contact maps. (2009) authored by Klaus Obermayer
+Brijnesh J. Jain and Klaus Obermayer: On the sample mean of graphs. (2008) authored by Klaus Obermayer
+
+---
+Xueyuan She et al.: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020) authored by Daehyun Kim 0002
+
+---
+Sérgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012) authored by Sérgio Ricardo de Melo Queiroz
+Sérgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012) authored by Yves Lechevallier
+
+---
+Artem Polyvyanyy: Structuring process models. (2012) authored by Artem Polyvyanyy
+Artem Polyvyanyy primary affiliation University of Melbourne, School of Computing and Information Systems, Australia
+Artem Polyvyanyy: Structuring process models. (2012) authored by Artem Polyvyanyy
+
+---
+Jochen J. Steil: Robust Control in Closed Loops Realized by Fast Signal Transmission of Infinite Gain Neurons. (2000) authored by Jochen J. Steil
+
+---
+Franziska Müller: Real-time 3D hand reconstruction in challenging scenes from a single color or depth camera. (2020) authored by Franziska Mueller 0001
+Franziska Mueller 0001 primary affiliation Max Planck Institute for Informatics (MPII), Saarbrücken, Germany
+Franziska Müller: Real-time 3D hand reconstruction in challenging scenes from a single color or depth camera. (2020) authored by Franziska Mueller 0001
+
+---
+Yicong Meng et al.: An Efficient Spike-Based Communication Protocol for Neurally Inspired Feature Maps. (2006) authored by Bertram E. Shi
+
+---
+Thomas Thüm: Product-line specification and verification with feature-oriented contracts. (2015) authored by Thomas Thüm
+
+---
+Mihai A. Petrovici: Form vs. function: theory and models for neuronal substrates. (2015) authored by Mihai A. Petrovici
+Mihai A. Petrovici primary affiliation Heidelberg University, Kirchhoff Institute for Physics, Germany
+Mihai A. Petrovici: Form vs. function: theory and models for neuronal substrates. (2015) authored by Mihai A. Petrovici
+
+---
+Susanne Strahringer: Metamodellierung als Instrument des Methodenvergleichs: eine Evaluierung am Beispiel objektorientierter Analysemethoden. (1996) authored by Susanne Strahringer
+
+---
+Jianwei Liu et al.: FSC-CapsNet: Fractionally-Strided Convolutional Capsule Network for complex data. (2019) authored by Jianwei Liu 0006
+Jianwei Liu et al.: FSC-CapsNet: Fractionally-Strided Convolutional Capsule Network for complex data. (2019) authored by Xionglin Luo
+Jianwei Liu 0006 primary affiliation China University of Petroleum, Department of Automation, Beijing, China
+Jianwei Liu et al.: FSC-CapsNet: Fractionally-Strided Convolutional Capsule Network for complex data. (2019) authored by Jianwei Liu 0006
+Xionglin Luo primary affiliation China University of Petroleum, Beijing, China
+Jianwei Liu et al.: FSC-CapsNet: Fractionally-Strided Convolutional Capsule Network for complex data. (2019) authored by Xionglin Luo
+
+---
+Victor Onclinx et al.: Dimensionality reduction by rank preservation. (2010) authored by Michel Verleysen
+Victor Onclinx et al.: Dimensionality reduction by rank preservation. (2010) authored by John A. Lee
+Michel Verleysen primary affiliation Université catholique de Louvain, Belgium
+Victor Onclinx et al.: Dimensionality reduction by rank preservation. (2010) authored by Michel Verleysen
+John Aldo Lee and Michel Verleysen: Unsupervised dimensionality reduction: Overview and recent advances. (2010) authored by Michel Verleysen
+Sergio García-Vega et al.: Multi-step-ahead forecasting using kernel adaptive filtering. (2016) authored by Michel Verleysen
+John A. Lee primary affiliation Université catholique de Louvain, Belgium
+John Aldo Lee and Michel Verleysen: Unsupervised dimensionality reduction: Overview and recent advances. (2010) authored by John A. Lee
+Sergio García-Vega et al.: Multi-step-ahead forecasting using kernel adaptive filtering. (2016) authored by John A. Lee
+
+---
+Fei Yan: Contribution à la modélisation et à la régulation du trafic aux intersections : intégration des communications Vehicule-Infrastructure. (Contribution of modelling and traffic control at intersections : Integration with the communication Vehicles-Infrastructure). (2012) authored by Fei Yan 0007
+Fei Yan 0007 primary affiliation Université de technologie de Belfort-Montbéliard, France
+Fei Yan: Contribution à la modélisation et à la régulation du trafic aux intersections : intégration des communications Vehicule-Infrastructure. (Contribution of modelling and traffic control at intersections : Integration with the communication Vehicles-Infrastructure). (2012) authored by Fei Yan 0007
+
+---
+Wuwei He: Reactive control and sensor fusion for mobile manipulators in human robot interaction. (2013) authored by Wuwei He
+Wuwei He primary affiliation Paul Sabatier University, Toulouse, France
+Wuwei He: Reactive control and sensor fusion for mobile manipulators in human robot interaction. (2013) authored by Wuwei He
+
+---
+Marco Antonelli et al.: Application of the visuo-oculomotor transformation to ballistic and visually-guided eye movements. (2013) authored by Angel P. del Pobil
+Angel P. del Pobil primary affiliation Jaume I University, Castellón de la Plana, Spain
+Marco Antonelli et al.: Application of the visuo-oculomotor transformation to ballistic and visually-guided eye movements. (2013) authored by Angel P. del Pobil
+
+---
+Frank Höppner: Knowledge discovery from sequential data. (2003) authored by Frank Höppner
+
+---
+Fernando Dione S. Lima et al.: Remaining Useful Life Estimation of Hard Disk Drives based on Deep Neural Networks. (2018) authored by Javam C. Machado
+Fernando Dione S. Lima et al.: Remaining Useful Life Estimation of Hard Disk Drives based on Deep Neural Networks. (2018) authored by João Paulo Pordeus Gomes
+Javam C. Machado primary affiliation Federal University of Ceará, Department of Computing
+Fernando Dione S. Lima et al.: Remaining Useful Life Estimation of Hard Disk Drives based on Deep Neural Networks. (2018) authored by Javam C. Machado
+Iago C. Chaves et al.: Hard Disk Drive Failure Prediction Method Based On A Bayesian Network. (2018) authored by Javam C. Machado
+João Paulo Pordeus Gomes primary affiliation Federal University of Ceará, Fortaleza, Brazil
+Iago C. Chaves et al.: Hard Disk Drive Failure Prediction Method Based On A Bayesian Network. (2018) authored by João Paulo Pordeus Gomes
+Fernando Dione S. Lima et al.: Remaining Useful Life Estimation of Hard Disk Drives based on Deep Neural Networks. (2018) authored by João Paulo Pordeus Gomes
+
+---
+Sylvère Krima: Semantic based framework for dynamic customization of PLM-related information models. (Système sémantique pour la customisation dynamique des modèles d'information de la PLM). (2013) authored by Sylvère Krima
+
+---
+Zahraa Yasseen: Garment Design and Shape description for Sketch-Based Applications. (Conception de vêtements et description de forme pour des applications basées sur des croquis). (2015) authored by Zahraa Yasseen
+
+---
+Marcos M. Raimundo and Fernando J. Von Zuben: Investigating multiobjective methods in multitask classification. (2018) authored by Fernando J. Von Zuben
+
+---
+Hendrik Purwins et al.: A New Method for Tracking Modulations in Tonal Music in Audio Data Format. (2000) authored by Klaus Obermayer
+Klaus Obermayer primary affiliation Technical University of Berlin, Department of Mathematics, Germany
+Johannes Mohr et al.: A classifier-based association test for imbalanced data derived from prediction theory. (2014) authored by Klaus Obermayer
+Hendrik Purwins et al.: A New Method for Tracking Modulations in Tonal Music in Audio Data Format. (2000) authored by Klaus Obermayer
+Brijnesh J. Jain et al.: Multiple alignment of contact maps. (2009) authored by Klaus Obermayer
+Brijnesh J. Jain and Klaus Obermayer: On the sample mean of graphs. (2008) authored by Klaus Obermayer
+
+---
+Franz Ferdinand Peter Brasser: Enclave Computing Paradigm: Hardware-assisted Security Architectures & Applications. (2020) authored by Ferdinand Brasser
+
+---
+Romina Spalazzese: A Theory of Mediating Connectors to achieve Interoperability. (2011) authored by Romina Spalazzese
+
+---
+Evgeny Pavlenko: New solving techniques for property checking of arithmetic data paths (Neue Beweistechniken für die Eignungsprüfung von arithmetischen Datenpfaden). (2011) authored by Evgeny Pavlenko
+Evgeny Pavlenko primary affiliation St. Petersburg Polytechnic University, Russia
+Evgeny Pavlenko: New solving techniques for property checking of arithmetic data paths (Neue Beweistechniken für die Eignungsprüfung von arithmetischen Datenpfaden). (2011) authored by Evgeny Pavlenko
+
+---
+Thomas Pötsch: The Efficiency of Transport Protocols in Current and Future Mobile Networks. (2016) authored by Thomas Pötsch
+Thomas Pötsch primary affiliation University of Bremen, Germany
+Thomas Pötsch: The Efficiency of Transport Protocols in Current and Future Mobile Networks. (2016) authored by Thomas Pötsch
+
+---
+David Broneske: Accelerating mono and multi-column selection predicates in modern main-memory database systems. (2019) authored by David Broneske
+David Broneske primary affiliation Otto von Guericke University of Magdeburg, Germany
+David Broneske: Accelerating mono and multi-column selection predicates in modern main-memory database systems. (2019) authored by David Broneske
+
+---
+Adarsh Kappiyath et al.: Disentanglement based Active Learning. (2021) authored by S. Sumitra 0001
+Adarsh Kappiyath et al.: Disentanglement based Active Learning. (2021) authored by Silpa Vadakkeeveetil Sreelatha
+S. Sumitra 0001 primary affiliation Indian Institute of Space Science and Technology, Department of Mathematics, Thiruvananthapuram, India
+Adarsh Kappiyath et al.: Disentanglement based Active Learning. (2021) authored by S. Sumitra 0001
+Silpa Vadakkeeveetil Sreelatha primary affiliation TCS Research, Pune, India
+Adarsh Kappiyath et al.: Disentanglement based Active Learning. (2021) authored by Silpa Vadakkeeveetil Sreelatha
+
+---
+Dieter Lorenz: CAD-Video-Somatographie: Entwicklung und Bewertung einer Methode zur anthropometrischen Arbeitsgestaltung. (1989) authored by Dieter Lorenz 0001
+Dieter Lorenz 0001 primary affiliation Technische Hochschule Mittelhessen, Germany
+Dieter Lorenz: CAD-Video-Somatographie: Entwicklung und Bewertung einer Methode zur anthropometrischen Arbeitsgestaltung. (1989) authored by Dieter Lorenz 0001
+
+---
+Edmund Nickel: Computergestützte Projektinformationssysteme: Grundlagen e. anwendungsbezogenen Gestaltung mit bes. Berücks. d. Grossanlagenbaus. (1985) authored by Edmund Nickel 0001
+Edmund Nickel 0001 primary affiliation University of Frankfurt, Germany
+Edmund Nickel: Computergestützte Projektinformationssysteme: Grundlagen e. anwendungsbezogenen Gestaltung mit bes. Berücks. d. Grossanlagenbaus. (1985) authored by Edmund Nickel 0001
+
+---
+Luis Garcés Monge: Knowledge-based configuration : a contribution to generic modeling, evaluation and evolutionary optimization. (Configuration à base de connaissances : une contribution à la modélisation générique, à l'évaluation et à l'optimisation évolutionnaire). (2019) authored by Luis Garcés Monge
+Luis Garcés Monge primary affiliation Costa Rica Institute of Technology, Cartago, Costa Rica
+Luis Garcés Monge: Knowledge-based configuration : a contribution to generic modeling, evaluation and evolutionary optimization. (Configuration à base de connaissances : une contribution à la modélisation générique, à l'évaluation et à l'optimisation évolutionnaire). (2019) authored by Luis Garcés Monge
+
+---
+Qinbing Fu et al.: Bioinspired Contrast Vision Computation for Robust Motion Estimation Against Natural Signals. (2021) authored by Qinbing Fu
+Qinbing Fu primary affiliation University of Lincoln, UK
+Qinbing Fu et al.: Bioinspired Contrast Vision Computation for Robust Motion Estimation Against Natural Signals. (2021) authored by Qinbing Fu
+
+---
+Clayton Smith and Donald Wunsch: Time series prediction via two-step clustering. (2015) authored by Donald C. Wunsch II
+
+---
+Martín Barrère: Vulnerability Management for Safe Configurations in Autonomic Networks and Systems. (Gestion des Vulnérabilités dans les Réseaux et Systèmes Autonomes). (2014) authored by Martín Barrère
+
+---
+Stephan Fischer: Modélisation de l'évolution de la taille des génomes et de leur densité en gènes par mutations locales et grands réarrangements chromosomiques. (Modelling of the evolution of genome size and gene den- sity by local mutations and large chromosomal rearran- gements). (2013) authored by Stephan Fischer 0002
+Stephan Fischer 0002 primary affiliation INSA de Lyon, France
+Stephan Fischer: Modélisation de l'évolution de la taille des génomes et de leur densité en gènes par mutations locales et grands réarrangements chromosomiques. (Modelling of the evolution of genome size and gene den- sity by local mutations and large chromosomal rearran- gements). (2013) authored by Stephan Fischer 0002
+
+---
+Matthias Schäfer: Mobility Improves the Security of Location Awareness in Wireless Networks. (2018) authored by Matthias Schäfer 0002
+Matthias Schäfer 0002 primary affiliation TU Kaiserslautern
+Matthias Schäfer: Mobility Improves the Security of Location Awareness in Wireless Networks. (2018) authored by Matthias Schäfer 0002
+
+---
+Ernst W. Biersack: Techniken zum Zusammenschluss von Rechnernetzen und deren Anwendung auf Protokolle des Transportsystems. (1988) authored by Ernst W. Biersack
+Ernst W. Biersack primary affiliation Eurecom, Sophia Antipolis, France
+Ernst W. Biersack: Techniken zum Zusammenschluss von Rechnernetzen und deren Anwendung auf Protokolle des Transportsystems. (1988) authored by Ernst W. Biersack
+
+---
+Walter Maydl and Bernhard Sick: Recurrent and Non-Recurrent Dynamic Network Paradigms: A Case Study. (2000) authored by Bernhard Sick
+
+---
+Ian Johnson and Mark D. Plumbley: On-Line Connectionist Q-Learning Produces Unreliable Performance with A Synonym Finding Task. (2000) authored by Mark D. Plumbley
+
+---
+Kirsten Bergmann: The production of co-speech iconic gestures: Empirical study and computational simulation with virtual agents. (2012) authored by Kirsten Bergmann
+Kirsten Bergmann primary affiliation Bielefeld University
+Kirsten Bergmann: The production of co-speech iconic gestures: Empirical study and computational simulation with virtual agents. (2012) authored by Kirsten Bergmann
+
+---
+Christian Forler: Analysis Design & Applications of Cryptographic Building Blocks. (2015) authored by Christian Forler
+Christian Forler primary affiliation Hochschule Schmalkalden, Germany
+Christian Forler: Analysis Design & Applications of Cryptographic Building Blocks. (2015) authored by Christian Forler
+
+---
+Uwe Knauer: Multi-Klassifikator-Systeme für die Objetdetektion in Bilddaten. (2018) authored by Uwe Knauer
+
+---
+Christian Steven Hahn: A platform-independent domain-specific modeling language for multiagent systems. (2013) authored by Christian Hahn 0001
+
+---
+Zheng Qin et al.: Diagonalwise Refactorization: An Efficient Training Method for Depthwise Convolutions. (2018) authored by Zheng Qin 0002
+Zheng Qin et al.: Diagonalwise Refactorization: An Efficient Training Method for Depthwise Convolutions. (2018) authored by Dongsheng Li 0001
+Zheng Qin et al.: Diagonalwise Refactorization: An Efficient Training Method for Depthwise Convolutions. (2018) authored by Yiming Zhang 0003
+Zheng Qin et al.: Diagonalwise Refactorization: An Efficient Training Method for Depthwise Convolutions. (2018) authored by Zhaoning Zhang 0001
+Zheng Qin 0002 primary affiliation National University of Defense Technology, Science and Technology on Parallel and Distributed Laboratory, Changsha, China
+Zheng Qin et al.: Diagonalwise Refactorization: An Efficient Training Method for Depthwise Convolutions. (2018) authored by Zheng Qin 0002
+Dongsheng Li 0001 primary affiliation National University of Defense Technology, College of Computer, Changsha, China
+Zheng Qin et al.: Diagonalwise Refactorization: An Efficient Training Method for Depthwise Convolutions. (2018) authored by Dongsheng Li 0001
+Yiming Zhang 0003 primary affiliation Xiamen University, China
+
+---
+Christina Teflioudi: Algorithms for shared-memory matrix completion and maximum inner product search. (2016) authored by Christina Teflioudi
+
+---
+Binh-Minh Bui-Xuan: Tree-Representation of Set Families in Graph Decompositions and Efficient Algorithms. (2008) authored by Binh-Minh Bui-Xuan
+Binh-Minh Bui-Xuan primary affiliation LIRMM Montpellier, France
+Binh-Minh Bui-Xuan: Tree-Representation of Set Families in Graph Decompositions and Efficient Algorithms. (2008) authored by Binh-Minh Bui-Xuan
+
+---
+Christopher Morris: Learning with graphs: kernel and neural approaches. (2019) authored by Christopher Morris 0001
+Christopher Morris 0001 primary affiliation Mila - Quebec AI Institute, Canada
+Christopher Morris: Learning with graphs: kernel and neural approaches. (2019) authored by Christopher Morris 0001
+
+---
+Shuangwei Liu et al.: Adversarially Erased Learning for Person Re-identification by Fully Convolutional Networks. (2019) authored by Sonya A. Coleman
+Sonya A. Coleman primary affiliation Ulster University, Derry, UK
+Indrazno Siradjuddin et al.: A position based visual tracking system for a 7 DOF robot manipulator using a Kinect camera. (2012) authored by Sonya A. Coleman
+Shuangwei Liu et al.: Adversarially Erased Learning for Person Re-identification by Fully Convolutional Networks. (2019) authored by Sonya A. Coleman
+Dermot Kerr et al.: A novel approach to robot vision using a hexagonal grid and spiking neural networks. (2012) authored by Sonya A. Coleman
+Emmett Kerr et al.: Towards pulse detection and rhythm analysis using a biomimetic fingertip. (2015) authored by Sonya A. Coleman
+
+---
+Mohamad Ballout et al.: The benefits of synthetic data for action categorization. (2020) authored by Daniel C. Asmar
+Mohamad Ballout et al.: The benefits of synthetic data for action categorization. (2020) authored by Elie A. Shammas
+Daniel C. Asmar primary affiliation American University of Beirut, Lebanon
+Mohamad Ballout et al.: The benefits of synthetic data for action categorization. (2020) authored by Daniel C. Asmar
+Elie A. Shammas primary affiliation American University of Beirut, Lebanon
+Mohamad Ballout et al.: The benefits of synthetic data for action categorization. (2020) authored by Elie A. Shammas
+
+---
+Xiaojie Li et al.: An angle and density-based method for key points detection. (2016) authored by Jiancheng Lv 0001
+
+---
+Georg Schneider: Virtual Team Assistant: Integration von synchroner und asynchroner Telekooperation zur Unterstützung automatisierter Vorgangsbearbeitung unter besonderer Berücksichtigung von Arbeitsteams. (1999) authored by Georg Schneider 0002
+Georg Schneider 0002 primary affiliation Hochschule Trier, Deptartment of Computer Science, Germany
+Georg Schneider: Virtual Team Assistant: intelligente Assistenzsysteme für die automatisierte Vorgangsbearbeitung. (1999) authored by Georg Schneider 0002
+Georg Schneider: Virtual Team Assistant: Integration von synchroner und asynchroner Telekooperation zur Unterstützung automatisierter Vorgangsbearbeitung unter besonderer Berücksichtigung von Arbeitsteams. (1999) authored by Georg Schneider 0002
+
+---
+Stefan Tai: Constructing distributed component architectures in continuous software engineering. (1999) authored by Stefan Tai
+
+---
+Muhammad Mukaram Khan et al.: SpiNNaker: Mapping neural networks onto a massively-parallel chip multiprocessor. (2008) authored by David R. Lester
+Muhammad Mukaram Khan et al.: SpiNNaker: Mapping neural networks onto a massively-parallel chip multiprocessor. (2008) authored by Alex Rast
+Muhammad Mukaram Khan et al.: SpiNNaker: Mapping neural networks onto a massively-parallel chip multiprocessor. (2008) authored by Steve B. Furber
+Muhammad Mukaram Khan et al.: SpiNNaker: Mapping neural networks onto a massively-parallel chip multiprocessor. (2008) authored by Xin Jin 0003
+David R. Lester primary affiliation The University of Manchester
+Muhammad Mukaram Khan et al.: SpiNNaker: Mapping neural networks onto a massively-parallel chip multiprocessor. (2008) authored by David R. Lester
+Mantas Mikaitis and David R. Lester: Brewing the first ever automatic memory management utility for SpiNNaker: Real-time garbage collection for STDP simulations. (2017) authored by David R. Lester
+Alex Rast primary affiliation University of Southampton, UK
+Cameron Patterson et al.: Visualising large-scale neural network models in real-time. (2012) authored by Alex Rast
+
+---
+Feng Cheng: Physical separation technology and its Lock-Keeper implementation. (2010) authored by Feng Cheng 0002
+Feng Cheng 0002 primary affiliation Hasso Plattner Institute, Potsdam
+Feng Cheng: Physical separation technology and its Lock-Keeper implementation. (2010) authored by Feng Cheng 0002
+
+---
+Yifeng Lu et al.: k-Nearest Neighbor based Clustering with Shape Alternation Adaptivity. (2020) authored by Florian Richter 0001
+Yifeng Lu et al.: k-Nearest Neighbor based Clustering with Shape Alternation Adaptivity. (2020) authored by Thomas Seidl 0001
+Florian Richter 0001 primary affiliation Ludwig-Maximilians-Universität München (LMU Munich), Germany
+Yifeng Lu et al.: k-Nearest Neighbor based Clustering with Shape Alternation Adaptivity. (2020) authored by Florian Richter 0001
+Thomas Seidl 0001 primary affiliation Ludwig Maximilians University of Munich, Institute for Computer Science, Germany
+Yifeng Lu et al.: k-Nearest Neighbor based Clustering with Shape Alternation Adaptivity. (2020) authored by Thomas Seidl 0001
+
+---
+Pedro Guerreiro: Sémantique relationnelle des programmes non-déterministes et des processus communicants. (1981) authored by Pedro Guerreiro
+
+---
+Duc-Son Pham et al.: Achieving stable subspace clustering by post-processing generic clustering results. (2016) authored by Duc-Son Pham 0001
+
+---
+George D. Magoulas et al.: Development and Convergence Analysis of Training Algorithms with Local Learning Rate Adaptation. (2000) authored by George D. Magoulas
+George D. Magoulas primary affiliation Birkbeck, University of London, UK
+George D. Magoulas et al.: Development and Convergence Analysis of Training Algorithms with Local Learning Rate Adaptation. (2000) authored by George D. Magoulas
+Kyparisia A. Papanikolaou et al.: A connectionist approach for adaptive lesson presentation in a distance learning course. (1999) authored by George D. Magoulas
+Vassilis P. Palgianakos et al.: Nonmonotone methods for backpropagation training with adaptive learning rate. (1999) authored by George D. Magoulas
+
+---
+P. Shi and Rabab K. Ward: The case for abandoning the biological resemblance restriction: an example of neural network solution of simultaneous equations. (1990) authored by Rabab K. Ward
+
+---
+Matthias Kerzel et al.: Accelerating Deep Continuous Reinforcement Learning through Task Simplification. (2018) authored by Mohammad-Ali Zamani
+Matthias Kerzel et al.: Accelerating Deep Continuous Reinforcement Learning through Task Simplification. (2018) authored by Stefan Wermter
+Mohammad-Ali Zamani primary affiliation University of Tehran, Iran
+Matthias Kerzel et al.: Accelerating Deep Continuous Reinforcement Learning through Task Simplification. (2018) authored by Mohammad-Ali Zamani
+Stefan Wermter primary affiliation University of Hamburg, Germany
+Kenneth J. McGarry et al.: Knowledge extraction from radial basis function networks and multilayer perceptrons. (1999) authored by Stefan Wermter
+Matthias Möller et al.: Controlling the Noise Robustness of End-to-End Automatic Speech Recognition Systems. (2021) authored by Stefan Wermter
+Jindong Liu et al.: A biomimetic spiking neural network of the auditory midbrain for mobile robot sound localisation in reverberant environments. (2009) authored by Stefan Wermter
+Abdulrahman Altahhan et al.: Visual robot homing using Sarsa(lambda), whole image measure, and radial basis function. (2008) authored by Stefan Wermter
+
+---
+Samira Ghodratnama et al.: Summary2vec: Learning Semantic Representation of Summaries for Healthcare Analytics. (2021) authored by Amin Beheshti
+Amin Beheshti primary affiliation Macquarie University, Sydney, NSW, Australia
+Amin Khatami et al.: Convolutional Neural Network for Medical Image Classification using Wavelet Features. (2020) authored by Amin Beheshti
+Samira Ghodratnama et al.: Summary2vec: Learning Semantic Representation of Summaries for Healthcare Analytics. (2021) authored by Amin Beheshti
+
+---
+Luis Fernando Pino Duque: Efficient Verification and New Reasoning Techniques for Concurrent Constraint Programming. (Vérification Efficace Et Nouvelles Techniques De Raisonnement Pour La Programmation Concurrente Par Contraintes). (2014) authored by Luis Fernando Pino
+
+---
+Oscar Castillo and Patricia Melin: Computational intelligence software: Type-2 Fuzzy Logic and Modular Neural Networks. (2008) authored by Oscar Castillo 0001
+Oscar Castillo and Patricia Melin: Computational intelligence software: Type-2 Fuzzy Logic and Modular Neural Networks. (2008) authored by Patricia Melin
+Oscar Castillo 0001 primary affiliation Tijuana Institute of Technology, Mexico
+Daniela Sánchez et al.: Hierarchical genetic optimization of modular neural networks and their type-2 fuzzy response integrators for human recognition based on multimodal biometry. (2011) authored by Oscar Castillo 0001
+Ieroham S. Baruch et al.: Direct torque adaptive vector neural control of a three-phase induction motor. (2010) authored by Oscar Castillo 0001
+Oscar Castillo and Patricia Melin: Adaptive model-based control of robotic dynamic systems with a new neuro-fuzzy-fractal approach. (1999) authored by Oscar Castillo 0001
+Oscar Castillo and Patricia Melin: Computational intelligence software: Type-2 Fuzzy Logic and Modular Neural Networks. (2008) authored by Oscar Castillo 0001
+Olivia Mendoza et al.: Neural networks recognition rate as index to compare the performance of fuzzy edge detectors. (2010) authored by Oscar Castillo 0001
+Patricia Melin et al.: Pattern Recognition for Industrial Monitoring and Security using the Fuzzy Sugeno Integral and Modular Neural Networks. (2007) authored by Oscar Castillo 0001
+
+---
+Christian Herzog: Die Rolle des Nichtdeterminismus in kontextfreien Sprachen. (1999) authored by Christian Herzog 0003
+
+---
+Rebecca K. Lee and Alice C. Parker: An Electronic Neuron with Input-Specific Spiking. (2019) authored by Alice C. Parker
+
+---
+Stefan Repke: Simplification problems for automata and games. (2014) authored by Stefan Repke
+
+---
+Stefan Schäffler: Maximum-Likelihood-Schätzung in linearen Regressionsmodellen mit ARMA(p,q)-Residuen durch Methoden der nichtlinearen Optimierung. (1988) authored by Stefan Schäffler
+Stefan Schäffler primary affiliation Bundeswehr University Munich, Germany
+Stefan Schäffler: Maximum-Likelihood-Schätzung in linearen Regressionsmodellen mit ARMA(p,q)-Residuen durch Methoden der nichtlinearen Optimierung. (1988) authored by Stefan Schäffler
+
+---
+David Broneske: Accelerating mono and multi-column selection predicates in modern main-memory database systems. (2019) authored by David Broneske
+David Broneske primary affiliation Otto von Guericke University of Magdeburg, Germany
+David Broneske: Accelerating mono and multi-column selection predicates in modern main-memory database systems. (2019) authored by David Broneske
+
+---
+Mark H. Myers and Robert Kozma: Seizure prediction through dynamic synchronization measures of neural populations. (2009) authored by Robert Kozma 0001
+
+---
+Christoph Grimm: Dezentrale Produktionsplanung und -steuerung bei Gruppenfertigung. (1995) authored by Christoph Grimm 0002
+Christoph Grimm 0002 primary affiliation University of Trier, Germany
+Christoph Grimm: Dezentrale Produktionsplanung und -steuerung bei Gruppenfertigung. (1995) authored by Christoph Grimm 0002
+
+---
+Alexander Roth: Adaptable code generation of consistent and customizable data-centric applications with MontiDEx. (2017) authored by Alexander Roth 0004
+Alexander Roth 0004 primary affiliation RWTH Aachen, Germany
+Alexander Roth: Adaptable code generation of consistent and customizable data-centric applications with MontiDEx. (2017) authored by Alexander Roth 0004
+
+---
+Sheng Li and Yun Fu: Unsupervised transfer learning via Low-Rank Coding for image clustering. (2016) authored by Yun Fu 0001
+Sheng Li and Yun Fu: Unsupervised transfer learning via Low-Rank Coding for image clustering. (2016) authored by Sheng Li 0001
+
+---
+Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016) authored by Kamill Panitzek
+Kamill Panitzek primary affiliation TU Darmstadt, Telecooperation Lab, Germany
+Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016) authored by Kamill Panitzek
+Kamill Panitzek: Mobile service provision in harsh environments = Bereitstellung mobiler Dienste in rauen Umgebungen. (2014) authored by Kamill Panitzek
+
+---
+Annette Bieniusa: Consistency, isolation, and irrevocability in software transactional memory. (2011) authored by Annette Bieniusa
+Annette Bieniusa primary affiliation University of Kaiserslautern, Department of Computer Science, Germany
+Annette Bieniusa: Consistency, isolation, and irrevocability in software transactional memory. (2011) authored by Annette Bieniusa
+
+---
+Hans Dieter Rombach: Quantitative Bewertung von Software-Qualitäts-Merkmalen auf der Basis struktureller Kenngrössen. (1984) authored by H. Dieter Rombach
+H. Dieter Rombach primary affiliation University of Kaiserslautern, Department of Computer Science
+Hans Dieter Rombach: Quantitative Bewertung von Software-Qualitäts-Merkmalen auf der Basis struktureller Kenngrössen. (1984) authored by H. Dieter Rombach
+
+---
+Christian Blum: Self-organization in networks of mobile sensor nodes. (2015) authored by Christian Blum 0002
+Christian Blum 0002 primary affiliation HU Berlin, Germany
+Christian Blum: Self-organization in networks of mobile sensor nodes. (2015) authored by Christian Blum 0002
+
+---
+Steffen Becker: Eine numerische Methode zur systematischen Analyse und Bewertung von PLD-Architekturen unter Nutzung der spezifischen Eigenschaften mit dem Ergebnis der Optimierung einer FPGA-Logikblockzelle. (1994) authored by Steffen Becker 0002
+
+---
+Xiaoxu Li et al.: Attention-based Spatio-Temporal Graphic LSTM for EEG Emotion Recognition. (2021) authored by Cheng Lu 0005
+
+---
+Juan Ignacio Arribas et al.: Estimates of constrained multi-class a posteriori probabilities in time series problems with neural networks. (1999) authored by Bo Wang 0006
+Juan Ignacio Arribas et al.: Estimates of constrained multi-class a posteriori probabilities in time series problems with neural networks. (1999) authored by Tülay Adali
+Bo Wang 0006 primary affiliation Aware Tech. Inc., Boston
+Juan Ignacio Arribas et al.: Estimates of constrained multi-class a posteriori probabilities in time series problems with neural networks. (1999) authored by Bo Wang 0006
+Tülay Adali primary affiliation University of Maryland, USA
+Juan Ignacio Arribas et al.: Estimates of constrained multi-class a posteriori probabilities in time series problems with neural networks. (1999) authored by Tülay Adali
+
+---
+Mohamed Khalil El Mahrsi: Analysis and Data Mining of Moving Object Trajectories. (Analyse et fouille de donne'es de trajectoires d'objets mobiles). (2013) authored by Mohamed Khalil El Mahrsi
+Mohamed Khalil El Mahrsi primary affiliation Télécom ParisTech, France
+Mohamed Khalil El Mahrsi: Analysis and Data Mining of Moving Object Trajectories. (Analyse et fouille de donne'es de trajectoires d'objets mobiles). (2013) authored by Mohamed Khalil El Mahrsi
+
+---
+Salman Mohagheghi et al.: An Interval Type-II Robust Fuzzy Logic Controller for a Static Compensator in a Multimachine Power System. (2006) authored by Ganesh K. Venayagamoorthy
+
+---
+Luis Fernando Pino Duque: Efficient Verification and New Reasoning Techniques for Concurrent Constraint Programming. (Vérification Efficace Et Nouvelles Techniques De Raisonnement Pour La Programmation Concurrente Par Contraintes). (2014) authored by Luis Fernando Pino
+
+---
+Haiping Lu et al.: Learning compact binary codes from higher-order tensors via Free-Form Reshaping and Binarized Multilinear PCA. (2016) authored by Yu Zhang 0004
+Haiping Lu et al.: Learning compact binary codes from higher-order tensors via Free-Form Reshaping and Binarized Multilinear PCA. (2016) authored by Jianxin Wu
+Yu Zhang 0004 primary affiliation Nanyang Technological University, Singapore
+Haiping Lu et al.: Learning compact binary codes from higher-order tensors via Free-Form Reshaping and Binarized Multilinear PCA. (2016) authored by Yu Zhang 0004
+Jianxin Wu primary affiliation Georgia Institute of Technology, Atlanta, USA
+Haiping Lu et al.: Learning compact binary codes from higher-order tensors via Free-Form Reshaping and Binarized Multilinear PCA. (2016) authored by Jianxin Wu
+
+---
+Olaf Beyer: Theorie, Entwurf und Implementierung eines Experimentier-Werkzeug-Systems zur Modellierung, Simulation und Optimierung dynamischer Systeme. (1987) authored by Olaf Beyer 0001
+Olaf Beyer 0001 primary affiliation Dresden University of Technology, Germany
+Olaf Beyer: Theorie, Entwurf und Implementierung eines Experimentier-Werkzeug-Systems zur Modellierung, Simulation und Optimierung dynamischer Systeme. (1987) authored by Olaf Beyer 0001
+
+---
+Sachin Joshi et al.: AANN-HMM models for speaker verification and speech recognition. (2008) authored by Bayya Yegnanarayana
+Bayya Yegnanarayana primary affiliation International Institute of Information Technology, Hyderabad, India
+Shajith Ikbal et al.: Analysis of autoassociative mapping neural networks. (1999) authored by Bayya Yegnanarayana
+Sachin Joshi et al.: AANN-HMM models for speaker verification and speech recognition. (2008) authored by Bayya Yegnanarayana
+
+---
+M. S. Kim and Clark C. Guest: Modification of backpropagation networks for complex-valued signal processing in frequency domain. (1990) authored by Clark C. Guest
+
+---
+Rainer von Lutz: Untersuchungen zum Kraftwerkseinsatz im Minuten- bis Stundenbereich mittels dynamischer Optimierung. (1983) authored by Rainer von Lutz
+Rainer von Lutz primary affiliation Bundeswehr University Munich, Neubiberg, Germany
+Rainer von Lutz: Untersuchungen zum Kraftwerkseinsatz im Minuten- bis Stundenbereich mittels dynamischer Optimierung. (1983) authored by Rainer von Lutz
+
+---
+Sebastian Zehe: BRIX₂ - A Versatile Toolkit for Rapid Prototyping and Education in Ubiquitous Computing. (2018) authored by Sebastian Zehe
+
+---
+Avikarsha Mandal: On security and privacy of consensus-based protocols in blockchain and smart grid. (2020) authored by Avikarsha Mandal
+Avikarsha Mandal primary affiliation Hochschule Offenburg, Germany
+Avikarsha Mandal: On security and privacy of consensus-based protocols in blockchain and smart grid. (2020) authored by Avikarsha Mandal
+
+---
+Wilfried Müller: Die zentrale Kombinatsdatenbank als Basis für ein automatisiertes Datenbereitstellungssystem der mittel- und kurzfristigen Sortimentsplanung des Kombinates: (dargestellt am Beispiel einer EDVA der 3. Rechnergeneration im VEB Uhren- und Maschinenkombinat Ruhla). (1974) authored by Wilfried Müller 0002
+Wilfried Müller 0002 primary affiliation Leipzig University, Germany
+Wilfried Müller: Die zentrale Kombinatsdatenbank als Basis für ein automatisiertes Datenbereitstellungssystem der mittel- und kurzfristigen Sortimentsplanung des Kombinates: (dargestellt am Beispiel einer EDVA der 3. Rechnergeneration im VEB Uhren- und Maschinenkombinat Ruhla). (1974) authored by Wilfried Müller 0002
+
+---
+Renato F. Pereira et al.: Goat Leather Quality Classification Using Computer Vision and Machine Learning. (2018) authored by Pedro Pedrosa Rebouças Filho
+
+---
+Lei Jiang et al.: Transferred correlation learning: An incremental scheme for neural network ensembles. (2010) authored by Lei Jiang 0010
+Lei Jiang et al.: Transferred correlation learning: An incremental scheme for neural network ensembles. (2010) authored by Jian Zhang 0004
+Lei Jiang 0010 primary affiliation Louisiana State University, Baton Rouge, LA, USA
+Lei Jiang et al.: Transferred correlation learning: An incremental scheme for neural network ensembles. (2010) authored by Lei Jiang 0010
+Jian Zhang 0004 primary affiliation Louisiana State University, Department of Computer Science, Baton Rouge, LA, USA
+Lei Jiang et al.: Transferred correlation learning: An incremental scheme for neural network ensembles. (2010) authored by Jian Zhang 0004
+
+---
+Derong Liu and Qinglai Wei: Adaptive dynamic programming for a class of discrete-time non-affine nonlinear systems with time-delays. (2010) authored by Derong Liu 0001
+Derong Liu 0001 primary affiliation University of Science and Technology Beijing, School of Automation and Electrical Engineering, China
+Hongwen Ma et al.: Distributed control of second-order nonlinear time-delayed multiagent systems with disturbance using neural networks. (2016) authored by Derong Liu 0001
+Ning Jin et al.: Wavelet Basis Function Neural Networks. (2007) authored by Derong Liu 0001
+Derong Liu and Qinglai Wei: Adaptive dynamic programming for a class of discrete-time non-affine nonlinear systems with time-delays. (2010) authored by Derong Liu 0001
+
+---
+Henri De Plaen et al.: Wasserstein Exponential Kernels. (2020) authored by Johan A. K. Suykens
+Johan A. K. Suykens primary affiliation KU Leuven, Department of Electrical Engineering, Belgium
+Henri De Plaen et al.: Wasserstein Exponential Kernels. (2020) authored by Johan A. K. Suykens
+Fabian Ojeda et al.: Variable selection by rank-one updates for least squares support vector machines. (2007) authored by Johan A. K. Suykens
+Giulio Bottegal and Johan A. K. Suykens: Probabilistic matrix factorization from quantized measurements. (2017) authored by Johan A. K. Suykens
+Zahra Karevan and Johan A. K. Suykens: Clustering-based feature selection for black-box weather temperature prediction. (2016) authored by Johan A. K. Suykens
+Vilen Jumutc et al.: Fixed-size Pegasos for hinge and pinball loss SVM. (2013) authored by Johan A. K. Suykens
+Carlos Alzate and Johan A. K. Suykens: Sparse kernel models for spectral clustering using the incomplete Cholesky decomposition. (2008) authored by Johan A. K. Suykens
+Carlos Alzate and Johan A. K. Suykens: ICA through an LS-SVM based Kernel CCA Measure for Independence. (2007) authored by Johan A. K. Suykens
+
+---
+Konstantinos Drossos et al.: MaD TwinNet: Masker-Denoiser Architecture with Twin Networks for Monaural Sound Source Separation. (2018) authored by Yoshua Bengio
+Konstantinos Drossos et al.: MaD TwinNet: Masker-Denoiser Architecture with Twin Networks for Monaural Sound Source Separation. (2018) authored by Tuomas Virtanen
+Yoshua Bengio primary affiliation University of Montréal, Department of Computer Science and Operations Research, QC, Canada
+Yoshua Bengio: Probabilistic Neural Network Models for Sequential Data. (2000) authored by Yoshua Bengio
+Konstantinos Drossos et al.: MaD TwinNet: Masker-Denoiser Architecture with Twin Networks for Monaural Sound Source Separation. (2018) authored by Yoshua Bengio
+Joumana Ghosn and Yoshua Bengio: Bias Learning, Knowledge Sharing. (2000) authored by Yoshua Bengio
+Tuomas Virtanen primary affiliation Tampere University of Technology, Finland
+Konstantinos Drossos et al.: MaD TwinNet: Masker-Denoiser Architecture with Twin Networks for Monaural Sound Source Separation. (2018) authored by Tuomas Virtanen
+Emre Cakir et al.: Polyphonic sound event detection using multi label deep neural networks. (2015) authored by Tuomas Virtanen
+
+---
+René Weller: New geometric data structures for collision detection. (2012) authored by René Weller
+
+---
+Daniel Hein et al.: Batch reinforcement learning on the industrial benchmark: First experiences. (2017) authored by Thomas A. Runkler
+Daniel Hein et al.: Batch reinforcement learning on the industrial benchmark: First experiences. (2017) authored by Daniel Hein 0001
+Thomas A. Runkler primary affiliation Technical University Munich, Germany
+Hiba Arnout et al.: DR-TiST: Disentangled Representation for Time Series Translation Across Application Domains. (2020) authored by Thomas A. Runkler
+Daniel Hein et al.: Batch reinforcement learning on the industrial benchmark: First experiences. (2017) authored by Thomas A. Runkler
+Andrea Flexeder et al.: Support vector machines for program analysis. (2012) authored by Thomas A. Runkler
+Daniel Hein 0001 primary affiliation Technical University of Munich, Germany
+Daniel Hein: Interpretable Reinforcement Learning Policies by Evolutionary Computation. (2019) authored by Daniel Hein 0001
+Daniel Hein et al.: Batch reinforcement learning on the industrial benchmark: First experiences. (2017) authored by Daniel Hein 0001
+
+---
+Klaus Becker: Ein Mehrgitterverfahren zur Berechnung subsonischer Potentialströmungen um Tragflächenprofile. (1985) authored by Klaus Becker 0003
+
+---
+Christian Stab: Argumentative Writing Support by means of Natural Language Processing. (2017) authored by Christian Stab
+
+---
+Jochen Burghardt: Eine feinkörnige Sortendisziplin und ihre Anwendung in der Programmkonstruktion. (1993) authored by Jochen Burghardt
+Jochen Burghardt primary affiliation Technical University of Berlin, Department of Mathematics, Germany
+Jochen Burghardt: Eine feinkörnige Sortendisziplin und ihre Anwendung in der Programmkonstruktion. (1993) authored by Jochen Burghardt
+
+---
+Oscar Castillo and Patricia Melin: Computational intelligence software: Type-2 Fuzzy Logic and Modular Neural Networks. (2008) authored by Oscar Castillo 0001
+Oscar Castillo and Patricia Melin: Computational intelligence software: Type-2 Fuzzy Logic and Modular Neural Networks. (2008) authored by Patricia Melin
+Oscar Castillo 0001 primary affiliation Tijuana Institute of Technology, Mexico
+Daniela Sánchez et al.: Hierarchical genetic optimization of modular neural networks and their type-2 fuzzy response integrators for human recognition based on multimodal biometry. (2011) authored by Oscar Castillo 0001
+Ieroham S. Baruch et al.: Direct torque adaptive vector neural control of a three-phase induction motor. (2010) authored by Oscar Castillo 0001
+Oscar Castillo and Patricia Melin: Adaptive model-based control of robotic dynamic systems with a new neuro-fuzzy-fractal approach. (1999) authored by Oscar Castillo 0001
+Oscar Castillo and Patricia Melin: Computational intelligence software: Type-2 Fuzzy Logic and Modular Neural Networks. (2008) authored by Oscar Castillo 0001
+Olivia Mendoza et al.: Neural networks recognition rate as index to compare the performance of fuzzy edge detectors. (2010) authored by Oscar Castillo 0001
+Patricia Melin et al.: Pattern Recognition for Industrial Monitoring and Security using the Fuzzy Sugeno Integral and Modular Neural Networks. (2007) authored by Oscar Castillo 0001
+
+---
+Burkhard Rost: Neuronale Netzwerke und evolutionäre Information: verbesserte Vorhersage der Sekundärstruktur von Proteinen ; (abgefasst in Englisch). (1994) authored by Burkhard Rost
+Burkhard Rost primary affiliation TU Munich, Faculty of Computer Science
+Burkhard Rost: Neuronale Netzwerke und evolutionäre Information: verbesserte Vorhersage der Sekundärstruktur von Proteinen ; (abgefasst in Englisch). (1994) authored by Burkhard Rost
+
+---
+José Ángel Galindo Duarte: Evolution, testing and configuration of variability systems intensive. (Evolution, test et configuration des systèmes à forte variabilité). (2015) authored by José A. Galindo
+José A. Galindo primary affiliation University of Seville, Spain
+José Ángel Galindo Duarte: Evolution, testing and configuration of variability systems intensive. (Evolution, test et configuration des systèmes à forte variabilité). (2015) authored by José A. Galindo
+
+---
+Enjie Liu et al.: Neural Network in Fast Simulation Modeling. (2000) authored by Laurie G. Cuthbert
+Laurie G. Cuthbert primary affiliation Queen Mary University of London
+Enjie Liu et al.: Neural Network in Fast Simulation Modeling. (2000) authored by Laurie G. Cuthbert
+
+---
+Jochen J. Steil: Robust Control in Closed Loops Realized by Fast Signal Transmission of Infinite Gain Neurons. (2000) authored by Jochen J. Steil
+
+---
+Friedrich Sanzi: Kanalschätzverfahren für Mobilfunksysteme mit Mehrträgermodulation OFDM. (2003) authored by Frieder Sanzi
+
+---
+Hervé Jégou: Robust codes and joint source-channel codes for multimedia transmission over mobile channels. (Codes robustes et codes joints source-canal pour transmission multimédia sur canaux mobiles). (2005) authored by Hervé Jégou
+Hervé Jégou primary affiliation Facebook AI Research, Paris, France
+Hervé Jégou: Robust codes and joint source-channel codes for multimedia transmission over mobile channels. (Codes robustes et codes joints source-canal pour transmission multimédia sur canaux mobiles). (2005) authored by Hervé Jégou
+
+---
+Stefan Lenk: Ein CAD-System zum formal basierten, automatischen Entwurf von Kommunikationsprozessoren aus abstrakten Zeitdiagrammspezifikationen. (2000) authored by Stefan Lenk 0001
+Stefan Lenk 0001 primary affiliation University of Passau, Germany
+Stefan Lenk: Ein CAD-System zum formal basierten, automatischen Entwurf von Kommunikationsprozessoren aus abstrakten Zeitdiagrammspezifikationen. (2000) authored by Stefan Lenk 0001
+
+---
+Chandan Reddy: Polyhedral Compilation for Domain Specific Languages. (Compilation polyédrique pour les langages dédiés). (2019) authored by Chandan Reddy 0001
+Chandan Reddy 0001 primary affiliation ENS Paris, France
+Chandan Reddy: Polyhedral Compilation for Domain Specific Languages. (Compilation polyédrique pour les langages dédiés). (2019) authored by Chandan Reddy 0001
+
+---
+Xueyuan She et al.: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020) authored by Daehyun Kim 0002
+
+---
+Yu Bai et al.: Evolutionary lazy learning for Naive Bayes classification. (2016) authored by Jing Jiang 0002
+Yu Bai et al.: Evolutionary lazy learning for Naive Bayes classification. (2016) authored by Jia Wu 0001
+Jing Jiang 0002 primary affiliation University of Technology Sydney, Australia
+Yu Bai et al.: Evolutionary lazy learning for Naive Bayes classification. (2016) authored by Jing Jiang 0002
+Jia Wu 0001 primary affiliation Macquarie University, Sydney, Australia
+Yu Bai et al.: Evolutionary lazy learning for Naive Bayes classification. (2016) authored by Jia Wu 0001
+
+---
+Denny Vrandecic: Ontology evaluation. (2010) authored by Denny Vrandecic
+
+---
+Matthias Hirth: Modeling Crowdsourcing Platforms - A Use-Case Driven Approach. (2016) authored by Matthias Hirth
+
+---
+Hans-Ulrich Bauer and Theo Geisel: Dynamics of signal processing in feedback multilayer perceptrons. (1990) authored by Hans-Ulrich Bauer
+Hans-Ulrich Bauer and Theo Geisel: Dynamics of signal processing in feedback multilayer perceptrons. (1990) authored by Theo Geisel
+Hans-Ulrich Bauer primary affiliation Max-Planck-Institut für Strömungsforschung, Göttingen, Germany
+Hans-Ulrich Bauer and Theo Geisel: Dynamics of signal processing in feedback multilayer perceptrons. (1990) authored by Hans-Ulrich Bauer
+Theo Geisel primary affiliation Max Planck Institute for Informatics, Saarbücken, Germany
+Dmitri Bibitchkov et al.: Synaptic Depression in Associative Memory Networks. (2000) authored by Theo Geisel
+Hans-Ulrich Bauer and Theo Geisel: Dynamics of signal processing in feedback multilayer perceptrons. (1990) authored by Theo Geisel
+
+---
+Matthias Krause: Untere Schranken für Berechnungen durch Verzweigungsprogramme. (1989) authored by Matthias Krause 0001
+
+---
+Christophe Gravier: Vers la généralisation de manipulations distantes et collaboratives d'instruments de haute technologie. (Towards generalization of collaborative remote control of high technological instruments). (2007) authored by Christophe Gravier
+Christophe Gravier primary affiliation Télécom Saint-Etienne, France
+Christophe Gravier: Vers la généralisation de manipulations distantes et collaboratives d'instruments de haute technologie. (Towards generalization of collaborative remote control of high technological instruments). (2007) authored by Christophe Gravier
+
+---
+Michaël Aupetit et al.: A 'Recruiting Neural-Gas' for Function Approximation. (2000) authored by Michaël Aupetit 0001
+
+---
+Rafael Gomes Mantovani et al.: Effectiveness of Random Search in SVM hyper-parameter tuning. (2015) authored by Bernd Bischl
+Rafael Gomes Mantovani et al.: Effectiveness of Random Search in SVM hyper-parameter tuning. (2015) authored by André C. P. L. F. de Carvalho
+Rafael Gomes Mantovani et al.: Effectiveness of Random Search in SVM hyper-parameter tuning. (2015) authored by Joaquin Vanschoren
+
+---
+Fabian Ojeda et al.: Variable selection by rank-one updates for least squares support vector machines. (2007) authored by Johan A. K. Suykens
+Fabian Ojeda et al.: Variable selection by rank-one updates for least squares support vector machines. (2007) authored by Bart De Moor
+Johan A. K. Suykens primary affiliation KU Leuven, Department of Electrical Engineering, Belgium
+Henri De Plaen et al.: Wasserstein Exponential Kernels. (2020) authored by Johan A. K. Suykens
+Fabian Ojeda et al.: Variable selection by rank-one updates for least squares support vector machines. (2007) authored by Johan A. K. Suykens
+Giulio Bottegal and Johan A. K. Suykens: Probabilistic matrix factorization from quantized measurements. (2017) authored by Johan A. K. Suykens
+Zahra Karevan and Johan A. K. Suykens: Clustering-based feature selection for black-box weather temperature prediction. (2016) authored by Johan A. K. Suykens
+Vilen Jumutc et al.: Fixed-size Pegasos for hinge and pinball loss SVM. (2013) authored by Johan A. K. Suykens
+Carlos Alzate and Johan A. K. Suykens: Sparse kernel models for spectral clustering using the incomplete Cholesky decomposition. (2008) authored by Johan A. K. Suykens
+
+---
+Werner Sinzig: Datenbank-orientiertes Rechnungswesen: Grundzüge e. EDV-gestützten Realisierung d. Einzelkosten- u. Deckungsbeitragsrechnung. (1983) authored by Werner Sinzig
+
+---
+Alexander Zimmermann: Das Transmission Control Protocol: neue Wege einer modernen Loss Recovery. (2012) authored by Alexander Zimmermann 0001
+
+---
+Jörg Walter: Predicting Power and Timing of Large-Scale Distributed Applications on Highly Heterogeneous Platforms. (2020) authored by Jörg Walter 0001
+
+---
+Nicola Henze: Adaptive hyperbooks: adaptation for project-based learning resources. (2000) authored by Nicola Henze
+
+---
+Emmanuel Nauer: Principes de conception de systèmes hypertextes pour la fouille de données bibliographiques multibases. (2001) authored by Emmanuel Nauer
+
+---
+Wenjie Lu et al.: Challenge Training to Simulate Inference in Machine Translation. (2020) authored by Jie Zhou 0013
+Jie Zhou 0013 primary affiliation Shanghai Jiaotong University, School of Electric Information and Electronic Engineering, China
+Wenjie Lu et al.: Challenge Training to Simulate Inference in Machine Translation. (2020) authored by Jie Zhou 0013
+
+---
+Christian Gierds: Adaption offener Systeme durch die Trennung von Daten- und Kontrollfluss. (2015) authored by Christian Gierds
+
+---
+Mihai Codescu: Architectural refinement in Hets. (2012) authored by Mihai Codescu
+Mihai Codescu primary affiliation Otto von Guericke University Magdeburg, Department for Knowledge and Language Engineering (IWS)
+Mihai Codescu: Architectural refinement in Hets. (2012) authored by Mihai Codescu
+
+---
+Ruizhi Chen et al.: Low Latency Spiking ConvNets with Restricted Output Training and False Spike Inhibition. (2018) authored by Ruizhi Chen
+Ruizhi Chen primary affiliation Texas A&M University at Corpus Christi, Conrad Blucher Institute of Surveying & Science, TX, USA
+Ruizhi Chen et al.: Low Latency Spiking ConvNets with Restricted Output Training and False Spike Inhibition. (2018) authored by Ruizhi Chen
+
+---
+Peter Lindner: The theory of infinite probabilistic databases. (2021) authored by Peter Lindner 0001
+Peter Lindner 0001 primary affiliation RWTH Aachen University, Germany
+Peter Lindner: The theory of infinite probabilistic databases. (2021) authored by Peter Lindner 0001
+
+---
+Denise Prescher: Taktile Interaktion auf flächigen Brailledisplays. (2016) authored by Denise Bornschein
+Denise Bornschein primary affiliation Technische Universität Dresden, Germany
+Denise Prescher: Taktile Interaktion auf flächigen Brailledisplays. (2016) authored by Denise Bornschein
+
+---
+Gael Glorian: Hybridation de techniques d'apprentissage de clauses en programmation par contraintes. (Hybridization of clause learning techniques in constraint programming). (2019) authored by Gaël Glorian
+Gaël Glorian primary affiliation LaBRI, Bordeaux, Nouvelle-Aquitaine, France
+Gael Glorian: Hybridation de techniques d'apprentissage de clauses en programmation par contraintes. (Hybridization of clause learning techniques in constraint programming). (2019) authored by Gaël Glorian
+
+---
+Kyparisia A. Papanikolaou et al.: A connectionist approach for adaptive lesson presentation in a distance learning course. (1999) authored by George D. Magoulas
+
+---
+Juan-Manuel Torres-Moreno: Apprentissage et généralisation par des réseaux de neurones : étude de nouveaux algorithmes constructifs. (Machine learning and generalization by Neural Networks: new constructive algorithms). (1997) authored by Juan-Manuel Torres-Moreno
+Juan-Manuel Torres-Moreno primary affiliation University of Avignon, Avignon Computer Laboratory (LIA)
+Juan-Manuel Torres-Moreno: Apprentissage et généralisation par des réseaux de neurones : étude de nouveaux algorithmes constructifs. (Machine learning and generalization by Neural Networks: new constructive algorithms). (1997) authored by Juan-Manuel Torres-Moreno
+
+---
+Thomas Zinner: Performance modeling of QoE-aware multipath video transmission in the future internet. (2012) authored by Thomas Zinner
+
+---
+Oscar Castillo and Patricia Melin: Adaptive model-based control of robotic dynamic systems with a new neuro-fuzzy-fractal approach. (1999) authored by Oscar Castillo 0001
+Oscar Castillo and Patricia Melin: Adaptive model-based control of robotic dynamic systems with a new neuro-fuzzy-fractal approach. (1999) authored by Patricia Melin
+Oscar Castillo 0001 primary affiliation Tijuana Institute of Technology, Mexico
+Daniela Sánchez et al.: Hierarchical genetic optimization of modular neural networks and their type-2 fuzzy response integrators for human recognition based on multimodal biometry. (2011) authored by Oscar Castillo 0001
+Ieroham S. Baruch et al.: Direct torque adaptive vector neural control of a three-phase induction motor. (2010) authored by Oscar Castillo 0001
+Oscar Castillo and Patricia Melin: Adaptive model-based control of robotic dynamic systems with a new neuro-fuzzy-fractal approach. (1999) authored by Oscar Castillo 0001
+Oscar Castillo and Patricia Melin: Computational intelligence software: Type-2 Fuzzy Logic and Modular Neural Networks. (2008) authored by Oscar Castillo 0001
+Olivia Mendoza et al.: Neural networks recognition rate as index to compare the performance of fuzzy edge detectors. (2010) authored by Oscar Castillo 0001
+Patricia Melin et al.: Pattern Recognition for Industrial Monitoring and Security using the Fuzzy Sugeno Integral and Modular Neural Networks. (2007) authored by Oscar Castillo 0001
+
+---
+Hendrik Wöhrle: Dataflow-based parallel signal processing and classification on reconfigurable hardware. (2017) authored by Hendrik Wöhrle
+Hendrik Wöhrle primary affiliation University of Bremen, Germany
+Hendrik Wöhrle: Dataflow-based parallel signal processing and classification on reconfigurable hardware. (2017) authored by Hendrik Wöhrle
+
+---
+Xiao Liu: Fast recursive biomedical event extraction. (Extraction rapide et récursive des événements biomédicaux). (2014) authored by Xiao Liu 0009
+Xiao Liu 0009 primary affiliation University of Technology of Compiègne, France
+Xiao Liu: Fast recursive biomedical event extraction. (Extraction rapide et récursive des événements biomédicaux). (2014) authored by Xiao Liu 0009
+
+---
+Jayadeva et al.: Regularized Least Squares Fuzzy Support Vector Regression for Time Series Forecasting. (2006) authored by Reshma Rastogi
+Jayadeva et al.: Regularized Least Squares Fuzzy Support Vector Regression for Time Series Forecasting. (2006) authored by Suresh Chandra 0001
+Reshma Rastogi primary affiliation South Asian University, India
+Jayadeva et al.: Regularized Least Squares Fuzzy Support Vector Regression for Time Series Forecasting. (2006) authored by Reshma Rastogi
+Suresh Chandra 0001 primary affiliation Indian Institute of Technology, Department of Mathematics, New Delhi, India
+Jayadeva et al.: Regularized Least Squares Fuzzy Support Vector Regression for Time Series Forecasting. (2006) authored by Suresh Chandra 0001
+
+---
+Michael Menzel: Model-driven security in service-oriented architectures: leveraging security patterns to transform high-level security requirements to technical policies. (2012) authored by Michael Menzel 0001
+
+---
+Carlos Filipe da Silva Souto: Speech-related brain responses as a basis for auditory brain-computer interfaces. (2019) authored by Carlos F. da Silva Souto
+
+---
+Erik Marchi et al.: Audio onset detection: A wavelet packet based approach with recurrent neural networks. (2014) authored by Björn W. Schuller
+
+---
+Alessia Amelio: Pattern extraction from data with application to image processing. (2012) authored by Alessia Amelio
+
+---
+Shuo Wang: Automatische morphologische und syntaktische Analyse im Chinesischen und Deutschen: eine vergleichende Untersuchung der linguistischen Grundlagen. (1994) authored by Shuo Wang 0007
+
+---
+Marcos Aurelio A. Ferreira Junior et al.: Evaluation of Heart Disease Diagnosis Approach using ECG Images. (2019) authored by Pedro Pedrosa Rebouças Filho
+Marcos Aurelio A. Ferreira Junior et al.: Evaluation of Heart Disease Diagnosis Approach using ECG Images. (2019) authored by Shara Shami Araújo Alves
+Pedro Pedrosa Rebouças Filho primary affiliation Instituto Federal de Educação, Ciencia e Tecnologia do Ceará, Limoeiro do Norte, Brazil
+Aldísio Gonçalves Medeiros et al.: A Novel Approach for Automatic Enhancement of Fingerprint Images via Deep Transfer Learning. (2020) authored by Pedro Pedrosa Rebouças Filho
+Marcos Aurelio A. Ferreira Junior et al.: Evaluation of Heart Disease Diagnosis Approach using ECG Images. (2019) authored by Pedro Pedrosa Rebouças Filho
+Renato F. Pereira et al.: Goat Leather Quality Classification Using Computer Vision and Machine Learning. (2018) authored by Pedro Pedrosa Rebouças Filho
+Virgínia Xavier Nunes et al.: A Novel Web Platform for COVID-19 diagnosis using X-Ray exams and Deep Learning Techniques. (2021) authored by Pedro Pedrosa Rebouças Filho
+Shara Shami Araújo Alves primary affiliation Federal Institute of Ceará, Computing Department, Brazil
+Marcos Aurelio A. Ferreira Junior et al.: Evaluation of Heart Disease Diagnosis Approach using ECG Images. (2019) authored by Shara Shami Araújo Alves
+
+---
+Zhihao Peng: Optimisation par essaims particulaires pour la logistique urbaine. (Particle Swarm Optimization for urban logistics). (2019) authored by Zhihao Peng 0001
+Zhihao Peng 0001 primary affiliation University of Bourgogne Franche-Comté Besançon, France
+Zhihao Peng: Optimisation par essaims particulaires pour la logistique urbaine. (Particle Swarm Optimization for urban logistics). (2019) authored by Zhihao Peng 0001
+
+---
+Mayutan Arumaithurai: An Intelligent and Powerful Data Plane Support To Enhance Future Communication. (2018) authored by Mayutan Arumaithurai
+
+---
+Thomas Lehmann: Ein abstrakter Implementierungsbegriff für die Spezifikationssprache OBSCURE. (1990) authored by Thomas Lehmann 0004
+Thomas Lehmann 0004 primary affiliation Saarland University, Saarbrücken, Germany
+Thomas Lehmann: Ein abstrakter Implementierungsbegriff für die Spezifikationssprache OBSCURE. (1990) authored by Thomas Lehmann 0004
+
+---
+Yosra Zguira Bahri: Study and development of wireless sensor network architecture tolerant to delays. (Etude et développement d'une architecture de réseaux de capteurs tolérante aux délais). (2018) authored by Yosra Zguira
+Yosra Zguira primary affiliation University of Lyon, France
+Yosra Zguira Bahri: Study and development of wireless sensor network architecture tolerant to delays. (Etude et développement d'une architecture de réseaux de capteurs tolérante aux délais). (2018) authored by Yosra Zguira
+
+---
+Nathan A. Dunn et al.: Clustered Neural Dynamics Identify Motifs for Chemotaxis in Caenorhabditis elegans. (2006) authored by John S. Conery
+John S. Conery primary affiliation University of Oregon, Eugene, USA
+Nathan A. Dunn et al.: Clustered Neural Dynamics Identify Motifs for Chemotaxis in Caenorhabditis elegans. (2006) authored by John S. Conery
+
+---
+Wolfgang Tischer: Zur Methodik der Erfassung und Beobachtung von Patienten mit bestimmten Krankheiten in geographisch definierten Bevölkerungsarealen mit speziellem Bezug zum WHO-Herzinfarktregister Heidelberg. (1980) authored by Wolfgang Tischer 0001
+
+---
+Paulo da Costa et al.: Learning 2-opt Local Search from Heuristics as Expert Demonstrations. (2021) authored by Uzay Kaymak
+Uzay Kaymak primary affiliation Eindhoven University of Technology, The Netherlands
+Paulo da Costa et al.: Learning 2-opt Local Search from Heuristics as Expert Demonstrations. (2021) authored by Uzay Kaymak
+
+---
+Yuchen Liu et al.: Pruning Broad Learning System based on Adaptive Feature Evolution. (2021) authored by Zhiwen Yu 0002
+Yuchen Liu et al.: Pruning Broad Learning System based on Adaptive Feature Evolution. (2021) authored by C. L. Philip Chen
+Zhiwen Yu 0002 primary affiliation South China University of Technology, School of Computer Science and Engineering, Guangzhou, China
+Yuchen Liu et al.: Pruning Broad Learning System based on Adaptive Feature Evolution. (2021) authored by Zhiwen Yu 0002
+C. L. Philip Chen primary affiliation South China University of Technology, School of Computer Science and Engineering, Guangzhou, China
+Yuchen Liu et al.: Pruning Broad Learning System based on Adaptive Feature Evolution. (2021) authored by C. L. Philip Chen
+
+---
+Saeed Afshar et al.: Emergence of competitive control in a memristor-based neuromorphic circuit. (2012) authored by Efstratios Skafidas
+Saeed Afshar et al.: Emergence of competitive control in a memristor-based neuromorphic circuit. (2012) authored by Omid Kavehei
+Efstratios Skafidas primary affiliation University of Melbourne, Melbourne, Australia
+Saeed Afshar et al.: Emergence of competitive control in a memristor-based neuromorphic circuit. (2012) authored by Efstratios Skafidas
+Omid Kavehei primary affiliation University of Melbourne, Australia
+Saeed Afshar et al.: Emergence of competitive control in a memristor-based neuromorphic circuit. (2012) authored by Omid Kavehei
+
+---
+Leo Wanner: Exploring lexical resources for text generation in a systemic functional language model. (1997) authored by Leo Wanner
+
+---
+Sandra Ortega-Martorell et al.: Spectral decomposition methods for the analysis of MRS information from human brain tumors. (2011) authored by Paulo J. G. Lisboa
+
+---
+Yi Guo et al.: Low rank sequential subspace clustering. (2015) authored by Feng Li 0003
+Yi Guo et al.: Low rank sequential subspace clustering. (2015) authored by Yi Guo 0001
+Yi Guo et al.: Low rank sequential subspace clustering. (2015) authored by Junbin Gao
+Feng Li 0003 primary affiliation Qian Xuesen Laboratory of Space Technology, Beijing, China
+Yi Guo et al.: Low rank sequential subspace clustering. (2015) authored by Feng Li 0003
+Yi Guo 0001 primary affiliation Western Sydney University, School of Computing, Engineering and Mathematics, Parramatta, NSW, Australia
+Yi Guo et al.: Low rank sequential subspace clustering. (2015) authored by Yi Guo 0001
+Junbin Gao primary affiliation University of Sydney, Business School, NSW, Australia
+Simeng Liu et al.: Matrix variate RBM model with Gaussian distributions. (2017) authored by Junbin Gao
+
+---
+Frank Schulz: Adaptive Suchverfahren. (2000) authored by Frank Schulz 0002
+
+---

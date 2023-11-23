@@ -1,0 +1,7 @@
+experiment_name: dblp_subgraphs
+log_file: logs.log
+output_subgraph_file: dblp_subgraphs.jsonl
+kg: dblp
+seed_node_types:
+  - "Creator" 
+  - "Publication"
