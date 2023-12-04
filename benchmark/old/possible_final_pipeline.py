@@ -115,7 +115,6 @@ parsed_schema_map = {
 }
 
 # question template generation step
-# TODO: generate question templates map as prestep
 # for now considering its already there
 """
 create a map of triple to list of questions from gpt using prompt
@@ -214,9 +213,10 @@ for node_type, node_info in parsed_schema_map.items():
     response = SparqlQueryResponse(**seed_nodes)
     seed_nodes = extract_values_by_key("node", response)
     print(f"extracted seed nodes: {len(seed_nodes)}")
+    # TODO: label extraction
     print(f"extracted seed nodes: {seed_nodes}")
 
-sys.exit(1)
+# sys.exit(1)
 
 # step 3
 """

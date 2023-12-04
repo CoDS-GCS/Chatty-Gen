@@ -363,7 +363,7 @@ def filter_and_select_questions(original_questions):
 
 def run_pipeline():
     benchmark_sample = []
-    for g in data[:30]:
+    for g in data[:5]:
         # grab the subgraph
         subgraph = g["triples"]
         if len(subgraph) > 5:
@@ -444,7 +444,7 @@ def run_pipeline():
                 print(f"ERROR: {e}")
                 continue
 
-    with open("yago_dialogues_star_pattern_with_filter.json", "w") as f:
+    with open("yago_dialogues_star_pattern_with_filter_latest.json", "w") as f:
         json.dump(benchmark_sample, f, indent=4)
 
 

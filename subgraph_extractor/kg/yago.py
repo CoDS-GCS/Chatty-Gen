@@ -80,17 +80,25 @@ class YAGO:
             SELECT ?label WHERE {
                 <%s> <http://www.w3.org/2000/01/rdf-schema#label> ?label .
             }
-            LIMIT 1
         """
             % uri_or_literal
         )
         results = self.shoot_custom_query(label_query)
+        label = None
         if (
             "results" in results
             and "bindings" in results["results"]
             and len(results["results"]["bindings"]) > 0
         ):
-            label = results["results"]["bindings"][0]["label"]["value"]
+            all_bindings = results["results"]["bindings"]
+            for r in all_bindings:
+                if label is None:
+                    if r['label'].get('xml:lang') is None:
+                        label = r['label']['value']
+                    elif r['label'].get('xml:lang') == 'en':
+                        label = r['label']['value']
+                else:
+                    break
             return label
         return None
 
