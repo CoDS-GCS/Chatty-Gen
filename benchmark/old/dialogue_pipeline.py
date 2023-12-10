@@ -352,7 +352,10 @@ for g in data[:50]:
                     f"e_{idx+1}_inp": x[0] for idx, x in enumerate(pronoun_examples)
                 }
                 examples_dict.update(
-                    {f"e_{idx+1}_out": list(x[1]) for idx, x in enumerate(pronoun_examples)}
+                    {
+                        f"e_{idx+1}_out": list(x[1])
+                        for idx, x in enumerate(pronoun_examples)
+                    }
                 )
                 print(examples_dict)
                 output = pronoun_identification_chain.run(
@@ -381,13 +384,10 @@ for g in data[:50]:
                     "prompt_tokens": cb.prompt_tokens,
                     "completion_tokens": cb.completion_tokens,
                     "successful_requests": cb.successful_requests,
-                    "total_cost": cb.total_cost
+                    "total_cost": cb.total_cost,
                 }
 
-                dialogue = {
-                        "dialogue": question_set_dialogue,
-                        "cost": cb_dict
-                }
+                dialogue = {"dialogue": question_set_dialogue, "cost": cb_dict}
 
                 print(cb_dict)
 
@@ -397,12 +397,11 @@ for g in data[:50]:
             continue
 
 
-
 # with open("dblp_dialogues_publication.json", "w") as f:
 #     json.dump(benchmark_sample, f, indent=4)
 
 # with open("dblp_dialogues_authors.json", "w") as f:
-    # json.dump(benchmark_sample, f, indent=4)
+# json.dump(benchmark_sample, f, indent=4)
 
 # with open("yago_dialogues_persons.json", "w") as f:
 #     json.dump(benchmark_sample, f, indent=4)

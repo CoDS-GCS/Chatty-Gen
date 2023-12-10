@@ -6,7 +6,7 @@ from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
 from langchain.output_parsers.json import parse_json_markdown
-from langchain.schema.output_parser import StrOutputParser 
+from langchain.schema.output_parser import StrOutputParser
 from langchain.chains import LLMChain
 import utils
 import requests
@@ -22,7 +22,9 @@ data = read_jsonl(gpt_subgraphs_file)
 
 response_schemas = [
     ResponseSchema(name="stand_alone_question", description="standalone question"),
-    ResponseSchema(name="non_standalone_question", description="non-standalone quesiton"),
+    ResponseSchema(
+        name="non_standalone_question", description="non-standalone quesiton"
+    ),
     # ResponseSchema(name="answer", description="an answer to standalone question")
 ]
 output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
@@ -30,10 +32,10 @@ output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
 format_instructions = output_parser.get_format_instructions()
 
 # PROMPT = PromptTemplate(
-#     input_variables=["context", "example", "example_response"], 
+#     input_variables=["context", "example", "example_response"],
 #     partial_variables={"format_instructions": format_instructions},
 PROMPT = PromptTemplate(
-    input_variables=["context"], 
+    input_variables=["context"],
     partial_variables={"format_instructions": format_instructions},
     # template="""Generate a list of 5 objects, each containing a standalone question, a non-standalone question, and its corresponding answer, about an ENTITY from the provided context. The first question should be a standalone one. The following questions should be non-standalone and should use pronouns and maintain context. Avoid using conjunctions like 'and' within the questions. Each tuple must include a clear, concise standalone question, a non-standalone question, and its corresponding accurate and complete answer. Failure to provide questions, non-standalone questions, and answers that meet these criteria will result in a penalty.
     #     {format_instructions}
@@ -60,10 +62,7 @@ llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=True)
 # string_output_parser = StrOutputParser()
 json_output_parser = StrOutputParser()
 dialogue_generate_chain = LLMChain(
-    llm = llm,
-    prompt = PROMPT,
-    verbose = True,
-    output_parser = json_output_parser
+    llm=llm, prompt=PROMPT, verbose=True, output_parser=json_output_parser
 )
 
 example = ""
@@ -94,7 +93,7 @@ benchmark_sample = []
 for g in data[:5]:
     # g_text = g["input"]
     subgraph = g["triples"]
-    # count the token 
+    # count the token
     # total_tokens = encode_and_count(g_text)
     # print(total_tokens)
     # 5 independent questions

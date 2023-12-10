@@ -13,12 +13,12 @@ import json
 from rdflib import Graph, URIRef, Literal, RDF
 from kg.utils import (
     KgSchema,
-    SPARQL_TEMPLATES,
     format_sparql_template_with_dict,
     SparqlQueryResponse,
     extract_values_by_key,
+    seed_node_sparql_query,
     incoming_star_pattern_sparql_query,
-    outgoing_star_pattern_sparql_query
+    outgoing_star_pattern_sparql_query,
 )
 
 CURR_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -45,7 +45,9 @@ class DBPedia:
         self.r = redis.Redis(host="localhost", port=6379, db=_db_name)
         print(os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"))
         self.schema = KgSchema(
-            os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"), rdf_format="nt"
+            os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"),
+            rdf_format="nt",
+            class_namespace="OWL",
         )
 
     def select_sparql_endpoint(self):
@@ -100,14 +102,17 @@ class DBPedia:
             all_bindings = results["results"]["bindings"]
             for r in all_bindings:
                 if label is None:
-                    if r['label'].get('xml:lang') is None:
-                        label = r['label']['value']
-                    elif r['label'].get('xml:lang') == 'en':
-                        label = r['label']['value']
+                    if r["label"].get("xml:lang") is None:
+                        label = r["label"]["value"]
+                    elif r["label"].get("xml:lang") == "en":
+                        label = r["label"]["value"]
                 else:
                     break
             return label
         return None
+
+    def get_triple_list(self):
+        return self.schema.nodetype_triple_list
 
     def select_seed_nodes(self, n=10):
         """
@@ -119,14 +124,18 @@ class DBPedia:
         parsed_schema_map = self.schema.parsed_schema
         print(parsed_schema_map)
         self.seed_nodes = {}
+        counter = 0
         for node_type, node_info in parsed_schema_map.items():
+            if counter > 2:
+                break
+            counter += 1
             node_type_uri = node_info.get("nodeuri")
-            incoming_predicates = node_info.get("incoming_predicates")
-            outgoing_predicates = node_info.get("outgoing_predicates")
+            incoming_predicates = [p[0] for p in node_info.get("incoming_predicates")]
+            outgoing_predicates = [p[0] for p in node_info.get("outgoing_predicates")]
 
-            query_template = SPARQL_TEMPLATES.get("get_seed_nodes")
-            values = {"e": node_type_uri}
-            query = format_sparql_template_with_dict(query_template, values)
+            query = seed_node_sparql_query(
+                node_type_uri, incoming_predicates, outgoing_predicates
+            )
             print(query)
             result = self.shoot_custom_query(query)
             response = SparqlQueryResponse(**result)
@@ -158,26 +167,32 @@ class DBPedia:
 
                 incoming_triples = []
                 # seed as object
-                predicate_and_type_list = []
+                predicate_subject_types = []
                 for p in incoming_predicates:
                     print(p)
                     predicate, subject_type = p
-                    predicate_and_type_list.append((predicate, subject_type))
+                    predicate_subject_types.append((predicate, subject_type))
                 # create query and execute and get back result and fill subgraph
                 # incoming subgraph query
                 object_uri = seed_node
-                query = incoming_star_pattern_sparql_query(prefixes, object_uri, predicate_and_type_list)
+                query = incoming_star_pattern_sparql_query(
+                    prefixes, object_uri, predicate_subject_types
+                )
                 print(f"Query: {query}")
                 response = self.shoot_custom_query(query)
+                print(response)
                 response = SparqlQueryResponse(**response)
-                subs = extract_values_by_key("sampleSubject", response)
+                subs = extract_values_by_key("subject", response)
                 preds = extract_values_by_key("predicate", response)
-                types = extract_values_by_key("type", response)
-                for pred, type_, sub in zip(preds, types, subs):
+                for pred, sub in zip(preds, subs):
+                    for predicate, subject_type in predicate_subject_types:
+                        if predicate == pred:
+                            type_ = subject_type
+                            break
                     print(pred, type_, sub)
-                    pred = self.get_label(pred)
-                    type_ = self.get_label(type_)
-                    sub = self.get_label(sub)
+                    # pred = self.get_label(pred)
+                    # type_ = self.get_label(type_)
+                    # sub = self.get_label(sub)
                     incoming_triples.append((pred, type_, sub))
 
                 print(f"seed : {seed_node}")
@@ -185,25 +200,34 @@ class DBPedia:
 
                 outgoing_triples = []
                 # seed as subject
-                predicate_and_type_list = []
+                predicate_object_types = []
                 for p in outgoing_predicates:
                     predicate, object_type = p
-                    predicate_and_type_list.append((predicate, object_type))
+                    predicate_object_types.append((predicate, object_type))
                 # create query and execute and get back result and fill subgraph
                 # outgoing subgraph query
                 subject_uri = seed_node
-                query = outgoing_star_pattern_sparql_query(prefixes, subject_uri, predicate_and_type_list)
+                query = outgoing_star_pattern_sparql_query(
+                    prefixes, subject_uri, predicate_object_types
+                )
                 print(f"Query: {query}")
                 response = self.shoot_custom_query(query)
                 response = SparqlQueryResponse(**response)
-                objs = extract_values_by_key("sampleObject", response)
+                objs = extract_values_by_key("object", response)
                 preds = extract_values_by_key("predicate", response)
-                types = extract_values_by_key("type", response)
-                for pred, type_, obj in zip(preds, types, objs):
-                    pred = self.get_label(pred)
-                    type_ = self.get_label(type_)
-                    obj = self.get_label(obj)
+                for pred, obj in zip(preds, objs):
+                    for predicate, object_type in predicate_object_types:
+                        if predicate == pred:
+                            type_ = object_type
+                            break
+                    print(pred, type_, obj)
+                    # pred = self.get_label(pred)
+                    # type_ = self.get_label(type_)
+                    # obj = self.get_label(obj)
                     outgoing_triples.append((pred, type_, obj))
+
+                print(f"seed : {seed_node}")
+                print(f"outgoing: {outgoing_triples}")
 
                 seed_type = node_type
                 seed_label = self.get_label(seed_node)
@@ -213,8 +237,7 @@ class DBPedia:
                     "outgoing_predicates": outgoing_triples,
                 }
                 subgraphs_map[node_type].append(subgraph)
-
-
+        return subgraphs_map
 
 
 if __name__ == "__main__":
@@ -225,5 +248,5 @@ if __name__ == "__main__":
     }
     LIMIT 10
     """
-    answer = dbpedia.shoot_custom_query(query)
-    print(answer)
+    # answer = dbpedia.shoot_custom_query(query)
+    # print(answer)

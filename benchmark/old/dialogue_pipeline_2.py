@@ -448,7 +448,7 @@ def run_pipeline():
         json.dump(benchmark_sample, f, indent=4)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run_pipeline()
 
 # with open("dblp_dialogues_publication.json", "w") as f:

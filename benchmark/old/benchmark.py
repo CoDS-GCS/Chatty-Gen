@@ -1,11 +1,12 @@
 import json
 from utils import read_json
+
 # import datasets
 
 templates = read_json("templates.json")
-template_id_list = [1,2,3,5]
+template_id_list = [1, 2, 3, 5]
 for t in templates:
-    if t["id"] is in template_id_list:
+    if t["id"] in template_id_list:
         print()
     else:
         continue
@@ -54,7 +55,7 @@ for t in templates:
 #     # question = paraphrased is the question
 #     # the problem is we know llm can do given the template and entities it can genrate related question in conversation flow, yes
 #     # how?
-#     # - we need some type of NNQT templates from sparql template - easy use the one from lcqald 
+#     # - we need some type of NNQT templates from sparql template - easy use the one from lcqald
 #     #     - prompt-task : "given the sparql template and triplet generate NNQT template", use the example from the lc-qald data #TODO: verify
 #     #     - wait first clear what do you mean by NNQT template - do you need it filled entity or just the pure template, or the one filled with entity
 #     #         - i think for now lets go with the filled one, later on we will revise,
@@ -67,7 +68,7 @@ for t in templates:
 #     # - will this work, maybe but at what extent, :thinking
 #
 #     # lets start with the simple
-#     # - task 1: 
+#     # - task 1:
 #     #
 #
 #     # standalone = get the rewrite of a paraphrased question
@@ -111,5 +112,3 @@ lets solve the one type of question
 
 sparql- select ?x {?x ?p ?o}
 """
-
-

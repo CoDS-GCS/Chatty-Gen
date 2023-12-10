@@ -8,13 +8,15 @@ import tiktoken
 
 encoding = tiktoken.get_encoding("p50k_base")
 
+
 def encode_and_count(text: str) -> int:
     tokens = len(encoding.encode(text))
     return tokens
+
 
 def openai_generate(text: str) -> str:
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     assert encode_and_count("hello how are you?") == 5

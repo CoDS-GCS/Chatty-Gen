@@ -1,0 +1,11 @@
+SELECT DISTINCT ?sampleObject ?predicate ?type WHERE {
+  VALUES (?predicate ?type) {
+(<https://dblp.org/rdf/schema#possibleActualCreator> <https://dblp.org/rdf/schema#Creator>)   }
+  {
+SELECT ?predicate (SAMPLE(?object) AS ?sampleObject) ?type
+    WHERE {
+  <https://dblp.org/pid/51/3710> a ?type ;
+     ?predicate ?object.
+    }
+GROUP BY ?predicate ?type  }
+}

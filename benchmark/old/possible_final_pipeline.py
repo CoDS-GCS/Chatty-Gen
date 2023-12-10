@@ -1,5 +1,6 @@
 import sys
-sys.path.append('/omij/Chatbot-Resources')
+
+sys.path.append("/omij/Chatbot-Resources")
 
 import openai
 import langchain
@@ -61,6 +62,7 @@ example_output = [
     "At {object}, who is an employee?",
 ]
 
+
 def format_sparql_template_with_dict(template, values_dict):
     try:
         formatted_string = template % values_dict
@@ -83,6 +85,7 @@ def format_template_with_dict(template, values_dict):
         return "Error: Type mismatch in the template."
     except Exception as e:
         return f"An error occurred: {str(e)}"
+
 
 def question_template_from_triple(triple):
     example_input = ("Person", "worksAt", "Company")
@@ -110,7 +113,11 @@ parsed_schema_map = {
     "Person": {
         "nodetype": "http://schema.org/Person",
         "incoming_predicates": [("actor", "Movie"), ("spouse", "Person")],
-        "outgoing_predicates": [("worksFor", "Organization"), ("spouse", "Person"), ("nationality", "Country")],
+        "outgoing_predicates": [
+            ("worksFor", "Organization"),
+            ("spouse", "Person"),
+            ("nationality", "Country"),
+        ],
     }
 }
 
@@ -160,7 +167,7 @@ seed_nodes = {
     ],
 }
 
-sparql_query_templates={
+sparql_query_templates = {
     "get_seed_nodes_popular_2": """
         SELECT DISTINCT ?node (COUNT(?outgoingPredicate) + COUNT(?incomingPredicate) AS ?predicateCount)
         WHERE {
@@ -172,12 +179,14 @@ sparql_query_templates={
         ORDER BY DESC(?predicateCount)
         LIMIT 5
         """,
-        }
+}
+
 
 @dataclass
 class SparqlQueryResponse:
     head: Dict[str, List[str]]
     results: Dict[str, List[Dict[str, Optional[str]]]]
+
 
 def extract_values_by_key(
     key: str, sparql_response: SparqlQueryResponse
@@ -199,8 +208,9 @@ def extract_values_by_key(
 
     return values
 
+
 for node_type, node_info in parsed_schema_map.items():
-    node_type_uri = node_info.get('nodetype')
+    node_type_uri = node_info.get("nodetype")
     incoming_predicates = node_info.get("incoming_predicates")
     outgoing_predicates = node_info.get("outgoing_predicates")
 
@@ -248,8 +258,6 @@ seed_node_subgraph = {
     "incoming_predicates": [("spouse", "Person", "Pragya Yadav")],
     "outgoing_predicates": [("nationality", "Country", "India")],
 }
-
-
 
 
 # step 4
@@ -311,4 +319,3 @@ steps:
     pronoun indentification and substitution
     filteration
 """
-

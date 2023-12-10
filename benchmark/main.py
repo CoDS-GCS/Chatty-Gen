@@ -1,21 +1,6 @@
 import argparse
 import os
 from benchmark import generate_question_set
-from kg.yago.yago import YAGO
-from kg.dblp.dblp import DBLP 
-
-
-def get_kg_instance(kg_name):
-    kgs = {"yago": YAGO(), "dblp": DBLP()}
-    kg = kgs.get(kg_name, None)
-    if kg is None:
-        raise ValueError(f"kg : {kg_name} not supported")
-    return kg
-
-
-# approach 1
-
-# approach 2
 
 
 def main():
@@ -47,8 +32,7 @@ def main():
     if kg_name is None:
         parser.print_help()
 
-    kg = get_kg_instance(kg_name)
-    generate_question_set(kg)
+    generate_question_set(kg_name)
 
 
 if __name__ == "__main__":

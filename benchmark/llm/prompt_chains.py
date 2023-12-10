@@ -1,14 +1,31 @@
+import random
+import langchain
 from langchain.prompts import PromptTemplate
 from langchain.llms import OpenAI
 from langchain.output_parsers import (
     StructuredOutputParser,
     ResponseSchema,
 )
+from langchain.chains import LLMChain
+
+langchain.debug = True
 
 llm = OpenAI(model_name="text-davinci-003", temperature=0.5, streaming=False)
 
 
-def get_question_template_chain():
+def format_template_with_dict(template, values_dict):
+    try:
+        formatted_string = template.format(**values_dict)
+        return formatted_string
+    except KeyError as e:
+        return f"Error: Missing key '{e.args[0]}' in the dictionary."
+    except ValueError:
+        return "Error: Type mismatch in the template."
+    except Exception as e:
+        return f"Error: error occurred: {str(e)}"
+
+
+def get_question_template_chain(placeholder):
     response_schemas = [
         ResponseSchema(
             name="output",
@@ -18,43 +35,106 @@ def get_question_template_chain():
     ]
 
     json_output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
+    # json_output_parser_with_retry = RetryWithErrorOutputParser(parser=json_output_parser)
+    # json_output_parser_with_retry = RetryWithErrorOutputParser.from_llm(llm, json_output_parser)
     json_format_instructions = json_output_parser.get_format_instructions()
 
-    QUESTION_TEMPLATE_PROMPT = PromptTemplate(
-        input_variables=["example_input", "example_output", "input"],
+    SUBJECT_QUESTION_TEMPLATE_PROMPT = PromptTemplate(
+        # input_variables=["example_input", "example_output_0", "example_output_1", "example_output_2", "input"],
+        input_variables=[
+            "example_input",
+            "example_output_0",
+            "example_output_1",
+            "placeholder",
+            "input",
+        ],
         partial_variables={"format_instructions": json_format_instructions},
-        template="""Generate a list of 6 questions as template strings, given the 'triple'. A triple consisting of 3 elements: a subject node type, a predicate, an object node type. The output should be a list containing these different question variations. The first 3 questions should be with subject node as an answer, where as next 3 questions should be with object node as an answer.
-    {format_instructions}
+        # template="""Generate a list of two questions as template strings, given the 'triple'. A triple consisting of 3 elements: a subject node type, a predicate, an object node type. The output should be a list containing these different question variations.
+        template="""Generate a list of 2 template strings based on a given 'triple' consisting of a subject node type, a predicate, and an object node type. Use the following steps:
+        Identify entities and relationship in the triple.
+        Determine a condition based on the relationship.
+        Create template strings using placeholders representing the identified entity ({placeholder}) based on the condition. Output the list containing these question variations.
+        {format_instructions}
 
-    example,
-    input: {example_input}
-    output: {example_output}
+        example,
+        input: {example_input}
+        output: [
+        "{example_output_0}",
+        "{example_output_1}",
+        ]
 
-    input: {input}
-    output: """,
+        input: {input}
+        """,
     )
+    # "{example_output_2}",
 
     example_input = ("person", "worksAt", "company")
-    example_output = [
-        "Which company employs {subject}?",
-        "At which company does {subject} work?",
-        "What is the workplace of {subject}?",
-        "Who works at {object}?",
-        "Which person is employed at {object}?",
-        "At {object}, who is an employee?",
-    ]
+    if placeholder == "object":
+        example_output = [
+            # "Which company employs {subject}?",
+            # "At which company does {subject} work?",
+            # "What is the workplace of {subject}?",
+            "Who works at {object}?",
+            "Which person is employed at {object}?",
+            # "At {object}, who is an employee?",
+        ]
+    elif placeholder == "subject":
+        example_output = [
+            "Which company employs {subject}?",
+            "At which company does {subject} work?",
+            # "What is the workplace of {subject}?",
+            # "Who works at {object}?",
+            # "Which person is employed at {object}?",
+            # "At {object}, who is an employee?",
+        ]
+    else:
+        raise ValueError(
+            'Error: invalid value for placeholder, allowed values ["object", "subject"]'
+        )
+
+    examples_dict = {f"example_output_{idx}": x for idx, x in enumerate(example_output)}
 
     question_template_chain = LLMChain(
         llm=llm,
-        prompt=QUESTION_TEMPLATE_PROMPT,
+        prompt=SUBJECT_QUESTION_TEMPLATE_PROMPT,
         verbose=True,
         output_parser=json_output_parser,
     )
-    payload = {"example_input": example_input, "example_output": example_output}
-    return {
-        "chain": question_template_chain,
-        "payload": payload
+    payload = {
+        "example_input": example_input,
+        "placeholder": placeholder,
+        **examples_dict,
     }
+
+    def valid_output(output, placeholder):
+        dummy_val = {placeholder: "dummy"}
+
+        for op in output["output"]:
+            if format_template_with_dict(op, dummy_val).startswith("Error"):
+                return False
+
+        return True
+
+    def run_chain(input):
+        max_retry = 3
+        i = 0
+        retry = False
+        while not retry and i < max_retry:
+            try:
+                i += 1
+                # in case of not valid response just retry
+                output = question_template_chain.run(**input)
+                if valid_output(output, placeholder):
+                    break
+            except Exception as e:
+                print("ERROR: retry...{i}")
+                continue
+
+        if output is None:
+            return None
+        return output
+
+    return {"chain": run_chain, "payload": payload}
 
 
 def get_pronoun_identification_chain():
@@ -118,6 +198,68 @@ def get_pronoun_identification_chain():
         verbose=True,
         output_parser=p_idf_json_output_parser,
     )
+    pronoun_examples_data = {
+        "he/him": [
+            (
+                "Albert Einstein developed the theory of relativity.",
+                ("Albert Einstein", "He/Him"),
+            ),
+            (
+                "Leonardo da Vinci created the Mona Lisa.",
+                ("Leonardo da Vinci", "He/Him"),
+            ),
+            ("Isaac Newton formulated the laws of motion.", ("Isaac Newton", "He/Him")),
+        ],
+        "she/her": [
+            (
+                "Helen Keller overcame deafness and blindness.",
+                ("Helen Keller", "She/Her"),
+            ),
+            (
+                "Marie Curie conducted groundbreaking research in the field of radiology.",
+                ("Marie Curie", "She/Her"),
+            ),
+            (
+                "Amelia Earhart was a pioneering aviator who disappeared during a flight.",
+                ("Amelia Earhart", "She/Her"),
+            ),
+        ],
+        "it": [
+            (
+                "The Eiffel Tower was constructed in the late 19th century.",
+                ("The Eiffel Tower", "It"),
+            ),
+            (
+                "The ancient city of Rome was a hub of culture and power.",
+                ("The ancient city of Rome", "It"),
+            ),
+            (
+                "The Statue of Liberty was a gift from France to the United States.",
+                ("The Statue of Liberty", "It"),
+            ),
+        ],
+        "they/them": [
+            (
+                "The pyramids of Giza were built by ancient Egyptians.",
+                ("The pyramids of Giza", "They/Them"),
+            ),
+            (
+                "The Wright brothers invented the first successful powered aircraft.",
+                ("The Wright brothers", "They/Them"),
+            ),
+            (
+                "The Beatles were a legendary British rock band.",
+                ("The Beatles", "They/Them"),
+            ),
+        ],
+    }
+
+    def select_random_pronoun_examples():
+        out = []
+        for k, v in pronoun_examples_data.items():
+            out.append(random.choice(v))
+        return out
+
     # TODO: fix randomness as it will be always same while generation
     pronoun_examples = select_random_pronoun_examples()
     examples_dict = {f"e_{idx+1}_inp": x[0] for idx, x in enumerate(pronoun_examples)}
@@ -126,8 +268,9 @@ def get_pronoun_identification_chain():
     )
     return {
         "chain": pronoun_identification_chain,
-        "payload": {"payload": example_dict},
+        "payload": examples_dict,
     }
+
 
 def get_pronoun_substitution_chain():
     p_sub_response_schemas = [
@@ -170,7 +313,10 @@ def get_pronoun_substitution_chain():
     )
 
     pronoun_substitution_chain = LLMChain(
-        llm=llm, prompt=P_SUB_PROMPT, verbose=True, output_parser=p_sub_json_output_parser
+        llm=llm,
+        prompt=P_SUB_PROMPT,
+        verbose=True,
+        output_parser=p_sub_json_output_parser,
     )
     example_entity = "Michael A. Kochte"
     example_pronouns = "he/him"
@@ -194,7 +340,7 @@ def get_pronoun_substitution_chain():
     }
     return {
         "chain": pronoun_substitution_chain,
-        "payload": {"payload": example_dict},
+        "payload": examples_dict,
     }
 
 
@@ -246,7 +392,6 @@ def get_n_question_from_subgraph_chain():
     )
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
-
     N_Q_PROMPT = PromptTemplate(
         input_variables=[
             "example_subgraph",
@@ -277,16 +422,14 @@ def get_n_question_from_subgraph_chain():
         "example_n": example_n,
         "example_output": example_output,
     }
-    return {
-        'chain': n_question_generator_chain,
-        'payload': payload
-    }
+    return {"chain": n_question_generator_chain, "payload": payload}
+
 
 def get_prompt_chains():
     prompt_chains = {
-        "question_template_chain": get_question_template_chain(),
+        "question_template_chain": get_question_template_chain,
         "pronoun_identification_chain": get_pronoun_identification_chain(),
         "pronoun_substitution_chain": get_pronoun_substitution_chain(),
-        "n_question_from_subgraph_chain": get_n_question_from_subgraph_chain()
+        "n_question_from_subgraph_chain": get_n_question_from_subgraph_chain(),
     }
     return prompt_chains
