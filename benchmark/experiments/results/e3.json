@@ -1,0 +1,574 @@
+[
+    {
+        "idx": 1,
+        "dialogue": [
+            "How many authors were involved in the publication 'Michael J. Carey: Modeling and Evaluation of Database Concurrency Control Algorithms (1983)'?",
+            "Who are the authors of the publication 'He: Modeling and Evaluation of Database Concurrency Control Algorithms (1983)'?",
+            "Is He the author of the publication 'He: Modeling and Evaluation of Database Concurrency Control Algorithms (1983)'?",
+            "What is the date of the publication 'He: Modeling and Evaluation of Database Concurrency Control Algorithms (1983)'?",
+            "What other publications have been authored by Him?"
+        ],
+        "original": [
+            "How many authors were involved in the publication 'Michael J. Carey: Modeling and Evaluation of Database Concurrency Control Algorithms (1983)'?",
+            "Who are the authors of the publication 'Michael J. Carey: Modeling and Evaluation of Database Concurrency Control Algorithms (1983)'?",
+            "Is Michael J. Carey the author of the publication 'Michael J. Carey: Modeling and Evaluation of Database Concurrency Control Algorithms (1983)'?",
+            "What is the date of the publication 'Michael J. Carey: Modeling and Evaluation of Database Concurrency Control Algorithms (1983)'?",
+            "What other publications have been authored by Michael J. Carey?"
+        ],
+        "cost": {
+            "total_tokens": 1267,
+            "prompt_tokens": 935,
+            "completion_tokens": 332
+        }
+    },
+    {
+        "idx": 2,
+        "dialogue": [
+            "How many publications has Andreas Geiger authored?",
+            "Has he authored a publication in 2021?",
+            "What is the title of the publication authored by him in 2021?",
+            "Who is the author of the publication 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montaget\u00e4tigkeiten durch Virtual-Reality-Interaktion.'?",
+            "What is the date of publication for the publication authored by him?"
+        ],
+        "original": [
+            "How many publications has Andreas Geiger authored?",
+            "Has Andreas Geiger authored a publication in 2021?",
+            "What is the title of the publication authored by Andreas Geiger in 2021?",
+            "Who is the author of the publication 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montaget\u00e4tigkeiten durch Virtual-Reality-Interaktion.'?",
+            "What is the date of publication for the publication authored by Andreas Geiger?"
+        ],
+        "cost": {
+            "total_tokens": 1181,
+            "prompt_tokens": 920,
+            "completion_tokens": 261
+        }
+    },
+    {
+        "idx": 3,
+        "dialogue": [
+            "How many authors are there in Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)?",
+            "Is they an author of They: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)?",
+            "Who are the authors of They: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)?",
+            "What is the publication date of They: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)?",
+            "What is the title of the publication authored by them?"
+        ],
+        "original": [
+            "How many authors are there in Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)?",
+            "Is Sheng Chen an author of Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)?",
+            "Who are the authors of Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)?",
+            "What is the publication date of Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)?",
+            "What is the title of the publication authored by Sheng Chen?"
+        ],
+        "cost": {
+            "total_tokens": 1402,
+            "prompt_tokens": 995,
+            "completion_tokens": 407
+        }
+    },
+    {
+        "idx": 7,
+        "dialogue": [
+            "How many authors are associated with the publication 'Ata Kab\u00e1n: Compressive Learning of Multi-layer Perceptrons: An Error Analysis. (2019)'?",
+            "Who is the author of the publication 'It'?",
+            "Is Ata Kab\u00e1n the author of the publication 'It'?",
+            "What is the publication date of 'It'?",
+            "What is the full title of the publication 'It'?"
+        ],
+        "original": [
+            "How many authors are associated with the publication 'Ata Kab\u00e1n: Compressive Learning of Multi-layer Perceptrons: An Error Analysis. (2019)'?",
+            "Who is the author of the publication 'Ata Kab\u00e1n: Compressive Learning of Multi-layer Perceptrons: An Error Analysis. (2019)'?",
+            "Is Ata Kab\u00e1n the author of the publication 'Ata Kab\u00e1n: Compressive Learning of Multi-layer Perceptrons: An Error Analysis. (2019)'?",
+            "What is the publication date of 'Ata Kab\u00e1n: Compressive Learning of Multi-layer Perceptrons: An Error Analysis. (2019)'?",
+            "What is the full title of the publication 'Ata Kab\u00e1n: Compressive Learning of Multi-layer Perceptrons: An Error Analysis. (2019)'?"
+        ],
+        "cost": {
+            "total_tokens": 1279,
+            "prompt_tokens": 974,
+            "completion_tokens": 305
+        }
+    },
+    {
+        "idx": 10,
+        "dialogue": [
+            "How many authors contributed to the publication 'Caio J. B. V. Guimar\u00e3es et al.: Optimization of MLP Neural Networks in 8-bit Microcontrollers using Program Memory.' (2021)?",
+            "Does the publication 'It' (2021) have any authors?",
+            "Who is the author of the publication 'It' (2021)?",
+            "What is the publication date of 'It' (2021)?",
+            "What is the title of the publication authored by 'They'?"
+        ],
+        "original": [
+            "How many authors contributed to the publication 'Caio J. B. V. Guimar\u00e3es et al.: Optimization of MLP Neural Networks in 8-bit Microcontrollers using Program Memory.' (2021)?",
+            "Does the publication 'Caio J. B. V. Guimar\u00e3es et al.: Optimization of MLP Neural Networks in 8-bit Microcontrollers using Program Memory.' (2021) have any authors?",
+            "Who is the author of the publication 'Caio J. B. V. Guimar\u00e3es et al.: Optimization of MLP Neural Networks in 8-bit Microcontrollers using Program Memory.' (2021)?",
+            "What is the publication date of 'Caio J. B. V. Guimar\u00e3es et al.: Optimization of MLP Neural Networks in 8-bit Microcontrollers using Program Memory.' (2021)?",
+            "What is the title of the publication authored by 'Caio J. B. V. Guimar\u00e3es et al.'?"
+        ],
+        "cost": {
+            "total_tokens": 1426,
+            "prompt_tokens": 1047,
+            "completion_tokens": 379
+        }
+    },
+    {
+        "idx": 11,
+        "dialogue": [
+            "How many authors contributed to Milton Roberto Heinen et al.: Using a Gaussian mixture neural network for incremental learning and robotics. (2012)?",
+            "Are there any other publications authored by the authors of They: Using a Gaussian mixture neural network for incremental learning and robotics. (2012)?",
+            "Who are the authors of They: Using a Gaussian mixture neural network for incremental learning and robotics. (2012)?",
+            "What year was They: Using a Gaussian mixture neural network for incremental learning and robotics. (2012) published?",
+            "Are there any other creators that have authored a publication?"
+        ],
+        "original": [
+            "How many authors contributed to Milton Roberto Heinen et al.: Using a Gaussian mixture neural network for incremental learning and robotics. (2012)?",
+            "Are there any other publications authored by the authors of Milton Roberto Heinen et al.: Using a Gaussian mixture neural network for incremental learning and robotics. (2012)?",
+            "Who are the authors of Milton Roberto Heinen et al.: Using a Gaussian mixture neural network for incremental learning and robotics. (2012)?",
+            "What year was Milton Roberto Heinen et al.: Using a Gaussian mixture neural network for incremental learning and robotics. (2012) published?",
+            "Are there any other creators that have authored a publication?"
+        ],
+        "cost": {
+            "total_tokens": 1262,
+            "prompt_tokens": 935,
+            "completion_tokens": 327
+        }
+    },
+    {
+        "idx": 12,
+        "dialogue": [
+            "How many authors are there in Mashud Rana et al.: Prediction intervals for electricity load forecasting using neural networks. (2013)?",
+            "Who are the authors of them: Prediction intervals for electricity load forecasting using neural networks. (2013)?",
+            "Is Mashud Rana an author of them: Prediction intervals for electricity load forecasting using neural networks. (2013)?",
+            "What is the date of publication of them: Prediction intervals for electricity load forecasting using neural networks. (2013)?",
+            "What is the title of the publication authored by them?"
+        ],
+        "original": [
+            "How many authors are there in Mashud Rana et al.: Prediction intervals for electricity load forecasting using neural networks. (2013)?",
+            "Who are the authors of Mashud Rana et al.: Prediction intervals for electricity load forecasting using neural networks. (2013)?",
+            "Is Mashud Rana an author of Mashud Rana et al.: Prediction intervals for electricity load forecasting using neural networks. (2013)?",
+            "What is the date of publication of Mashud Rana et al.: Prediction intervals for electricity load forecasting using neural networks. (2013)?",
+            "What is the title of the publication authored by Mashud Rana?"
+        ],
+        "cost": {
+            "total_tokens": 1217,
+            "prompt_tokens": 923,
+            "completion_tokens": 294
+        }
+    },
+    {
+        "idx": 14,
+        "dialogue": [
+            "How many publications has Olivier Ferret authored?",
+            "Is he the author of ANTHAPSI?",
+            "What year was ANTHAPSI published?",
+            "What is the title of the publication authored by him?",
+            "Who is the author of ANTHAPSI?"
+        ],
+        "original": [
+            "How many publications has Olivier Ferret authored?",
+            "Is Olivier Ferret the author of ANTHAPSI?",
+            "What year was ANTHAPSI published?",
+            "What is the title of the publication authored by Olivier Ferret?",
+            "Who is the author of ANTHAPSI?"
+        ],
+        "cost": {
+            "total_tokens": 1090,
+            "prompt_tokens": 908,
+            "completion_tokens": 182
+        }
+    },
+    {
+        "idx": 15,
+        "dialogue": [
+            "How many authors are associated with 'Mobile service provision in harsh environments'?",
+            "Is 'Kamill Panitzek' an author of it?",
+            "Who is the author of it?",
+            "What is the title of the publication authored by 'Kamill Panitzek'?",
+            "When was it published?"
+        ],
+        "original": [
+            "How many authors are associated with 'Mobile service provision in harsh environments'?",
+            "Is 'Kamill Panitzek' an author of 'Mobile service provision in harsh environments'?",
+            "Who is the author of 'Mobile service provision in harsh environments'?",
+            "What is the title of the publication authored by 'Kamill Panitzek'?",
+            "When was 'Mobile service provision in harsh environments' published?"
+        ],
+        "cost": {
+            "total_tokens": 1107,
+            "prompt_tokens": 896,
+            "completion_tokens": 211
+        }
+    },
+    {
+        "idx": 16,
+        "dialogue": [
+            "How many authors wrote Abstraction-based analysis of hybrid automata? ",
+            "Did Sergiy Bogomolov author it? ",
+            "What year was it published? ",
+            "Who wrote it? ",
+            "What is the title of the publication authored by Sergiy Bogomolov? "
+        ],
+        "original": [
+            "How many authors wrote Abstraction-based analysis of hybrid automata? ",
+            "Did Sergiy Bogomolov author Abstraction-based analysis of hybrid automata? ",
+            "What year was Abstraction-based analysis of hybrid automata published? ",
+            "Who wrote Abstraction-based analysis of hybrid automata? ",
+            "What is the title of the publication authored by Sergiy Bogomolov? "
+        ],
+        "cost": {
+            "total_tokens": 1124,
+            "prompt_tokens": 906,
+            "completion_tokens": 218
+        }
+    },
+    {
+        "idx": 23,
+        "dialogue": [
+            "How many authors are associated with the publication 'Falak Sher: Abstraction and refinement of probabilistic automata using modal stochastic games. (2015)'?",
+            "Who is the author of the publication 'It'?",
+            "Is 'Falak Sher' an author of the publication 'It'?",
+            "What is the date of publication of 'It'?",
+            "What other publications has 'Falak Sher' authored?"
+        ],
+        "original": [
+            "How many authors are associated with the publication 'Falak Sher: Abstraction and refinement of probabilistic automata using modal stochastic games. (2015)'?",
+            "Who is the author of the publication 'Falak Sher: Abstraction and refinement of probabilistic automata using modal stochastic games. (2015)'?",
+            "Is 'Falak Sher' an author of the publication 'Abstraction and refinement of probabilistic automata using modal stochastic games. (2015)'?",
+            "What is the date of publication of 'Falak Sher: Abstraction and refinement of probabilistic automata using modal stochastic games. (2015)'?",
+            "What other publications has 'Falak Sher' authored?"
+        ],
+        "cost": {
+            "total_tokens": 1291,
+            "prompt_tokens": 981,
+            "completion_tokens": 310
+        }
+    },
+    {
+        "idx": 24,
+        "dialogue": [
+            "How many publications did Wolfram Sperber author?",
+            "Did he author any other publications in 1980?",
+            "Who authored the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen. (1980)?",
+            "What other publications did he author?",
+            "What year did he author 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen. (1980)?'"
+        ],
+        "original": [
+            "How many publications did Wolfram Sperber author?",
+            "Did Wolfram Sperber author any other publications in 1980?",
+            "Who authored the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen. (1980)?",
+            "What other publications did Wolfram Sperber author?",
+            "What year did Wolfram Sperber author 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen. (1980)?'"
+        ],
+        "cost": {
+            "total_tokens": 1284,
+            "prompt_tokens": 950,
+            "completion_tokens": 334
+        }
+    },
+    {
+        "idx": 26,
+        "dialogue": [
+            "How many publications has Michael Braun authored?",
+            "Is he the author of Affective automotive user interfaces?",
+            "Who is the author of Affective automotive user interfaces?",
+            "What is the date of publication for Affective automotive user interfaces?",
+            "What other publications has he authored?"
+        ],
+        "original": [
+            "How many publications has Michael Braun authored?",
+            "Is Michael Braun the author of Affective automotive user interfaces?",
+            "Who is the author of Affective automotive user interfaces?",
+            "What is the date of publication for Affective automotive user interfaces?",
+            "What other publications has Michael Braun authored?"
+        ],
+        "cost": {
+            "total_tokens": 1018,
+            "prompt_tokens": 838,
+            "completion_tokens": 180
+        }
+    },
+    {
+        "idx": 30,
+        "dialogue": [
+            "How many authors are associated with Elaheh Alipour Chavary et al.: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021)?",
+            "Who is the author of They: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021)?",
+            "Is They: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021) authored by a Creator?",
+            "What is the publication date of They: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021)?",
+            "Are there any other publications authored by the same Creator as They: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021)?"
+        ],
+        "original": [
+            "How many authors are associated with Elaheh Alipour Chavary et al.: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021)?",
+            "Who is the author of Elaheh Alipour Chavary et al.: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021)?",
+            "Is Elaheh Alipour Chavary et al.: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021) authored by a Creator?",
+            "What is the publication date of Elaheh Alipour Chavary et al.: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021)?",
+            "Are there any other publications authored by the same Creator as Elaheh Alipour Chavary et al.: Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns. (2021)?"
+        ],
+        "cost": {
+            "total_tokens": 1418,
+            "prompt_tokens": 1000,
+            "completion_tokens": 418
+        }
+    },
+    {
+        "idx": 32,
+        "dialogue": [
+            "How many publications has Christa Womser-Hacker authored?",
+            "Is Der PADOK-Retrievaltest a publication authored by her?",
+            "What is the title of the publication authored by her?",
+            "When was Der PADOK-Retrievaltest published?",
+            "Who is the author of Der PADOK-Retrievaltest?"
+        ],
+        "original": [
+            "How many publications has Christa Womser-Hacker authored?",
+            "Is Der PADOK-Retrievaltest a publication authored by Christa Womser-Hacker?",
+            "What is the title of the publication authored by Christa Womser-Hacker?",
+            "When was Der PADOK-Retrievaltest published?",
+            "Who is the author of Der PADOK-Retrievaltest?"
+        ],
+        "cost": {
+            "total_tokens": 1180,
+            "prompt_tokens": 927,
+            "completion_tokens": 253
+        }
+    },
+    {
+        "idx": 34,
+        "dialogue": [
+            "How many authors are there in Beatriz Remeseiro et al.: Objective quality assessment of retinal images based on texture features. (2017)?",
+            "Who is the author of them.: Objective quality assessment of retinal images based on texture features. (2017)?",
+            "Is Beatriz Remeseiro an author of them.: Objective quality assessment of retinal images based on texture features. (2017)?",
+            "When was them.: Objective quality assessment of retinal images based on texture features. (2017) published?",
+            "What is the title of the publication authored by them?"
+        ],
+        "original": [
+            "How many authors are there in Beatriz Remeseiro et al.: Objective quality assessment of retinal images based on texture features. (2017)?",
+            "Who is the author of Beatriz Remeseiro et al.: Objective quality assessment of retinal images based on texture features. (2017)?",
+            "Is Beatriz Remeseiro an author of Beatriz Remeseiro et al.: Objective quality assessment of retinal images based on texture features. (2017)?",
+            "When was Beatriz Remeseiro et al.: Objective quality assessment of retinal images based on texture features. (2017) published?",
+            "What is the title of the publication authored by Beatriz Remeseiro?"
+        ],
+        "cost": {
+            "total_tokens": 1261,
+            "prompt_tokens": 935,
+            "completion_tokens": 326
+        }
+    },
+    {
+        "idx": 35,
+        "dialogue": [
+            "How many authors created the Publication 'Marc\u00edlio Carlos Pereira de Souto et al.: Encoding of Probabilistic Automata into RAM-Based Neural Networks. (2000)'?",
+            "Who are the authors of the Publication 'They: Encoding of Probabilistic Automata into RAM-Based Neural Networks. (2000)'?",
+            "Did the Publication 'They: Encoding of Probabilistic Automata into RAM-Based Neural Networks. (2000)' have any authors?",
+            "When was the Publication 'They: Encoding of Probabilistic Automata into RAM-Based Neural Networks. (2000)' authored by?",
+            "Which Publication was authored by the Creator 'Them.'?"
+        ],
+        "original": [
+            "How many authors created the Publication 'Marc\u00edlio Carlos Pereira de Souto et al.: Encoding of Probabilistic Automata into RAM-Based Neural Networks. (2000)'?",
+            "Who are the authors of the Publication 'Marc\u00edlio Carlos Pereira de Souto et al.: Encoding of Probabilistic Automata into RAM-Based Neural Networks. (2000)'?",
+            "Did the Publication 'Marc\u00edlio Carlos Pereira de Souto et al.: Encoding of Probabilistic Automata into RAM-Based Neural Networks. (2000)' have any authors?",
+            "When was the Publication 'Marc\u00edlio Carlos Pereira de Souto et al.: Encoding of Probabilistic Automata into RAM-Based Neural Networks. (2000)' authored by?",
+            "Which Publication was authored by the Creator 'Marc\u00edlio Carlos Pereira de Souto et al.'?"
+        ],
+        "cost": {
+            "total_tokens": 1369,
+            "prompt_tokens": 993,
+            "completion_tokens": 376
+        }
+    },
+    {
+        "idx": 38,
+        "dialogue": [
+            "What other publications has Christian Kuhlmann authored?",
+            "How many publications has he authored?",
+            "Did he author 'Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen.' in 2001?",
+            "Who is the author of 'Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen.'?",
+            "When was 'Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen.' published?"
+        ],
+        "original": [
+            "What other publications has Christian Kuhlmann authored?",
+            "How many publications has Christian Kuhlmann authored?",
+            "Did Christian Kuhlmann author 'Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen.' in 2001?",
+            "Who is the author of 'Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen.'?",
+            "When was 'Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen.' published?"
+        ],
+        "cost": {
+            "total_tokens": 1215,
+            "prompt_tokens": 920,
+            "completion_tokens": 295
+        }
+    },
+    {
+        "idx": 39,
+        "dialogue": [
+            "How many authors are associated with Oliver Kramer's 2015 publication?",
+            "Did Oliver Kramer author any other publications?",
+            "What other publications have been authored by Oliver Kramer?",
+            "When was it released?",
+            "What is the title of it?"
+        ],
+        "original": [
+            "How many authors are associated with Oliver Kramer's 2015 publication?",
+            "Did Oliver Kramer author any other publications?",
+            "What other publications have been authored by Oliver Kramer?",
+            "When was Oliver Kramer's 2015 publication released?",
+            "What is the title of Oliver Kramer's 2015 publication?"
+        ],
+        "cost": {
+            "total_tokens": 1006,
+            "prompt_tokens": 839,
+            "completion_tokens": 167
+        }
+    },
+    {
+        "idx": 40,
+        "dialogue": [
+            "How many authors are associated with Simon Frederik V\u00f6lker's 2016 publication?",
+            "Is he the only author of the 2016 publication?",
+            "What is the title of the publication authored by him in 2016?",
+            "Who is the author of the publication titled 'Towards interactive desk workspaces.'?",
+            "What year was the publication 'Towards interactive desk workspaces.' authored by him published?"
+        ],
+        "original": [
+            "How many authors are associated with Simon Frederik V\u00f6lker's 2016 publication?",
+            "Is Simon Frederik V\u00f6lker the only author of the 2016 publication?",
+            "What is the title of the publication authored by Simon Frederik V\u00f6lker in 2016?",
+            "Who is the author of the publication titled 'Towards interactive desk workspaces.'?",
+            "What year was the publication 'Towards interactive desk workspaces.' authored by Simon Frederik V\u00f6lker published?"
+        ],
+        "cost": {
+            "total_tokens": 1154,
+            "prompt_tokens": 890,
+            "completion_tokens": 264
+        }
+    },
+    {
+        "idx": 41,
+        "dialogue": [
+            "How many books has J\u00fcrgen B\u00f6rstler authored?",
+            "Has he written any publications?",
+            "What is the title of the book he wrote?",
+            "What year was Programmieren-im-Grossen: Sprachen, Werkzeuge, Wiederverwendung. published?",
+            "Who is the author of Programmieren-im-Grossen: Sprachen, Werkzeuge, Wiederverwendung.?"
+        ],
+        "original": [
+            "How many books has J\u00fcrgen B\u00f6rstler authored?",
+            "Has J\u00fcrgen B\u00f6rstler written any publications?",
+            "What is the title of the book J\u00fcrgen B\u00f6rstler wrote?",
+            "What year was Programmieren-im-Grossen: Sprachen, Werkzeuge, Wiederverwendung. published?",
+            "Who is the author of Programmieren-im-Grossen: Sprachen, Werkzeuge, Wiederverwendung.?"
+        ],
+        "cost": {
+            "total_tokens": 1196,
+            "prompt_tokens": 922,
+            "completion_tokens": 274
+        }
+    },
+    {
+        "idx": 43,
+        "dialogue": [
+            "How many authors wrote 'Yue Hu: The role of compliance in humans and humanoid robots locomotion. (2017)'?",
+            "Is it an author of 'Yue Hu: The role of compliance in humans and humanoid robots locomotion. (2017)'?",
+            "What is the publication date of it?",
+            "Who are the authors of it?",
+            "What is the title of the publication authored by it?"
+        ],
+        "original": [
+            "How many authors wrote 'Yue Hu: The role of compliance in humans and humanoid robots locomotion. (2017)'?",
+            "Is 'Yue Hu' an author of 'Yue Hu: The role of compliance in humans and humanoid robots locomotion. (2017)'?",
+            "What is the publication date of 'Yue Hu: The role of compliance in humans and humanoid robots locomotion. (2017)'?",
+            "Who are the authors of 'Yue Hu: The role of compliance in humans and humanoid robots locomotion. (2017)'?",
+            "What is the title of the publication authored by 'Yue Hu'?"
+        ],
+        "cost": {
+            "total_tokens": 1207,
+            "prompt_tokens": 931,
+            "completion_tokens": 276
+        }
+    },
+    {
+        "idx": 44,
+        "dialogue": [
+            "How many authors are there in Hendrik Purwins et al.: A New Method for Tracking Modulations in Tonal Music in Audio Data Format. (2000)?",
+            "Is they an author of a Publication?",
+            "What is the title of the Publication authored by them?",
+            "Who are the authors of them: A New Method for Tracking Modulations in Tonal Music in Audio Data Format. (2000)?",
+            "When was them: A New Method for Tracking Modulations in Tonal Music in Audio Data Format. (2000) published?"
+        ],
+        "original": [
+            "How many authors are there in Hendrik Purwins et al.: A New Method for Tracking Modulations in Tonal Music in Audio Data Format. (2000)?",
+            "Is Hendrik Purwins an author of a Publication?",
+            "What is the title of the Publication authored by Hendrik Purwins et al.?",
+            "Who are the authors of Hendrik Purwins et al.: A New Method for Tracking Modulations in Tonal Music in Audio Data Format. (2000)?",
+            "When was Hendrik Purwins et al.: A New Method for Tracking Modulations in Tonal Music in Audio Data Format. (2000) published?"
+        ],
+        "cost": {
+            "total_tokens": 1237,
+            "prompt_tokens": 946,
+            "completion_tokens": 291
+        }
+    },
+    {
+        "idx": 45,
+        "dialogue": [
+            "How many authors are associated with Xueyuan She et al.: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020)?",
+            "Who are the authors of They: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020)?",
+            "Is Xueyuan She an author of They: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020)?",
+            "When was They: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020) published?",
+            "What is the title of the publication authored by Them?"
+        ],
+        "original": [
+            "How many authors are associated with Xueyuan She et al.: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020)?",
+            "Who are the authors of Xueyuan She et al.: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020)?",
+            "Is Xueyuan She an author of Xueyuan She et al.: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020)?",
+            "When was Xueyuan She et al.: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020) published?",
+            "What is the title of the publication authored by Xueyuan She?"
+        ],
+        "cost": {
+            "total_tokens": 1378,
+            "prompt_tokens": 994,
+            "completion_tokens": 384
+        }
+    },
+    {
+        "idx": 46,
+        "dialogue": [
+            "How many authors are associated with the publication 'S\u00e9rgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)'?",
+            "Who are the authors of 'They: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)'?",
+            "Is 'They: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)' authored by any Creators?",
+            "What is the date of publication for 'They: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)'?",
+            "What other publications has 'Them' authored?"
+        ],
+        "original": [
+            "How many authors are associated with the publication 'S\u00e9rgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)'?",
+            "Who are the authors of 'S\u00e9rgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)'?",
+            "Is 'S\u00e9rgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)' authored by any Creators?",
+            "What is the date of publication for 'S\u00e9rgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)'?",
+            "What other publications has 'S\u00e9rgio Ricardo de Melo Queiroz et al.' authored?"
+        ],
+        "cost": {
+            "total_tokens": 1395,
+            "prompt_tokens": 1004,
+            "completion_tokens": 391
+        }
+    },
+    {
+        "idx": 49,
+        "dialogue": [
+            "How many authors contributed to Franziska M\u00fcller's 2020 publication?",
+            "Is she the author of a 2020 publication?",
+            "Who is the creator of her 2020 publication?",
+            "What is the title of her 2020 publication?",
+            "When was her 2020 publication released?"
+        ],
+        "original": [
+            "How many authors contributed to Franziska M\u00fcller's 2020 publication?",
+            "Is Franziska M\u00fcller the author of a 2020 publication?",
+            "Who is the creator of Franziska M\u00fcller's 2020 publication?",
+            "What is the title of Franziska M\u00fcller's 2020 publication?",
+            "When was Franziska M\u00fcller's 2020 publication released?"
+        ],
+        "cost": {
+            "total_tokens": 1057,
+            "prompt_tokens": 867,
+            "completion_tokens": 190
+        }
+    }
+]

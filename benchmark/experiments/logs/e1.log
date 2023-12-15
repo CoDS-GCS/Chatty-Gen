@@ -1,0 +1,484 @@
+2023-12-12 21:14:10,608 - logger - INFO - INDEX : 0 -- start --
+2023-12-12 21:14:10,608 - logger - INFO - INDEX : 0 -- subgraph length = 3 --
+2023-12-12 21:14:10,608 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2023-12-12 21:14:14,004 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2023-12-12 21:14:14,005 - logger - INFO - INDEX : 0 -- question set : ['How many publications has Yosra Zguira authored?', 'Is Yosra Zguira affiliated with the University of Lyon, France?', "What is Yosra Zguira's primary affiliation?", "What year was Yosra Zguira's publication 'Study and development of wireless sensor network architecture tolerant to delays. (Etude et développement d'une architecture de réseaux de capteurs tolérante aux délais). (2018)' published?", "What is the title of Yosra Zguira's publication?"] --
+2023-12-12 21:14:14,005 - logger - INFO - INDEX : 0 -- pronoun identify chain start --
+2023-12-12 21:14:14,691 - logger - INFO - INDEX : 0 -- pronoun identify chain end --
+2023-12-12 21:14:14,691 - logger - INFO - INDEX : 0 -- pronoun identify : ['Yosra Zguira', 'She/Her'] --
+2023-12-12 21:14:14,691 - logger - INFO - INDEX : 0 -- pronoun substitute chain start --
+2023-12-12 21:14:16,730 - logger - INFO - INDEX : 0 -- pronoun substitute chain end --
+2023-12-12 21:14:16,730 - logger - INFO - INDEX : 0 -- pronoun substituted : ['Is she affiliated with the University of Lyon, France?', 'What is her primary affiliation?', "What year was her publication 'Study and development of wireless sensor network architecture tolerant to delays. (Etude et développement d'une architecture de réseaux de capteurs tolérante aux délais). (2018)' published?", 'What is the title of her publication?'] --
+2023-12-12 21:14:16,730 - logger - INFO - INDEX : 0 -- dialogue : {'idx': 0, 'dialogue': ['How many publications has Yosra Zguira authored?', 'Is she affiliated with the University of Lyon, France?', 'What is her primary affiliation?', "What year was her publication 'Study and development of wireless sensor network architecture tolerant to delays. (Etude et développement d'une architecture de réseaux de capteurs tolérante aux délais). (2018)' published?", 'What is the title of her publication?'], 'original': ['How many publications has Yosra Zguira authored?', 'Is Yosra Zguira affiliated with the University of Lyon, France?', "What is Yosra Zguira's primary affiliation?", "What year was Yosra Zguira's publication 'Study and development of wireless sensor network architecture tolerant to delays. (Etude et développement d'une architecture de réseaux de capteurs tolérante aux délais). (2018)' published?", "What is the title of Yosra Zguira's publication?"], 'cost': {'total_tokens': 1324, 'prompt_tokens': 1049, 'completion_tokens': 275}} --
+2023-12-12 21:14:16,730 - logger - INFO - INDEX : 1 -- start --
+2023-12-12 21:14:16,730 - logger - INFO - INDEX : 1 -- subgraph length = 1 --
+2023-12-12 21:14:16,730 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2023-12-12 21:14:19,825 - logger - INFO - INDEX : 1 -- ERROR: 1 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-12 21:14:19,825 - logger - INFO - INDEX : 2 -- start --
+2023-12-12 21:14:19,825 - logger - INFO - INDEX : 2 -- subgraph length = 1 --
+2023-12-12 21:14:19,825 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2023-12-12 21:14:24,786 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2023-12-12 21:14:24,786 - logger - INFO - INDEX : 2 -- question set : ['How many papers has Andreas Geiger 0002 authored in 2021?', 'What is the title of the paper authored by Andreas Geiger 0002 in 2021?', "Is Andreas Geiger 0002 the only author of the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' in 2021?", "When was the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' authored by Andreas Geiger 0002 published?", "Who authored the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' in 2021?"] --
+2023-12-12 21:14:24,787 - logger - INFO - INDEX : 2 -- pronoun identify chain start --
+2023-12-12 21:14:25,721 - logger - INFO - INDEX : 2 -- pronoun identify chain end --
+2023-12-12 21:14:25,722 - logger - INFO - INDEX : 2 -- pronoun identify : ['Andreas Geiger 0002', 'He/Him'] --
+2023-12-12 21:14:25,722 - logger - INFO - INDEX : 2 -- pronoun substitute chain start --
+2023-12-12 21:14:30,699 - logger - INFO - INDEX : 2 -- pronoun substitute chain end --
+2023-12-12 21:14:30,699 - logger - INFO - INDEX : 2 -- pronoun substituted : ['What is the title of the paper authored by him in 2021?', "Is he the only author of the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' in 2021?", "When was the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' authored by him published?", "Who authored the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' in 2021?"] --
+2023-12-12 21:14:30,699 - logger - INFO - INDEX : 2 -- dialogue : {'idx': 2, 'dialogue': ['How many papers has Andreas Geiger 0002 authored in 2021?', 'What is the title of the paper authored by him in 2021?', "Is he the only author of the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' in 2021?", "When was the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' authored by him published?", "Who authored the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' in 2021?"], 'original': ['How many papers has Andreas Geiger 0002 authored in 2021?', 'What is the title of the paper authored by Andreas Geiger 0002 in 2021?', "Is Andreas Geiger 0002 the only author of the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' in 2021?", "When was the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' authored by Andreas Geiger 0002 published?", "Who authored the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montagetätigkeiten durch Virtual-Reality-Interaktion.' in 2021?"], 'cost': {'total_tokens': 1418, 'prompt_tokens': 1000, 'completion_tokens': 418}} --
+2023-12-12 21:14:30,699 - logger - INFO - INDEX : 3 -- start --
+2023-12-12 21:14:30,699 - logger - INFO - INDEX : 3 -- subgraph length = 9 --
+2023-12-12 21:14:30,700 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2023-12-12 21:14:33,519 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2023-12-12 21:14:33,519 - logger - INFO - INDEX : 3 -- question set : ['How many papers has Xia Hong 0001 authored?', 'Does Xia Hong 0001 have an affiliation with University of Reading?', 'Which papers has Xia Hong 0001 authored in 2015?', "When was the paper 'Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)' written?", 'Has Xia Hong 0001 authored any papers with Junbin Gao?'] --
+2023-12-12 21:14:33,519 - logger - INFO - INDEX : 3 -- pronoun identify chain start --
+2023-12-12 21:14:34,197 - logger - INFO - INDEX : 3 -- pronoun identify chain end --
+2023-12-12 21:14:34,197 - logger - INFO - INDEX : 3 -- pronoun identify : ['Xia Hong 0001', 'He/Him'] --
+2023-12-12 21:14:34,197 - logger - INFO - INDEX : 3 -- pronoun substitute chain start --
+2023-12-12 21:14:36,496 - logger - INFO - INDEX : 3 -- pronoun substitute chain end --
+2023-12-12 21:14:36,497 - logger - INFO - INDEX : 3 -- pronoun substituted : ['Does he have an affiliation with University of Reading?', 'Which papers has he authored in 2015?', "When was the paper 'Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)' written?", 'Has he authored any papers with Junbin Gao?'] --
+2023-12-12 21:14:36,497 - logger - INFO - INDEX : 3 -- dialogue : {'idx': 3, 'dialogue': ['How many papers has Xia Hong 0001 authored?', 'Does he have an affiliation with University of Reading?', 'Which papers has he authored in 2015?', "When was the paper 'Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)' written?", 'Has he authored any papers with Junbin Gao?'], 'original': ['How many papers has Xia Hong 0001 authored?', 'Does Xia Hong 0001 have an affiliation with University of Reading?', 'Which papers has Xia Hong 0001 authored in 2015?', "When was the paper 'Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)' written?", 'Has Xia Hong 0001 authored any papers with Junbin Gao?'], 'cost': {'total_tokens': 1570, 'prompt_tokens': 1316, 'completion_tokens': 254}} --
+2023-12-12 21:14:36,497 - logger - INFO - INDEX : 4 -- start --
+2023-12-12 21:14:36,497 - logger - INFO - INDEX : 4 -- subgraph length = 1 --
+2023-12-12 21:14:36,497 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2023-12-12 21:14:41,362 - logger - INFO - INDEX : 4 -- ERROR: 4 : Got invalid JSON object. Error: Expecting value: line 8 column 2 (char 486) --
+2023-12-12 21:14:41,362 - logger - INFO - INDEX : 5 -- start --
+2023-12-12 21:14:41,362 - logger - INFO - INDEX : 5 -- subgraph length = 1 --
+2023-12-12 21:14:41,362 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2023-12-12 21:14:49,217 - logger - INFO - INDEX : 5 -- ERROR: 5 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-12 21:14:49,217 - logger - INFO - INDEX : 6 -- start --
+2023-12-12 21:14:49,218 - logger - INFO - INDEX : 6 -- subgraph length = 9 --
+2023-12-12 21:14:49,218 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2023-12-12 21:14:51,469 - logger - INFO - INDEX : 6 -- question set generation chain end --
+2023-12-12 21:14:51,469 - logger - INFO - INDEX : 6 -- question set : ['How many publications has Hiok Chai Quek authored?', 'Has Hiok Chai Quek authored any publications in 2006?', "What is Hiok Chai Quek's primary affiliation?", 'Does Hiok Chai Quek have any publications in 2010?', 'What are the titles of the publications authored by Hiok Chai Quek?'] --
+2023-12-12 21:14:51,469 - logger - INFO - INDEX : 6 -- pronoun identify chain start --
+2023-12-12 21:14:52,258 - logger - INFO - INDEX : 6 -- pronoun identify chain end --
+2023-12-12 21:14:52,258 - logger - INFO - INDEX : 6 -- pronoun identify : ['Hiok Chai Quek', 'He/Him'] --
+2023-12-12 21:14:52,259 - logger - INFO - INDEX : 6 -- pronoun substitute chain start --
+2023-12-12 21:14:53,454 - logger - INFO - INDEX : 6 -- pronoun substitute chain end --
+2023-12-12 21:14:53,454 - logger - INFO - INDEX : 6 -- pronoun substituted : ['Has he authored any publications in 2006?', 'What is his primary affiliation?', 'Does he have any publications in 2010?', 'What are the titles of the publications authored by him?'] --
+2023-12-12 21:14:53,454 - logger - INFO - INDEX : 6 -- dialogue : {'idx': 6, 'dialogue': ['How many publications has Hiok Chai Quek authored?', 'Has he authored any publications in 2006?', 'What is his primary affiliation?', 'Does he have any publications in 2010?', 'What are the titles of the publications authored by him?'], 'original': ['How many publications has Hiok Chai Quek authored?', 'Has Hiok Chai Quek authored any publications in 2006?', "What is Hiok Chai Quek's primary affiliation?", 'Does Hiok Chai Quek have any publications in 2010?', 'What are the titles of the publications authored by Hiok Chai Quek?'], 'cost': {'total_tokens': 1447, 'prompt_tokens': 1263, 'completion_tokens': 184}} --
+2023-12-12 21:14:53,454 - logger - INFO - INDEX : 7 -- start --
+2023-12-12 21:14:53,454 - logger - INFO - INDEX : 7 -- subgraph length = 3 --
+2023-12-12 21:14:53,454 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2023-12-12 21:14:55,105 - logger - INFO - INDEX : 7 -- question set generation chain end --
+2023-12-12 21:14:55,105 - logger - INFO - INDEX : 7 -- question set : ['How many papers has Ata Kabán authored?', 'Is Ata Kabán affiliated with the University of Birmingham?', 'What is the primary affiliation of Ata Kabán?', 'What is the title of the paper Ata Kabán authored in 2019?', 'When was the paper Ata Kabán authored in 2019 published?'] --
+2023-12-12 21:14:55,105 - logger - INFO - INDEX : 7 -- pronoun identify chain start --
+2023-12-12 21:14:55,751 - logger - INFO - INDEX : 7 -- pronoun identify chain end --
+2023-12-12 21:14:55,751 - logger - INFO - INDEX : 7 -- pronoun identify : ['Ata Kabán', 'He/Him'] --
+2023-12-12 21:14:55,751 - logger - INFO - INDEX : 7 -- pronoun substitute chain start --
+2023-12-12 21:14:57,297 - logger - INFO - INDEX : 7 -- pronoun substitute chain end --
+2023-12-12 21:14:57,298 - logger - INFO - INDEX : 7 -- pronoun substituted : ['Is he affiliated with the University of Birmingham?', 'What is the primary affiliation of him?', 'What is the title of the paper he authored in 2019?', 'When was the paper he authored in 2019 published?'] --
+2023-12-12 21:14:57,298 - logger - INFO - INDEX : 7 -- dialogue : {'idx': 7, 'dialogue': ['How many papers has Ata Kabán authored?', 'Is he affiliated with the University of Birmingham?', 'What is the primary affiliation of him?', 'What is the title of the paper he authored in 2019?', 'When was the paper he authored in 2019 published?'], 'original': ['How many papers has Ata Kabán authored?', 'Is Ata Kabán affiliated with the University of Birmingham?', 'What is the primary affiliation of Ata Kabán?', 'What is the title of the paper Ata Kabán authored in 2019?', 'When was the paper Ata Kabán authored in 2019 published?'], 'cost': {'total_tokens': 1118, 'prompt_tokens': 936, 'completion_tokens': 182}} --
+2023-12-12 21:14:57,298 - logger - INFO - INDEX : 8 -- start --
+2023-12-12 21:14:57,298 - logger - INFO - INDEX : 8 -- subgraph length = 1 --
+2023-12-12 21:14:57,298 - logger - INFO - INDEX : 8 -- question set generation chain start --
+2023-12-12 21:15:00,910 - logger - INFO - INDEX : 8 -- question set generation chain end --
+2023-12-12 21:15:00,910 - logger - INFO - INDEX : 8 -- question set : ['How many books has Peter Thiemann authored?', "Did Peter Thiemann author the book 'Konzepte zur effizienten Implementierung strukturell rekursiver Programme.'?", 'What is the title of the book authored by Peter Thiemann?', "When was the book 'Konzepte zur effizienten Implementierung strukturell rekursiver Programme.' published?", "Who authored the book 'Konzepte zur effizienten Implementierung strukturell rekursiver Programme.'?"] --
+2023-12-12 21:15:00,910 - logger - INFO - INDEX : 8 -- pronoun identify chain start --
+2023-12-12 21:15:01,824 - logger - INFO - INDEX : 8 -- pronoun identify chain end --
+2023-12-12 21:15:01,824 - logger - INFO - INDEX : 8 -- pronoun identify : ['Peter Thiemann', 'He/Him'] --
+2023-12-12 21:15:01,824 - logger - INFO - INDEX : 8 -- pronoun substitute chain start --
+2023-12-12 21:15:05,064 - logger - INFO - INDEX : 8 -- ERROR: 8 : Got invalid JSON object. Error: Expecting value: line 2 column 117 (char 118) --
+2023-12-12 21:15:05,064 - logger - INFO - INDEX : 9 -- start --
+2023-12-12 21:15:05,064 - logger - INFO - INDEX : 9 -- subgraph length = 5 --
+2023-12-12 21:15:05,064 - logger - INFO - INDEX : 9 -- question set generation chain start --
+2023-12-12 21:15:07,408 - logger - INFO - INDEX : 9 -- question set generation chain end --
+2023-12-12 21:15:07,408 - logger - INFO - INDEX : 9 -- question set : ['How many papers has Derong Liu 0001 authored?', 'Has Derong Liu 0001 authored any papers in 2016?', "What is Derong Liu 0001's primary affiliation?", 'What papers has Derong Liu 0001 authored since 2010?', 'When was the first paper authored by Derong Liu 0001 published?'] --
+2023-12-12 21:15:07,408 - logger - INFO - INDEX : 9 -- pronoun identify chain start --
+2023-12-12 21:15:08,594 - logger - INFO - INDEX : 9 -- pronoun identify chain end --
+2023-12-12 21:15:08,594 - logger - INFO - INDEX : 9 -- pronoun identify : ['Derong Liu 0001', 'He/Him'] --
+2023-12-12 21:15:08,594 - logger - INFO - INDEX : 9 -- pronoun substitute chain start --
+2023-12-12 21:15:10,234 - logger - INFO - INDEX : 9 -- pronoun substitute chain end --
+2023-12-12 21:15:10,235 - logger - INFO - INDEX : 9 -- pronoun substituted : ['Has he authored any papers in 2016?', 'What is his primary affiliation?', 'What papers has he authored since 2010?', 'When was the first paper authored by him published?'] --
+2023-12-12 21:15:10,235 - logger - INFO - INDEX : 9 -- dialogue : {'idx': 9, 'dialogue': ['How many papers has Derong Liu 0001 authored?', 'Has he authored any papers in 2016?', 'What is his primary affiliation?', 'What papers has he authored since 2010?', 'When was the first paper authored by him published?'], 'original': ['How many papers has Derong Liu 0001 authored?', 'Has Derong Liu 0001 authored any papers in 2016?', "What is Derong Liu 0001's primary affiliation?", 'What papers has Derong Liu 0001 authored since 2010?', 'When was the first paper authored by Derong Liu 0001 published?'], 'cost': {'total_tokens': 1223, 'prompt_tokens': 1042, 'completion_tokens': 181}} --
+2023-12-12 21:15:10,235 - logger - INFO - INDEX : 10 -- start --
+2023-12-12 21:15:10,235 - logger - INFO - INDEX : 10 -- subgraph length = 3 --
+2023-12-12 21:15:10,235 - logger - INFO - INDEX : 10 -- question set generation chain start --
+2023-12-12 21:15:15,848 - logger - INFO - INDEX : 10 -- ERROR: 10 : Got invalid JSON object. Error: Expecting value: line 8 column 2 (char 762) --
+2023-12-12 21:15:15,848 - logger - INFO - INDEX : 11 -- start --
+2023-12-12 21:15:15,848 - logger - INFO - INDEX : 11 -- subgraph length = 3 --
+2023-12-12 21:15:15,848 - logger - INFO - INDEX : 11 -- question set generation chain start --
+2023-12-12 21:15:19,439 - logger - INFO - INDEX : 11 -- question set generation chain end --
+2023-12-12 21:15:19,440 - logger - INFO - INDEX : 11 -- question set : ["How many authors wrote 'Milton Roberto Heinen et al.: Using a Gaussian mixture neural network for incremental learning and robotics. (2012)'?", "Who authored 'Milton Roberto Heinen et al.: Using a Gaussian mixture neural network for incremental learning and robotics. (2012)'?", 'Is Paulo Martins Engel affiliated with the Federal University of Rio Grande do Sul, Porto Alegre, Brazil?', "What is Paulo Martins Engel's primary affiliation?", "What year was 'Milton Roberto Heinen et al.: Using a Gaussian mixture neural network for incremental learning and robotics. (2012)' published?"] --
+2023-12-12 21:15:19,440 - logger - INFO - INDEX : 11 -- pronoun identify chain start --
+2023-12-12 21:15:20,636 - logger - INFO - INDEX : 11 -- pronoun identify chain end --
+2023-12-12 21:15:20,636 - logger - INFO - INDEX : 11 -- pronoun identify : ['Milton Roberto Heinen et al.: Using a Gaussian mixture neural network for incremental learning and robotics. (2012)', 'It'] --
+2023-12-12 21:15:20,636 - logger - INFO - INDEX : 11 -- pronoun substitute chain start --
+2023-12-12 21:15:22,399 - logger - INFO - INDEX : 11 -- ERROR: 11 : Got invalid JSON object. Error: Expecting value: line 2 column 33 (char 34) --
+2023-12-12 21:15:22,399 - logger - INFO - INDEX : 12 -- start --
+2023-12-12 21:15:22,399 - logger - INFO - INDEX : 12 -- subgraph length = 8 --
+2023-12-12 21:15:22,399 - logger - INFO - INDEX : 12 -- question set generation chain start --
+2023-12-12 21:15:24,509 - logger - INFO - INDEX : 12 -- question set generation chain end --
+2023-12-12 21:15:24,509 - logger - INFO - INDEX : 12 -- question set : ['How many papers has Irena Koprinska authored?', 'Has Irena Koprinska authored any papers in 2018?', "What is Irena Koprinska's primary affiliation?", 'What papers has Irena Koprinska authored in 2015?', 'What is the earliest paper Irena Koprinska has authored?'] --
+2023-12-12 21:15:24,509 - logger - INFO - INDEX : 12 -- pronoun identify chain start --
+2023-12-12 21:15:25,342 - logger - INFO - INDEX : 12 -- pronoun identify chain end --
+2023-12-12 21:15:25,343 - logger - INFO - INDEX : 12 -- pronoun identify : ['Irena Koprinska', 'She/Her'] --
+2023-12-12 21:15:25,343 - logger - INFO - INDEX : 12 -- pronoun substitute chain start --
+2023-12-12 21:15:26,564 - logger - INFO - INDEX : 12 -- pronoun substitute chain end --
+2023-12-12 21:15:26,564 - logger - INFO - INDEX : 12 -- pronoun substituted : ['Has she authored any papers in 2018?', 'What is her primary affiliation?', 'What papers has she authored in 2015?', 'What is the earliest paper she has authored?'] --
+2023-12-12 21:15:26,564 - logger - INFO - INDEX : 12 -- dialogue : {'idx': 12, 'dialogue': ['How many papers has Irena Koprinska authored?', 'Has she authored any papers in 2018?', 'What is her primary affiliation?', 'What papers has she authored in 2015?', 'What is the earliest paper she has authored?'], 'original': ['How many papers has Irena Koprinska authored?', 'Has Irena Koprinska authored any papers in 2018?', "What is Irena Koprinska's primary affiliation?", 'What papers has Irena Koprinska authored in 2015?', 'What is the earliest paper Irena Koprinska has authored?'], 'cost': {'total_tokens': 1395, 'prompt_tokens': 1205, 'completion_tokens': 190}} --
+2023-12-12 21:15:26,564 - logger - INFO - INDEX : 13 -- start --
+2023-12-12 21:15:26,564 - logger - INFO - INDEX : 13 -- subgraph length = 1 --
+2023-12-12 21:15:26,564 - logger - INFO - INDEX : 13 -- question set generation chain start --
+2023-12-12 21:15:31,970 - logger - INFO - INDEX : 13 -- ERROR: 13 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-12 21:15:31,971 - logger - INFO - INDEX : 14 -- start --
+2023-12-12 21:15:31,971 - logger - INFO - INDEX : 14 -- subgraph length = 1 --
+2023-12-12 21:15:31,971 - logger - INFO - INDEX : 14 -- question set generation chain start --
+2023-12-12 21:15:35,034 - logger - INFO - INDEX : 14 -- ERROR: 14 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-12 21:15:35,034 - logger - INFO - INDEX : 15 -- start --
+2023-12-12 21:15:35,034 - logger - INFO - INDEX : 15 -- subgraph length = 4 --
+2023-12-12 21:15:35,034 - logger - INFO - INDEX : 15 -- question set generation chain start --
+2023-12-12 21:15:38,106 - logger - INFO - INDEX : 15 -- question set generation chain end --
+2023-12-12 21:15:38,106 - logger - INFO - INDEX : 15 -- question set : ['How many publications has Kamill Panitzek authored?', "Did Kamill Panitzek author 'Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016)'?", "What is Kamill Panitzek's primary affiliation?", 'What is the title of a publication authored by Kamill Panitzek?', "When was 'Kamill Panitzek: Mobile service provision in harsh environments = Bereitstellung mobiler Dienste in rauen Umgebungen. (2014)' published?"] --
+2023-12-12 21:15:38,106 - logger - INFO - INDEX : 15 -- pronoun identify chain start --
+2023-12-12 21:15:39,059 - logger - INFO - INDEX : 15 -- pronoun identify chain end --
+2023-12-12 21:15:39,059 - logger - INFO - INDEX : 15 -- pronoun identify : ['Kamill Panitzek', 'He/Him'] --
+2023-12-12 21:15:39,059 - logger - INFO - INDEX : 15 -- pronoun substitute chain start --
+2023-12-12 21:15:41,285 - logger - INFO - INDEX : 15 -- ERROR: 15 : Got invalid JSON object. Error: Expecting value: line 2 column 141 (char 142) --
+2023-12-12 21:15:41,285 - logger - INFO - INDEX : 16 -- start --
+2023-12-12 21:15:41,285 - logger - INFO - INDEX : 16 -- subgraph length = 3 --
+2023-12-12 21:15:41,285 - logger - INFO - INDEX : 16 -- question set generation chain start --
+2023-12-12 21:15:43,612 - logger - INFO - INDEX : 16 -- question set generation chain end --
+2023-12-12 21:15:43,612 - logger - INFO - INDEX : 16 -- question set : ['How many works has Sergiy Bogomolov authored?', 'Is Sergiy Bogomolov affiliated with IST Austria, Klosterneuburg, Austria?', 'What is the title of the work authored by Sergiy Bogomolov?', 'When was the work authored by Sergiy Bogomolov published?', 'What are the primary affiliations of Sergiy Bogomolov?'] --
+2023-12-12 21:15:43,612 - logger - INFO - INDEX : 16 -- pronoun identify chain start --
+2023-12-12 21:15:44,476 - logger - INFO - INDEX : 16 -- pronoun identify chain end --
+2023-12-12 21:15:44,476 - logger - INFO - INDEX : 16 -- pronoun identify : ['Sergiy Bogomolov', 'He/Him'] --
+2023-12-12 21:15:44,476 - logger - INFO - INDEX : 16 -- pronoun substitute chain start --
+2023-12-12 21:15:46,183 - logger - INFO - INDEX : 16 -- pronoun substitute chain end --
+2023-12-12 21:15:46,183 - logger - INFO - INDEX : 16 -- pronoun substituted : ['Is he affiliated with IST Austria, Klosterneuburg, Austria?', 'What is the title of the work authored by him?', 'When was the work authored by him published?', 'What are the primary affiliations of him?'] --
+2023-12-12 21:15:46,183 - logger - INFO - INDEX : 16 -- dialogue : {'idx': 16, 'dialogue': ['How many works has Sergiy Bogomolov authored?', 'Is he affiliated with IST Austria, Klosterneuburg, Austria?', 'What is the title of the work authored by him?', 'When was the work authored by him published?', 'What are the primary affiliations of him?'], 'original': ['How many works has Sergiy Bogomolov authored?', 'Is Sergiy Bogomolov affiliated with IST Austria, Klosterneuburg, Austria?', 'What is the title of the work authored by Sergiy Bogomolov?', 'When was the work authored by Sergiy Bogomolov published?', 'What are the primary affiliations of Sergiy Bogomolov?'], 'cost': {'total_tokens': 1222, 'prompt_tokens': 1006, 'completion_tokens': 216}} --
+2023-12-12 21:15:46,183 - logger - INFO - INDEX : 17 -- start --
+2023-12-12 21:15:46,183 - logger - INFO - INDEX : 17 -- subgraph length = 3 --
+2023-12-12 21:15:46,183 - logger - INFO - INDEX : 17 -- question set generation chain start --
+2023-12-12 21:15:50,673 - logger - INFO - INDEX : 17 -- question set generation chain end --
+2023-12-12 21:15:50,673 - logger - INFO - INDEX : 17 -- question set : ['How many publications has Abderrahim Ait Wakrime authored?', 'Which university is Abderrahim Ait Wakrime affiliated with?', "Did Abderrahim Ait Wakrime author the publication 'Une approche par composants pour l'analyse visuelle interactive de résultats issus de simulations numériques. (A component-based approach for interactive visual analysis of numerical simulation results). (2015)'?", 'What is the primary affiliation of Abderrahim Ait Wakrime?', "What year was the publication 'Une approche par composants pour l'analyse visuelle interactive de résultats issus de simulations numériques. (A component-based approach for interactive visual analysis of numerical simulation results). (2015)' authored by Abderrahim Ait Wakrime published?"] --
+2023-12-12 21:15:50,673 - logger - INFO - INDEX : 17 -- pronoun identify chain start --
+2023-12-12 21:15:51,638 - logger - INFO - INDEX : 17 -- pronoun identify chain end --
+2023-12-12 21:15:51,638 - logger - INFO - INDEX : 17 -- pronoun identify : ['Abderrahim Ait Wakrime', 'He/Him'] --
+2023-12-12 21:15:51,638 - logger - INFO - INDEX : 17 -- pronoun substitute chain start --
+2023-12-12 21:15:54,944 - logger - INFO - INDEX : 17 -- ERROR: 17 : Got invalid JSON object. Error: Expecting value: line 2 column 303 (char 304) --
+2023-12-12 21:15:54,944 - logger - INFO - INDEX : 18 -- start --
+2023-12-12 21:15:54,944 - logger - INFO - INDEX : 18 -- subgraph length = 1 --
+2023-12-12 21:15:54,944 - logger - INFO - INDEX : 18 -- question set generation chain start --
+2023-12-12 21:16:00,066 - logger - INFO - INDEX : 18 -- question set generation chain end --
+2023-12-12 21:16:00,067 - logger - INFO - INDEX : 18 -- question set : ['How many publications has Aluizio F. R. Araújo authored?', "Did Aluizio F. R. Araújo author 'Luciana P. P. Bueno and Aluizio F. R. Araújo: Controlling Chaos in Chaotic Bidirectional Associative Memories. (2006)'?", 'What is the title of the publication authored by Aluizio F. R. Araújo?', "Who co-authored 'Luciana P. P. Bueno and Aluizio F. R. Araújo: Controlling Chaos in Chaotic Bidirectional Associative Memories. (2006)' with Aluizio F. R. Araújo?", "What year was 'Luciana P. P. Bueno and Aluizio F. R. Araújo: Controlling Chaos in Chaotic Bidirectional Associative Memories. (2006)' published?"] --
+2023-12-12 21:16:00,067 - logger - INFO - INDEX : 18 -- pronoun identify chain start --
+2023-12-12 21:16:01,031 - logger - INFO - INDEX : 18 -- pronoun identify chain end --
+2023-12-12 21:16:01,031 - logger - INFO - INDEX : 18 -- pronoun identify : ['Aluizio F. R. Araújo', 'He/Him'] --
+2023-12-12 21:16:01,031 - logger - INFO - INDEX : 18 -- pronoun substitute chain start --
+2023-12-12 21:16:04,242 - logger - INFO - INDEX : 18 -- ERROR: 18 : Got invalid JSON object. Error: Expecting value: line 2 column 151 (char 152) --
+2023-12-12 21:16:04,242 - logger - INFO - INDEX : 19 -- start --
+2023-12-12 21:16:04,242 - logger - INFO - INDEX : 19 -- subgraph length = 1 --
+2023-12-12 21:16:04,242 - logger - INFO - INDEX : 19 -- question set generation chain start --
+2023-12-12 21:16:09,910 - logger - INFO - INDEX : 19 -- question set generation chain end --
+2023-12-12 21:16:09,910 - logger - INFO - INDEX : 19 -- question set : ["How many authors wrote 'Daewon Lee and Jaewook Lee: Support Vector Classifier Using Basin-Based Sampling for Security Assessment of Nonlinear Power and Control Systems. (2006)'?", "Who authored 'Daewon Lee and Jaewook Lee: Support Vector Classifier Using Basin-Based Sampling for Security Assessment of Nonlinear Power and Control Systems. (2006)'?", "Was 'Daewon Lee and Jaewook Lee: Support Vector Classifier Using Basin-Based Sampling for Security Assessment of Nonlinear Power and Control Systems. (2006)' authored by Jaewook Lee 0001?", "What year was 'Daewon Lee and Jaewook Lee: Support Vector Classifier Using Basin-Based Sampling for Security Assessment of Nonlinear Power and Control Systems. (2006)' published?", 'What is the title of the paper authored by Jaewook Lee 0001?'] --
+2023-12-12 21:16:09,910 - logger - INFO - INDEX : 19 -- pronoun identify chain start --
+2023-12-12 21:16:10,791 - logger - INFO - INDEX : 19 -- pronoun identify chain end --
+2023-12-12 21:16:10,791 - logger - INFO - INDEX : 19 -- pronoun identify : ['Daewon Lee and Jaewook Lee', 'They/Them'] --
+2023-12-12 21:16:10,791 - logger - INFO - INDEX : 19 -- pronoun substitute chain start --
+2023-12-12 21:16:14,041 - logger - INFO - INDEX : 19 -- ERROR: 19 : Got invalid JSON object. Error: Expecting value: line 2 column 484 (char 485) --
+2023-12-12 21:16:14,041 - logger - INFO - INDEX : 20 -- start --
+2023-12-12 21:16:14,041 - logger - INFO - INDEX : 20 -- subgraph length = 3 --
+2023-12-12 21:16:14,041 - logger - INFO - INDEX : 20 -- question set generation chain start --
+2023-12-12 21:16:16,193 - logger - INFO - INDEX : 20 -- question set generation chain end --
+2023-12-12 21:16:16,193 - logger - INFO - INDEX : 20 -- question set : ['How many works has Frank Müller 0005 authored?', 'Is Frank Müller 0005 affiliated with Dresden University of Technology, Germany?', 'What is the title of the work authored by Frank Müller 0005?', 'What is the publication date of the work authored by Frank Müller 0005?', 'What is the primary affiliation of Frank Müller 0005?'] --
+2023-12-12 21:16:16,193 - logger - INFO - INDEX : 20 -- pronoun identify chain start --
+2023-12-12 21:16:17,089 - logger - INFO - INDEX : 20 -- pronoun identify chain end --
+2023-12-12 21:16:17,089 - logger - INFO - INDEX : 20 -- pronoun identify : ['Frank Müller 0005', 'He/Him'] --
+2023-12-12 21:16:17,089 - logger - INFO - INDEX : 20 -- pronoun substitute chain start --
+2023-12-12 21:16:18,919 - logger - INFO - INDEX : 20 -- pronoun substitute chain end --
+2023-12-12 21:16:18,919 - logger - INFO - INDEX : 20 -- pronoun substituted : ['Is he affiliated with Dresden University of Technology, Germany?', 'What is the title of the work authored by him?', 'What is the publication date of the work authored by him?', 'What is the primary affiliation of him?'] --
+2023-12-12 21:16:18,920 - logger - INFO - INDEX : 20 -- dialogue : {'idx': 20, 'dialogue': ['How many works has Frank Müller 0005 authored?', 'Is he affiliated with Dresden University of Technology, Germany?', 'What is the title of the work authored by him?', 'What is the publication date of the work authored by him?', 'What is the primary affiliation of him?'], 'original': ['How many works has Frank Müller 0005 authored?', 'Is Frank Müller 0005 affiliated with Dresden University of Technology, Germany?', 'What is the title of the work authored by Frank Müller 0005?', 'What is the publication date of the work authored by Frank Müller 0005?', 'What is the primary affiliation of Frank Müller 0005?'], 'cost': {'total_tokens': 1271, 'prompt_tokens': 1070, 'completion_tokens': 201}} --
+2023-12-12 21:16:18,920 - logger - INFO - INDEX : 21 -- start --
+2023-12-12 21:16:18,920 - logger - INFO - INDEX : 21 -- subgraph length = 1 --
+2023-12-12 21:16:18,920 - logger - INFO - INDEX : 21 -- question set generation chain start --
+2023-12-12 21:16:24,007 - logger - INFO - INDEX : 21 -- question set generation chain end --
+2023-12-12 21:16:24,007 - logger - INFO - INDEX : 21 -- question set : ['How many authors are there in Manuel Gámez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?', 'Is Edgar N. Sánchez an author of Manuel Gámez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?', 'Who are the authors of Manuel Gámez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?', 'When was Manuel Gámez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011) published?', 'What is the title of the paper authored by Edgar N. Sánchez?'] --
+2023-12-12 21:16:24,007 - logger - INFO - INDEX : 21 -- pronoun identify chain start --
+2023-12-12 21:16:24,944 - logger - INFO - INDEX : 21 -- pronoun identify chain end --
+2023-12-12 21:16:24,944 - logger - INFO - INDEX : 21 -- pronoun identify : ['Manuel Gámez et al.', 'They/Them'] --
+2023-12-12 21:16:24,944 - logger - INFO - INDEX : 21 -- pronoun substitute chain start --
+2023-12-12 21:16:27,517 - logger - INFO - INDEX : 21 -- pronoun substitute chain end --
+2023-12-12 21:16:27,517 - logger - INFO - INDEX : 21 -- pronoun substituted : ['Is Edgar N. Sánchez an author of them: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?', 'Who are the authors of them: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?', 'When was them: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011) published?', 'What is the title of the paper authored by them?'] --
+2023-12-12 21:16:27,517 - logger - INFO - INDEX : 21 -- dialogue : {'idx': 21, 'dialogue': ['How many authors are there in Manuel Gámez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?', 'Is Edgar N. Sánchez an author of them: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?', 'Who are the authors of them: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?', 'When was them: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011) published?', 'What is the title of the paper authored by them?'], 'original': ['How many authors are there in Manuel Gámez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?', 'Is Edgar N. Sánchez an author of Manuel Gámez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?', 'Who are the authors of Manuel Gámez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?', 'When was Manuel Gámez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011) published?', 'What is the title of the paper authored by Edgar N. Sánchez?'], 'cost': {'total_tokens': 1303, 'prompt_tokens': 953, 'completion_tokens': 350}} --
+2023-12-12 21:16:27,517 - logger - INFO - INDEX : 22 -- start --
+2023-12-12 21:16:27,517 - logger - INFO - INDEX : 22 -- subgraph length = 1 --
+2023-12-12 21:16:27,517 - logger - INFO - INDEX : 22 -- question set generation chain start --
+2023-12-12 21:16:31,814 - logger - INFO - INDEX : 22 -- question set generation chain end --
+2023-12-12 21:16:31,814 - logger - INFO - INDEX : 22 -- question set : ['How many authors are there in Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?', 'Who is the author of Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?', 'Is Juyang Weng an author of Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?', 'What is the title of the paper authored by Juyang Weng?', 'When was the paper Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011) published?'] --
+2023-12-12 21:16:31,814 - logger - INFO - INDEX : 22 -- pronoun identify chain start --
+2023-12-12 21:16:32,854 - logger - INFO - INDEX : 22 -- pronoun identify chain end --
+2023-12-12 21:16:32,854 - logger - INFO - INDEX : 22 -- pronoun identify : ['Stephen Paslaski et al.', 'They/Them'] --
+2023-12-12 21:16:32,854 - logger - INFO - INDEX : 22 -- pronoun substitute chain start --
+2023-12-12 21:16:35,347 - logger - INFO - INDEX : 22 -- pronoun substitute chain end --
+2023-12-12 21:16:35,347 - logger - INFO - INDEX : 22 -- pronoun substituted : ['Who is the author of They: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?', 'Is Juyang Weng an author of They: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?', 'What is the title of the paper authored by him?', 'When was the paper They: Modeling dopamine and serotonin systems in a visual recognition network. (2011) published?'] --
+2023-12-12 21:16:35,347 - logger - INFO - INDEX : 22 -- dialogue : {'idx': 22, 'dialogue': ['How many authors are there in Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?', 'Who is the author of They: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?', 'Is Juyang Weng an author of They: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?', 'What is the title of the paper authored by him?', 'When was the paper They: Modeling dopamine and serotonin systems in a visual recognition network. (2011) published?'], 'original': ['How many authors are there in Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?', 'Who is the author of Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?', 'Is Juyang Weng an author of Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?', 'What is the title of the paper authored by Juyang Weng?', 'When was the paper Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011) published?'], 'cost': {'total_tokens': 1241, 'prompt_tokens': 929, 'completion_tokens': 312}} --
+2023-12-12 21:16:35,347 - logger - INFO - INDEX : 23 -- start --
+2023-12-12 21:16:35,347 - logger - INFO - INDEX : 23 -- subgraph length = 1 --
+2023-12-12 21:16:35,347 - logger - INFO - INDEX : 23 -- question set generation chain start --
+2023-12-12 21:16:37,839 - logger - INFO - INDEX : 23 -- question set generation chain end --
+2023-12-12 21:16:37,839 - logger - INFO - INDEX : 23 -- question set : ['How many publications has Falak Sher authored?', 'Has Falak Sher authored any publications in 2015?', 'What is the title of the publication authored by Falak Sher in 2015?', 'When was the publication authored by Falak Sher published?', 'What are the topics of the publications authored by Falak Sher?'] --
+2023-12-12 21:16:37,839 - logger - INFO - INDEX : 23 -- pronoun identify chain start --
+2023-12-12 21:16:38,564 - logger - INFO - INDEX : 23 -- pronoun identify chain end --
+2023-12-12 21:16:38,564 - logger - INFO - INDEX : 23 -- pronoun identify : ['Falak Sher', 'He/Him'] --
+2023-12-12 21:16:38,564 - logger - INFO - INDEX : 23 -- pronoun substitute chain start --
+2023-12-12 21:16:40,147 - logger - INFO - INDEX : 23 -- pronoun substitute chain end --
+2023-12-12 21:16:40,148 - logger - INFO - INDEX : 23 -- pronoun substituted : ['Has he authored any publications in 2015?', 'What is the title of the publication authored by him in 2015?', 'When was the publication authored by him published?', 'What are the topics of the publications authored by him?'] --
+2023-12-12 21:16:40,148 - logger - INFO - INDEX : 23 -- dialogue : {'idx': 23, 'dialogue': ['How many publications has Falak Sher authored?', 'Has he authored any publications in 2015?', 'What is the title of the publication authored by him in 2015?', 'When was the publication authored by him published?', 'What are the topics of the publications authored by him?'], 'original': ['How many publications has Falak Sher authored?', 'Has Falak Sher authored any publications in 2015?', 'What is the title of the publication authored by Falak Sher in 2015?', 'When was the publication authored by Falak Sher published?', 'What are the topics of the publications authored by Falak Sher?'], 'cost': {'total_tokens': 1038, 'prompt_tokens': 852, 'completion_tokens': 186}} --
+2023-12-12 21:16:40,148 - logger - INFO - INDEX : 24 -- start --
+2023-12-12 21:16:40,148 - logger - INFO - INDEX : 24 -- subgraph length = 1 --
+2023-12-12 21:16:40,148 - logger - INFO - INDEX : 24 -- question set generation chain start --
+2023-12-12 21:16:43,595 - logger - INFO - INDEX : 24 -- question set generation chain end --
+2023-12-12 21:16:43,595 - logger - INFO - INDEX : 24 -- question set : ['How many publications has Wolfram Sperber authored?', 'Has Wolfram Sperber authored any publications in 1980?', 'What is the title of the publication authored by Wolfram Sperber in 1980?', "When did Wolfram Sperber author the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?", "Who authored the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?"] --
+2023-12-12 21:16:43,595 - logger - INFO - INDEX : 24 -- pronoun identify chain start --
+2023-12-12 21:16:44,474 - logger - INFO - INDEX : 24 -- pronoun identify chain end --
+2023-12-12 21:16:44,474 - logger - INFO - INDEX : 24 -- pronoun identify : ['Wolfram Sperber', 'He/Him'] --
+2023-12-12 21:16:44,474 - logger - INFO - INDEX : 24 -- pronoun substitute chain start --
+2023-12-12 21:16:47,933 - logger - INFO - INDEX : 24 -- pronoun substitute chain end --
+2023-12-12 21:16:47,933 - logger - INFO - INDEX : 24 -- pronoun substituted : ['Has he authored any publications in 1980?', 'What is the title of the publication authored by him in 1980?', "When did he author the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?", "Who authored the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?"] --
+2023-12-12 21:16:47,933 - logger - INFO - INDEX : 24 -- dialogue : {'idx': 24, 'dialogue': ['How many publications has Wolfram Sperber authored?', 'Has he authored any publications in 1980?', 'What is the title of the publication authored by him in 1980?', "When did he author the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?", "Who authored the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?"], 'original': ['How many publications has Wolfram Sperber authored?', 'Has Wolfram Sperber authored any publications in 1980?', 'What is the title of the publication authored by Wolfram Sperber in 1980?', "When did Wolfram Sperber author the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?", "Who authored the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?"], 'cost': {'total_tokens': 1275, 'prompt_tokens': 941, 'completion_tokens': 334}} --
+2023-12-12 21:16:47,933 - logger - INFO - INDEX : 25 -- start --
+2023-12-12 21:16:47,933 - logger - INFO - INDEX : 25 -- subgraph length = 1 --
+2023-12-12 21:16:47,933 - logger - INFO - INDEX : 25 -- question set generation chain start --
+2023-12-12 21:16:51,568 - logger - INFO - INDEX : 25 -- question set generation chain end --
+2023-12-12 21:16:51,568 - logger - INFO - INDEX : 25 -- question set : ['How many works has Martin Spüler authored?', "Has Martin Spüler authored any other works besides 'Assessing the Benefit of Adaptive Brain-Computer Interfacing. (2013)'?", "When was 'Assessing the Benefit of Adaptive Brain-Computer Interfacing. (2013)' authored by Martin Spüler?", "Who authored 'Assessing the Benefit of Adaptive Brain-Computer Interfacing. (2013)'?", 'What is the title of the work authored by Martin Spüler?'] --
+2023-12-12 21:16:51,569 - logger - INFO - INDEX : 25 -- pronoun identify chain start --
+2023-12-12 21:16:52,432 - logger - INFO - INDEX : 25 -- pronoun identify chain end --
+2023-12-12 21:16:52,432 - logger - INFO - INDEX : 25 -- pronoun identify : ['Martin Spüler', 'He/Him'] --
+2023-12-12 21:16:52,432 - logger - INFO - INDEX : 25 -- pronoun substitute chain start --
+2023-12-12 21:16:54,967 - logger - INFO - INDEX : 25 -- ERROR: 25 : Got invalid JSON object. Error: Expecting value: line 2 column 316 (char 317) --
+2023-12-12 21:16:54,967 - logger - INFO - INDEX : 26 -- start --
+2023-12-12 21:16:54,967 - logger - INFO - INDEX : 26 -- subgraph length = 3 --
+2023-12-12 21:16:54,968 - logger - INFO - INDEX : 26 -- question set generation chain start --
+2023-12-12 21:16:57,846 - logger - INFO - INDEX : 26 -- question set generation chain end --
+2023-12-12 21:16:57,846 - logger - INFO - INDEX : 26 -- question set : ['How many publications has Michael Braun 0003 authored?', 'Is Michael Braun 0003 affiliated with BMW Group Research, Munich, Germany?', 'What is the title of the publication authored by Michael Braun 0003 in 2020?', 'When was the publication authored by Michael Braun 0003 published?', 'Which publications has Michael Braun 0003 authored?'] --
+2023-12-12 21:16:57,846 - logger - INFO - INDEX : 26 -- pronoun identify chain start --
+2023-12-12 21:16:58,641 - logger - INFO - INDEX : 26 -- pronoun identify chain end --
+2023-12-12 21:16:58,641 - logger - INFO - INDEX : 26 -- pronoun identify : ['Michael Braun 0003', 'He/Him'] --
+2023-12-12 21:16:58,641 - logger - INFO - INDEX : 26 -- pronoun substitute chain start --
+2023-12-12 21:17:00,622 - logger - INFO - INDEX : 26 -- pronoun substitute chain end --
+2023-12-12 21:17:00,622 - logger - INFO - INDEX : 26 -- pronoun substituted : ['Is he affiliated with BMW Group Research, Munich, Germany?', 'What is the title of the publication authored by him in 2020?', 'When was the publication authored by him published?', 'Which publications has he authored?'] --
+2023-12-12 21:17:00,622 - logger - INFO - INDEX : 26 -- dialogue : {'idx': 26, 'dialogue': ['How many publications has Michael Braun 0003 authored?', 'Is he affiliated with BMW Group Research, Munich, Germany?', 'What is the title of the publication authored by him in 2020?', 'When was the publication authored by him published?', 'Which publications has he authored?'], 'original': ['How many publications has Michael Braun 0003 authored?', 'Is Michael Braun 0003 affiliated with BMW Group Research, Munich, Germany?', 'What is the title of the publication authored by Michael Braun 0003 in 2020?', 'When was the publication authored by Michael Braun 0003 published?', 'Which publications has Michael Braun 0003 authored?'], 'cost': {'total_tokens': 1096, 'prompt_tokens': 906, 'completion_tokens': 190}} --
+2023-12-12 21:17:00,622 - logger - INFO - INDEX : 27 -- start --
+2023-12-12 21:17:00,622 - logger - INFO - INDEX : 27 -- subgraph length = 1 --
+2023-12-12 21:17:00,623 - logger - INFO - INDEX : 27 -- question set generation chain start --
+2023-12-12 21:17:06,277 - logger - INFO - INDEX : 27 -- question set generation chain end --
+2023-12-12 21:17:06,278 - logger - INFO - INDEX : 27 -- question set : ['How many people authored Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)?', 'Who authored Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)?', 'Is Meng Chen 0006 an author of Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)?', 'When was Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020) authored?', 'What is the title of the work authored by Meng Chen 0006?'] --
+2023-12-12 21:17:06,278 - logger - INFO - INDEX : 27 -- pronoun identify chain start --
+2023-12-12 21:17:07,869 - logger - INFO - INDEX : 27 -- pronoun identify chain end --
+2023-12-12 21:17:07,869 - logger - INFO - INDEX : 27 -- pronoun identify : ['Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)', 'It/They'] --
+2023-12-12 21:17:07,869 - logger - INFO - INDEX : 27 -- pronoun substitute chain start --
+2023-12-12 21:17:09,456 - logger - INFO - INDEX : 27 -- pronoun substitute chain end --
+2023-12-12 21:17:09,456 - logger - INFO - INDEX : 27 -- pronoun substituted : ['Who authored it?', 'Is Meng Chen 0006 an author of it?', 'When was it authored?', 'What is the title of the work authored by Meng Chen 0006?'] --
+2023-12-12 21:17:09,456 - logger - INFO - INDEX : 27 -- dialogue : {'idx': 27, 'dialogue': ['How many people authored Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)?', 'Who authored it?', 'Is Meng Chen 0006 an author of it?', 'When was it authored?', 'What is the title of the work authored by Meng Chen 0006?'], 'original': ['How many people authored Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)?', 'Who authored Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)?', 'Is Meng Chen 0006 an author of Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)?', 'When was Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020) authored?', 'What is the title of the work authored by Meng Chen 0006?'], 'cost': {'total_tokens': 1281, 'prompt_tokens': 979, 'completion_tokens': 302}} --
+2023-12-12 21:17:09,456 - logger - INFO - INDEX : 28 -- start --
+2023-12-12 21:17:09,457 - logger - INFO - INDEX : 28 -- subgraph length = 1 --
+2023-12-12 21:17:09,457 - logger - INFO - INDEX : 28 -- question set generation chain start --
+2023-12-12 21:17:13,231 - logger - INFO - INDEX : 28 -- question set generation chain end --
+2023-12-12 21:17:13,231 - logger - INFO - INDEX : 28 -- question set : ['How many books has Gert Heinrich 0002 authored?', "Has Gert Heinrich 0002 authored 'Gert Heinrich: Entwicklung und Anwendung einer Theorie polymerer Netzwerke und Schmelzen unter Molekularfeld-theoretischer Berücksichtigung der Topologieerhaltung. (1985)'?", 'What is the title of the book authored by Gert Heinrich 0002?', 'When was the book authored by Gert Heinrich 0002 published?', 'What are the names of the books authored by Gert Heinrich 0002?'] --
+2023-12-12 21:17:13,231 - logger - INFO - INDEX : 28 -- pronoun identify chain start --
+2023-12-12 21:17:14,685 - logger - INFO - INDEX : 28 -- pronoun identify chain end --
+2023-12-12 21:17:14,686 - logger - INFO - INDEX : 28 -- pronoun identify : ['Gert Heinrich 0002', 'He/Him'] --
+2023-12-12 21:17:14,686 - logger - INFO - INDEX : 28 -- pronoun substitute chain start --
+2023-12-12 21:17:17,227 - logger - INFO - INDEX : 28 -- ERROR: 28 : Got invalid JSON object. Error: Expecting value: line 2 column 206 (char 207) --
+2023-12-12 21:17:17,228 - logger - INFO - INDEX : 29 -- start --
+2023-12-12 21:17:17,228 - logger - INFO - INDEX : 29 -- subgraph length = 3 --
+2023-12-12 21:17:17,228 - logger - INFO - INDEX : 29 -- question set generation chain start --
+2023-12-12 21:17:21,218 - logger - INFO - INDEX : 29 -- question set generation chain end --
+2023-12-12 21:17:21,219 - logger - INFO - INDEX : 29 -- question set : ["How many authors contributed to 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)'?", "Did Viswanath Pulabaigari author 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)'?", "What is Viswanath Pulabaigari's primary affiliation?", "What year was 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)' published?", "Who are the authors of 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)'?"] --
+2023-12-12 21:17:21,219 - logger - INFO - INDEX : 29 -- pronoun identify chain start --
+2023-12-12 21:17:22,530 - logger - INFO - INDEX : 29 -- pronoun identify chain end --
+2023-12-12 21:17:22,531 - logger - INFO - INDEX : 29 -- pronoun identify : ['T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)', 'It'] --
+2023-12-12 21:17:22,531 - logger - INFO - INDEX : 29 -- pronoun substitute chain start --
+2023-12-12 21:17:23,894 - logger - INFO - INDEX : 29 -- pronoun substitute chain end --
+2023-12-12 21:17:23,894 - logger - INFO - INDEX : 29 -- pronoun substituted : ['Did Viswanath Pulabaigari author it?', "What is Viswanath Pulabaigari's primary affiliation?", 'What year was it published?', 'Who are the authors of it?'] --
+2023-12-12 21:17:23,894 - logger - INFO - INDEX : 29 -- dialogue : {'idx': 29, 'dialogue': ["How many authors contributed to 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)'?", 'Did Viswanath Pulabaigari author it?', "What is Viswanath Pulabaigari's primary affiliation?", 'What year was it published?', 'Who are the authors of it?'], 'original': ["How many authors contributed to 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)'?", "Did Viswanath Pulabaigari author 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)'?", "What is Viswanath Pulabaigari's primary affiliation?", "What year was 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)' published?", "Who are the authors of 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)'?"], 'cost': {'total_tokens': 1409, 'prompt_tokens': 1104, 'completion_tokens': 305}} --
+2023-12-12 21:17:23,895 - logger - INFO - INDEX : 30 -- start --
+2023-12-12 21:17:23,895 - logger - INFO - INDEX : 30 -- subgraph length = 9 --
+2023-12-12 21:17:23,895 - logger - INFO - INDEX : 30 -- question set generation chain start --
+2023-12-12 21:17:27,092 - logger - INFO - INDEX : 30 -- question set generation chain end --
+2023-12-12 21:17:27,092 - logger - INFO - INDEX : 30 -- question set : ['How many papers has Sarah M. Erfani authored?', 'Is Sarah M. Erfani affiliated with the University of Melbourne?', 'List all the papers authored by Sarah M. Erfani.', 'What is the latest paper authored by Sarah M. Erfani?', "When was the paper 'Dual Head Adversarial Training' authored by Sarah M. Erfani published?"] --
+2023-12-12 21:17:27,092 - logger - INFO - INDEX : 30 -- pronoun identify chain start --
+2023-12-12 21:17:27,949 - logger - INFO - INDEX : 30 -- pronoun identify chain end --
+2023-12-12 21:17:27,949 - logger - INFO - INDEX : 30 -- pronoun identify : ['Sarah M. Erfani', 'She/Her'] --
+2023-12-12 21:17:27,949 - logger - INFO - INDEX : 30 -- pronoun substitute chain start --
+2023-12-12 21:17:29,426 - logger - INFO - INDEX : 30 -- pronoun substitute chain end --
+2023-12-12 21:17:29,427 - logger - INFO - INDEX : 30 -- pronoun substituted : ['Is she affiliated with the University of Melbourne?', 'List all the papers authored by her.', 'What is the latest paper authored by her?', "When was the paper 'Dual Head Adversarial Training' authored by her published?"] --
+2023-12-12 21:17:29,427 - logger - INFO - INDEX : 30 -- dialogue : {'idx': 30, 'dialogue': ['How many papers has Sarah M. Erfani authored?', 'Is she affiliated with the University of Melbourne?', 'List all the papers authored by her.', 'What is the latest paper authored by her?', "When was the paper 'Dual Head Adversarial Training' authored by her published?"], 'original': ['How many papers has Sarah M. Erfani authored?', 'Is Sarah M. Erfani affiliated with the University of Melbourne?', 'List all the papers authored by Sarah M. Erfani.', 'What is the latest paper authored by Sarah M. Erfani?', "When was the paper 'Dual Head Adversarial Training' authored by Sarah M. Erfani published?"], 'cost': {'total_tokens': 1495, 'prompt_tokens': 1288, 'completion_tokens': 207}} --
+2023-12-12 21:17:29,427 - logger - INFO - INDEX : 31 -- start --
+2023-12-12 21:17:29,427 - logger - INFO - INDEX : 31 -- subgraph length = 1 --
+2023-12-12 21:17:29,427 - logger - INFO - INDEX : 31 -- question set generation chain start --
+2023-12-12 21:17:35,335 - logger - INFO - INDEX : 31 -- question set generation chain end --
+2023-12-12 21:17:35,336 - logger - INFO - INDEX : 31 -- question set : ['How many contributions did Tegawendé F. Bissyandé make in 2013?', 'Did Tegawendé F. Bissyandé author any contributions in 2013?', 'What contributions did Tegawendé F. Bissyandé make in 2013?', "Who authored the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions à l'Amélioration du Débogage des Services Noyau dans un Système d'Exploitation Monolithique). (2013)?", "When was the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions à l'Amélioration du Débogage des Services Noyau dans un Système d'Exploitation Monolithique). (2013) authored by Tegawendé F. Bissyandé?"] --
+2023-12-12 21:17:35,336 - logger - INFO - INDEX : 31 -- pronoun identify chain start --
+2023-12-12 21:17:36,336 - logger - INFO - INDEX : 31 -- pronoun identify chain end --
+2023-12-12 21:17:36,336 - logger - INFO - INDEX : 31 -- pronoun identify : ['Tegawendé F. Bissyandé', 'He/Him'] --
+2023-12-12 21:17:36,336 - logger - INFO - INDEX : 31 -- pronoun substitute chain start --
+2023-12-12 21:17:40,041 - logger - INFO - INDEX : 31 -- pronoun substitute chain end --
+2023-12-12 21:17:40,041 - logger - INFO - INDEX : 31 -- pronoun substituted : ['Did he author any contributions in 2013?', 'What contributions did he make in 2013?', "Who authored the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions à l'Amélioration du Débogage des Services Noyau dans un Système d'Exploitation Monolithique). (2013)?", "When was the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions à l'Amélioration du Débogage des Services Noyau dans un Système d'Exploitation Monolithique). (2013) authored by him?"] --
+2023-12-12 21:17:40,041 - logger - INFO - INDEX : 31 -- dialogue : {'idx': 31, 'dialogue': ['How many contributions did Tegawendé F. Bissyandé make in 2013?', 'Did he author any contributions in 2013?', 'What contributions did he make in 2013?', "Who authored the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions à l'Amélioration du Débogage des Services Noyau dans un Système d'Exploitation Monolithique). (2013)?", "When was the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions à l'Amélioration du Débogage des Services Noyau dans un Système d'Exploitation Monolithique). (2013) authored by him?"], 'original': ['How many contributions did Tegawendé F. Bissyandé make in 2013?', 'Did Tegawendé F. Bissyandé author any contributions in 2013?', 'What contributions did Tegawendé F. Bissyandé make in 2013?', "Who authored the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions à l'Amélioration du Débogage des Services Noyau dans un Système d'Exploitation Monolithique). (2013)?", "When was the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions à l'Amélioration du Débogage des Services Noyau dans un Système d'Exploitation Monolithique). (2013) authored by Tegawendé F. Bissyandé?"], 'cost': {'total_tokens': 1467, 'prompt_tokens': 1037, 'completion_tokens': 430}} --
+2023-12-12 21:17:40,041 - logger - INFO - INDEX : 32 -- start --
+2023-12-12 21:17:40,041 - logger - INFO - INDEX : 32 -- subgraph length = 1 --
+2023-12-12 21:17:40,041 - logger - INFO - INDEX : 32 -- question set generation chain start --
+2023-12-12 21:17:43,780 - logger - INFO - INDEX : 32 -- question set generation chain end --
+2023-12-12 21:17:43,780 - logger - INFO - INDEX : 32 -- question set : ['How many books has Christa Womser-Hacker authored?', "Is Christa Womser-Hacker the author of 'Der PADOK-Retrievaltest'?", "When was 'Der PADOK-Retrievaltest' published?", 'What is the title of the book authored by Christa Womser-Hacker?', 'What is the subject of the book authored by Christa Womser-Hacker?'] --
+2023-12-12 21:17:43,780 - logger - INFO - INDEX : 32 -- pronoun identify chain start --
+2023-12-12 21:17:44,623 - logger - INFO - INDEX : 32 -- pronoun identify chain end --
+2023-12-12 21:17:44,623 - logger - INFO - INDEX : 32 -- pronoun identify : ['Christa Womser-Hacker', 'She/Her'] --
+2023-12-12 21:17:44,623 - logger - INFO - INDEX : 32 -- pronoun substitute chain start --
+2023-12-12 21:17:45,888 - logger - INFO - INDEX : 32 -- ERROR: 32 : Got invalid JSON object. Error: Expecting value: line 2 column 113 (char 114) --
+2023-12-12 21:17:45,888 - logger - INFO - INDEX : 33 -- start --
+2023-12-12 21:17:45,889 - logger - INFO - INDEX : 33 -- subgraph length = 3 --
+2023-12-12 21:17:45,889 - logger - INFO - INDEX : 33 -- question set generation chain start --
+2023-12-12 21:17:47,982 - logger - INFO - INDEX : 33 -- question set generation chain end --
+2023-12-12 21:17:47,982 - logger - INFO - INDEX : 33 -- question set : ['How many articles has David Lucas 0001 authored in 2020?', 'What is the primary affiliation of David Lucas 0001?', 'Has David Lucas 0001 authored any articles in 2020?', 'What is the title of the article authored by David Lucas 0001 in 2020?', 'What is the publication date of the article authored by David Lucas 0001?'] --
+2023-12-12 21:17:47,982 - logger - INFO - INDEX : 33 -- pronoun identify chain start --
+2023-12-12 21:17:48,703 - logger - INFO - INDEX : 33 -- pronoun identify chain end --
+2023-12-12 21:17:48,703 - logger - INFO - INDEX : 33 -- pronoun identify : ['David Lucas 0001', 'He/Him'] --
+2023-12-12 21:17:48,703 - logger - INFO - INDEX : 33 -- pronoun substitute chain start --
+2023-12-12 21:17:50,152 - logger - INFO - INDEX : 33 -- ERROR: 33 : Got invalid JSON object. Error: Invalid control character at: line 2 column 221 (char 222) --
+2023-12-12 21:17:50,152 - logger - INFO - INDEX : 34 -- start --
+2023-12-12 21:17:50,153 - logger - INFO - INDEX : 34 -- subgraph length = 1 --
+2023-12-12 21:17:50,153 - logger - INFO - INDEX : 34 -- question set generation chain start --
+2023-12-12 21:17:53,954 - logger - INFO - INDEX : 34 -- ERROR: 34 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-12 21:17:53,954 - logger - INFO - INDEX : 35 -- start --
+2023-12-12 21:17:53,955 - logger - INFO - INDEX : 35 -- subgraph length = 9 --
+2023-12-12 21:17:53,955 - logger - INFO - INDEX : 35 -- question set generation chain start --
+2023-12-12 21:17:56,775 - logger - INFO - INDEX : 35 -- question set generation chain end --
+2023-12-12 21:17:56,775 - logger - INFO - INDEX : 35 -- question set : ['How many publications has Teresa Bernarda Ludermir authored?', 'Which primary affiliation is associated with Teresa Bernarda Ludermir?', 'Did Teresa Bernarda Ludermir author any publications before 2000?', 'What is the title of the earliest publication authored by Teresa Bernarda Ludermir?', 'What is the title of the most recent publication authored by Teresa Bernarda Ludermir?'] --
+2023-12-12 21:17:56,776 - logger - INFO - INDEX : 35 -- pronoun identify chain start --
+2023-12-12 21:17:57,520 - logger - INFO - INDEX : 35 -- pronoun identify chain end --
+2023-12-12 21:17:57,520 - logger - INFO - INDEX : 35 -- pronoun identify : ['Teresa Bernarda Ludermir', 'She/Her'] --
+2023-12-12 21:17:57,520 - logger - INFO - INDEX : 35 -- pronoun substitute chain start --
+2023-12-12 21:17:58,488 - logger - INFO - INDEX : 35 -- pronoun substitute chain end --
+2023-12-12 21:17:58,488 - logger - INFO - INDEX : 35 -- pronoun substituted : ['Which primary affiliation is associated with her?', 'Did she author any publications before 2000?', 'What is the title of the earliest publication authored by her?', 'What is the title of the most recent publication authored by her?'] --
+2023-12-12 21:17:58,488 - logger - INFO - INDEX : 35 -- dialogue : {'idx': 35, 'dialogue': ['How many publications has Teresa Bernarda Ludermir authored?', 'Which primary affiliation is associated with her?', 'Did she author any publications before 2000?', 'What is the title of the earliest publication authored by her?', 'What is the title of the most recent publication authored by her?'], 'original': ['How many publications has Teresa Bernarda Ludermir authored?', 'Which primary affiliation is associated with Teresa Bernarda Ludermir?', 'Did Teresa Bernarda Ludermir author any publications before 2000?', 'What is the title of the earliest publication authored by Teresa Bernarda Ludermir?', 'What is the title of the most recent publication authored by Teresa Bernarda Ludermir?'], 'cost': {'total_tokens': 1508, 'prompt_tokens': 1304, 'completion_tokens': 204}} --
+2023-12-12 21:17:58,489 - logger - INFO - INDEX : 36 -- start --
+2023-12-12 21:17:58,489 - logger - INFO - INDEX : 36 -- subgraph length = 7 --
+2023-12-12 21:17:58,489 - logger - INFO - INDEX : 36 -- question set generation chain start --
+2023-12-12 21:18:01,056 - logger - INFO - INDEX : 36 -- question set generation chain end --
+2023-12-12 21:18:01,056 - logger - INFO - INDEX : 36 -- question set : ['How many papers has T. Martin McGinnity authored?', 'Has T. Martin McGinnity authored a paper in 2011?', "What is T. Martin McGinnity's primary affiliation?", "What year was the paper 'Spike Train Synchrony Analysis of Neuronal Cultures' authored by T. Martin McGinnity published?", 'List all papers authored by T. Martin McGinnity.'] --
+2023-12-12 21:18:01,056 - logger - INFO - INDEX : 36 -- pronoun identify chain start --
+2023-12-12 21:18:01,978 - logger - INFO - INDEX : 36 -- pronoun identify chain end --
+2023-12-12 21:18:01,978 - logger - INFO - INDEX : 36 -- pronoun identify : ['T. Martin McGinnity', 'He/Him'] --
+2023-12-12 21:18:01,978 - logger - INFO - INDEX : 36 -- pronoun substitute chain start --
+2023-12-12 21:18:03,697 - logger - INFO - INDEX : 36 -- ERROR: 36 : Got invalid JSON object. Error: Expecting value: line 2 column 193 (char 194) --
+2023-12-12 21:18:03,697 - logger - INFO - INDEX : 37 -- start --
+2023-12-12 21:18:03,697 - logger - INFO - INDEX : 37 -- subgraph length = 3 --
+2023-12-12 21:18:03,697 - logger - INFO - INDEX : 37 -- question set generation chain start --
+2023-12-12 21:18:05,258 - logger - INFO - INDEX : 37 -- question set generation chain end --
+2023-12-12 21:18:05,259 - logger - INFO - INDEX : 37 -- question set : ['How many books has Beate Krause authored?', 'Is Beate Krause affiliated with the University of Kassel?', "What is Beate Krause's primary affiliation?", 'What is the title of the book Beate Krause authored in 2015?', 'When was the book Beate Krause authored in 2015 published?'] --
+2023-12-12 21:18:05,259 - logger - INFO - INDEX : 37 -- pronoun identify chain start --
+2023-12-12 21:18:05,841 - logger - INFO - INDEX : 37 -- pronoun identify chain end --
+2023-12-12 21:18:05,841 - logger - INFO - INDEX : 37 -- pronoun identify : ['Beate Krause', 'She/Her'] --
+2023-12-12 21:18:05,842 - logger - INFO - INDEX : 37 -- pronoun substitute chain start --
+2023-12-12 21:18:07,452 - logger - INFO - INDEX : 37 -- pronoun substitute chain end --
+2023-12-12 21:18:07,452 - logger - INFO - INDEX : 37 -- pronoun substituted : ['Is she affiliated with the University of Kassel?', 'What is her primary affiliation?', 'What is the title of the book she authored in 2015?', 'When was the book she authored in 2015 published?'] --
+2023-12-12 21:18:07,452 - logger - INFO - INDEX : 37 -- dialogue : {'idx': 37, 'dialogue': ['How many books has Beate Krause authored?', 'Is she affiliated with the University of Kassel?', 'What is her primary affiliation?', 'What is the title of the book she authored in 2015?', 'When was the book she authored in 2015 published?'], 'original': ['How many books has Beate Krause authored?', 'Is Beate Krause affiliated with the University of Kassel?', "What is Beate Krause's primary affiliation?", 'What is the title of the book Beate Krause authored in 2015?', 'When was the book Beate Krause authored in 2015 published?'], 'cost': {'total_tokens': 1125, 'prompt_tokens': 939, 'completion_tokens': 186}} --
+2023-12-12 21:18:07,452 - logger - INFO - INDEX : 38 -- start --
+2023-12-12 21:18:07,453 - logger - INFO - INDEX : 38 -- subgraph length = 3 --
+2023-12-12 21:18:07,453 - logger - INFO - INDEX : 38 -- question set generation chain start --
+2023-12-12 21:18:10,509 - logger - INFO - INDEX : 38 -- question set generation chain end --
+2023-12-12 21:18:10,509 - logger - INFO - INDEX : 38 -- question set : ['How many books has Christian Kuhlmann 0001 authored?', 'Is Christian Kuhlmann 0001 affiliated with Ruhr University Bochum, Germany?', 'What is the primary affiliation of Christian Kuhlmann 0001?', 'What books has Christian Kuhlmann 0001 authored?', 'When was Christian Kuhlmann: Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen. (2001) published?'] --
+2023-12-12 21:18:10,510 - logger - INFO - INDEX : 38 -- pronoun identify chain start --
+2023-12-12 21:18:11,271 - logger - INFO - INDEX : 38 -- pronoun identify chain end --
+2023-12-12 21:18:11,272 - logger - INFO - INDEX : 38 -- pronoun identify : ['Christian Kuhlmann 0001', 'He/Him'] --
+2023-12-12 21:18:11,272 - logger - INFO - INDEX : 38 -- pronoun substitute chain start --
+2023-12-12 21:18:13,355 - logger - INFO - INDEX : 38 -- pronoun substitute chain end --
+2023-12-12 21:18:13,355 - logger - INFO - INDEX : 38 -- pronoun substituted : ['Is he affiliated with Ruhr University Bochum, Germany?', 'What is the primary affiliation of him?', 'What books has he authored?', "When was 'Christian Kuhlmann: Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen. (2001)' published?"] --
+2023-12-12 21:18:13,355 - logger - INFO - INDEX : 38 -- dialogue : {'idx': 38, 'dialogue': ['How many books has Christian Kuhlmann 0001 authored?', 'Is he affiliated with Ruhr University Bochum, Germany?', 'What is the primary affiliation of him?', 'What books has he authored?', "When was 'Christian Kuhlmann: Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen. (2001)' published?"], 'original': ['How many books has Christian Kuhlmann 0001 authored?', 'Is Christian Kuhlmann 0001 affiliated with Ruhr University Bochum, Germany?', 'What is the primary affiliation of Christian Kuhlmann 0001?', 'What books has Christian Kuhlmann 0001 authored?', 'When was Christian Kuhlmann: Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen. (2001) published?'], 'cost': {'total_tokens': 1227, 'prompt_tokens': 983, 'completion_tokens': 244}} --
+2023-12-12 21:18:13,356 - logger - INFO - INDEX : 39 -- start --
+2023-12-12 21:18:13,356 - logger - INFO - INDEX : 39 -- subgraph length = 4 --
+2023-12-12 21:18:13,356 - logger - INFO - INDEX : 39 -- question set generation chain start --
+2023-12-12 21:18:15,246 - logger - INFO - INDEX : 39 -- question set generation chain end --
+2023-12-12 21:18:15,246 - logger - INFO - INDEX : 39 -- question set : ['How many publications has Oliver Kramer 0001 authored?', 'Has Oliver Kramer 0001 authored any publications in 2021?', "What is Oliver Kramer 0001's primary affiliation?", 'What is the title of the publication authored by Oliver Kramer 0001 in 2015?', 'What is the title of the most recent publication authored by Oliver Kramer 0001?'] --
+2023-12-12 21:18:15,246 - logger - INFO - INDEX : 39 -- pronoun identify chain start --
+2023-12-12 21:18:15,976 - logger - INFO - INDEX : 39 -- pronoun identify chain end --
+2023-12-12 21:18:15,976 - logger - INFO - INDEX : 39 -- pronoun identify : ['Oliver Kramer 0001', 'He/Him'] --
+2023-12-12 21:18:15,976 - logger - INFO - INDEX : 39 -- pronoun substitute chain start --
+2023-12-12 21:18:17,485 - logger - INFO - INDEX : 39 -- pronoun substitute chain end --
+2023-12-12 21:18:17,486 - logger - INFO - INDEX : 39 -- pronoun substituted : ['Has he authored any publications in 2021?', 'What is his primary affiliation?', 'What is the title of the publication authored by him in 2015?', 'What is the title of the most recent publication authored by him?'] --
+2023-12-12 21:18:17,486 - logger - INFO - INDEX : 39 -- dialogue : {'idx': 39, 'dialogue': ['How many publications has Oliver Kramer 0001 authored?', 'Has he authored any publications in 2021?', 'What is his primary affiliation?', 'What is the title of the publication authored by him in 2015?', 'What is the title of the most recent publication authored by him?'], 'original': ['How many publications has Oliver Kramer 0001 authored?', 'Has Oliver Kramer 0001 authored any publications in 2021?', "What is Oliver Kramer 0001's primary affiliation?", 'What is the title of the publication authored by Oliver Kramer 0001 in 2015?', 'What is the title of the most recent publication authored by Oliver Kramer 0001?'], 'cost': {'total_tokens': 1160, 'prompt_tokens': 968, 'completion_tokens': 192}} --
+2023-12-12 21:18:17,486 - logger - INFO - INDEX : 40 -- start --
+2023-12-12 21:18:17,486 - logger - INFO - INDEX : 40 -- subgraph length = 1 --
+2023-12-12 21:18:17,486 - logger - INFO - INDEX : 40 -- question set generation chain start --
+2023-12-12 21:18:19,882 - logger - INFO - INDEX : 40 -- ERROR: 40 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-12 21:18:19,882 - logger - INFO - INDEX : 41 -- start --
+2023-12-12 21:18:19,882 - logger - INFO - INDEX : 41 -- subgraph length = 3 --
+2023-12-12 21:18:19,882 - logger - INFO - INDEX : 41 -- question set generation chain start --
+2023-12-12 21:18:22,334 - logger - INFO - INDEX : 41 -- question set generation chain end --
+2023-12-12 21:18:22,334 - logger - INFO - INDEX : 41 -- question set : ['How many books has Jürgen Börstler authored?', 'Is Jürgen Börstler affiliated with the Blekinge Institute of Technology (BTH), Sweden?', 'What is the title of the book Jürgen Börstler authored in 1994?', 'When did Jürgen Börstler author his book?', "What is Jürgen Börstler's primary affiliation?"] --
+2023-12-12 21:18:22,334 - logger - INFO - INDEX : 41 -- pronoun identify chain start --
+2023-12-12 21:18:23,095 - logger - INFO - INDEX : 41 -- pronoun identify chain end --
+2023-12-12 21:18:23,095 - logger - INFO - INDEX : 41 -- pronoun identify : ['Jürgen Börstler', 'He/Him'] --
+2023-12-12 21:18:23,095 - logger - INFO - INDEX : 41 -- pronoun substitute chain start --
+2023-12-12 21:18:24,136 - logger - INFO - INDEX : 41 -- pronoun substitute chain end --
+2023-12-12 21:18:24,137 - logger - INFO - INDEX : 41 -- pronoun substituted : ['Is he affiliated with the Blekinge Institute of Technology (BTH), Sweden?', 'What is the title of the book he authored in 1994?', 'When did he author his book?', 'What is his primary affiliation?'] --
+2023-12-12 21:18:24,137 - logger - INFO - INDEX : 41 -- dialogue : {'idx': 41, 'dialogue': ['How many books has Jürgen Börstler authored?', 'Is he affiliated with the Blekinge Institute of Technology (BTH), Sweden?', 'What is the title of the book he authored in 1994?', 'When did he author his book?', 'What is his primary affiliation?'], 'original': ['How many books has Jürgen Börstler authored?', 'Is Jürgen Börstler affiliated with the Blekinge Institute of Technology (BTH), Sweden?', 'What is the title of the book Jürgen Börstler authored in 1994?', 'When did Jürgen Börstler author his book?', "What is Jürgen Börstler's primary affiliation?"], 'cost': {'total_tokens': 1218, 'prompt_tokens': 1004, 'completion_tokens': 214}} --
+2023-12-12 21:18:24,137 - logger - INFO - INDEX : 42 -- start --
+2023-12-12 21:18:24,137 - logger - INFO - INDEX : 42 -- subgraph length = 5 --
+2023-12-12 21:18:24,137 - logger - INFO - INDEX : 42 -- question set generation chain start --
+2023-12-12 21:18:26,501 - logger - INFO - INDEX : 42 -- question set generation chain end --
+2023-12-12 21:18:26,501 - logger - INFO - INDEX : 42 -- question set : ['How many publications has Ben Goertzel authored?', 'Is Ben Goertzel affiliated with OpenCog Foundation in Sha Tin, Hong Kong?', 'What is the title of the publication authored by Ben Goertzel in 2006?', 'What is the title of the publication authored by Ben Goertzel in 2014?', 'What year was the publication authored by Ben Goertzel and Gino Yu published?'] --
+2023-12-12 21:18:26,501 - logger - INFO - INDEX : 42 -- pronoun identify chain start --
+2023-12-12 21:18:27,264 - logger - INFO - INDEX : 42 -- pronoun identify chain end --
+2023-12-12 21:18:27,264 - logger - INFO - INDEX : 42 -- pronoun identify : ['Ben Goertzel', 'He/Him'] --
+2023-12-12 21:18:27,264 - logger - INFO - INDEX : 42 -- pronoun substitute chain start --
+2023-12-12 21:18:28,754 - logger - INFO - INDEX : 42 -- pronoun substitute chain end --
+2023-12-12 21:18:28,754 - logger - INFO - INDEX : 42 -- pronoun substituted : ['Is he affiliated with OpenCog Foundation in Sha Tin, Hong Kong?', 'What is the title of the publication authored by him in 2006?', 'What is the title of the publication authored by him in 2014?', 'What year was the publication authored by him and Gino Yu published?'] --
+2023-12-12 21:18:28,754 - logger - INFO - INDEX : 42 -- dialogue : {'idx': 42, 'dialogue': ['How many publications has Ben Goertzel authored?', 'Is he affiliated with OpenCog Foundation in Sha Tin, Hong Kong?', 'What is the title of the publication authored by him in 2006?', 'What is the title of the publication authored by him in 2014?', 'What year was the publication authored by him and Gino Yu published?'], 'original': ['How many publications has Ben Goertzel authored?', 'Is Ben Goertzel affiliated with OpenCog Foundation in Sha Tin, Hong Kong?', 'What is the title of the publication authored by Ben Goertzel in 2006?', 'What is the title of the publication authored by Ben Goertzel in 2014?', 'What year was the publication authored by Ben Goertzel and Gino Yu published?'], 'cost': {'total_tokens': 1293, 'prompt_tokens': 1073, 'completion_tokens': 220}} --
+2023-12-12 21:18:28,755 - logger - INFO - INDEX : 43 -- start --
+2023-12-12 21:18:28,755 - logger - INFO - INDEX : 43 -- subgraph length = 1 --
+2023-12-12 21:18:28,755 - logger - INFO - INDEX : 43 -- question set generation chain start --
+2023-12-12 21:18:32,146 - logger - INFO - INDEX : 43 -- ERROR: 43 : Got invalid JSON object. Error: Expecting value: line 8 column 2 (char 503) --
+2023-12-12 21:18:32,147 - logger - INFO - INDEX : 44 -- start --
+2023-12-12 21:18:32,147 - logger - INFO - INDEX : 44 -- subgraph length = 6 --
+2023-12-12 21:18:32,147 - logger - INFO - INDEX : 44 -- question set generation chain start --
+2023-12-12 21:18:35,267 - logger - INFO - INDEX : 44 -- question set generation chain end --
+2023-12-12 21:18:35,268 - logger - INFO - INDEX : 44 -- question set : ['How many papers has Klaus Obermayer authored? (list)', "Did Klaus Obermayer author the paper 'Multiple alignment of contact maps.' (2009)? (boolean)", "What is Klaus Obermayer's primary affiliation? (wh)", 'Which papers did Klaus Obermayer author in 2008? (list)', "When was the paper 'A classifier-based association test for imbalanced data derived from prediction theory.' (2014) authored by Klaus Obermayer? (date-related)"] --
+2023-12-12 21:18:35,268 - logger - INFO - INDEX : 44 -- pronoun identify chain start --
+2023-12-12 21:18:36,111 - logger - INFO - INDEX : 44 -- pronoun identify chain end --
+2023-12-12 21:18:36,111 - logger - INFO - INDEX : 44 -- pronoun identify : ['Klaus Obermayer', 'He/Him'] --
+2023-12-12 21:18:36,112 - logger - INFO - INDEX : 44 -- pronoun substitute chain start --
+2023-12-12 21:18:38,967 - logger - INFO - INDEX : 44 -- ERROR: 44 : Got invalid JSON object. Error: Expecting value: line 2 column 137 (char 138) --
+2023-12-12 21:18:38,968 - logger - INFO - INDEX : 45 -- start --
+2023-12-12 21:18:38,968 - logger - INFO - INDEX : 45 -- subgraph length = 1 --
+2023-12-12 21:18:38,968 - logger - INFO - INDEX : 45 -- question set generation chain start --
+2023-12-12 21:18:44,561 - logger - INFO - INDEX : 45 -- question set generation chain end --
+2023-12-12 21:18:44,561 - logger - INFO - INDEX : 45 -- question set : ["How many authors are there in the paper 'Xueyuan She et al.: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020)'?", "Who wrote the paper 'Xueyuan She et al.: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020)'?", "Is Daehyun Kim 0002 an author of the paper 'Xueyuan She et al.: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020)'?", "What is the publication date of 'Xueyuan She et al.: SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference. (2020)'?", 'What is the title of the paper authored by Daehyun Kim 0002?'] --
+2023-12-12 21:18:44,562 - logger - INFO - INDEX : 45 -- pronoun identify chain start --
+2023-12-12 21:18:45,443 - logger - INFO - INDEX : 45 -- pronoun identify chain end --
+2023-12-12 21:18:45,443 - logger - INFO - INDEX : 45 -- pronoun identify : ['Xueyuan She et al.', 'They/Them'] --
+2023-12-12 21:18:45,443 - logger - INFO - INDEX : 45 -- pronoun substitute chain start --
+2023-12-12 21:18:48,572 - logger - INFO - INDEX : 45 -- ERROR: 45 : Got invalid JSON object. Error: Expecting value: line 2 column 462 (char 463) --
+2023-12-12 21:18:48,572 - logger - INFO - INDEX : 46 -- start --
+2023-12-12 21:18:48,572 - logger - INFO - INDEX : 46 -- subgraph length = 2 --
+2023-12-12 21:18:48,573 - logger - INFO - INDEX : 46 -- question set generation chain start --
+2023-12-12 21:18:54,217 - logger - INFO - INDEX : 46 -- question set generation chain end --
+2023-12-12 21:18:54,218 - logger - INFO - INDEX : 46 -- question set : ['How many authors wrote Sérgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)?', 'Did Yves Lechevallier author Sérgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)?', 'Who authored Sérgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)?', 'What is the publication date of Sérgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)?', 'What is the title of the publication authored by Sérgio Ricardo de Melo Queiroz and Yves Lechevallier?'] --
+2023-12-12 21:18:54,218 - logger - INFO - INDEX : 46 -- pronoun identify chain start --
+2023-12-12 21:18:55,773 - logger - INFO - INDEX : 46 -- pronoun identify chain end --
+2023-12-12 21:18:55,774 - logger - INFO - INDEX : 46 -- pronoun identify : ['Sérgio Ricardo de Melo Queiroz et al.: Multicriteria clustering with weighted Tchebycheff distances for relational data. (2012)', 'It/They'] --
+2023-12-12 21:18:55,774 - logger - INFO - INDEX : 46 -- pronoun substitute chain start --
+2023-12-12 21:18:57,008 - logger - INFO - INDEX : 46 -- ERROR: 46 : Got invalid JSON object. Error: Invalid control character at: line 2 column 165 (char 166) --
+2023-12-12 21:18:57,009 - logger - INFO - INDEX : 47 -- start --
+2023-12-12 21:18:57,009 - logger - INFO - INDEX : 47 -- subgraph length = 3 --
+2023-12-12 21:18:57,009 - logger - INFO - INDEX : 47 -- question set generation chain start --
+2023-12-12 21:18:59,678 - logger - INFO - INDEX : 47 -- ERROR: 47 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-12 21:18:59,678 - logger - INFO - INDEX : 48 -- start --
+2023-12-12 21:18:59,679 - logger - INFO - INDEX : 48 -- subgraph length = 1 --
+2023-12-12 21:18:59,679 - logger - INFO - INDEX : 48 -- question set generation chain start --
+2023-12-12 21:19:03,456 - logger - INFO - INDEX : 48 -- ERROR: 48 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-12 21:19:03,456 - logger - INFO - INDEX : 49 -- start --
+2023-12-12 21:19:03,456 - logger - INFO - INDEX : 49 -- subgraph length = 3 --
+2023-12-12 21:19:03,456 - logger - INFO - INDEX : 49 -- question set generation chain start --
+2023-12-12 21:19:06,548 - logger - INFO - INDEX : 49 -- question set generation chain end --
+2023-12-12 21:19:06,548 - logger - INFO - INDEX : 49 -- question set : ['How many publications has Franziska Mueller 0001 authored?', 'Is Franziska Mueller 0001 affiliated with the Max Planck Institute for Informatics (MPII) in Saarbrücken, Germany?', 'What is the title of the publication authored by Franziska Mueller 0001?', 'When was the publication authored by Franziska Mueller 0001 published?', 'What is the primary affiliation of Franziska Mueller 0001?'] --
+2023-12-12 21:19:06,548 - logger - INFO - INDEX : 49 -- pronoun identify chain start --
+2023-12-12 21:19:07,294 - logger - INFO - INDEX : 49 -- pronoun identify chain end --
+2023-12-12 21:19:07,294 - logger - INFO - INDEX : 49 -- pronoun identify : ['Franziska Mueller 0001', 'She/Her'] --
+2023-12-12 21:19:07,294 - logger - INFO - INDEX : 49 -- pronoun substitute chain start --
+2023-12-12 21:19:08,890 - logger - INFO - INDEX : 49 -- pronoun substitute chain end --
+2023-12-12 21:19:08,890 - logger - INFO - INDEX : 49 -- pronoun substituted : ['Is she affiliated with the Max Planck Institute for Informatics (MPII) in Saarbrücken, Germany?', 'What is the title of the publication authored by her?', 'When was the publication authored by her published?', 'What is the primary affiliation of her?'] --
+2023-12-12 21:19:08,890 - logger - INFO - INDEX : 49 -- dialogue : {'idx': 49, 'dialogue': ['How many publications has Franziska Mueller 0001 authored?', 'Is she affiliated with the Max Planck Institute for Informatics (MPII) in Saarbrücken, Germany?', 'What is the title of the publication authored by her?', 'When was the publication authored by her published?', 'What is the primary affiliation of her?'], 'original': ['How many publications has Franziska Mueller 0001 authored?', 'Is Franziska Mueller 0001 affiliated with the Max Planck Institute for Informatics (MPII) in Saarbrücken, Germany?', 'What is the title of the publication authored by Franziska Mueller 0001?', 'When was the publication authored by Franziska Mueller 0001 published?', 'What is the primary affiliation of Franziska Mueller 0001?'], 'cost': {'total_tokens': 1220, 'prompt_tokens': 988, 'completion_tokens': 232}} --

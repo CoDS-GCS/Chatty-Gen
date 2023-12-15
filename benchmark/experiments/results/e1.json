@@ -1,0 +1,552 @@
+[
+    {
+        "idx": 0,
+        "dialogue": [
+            "How many publications has Yosra Zguira authored?",
+            "Is she affiliated with the University of Lyon, France?",
+            "What is her primary affiliation?",
+            "What year was her publication 'Study and development of wireless sensor network architecture tolerant to delays. (Etude et d\u00e9veloppement d'une architecture de r\u00e9seaux de capteurs tol\u00e9rante aux d\u00e9lais). (2018)' published?",
+            "What is the title of her publication?"
+        ],
+        "original": [
+            "How many publications has Yosra Zguira authored?",
+            "Is Yosra Zguira affiliated with the University of Lyon, France?",
+            "What is Yosra Zguira's primary affiliation?",
+            "What year was Yosra Zguira's publication 'Study and development of wireless sensor network architecture tolerant to delays. (Etude et d\u00e9veloppement d'une architecture de r\u00e9seaux de capteurs tol\u00e9rante aux d\u00e9lais). (2018)' published?",
+            "What is the title of Yosra Zguira's publication?"
+        ],
+        "cost": {
+            "total_tokens": 1324,
+            "prompt_tokens": 1049,
+            "completion_tokens": 275
+        }
+    },
+    {
+        "idx": 2,
+        "dialogue": [
+            "How many papers has Andreas Geiger 0002 authored in 2021?",
+            "What is the title of the paper authored by him in 2021?",
+            "Is he the only author of the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montaget\u00e4tigkeiten durch Virtual-Reality-Interaktion.' in 2021?",
+            "When was the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montaget\u00e4tigkeiten durch Virtual-Reality-Interaktion.' authored by him published?",
+            "Who authored the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montaget\u00e4tigkeiten durch Virtual-Reality-Interaktion.' in 2021?"
+        ],
+        "original": [
+            "How many papers has Andreas Geiger 0002 authored in 2021?",
+            "What is the title of the paper authored by Andreas Geiger 0002 in 2021?",
+            "Is Andreas Geiger 0002 the only author of the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montaget\u00e4tigkeiten durch Virtual-Reality-Interaktion.' in 2021?",
+            "When was the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montaget\u00e4tigkeiten durch Virtual-Reality-Interaktion.' authored by Andreas Geiger 0002 published?",
+            "Who authored the paper 'Bedienung digitaler Menschmodelle zur Absicherung manueller Montaget\u00e4tigkeiten durch Virtual-Reality-Interaktion.' in 2021?"
+        ],
+        "cost": {
+            "total_tokens": 1418,
+            "prompt_tokens": 1000,
+            "completion_tokens": 418
+        }
+    },
+    {
+        "idx": 3,
+        "dialogue": [
+            "How many papers has Xia Hong 0001 authored?",
+            "Does he have an affiliation with University of Reading?",
+            "Which papers has he authored in 2015?",
+            "When was the paper 'Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)' written?",
+            "Has he authored any papers with Junbin Gao?"
+        ],
+        "original": [
+            "How many papers has Xia Hong 0001 authored?",
+            "Does Xia Hong 0001 have an affiliation with University of Reading?",
+            "Which papers has Xia Hong 0001 authored in 2015?",
+            "When was the paper 'Sheng Chen et al.: Construction of RBF Classifiers with Tunable Units using Orthogonal Forward Selection Based on Leave-One-Out Misclassification Rate. (2006)' written?",
+            "Has Xia Hong 0001 authored any papers with Junbin Gao?"
+        ],
+        "cost": {
+            "total_tokens": 1570,
+            "prompt_tokens": 1316,
+            "completion_tokens": 254
+        }
+    },
+    {
+        "idx": 6,
+        "dialogue": [
+            "How many publications has Hiok Chai Quek authored?",
+            "Has he authored any publications in 2006?",
+            "What is his primary affiliation?",
+            "Does he have any publications in 2010?",
+            "What are the titles of the publications authored by him?"
+        ],
+        "original": [
+            "How many publications has Hiok Chai Quek authored?",
+            "Has Hiok Chai Quek authored any publications in 2006?",
+            "What is Hiok Chai Quek's primary affiliation?",
+            "Does Hiok Chai Quek have any publications in 2010?",
+            "What are the titles of the publications authored by Hiok Chai Quek?"
+        ],
+        "cost": {
+            "total_tokens": 1447,
+            "prompt_tokens": 1263,
+            "completion_tokens": 184
+        }
+    },
+    {
+        "idx": 7,
+        "dialogue": [
+            "How many papers has Ata Kab\u00e1n authored?",
+            "Is he affiliated with the University of Birmingham?",
+            "What is the primary affiliation of him?",
+            "What is the title of the paper he authored in 2019?",
+            "When was the paper he authored in 2019 published?"
+        ],
+        "original": [
+            "How many papers has Ata Kab\u00e1n authored?",
+            "Is Ata Kab\u00e1n affiliated with the University of Birmingham?",
+            "What is the primary affiliation of Ata Kab\u00e1n?",
+            "What is the title of the paper Ata Kab\u00e1n authored in 2019?",
+            "When was the paper Ata Kab\u00e1n authored in 2019 published?"
+        ],
+        "cost": {
+            "total_tokens": 1118,
+            "prompt_tokens": 936,
+            "completion_tokens": 182
+        }
+    },
+    {
+        "idx": 9,
+        "dialogue": [
+            "How many papers has Derong Liu 0001 authored?",
+            "Has he authored any papers in 2016?",
+            "What is his primary affiliation?",
+            "What papers has he authored since 2010?",
+            "When was the first paper authored by him published?"
+        ],
+        "original": [
+            "How many papers has Derong Liu 0001 authored?",
+            "Has Derong Liu 0001 authored any papers in 2016?",
+            "What is Derong Liu 0001's primary affiliation?",
+            "What papers has Derong Liu 0001 authored since 2010?",
+            "When was the first paper authored by Derong Liu 0001 published?"
+        ],
+        "cost": {
+            "total_tokens": 1223,
+            "prompt_tokens": 1042,
+            "completion_tokens": 181
+        }
+    },
+    {
+        "idx": 12,
+        "dialogue": [
+            "How many papers has Irena Koprinska authored?",
+            "Has she authored any papers in 2018?",
+            "What is her primary affiliation?",
+            "What papers has she authored in 2015?",
+            "What is the earliest paper she has authored?"
+        ],
+        "original": [
+            "How many papers has Irena Koprinska authored?",
+            "Has Irena Koprinska authored any papers in 2018?",
+            "What is Irena Koprinska's primary affiliation?",
+            "What papers has Irena Koprinska authored in 2015?",
+            "What is the earliest paper Irena Koprinska has authored?"
+        ],
+        "cost": {
+            "total_tokens": 1395,
+            "prompt_tokens": 1205,
+            "completion_tokens": 190
+        }
+    },
+    {
+        "idx": 16,
+        "dialogue": [
+            "How many works has Sergiy Bogomolov authored?",
+            "Is he affiliated with IST Austria, Klosterneuburg, Austria?",
+            "What is the title of the work authored by him?",
+            "When was the work authored by him published?",
+            "What are the primary affiliations of him?"
+        ],
+        "original": [
+            "How many works has Sergiy Bogomolov authored?",
+            "Is Sergiy Bogomolov affiliated with IST Austria, Klosterneuburg, Austria?",
+            "What is the title of the work authored by Sergiy Bogomolov?",
+            "When was the work authored by Sergiy Bogomolov published?",
+            "What are the primary affiliations of Sergiy Bogomolov?"
+        ],
+        "cost": {
+            "total_tokens": 1222,
+            "prompt_tokens": 1006,
+            "completion_tokens": 216
+        }
+    },
+    {
+        "idx": 20,
+        "dialogue": [
+            "How many works has Frank M\u00fcller 0005 authored?",
+            "Is he affiliated with Dresden University of Technology, Germany?",
+            "What is the title of the work authored by him?",
+            "What is the publication date of the work authored by him?",
+            "What is the primary affiliation of him?"
+        ],
+        "original": [
+            "How many works has Frank M\u00fcller 0005 authored?",
+            "Is Frank M\u00fcller 0005 affiliated with Dresden University of Technology, Germany?",
+            "What is the title of the work authored by Frank M\u00fcller 0005?",
+            "What is the publication date of the work authored by Frank M\u00fcller 0005?",
+            "What is the primary affiliation of Frank M\u00fcller 0005?"
+        ],
+        "cost": {
+            "total_tokens": 1271,
+            "prompt_tokens": 1070,
+            "completion_tokens": 201
+        }
+    },
+    {
+        "idx": 21,
+        "dialogue": [
+            "How many authors are there in Manuel G\u00e1mez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?",
+            "Is Edgar N. S\u00e1nchez an author of them: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?",
+            "Who are the authors of them: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?",
+            "When was them: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011) published?",
+            "What is the title of the paper authored by them?"
+        ],
+        "original": [
+            "How many authors are there in Manuel G\u00e1mez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?",
+            "Is Edgar N. S\u00e1nchez an author of Manuel G\u00e1mez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?",
+            "Who are the authors of Manuel G\u00e1mez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011)?",
+            "When was Manuel G\u00e1mez et al.: Optimal operation via a recurrent neural network of a wind-solar energy system. (2011) published?",
+            "What is the title of the paper authored by Edgar N. S\u00e1nchez?"
+        ],
+        "cost": {
+            "total_tokens": 1303,
+            "prompt_tokens": 953,
+            "completion_tokens": 350
+        }
+    },
+    {
+        "idx": 22,
+        "dialogue": [
+            "How many authors are there in Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?",
+            "Who is the author of They: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?",
+            "Is Juyang Weng an author of They: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?",
+            "What is the title of the paper authored by him?",
+            "When was the paper They: Modeling dopamine and serotonin systems in a visual recognition network. (2011) published?"
+        ],
+        "original": [
+            "How many authors are there in Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?",
+            "Who is the author of Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?",
+            "Is Juyang Weng an author of Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011)?",
+            "What is the title of the paper authored by Juyang Weng?",
+            "When was the paper Stephen Paslaski et al.: Modeling dopamine and serotonin systems in a visual recognition network. (2011) published?"
+        ],
+        "cost": {
+            "total_tokens": 1241,
+            "prompt_tokens": 929,
+            "completion_tokens": 312
+        }
+    },
+    {
+        "idx": 23,
+        "dialogue": [
+            "How many publications has Falak Sher authored?",
+            "Has he authored any publications in 2015?",
+            "What is the title of the publication authored by him in 2015?",
+            "When was the publication authored by him published?",
+            "What are the topics of the publications authored by him?"
+        ],
+        "original": [
+            "How many publications has Falak Sher authored?",
+            "Has Falak Sher authored any publications in 2015?",
+            "What is the title of the publication authored by Falak Sher in 2015?",
+            "When was the publication authored by Falak Sher published?",
+            "What are the topics of the publications authored by Falak Sher?"
+        ],
+        "cost": {
+            "total_tokens": 1038,
+            "prompt_tokens": 852,
+            "completion_tokens": 186
+        }
+    },
+    {
+        "idx": 24,
+        "dialogue": [
+            "How many publications has Wolfram Sperber authored?",
+            "Has he authored any publications in 1980?",
+            "What is the title of the publication authored by him in 1980?",
+            "When did he author the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?",
+            "Who authored the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?"
+        ],
+        "original": [
+            "How many publications has Wolfram Sperber authored?",
+            "Has Wolfram Sperber authored any publications in 1980?",
+            "What is the title of the publication authored by Wolfram Sperber in 1980?",
+            "When did Wolfram Sperber author the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?",
+            "Who authored the publication 'Wolfram Sperber: Zur Existenz optimaler Steuerungen bei Kontrollproblemen mit parabolischen Zustandsgleichungen'?"
+        ],
+        "cost": {
+            "total_tokens": 1275,
+            "prompt_tokens": 941,
+            "completion_tokens": 334
+        }
+    },
+    {
+        "idx": 26,
+        "dialogue": [
+            "How many publications has Michael Braun 0003 authored?",
+            "Is he affiliated with BMW Group Research, Munich, Germany?",
+            "What is the title of the publication authored by him in 2020?",
+            "When was the publication authored by him published?",
+            "Which publications has he authored?"
+        ],
+        "original": [
+            "How many publications has Michael Braun 0003 authored?",
+            "Is Michael Braun 0003 affiliated with BMW Group Research, Munich, Germany?",
+            "What is the title of the publication authored by Michael Braun 0003 in 2020?",
+            "When was the publication authored by Michael Braun 0003 published?",
+            "Which publications has Michael Braun 0003 authored?"
+        ],
+        "cost": {
+            "total_tokens": 1096,
+            "prompt_tokens": 906,
+            "completion_tokens": 190
+        }
+    },
+    {
+        "idx": 27,
+        "dialogue": [
+            "How many people authored Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)?",
+            "Who authored it?",
+            "Is Meng Chen 0006 an author of it?",
+            "When was it authored?",
+            "What is the title of the work authored by Meng Chen 0006?"
+        ],
+        "original": [
+            "How many people authored Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)?",
+            "Who authored Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)?",
+            "Is Meng Chen 0006 an author of Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020)?",
+            "When was Lei Shen et al.: Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation. (2020) authored?",
+            "What is the title of the work authored by Meng Chen 0006?"
+        ],
+        "cost": {
+            "total_tokens": 1281,
+            "prompt_tokens": 979,
+            "completion_tokens": 302
+        }
+    },
+    {
+        "idx": 29,
+        "dialogue": [
+            "How many authors contributed to 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)'?",
+            "Did Viswanath Pulabaigari author it?",
+            "What is Viswanath Pulabaigari's primary affiliation?",
+            "What year was it published?",
+            "Who are the authors of it?"
+        ],
+        "original": [
+            "How many authors contributed to 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)'?",
+            "Did Viswanath Pulabaigari author 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)'?",
+            "What is Viswanath Pulabaigari's primary affiliation?",
+            "What year was 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)' published?",
+            "Who are the authors of 'T. Hitendra Sarma et al.: Speeding-up the prototype based kernel k-means clustering method for large data sets. (2016)'?"
+        ],
+        "cost": {
+            "total_tokens": 1409,
+            "prompt_tokens": 1104,
+            "completion_tokens": 305
+        }
+    },
+    {
+        "idx": 30,
+        "dialogue": [
+            "How many papers has Sarah M. Erfani authored?",
+            "Is she affiliated with the University of Melbourne?",
+            "List all the papers authored by her.",
+            "What is the latest paper authored by her?",
+            "When was the paper 'Dual Head Adversarial Training' authored by her published?"
+        ],
+        "original": [
+            "How many papers has Sarah M. Erfani authored?",
+            "Is Sarah M. Erfani affiliated with the University of Melbourne?",
+            "List all the papers authored by Sarah M. Erfani.",
+            "What is the latest paper authored by Sarah M. Erfani?",
+            "When was the paper 'Dual Head Adversarial Training' authored by Sarah M. Erfani published?"
+        ],
+        "cost": {
+            "total_tokens": 1495,
+            "prompt_tokens": 1288,
+            "completion_tokens": 207
+        }
+    },
+    {
+        "idx": 31,
+        "dialogue": [
+            "How many contributions did Tegawend\u00e9 F. Bissyand\u00e9 make in 2013?",
+            "Did he author any contributions in 2013?",
+            "What contributions did he make in 2013?",
+            "Who authored the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions \u00e0 l'Am\u00e9lioration du D\u00e9bogage des Services Noyau dans un Syst\u00e8me d'Exploitation Monolithique). (2013)?",
+            "When was the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions \u00e0 l'Am\u00e9lioration du D\u00e9bogage des Services Noyau dans un Syst\u00e8me d'Exploitation Monolithique). (2013) authored by him?"
+        ],
+        "original": [
+            "How many contributions did Tegawend\u00e9 F. Bissyand\u00e9 make in 2013?",
+            "Did Tegawend\u00e9 F. Bissyand\u00e9 author any contributions in 2013?",
+            "What contributions did Tegawend\u00e9 F. Bissyand\u00e9 make in 2013?",
+            "Who authored the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions \u00e0 l'Am\u00e9lioration du D\u00e9bogage des Services Noyau dans un Syst\u00e8me d'Exploitation Monolithique). (2013)?",
+            "When was the Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System. (Contributions \u00e0 l'Am\u00e9lioration du D\u00e9bogage des Services Noyau dans un Syst\u00e8me d'Exploitation Monolithique). (2013) authored by Tegawend\u00e9 F. Bissyand\u00e9?"
+        ],
+        "cost": {
+            "total_tokens": 1467,
+            "prompt_tokens": 1037,
+            "completion_tokens": 430
+        }
+    },
+    {
+        "idx": 35,
+        "dialogue": [
+            "How many publications has Teresa Bernarda Ludermir authored?",
+            "Which primary affiliation is associated with her?",
+            "Did she author any publications before 2000?",
+            "What is the title of the earliest publication authored by her?",
+            "What is the title of the most recent publication authored by her?"
+        ],
+        "original": [
+            "How many publications has Teresa Bernarda Ludermir authored?",
+            "Which primary affiliation is associated with Teresa Bernarda Ludermir?",
+            "Did Teresa Bernarda Ludermir author any publications before 2000?",
+            "What is the title of the earliest publication authored by Teresa Bernarda Ludermir?",
+            "What is the title of the most recent publication authored by Teresa Bernarda Ludermir?"
+        ],
+        "cost": {
+            "total_tokens": 1508,
+            "prompt_tokens": 1304,
+            "completion_tokens": 204
+        }
+    },
+    {
+        "idx": 37,
+        "dialogue": [
+            "How many books has Beate Krause authored?",
+            "Is she affiliated with the University of Kassel?",
+            "What is her primary affiliation?",
+            "What is the title of the book she authored in 2015?",
+            "When was the book she authored in 2015 published?"
+        ],
+        "original": [
+            "How many books has Beate Krause authored?",
+            "Is Beate Krause affiliated with the University of Kassel?",
+            "What is Beate Krause's primary affiliation?",
+            "What is the title of the book Beate Krause authored in 2015?",
+            "When was the book Beate Krause authored in 2015 published?"
+        ],
+        "cost": {
+            "total_tokens": 1125,
+            "prompt_tokens": 939,
+            "completion_tokens": 186
+        }
+    },
+    {
+        "idx": 38,
+        "dialogue": [
+            "How many books has Christian Kuhlmann 0001 authored?",
+            "Is he affiliated with Ruhr University Bochum, Germany?",
+            "What is the primary affiliation of him?",
+            "What books has he authored?",
+            "When was 'Christian Kuhlmann: Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen. (2001)' published?"
+        ],
+        "original": [
+            "How many books has Christian Kuhlmann 0001 authored?",
+            "Is Christian Kuhlmann 0001 affiliated with Ruhr University Bochum, Germany?",
+            "What is the primary affiliation of Christian Kuhlmann 0001?",
+            "What books has Christian Kuhlmann 0001 authored?",
+            "When was Christian Kuhlmann: Informations- und berechnungstheoretische Barrieren beim algorithmischen Lernen. (2001) published?"
+        ],
+        "cost": {
+            "total_tokens": 1227,
+            "prompt_tokens": 983,
+            "completion_tokens": 244
+        }
+    },
+    {
+        "idx": 39,
+        "dialogue": [
+            "How many publications has Oliver Kramer 0001 authored?",
+            "Has he authored any publications in 2021?",
+            "What is his primary affiliation?",
+            "What is the title of the publication authored by him in 2015?",
+            "What is the title of the most recent publication authored by him?"
+        ],
+        "original": [
+            "How many publications has Oliver Kramer 0001 authored?",
+            "Has Oliver Kramer 0001 authored any publications in 2021?",
+            "What is Oliver Kramer 0001's primary affiliation?",
+            "What is the title of the publication authored by Oliver Kramer 0001 in 2015?",
+            "What is the title of the most recent publication authored by Oliver Kramer 0001?"
+        ],
+        "cost": {
+            "total_tokens": 1160,
+            "prompt_tokens": 968,
+            "completion_tokens": 192
+        }
+    },
+    {
+        "idx": 41,
+        "dialogue": [
+            "How many books has J\u00fcrgen B\u00f6rstler authored?",
+            "Is he affiliated with the Blekinge Institute of Technology (BTH), Sweden?",
+            "What is the title of the book he authored in 1994?",
+            "When did he author his book?",
+            "What is his primary affiliation?"
+        ],
+        "original": [
+            "How many books has J\u00fcrgen B\u00f6rstler authored?",
+            "Is J\u00fcrgen B\u00f6rstler affiliated with the Blekinge Institute of Technology (BTH), Sweden?",
+            "What is the title of the book J\u00fcrgen B\u00f6rstler authored in 1994?",
+            "When did J\u00fcrgen B\u00f6rstler author his book?",
+            "What is J\u00fcrgen B\u00f6rstler's primary affiliation?"
+        ],
+        "cost": {
+            "total_tokens": 1218,
+            "prompt_tokens": 1004,
+            "completion_tokens": 214
+        }
+    },
+    {
+        "idx": 42,
+        "dialogue": [
+            "How many publications has Ben Goertzel authored?",
+            "Is he affiliated with OpenCog Foundation in Sha Tin, Hong Kong?",
+            "What is the title of the publication authored by him in 2006?",
+            "What is the title of the publication authored by him in 2014?",
+            "What year was the publication authored by him and Gino Yu published?"
+        ],
+        "original": [
+            "How many publications has Ben Goertzel authored?",
+            "Is Ben Goertzel affiliated with OpenCog Foundation in Sha Tin, Hong Kong?",
+            "What is the title of the publication authored by Ben Goertzel in 2006?",
+            "What is the title of the publication authored by Ben Goertzel in 2014?",
+            "What year was the publication authored by Ben Goertzel and Gino Yu published?"
+        ],
+        "cost": {
+            "total_tokens": 1293,
+            "prompt_tokens": 1073,
+            "completion_tokens": 220
+        }
+    },
+    {
+        "idx": 49,
+        "dialogue": [
+            "How many publications has Franziska Mueller 0001 authored?",
+            "Is she affiliated with the Max Planck Institute for Informatics (MPII) in Saarbr\u00fccken, Germany?",
+            "What is the title of the publication authored by her?",
+            "When was the publication authored by her published?",
+            "What is the primary affiliation of her?"
+        ],
+        "original": [
+            "How many publications has Franziska Mueller 0001 authored?",
+            "Is Franziska Mueller 0001 affiliated with the Max Planck Institute for Informatics (MPII) in Saarbr\u00fccken, Germany?",
+            "What is the title of the publication authored by Franziska Mueller 0001?",
+            "When was the publication authored by Franziska Mueller 0001 published?",
+            "What is the primary affiliation of Franziska Mueller 0001?"
+        ],
+        "cost": {
+            "total_tokens": 1220,
+            "prompt_tokens": 988,
+            "completion_tokens": 232
+        }
+    }
+]

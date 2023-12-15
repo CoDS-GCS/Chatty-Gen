@@ -1,0 +1,640 @@
+[
+    {
+        "idx": 1,
+        "dialogue": [
+            "Can you list the papers authored by Michael J. Carey?",
+            "How many papers did he author?",
+            "Did he author a paper titled 'Modeling and Evaluation of Database Concurrency Control Algorithms' in 1983?",
+            "Was he the sole author of the paper 'Modeling and Evaluation of Database Concurrency Control Algorithms'?",
+            "What is the full name of the author of the paper 'Modeling and Evaluation of Database Concurrency Control Algorithms'?"
+        ],
+        "original": [
+            "Can you list the papers authored by Michael J. Carey?",
+            "How many papers did Michael J. Carey author?",
+            "Did Michael J. Carey author a paper titled 'Modeling and Evaluation of Database Concurrency Control Algorithms' in 1983?",
+            "Was Michael J. Carey the sole author of the paper 'Modeling and Evaluation of Database Concurrency Control Algorithms'?",
+            "What is the full name of the author of the paper 'Modeling and Evaluation of Database Concurrency Control Algorithms'?"
+        ],
+        "cost": {
+            "total_tokens": 1666,
+            "prompt_tokens": 1416,
+            "completion_tokens": 250
+        }
+    },
+    {
+        "idx": 4,
+        "dialogue": [
+            "Can you list the papers authored by Wieland Holfelder?",
+            "How many papers did He author?",
+            "Did He author a paper titled 'Aufzeichnung und Wiedergabe von Internet-Videokonferenzen' in 1998?",
+            "Is His only published work 'Aufzeichnung und Wiedergabe von Internet-Videokonferenzen'?",
+            "What is the title of the paper authored by Him in 1998?"
+        ],
+        "original": [
+            "Can you list the papers authored by Wieland Holfelder?",
+            "How many papers did Wieland Holfelder author?",
+            "Did Wieland Holfelder author a paper titled 'Aufzeichnung und Wiedergabe von Internet-Videokonferenzen' in 1998?",
+            "Is Wieland Holfelder's only published work 'Aufzeichnung und Wiedergabe von Internet-Videokonferenzen'?",
+            "What is the title of the paper authored by Wieland Holfelder in 1998?"
+        ],
+        "cost": {
+            "total_tokens": 1721,
+            "prompt_tokens": 1446,
+            "completion_tokens": 275
+        }
+    },
+    {
+        "idx": 6,
+        "dialogue": [
+            "Can you list the papers authored by Hiok Chai Quek?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Rough set-based neuro-fuzzy system' in 2006?",
+            "Is he affiliated with Nanyang Technological University in Singapore?",
+            "Did he author a paper titled 'Clinical Diagnosis Using Proteomics and Complementary Learning' in 2006?"
+        ],
+        "original": [
+            "Can you list the papers authored by Hiok Chai Quek?",
+            "How many papers did Hiok Chai Quek co-author with other researchers?",
+            "Did Hiok Chai Quek author a paper titled 'Rough set-based neuro-fuzzy system' in 2006?",
+            "Is Hiok Chai Quek affiliated with Nanyang Technological University in Singapore?",
+            "Did Hiok Chai Quek author a paper titled 'Clinical Diagnosis Using Proteomics and Complementary Learning' in 2006?"
+        ],
+        "cost": {
+            "total_tokens": 2097,
+            "prompt_tokens": 1829,
+            "completion_tokens": 268
+        }
+    },
+    {
+        "idx": 9,
+        "dialogue": [
+            "Can you list the papers authored by Derong Liu 0001?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Wavelet Basis Function Neural Networks' in 2007?",
+            "What is his primary affiliation?",
+            "What year was the paper 'Adaptive dynamic programming for a class of discrete-time non-affine nonlinear systems with time-delays' authored by him?"
+        ],
+        "original": [
+            "Can you list the papers authored by Derong Liu 0001?",
+            "How many papers did Derong Liu 0001 co-author with other researchers?",
+            "Did Derong Liu 0001 author a paper titled 'Wavelet Basis Function Neural Networks' in 2007?",
+            "What is Derong Liu 0001's primary affiliation?",
+            "What year was the paper 'Adaptive dynamic programming for a class of discrete-time non-affine nonlinear systems with time-delays' authored by Derong Liu 0001?"
+        ],
+        "cost": {
+            "total_tokens": 1858,
+            "prompt_tokens": 1617,
+            "completion_tokens": 241
+        }
+    },
+    {
+        "idx": 10,
+        "dialogue": [
+            "Can you list the papers authored by Matheus F. Torquato?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Optimization of MLP Neural Networks in 8-bit Microcontrollers using Program Memory' in 2021?",
+            "What is his primary affiliation?",
+            "Where is his primary affiliation located?"
+        ],
+        "original": [
+            "Can you list the papers authored by Matheus F. Torquato?",
+            "How many papers did Matheus F. Torquato co-author with other researchers?",
+            "Did Matheus F. Torquato author a paper titled 'Optimization of MLP Neural Networks in 8-bit Microcontrollers using Program Memory' in 2021?",
+            "What is Matheus F. Torquato's primary affiliation?",
+            "Where is Matheus F. Torquato's primary affiliation located?"
+        ],
+        "cost": {
+            "total_tokens": 1772,
+            "prompt_tokens": 1544,
+            "completion_tokens": 228
+        }
+    },
+    {
+        "idx": 11,
+        "dialogue": [
+            "Can you list the papers authored by Paulo Martins Engel?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Using a Gaussian mixture neural network for incremental learning and robotics' in 2012?",
+            "What is his primary affiliation?",
+            "Is he affiliated with the Federal University of Rio Grande do Sul in Porto Alegre, Brazil?"
+        ],
+        "original": [
+            "Can you list the papers authored by Paulo Martins Engel?",
+            "How many papers did Paulo Martins Engel co-author with other researchers?",
+            "Did Paulo Martins Engel author a paper titled 'Using a Gaussian mixture neural network for incremental learning and robotics' in 2012?",
+            "What is Paulo Martins Engel's primary affiliation?",
+            "Is Paulo Martins Engel affiliated with the Federal University of Rio Grande do Sul in Porto Alegre, Brazil?"
+        ],
+        "cost": {
+            "total_tokens": 1710,
+            "prompt_tokens": 1490,
+            "completion_tokens": 220
+        }
+    },
+    {
+        "idx": 12,
+        "dialogue": [
+            "Can you list the papers authored by Irena Koprinska?",
+            "How many papers did she author in 2018?",
+            "Does she have an affiliation with the University of Sydney?",
+            "Did she author a paper titled 'Forecasting hourly electricity load profile using neural networks' in 2014?",
+            "What is the latest paper authored by her?"
+        ],
+        "original": [
+            "Can you list the papers authored by Irena Koprinska?",
+            "How many papers did Irena Koprinska author in 2018?",
+            "Does Irena Koprinska have an affiliation with the University of Sydney?",
+            "Did Irena Koprinska author a paper titled 'Forecasting hourly electricity load profile using neural networks' in 2014?",
+            "What is the latest paper authored by Irena Koprinska?"
+        ],
+        "cost": {
+            "total_tokens": 1963,
+            "prompt_tokens": 1754,
+            "completion_tokens": 209
+        }
+    },
+    {
+        "idx": 13,
+        "dialogue": [
+            "Can you list the paper authored by Houssam Salmane?",
+            "How many papers has he written?",
+            "Did he write a paper titled 'Reconstruction et analyse de trajectoires 2D d'objets mobiles par mod\u00e9lisation Markovienne et la th\u00e9orie de l'\u00e9vidence \u00e0 partir de s\u00e9quences d'images monoculaires - Application \u00e0 l'\u00e9valuation de situations potentiellement dangereuses aux passages \u00e0 niveau' in 2013?",
+            "Is he the only author of the paper 'Reconstruction et analyse de trajectoires 2D d'objets mobiles par mod\u00e9lisation Markovienne et la th\u00e9orie de l'\u00e9vidence \u00e0 partir de s\u00e9quences d'images monoculaires - Application \u00e0 l'\u00e9valuation de situations potentiellement dangereuses aux passages \u00e0 niveau'?",
+            "What is the publication date of the paper authored by him?"
+        ],
+        "original": [
+            "Can you list the paper authored by Houssam Salmane?",
+            "How many papers has Houssam Salmane written?",
+            "Did Houssam Salmane write a paper titled 'Reconstruction et analyse de trajectoires 2D d'objets mobiles par mod\u00e9lisation Markovienne et la th\u00e9orie de l'\u00e9vidence \u00e0 partir de s\u00e9quences d'images monoculaires - Application \u00e0 l'\u00e9valuation de situations potentiellement dangereuses aux passages \u00e0 niveau' in 2013?",
+            "Is Houssam Salmane the only author of the paper 'Reconstruction et analyse de trajectoires 2D d'objets mobiles par mod\u00e9lisation Markovienne et la th\u00e9orie de l'\u00e9vidence \u00e0 partir de s\u00e9quences d'images monoculaires - Application \u00e0 l'\u00e9valuation de situations potentiellement dangereuses aux passages \u00e0 niveau'?",
+            "What is the publication date of the paper authored by Houssam Salmane?"
+        ],
+        "cost": {
+            "total_tokens": 2111,
+            "prompt_tokens": 1633,
+            "completion_tokens": 478
+        }
+    },
+    {
+        "idx": 14,
+        "dialogue": [
+            "Can you list the papers authored by Olivier Ferret?",
+            "How many papers did he author?",
+            "Did he author a paper titled 'ANTHAPSI : un syst\u00e8me d'analyse th\u00e9matique et d'apprentissage de connaissances pragmatiques fond\u00e9 sur l'amor\u00e7age' in 1998?",
+            "Is he the only author of the paper 'ANTHAPSI : un syst\u00e8me d'analyse th\u00e9matique et d'apprentissage de connaissances pragmatiques fond\u00e9 sur l'amor\u00e7age'?",
+            "What is the date of publication for the paper authored by him?"
+        ],
+        "original": [
+            "Can you list the papers authored by Olivier Ferret?",
+            "How many papers did Olivier Ferret author?",
+            "Did Olivier Ferret author a paper titled 'ANTHAPSI : un syst\u00e8me d'analyse th\u00e9matique et d'apprentissage de connaissances pragmatiques fond\u00e9 sur l'amor\u00e7age' in 1998?",
+            "Is Olivier Ferret the only author of the paper 'ANTHAPSI : un syst\u00e8me d'analyse th\u00e9matique et d'apprentissage de connaissances pragmatiques fond\u00e9 sur l'amor\u00e7age'?",
+            "What is the date of publication for the paper authored by Olivier Ferret?"
+        ],
+        "cost": {
+            "total_tokens": 1850,
+            "prompt_tokens": 1507,
+            "completion_tokens": 343
+        }
+    },
+    {
+        "idx": 15,
+        "dialogue": [
+            "Can you list the papers authored by Kamill Panitzek?",
+            "How many papers did he author?",
+            "Did he author a paper titled 'Mobile Service Provision in Harsh Environments' in 2016?",
+            "What is his primary affiliation?",
+            "When was his paper titled 'Mobile service provision in harsh environments = Bereitstellung mobiler Dienste in rauen Umgebungen' published?"
+        ],
+        "original": [
+            "Can you list the papers authored by Kamill Panitzek?",
+            "How many papers did Kamill Panitzek author?",
+            "Did Kamill Panitzek author a paper titled 'Mobile Service Provision in Harsh Environments' in 2016?",
+            "What is Kamill Panitzek's primary affiliation?",
+            "When was Kamill Panitzek's paper titled 'Mobile service provision in harsh environments = Bereitstellung mobiler Dienste in rauen Umgebungen' published?"
+        ],
+        "cost": {
+            "total_tokens": 1807,
+            "prompt_tokens": 1570,
+            "completion_tokens": 237
+        }
+    },
+    {
+        "idx": 17,
+        "dialogue": [
+            "Can you list the papers authored by Abderrahim Ait Wakrime?",
+            "How many papers has he authored?",
+            "Is he affiliated with Mohammed V University, Rabat, Morocco?",
+            "Did he author a paper titled 'Une approche par composants pour l'analyse visuelle interactive de r\u00e9sultats issus de simulations num\u00e9riques' in 2015?",
+            "What is the primary affiliation of him?"
+        ],
+        "original": [
+            "Can you list the papers authored by Abderrahim Ait Wakrime?",
+            "How many papers has Abderrahim Ait Wakrime authored?",
+            "Is Abderrahim Ait Wakrime affiliated with Mohammed V University, Rabat, Morocco?",
+            "Did Abderrahim Ait Wakrime author a paper titled 'Une approche par composants pour l'analyse visuelle interactive de r\u00e9sultats issus de simulations num\u00e9riques' in 2015?",
+            "What is the primary affiliation of Abderrahim Ait Wakrime?"
+        ],
+        "cost": {
+            "total_tokens": 1834,
+            "prompt_tokens": 1580,
+            "completion_tokens": 254
+        }
+    },
+    {
+        "idx": 19,
+        "dialogue": [
+            "Can you list the papers authored by Jaewook Lee 0001?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Support Vector Classifier Using Basin-Based Sampling for Security Assessment of Nonlinear Power and Control Systems' in 2006?",
+            "Is he affiliated with any institution?",
+            "What is the date of publication of the paper authored by him?"
+        ],
+        "original": [
+            "Can you list the papers authored by Jaewook Lee 0001?",
+            "How many papers did Jaewook Lee 0001 co-author with other researchers?",
+            "Did Jaewook Lee 0001 author a paper titled 'Support Vector Classifier Using Basin-Based Sampling for Security Assessment of Nonlinear Power and Control Systems' in 2006?",
+            "Is Jaewook Lee 0001 affiliated with any institution?",
+            "What is the date of publication of the paper authored by Jaewook Lee 0001?"
+        ],
+        "cost": {
+            "total_tokens": 1657,
+            "prompt_tokens": 1425,
+            "completion_tokens": 232
+        }
+    },
+    {
+        "idx": 21,
+        "dialogue": [
+            "Can you list the papers authored by Edgar N. S\u00e1nchez?",
+            "How many papers did he author?",
+            "Did he author a paper titled 'Optimal operation via a recurrent neural network of a wind-solar energy system' in 2011?",
+            "What year was the paper 'Optimal operation via a recurrent neural network of a wind-solar energy system' authored by him published?",
+            "What is the title of the paper authored by him?"
+        ],
+        "original": [
+            "Can you list the papers authored by Edgar N. S\u00e1nchez?",
+            "How many papers did Edgar N. S\u00e1nchez author?",
+            "Did Edgar N. S\u00e1nchez author a paper titled 'Optimal operation via a recurrent neural network of a wind-solar energy system' in 2011?",
+            "What year was the paper 'Optimal operation via a recurrent neural network of a wind-solar energy system' authored by Edgar N. S\u00e1nchez published?",
+            "What is the title of the paper authored by Edgar N. S\u00e1nchez?"
+        ],
+        "cost": {
+            "total_tokens": 1700,
+            "prompt_tokens": 1441,
+            "completion_tokens": 259
+        }
+    },
+    {
+        "idx": 23,
+        "dialogue": [
+            "Can you list the papers authored by Falak Sher?",
+            "How many papers did he author?",
+            "Did he author a paper in 2015?",
+            "Was the paper authored by him titled 'Abstraction and refinement of probabilistic automata using modal stochastic games'?",
+            "What is the title of the paper authored by him in 2015?"
+        ],
+        "original": [
+            "Can you list the papers authored by Falak Sher?",
+            "How many papers did Falak Sher author?",
+            "Did Falak Sher author a paper in 2015?",
+            "Was the paper authored by Falak Sher titled 'Abstraction and refinement of probabilistic automata using modal stochastic games'?",
+            "What is the title of the paper authored by Falak Sher in 2015?"
+        ],
+        "cost": {
+            "total_tokens": 1599,
+            "prompt_tokens": 1400,
+            "completion_tokens": 199
+        }
+    },
+    {
+        "idx": 25,
+        "dialogue": [
+            "Can you list the papers authored by Martin Sp\u00fcler?",
+            "How many papers did he author?",
+            "Did he author a paper titled 'Assessing the Benefit of Adaptive Brain-Computer Interfacing' in 2013?",
+            "What is the title of the paper authored by him?",
+            "What year did he author the paper 'Assessing the Benefit of Adaptive Brain-Computer Interfacing'?"
+        ],
+        "original": [
+            "Can you list the papers authored by Martin Sp\u00fcler?",
+            "How many papers did Martin Sp\u00fcler author?",
+            "Did Martin Sp\u00fcler author a paper titled 'Assessing the Benefit of Adaptive Brain-Computer Interfacing' in 2013?",
+            "What is the title of the paper authored by Martin Sp\u00fcler?",
+            "What year did Martin Sp\u00fcler author the paper 'Assessing the Benefit of Adaptive Brain-Computer Interfacing'?"
+        ],
+        "cost": {
+            "total_tokens": 1611,
+            "prompt_tokens": 1390,
+            "completion_tokens": 221
+        }
+    },
+    {
+        "idx": 26,
+        "dialogue": [
+            "Can you list the papers authored by Michael Braun 0003?",
+            "What is the primary affiliation of him?",
+            "Did he author a paper titled 'Affective automotive user interfaces' in 2020?",
+            "Is the primary affiliation of him 'BMW Group Research, Munich, Germany'?",
+            "When was the paper titled 'Affective automotive user interfaces' authored by him?"
+        ],
+        "original": [
+            "Can you list the papers authored by Michael Braun 0003?",
+            "What is the primary affiliation of Michael Braun 0003?",
+            "Did Michael Braun 0003 author a paper titled 'Affective automotive user interfaces' in 2020?",
+            "Is the primary affiliation of Michael Braun 0003 'BMW Group Research, Munich, Germany'?",
+            "When was the paper titled 'Affective automotive user interfaces' authored by Michael Braun 0003?"
+        ],
+        "cost": {
+            "total_tokens": 1664,
+            "prompt_tokens": 1452,
+            "completion_tokens": 212
+        }
+    },
+    {
+        "idx": 27,
+        "dialogue": [
+            "Can you list the papers authored by Meng Chen 0006?",
+            "How many papers did he author?",
+            "Did he author a paper titled 'Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation' in 2020?",
+            "Is he the sole author of the paper 'Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation'?",
+            "What is the date of publication of the paper 'Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation' authored by him?"
+        ],
+        "original": [
+            "Can you list the papers authored by Meng Chen 0006?",
+            "How many papers did Meng Chen 0006 author?",
+            "Did Meng Chen 0006 author a paper titled 'Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation' in 2020?",
+            "Is Meng Chen 0006 the sole author of the paper 'Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation'?",
+            "What is the date of publication of the paper 'Compose Like Humans: Jointly Improving the Coherence and Novelty for Modern Chinese Poetry Generation' authored by Meng Chen 0006?"
+        ],
+        "cost": {
+            "total_tokens": 1754,
+            "prompt_tokens": 1445,
+            "completion_tokens": 309
+        }
+    },
+    {
+        "idx": 28,
+        "dialogue": [
+            "Can you list the works authored by Gert Heinrich 0002?",
+            "How many works did he author?",
+            "Did he author a work titled 'Entwicklung und Anwendung einer Theorie polymerer Netzwerke und Schmelzen unter Molekularfeld-theoretischer Ber\u00fccksichtigung der Topologieerhaltung' in 1985?",
+            "Is he the only author of 'Entwicklung und Anwendung einer Theorie polymerer Netzwerke und Schmelzen unter Molekularfeld-theoretischer Ber\u00fccksichtigung der Topologieerhaltung'?",
+            "What year did he author 'Entwicklung und Anwendung einer Theorie polymerer Netzwerke und Schmelzen unter Molekularfeld-theoretischer Ber\u00fccksichtigung der Topologieerhaltung'?"
+        ],
+        "original": [
+            "Can you list the works authored by Gert Heinrich 0002?",
+            "How many works did Gert Heinrich 0002 author?",
+            "Did Gert Heinrich 0002 author a work titled 'Entwicklung und Anwendung einer Theorie polymerer Netzwerke und Schmelzen unter Molekularfeld-theoretischer Ber\u00fccksichtigung der Topologieerhaltung' in 1985?",
+            "Is Gert Heinrich 0002 the only author of 'Entwicklung und Anwendung einer Theorie polymerer Netzwerke und Schmelzen unter Molekularfeld-theoretischer Ber\u00fccksichtigung der Topologieerhaltung'?",
+            "What year did Gert Heinrich 0002 author 'Entwicklung und Anwendung einer Theorie polymerer Netzwerke und Schmelzen unter Molekularfeld-theoretischer Ber\u00fccksichtigung der Topologieerhaltung'?"
+        ],
+        "cost": {
+            "total_tokens": 2039,
+            "prompt_tokens": 1575,
+            "completion_tokens": 464
+        }
+    },
+    {
+        "idx": 29,
+        "dialogue": [
+            "Can you list the papers authored by Viswanath Pulabaigari?",
+            "How many papers did he author?",
+            "What is his primary affiliation?",
+            "Did he author a paper titled 'Speeding-up the prototype based kernel k-means clustering method for large data sets' in 2016?",
+            "When was the paper 'Speeding-up the prototype based kernel k-means clustering method for large data sets' authored by him published?"
+        ],
+        "original": [
+            "Can you list the papers authored by Viswanath Pulabaigari?",
+            "How many papers did Viswanath Pulabaigari author?",
+            "What is Viswanath Pulabaigari's primary affiliation?",
+            "Did Viswanath Pulabaigari author a paper titled 'Speeding-up the prototype based kernel k-means clustering method for large data sets' in 2016?",
+            "When was the paper 'Speeding-up the prototype based kernel k-means clustering method for large data sets' authored by Viswanath Pulabaigari published?"
+        ],
+        "cost": {
+            "total_tokens": 1822,
+            "prompt_tokens": 1546,
+            "completion_tokens": 276
+        }
+    },
+    {
+        "idx": 30,
+        "dialogue": [
+            "Can you list the papers authored by Sarah M. Erfani?",
+            "How many papers did she co-author with other researchers?",
+            "Did she author a paper titled 'Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns' in 2021?",
+            "What is the primary affiliation of her?",
+            "Did she author a paper titled 'Dual Head Adversarial Training' in 2021?"
+        ],
+        "original": [
+            "Can you list the papers authored by Sarah M. Erfani?",
+            "How many papers did Sarah M. Erfani co-author with other researchers?",
+            "Did Sarah M. Erfani author a paper titled 'Mining Rare Recurring Events in Network Traffic using Second Order Contrast Patterns' in 2021?",
+            "What is the primary affiliation of Sarah M. Erfani?",
+            "Did Sarah M. Erfani author a paper titled 'Dual Head Adversarial Training' in 2021?"
+        ],
+        "cost": {
+            "total_tokens": 2063,
+            "prompt_tokens": 1833,
+            "completion_tokens": 230
+        }
+    },
+    {
+        "idx": 31,
+        "dialogue": [
+            "Can you list the papers authored by Tegawend\u00e9 F. Bissyand\u00e9?",
+            "How many papers did he author?",
+            "Did he author a paper titled 'Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System' in 2013?",
+            "What is the title of the paper authored by him?",
+            "What is the date of the paper authored by him?"
+        ],
+        "original": [
+            "Can you list the papers authored by Tegawend\u00e9 F. Bissyand\u00e9?",
+            "How many papers did Tegawend\u00e9 F. Bissyand\u00e9 author?",
+            "Did Tegawend\u00e9 F. Bissyand\u00e9 author a paper titled 'Contributions for Improving Debugging of Kernel-level Services in a Monolithic Operating System' in 2013?",
+            "What is the title of the paper authored by Tegawend\u00e9 F. Bissyand\u00e9?",
+            "What is the date of the paper authored by Tegawend\u00e9 F. Bissyand\u00e9?"
+        ],
+        "cost": {
+            "total_tokens": 1749,
+            "prompt_tokens": 1484,
+            "completion_tokens": 265
+        }
+    },
+    {
+        "idx": 35,
+        "dialogue": [
+            "Can you list the papers authored by Teresa Bernarda Ludermir?",
+            "How many papers did she co-author with other researchers?",
+            "Did she author a paper titled 'Encoding of Probabilistic Automata into RAM-Based Neural Networks' in 2000?",
+            "What is her primary affiliation?",
+            "When did she co-author a paper with Anderson Ten\u00f3rio Sergio?"
+        ],
+        "original": [
+            "Can you list the papers authored by Teresa Bernarda Ludermir?",
+            "How many papers did Teresa Bernarda Ludermir co-author with other researchers?",
+            "Did Teresa Bernarda Ludermir author a paper titled 'Encoding of Probabilistic Automata into RAM-Based Neural Networks' in 2000?",
+            "What is Teresa Bernarda Ludermir's primary affiliation?",
+            "When did Teresa Bernarda Ludermir co-author a paper with Anderson Ten\u00f3rio Sergio?"
+        ],
+        "cost": {
+            "total_tokens": 2085,
+            "prompt_tokens": 1844,
+            "completion_tokens": 241
+        }
+    },
+    {
+        "idx": 36,
+        "dialogue": [
+            "Can you list the papers authored by T. Martin McGinnity?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Transfer Entropy Based Connectivity Estimation of Spontaneously Firing Hippocampal Cultures on Multi Electrode Arrays' in 2019?",
+            "What is his primary affiliation?",
+            "What year was the paper 'EEG denoising with a recurrent quantum neural network for a brain-computer interface' authored by him published?"
+        ],
+        "original": [
+            "Can you list the papers authored by T. Martin McGinnity?",
+            "How many papers did T. Martin McGinnity co-author with other researchers?",
+            "Did T. Martin McGinnity author a paper titled 'Transfer Entropy Based Connectivity Estimation of Spontaneously Firing Hippocampal Cultures on Multi Electrode Arrays' in 2019?",
+            "What is T. Martin McGinnity's primary affiliation?",
+            "What year was the paper 'EEG denoising with a recurrent quantum neural network for a brain-computer interface' authored by T. Martin McGinnity published?"
+        ],
+        "cost": {
+            "total_tokens": 2021,
+            "prompt_tokens": 1748,
+            "completion_tokens": 273
+        }
+    },
+    {
+        "idx": 39,
+        "dialogue": [
+            "Can you list the papers authored by Oliver Kramer 0001?",
+            "How many papers did he author?",
+            "Is he affiliated with the University of Oldenburg, Department of Computing Science?",
+            "Did he author a paper titled 'Dimensionality reduction in continuous evolutionary optimization' in 2015?",
+            "Did he author a paper titled 'Spatial Generation of Molecules with Transformers' in 2021?"
+        ],
+        "original": [
+            "Can you list the papers authored by Oliver Kramer 0001?",
+            "How many papers did Oliver Kramer 0001 author?",
+            "Is Oliver Kramer 0001 affiliated with the University of Oldenburg, Department of Computing Science?",
+            "Did Oliver Kramer 0001 author a paper titled 'Dimensionality reduction in continuous evolutionary optimization' in 2015?",
+            "Did Oliver Kramer 0001 author a paper titled 'Spatial Generation of Molecules with Transformers' in 2021?"
+        ],
+        "cost": {
+            "total_tokens": 1729,
+            "prompt_tokens": 1513,
+            "completion_tokens": 216
+        }
+    },
+    {
+        "idx": 42,
+        "dialogue": [
+            "Can you list the papers authored by Ben Goertzel?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'From here to AGI: A roadmap to the realization of human-level artificial general intelligence' in 2014?",
+            "What is his primary affiliation?",
+            "Did he author a paper titled 'Support Vector Machines to Weight Voters in a Voting System of Entity Extractors' in 2006?"
+        ],
+        "original": [
+            "Can you list the papers authored by Ben Goertzel?",
+            "How many papers did Ben Goertzel co-author with other researchers?",
+            "Did Ben Goertzel author a paper titled 'From here to AGI: A roadmap to the realization of human-level artificial general intelligence' in 2014?",
+            "What is Ben Goertzel's primary affiliation?",
+            "Did Ben Goertzel author a paper titled 'Support Vector Machines to Weight Voters in a Voting System of Entity Extractors' in 2006?"
+        ],
+        "cost": {
+            "total_tokens": 1841,
+            "prompt_tokens": 1602,
+            "completion_tokens": 239
+        }
+    },
+    {
+        "idx": 44,
+        "dialogue": [
+            "Can you list the papers authored by Klaus Obermayer?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'A New Method for Tracking Modulations in Tonal Music in Audio Data Format' in 2000?",
+            "What is his primary affiliation?",
+            "Did he author a paper titled 'On the sample mean of graphs' in 2008?"
+        ],
+        "original": [
+            "Can you list the papers authored by Klaus Obermayer?",
+            "How many papers did Klaus Obermayer co-author with other researchers?",
+            "Did Klaus Obermayer author a paper titled 'A New Method for Tracking Modulations in Tonal Music in Audio Data Format' in 2000?",
+            "What is Klaus Obermayer's primary affiliation?",
+            "Did Klaus Obermayer author a paper titled 'On the sample mean of graphs' in 2008?"
+        ],
+        "cost": {
+            "total_tokens": 1861,
+            "prompt_tokens": 1643,
+            "completion_tokens": 218
+        }
+    },
+    {
+        "idx": 45,
+        "dialogue": [
+            "Can you list the authors of the paper 'SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference'?",
+            "How many authors are there in the paper 'It'?",
+            "Did Daehyun Kim 0002 author the paper 'It'?",
+            "What is the publication date of the paper 'It'?",
+            "Who is the first author of the paper 'It'?"
+        ],
+        "original": [
+            "Can you list the authors of the paper 'SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference'?",
+            "How many authors are there in the paper 'SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference'?",
+            "Did Daehyun Kim 0002 author the paper 'SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference'?",
+            "What is the publication date of the paper 'SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference'?",
+            "Who is the first author of the paper 'SAFE-DNN: A Deep Neural Network With Spike Assisted Feature Extraction For Noise Robust Inference'?"
+        ],
+        "cost": {
+            "total_tokens": 1822,
+            "prompt_tokens": 1512,
+            "completion_tokens": 310
+        }
+    },
+    {
+        "idx": 46,
+        "dialogue": [
+            "Can you list the papers authored by S\u00e9rgio Ricardo de Melo Queiroz?",
+            "How many papers did he co-author with other researchers?",
+            "Did he author a paper titled 'Multicriteria clustering with weighted Tchebycheff distances for relational data' in 2012?",
+            "Did Yves Lechevallier author a paper titled 'Multicriteria clustering with weighted Tchebycheff distances for relational data' in 2012?",
+            "Who co-authored the paper 'Multicriteria clustering with weighted Tchebycheff distances for relational data' in 2012?"
+        ],
+        "original": [
+            "Can you list the papers authored by S\u00e9rgio Ricardo de Melo Queiroz?",
+            "How many papers did S\u00e9rgio Ricardo de Melo Queiroz co-author with other researchers?",
+            "Did S\u00e9rgio Ricardo de Melo Queiroz author a paper titled 'Multicriteria clustering with weighted Tchebycheff distances for relational data' in 2012?",
+            "Did Yves Lechevallier author a paper titled 'Multicriteria clustering with weighted Tchebycheff distances for relational data' in 2012?",
+            "Who co-authored the paper 'Multicriteria clustering with weighted Tchebycheff distances for relational data' in 2012?"
+        ],
+        "cost": {
+            "total_tokens": 1856,
+            "prompt_tokens": 1538,
+            "completion_tokens": 318
+        }
+    },
+    {
+        "idx": 49,
+        "dialogue": [
+            "Can you list the papers authored by Franziska Mueller 0001?",
+            "What is her primary affiliation?",
+            "Did she author a paper titled 'Real-time 3D hand reconstruction in challenging scenes from a single color or depth camera' in 2020?",
+            "When was the paper 'Real-time 3D hand reconstruction in challenging scenes from a single color or depth camera' published?",
+            "Where was the paper 'Real-time 3D hand reconstruction in challenging scenes from a single color or depth camera' published?"
+        ],
+        "original": [
+            "Can you list the papers authored by Franziska Mueller 0001?",
+            "What is Franziska Mueller 0001's primary affiliation?",
+            "Did Franziska Mueller 0001 author a paper titled 'Real-time 3D hand reconstruction in challenging scenes from a single color or depth camera' in 2020?",
+            "When was the paper 'Real-time 3D hand reconstruction in challenging scenes from a single color or depth camera' published?",
+            "Where was the paper 'Real-time 3D hand reconstruction in challenging scenes from a single color or depth camera' published?"
+        ],
+        "cost": {
+            "total_tokens": 1803,
+            "prompt_tokens": 1538,
+            "completion_tokens": 265
+        }
+    }
+]
