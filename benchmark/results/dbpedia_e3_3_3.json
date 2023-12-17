@@ -1,0 +1,101 @@
+[
+    {
+        "dialogue": [
+            "How many ski lifts are there in Caballo, New Mexico?",
+            "What is the maximum elevation of it?",
+            "What is the nearest city to it?"
+        ],
+        "original": [
+            "How many ski lifts are there in Caballo, New Mexico?",
+            "What is the maximum elevation of Caballo, New Mexico?",
+            "What is the nearest city to Caballo, New Mexico?"
+        ],
+        "filtered": [
+            "How many ski lifts are there in Caballo, New Mexico?",
+            "What is the maximum elevation of it?"
+        ],
+        "cost": {
+            "total_tokens": 3508,
+            "prompt_tokens": 3376,
+            "completion_tokens": 132
+        }
+    },
+    {
+        "dialogue": null,
+        "original": null,
+        "filtered": null,
+        "cost": null
+    },
+    {
+        "dialogue": null,
+        "original": null,
+        "filtered": null,
+        "cost": null
+    },
+    {
+        "dialogue": [
+            "How many awards has Camilla Power won?",
+            "Has she won a Golden Calf Award?",
+            "What year did she win a Gemini Award?"
+        ],
+        "original": [
+            "How many awards has Camilla Power won?",
+            "Has Camilla Power won a Golden Calf Award?",
+            "What year did Camilla Power win a Gemini Award?"
+        ],
+        "filtered": [
+            "How many awards has Camilla Power won?",
+            "Has she won a Golden Calf Award?",
+            "What year did she win a Gemini Award?"
+        ],
+        "cost": {
+            "total_tokens": 1059,
+            "prompt_tokens": 933,
+            "completion_tokens": 126
+        }
+    },
+    {
+        "dialogue": [
+            "How many awards has Sarika won?",
+            "Has she won a Gemini Award?",
+            "What year did she win the National Film Award?"
+        ],
+        "original": [
+            "How many awards has Sarika won?",
+            "Has Sarika won a Gemini Award?",
+            "What year did Sarika win the National Film Award?"
+        ],
+        "filtered": [
+            "How many awards has Sarika won?",
+            "Has she won a Gemini Award?",
+            "What year did she win the National Film Award?"
+        ],
+        "cost": {
+            "total_tokens": 1049,
+            "prompt_tokens": 927,
+            "completion_tokens": 122
+        }
+    },
+    {
+        "dialogue": [
+            "How many Gemini Awards has David Arnott won?",
+            "Has he ever won a Laurence Olivier Award?",
+            "What awards has he won?"
+        ],
+        "original": [
+            "How many Gemini Awards has David Arnott won?",
+            "Has David Arnott ever won a Laurence Olivier Award?",
+            "What awards has David Arnott won?"
+        ],
+        "filtered": [
+            "How many Gemini Awards has David Arnott won?",
+            "Has he ever won a Laurence Olivier Award?",
+            "What awards has he won?"
+        ],
+        "cost": {
+            "total_tokens": 1058,
+            "prompt_tokens": 934,
+            "completion_tokens": 124
+        }
+    }
+]

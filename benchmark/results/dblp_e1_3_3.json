@@ -1,0 +1,85 @@
+[
+    {
+        "dialogue": null,
+        "original": null,
+        "filtered": null,
+        "cost": null
+    },
+    {
+        "dialogue": null,
+        "original": null,
+        "filtered": null,
+        "cost": null
+    },
+    {
+        "dialogue": null,
+        "original": null,
+        "filtered": null,
+        "cost": null
+    },
+    {
+        "dialogue": [
+            "How many authors contributed to Bhattacharjee RB21?",
+            "Is it a Book or a Publication?",
+            "What is the DOI of it?"
+        ],
+        "original": [
+            "How many authors contributed to Bhattacharjee RB21?",
+            "Is Bhattacharjee RB21 a Book or a Publication?",
+            "What is the DOI of Bhattacharjee RB21?"
+        ],
+        "filtered": [
+            "How many authors contributed to Bhattacharjee RB21?",
+            "Is it a Book or a Publication?",
+            "What is the DOI of it?"
+        ],
+        "cost": {
+            "total_tokens": 1400,
+            "prompt_tokens": 1264,
+            "completion_tokens": 136
+        }
+    },
+    {
+        "dialogue": [
+            "How many authors contributed to 'Ipina FSZC16'?",
+            "What is the DOI associated with 'It'?",
+            "Is 'It' listed on the TOC page 'sist48'? (True/False)"
+        ],
+        "original": [
+            "How many authors contributed to 'Ipina FSZC16'?",
+            "What is the DOI associated with 'Ipina FSZC16'?",
+            "Is 'Ipina FSZC16' listed on the TOC page 'sist48'? (True/False)"
+        ],
+        "filtered": [
+            "How many authors contributed to 'Ipina FSZC16'?",
+            "What is the DOI associated with 'It'?",
+            "Is 'It' listed on the TOC page 'sist48'? (True/False)"
+        ],
+        "cost": {
+            "total_tokens": 1446,
+            "prompt_tokens": 1283,
+            "completion_tokens": 163
+        }
+    },
+    {
+        "dialogue": [
+            "What type is Schenker KBL05?",
+            "How many authors are associated with it?",
+            "What is the DOI of it?"
+        ],
+        "original": [
+            "What type is Schenker KBL05?",
+            "How many authors are associated with Schenker KBL05?",
+            "What is the DOI of Schenker KBL05?"
+        ],
+        "filtered": [
+            "What is the DOI of it?",
+            "How many authors are associated with it?"
+        ],
+        "cost": {
+            "total_tokens": 1361,
+            "prompt_tokens": 1232,
+            "completion_tokens": 129
+        }
+    }
+]

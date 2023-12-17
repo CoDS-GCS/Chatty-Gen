@@ -1,0 +1,67 @@
+[
+    {
+        "dialogue": [
+            "How many types of creative works is Dabangg associated with?",
+            "How many awards has it won?",
+            "What is the date of publication for it?"
+        ],
+        "original": [
+            "How many types of creative works is Dabangg associated with?",
+            "How many awards has Dabangg won?",
+            "What is the date of publication for Dabangg?"
+        ],
+        "filtered": [
+            "How many types of creative works is Dabangg associated with?",
+            "What is the date of publication for it?"
+        ],
+        "cost": {
+            "total_tokens": 2171,
+            "prompt_tokens": 2043,
+            "completion_tokens": 128
+        }
+    },
+    {
+        "dialogue": [
+            "How many actors were in the movie Maine Pyar Kiya?",
+            "Is it a Romance film?",
+            "Who directed the movie it?"
+        ],
+        "original": [
+            "How many actors were in the movie Maine Pyar Kiya?",
+            "Is Maine Pyar Kiya a Romance film?",
+            "Who directed the movie Maine Pyar Kiya?"
+        ],
+        "filtered": [
+            "How many actors were in the movie Maine Pyar Kiya?",
+            "Is it a Romance film?",
+            "Who directed the movie it?"
+        ],
+        "cost": {
+            "total_tokens": 2192,
+            "prompt_tokens": 2069,
+            "completion_tokens": 123
+        }
+    },
+    {
+        "dialogue": [
+            "How many entities are related to e?",
+            "Are any entities related to it before 2010?",
+            "What entities are related to it?"
+        ],
+        "original": [
+            "How many entities are related to e?",
+            "Are any entities related to e before 2010?",
+            "What entities are related to e?"
+        ],
+        "filtered": [
+            "How many entities are related to e?",
+            "Are any entities related to it before 2010?",
+            "What entities are related to it?"
+        ],
+        "cost": {
+            "total_tokens": 887,
+            "prompt_tokens": 773,
+            "completion_tokens": 114
+        }
+    }
+]

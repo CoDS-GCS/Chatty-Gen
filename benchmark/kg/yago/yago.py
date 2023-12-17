@@ -44,7 +44,7 @@ class YAGO:
         # self.r  = redis.StrictRedis(host='localhost', port=6379, db=_db_name)
         self.r = redis.Redis(host="localhost", port=6379, db=_db_name)
         self.schema = KgSchema(
-            os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"), rdf_format="nt"
+            os.path.join(CURR_DIR, "yago_rdf_schema.nt"), rdf_format="nt"
         )
 
     def select_sparql_endpoint(self):

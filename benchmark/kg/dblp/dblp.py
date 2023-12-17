@@ -17,6 +17,7 @@ from kg.utils import (
     SparqlQueryResponse,
     extract_values_by_key,
     seed_node_sparql_query,
+    seed_node_sparql_query_old,
     incoming_star_pattern_sparql_query,
     outgoing_star_pattern_sparql_query,
 )
@@ -123,17 +124,17 @@ class DBLP:
         parsed_schema_map = self.schema.parsed_schema
         print(parsed_schema_map)
         self.seed_nodes = {}
-        counter = 0
+        # counter = 0
         for node_type, node_info in parsed_schema_map.items():
-            if counter > 2:
-                break
-            counter += 1
+            # if counter > 2:
+            #     break
+            # counter += 1
             node_type_uri = node_info.get("nodeuri")
             incoming_predicates = [p[0] for p in node_info.get("incoming_predicates")]
             outgoing_predicates = [p[0] for p in node_info.get("outgoing_predicates")]
 
-            query = seed_node_sparql_query(
-                node_type_uri, incoming_predicates, outgoing_predicates
+            query = seed_node_sparql_query_old(
+                node_type_uri
             )
             print(query)
             result = self.shoot_custom_query(query)

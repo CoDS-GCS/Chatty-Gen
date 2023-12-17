@@ -1,9 +1,7 @@
 import sys
 import random
 import json
-
-# this will be end to end pipeline
-# first step is to get the kg's interface instance and parse schema in some format
+from rdflib import Graph, URIRef, Literal, RDF
 from llm.prompt_chains import get_prompt_chains
 from langchain.callbacks import get_openai_callback
 from kg.yago.yago import YAGO
@@ -90,6 +88,10 @@ def get_kg_instance(kg_name):
     return kg
 
 
+def save_dict_to_json_file(dictionary, filename):
+    with open(filename, "w") as json_file:
+        json.dump(dictionary, json_file, indent=4)
+
 def generate_question_set(kg_name):
     """
     kg -> seeds
@@ -99,7 +101,15 @@ def generate_question_set(kg_name):
     """
     kg = get_kg_instance(kg_name)
     seeds = kg.select_seed_nodes(n=10)
+    save_dict_to_json_file(seeds, f"{kg_name}.json")
+    print(seeds)
+    filtered_seeds = {}
+    for k,v in seeds.items():
+        if k in [URIRef("https://dblp.org/rdf/schema#Creator"), URIRef("https://dblp.org/rdf/schema#Person"), URIRef("https://dblp.org/rdf/schema#Publication")]:
+            filtered_seeds[k] = v
+    print(filtered_seeds.keys())
     kg_subgraphs = kg.extract_subgraphs(seeds)
+    sys.exit(1)
     print(list(kg_subgraphs.items())[:2])
 
     # for approach 2

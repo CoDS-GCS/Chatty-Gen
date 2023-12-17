@@ -1,0 +1,586 @@
+<https://dblp.org/rdf/schema> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://dblp.org/rdf/schema> <http://www.w3.org/2002/07/owl#versionInfo> "Tue 17 Oct 2023" .
+<https://dblp.org/rdf/schema> <http://purl.org/dc/terms/title> "dblp RDF schema" .
+<https://dblp.org/rdf/schema> <http://purl.org/dc/terms/description> "This ontology describes the RDF representation of the contents of the dblp computer science bibliography."@en .
+<https://dblp.org/rdf/schema> <http://purl.org/dc/terms/creator> <https://dblp.org> .
+<https://dblp.org/rdf/schema#Entity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Entity> <http://www.w3.org/2000/01/rdf-schema#label> "Entity"@en .
+<https://dblp.org/rdf/schema#Entity> <http://www.w3.org/2000/01/rdf-schema#comment> "A general, identifiable entity in dblp."@en .
+<https://dblp.org/rdf/schema#Entity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+<https://dblp.org/rdf/schema#Entity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://schema.org/Thing> .
+<https://dblp.org/rdf/schema#Entity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.wikidata.org/entity/Q35120> .
+<https://dblp.org/rdf/schema#identifier> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#identifier> <http://www.w3.org/2000/01/rdf-schema#label> "identifier"@en .
+<https://dblp.org/rdf/schema#identifier> <http://www.w3.org/2000/01/rdf-schema#comment> "An abstract identifier."@en .
+<https://dblp.org/rdf/schema#identifier> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Entity> .
+<https://dblp.org/rdf/schema#identifier> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyUri> .
+<https://dblp.org/rdf/schema#identifier> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://id.loc.gov/vocabulary/identifiers/id> .
+<https://dblp.org/rdf/schema#wikidata> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#wikidata> <http://www.w3.org/2000/01/rdf-schema#label> "wikidata"@en .
+<https://dblp.org/rdf/schema#wikidata> <http://www.w3.org/2000/01/rdf-schema#comment> "A wikidata item."@en .
+<https://dblp.org/rdf/schema#wikidata> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Entity> .
+<https://dblp.org/rdf/schema#wikidata> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyUri> .
+<https://dblp.org/rdf/schema#wikidata> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#identifier> .
+<https://dblp.org/rdf/schema#wikidata> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/spar/datacite/wikidata> .
+<https://dblp.org/rdf/schema#wikidata> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://id.loc.gov/vocabulary/identifiers/wikidata> .
+<https://dblp.org/rdf/schema#webpage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#webpage> <http://www.w3.org/2000/01/rdf-schema#label> "web page URL"@en .
+<https://dblp.org/rdf/schema#webpage> <http://www.w3.org/2000/01/rdf-schema#comment> "The URL of a web page about this item."@en .
+<https://dblp.org/rdf/schema#webpage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Entity> .
+<https://dblp.org/rdf/schema#webpage> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#webpage> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://schema.org/url> .
+<https://dblp.org/rdf/schema#webpage> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P2699> .
+<https://dblp.org/rdf/schema#webpage> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://xmlns.com/foaf/0.1/page> .
+<https://dblp.org/rdf/schema#archivedWebpage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#archivedWebpage> <http://www.w3.org/2000/01/rdf-schema#label> "archived page URL"@en .
+<https://dblp.org/rdf/schema#archivedWebpage> <http://www.w3.org/2000/01/rdf-schema#comment> "The URL of an archived web page about this item, which may no longer be available in the web."@en .
+<https://dblp.org/rdf/schema#archivedWebpage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Entity> .
+<https://dblp.org/rdf/schema#archivedWebpage> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#archivedWebpage> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#webpage> .
+<https://dblp.org/rdf/schema#wikipedia> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#wikipedia> <http://www.w3.org/2000/01/rdf-schema#label> "wikipedia page URL"@en .
+<https://dblp.org/rdf/schema#wikipedia> <http://www.w3.org/2000/01/rdf-schema#comment> "The URL of an (English) Wikipedia article about this item."@en .
+<https://dblp.org/rdf/schema#wikipedia> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Entity> .
+<https://dblp.org/rdf/schema#wikipedia> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#wikipedia> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#webpage> .
+<https://dblp.org/rdf/schema#Creator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Creator> <http://www.w3.org/2000/01/rdf-schema#label> "Creator"@en .
+<https://dblp.org/rdf/schema#Creator> <http://www.w3.org/2000/01/rdf-schema#comment> "A creator of a publication."@en .
+<https://dblp.org/rdf/schema#Creator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Entity> .
+<https://dblp.org/rdf/schema#Creator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://id.loc.gov/ontologies/bibframe/Agent> .
+<https://dblp.org/rdf/schema#Creator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://dbpedia.org/ontology/Agent> .
+<https://dblp.org/rdf/schema#Creator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/dc/terms/Agent> .
+<https://dblp.org/rdf/schema#Creator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://xmlns.com/foaf/0.1/Agent> .
+<https://dblp.org/rdf/schema#Creator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.wikidata.org/entity/Q24229398> .
+<https://dblp.org/rdf/schema#AmbiguousCreator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#AmbiguousCreator> <http://www.w3.org/2000/01/rdf-schema#label> "Ambiguous Creator"@en .
+<https://dblp.org/rdf/schema#AmbiguousCreator> <http://www.w3.org/2000/01/rdf-schema#comment> "Not an actual creator, but an ambiguous proxy for an unknown number of unrelated actual creators. Associated publications do not have their true creators determined yet."@en .
+<https://dblp.org/rdf/schema#AmbiguousCreator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#AmbiguousCreator> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.wikidata.org/entity/Q48522> .
+<https://dblp.org/rdf/schema#Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Person> <http://www.w3.org/2000/01/rdf-schema#label> "Person"@en .
+<https://dblp.org/rdf/schema#Person> <http://www.w3.org/2000/01/rdf-schema#comment> "An actual person, who is a creator of a publication."@en .
+<https://dblp.org/rdf/schema#Person> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#Person> <http://www.w3.org/2002/07/owl#equivalentClass> <http://id.loc.gov/ontologies/bibframe/Person> .
+<https://dblp.org/rdf/schema#Person> <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/ontology/Person> .
+<https://dblp.org/rdf/schema#Person> <http://www.w3.org/2002/07/owl#equivalentClass> <http://xmlns.com/foaf/0.1/Person> .
+<https://dblp.org/rdf/schema#Person> <http://www.w3.org/2002/07/owl#equivalentClass> <https://schema.org/Person> .
+<https://dblp.org/rdf/schema#Person> <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.wikidata.org/entity/Q5> .
+<https://dblp.org/rdf/schema#Group> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Group> <http://www.w3.org/2000/01/rdf-schema#label> "Group"@en .
+<https://dblp.org/rdf/schema#Group> <http://www.w3.org/2000/01/rdf-schema#comment> "A creator alias used by a group or consortium of persons."@en .
+<https://dblp.org/rdf/schema#Group> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#Group> <http://www.w3.org/2002/07/owl#equivalentClass> <http://id.loc.gov/ontologies/bibframe/Organisation> .
+<https://dblp.org/rdf/schema#Group> <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/ontology/Organisation> .
+<https://dblp.org/rdf/schema#Group> <http://www.w3.org/2002/07/owl#equivalentClass> <http://xmlns.com/foaf/0.1/Group> .
+<https://dblp.org/rdf/schema#Group> <http://www.w3.org/2002/07/owl#equivalentClass> <https://schema.org/Organization> .
+<https://dblp.org/rdf/schema#Group> <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.wikidata.org/entity/Q43229> .
+<https://dblp.org/rdf/schema#orcid> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#orcid> <http://www.w3.org/2000/01/rdf-schema#label> "orcid"@en .
+<https://dblp.org/rdf/schema#orcid> <http://www.w3.org/2000/01/rdf-schema#comment> "An Open Researcher and Contributor ID."@en .
+<https://dblp.org/rdf/schema#orcid> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#orcid> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyUri> .
+<https://dblp.org/rdf/schema#orcid> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#identifier> .
+<https://dblp.org/rdf/schema#orcid> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/spar/datacite/orcid> .
+<https://dblp.org/rdf/schema#orcid> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://id.loc.gov/vocabulary/identifiers/orcid> .
+<https://dblp.org/rdf/schema#creatorName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#creatorName> <http://www.w3.org/2000/01/rdf-schema#label> "full creator name"@en .
+<https://dblp.org/rdf/schema#creatorName> <http://www.w3.org/2000/01/rdf-schema#comment> "The full name of the creator."@en .
+<https://dblp.org/rdf/schema#creatorName> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#creatorName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#creatorName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://xmlns.com/foaf/0.1/name> .
+<https://dblp.org/rdf/schema#creatorName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://schema.org/name> .
+<https://dblp.org/rdf/schema#creatorName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P2561> .
+<https://dblp.org/rdf/schema#primaryCreatorName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#primaryCreatorName> <http://www.w3.org/2000/01/rdf-schema#label> "primary full creator name"@en .
+<https://dblp.org/rdf/schema#primaryCreatorName> <http://www.w3.org/2000/01/rdf-schema#comment> "The primary full name of the creator."@en .
+<https://dblp.org/rdf/schema#primaryCreatorName> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#primaryCreatorName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#primaryCreatorName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#creatorName> .
+<https://dblp.org/rdf/schema#primaryCreatorName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://dbpedia.org/ontology/commonName> .
+<https://dblp.org/rdf/schema#fullCreatorName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DeprecatedProperty> .
+<https://dblp.org/rdf/schema#fullCreatorName> <http://www.w3.org/2000/01/rdf-schema#label> "full creator name"@en .
+<https://dblp.org/rdf/schema#fullCreatorName> <http://www.w3.org/2000/01/rdf-schema#comment> "The full name of the creator. DEPRECATED: renamed to dblp:creatorName"@en .
+<https://dblp.org/rdf/schema#fullCreatorName> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#fullCreatorName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#fullCreatorName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://xmlns.com/foaf/0.1/name> .
+<https://dblp.org/rdf/schema#fullCreatorName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://schema.org/name> .
+<https://dblp.org/rdf/schema#fullCreatorName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P2561> .
+<https://dblp.org/rdf/schema#primaryFullCreatorName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DeprecatedProperty> .
+<https://dblp.org/rdf/schema#primaryFullCreatorName> <http://www.w3.org/2000/01/rdf-schema#label> "primary full creator name"@en .
+<https://dblp.org/rdf/schema#primaryFullCreatorName> <http://www.w3.org/2000/01/rdf-schema#comment> "The primary full name of the creator. DEPRECATED: renamed to dblp:primaryCreatorName"@en .
+<https://dblp.org/rdf/schema#primaryFullCreatorName> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#primaryFullCreatorName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#primaryFullCreatorName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#fullCreatorName> .
+<https://dblp.org/rdf/schema#primaryFullCreatorName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://dbpedia.org/ontology/commonName> .
+<https://dblp.org/rdf/schema#otherFullCreatorName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DeprecatedProperty> .
+<https://dblp.org/rdf/schema#otherFullCreatorName> <http://www.w3.org/2000/01/rdf-schema#label> "other full creator name"@en .
+<https://dblp.org/rdf/schema#otherFullCreatorName> <http://www.w3.org/2000/01/rdf-schema#comment> "An alternative full name of the creator beside the primary one. DEPRECATED: dropped in favor of dblp:creatorName"@en .
+<https://dblp.org/rdf/schema#otherFullCreatorName> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#otherFullCreatorName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#otherFullCreatorName> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#fullCreatorName> .
+<https://dblp.org/rdf/schema#creatorNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#creatorNote> <http://www.w3.org/2000/01/rdf-schema#label> "creator note"@en .
+<https://dblp.org/rdf/schema#creatorNote> <http://www.w3.org/2000/01/rdf-schema#comment> "An additional note about the creator."@en .
+<https://dblp.org/rdf/schema#creatorNote> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#creatorNote> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#affiliation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#affiliation> <http://www.w3.org/2000/01/rdf-schema#label> "affiliation"@en .
+<https://dblp.org/rdf/schema#affiliation> <http://www.w3.org/2000/01/rdf-schema#comment> "A (past or present) affiliation of the creator. (Remark: This property currently just gives literal xsd:string values until institutions are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#affiliation> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#affiliation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#affiliation> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#creatorNote> .
+<https://dblp.org/rdf/schema#affiliation> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://dbpedia.org/ontology/affiliation> .
+<https://dblp.org/rdf/schema#affiliation> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://schema.org/affiliation> .
+<https://dblp.org/rdf/schema#affiliation> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.wikidata.org/entity/P1416> .
+<https://dblp.org/rdf/schema#primaryAffiliation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#primaryAffiliation> <http://www.w3.org/2000/01/rdf-schema#label> "primary affiliation"@en .
+<https://dblp.org/rdf/schema#primaryAffiliation> <http://www.w3.org/2000/01/rdf-schema#comment> "The primary affiliation of the creator. (Remark: This property currently just gives literal xsd:string values until institutions are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#primaryAffiliation> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#primaryAffiliation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#primaryAffiliation> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#affiliation> .
+<https://dblp.org/rdf/schema#otherAffiliation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DeprecatedProperty> .
+<https://dblp.org/rdf/schema#otherAffiliation> <http://www.w3.org/2000/01/rdf-schema#label> "other affiliation"@en .
+<https://dblp.org/rdf/schema#otherAffiliation> <http://www.w3.org/2000/01/rdf-schema#comment> "An additional affiliation of the creator. (Remark: This property currently just gives literal xsd:string values until institutions are modelled as proper entities.) DEPRECATED: dropped in favor of dblp:affiliation"@en .
+<https://dblp.org/rdf/schema#otherAffiliation> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#otherAffiliation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#otherAffiliation> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#affiliation> .
+<https://dblp.org/rdf/schema#awardWebpage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#awardWebpage> <http://www.w3.org/2000/01/rdf-schema#label> "award page URL"@en .
+<https://dblp.org/rdf/schema#awardWebpage> <http://www.w3.org/2000/01/rdf-schema#comment> "The URL of a web page about an award received by this creator."@en .
+<https://dblp.org/rdf/schema#awardWebpage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#awardWebpage> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#awardWebpage> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#webpage> .
+<https://dblp.org/rdf/schema#homepage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#homepage> <http://www.w3.org/2000/01/rdf-schema#label> "homepage URL"@en .
+<https://dblp.org/rdf/schema#homepage> <http://www.w3.org/2000/01/rdf-schema#comment> "The URL of an academic homepage of this creator."@en .
+<https://dblp.org/rdf/schema#homepage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#homepage> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#homepage> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#webpage> .
+<https://dblp.org/rdf/schema#homepage> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://xmlns.com/foaf/0.1/homepage> .
+<https://dblp.org/rdf/schema#homepage> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.wikidata.org/entity/P856> .
+<https://dblp.org/rdf/schema#primaryHomepage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#primaryHomepage> <http://www.w3.org/2000/01/rdf-schema#label> "primary homepage URL"@en .
+<https://dblp.org/rdf/schema#primaryHomepage> <http://www.w3.org/2000/01/rdf-schema#comment> "The primary URL of an academic homepage of this creator."@en .
+<https://dblp.org/rdf/schema#primaryHomepage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#primaryHomepage> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#primaryHomepage> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#homepage> .
+<https://dblp.org/rdf/schema#otherHomepage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DeprecatedProperty> .
+<https://dblp.org/rdf/schema#otherHomepage> <http://www.w3.org/2000/01/rdf-schema#label> "other homepage URL"@en .
+<https://dblp.org/rdf/schema#otherHomepage> <http://www.w3.org/2000/01/rdf-schema#comment> "Another URL of an academic homepage of this creator beside the primary one. DEPRECATED: dropped in favor of dblp:homepage"@en .
+<https://dblp.org/rdf/schema#otherHomepage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#otherHomepage> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#otherHomepage> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#homepage> .
+<https://dblp.org/rdf/schema#creatorOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#creatorOf> <http://www.w3.org/2000/01/rdf-schema#label> "creator of"@en .
+<https://dblp.org/rdf/schema#creatorOf> <http://www.w3.org/2000/01/rdf-schema#comment> "The creator of the publication."@en .
+<https://dblp.org/rdf/schema#creatorOf> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#creatorOf> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#creatorOf> <http://www.w3.org/2002/07/owl#inverseOf> <https://dblp.org/rdf/schema#createdBy> .
+<https://dblp.org/rdf/schema#creatorOf> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://xmlns.com/foaf/0.1/made> .
+<https://dblp.org/rdf/schema#authorOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#authorOf> <http://www.w3.org/2000/01/rdf-schema#label> "author of"@en .
+<https://dblp.org/rdf/schema#authorOf> <http://www.w3.org/2000/01/rdf-schema#comment> "The creator is the author of the publication."@en .
+<https://dblp.org/rdf/schema#authorOf> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#authorOf> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#authorOf> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#creatorOf> .
+<https://dblp.org/rdf/schema#authorOf> <http://www.w3.org/2002/07/owl#inverseOf> <https://dblp.org/rdf/schema#authoredBy> .
+<https://dblp.org/rdf/schema#editorOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#editorOf> <http://www.w3.org/2000/01/rdf-schema#label> "editor of"@en .
+<https://dblp.org/rdf/schema#editorOf> <http://www.w3.org/2000/01/rdf-schema#comment> "The creator is the editor of the publication."@en .
+<https://dblp.org/rdf/schema#editorOf> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#editorOf> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#editorOf> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#creatorOf> .
+<https://dblp.org/rdf/schema#editorOf> <http://www.w3.org/2002/07/owl#inverseOf> <https://dblp.org/rdf/schema#editedBy> .
+<https://dblp.org/rdf/schema#coCreatorWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#coCreatorWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#SymmetricProperty> .
+<https://dblp.org/rdf/schema#coCreatorWith> <http://www.w3.org/2000/01/rdf-schema#label> "co creator with"@en .
+<https://dblp.org/rdf/schema#coCreatorWith> <http://www.w3.org/2000/01/rdf-schema#comment> "The creator is co-creator with the other creator."@en .
+<https://dblp.org/rdf/schema#coCreatorWith> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#coCreatorWith> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#coCreatorWith> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://xmlns.com/foaf/0.1/knows> .
+<https://dblp.org/rdf/schema#coAuthorWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#coAuthorWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#SymmetricProperty> .
+<https://dblp.org/rdf/schema#coAuthorWith> <http://www.w3.org/2000/01/rdf-schema#label> "co author with"@en .
+<https://dblp.org/rdf/schema#coAuthorWith> <http://www.w3.org/2000/01/rdf-schema#comment> "The creator is co-author with the other creator."@en .
+<https://dblp.org/rdf/schema#coAuthorWith> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#coAuthorWith> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#coAuthorWith> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#coCreatorWith> .
+<https://dblp.org/rdf/schema#coEditorWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#coEditorWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#SymmetricProperty> .
+<https://dblp.org/rdf/schema#coEditorWith> <http://www.w3.org/2000/01/rdf-schema#label> "co editor with"@en .
+<https://dblp.org/rdf/schema#coEditorWith> <http://www.w3.org/2000/01/rdf-schema#comment> "The creator is co-editor with the other creator."@en .
+<https://dblp.org/rdf/schema#coEditorWith> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#coEditorWith> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#coEditorWith> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#coCreatorWith> .
+<https://dblp.org/rdf/schema#homonymousCreator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#homonymousCreator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#SymmetricProperty> .
+<https://dblp.org/rdf/schema#homonymousCreator> <http://www.w3.org/2000/01/rdf-schema#label> "homonymous creator"@en .
+<https://dblp.org/rdf/schema#homonymousCreator> <http://www.w3.org/2000/01/rdf-schema#comment> "This creator shares a homonymous name with the other creator."@en .
+<https://dblp.org/rdf/schema#homonymousCreator> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#homonymousCreator> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#possibleActualCreator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#possibleActualCreator> <http://www.w3.org/2000/01/rdf-schema#label> "possible actual creator"@en .
+<https://dblp.org/rdf/schema#possibleActualCreator> <http://www.w3.org/2000/01/rdf-schema#comment> "This ambiguous creator may be (or may be not) just a disambiguation proxy for the other creator. Further actual creator candidates are possible."@en .
+<https://dblp.org/rdf/schema#possibleActualCreator> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#AmbiguousCreator> .
+<https://dblp.org/rdf/schema#possibleActualCreator> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#possibleActualCreator> <http://www.w3.org/2002/07/owl#inverseOf> <https://dblp.org/rdf/schema#proxyAmbiguousCreator> .
+<https://dblp.org/rdf/schema#possibleActualCreator> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#homonymousCreator> .
+<https://dblp.org/rdf/schema#proxyAmbiguousCreator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#proxyAmbiguousCreator> <http://www.w3.org/2000/01/rdf-schema#label> "proxy ambiguous creator"@en .
+<https://dblp.org/rdf/schema#proxyAmbiguousCreator> <http://www.w3.org/2000/01/rdf-schema#comment> "This creator (and any of her fellow homonymous creators) is also represented by the given ambiguous creator in cases where the authorship of a publication is undetermined."@en .
+<https://dblp.org/rdf/schema#proxyAmbiguousCreator> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#proxyAmbiguousCreator> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#AmbiguousCreator> .
+<https://dblp.org/rdf/schema#proxyAmbiguousCreator> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#homonymousCreator> .
+<https://dblp.org/rdf/schema#proxyAmbiguousCreator> <http://www.w3.org/2002/07/owl#inverseOf> <https://dblp.org/rdf/schema#possibleActualCreator> .
+<https://dblp.org/rdf/schema#Signature> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Signature> <http://www.w3.org/2000/01/rdf-schema#label> "Signature"@en .
+<https://dblp.org/rdf/schema#Signature> <http://www.w3.org/2000/01/rdf-schema#comment> "The information that links a publication to a creator."@en .
+<https://dblp.org/rdf/schema#AuthorSignature> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#AuthorSignature> <http://www.w3.org/2000/01/rdf-schema#label> "Author Signature"@en .
+<https://dblp.org/rdf/schema#AuthorSignature> <http://www.w3.org/2000/01/rdf-schema#comment> "The information that links a publication to an author."@en .
+<https://dblp.org/rdf/schema#AuthorSignature> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Signature> .
+<https://dblp.org/rdf/schema#EditorSignature> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#EditorSignature> <http://www.w3.org/2000/01/rdf-schema#label> "Editor Signature"@en .
+<https://dblp.org/rdf/schema#EditorSignature> <http://www.w3.org/2000/01/rdf-schema#comment> "The information that links a publication to an editor."@en .
+<https://dblp.org/rdf/schema#EditorSignature> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Signature> .
+<https://dblp.org/rdf/schema#signatureCreator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#signatureCreator> <http://www.w3.org/2000/01/rdf-schema#label> "signature creator"@en .
+<https://dblp.org/rdf/schema#signatureCreator> <http://www.w3.org/2000/01/rdf-schema#comment> "A linked creator of the publication."@en .
+<https://dblp.org/rdf/schema#signatureCreator> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Signature> .
+<https://dblp.org/rdf/schema#signatureCreator> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#signatureDblpName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#signatureDblpName> <http://www.w3.org/2000/01/rdf-schema#label> "signature dblp name"@en .
+<https://dblp.org/rdf/schema#signatureDblpName> <http://www.w3.org/2000/01/rdf-schema#comment> "A dblp name (including any possible trailing homonym number) that links the publication to a creator."@en .
+<https://dblp.org/rdf/schema#signatureDblpName> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Signature> .
+<https://dblp.org/rdf/schema#signatureDblpName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#signatureOrcid> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#signatureOrcid> <http://www.w3.org/2000/01/rdf-schema#label> "signature ORCID"@en .
+<https://dblp.org/rdf/schema#signatureOrcid> <http://www.w3.org/2000/01/rdf-schema#comment> "An ORCID that links the publication to a creator."@en .
+<https://dblp.org/rdf/schema#signatureOrcid> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Signature> .
+<https://dblp.org/rdf/schema#signatureOrcid> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyUri> .
+<https://dblp.org/rdf/schema#signatureOrdinal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#signatureOrdinal> <http://www.w3.org/2000/01/rdf-schema#label> "signature ordinal"@en .
+<https://dblp.org/rdf/schema#signatureOrdinal> <http://www.w3.org/2000/01/rdf-schema#comment> "The ordinal number of this signature for the publication, starting with 1."@en .
+<https://dblp.org/rdf/schema#signatureOrdinal> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Signature> .
+<https://dblp.org/rdf/schema#signatureOrdinal> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://dblp.org/rdf/schema#signaturePublication> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#signaturePublication> <http://www.w3.org/2000/01/rdf-schema#label> "signature publication"@en .
+<https://dblp.org/rdf/schema#signaturePublication> <http://www.w3.org/2000/01/rdf-schema#comment> "The publication of this signature."@en .
+<https://dblp.org/rdf/schema#signaturePublication> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Signature> .
+<https://dblp.org/rdf/schema#signaturePublication> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#signaturePublication> <http://www.w3.org/2002/07/owl#inverseOf> <https://dblp.org/rdf/schema#hasSignature> .
+<https://dblp.org/rdf/schema#Publication> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Publication> <http://www.w3.org/2000/01/rdf-schema#label> "Publication"@en .
+<https://dblp.org/rdf/schema#Publication> <http://www.w3.org/2000/01/rdf-schema#comment> "A publication."@en .
+<https://dblp.org/rdf/schema#Publication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Entity> .
+<https://dblp.org/rdf/schema#Publication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://id.loc.gov/ontologies/bibframe/Work> .
+<https://dblp.org/rdf/schema#Publication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://dbpedia.org/ontology/WrittenWork> .
+<https://dblp.org/rdf/schema#Publication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/dc/terms/BibliographicResource> .
+<https://dblp.org/rdf/schema#Publication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/ontology/bibo/Document> .
+<https://dblp.org/rdf/schema#Publication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#Publication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://schema.org/CreativeWork> .
+<https://dblp.org/rdf/schema#Publication> <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.wikidata.org/entity/Q591041> .
+<https://dblp.org/rdf/schema#Book> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Book> <http://www.w3.org/2000/01/rdf-schema#label> "Book"@en .
+<https://dblp.org/rdf/schema#Book> <http://www.w3.org/2000/01/rdf-schema#comment> "A book or a thesis."@en .
+<https://dblp.org/rdf/schema#Book> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#Book> <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/ontology/Book> .
+<https://dblp.org/rdf/schema#Book> <http://www.w3.org/2002/07/owl#equivalentClass> <https://schema.org/Book> .
+<https://dblp.org/rdf/schema#Book> <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.wikidata.org/entity/Q571> .
+<https://dblp.org/rdf/schema#Book> <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.org/ontology/bibo/Book> .
+<https://dblp.org/rdf/schema#Article> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Article> <http://www.w3.org/2000/01/rdf-schema#label> "Article"@en .
+<https://dblp.org/rdf/schema#Article> <http://www.w3.org/2000/01/rdf-schema#comment> "A journal article."@en .
+<https://dblp.org/rdf/schema#Article> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#Article> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://schema.org/Article> .
+<https://dblp.org/rdf/schema#Article> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.wikidata.org/entity/Q13442814> .
+<https://dblp.org/rdf/schema#Article> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/ontology/bibo/AcademicArticle> .
+<https://dblp.org/rdf/schema#Article> <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/ontology/Article> .
+<https://dblp.org/rdf/schema#Inproceedings> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Inproceedings> <http://www.w3.org/2000/01/rdf-schema#label> "Inproceedings"@en .
+<https://dblp.org/rdf/schema#Inproceedings> <http://www.w3.org/2000/01/rdf-schema#comment> "A conference or workshop paper."@en .
+<https://dblp.org/rdf/schema#Inproceedings> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#Inproceedings> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://schema.org/Chapter> .
+<https://dblp.org/rdf/schema#Inproceedings> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.wikidata.org/entity/Q13442814> .
+<https://dblp.org/rdf/schema#Inproceedings> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/ontology/bibo/AcademicArticle> .
+<https://dblp.org/rdf/schema#Incollection> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Incollection> <http://www.w3.org/2000/01/rdf-schema#label> "Incollection"@en .
+<https://dblp.org/rdf/schema#Incollection> <http://www.w3.org/2000/01/rdf-schema#comment> "A part/chapter in a book or a collection."@en .
+<https://dblp.org/rdf/schema#Incollection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#Incollection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://schema.org/Chapter> .
+<https://dblp.org/rdf/schema#Incollection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.wikidata.org/entity/Q13442814> .
+<https://dblp.org/rdf/schema#Incollection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/ontology/bibo/AcademicArticle> .
+<https://dblp.org/rdf/schema#Editorship> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Editorship> <http://www.w3.org/2000/01/rdf-schema#label> "Editorship"@en .
+<https://dblp.org/rdf/schema#Editorship> <http://www.w3.org/2000/01/rdf-schema#comment> "An edited publication."@en .
+<https://dblp.org/rdf/schema#Editorship> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#Reference> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Reference> <http://www.w3.org/2000/01/rdf-schema#label> "Reference"@en .
+<https://dblp.org/rdf/schema#Reference> <http://www.w3.org/2000/01/rdf-schema#comment> "A reference work entry."@en .
+<https://dblp.org/rdf/schema#Reference> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#Reference> <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.wikidata.org/entity/Q10389811> .
+<https://dblp.org/rdf/schema#Reference> <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.org/ontology/bibo/ReferenceSource> .
+<https://dblp.org/rdf/schema#Data> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Data> <http://www.w3.org/2000/01/rdf-schema#label> "Data"@en .
+<https://dblp.org/rdf/schema#Data> <http://www.w3.org/2000/01/rdf-schema#comment> "Research data or artifacts."@en .
+<https://dblp.org/rdf/schema#Data> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#Data> <http://www.w3.org/2002/07/owl#equivalentClass> <https://schema.org/Dataset> .
+<https://dblp.org/rdf/schema#Data> <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.wikidata.org/entity/Q17051824> .
+<https://dblp.org/rdf/schema#Informal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Informal> <http://www.w3.org/2000/01/rdf-schema#label> "Informal"@en .
+<https://dblp.org/rdf/schema#Informal> <http://www.w3.org/2000/01/rdf-schema#comment> "An informal or other publication."@en .
+<https://dblp.org/rdf/schema#Informal> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#Informal> <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.wikidata.org/entity/Q1148359> .
+<https://dblp.org/rdf/schema#Withdrawn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<https://dblp.org/rdf/schema#Withdrawn> <http://www.w3.org/2000/01/rdf-schema#label> "Withdrawn"@en .
+<https://dblp.org/rdf/schema#Withdrawn> <http://www.w3.org/2000/01/rdf-schema#comment> "A withdrawn publication item."@en .
+<https://dblp.org/rdf/schema#Withdrawn> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#Withdrawn> <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.wikidata.org/entity/Q45182324> .
+<https://dblp.org/rdf/schema#doi> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#doi> <http://www.w3.org/2000/01/rdf-schema#label> "doi"@en .
+<https://dblp.org/rdf/schema#doi> <http://www.w3.org/2000/01/rdf-schema#comment> "A Digital Object Identifier."@en .
+<https://dblp.org/rdf/schema#doi> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#doi> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyUri> .
+<https://dblp.org/rdf/schema#doi> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#identifier> .
+<https://dblp.org/rdf/schema#doi> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/spar/datacite/doi> .
+<https://dblp.org/rdf/schema#doi> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://id.loc.gov/vocabulary/identifiers/doi> .
+<https://dblp.org/rdf/schema#isbn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#isbn> <http://www.w3.org/2000/01/rdf-schema#label> "isbn"@en .
+<https://dblp.org/rdf/schema#isbn> <http://www.w3.org/2000/01/rdf-schema#comment> "An International Standard Book Number."@en .
+<https://dblp.org/rdf/schema#isbn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#isbn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#anyUri> .
+<https://dblp.org/rdf/schema#isbn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#identifier> .
+<https://dblp.org/rdf/schema#isbn> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/spar/datacite/isbn> .
+<https://dblp.org/rdf/schema#isbn> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://id.loc.gov/vocabulary/identifiers/isbn> .
+<https://dblp.org/rdf/schema#title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#title> <http://www.w3.org/2000/01/rdf-schema#label> "title"@en .
+<https://dblp.org/rdf/schema#title> <http://www.w3.org/2000/01/rdf-schema#comment> "The title of the publication."@en .
+<https://dblp.org/rdf/schema#title> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#title> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#title> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://purl.org/dc/elements/1.1/title> .
+<https://dblp.org/rdf/schema#title> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://schema.org/name> .
+<https://dblp.org/rdf/schema#title> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/dc/terms/title> .
+<https://dblp.org/rdf/schema#title> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.wikidata.org/entity/P1476> .
+<https://dblp.org/rdf/schema#bibtexType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#bibtexType> <http://www.w3.org/2000/01/rdf-schema#label> "bibtex type"@en .
+<https://dblp.org/rdf/schema#bibtexType> <http://www.w3.org/2000/01/rdf-schema#comment> "The bibtex type of the publication, e.g. book, inproceedings, etc."@en .
+<https://dblp.org/rdf/schema#bibtexType> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#bibtexType> <http://www.w3.org/2000/01/rdf-schema#range> <http://purl.org/net/nknouf/ns/bibtex#Entry> .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/2000/01/rdf-schema#label> "created by"@en .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/2000/01/rdf-schema#comment> "The publication is created by the creator."@en .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://purl.org/dc/elements/1.1/creator> .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://xmlns.com/foaf/0.1/maker> .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/2002/07/owl#inverseOf> <https://dblp.org/rdf/schema#creatorOf> .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/dc/terms/creator> .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://id.loc.gov/vocabulary/relators/cre> .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://schema.org/creator> .
+<https://dblp.org/rdf/schema#createdBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.wikidata.org/entity/P170> .
+<https://dblp.org/rdf/schema#authoredBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#authoredBy> <http://www.w3.org/2000/01/rdf-schema#label> "authored by"@en .
+<https://dblp.org/rdf/schema#authoredBy> <http://www.w3.org/2000/01/rdf-schema#comment> "The publication is authored by the creator."@en .
+<https://dblp.org/rdf/schema#authoredBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#authoredBy> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#authoredBy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#createdBy> .
+<https://dblp.org/rdf/schema#authoredBy> <http://www.w3.org/2002/07/owl#inverseOf> <https://dblp.org/rdf/schema#authorOf> .
+<https://dblp.org/rdf/schema#authoredBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://dbpedia.org/ontology/author> .
+<https://dblp.org/rdf/schema#authoredBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://id.loc.gov/vocabulary/relators/aut> .
+<https://dblp.org/rdf/schema#authoredBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://schema.org/author> .
+<https://dblp.org/rdf/schema#authoredBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.wikidata.org/entity/P50> .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/2000/01/rdf-schema#label> "edited by"@en .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/2000/01/rdf-schema#comment> "The publication is edited by the creator."@en .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Creator> .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#createdBy> .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/2002/07/owl#inverseOf> <https://dblp.org/rdf/schema#editorOf> .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://dbpedia.org/ontology/editor> .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://id.loc.gov/vocabulary/relators/edt> .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://schema.org/editor> .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.wikidata.org/entity/P98> .
+<https://dblp.org/rdf/schema#editedBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/ontology/bibo/editor> .
+<https://dblp.org/rdf/schema#numberOfCreators> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#numberOfCreators> <http://www.w3.org/2000/01/rdf-schema#label> "number of creators"@en .
+<https://dblp.org/rdf/schema#numberOfCreators> <http://www.w3.org/2000/01/rdf-schema#comment> "The number of creators who created this publication."@en .
+<https://dblp.org/rdf/schema#numberOfCreators> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#numberOfCreators> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<https://dblp.org/rdf/schema#orderedCreators> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DeprecatedProperty> .
+<https://dblp.org/rdf/schema#orderedCreators> <http://www.w3.org/2000/01/rdf-schema#label> "created by (in order)"@en .
+<https://dblp.org/rdf/schema#orderedCreators> <http://www.w3.org/2000/01/rdf-schema#comment> "The publication is created by these creators, given in sequence of attribution. DEPRECATED: use dblp:hasSignature instead."@en .
+<https://dblp.org/rdf/schema#orderedCreators> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#orderedCreators> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<https://dblp.org/rdf/schema#orderedCreators> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/ontology/bibo/contributorList> .
+<https://dblp.org/rdf/schema#hasSignature> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#hasSignature> <http://www.w3.org/2000/01/rdf-schema#label> "creator signature"@en .
+<https://dblp.org/rdf/schema#hasSignature> <http://www.w3.org/2000/01/rdf-schema#comment> "A signature that links this publication to an creator."@en .
+<https://dblp.org/rdf/schema#hasSignature> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#hasSignature> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Signature> .
+<https://dblp.org/rdf/schema#hasSignature> <http://www.w3.org/2002/07/owl#inverseOf> <https://dblp.org/rdf/schema#signaturePublication> .
+<https://dblp.org/rdf/schema#documentPage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#documentPage> <http://www.w3.org/2000/01/rdf-schema#label> "document page URL"@en .
+<https://dblp.org/rdf/schema#documentPage> <http://www.w3.org/2000/01/rdf-schema#comment> "The URL of the electronic edition of the publication."@en .
+<https://dblp.org/rdf/schema#documentPage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#documentPage> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#documentPage> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#webpage> .
+<https://dblp.org/rdf/schema#documentPage> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://id.loc.gov/ontologies/bibframe/electronicLocator> .
+<https://dblp.org/rdf/schema#documentPage> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/ontology/bibo/uri> .
+<https://dblp.org/rdf/schema#primarydocumentPage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#primarydocumentPage> <http://www.w3.org/2000/01/rdf-schema#label> "primary document page URL"@en .
+<https://dblp.org/rdf/schema#primarydocumentPage> <http://www.w3.org/2000/01/rdf-schema#comment> "The primary URL of the electronic edition of the publication."@en .
+<https://dblp.org/rdf/schema#primarydocumentPage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#primarydocumentPage> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#primarydocumentPage> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#documentPage> .
+<https://dblp.org/rdf/schema#electronicEdition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DeprecatedProperty> .
+<https://dblp.org/rdf/schema#electronicEdition> <http://www.w3.org/2000/01/rdf-schema#label> "electronic edition URL"@en .
+<https://dblp.org/rdf/schema#electronicEdition> <http://www.w3.org/2000/01/rdf-schema#comment> "The URL of the electronic edition of the publication. DEPRECATED: renamed to dblp:documentPage"@en .
+<https://dblp.org/rdf/schema#electronicEdition> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#electronicEdition> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#electronicEdition> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://xmlns.com/foaf/0.1/page> .
+<https://dblp.org/rdf/schema#electronicEdition> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://schema.org/url> .
+<https://dblp.org/rdf/schema#electronicEdition> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P2699> .
+<https://dblp.org/rdf/schema#electronicEdition> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://id.loc.gov/ontologies/bibframe/electronicLocator> .
+<https://dblp.org/rdf/schema#electronicEdition> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/ontology/bibo/uri> .
+<https://dblp.org/rdf/schema#archivedElectronicEdition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DeprecatedProperty> .
+<https://dblp.org/rdf/schema#archivedElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#label> "archived electronic edition URL"@en .
+<https://dblp.org/rdf/schema#archivedElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#comment> "The URL of an archived electronic edition of the publication. DEPRECATED: dropped in favor of dblp:archivedWebpage."@en .
+<https://dblp.org/rdf/schema#archivedElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#archivedElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#archivedElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#electronicEdition> .
+<https://dblp.org/rdf/schema#archivedElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P1065> .
+<https://dblp.org/rdf/schema#primaryElectronicEdition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DeprecatedProperty> .
+<https://dblp.org/rdf/schema#primaryElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#label> "primary electronic edition URL"@en .
+<https://dblp.org/rdf/schema#primaryElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#comment> "The primary URL of the electronic edition of the publication. DEPRECATED: renamed to dblp:primaryDocumentPage"@en .
+<https://dblp.org/rdf/schema#primaryElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#primaryElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#primaryElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#electronicEdition> .
+<https://dblp.org/rdf/schema#otherElectronicEdition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DeprecatedProperty> .
+<https://dblp.org/rdf/schema#otherElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#label> "other electronic edition URL"@en .
+<https://dblp.org/rdf/schema#otherElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#comment> "Another URL of the electronic edition of the publication, not the primary one. DEPRECATED: dropped in favor of dblp:documentPage"@en .
+<https://dblp.org/rdf/schema#otherElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#otherElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#otherElectronicEdition> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#electronicEdition> .
+<https://dblp.org/rdf/schema#listedOnTocPage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#listedOnTocPage> <http://www.w3.org/2000/01/rdf-schema#label> "dblp ToC page url"@en .
+<https://dblp.org/rdf/schema#listedOnTocPage> <http://www.w3.org/2000/01/rdf-schema#comment> "The url of the dblp table of contents page listing this publication."@en .
+<https://dblp.org/rdf/schema#listedOnTocPage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#listedOnTocPage> <http://www.w3.org/2000/01/rdf-schema#range> <http://xmlns.com/foaf/0.1/Document> .
+<https://dblp.org/rdf/schema#publishedIn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publishedIn> <http://www.w3.org/2000/01/rdf-schema#label> "published in"@en .
+<https://dblp.org/rdf/schema#publishedIn> <http://www.w3.org/2000/01/rdf-schema#comment> "The name of the series, the journal, or the book in which the publication has been published. (Remark: This property currently just gives literal xsd:string values until journals and conference series are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#publishedIn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishedIn> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#publishedIn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://schema.org/isPartOf> .
+<https://dblp.org/rdf/schema#publishedIn> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P1433> .
+<https://dblp.org/rdf/schema#publishedInSeries> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publishedInSeries> <http://www.w3.org/2000/01/rdf-schema#label> "published in series"@en .
+<https://dblp.org/rdf/schema#publishedInSeries> <http://www.w3.org/2000/01/rdf-schema#comment> "The name of the series in which the publication has been published. (Remark: This is currently an intermediate property that will be removed once journals and conference series are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#publishedInSeries> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishedInSeries> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#publishedInSeries> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#publishedIn> .
+<https://dblp.org/rdf/schema#publishedInSeriesVolume> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publishedInSeriesVolume> <http://www.w3.org/2000/01/rdf-schema#label> "published in series volume"@en .
+<https://dblp.org/rdf/schema#publishedInSeriesVolume> <http://www.w3.org/2000/01/rdf-schema#comment> "The volume of the series in which the publication has been published. (Remark: This is currently an intermediate property that will be removed once journals and conference series are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#publishedInSeriesVolume> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishedInSeriesVolume> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#publishedInSeriesVolume> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://schema.org/volumeNumber> .
+<https://dblp.org/rdf/schema#publishedInSeriesVolume> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P478> .
+<https://dblp.org/rdf/schema#publishedInSeriesVolume> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/ontology/bibo/volume> .
+<https://dblp.org/rdf/schema#publishedInJournal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publishedInJournal> <http://www.w3.org/2000/01/rdf-schema#label> "published in journal"@en .
+<https://dblp.org/rdf/schema#publishedInJournal> <http://www.w3.org/2000/01/rdf-schema#comment> "The name of the journal in which the publication has been published. (Remark: This is currently an intermediate property that will be removed once journals and conference series are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#publishedInJournal> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishedInJournal> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#publishedInJournal> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#publishedIn> .
+<https://dblp.org/rdf/schema#publishedInJournalVolume> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publishedInJournalVolume> <http://www.w3.org/2000/01/rdf-schema#label> "published in journal volume"@en .
+<https://dblp.org/rdf/schema#publishedInJournalVolume> <http://www.w3.org/2000/01/rdf-schema#comment> "The volume of the journal in which the publication has been published. (Remark: This is currently an intermediate property that will be removed once journals and conference series are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#publishedInJournalVolume> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishedInJournalVolume> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#publishedInJournalVolume> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://schema.org/volumeNumber> .
+<https://dblp.org/rdf/schema#publishedInJournalVolume> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P478> .
+<https://dblp.org/rdf/schema#publishedInJournalVolume> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/ontology/bibo/volume> .
+<https://dblp.org/rdf/schema#publishedInJournalVolumeIssue> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publishedInJournalVolumeIssue> <http://www.w3.org/2000/01/rdf-schema#label> "published in journal issue"@en .
+<https://dblp.org/rdf/schema#publishedInJournalVolumeIssue> <http://www.w3.org/2000/01/rdf-schema#comment> "The issue of the journal in which the publication has been published. (Remark: This is currently an intermediate property that will be removed once journals and conference series are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#publishedInJournalVolumeIssue> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishedInJournalVolumeIssue> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#publishedInJournalVolumeIssue> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://schema.org/issueNumber> .
+<https://dblp.org/rdf/schema#publishedInJournalVolumeIssue> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P433> .
+<https://dblp.org/rdf/schema#publishedInJournalVolumeIssue> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/ontology/bibo/issue> .
+<https://dblp.org/rdf/schema#publishedInBook> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publishedInBook> <http://www.w3.org/2000/01/rdf-schema#label> "published in book"@en .
+<https://dblp.org/rdf/schema#publishedInBook> <http://www.w3.org/2000/01/rdf-schema#comment> "The name of the book in which the publication has been published. (Remark: This is currently an intermediate property that will be removed once journals and conference series are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#publishedInBook> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishedInBook> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#publishedInBook> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://dblp.org/rdf/schema#publishedIn> .
+<https://dblp.org/rdf/schema#publishedInBookChapter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publishedInBookChapter> <http://www.w3.org/2000/01/rdf-schema#label> "published in book chapter"@en .
+<https://dblp.org/rdf/schema#publishedInBookChapter> <http://www.w3.org/2000/01/rdf-schema#comment> "The chapter of the book in which the publication has been published. (Remark: This is currently an intermediate property that will be removed once journals and conference series are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#publishedInBookChapter> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishedInBookChapter> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#publishedInBookChapter> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://schema.org/position> .
+<https://dblp.org/rdf/schema#publishedInBookChapter> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P792> .
+<https://dblp.org/rdf/schema#publishedInBookChapter> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/ontology/bibo/chapter> .
+<https://dblp.org/rdf/schema#pagination> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#pagination> <http://www.w3.org/2000/01/rdf-schema#label> "page numbers"@en .
+<https://dblp.org/rdf/schema#pagination> <http://www.w3.org/2000/01/rdf-schema#comment> "The page numbers where the publication can be found."@en .
+<https://dblp.org/rdf/schema#pagination> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#pagination> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#pagination> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://schema.org/pagination> .
+<https://dblp.org/rdf/schema#pagination> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.wikidata.org/entity/P304> .
+<https://dblp.org/rdf/schema#pagination> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/ontology/bibo/pages> .
+<https://dblp.org/rdf/schema#yearOfEvent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#yearOfEvent> <http://www.w3.org/2000/01/rdf-schema#label> "year of event"@en .
+<https://dblp.org/rdf/schema#yearOfEvent> <http://www.w3.org/2000/01/rdf-schema#comment> "The year the conference or workshop contribution has been presented."@en .
+<https://dblp.org/rdf/schema#yearOfEvent> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#yearOfEvent> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#gYear> .
+<https://dblp.org/rdf/schema#yearOfPublication> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#yearOfPublication> <http://www.w3.org/2000/01/rdf-schema#label> "year of publication"@en .
+<https://dblp.org/rdf/schema#yearOfPublication> <http://www.w3.org/2000/01/rdf-schema#comment> "The year the publication's issue or volume has been published."@en .
+<https://dblp.org/rdf/schema#yearOfPublication> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#yearOfPublication> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#gYear> .
+<https://dblp.org/rdf/schema#yearOfPublication> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://dbpedia.org/ontology/publicationDate> .
+<https://dblp.org/rdf/schema#yearOfPublication> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/dc/terms/issued> .
+<https://dblp.org/rdf/schema#yearOfPublication> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://schema.org/publication> .
+<https://dblp.org/rdf/schema#yearOfPublication> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.wikidata.org/entity/P577> .
+<https://dblp.org/rdf/schema#monthOfPublication> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#monthOfPublication> <http://www.w3.org/2000/01/rdf-schema#label> "month of publication"@en .
+<https://dblp.org/rdf/schema#monthOfPublication> <http://www.w3.org/2000/01/rdf-schema#comment> "The month the publication has been published."@en .
+<https://dblp.org/rdf/schema#monthOfPublication> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#monthOfPublication> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#gMonth> .
+<https://dblp.org/rdf/schema#monthOfPublication> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P2922> .
+<https://dblp.org/rdf/schema#publishedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publishedBy> <http://www.w3.org/2000/01/rdf-schema#label> "publisher"@en .
+<https://dblp.org/rdf/schema#publishedBy> <http://www.w3.org/2000/01/rdf-schema#comment> "The publisher of the publication. (Remark: This property currently just gives literal xsd:string values until publishers are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#publishedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishedBy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#publishedBy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://purl.org/dc/elements/1.1/publisher> .
+<https://dblp.org/rdf/schema#publishedBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/dc/terms/publisher> .
+<https://dblp.org/rdf/schema#publishedBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://schema.org/publisher> .
+<https://dblp.org/rdf/schema#publishedBy> <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.wikidata.org/entity/P123> .
+<https://dblp.org/rdf/schema#publishersAddress> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publishersAddress> <http://www.w3.org/2000/01/rdf-schema#label> "publishers address"@en .
+<https://dblp.org/rdf/schema#publishersAddress> <http://www.w3.org/2000/01/rdf-schema#comment> "The address of the publisher. (Remark: This is currently an intermediate property that will be removed once publishers are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#publishersAddress> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishersAddress> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#thesisAcceptedBySchool> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#thesisAcceptedBySchool> <http://www.w3.org/2000/01/rdf-schema#label> "school"@en .
+<https://dblp.org/rdf/schema#thesisAcceptedBySchool> <http://www.w3.org/2000/01/rdf-schema#comment> "The school where the publication (typically a thesis) has been accepted. (Remark: This property currently just gives literal xsd:string values until institutions are modelled as proper entities.)"@en .
+<https://dblp.org/rdf/schema#thesisAcceptedBySchool> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#thesisAcceptedBySchool> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#publicationNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publicationNote> <http://www.w3.org/2000/01/rdf-schema#label> "publication note"@en .
+<https://dblp.org/rdf/schema#publicationNote> <http://www.w3.org/2000/01/rdf-schema#comment> "An additional note to the publication."@en .
+<https://dblp.org/rdf/schema#publicationNote> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publicationNote> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://dblp.org/rdf/schema#publishedAsPartOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<https://dblp.org/rdf/schema#publishedAsPartOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#TransitiveProperty> .
+<https://dblp.org/rdf/schema#publishedAsPartOf> <http://www.w3.org/2000/01/rdf-schema#label> "published as part of"@en .
+<https://dblp.org/rdf/schema#publishedAsPartOf> <http://www.w3.org/2000/01/rdf-schema#comment> "The publication has been published as a part of the other publication."@en .
+<https://dblp.org/rdf/schema#publishedAsPartOf> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishedAsPartOf> <http://www.w3.org/2000/01/rdf-schema#range> <https://dblp.org/rdf/schema#Publication> .
+<https://dblp.org/rdf/schema#publishedAsPartOf> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://schema.org/isPartOf> .
+<https://dblp.org/rdf/schema#publishedAsPartOf> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.wikidata.org/entity/P1433> .

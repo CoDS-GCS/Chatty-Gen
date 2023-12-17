@@ -1,6 +1,6 @@
 import argparse
 import os
-from benchmark import generate_question_set
+from benchmark2 import generate_dialogues_from_subgraph, generate_dialogues_from_schema
 
 
 def main():
@@ -12,6 +12,7 @@ def main():
     parser.add_argument(
         "--kg",
         type=str,
+        required=True,
         choices=kg_choices,
         help=f"Choose a value for kg ({kg_choices})",
     )
@@ -32,7 +33,8 @@ def main():
     if kg_name is None:
         parser.print_help()
 
-    generate_question_set(kg_name)
+    generate_dialogues_from_subgraph(kg_name)
+    generate_dialogues_from_schema(kg_name)
 
 
 if __name__ == "__main__":

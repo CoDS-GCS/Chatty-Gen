@@ -55,13 +55,13 @@ class KgSchema:
                 class_in_preds.extend(
                     [(in_p, x) for x in list(self.schema.objects(in_p, RDFS.domain))]
                 )
-            if (len(class_out_preds) > 0) and (len(class_in_preds) > 0):
-                self._parsed_schema[class_] = {
-                    "nodeuri": class_,
-                    "incoming_predicates": class_in_preds,
-                    "outgoing_predicates": class_out_preds,
-                }
-        # save_dict_to_json_file(self._parsed_schema, "schema.json")
+            # if (len(class_out_preds) > 0) and (len(class_in_preds) > 0):
+            self._parsed_schema[class_] = {
+                "nodeuri": class_,
+                "incoming_predicates": class_in_preds,
+                "outgoing_predicates": class_out_preds,
+            }
+        save_dict_to_json_file(self._parsed_schema, "dblp_schema.json")
 
     def parse_schema_classes(self):
         # Iterate through the classes in the RDF graph
@@ -70,7 +70,7 @@ class KgSchema:
             NAMESPACE = RDFS
         elif self.class_namespace == "OWL":
             NAMESPACE = OWL
-
+        # http://www.w3.org/1999/02/22-rdf-syntax-ns#
         for class_uri in self.schema.subjects(RDF.type, NAMESPACE.Class):
             class_label = self.schema.value(class_uri, RDFS.label)
             class_comment = self.schema.value(class_uri, RDFS.comment)
@@ -116,9 +116,24 @@ SPARQL_TEMPLATES = {
         }
         GROUP BY ?node
         ORDER BY DESC(?predicateCount)
-        LIMIT 1
+        LIMIT 10
+        """,
+    "get_seed_nodes_basic": """
+        SELECT DISTINCT ?node
+        WHERE {
+              ?node a <%(e)s>.
+        }
+        LIMIT 10
         """,
 }
+
+def seed_node_sparql_query_old(node_type_uri):
+    query_template = SPARQL_TEMPLATES['get_seed_nodes_basic']
+    values = {"e": node_type_uri}
+    query = format_sparql_template_with_dict(query_template, values)
+    return query
+
+
 
 
 def seed_node_sparql_query(node_type_uri, incoming_predicates, outgoing_predicates):
@@ -135,7 +150,7 @@ def seed_node_sparql_query(node_type_uri, incoming_predicates, outgoing_predicat
         node_type_uri if isinstance(node_type_uri, str) else node_type_uri.toPython()
     )
 
-    sparql_query_template = f"""
+    sparql_query = f"""
     SELECT DISTINCT ?node (COUNT(?outgoingPredicate) + COUNT(?incomingPredicate) AS ?predicateCount)
     WHERE {{
         ?node a <{node_type_uri}>.
@@ -150,7 +165,7 @@ def seed_node_sparql_query(node_type_uri, incoming_predicates, outgoing_predicat
     LIMIT 1
     """
 
-    return sparql_query_template
+    return sparql_query
 
 
 def format_sparql_template_with_dict(template, values_dict):

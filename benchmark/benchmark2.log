@@ -1,0 +1,271 @@
+2023-12-17 22:33:10,612 - logger - INFO - INDEX : 0 -- start --
+2023-12-17 22:33:10,625 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2023-12-17 22:33:12,613 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2023-12-17 22:33:12,613 - logger - INFO - INDEX : 0 -- question set : ['How many types is Dabangg classified as?', 'Which awards did Dabangg win?', 'How many actors are featured in Dabangg?'] --
+2023-12-17 22:33:12,614 - logger - INFO - INDEX : 0 -- pronoun identify chain start --
+2023-12-17 22:33:13,199 - logger - INFO - INDEX : 0 -- pronoun identify chain end --
+2023-12-17 22:33:13,200 - logger - INFO - INDEX : 0 -- pronoun substitute chain start --
+2023-12-17 22:33:13,924 - logger - INFO - INDEX : 0 -- pronoun substitute chain end --
+2023-12-17 22:33:13,925 - logger - INFO - INDEX : 1 -- start --
+2023-12-17 22:33:13,931 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2023-12-17 22:33:15,510 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2023-12-17 22:33:15,511 - logger - INFO - INDEX : 1 -- question set : ['How many actors are in Maine Pyar Kiya? (Count)', 'Is Maine Pyar Kiya a Romance Film? (Boolean)', 'What are the genres of Maine Pyar Kiya? (List)'] --
+2023-12-17 22:33:15,511 - logger - INFO - INDEX : 1 -- pronoun identify chain start --
+2023-12-17 22:33:16,317 - logger - INFO - INDEX : 1 -- pronoun identify chain end --
+2023-12-17 22:33:16,317 - logger - INFO - INDEX : 1 -- pronoun substitute chain start --
+2023-12-17 22:33:17,248 - logger - INFO - INDEX : 1 -- pronoun substitute chain end --
+2023-12-17 22:33:17,248 - logger - INFO - INDEX : 2 -- start --
+2023-12-17 22:33:17,249 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2023-12-17 22:33:18,390 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2023-12-17 22:33:18,390 - logger - INFO - INDEX : 2 -- question set : ['How many entities are related to e?', 'Is e associated with any other entities?', 'What is the date of the earliest relationship between e and another entity?'] --
+2023-12-17 22:33:18,390 - logger - INFO - INDEX : 2 -- pronoun identify chain start --
+2023-12-17 22:33:18,910 - logger - INFO - INDEX : 2 -- pronoun identify chain end --
+2023-12-17 22:33:18,910 - logger - INFO - INDEX : 2 -- pronoun substitute chain start --
+2023-12-17 22:33:19,910 - logger - INFO - INDEX : 2 -- pronoun substitute chain end --
+2023-12-17 22:39:08,339 - logger - INFO - INDEX : 0 -- start --
+2023-12-17 22:39:08,704 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2023-12-17 22:39:10,120 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2023-12-17 22:39:10,120 - logger - INFO - INDEX : 0 -- question set : ['How many actors are in Dabangg?', 'What is the subtitle language of Dabangg?', 'What is the duration of Dabangg?'] --
+2023-12-17 22:39:10,120 - logger - INFO - INDEX : 0 -- pronoun identify chain start --
+2023-12-17 22:39:10,820 - logger - INFO - INDEX : 0 -- pronoun identify chain end --
+2023-12-17 22:39:10,821 - logger - INFO - INDEX : 0 -- pronoun substitute chain start --
+2023-12-17 22:39:11,572 - logger - INFO - INDEX : 0 -- pronoun substitute chain end --
+2023-12-17 22:39:11,573 - logger - INFO - INDEX : 1 -- start --
+2023-12-17 22:39:11,574 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2023-12-17 22:39:12,651 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2023-12-17 22:39:12,651 - logger - INFO - INDEX : 1 -- question set : ['How many actors were in Maine Pyar Kiya?', 'What is the country of origin of Maine Pyar Kiya?', 'What is the duration of Maine Pyar Kiya?'] --
+2023-12-17 22:39:12,652 - logger - INFO - INDEX : 1 -- pronoun identify chain start --
+2023-12-17 22:39:13,249 - logger - INFO - INDEX : 1 -- pronoun identify chain end --
+2023-12-17 22:39:13,250 - logger - INFO - INDEX : 1 -- pronoun substitute chain start --
+2023-12-17 22:39:14,067 - logger - INFO - INDEX : 1 -- pronoun substitute chain end --
+2023-12-17 22:39:14,068 - logger - INFO - INDEX : 2 -- start --
+2023-12-17 22:39:14,069 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2023-12-17 22:39:15,084 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2023-12-17 22:39:15,085 - logger - INFO - INDEX : 2 -- question set : ['How many actors were in The Way of the Dragon?', 'Was The Way of the Dragon produced by an organization?', 'What language were the subtitles of The Way of the Dragon in?'] --
+2023-12-17 22:39:15,085 - logger - INFO - INDEX : 2 -- pronoun identify chain start --
+2023-12-17 22:39:15,716 - logger - INFO - INDEX : 2 -- pronoun identify chain end --
+2023-12-17 22:39:15,716 - logger - INFO - INDEX : 2 -- pronoun substitute chain start --
+2023-12-17 22:39:16,450 - logger - INFO - INDEX : 2 -- pronoun substitute chain end --
+2023-12-17 22:40:53,911 - logger - INFO - INDEX : 0 -- start --
+2023-12-17 22:40:53,913 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2023-12-17 22:40:55,388 - logger - INFO - INDEX : 0 -- ERROR: 0 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-17 22:40:55,388 - logger - INFO - INDEX : 1 -- start --
+2023-12-17 22:40:55,388 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2023-12-17 22:40:56,501 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2023-12-17 22:40:56,501 - logger - INFO - INDEX : 1 -- question set : ['How many papers has Youtao Zhang co-authored?', 'Has Youtao Zhang ever been an editor of a journal?', 'Which conferences has Youtao Zhang published in?'] --
+2023-12-17 22:40:56,501 - logger - INFO - INDEX : 1 -- pronoun identify chain start --
+2023-12-17 22:40:57,026 - logger - INFO - INDEX : 1 -- pronoun identify chain end --
+2023-12-17 22:40:57,026 - logger - INFO - INDEX : 1 -- pronoun substitute chain start --
+2023-12-17 22:40:58,066 - logger - INFO - INDEX : 1 -- pronoun substitute chain end --
+2023-12-17 22:40:58,067 - logger - INFO - INDEX : 2 -- start --
+2023-12-17 22:40:58,067 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2023-12-17 22:40:59,137 - logger - INFO - INDEX : 2 -- ERROR: 2 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-17 22:40:59,137 - logger - INFO - INDEX : 3 -- start --
+2023-12-17 22:40:59,138 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2023-12-17 22:41:00,408 - logger - INFO - INDEX : 3 -- ERROR: 3 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-17 22:41:00,409 - logger - INFO - INDEX : 4 -- start --
+2023-12-17 22:41:00,409 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2023-12-17 22:41:01,724 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2023-12-17 22:41:01,725 - logger - INFO - INDEX : 4 -- question set : ['How many Creators are associated with this Publication?', 'What is the title of this Publication?', 'In what year was this Publication published?'] --
+2023-12-17 22:41:01,725 - logger - INFO - INDEX : 4 -- pronoun identify chain start --
+2023-12-17 22:41:02,449 - logger - INFO - INDEX : 4 -- pronoun identify chain end --
+2023-12-17 22:41:02,449 - logger - INFO - INDEX : 4 -- pronoun substitute chain start --
+2023-12-17 22:41:03,221 - logger - INFO - INDEX : 4 -- ERROR: 4 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-17 22:41:03,221 - logger - INFO - INDEX : 5 -- start --
+2023-12-17 22:41:03,222 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2023-12-17 22:41:05,083 - logger - INFO - INDEX : 5 -- ERROR: 5 : Got invalid JSON object. Error: Expecting value: line 6 column 5 (char 281) --
+2023-12-17 22:42:18,646 - logger - INFO - INDEX : 0 -- start --
+2023-12-17 22:42:18,874 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2023-12-17 22:42:19,101 - logger - INFO - INDEX : 0 -- ERROR: 0 : This model's maximum context length is 4097 tokens, however you requested 10471 tokens (10215 in your prompt; 256 for the completion). Please reduce your prompt; or completion length. --
+2023-12-17 22:42:19,102 - logger - INFO - INDEX : 1 -- start --
+2023-12-17 22:42:19,202 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2023-12-17 22:42:19,373 - logger - INFO - INDEX : 1 -- ERROR: 1 : This model's maximum context length is 4097 tokens, however you requested 6040 tokens (5784 in your prompt; 256 for the completion). Please reduce your prompt; or completion length. --
+2023-12-17 22:42:19,374 - logger - INFO - INDEX : 2 -- start --
+2023-12-17 22:42:19,591 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2023-12-17 22:42:19,759 - logger - INFO - INDEX : 2 -- ERROR: 2 : This model's maximum context length is 4097 tokens, however you requested 11713 tokens (11457 in your prompt; 256 for the completion). Please reduce your prompt; or completion length. --
+2023-12-17 22:42:19,759 - logger - INFO - INDEX : 3 -- start --
+2023-12-17 22:42:19,834 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2023-12-17 22:42:21,438 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2023-12-17 22:42:21,438 - logger - INFO - INDEX : 3 -- question set : ['How many authors contributed to Bhattacharjee RB21?', 'Is Bhattacharjee RB21 a Book or a Publication?', 'What is the DOI of Bhattacharjee RB21?'] --
+2023-12-17 22:42:21,438 - logger - INFO - INDEX : 3 -- pronoun identify chain start --
+2023-12-17 22:42:22,109 - logger - INFO - INDEX : 3 -- pronoun identify chain end --
+2023-12-17 22:42:22,110 - logger - INFO - INDEX : 3 -- pronoun substitute chain start --
+2023-12-17 22:42:22,931 - logger - INFO - INDEX : 3 -- pronoun substitute chain end --
+2023-12-17 22:42:22,932 - logger - INFO - INDEX : 4 -- start --
+2023-12-17 22:42:23,110 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2023-12-17 22:42:24,705 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2023-12-17 22:42:24,705 - logger - INFO - INDEX : 4 -- question set : ["How many authors contributed to 'Ipina FSZC16'?", "What is the DOI associated with 'Ipina FSZC16'?", "Is 'Ipina FSZC16' listed on the TOC page 'sist48'? (True/False)"] --
+2023-12-17 22:42:24,705 - logger - INFO - INDEX : 4 -- pronoun identify chain start --
+2023-12-17 22:42:25,290 - logger - INFO - INDEX : 4 -- pronoun identify chain end --
+2023-12-17 22:42:25,290 - logger - INFO - INDEX : 4 -- pronoun substitute chain start --
+2023-12-17 22:42:26,394 - logger - INFO - INDEX : 4 -- pronoun substitute chain end --
+2023-12-17 22:42:26,394 - logger - INFO - INDEX : 5 -- start --
+2023-12-17 22:42:26,461 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2023-12-17 22:42:27,852 - logger - INFO - INDEX : 5 -- question set generation chain end --
+2023-12-17 22:42:27,853 - logger - INFO - INDEX : 5 -- question set : ['What type is Schenker KBL05?', 'How many authors are associated with Schenker KBL05?', 'What is the DOI of Schenker KBL05?'] --
+2023-12-17 22:42:27,853 - logger - INFO - INDEX : 5 -- pronoun identify chain start --
+2023-12-17 22:42:28,626 - logger - INFO - INDEX : 5 -- pronoun identify chain end --
+2023-12-17 22:42:28,627 - logger - INFO - INDEX : 5 -- pronoun substitute chain start --
+2023-12-17 22:42:29,383 - logger - INFO - INDEX : 5 -- pronoun substitute chain end --
+2023-12-17 22:42:31,470 - logger - INFO - INDEX : 0 -- start --
+2023-12-17 22:42:31,473 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2023-12-17 22:42:33,093 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2023-12-17 22:42:33,093 - logger - INFO - INDEX : 0 -- question set : ['How many publications has Zhongfei Mark Zhang authored?', 'Has Zhongfei Mark Zhang received any awards?', 'What is the title of the most recent publication authored by Zhongfei Mark Zhang?'] --
+2023-12-17 22:42:33,093 - logger - INFO - INDEX : 0 -- pronoun identify chain start --
+2023-12-17 22:42:33,895 - logger - INFO - INDEX : 0 -- pronoun identify chain end --
+2023-12-17 22:42:33,895 - logger - INFO - INDEX : 0 -- pronoun substitute chain start --
+2023-12-17 22:42:35,075 - logger - INFO - INDEX : 0 -- pronoun substitute chain end --
+2023-12-17 22:42:35,075 - logger - INFO - INDEX : 1 -- start --
+2023-12-17 22:42:35,076 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2023-12-17 22:42:36,522 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2023-12-17 22:42:36,522 - logger - INFO - INDEX : 1 -- question set : ['How many publications has Youtao Zhang authored?', 'Has Youtao Zhang ever coauthored a publication with Zhiwen Yu?', 'What is the earliest publication authored by Youtao Zhang?'] --
+2023-12-17 22:42:36,522 - logger - INFO - INDEX : 1 -- pronoun identify chain start --
+2023-12-17 22:42:37,111 - logger - INFO - INDEX : 1 -- pronoun identify chain end --
+2023-12-17 22:42:37,111 - logger - INFO - INDEX : 1 -- pronoun substitute chain start --
+2023-12-17 22:42:38,025 - logger - INFO - INDEX : 1 -- pronoun substitute chain end --
+2023-12-17 22:42:38,026 - logger - INFO - INDEX : 2 -- start --
+2023-12-17 22:42:38,026 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2023-12-17 22:42:39,204 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2023-12-17 22:42:39,204 - logger - INFO - INDEX : 2 -- question set : ['How many publications has Arkady B. Zaslavsky authored?', 'Has Arkady B. Zaslavsky co-authored any publications?', 'What is the most recent publication authored by Arkady B. Zaslavsky?'] --
+2023-12-17 22:42:39,204 - logger - INFO - INDEX : 2 -- pronoun identify chain start --
+2023-12-17 22:42:40,674 - logger - INFO - INDEX : 2 -- pronoun identify chain end --
+2023-12-17 22:42:40,674 - logger - INFO - INDEX : 2 -- pronoun substitute chain start --
+2023-12-17 22:42:41,435 - logger - INFO - INDEX : 2 -- pronoun substitute chain end --
+2023-12-17 22:42:41,435 - logger - INFO - INDEX : 3 -- start --
+2023-12-17 22:42:41,436 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2023-12-17 22:42:42,683 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2023-12-17 22:42:42,683 - logger - INFO - INDEX : 3 -- question set : ['How many Creators are associated with the Publication?', 'Is the Publication published in a series?', 'What is the year of Publication for the Publication?'] --
+2023-12-17 22:42:42,684 - logger - INFO - INDEX : 3 -- pronoun identify chain start --
+2023-12-17 22:42:43,224 - logger - INFO - INDEX : 3 -- pronoun identify chain end --
+2023-12-17 22:42:43,225 - logger - INFO - INDEX : 3 -- pronoun substitute chain start --
+2023-12-17 22:42:44,145 - logger - INFO - INDEX : 3 -- ERROR: 3 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-17 22:42:44,145 - logger - INFO - INDEX : 4 -- start --
+2023-12-17 22:42:44,146 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2023-12-17 22:42:45,941 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2023-12-17 22:42:45,941 - logger - INFO - INDEX : 4 -- question set : ["How many creators are associated with the publication in the series 'sist'?", "Was the publication in the series 'sist' published in a book?", "What is the year of publication of the publication in the series 'sist'?"] --
+2023-12-17 22:42:45,941 - logger - INFO - INDEX : 4 -- pronoun identify chain start --
+2023-12-17 22:42:46,454 - logger - INFO - INDEX : 4 -- pronoun identify chain end --
+2023-12-17 22:42:46,454 - logger - INFO - INDEX : 4 -- pronoun substitute chain start --
+2023-12-17 22:42:47,265 - logger - INFO - INDEX : 4 -- pronoun substitute chain end --
+2023-12-17 22:42:47,266 - logger - INFO - INDEX : 5 -- start --
+2023-12-17 22:42:47,267 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2023-12-17 22:42:48,765 - logger - INFO - INDEX : 5 -- question set generation chain end --
+2023-12-17 22:42:48,766 - logger - INFO - INDEX : 5 -- question set : ["How many authors and editors are associated with the Publication 'SchenkerKBL05'?", "What is the ISBN of the Publication 'SchenkerKBL05'?", "What year was the Publication 'SchenkerKBL05' published?"] --
+2023-12-17 22:42:48,766 - logger - INFO - INDEX : 5 -- pronoun identify chain start --
+2023-12-17 22:42:49,434 - logger - INFO - INDEX : 5 -- pronoun identify chain end --
+2023-12-17 22:42:49,434 - logger - INFO - INDEX : 5 -- pronoun substitute chain start --
+2023-12-17 22:42:50,466 - logger - INFO - INDEX : 5 -- ERROR: 5 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-17 22:43:11,428 - logger - INFO - INDEX : 0 -- start --
+2023-12-17 22:43:11,432 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2023-12-17 22:43:12,825 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2023-12-17 22:43:12,825 - logger - INFO - INDEX : 0 -- question set : ['How many types of creative works is Dabangg associated with?', 'How many awards has Dabangg won?', 'What is the date of publication for Dabangg?'] --
+2023-12-17 22:43:12,825 - logger - INFO - INDEX : 0 -- pronoun identify chain start --
+2023-12-17 22:43:13,605 - logger - INFO - INDEX : 0 -- pronoun identify chain end --
+2023-12-17 22:43:13,605 - logger - INFO - INDEX : 0 -- pronoun substitute chain start --
+2023-12-17 22:43:14,486 - logger - INFO - INDEX : 0 -- pronoun substitute chain end --
+2023-12-17 22:43:14,486 - logger - INFO - INDEX : 1 -- start --
+2023-12-17 22:43:14,489 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2023-12-17 22:43:15,963 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2023-12-17 22:43:15,963 - logger - INFO - INDEX : 1 -- question set : ['How many actors were in the movie Maine Pyar Kiya?', 'Is Maine Pyar Kiya a Romance film?', 'Who directed the movie Maine Pyar Kiya?'] --
+2023-12-17 22:43:15,963 - logger - INFO - INDEX : 1 -- pronoun identify chain start --
+2023-12-17 22:43:16,607 - logger - INFO - INDEX : 1 -- pronoun identify chain end --
+2023-12-17 22:43:16,607 - logger - INFO - INDEX : 1 -- pronoun substitute chain start --
+2023-12-17 22:43:17,298 - logger - INFO - INDEX : 1 -- pronoun substitute chain end --
+2023-12-17 22:43:17,298 - logger - INFO - INDEX : 2 -- start --
+2023-12-17 22:43:17,299 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2023-12-17 22:43:18,472 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2023-12-17 22:43:18,472 - logger - INFO - INDEX : 2 -- question set : ['How many entities are related to e?', 'Are any entities related to e before 2010?', 'What entities are related to e?'] --
+2023-12-17 22:43:18,472 - logger - INFO - INDEX : 2 -- pronoun identify chain start --
+2023-12-17 22:43:19,221 - logger - INFO - INDEX : 2 -- pronoun identify chain end --
+2023-12-17 22:43:19,221 - logger - INFO - INDEX : 2 -- pronoun substitute chain start --
+2023-12-17 22:43:20,052 - logger - INFO - INDEX : 2 -- pronoun substitute chain end --
+2023-12-17 22:43:22,187 - logger - INFO - INDEX : 0 -- start --
+2023-12-17 22:43:22,272 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2023-12-17 22:43:23,139 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2023-12-17 22:43:23,139 - logger - INFO - INDEX : 0 -- question set : ['How many countries of origin are associated with Dabangg?', 'How many music groups are associated with Dabangg?', 'How many actors are associated with Dabangg?'] --
+2023-12-17 22:43:23,139 - logger - INFO - INDEX : 0 -- pronoun identify chain start --
+2023-12-17 22:43:23,802 - logger - INFO - INDEX : 0 -- pronoun identify chain end --
+2023-12-17 22:43:23,802 - logger - INFO - INDEX : 0 -- pronoun substitute chain start --
+2023-12-17 22:43:24,604 - logger - INFO - INDEX : 0 -- pronoun substitute chain end --
+2023-12-17 22:43:24,604 - logger - INFO - INDEX : 1 -- start --
+2023-12-17 22:43:24,605 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2023-12-17 22:43:25,937 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2023-12-17 22:43:25,938 - logger - INFO - INDEX : 1 -- question set : ['How many actors are in Maine Pyar Kiya?', 'What is the duration of Maine Pyar Kiya?', 'What is the subtitle language of Maine Pyar Kiya?'] --
+2023-12-17 22:43:25,938 - logger - INFO - INDEX : 1 -- pronoun identify chain start --
+2023-12-17 22:43:26,529 - logger - INFO - INDEX : 1 -- pronoun identify chain end --
+2023-12-17 22:43:26,529 - logger - INFO - INDEX : 1 -- pronoun substitute chain start --
+2023-12-17 22:43:27,506 - logger - INFO - INDEX : 1 -- pronoun substitute chain end --
+2023-12-17 22:43:27,506 - logger - INFO - INDEX : 2 -- start --
+2023-12-17 22:43:27,507 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2023-12-17 22:43:28,488 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2023-12-17 22:43:28,488 - logger - INFO - INDEX : 2 -- question set : ['How many production companies were involved in The Way of the Dragon?', 'How many actors and actresses were in The Way of the Dragon?', 'How many languages are the subtitles of The Way of the Dragon available in?'] --
+2023-12-17 22:43:28,488 - logger - INFO - INDEX : 2 -- pronoun identify chain start --
+2023-12-17 22:43:29,062 - logger - INFO - INDEX : 2 -- pronoun identify chain end --
+2023-12-17 22:43:29,062 - logger - INFO - INDEX : 2 -- pronoun substitute chain start --
+2023-12-17 22:43:30,007 - logger - INFO - INDEX : 2 -- pronoun substitute chain end --
+2023-12-17 22:43:56,536 - logger - INFO - INDEX : 0 -- start --
+2023-12-17 22:43:58,709 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2023-12-17 22:44:01,166 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2023-12-17 22:44:01,167 - logger - INFO - INDEX : 0 -- question set : ['How many types is Caballo, New Mexico classified as?', 'What is the elevation of Caballo, New Mexico in feet?', 'What is the population of Caballo, New Mexico as of?'] --
+2023-12-17 22:44:01,167 - logger - INFO - INDEX : 0 -- pronoun identify chain start --
+2023-12-17 22:44:01,718 - logger - INFO - INDEX : 0 -- pronoun identify chain end --
+2023-12-17 22:44:01,718 - logger - INFO - INDEX : 0 -- pronoun substitute chain start --
+2023-12-17 22:44:02,481 - logger - INFO - INDEX : 0 -- pronoun substitute chain end --
+2023-12-17 22:44:02,481 - logger - INFO - INDEX : 1 -- start --
+2023-12-17 22:44:04,254 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2023-12-17 22:44:06,297 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2023-12-17 22:44:06,297 - logger - INFO - INDEX : 1 -- question set : ['How many types of locations is Cabin Lake (California) classified as?', 'What is the name of Cabin Lake (California)?', 'What is the elevation of Cabin Lake (California)?'] --
+2023-12-17 22:44:06,297 - logger - INFO - INDEX : 1 -- pronoun identify chain start --
+2023-12-17 22:44:07,011 - logger - INFO - INDEX : 1 -- pronoun identify chain end --
+2023-12-17 22:44:07,011 - logger - INFO - INDEX : 1 -- pronoun substitute chain start --
+2023-12-17 22:44:07,904 - logger - INFO - INDEX : 1 -- pronoun substitute chain end --
+2023-12-17 22:44:07,904 - logger - INFO - INDEX : 2 -- start --
+2023-12-17 22:44:09,986 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2023-12-17 22:44:10,166 - logger - INFO - INDEX : 2 -- ERROR: 2 : This model's maximum context length is 4097 tokens, however you requested 6643 tokens (6387 in your prompt; 256 for the completion). Please reduce your prompt; or completion length. --
+2023-12-17 22:44:10,167 - logger - INFO - INDEX : 3 -- start --
+2023-12-17 22:44:12,101 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2023-12-17 22:44:12,271 - logger - INFO - INDEX : 3 -- ERROR: 3 : This model's maximum context length is 4097 tokens, however you requested 4246 tokens (3990 in your prompt; 256 for the completion). Please reduce your prompt; or completion length. --
+2023-12-17 22:44:12,272 - logger - INFO - INDEX : 4 -- start --
+2023-12-17 22:44:14,667 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2023-12-17 22:44:14,846 - logger - INFO - INDEX : 4 -- ERROR: 4 : This model's maximum context length is 4097 tokens, however you requested 10251 tokens (9995 in your prompt; 256 for the completion). Please reduce your prompt; or completion length. --
+2023-12-17 22:44:14,846 - logger - INFO - INDEX : 5 -- start --
+2023-12-17 22:44:16,766 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2023-12-17 22:44:16,928 - logger - INFO - INDEX : 5 -- ERROR: 5 : This model's maximum context length is 4097 tokens, however you requested 4306 tokens (4050 in your prompt; 256 for the completion). Please reduce your prompt; or completion length. --
+2023-12-17 22:44:18,977 - logger - INFO - INDEX : 0 -- start --
+2023-12-17 22:44:19,037 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2023-12-17 22:44:20,851 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2023-12-17 22:44:20,851 - logger - INFO - INDEX : 0 -- question set : ['How many ski lifts are there in Caballo, New Mexico?', 'What is the maximum elevation of Caballo, New Mexico?', 'What is the nearest city to Caballo, New Mexico?'] --
+2023-12-17 22:44:20,851 - logger - INFO - INDEX : 0 -- pronoun identify chain start --
+2023-12-17 22:44:21,856 - logger - INFO - INDEX : 0 -- pronoun identify chain end --
+2023-12-17 22:44:21,856 - logger - INFO - INDEX : 0 -- pronoun substitute chain start --
+2023-12-17 22:44:22,638 - logger - INFO - INDEX : 0 -- pronoun substitute chain end --
+2023-12-17 22:44:22,638 - logger - INFO - INDEX : 1 -- start --
+2023-12-17 22:44:22,643 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2023-12-17 22:44:24,200 - logger - INFO - INDEX : 1 -- ERROR: 1 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-17 22:44:24,200 - logger - INFO - INDEX : 2 -- start --
+2023-12-17 22:44:24,204 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2023-12-17 22:44:25,869 - logger - INFO - INDEX : 2 -- ERROR: 2 : Got invalid JSON object. Error: Expecting value: line 1 column 1 (char 0) --
+2023-12-17 22:44:25,870 - logger - INFO - INDEX : 3 -- start --
+2023-12-17 22:44:25,870 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2023-12-17 22:44:27,145 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2023-12-17 22:44:27,145 - logger - INFO - INDEX : 3 -- question set : ['How many awards has Camilla Power won?', 'Has Camilla Power won a Golden Calf Award?', 'What year did Camilla Power win a Gemini Award?'] --
+2023-12-17 22:44:27,146 - logger - INFO - INDEX : 3 -- pronoun identify chain start --
+2023-12-17 22:44:27,733 - logger - INFO - INDEX : 3 -- pronoun identify chain end --
+2023-12-17 22:44:27,733 - logger - INFO - INDEX : 3 -- pronoun substitute chain start --
+2023-12-17 22:44:28,520 - logger - INFO - INDEX : 3 -- pronoun substitute chain end --
+2023-12-17 22:44:28,521 - logger - INFO - INDEX : 4 -- start --
+2023-12-17 22:44:28,522 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2023-12-17 22:44:29,843 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2023-12-17 22:44:29,843 - logger - INFO - INDEX : 4 -- question set : ['How many awards has Sarika won?', 'Has Sarika won a Gemini Award?', 'What year did Sarika win the National Film Award?'] --
+2023-12-17 22:44:29,843 - logger - INFO - INDEX : 4 -- pronoun identify chain start --
+2023-12-17 22:44:30,431 - logger - INFO - INDEX : 4 -- pronoun identify chain end --
+2023-12-17 22:44:30,432 - logger - INFO - INDEX : 4 -- pronoun substitute chain start --
+2023-12-17 22:44:31,263 - logger - INFO - INDEX : 4 -- pronoun substitute chain end --
+2023-12-17 22:44:31,263 - logger - INFO - INDEX : 5 -- start --
+2023-12-17 22:44:31,264 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2023-12-17 22:44:32,456 - logger - INFO - INDEX : 5 -- question set generation chain end --
+2023-12-17 22:44:32,456 - logger - INFO - INDEX : 5 -- question set : ['How many Gemini Awards has David Arnott won?', 'Has David Arnott ever won a Laurence Olivier Award?', 'What awards has David Arnott won?'] --
+2023-12-17 22:44:32,456 - logger - INFO - INDEX : 5 -- pronoun identify chain start --
+2023-12-17 22:44:32,928 - logger - INFO - INDEX : 5 -- pronoun identify chain end --
+2023-12-17 22:44:32,928 - logger - INFO - INDEX : 5 -- pronoun substitute chain start --
+2023-12-17 22:44:33,549 - logger - INFO - INDEX : 5 -- pronoun substitute chain end --
