@@ -30,7 +30,7 @@ def get_samples_for_rare_types(rare_types, num_samples, prefix):
     node_samples = list()
     for type in included_types:
         file_name = utils.get_file_name_from_type(type)
-        human_readable_type = f"../subgraph_extractor/index_data/{prefix}/{file_name}.txt"
+        human_readable_type = f"index_data/{prefix}/{file_name}.txt"
         with open(human_readable_type, "r") as file:
             lines = file.readlines()
         data = [line.strip().split('\t') for line in lines]
@@ -45,7 +45,7 @@ def get_samples_for_rare_types(rare_types, num_samples, prefix):
 
 def get_samples_for_type(type, num_samples, prefix):
     file_name = utils.get_file_name_from_type(type)
-    human_readable_type = f"../subgraph_extractor/index_data/{prefix}/{file_name}.txt"
+    human_readable_type = f"/index_data/{prefix}/{file_name}.txt"
     with open(human_readable_type, "r") as file:
         lines = file.readlines()
 
@@ -130,7 +130,7 @@ if __name__ == '__main__':
     knowledge_graph_uri = "http://206.12.95.86:8894/sparql"
     knowledge_graph_prefix = "dblp"
 
-    average_richness_file = f"../subgraph_extractor/index_data/{knowledge_graph_prefix}/average_per_type.txt"
+    average_richness_file = f"index_data/{knowledge_graph_prefix}/average_per_type.txt"
     # Removed richness less than 2
     filtered_df = remove_low_richness(average_richness_file)
     # Calculate importance
