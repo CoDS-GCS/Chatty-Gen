@@ -1,5 +1,6 @@
 import requests
 import re
+import time
 
 
 # Returns only KG specific types
@@ -14,8 +15,7 @@ def sparql_results_to_dataframe(results, kg):
 
     return data
 
-
-def send_sparql_query(endpoint_url, query):
+def execute_sparql_query(endpoint_url, query):
     headers = {
         'Content-Type': 'application/sparql-query',
         'Accept': 'application/json'
@@ -28,11 +28,26 @@ def send_sparql_query(endpoint_url, query):
     response = requests.get(endpoint_url, headers=headers, params=params)
 
     if response.status_code == 200:
-        return response.json()
+        return response.status_code, response.json()
     else:
         print(f"Error: {response.status_code}")
         print(response.text)
-        return None
+        return response.status_code, response.text
+
+def send_sparql_query(endpoint_url, query):
+    repeat = True
+    count = 0
+    while repeat:
+        status_code, response = execute_sparql_query(endpoint_url, query)
+        if status_code == 200:
+            return response
+        elif status_code == 404 and 'The requested URL was not found    URI  = \'/sparql\'' in response:
+            count += 1
+            print("Retrying ", count)
+            time.sleep(2)
+
+        else:
+            return None
 
 
 def get_type_distrubution(endpoint, prefix):
