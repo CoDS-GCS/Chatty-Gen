@@ -112,6 +112,8 @@ if __name__ == '__main__':
     type_file_path = f'index_data/{knowledge_graph_prefix}/average_per_type.txt'
     os.makedirs(os.path.dirname(type_file_path), exist_ok=True)
     types_file = open(type_file_path, 'w')
+    types_file.write('Type \t Num_Entities \t Num_Predicates \t Average\n')
+
     predicate_file_path = f'index_data/{knowledge_graph_prefix}/predicates.txt'
     os.makedirs(os.path.dirname(predicate_file_path), exist_ok=True)
     predicate_file = open(predicate_file_path, 'w')
