@@ -45,7 +45,7 @@ def get_samples_for_rare_types(rare_types, num_samples, prefix):
 
 def get_samples_for_type(type, num_samples, prefix):
     file_name = utils.get_file_name_from_type(type)
-    human_readable_type = f"/index_data/{prefix}/{file_name}.txt"
+    human_readable_type = f"index_data/{prefix}/{file_name}.txt"
     with open(human_readable_type, "r") as file:
         lines = file.readlines()
 
@@ -123,6 +123,21 @@ def remove_low_richness(file_name):
     result_df = filtered_df.iloc[:, [0, 1, 3]]
     # result_df_reverse = result_df.iloc[::-1]
     return result_df
+
+
+def get_seed_nodes(knowledge_graph_prefix, num_samples = 100):
+    average_richness_file = f"index_data/{knowledge_graph_prefix}/average_per_type.txt"
+    # Removed richness less than 2
+    filtered_df = remove_low_richness(average_richness_file)
+    # Calculate importance
+    percentage_df = calculate_class_importance(filtered_df)
+    # Merge types less than one percent
+    update_df, rare_types = merge_rare_types(percentage_df)
+    # num_samples = 100
+    sample_distribution = get_sample_distribution(update_df, num_samples)
+    print(sample_distribution)
+    seed_nodes = return_seed_nodes(sample_distribution, rare_types, knowledge_graph_prefix)
+    return seed_nodes
 
 
 if __name__ == '__main__':
