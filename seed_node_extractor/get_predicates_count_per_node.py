@@ -99,8 +99,17 @@ def prepre_entities_for_predicate_retrieval(type, sparql_endpoint, prefix, types
 
 
 if __name__ == '__main__':
-    knowledge_graph_uri = ""
-    knowledge_graph_prefix = ""
+    knowledge_graph_to_uri = {
+        "dbpedia": ("http://206.12.95.86:8890/sparql", "dbpedia"),
+        # "lc_quad": "http://206.12.95.86:8891/sparql",
+        "microsoft_academic": ("http://206.12.97.159:8890/sparql", "makg"),
+        "yago": ("http://206.12.95.86:8892/sparql", "yago"),
+        "dblp": ("http://206.12.95.86:8894/sparql", "dblp"),
+    }
+    kg = "dblp"
+    knowledge_graph_uri = knowledge_graph_to_uri[kg][0]
+    knowledge_graph_prefix = knowledge_graph_to_uri[kg][1]
+
     types_file = open(f'index_data/{knowledge_graph_prefix}/average_per_type.txt', 'w')
     predicate_file = open(f'index_data/{knowledge_graph_prefix}/predicates.txt', 'w')
     distribution = utils.get_type_distrubution(knowledge_graph_uri, knowledge_graph_prefix)

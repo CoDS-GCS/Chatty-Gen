@@ -126,9 +126,16 @@ def remove_low_richness(file_name):
 
 
 if __name__ == '__main__':
-    # Input
-    knowledge_graph_uri = "http://206.12.95.86:8894/sparql"
-    knowledge_graph_prefix = "dblp"
+    knowledge_graph_to_uri = {
+        "dbpedia": ("http://206.12.95.86:8890/sparql", "dbpedia"),
+        # "lc_quad": "http://206.12.95.86:8891/sparql",
+        "microsoft_academic": ("http://206.12.97.159:8890/sparql", "makg"),
+        "yago": ("http://206.12.95.86:8892/sparql", "yago"),
+        "dblp": ("http://206.12.95.86:8894/sparql", "dblp"),
+    }
+    kg = "dblp"
+    knowledge_graph_uri = knowledge_graph_to_uri[kg][0]
+    knowledge_graph_prefix = knowledge_graph_to_uri[kg][1]
 
     average_richness_file = f"index_data/{knowledge_graph_prefix}/average_per_type.txt"
     # Removed richness less than 2

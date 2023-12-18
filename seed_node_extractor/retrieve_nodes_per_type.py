@@ -43,8 +43,16 @@ def retrieve_node_parallel(type, sparql_endpoint, prefix, num_entities):
 
 if __name__ == '__main__':
     # inputs
-    knowledge_graph_uri = ""
-    knowledge_graph_prefix = ""
+    knowledge_graph_to_uri = {
+        "dbpedia": ("http://206.12.95.86:8890/sparql", "dbpedia"),
+        # "lc_quad": "http://206.12.95.86:8891/sparql",
+        "microsoft_academic": ("http://206.12.97.159:8890/sparql", "makg"),
+        "yago": ("http://206.12.95.86:8892/sparql", "yago"),
+        "dblp": ("http://206.12.95.86:8894/sparql", "dblp"),
+    }
+    kg = "dblp"
+    knowledge_graph_uri = knowledge_graph_to_uri[kg][0]
+    knowledge_graph_prefix = knowledge_graph_to_uri[kg][1]
     distribution = utils.get_type_distrubution(knowledge_graph_uri, knowledge_graph_prefix)
     distribution = pd.DataFrame(distribution)
     types = distribution['Type'].values
