@@ -109,9 +109,13 @@ if __name__ == '__main__':
     kg = "dblp"
     knowledge_graph_uri = knowledge_graph_to_uri[kg][0]
     knowledge_graph_prefix = knowledge_graph_to_uri[kg][1]
+    type_file_path = f'index_data/{knowledge_graph_prefix}/average_per_type.txt'
+    os.makedirs(os.path.dirname(type_file_path), exist_ok=True)
+    types_file = open(type_file_path, 'w')
+    predicate_file_path = f'index_data/{knowledge_graph_prefix}/predicates.txt'
+    os.makedirs(os.path.dirname(predicate_file_path), exist_ok=True)
+    predicate_file = open(predicate_file_path, 'w')
 
-    types_file = open(f'index_data/{knowledge_graph_prefix}/average_per_type.txt', 'w')
-    predicate_file = open(f'index_data/{knowledge_graph_prefix}/predicates.txt', 'w')
     distribution = utils.get_type_distrubution(knowledge_graph_uri, knowledge_graph_prefix)
     distribution = pd.DataFrame(distribution)
     types = distribution['Type'].values
