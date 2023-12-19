@@ -110,23 +110,36 @@ def filter_and_select_questions(original_questions):
 
     return selected_questions
 
-def generate_dialogues_from_subgraph(kg_name, dataset_size=3, dialogue_size=3):
+def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=2):
     """
-    kgname
-    benchmark size 
-    dialogue size
-
+    Generate the dialogues given the following inputs:
+    kg_name: name of the required knowledge graph
+    dataset_size: Number of dialogues in the final benchmark
+    dialogue_size: Maximum number of generated question in each dialogue
+    approach: The approach to be used to generate the dialogue
+              (0: subgraph approach, 1: schema based approach, 2: Both approaches)
     """
     exp_name = f"{kg_name}_e1_{dataset_size}_{dialogue_size}"
     output_file = f"results/{exp_name}.json"
     tracer_instance = Tracer(f'traces/{exp_name}.jsonl')
 
     seed_nodes = get_seed_nodes(kg_name, dataset_size)
-    #seed_nodes = get_dummy_seeds(kg_name)
+    # seed_nodes = get_dummy_seeds(kg_name)
     # seed_nodes = [] # will be added by @reham
     # suggestion to use kg.get_seed_nodes(dataset_size)
+    if approach == 0 or approach == 2:
+        generate_dialogues_from_subgraph(kg_name, seed_nodes, tracer_instance, dialogue_size, output_file)
+    if approach == 1 or approach == 2:
+        generate_dialogues_from_schema(kg_name, seed_nodes, tracer_instance, dialogue_size, output_file)
 
-    # seed = seed_nodes[0]
+
+def generate_dialogues_from_subgraph(kg_name, seed_nodes, tracer_instance, dialogue_size, output_file):
+    """
+    kgname
+    benchmark size 
+    dialogue size
+
+    """
     benchmark_sample = []
     kg = get_kg_instance(kg_name)
     for idx, seed in enumerate(seed_nodes):
@@ -212,22 +225,13 @@ def generate_dialogues_from_subgraph(kg_name, dataset_size=3, dialogue_size=3):
 
 
 
-def generate_dialogues_from_schema(kg_name, dataset_size=3, dialogue_size=3):
+def generate_dialogues_from_schema(kg_name, seed_nodes, tracer_instance, dialogue_size, output_file):
     """
     kgname
     benchmark size 
     dialogue size
 
     """
-    exp_name = f"{kg_name}_e3_{dataset_size}_{dialogue_size}"
-    output_file = f"results/{exp_name}.json"
-    tracer_instance = Tracer(f'traces/{exp_name}.jsonl')
-
-    seed_nodes = get_seed_nodes(kg_name, dataset_size)
-    # seed_nodes = get_dummy_seeds(kg_name)
-    # seed_nodes = [] # will be added by @reham
-    # suggestion to use kg.get_seed_nodes(dataset_size)
-
     benchmark_sample = []
     kg = get_kg_instance(kg_name)
     for idx, seed in enumerate(seed_nodes):

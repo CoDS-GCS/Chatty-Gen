@@ -1,6 +1,6 @@
 import argparse
 import os
-from benchmark2 import generate_dialogues_from_subgraph, generate_dialogues_from_schema
+from benchmark2 import  generate_dialogues
 
 
 def main():
@@ -33,8 +33,8 @@ def main():
     if kg_name is None:
         parser.print_help()
 
-    generate_dialogues_from_subgraph(kg_name)
-    generate_dialogues_from_schema(kg_name)
+    generate_dialogues(kg_name)
+
 
 
 if __name__ == "__main__":
