@@ -41,7 +41,10 @@ class Node:
     uri: Optional[URIRef] = None
     label: Optional[Literal] = None
     nodetype: Optional[URIRef] = None
-
+    def __init__(self, uri=None, nodetype=None, label=None):
+        self.uri = uri
+        self.nodetype = nodetype
+        self.label = label
     def __str__(self):
         return str(self.uri)
 

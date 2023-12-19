@@ -1,19 +1,21 @@
-import utils
+import seed_node_extractor.utils as utils
 import json
 import pandas as pd
 import random
+from benchmark.kg.kg.kg import Node
+from rdflib import URIRef
 
 
-class Node:
-    uri: str
-    type: str
-
-    def __init__(self, uri, type):
-        self.uri = uri
-        self.type = type
-
-    def __str__(self):
-        return f"Type:{self.type}, URI:{self.uri}"
+# class Node:
+#     uri: str
+#     type: str
+#
+#     def __init__(self, uri, type):
+#         self.uri = uri
+#         self.type = type
+#
+#     def __str__(self):
+#         return f"Type:{self.type}, URI:{self.uri}"
 
 
 # This is an initial implementation, which search for any character is the string
@@ -39,7 +41,7 @@ def get_samples_for_rare_types(rare_types, num_samples, prefix):
             sampled_entities = random.sample(data, k=1)
             if check_is_human_readable(utils.get_name(sampled_entities[0][0])) and int(sampled_entities[0][1]) > 2:
                 sampled = True
-                node_samples.append(Node(sampled_entities[0][0], type))
+                node_samples.append(Node(uri=URIRef(sampled_entities[0][0]), nodetype=URIRef(type.strip())))
     return node_samples
 
 
@@ -61,7 +63,7 @@ def get_samples_for_type(type, num_samples, prefix):
 
     node_samples = list()
     for sample in samples:
-        node_samples.append(Node(sample, type))
+        node_samples.append(Node(uri=URIRef(sample), nodetype=URIRef(type.strip())))
     return node_samples
 
 

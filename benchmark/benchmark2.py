@@ -1,4 +1,5 @@
 import sys
+sys.path.append('../')
 import random
 import pathlib
 import json
@@ -11,7 +12,7 @@ from langchain.callbacks import get_openai_callback
 from logger import logger
 from tracer import Tracer
 from kg.kg.kg import DblpKG, YagoKG, DbpediaKG, Node
-from seed_node_extractor import sampling
+from seed_node_extractor.sampling import get_seed_nodes
 
 langchain.debug = True
 
@@ -120,7 +121,7 @@ def generate_dialogues_from_subgraph(kg_name, dataset_size=3, dialogue_size=3):
     output_file = f"results/{exp_name}.json"
     tracer_instance = Tracer(f'traces/{exp_name}.jsonl')
 
-    seed_nodes = sampling.get_seed_nodes(kg_name, dataset_size)
+    seed_nodes = get_seed_nodes(kg_name, dataset_size)
     #seed_nodes = get_dummy_seeds(kg_name)
     # seed_nodes = [] # will be added by @reham
     # suggestion to use kg.get_seed_nodes(dataset_size)
@@ -222,7 +223,7 @@ def generate_dialogues_from_schema(kg_name, dataset_size=3, dialogue_size=3):
     output_file = f"results/{exp_name}.json"
     tracer_instance = Tracer(f'traces/{exp_name}.jsonl')
 
-    seed_nodes = sampling.get_seed_nodes(kg_name, dataset_size)
+    seed_nodes = get_seed_nodes(kg_name, dataset_size)
     # seed_nodes = get_dummy_seeds(kg_name)
     # seed_nodes = [] # will be added by @reham
     # suggestion to use kg.get_seed_nodes(dataset_size)
