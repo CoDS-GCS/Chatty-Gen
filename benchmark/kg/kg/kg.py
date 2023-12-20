@@ -10,6 +10,7 @@ from dataclasses import dataclass, field
 from typing import Optional, List, Tuple, Dict
 from SPARQLWrapper import SPARQLWrapper, JSON
 from logger import Logger
+from seed_node_extractor import utils
 
 
 CURR_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -46,7 +47,7 @@ class Node:
         self.nodetype = nodetype
         self.label = label
     def __str__(self):
-        return str(self.uri)
+        return str(self.uri) if self.uri else str(self.label)
 
 @dataclass
 class Predicate:
@@ -54,7 +55,7 @@ class Predicate:
     label: Optional[Literal] = None
 
     def __str__(self):
-        return str(self.uri)
+        return str(self.uri) if self.uri else str(self.label)
 
 def defrag_uri(uri):
     pattern = r'[#/]([^/#]+)$'
@@ -108,21 +109,30 @@ class SubGraph:
     def __str__(self, representation: str = 'uri'):
         triple_list = []
         for triple in self.triples:
-            triple = self._get_triple_representation(triple, representation)
+            triple = self.get_triple_representation(triple, representation)
             triple_list.append(triple)
         return f"{triple_list}"
 
-    def _get_triple_representation(self, triple : Tuple[Node, Predicate, Node], representation: str):
-        if representation == 'label':
-            sub_, pred_, obj_ = triple
-            return (sub_.label, pred_.label, obj_.label)
-        elif representation == 'uri':
-            sub_, pred_, obj_ = triple
-            return (defrag_uri(str(sub_.uri)),
-            defrag_uri(str(pred_.uri)),
-            defrag_uri(str(obj_.uri)))
-        else:
-            raise ValueError('invalid representation, allowed ["uri", "label"]')
+    def get_triple_representation(self, triple : Tuple[Node, Predicate, Node], representation: str):
+        output = list()
+        for el in triple:
+            if el.uri:
+                output.append(defrag_uri(str(el.uri)))
+            elif el.label:
+                output.append(str(el.label))
+            else:
+                raise ValueError('Invalid Element in Tuple, No URI or label for ', el)
+        return tuple(output)
+        # if representation == 'label':
+        #     sub_, pred_, obj_ = triple
+        #     return (sub_.label, pred_.label, obj_.label)
+        # elif representation == 'uri':
+        #     sub_, pred_, obj_ = triple
+        #     return (defrag_uri(str(sub_.uri)),
+        #     defrag_uri(str(pred_.uri)),
+        #     defrag_uri(str(obj_.uri)))
+        # else:
+        #     raise ValueError('invalid representation, allowed ["uri", "label"]')
 
 @dataclass
 class SparqlQueryResponse:
@@ -269,6 +279,21 @@ class KG:
         """
         pass
 
+    def filter_subgraph(self, subgraph: SubGraph) -> SubGraph:
+        """add rules or condition to remove unnecessary triples"""
+        filtered_triples = list()
+        for triple in subgraph.triples:
+            # Skip Triples whose Subject or object is a blank node
+            subject, predicate, object = triple
+            if "nodeID://" in subject.__str__() or "nodeID://" in object.__str__():
+                continue
+
+            # Only include triples whose predicates not in pre-defined excluded list
+            if predicate.__str__() not in utils.excluded_predicates:
+                filtered_triples.append(triple)
+        subgraph.triples = filtered_triples
+        return subgraph
+
 
 class DblpKG(KG):
     def __init__(self, rdf_schema_file=os.path.join(CURR_DIR, "dblp_rdf_schema.nt"), rdf_format="nt", endpoints=["http://206.12.95.86:8894/sparql/", "https://sparql.dblp.org/sparql"]):
@@ -324,9 +349,6 @@ class DblpKG(KG):
             # class_comment = self.schema.value(class_uri, self.class_namespace.comment)
             self.classes[class_uri] = Node(uri=URIRef(class_uri), label=Literal(class_label))
 
-    def filter_subgraph(self, subgraph: SubGraph) -> SubGraph:
-        """add rules or condition to remove unnecessary triples"""
-        return subgraph
     
     def schema_extractor(self, seed_node: Node) -> NodeSchema:
         """based on the nodetype of seed_node and already parsed schma"""
@@ -388,10 +410,6 @@ class YagoKG(KG):
             # class_comment = self.schema.value(class_uri, self.class_namespace.comment)
             self.classes[class_uri] = Node(uri=URIRef(class_uri), label=Literal(class_label))
 
-
-    def filter_subgraph(self, subgraph: SubGraph) -> SubGraph:
-        """add rules or condition to remove unnecessary triples"""
-        return subgraph
     
     def schema_extractor(self, seed_node: Node) -> NodeSchema:
         """based on the nodetype of seed_node and already parsed schma"""
@@ -451,10 +469,6 @@ class DbpediaKG(KG):
             # class_comment = self.schema.value(class_uri, self.rdfs_namespace.comment)
             self.classes[class_uri] = Node(uri=URIRef(class_uri), label=Literal(class_label))
 
-    def filter_subgraph(self, subgraph: SubGraph) -> SubGraph:
-        """add rules or condition to remove unnecessary triples"""
-        return subgraph
-    
     def schema_extractor(self, seed_node: Node) -> NodeSchema:
         """based on the nodetype of seed_node and already parsed schma"""
         return self.parsed_schema.get(seed_node.nodetype)

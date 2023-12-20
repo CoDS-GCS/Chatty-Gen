@@ -2,6 +2,16 @@ import requests
 import re
 import time
 
+excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://www.w3.org/2002/07/owl#sameAs',
+                       'http://schema.org/image', 'http://schema.org/sameAs',
+                       'http://www.w3.org/2000/01/rdf-schema#comment', 'http://schema.org/logo',
+                       'http://schema.org/url', 'http://www.w3.org/2002/07/owl#differentFrom',
+                       'http://www.w3.org/1999/02/22-rdf-syntax-ns#first',
+                       'http://purl.org/spar/datacite/hasIdentifier', 'http://www.w3.org/2000/01/rdf-schema#seeAlso',
+                       'http://xmlns.com/foaf/0.1/thumbnail', 'http://www.w3.org/2002/07/owl#differentFrom',
+                       'http://xmlns.com/foaf/0.1/isPrimaryTopicOf', 'http://purl.org/dc/elements/1.1/type',
+                       'http://xmlns.com/foaf/0.1/primaryTopic', 'http://xmlns.com/foaf/0.1/logo',
+                       'http://purl.org/dc/elements/1.1/rights']
 
 # Returns only KG specific types
 def sparql_results_to_dataframe(results, kg):
