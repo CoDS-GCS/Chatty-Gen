@@ -5,16 +5,7 @@ import concurrent.futures
 import threading
 import os
 
-excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://www.w3.org/2002/07/owl#sameAs',
-                       'http://schema.org/image', 'http://schema.org/sameAs',
-                       'http://www.w3.org/2000/01/rdf-schema#comment', 'http://schema.org/logo',
-                       'http://schema.org/url', 'http://www.w3.org/2002/07/owl#differentFrom',
-                       'http://www.w3.org/1999/02/22-rdf-syntax-ns#first',
-                       'http://purl.org/spar/datacite/hasIdentifier', 'http://www.w3.org/2000/01/rdf-schema#seeAlso',
-                       'http://xmlns.com/foaf/0.1/thumbnail', 'http://www.w3.org/2002/07/owl#differentFrom',
-                       'http://xmlns.com/foaf/0.1/isPrimaryTopicOf', 'http://purl.org/dc/elements/1.1/type',
-                       'http://xmlns.com/foaf/0.1/primaryTopic', 'http://xmlns.com/foaf/0.1/logo',
-                       'http://purl.org/dc/elements/1.1/rights']
+
 predict_lock = threading.Lock()
 
 
@@ -65,7 +56,7 @@ def get_connected_predicates(entities, sparql_endpoint, prefix, predicate_file):
         for binding in output_list:
             entity = binding.get('entity', {}).get('value', None)
             predicate = binding.get('p', {}).get('value', None)
-            if predicate and predicate not in excluded_predicates:
+            if predicate and predicate not in utils.excluded_predicates:
                 data.append({'entity': entity, 'predicate': predicate})
                 predict_lock.acquire()
                 if prefix not in predicate:

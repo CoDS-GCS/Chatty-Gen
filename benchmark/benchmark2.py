@@ -67,6 +67,7 @@ def get_dummy_seeds(kg_name) -> List[Node]:
             seeds.append(Node(uri=URIRef(s), nodetype=URIRef(k)))
     return seeds
 
+
 def get_kg_instance(kg_name):
     kgs = {"yago": YagoKG(), "dblp": DblpKG(), "dbpedia": DbpediaKG()}
     kg = kgs.get(kg_name, None)
@@ -110,7 +111,59 @@ def filter_and_select_questions(original_questions):
 
     return selected_questions
 
-def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=2):
+
+def get_original_triple(triple, sub_graph):
+    for el in sub_graph.triples:
+        if str(sub_graph.get_triple_representation(el, 'uri')) == triple:
+            return el
+    return None
+
+
+def get_answer_query_from_graph(triples, seed_entity, subgraph, is_boolean):
+    if is_boolean:
+        query = 'Ask where {'
+        for triple in triples:
+            original_triple = get_original_triple(triple, subgraph)
+            for el in original_triple:
+                if el.uri:
+                    query += f"<{el.__str__()}> "
+                else:
+                    value = el.__str__().strip()
+                    query += f"\"{value}\" "
+            query += '.'
+    else:
+        used_predicates = set()
+        query = "select ?uri where { "
+        for triple in triples:
+            original_triple = get_original_triple(triple, subgraph)
+            if original_triple[1].__str__() not in used_predicates:
+                used_predicates.add(original_triple[1].__str__())
+                if original_triple[0] == seed_entity:
+                    query += f"<{seed_entity.__str__()}> <{original_triple[1].__str__()}> ?uri."
+                else:
+                    query += f"?uri <{original_triple[1].__str__()}> <{seed_entity.__str__()}> ."
+    query += '}'
+    return query
+
+
+def is_boolean(question):
+    return (question.lower().startswith('is') or question.lower().startswith('are') or
+            question.lower().startswith('was') or question.lower().startswith('were') or
+            question.lower().startswith('did') or question.lower().startswith('do') or
+            question.lower().startswith('does'))
+
+
+def decouple_questions_and_answers(input_obj, seed_node, subgraph):
+    questions = list()
+    answer_queries = list()
+    for element in input_obj["output"]:
+        questions.append(element["question"])
+        answer_query = get_answer_query_from_graph(element["triples"], seed_node, subgraph, is_boolean(element["question"]))
+        answer_queries.append(answer_query)
+    return questions, answer_queries
+
+
+def generate_dialogues(kg_name, dataset_size=3, dialogue_size=5, approach=2):
     """
     Generate the dialogues given the following inputs:
     kg_name: name of the required knowledge graph
@@ -159,6 +212,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, tracer_instance, dialo
         question_set = None
         filtered_set = None
         cb_dict = None
+        answer_queries = None
         try:
             with get_openai_callback() as cb:
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
@@ -166,7 +220,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, tracer_instance, dialo
                 output = n_question_from_subgraph_chain_without_example.get("chain").run(
                     {"subgraph": subgraph_uri_str, "n": n}
                 )
-                question_set = output["output"]
+                question_set, answer_queries = decouple_questions_and_answers(output.dict(), seed, subgraph)
                 logger.info(f"INDEX : {idx} -- question set generation chain end --")
                 tracer_instance.add_data(idx, "questions", question_set)
 
@@ -212,6 +266,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, tracer_instance, dialo
         dialogue = {
             "dialogue": question_set_dialogue,
             "original": question_set,
+            "queries": answer_queries,
             "filtered": filtered_set,
             "cost": cb_dict,
         }

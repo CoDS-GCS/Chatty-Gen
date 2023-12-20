@@ -5,14 +5,23 @@ from langchain.llms import OpenAI
 from langchain.output_parsers import (
     StructuredOutputParser,
     ResponseSchema,
+    PydanticOutputParser
 )
+from pydantic import BaseModel, Field, validator
 from langchain.chains import LLMChain
+from typing import List, Optional
 
 langchain.debug = True
 
-llm = OpenAI(model_name="text-davinci-003", temperature=0.5, streaming=False)
+llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=False)
+
+class QuestionItem(BaseModel):
+    question: str
+    triples: List[str]
 
 
+class LLMInput(BaseModel):
+    output: List[QuestionItem]
 def format_template_with_dict(template, values_dict):
     try:
         formatted_string = template.format(**values_dict)
@@ -345,15 +354,18 @@ def get_pronoun_substitution_chain():
 
 
 def get_n_question_from_subgraph_chain_without_example():
-    n_q_response_schemas = [
-        ResponseSchema(
-            name="output", description="a list of questions", type="List[string]"
-        )
-    ]
+    # n_q_response_schemas = [
+    #     ResponseSchema(
+    #         name="output", description="a list of questions", type="List[string]"
+    #     )
+    # ]
+    #
+    # n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
+    #     n_q_response_schemas
+    # )
+    # n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
-    n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
-        n_q_response_schemas
-    )
+    n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
     N_Q_PROMPT = PromptTemplate(
@@ -362,7 +374,7 @@ def get_n_question_from_subgraph_chain_without_example():
             "n",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triplets. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triplets from the subgraph.   {format_instructions}
+        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question {format_instructions}.
 
         input: {subgraph}
         n: {n}
