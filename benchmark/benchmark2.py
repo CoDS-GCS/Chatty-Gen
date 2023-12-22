@@ -128,7 +128,8 @@ def get_answer_query_from_graph(triples, seed_entity, subgraph, is_boolean):
                 if el.uri:
                     query += f"<{el.__str__()}> "
                 else:
-                    query += f"{el.__str__()} "
+                    value = el.__str__().strip()
+                    query += f"\"{value}\" "
             query += '.'
     else:
         used_predicates = set()

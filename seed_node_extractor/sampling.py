@@ -70,12 +70,13 @@ def get_samples_for_type(type, num_samples, prefix):
 def return_seed_nodes(samples_per_type, rare_types, prefix):
     samples = list()
     for key, value in samples_per_type.items():
-        if key == "Merged":
-            merged_samples = get_samples_for_rare_types(rare_types, value, prefix)
-            samples.extend(merged_samples)
-        else:
-            type_samples = get_samples_for_type(key, value, prefix)
-            samples.extend(type_samples)
+        if value > 0:
+            if key == "Merged":
+                merged_samples = get_samples_for_rare_types(rare_types, value, prefix)
+                samples.extend(merged_samples)
+            else:
+                type_samples = get_samples_for_type(key, value, prefix)
+                samples.extend(type_samples)
     return samples
 
 def merge_rare_types(input_df):
@@ -106,7 +107,7 @@ def get_sample_distribution(input, total_samples):
         samples_per_type[inst['Type']] = samples
         used_samples += samples
 
-    samples_per_type['Merged'] = total_samples - used_samples
+    samples_per_type['Merged'] = max(total_samples - used_samples, 0)
     return samples_per_type
 
 def calculate_class_importance(input_df):
