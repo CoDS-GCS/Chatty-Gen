@@ -13,6 +13,7 @@ from logger import logger
 from tracer import Tracer
 from kg.kg.kg import DblpKG, YagoKG, DbpediaKG, Node
 from seed_node_extractor.sampling import get_seed_nodes
+from answer_creation import get_answer_LLM_based, get_answer_query_from_graph, get_LLM_based_postprocessed, updated_get_answer_query_from_graph
 
 langchain.debug = True
 
@@ -21,6 +22,7 @@ pronoun_identification_chain = prompt_chains.get("pronoun_identification_chain")
 pronoun_substitution_chain = prompt_chains.get("pronoun_substitution_chain")
 n_question_from_subgraph_chain_without_example = prompt_chains.get("n_question_from_subgraph_chain_without_example")
 n_question_from_schema_chain_without_example = prompt_chains.get("n_question_from_schema_chain_without_example")
+
 
 dblp_dummy_seeds = {
     "https://dblp.org/rdf/schema#Person": [
@@ -111,54 +113,19 @@ def filter_and_select_questions(original_questions):
 
     return selected_questions
 
-
-def get_original_triple(triple, sub_graph):
-    for el in sub_graph.triples:
-        if str(sub_graph.get_triple_representation(el, 'uri')) == triple:
-            return el
-    return None
-
-
-def get_answer_query_from_graph(triples, seed_entity, subgraph, is_boolean):
-    if is_boolean:
-        query = 'Ask where {'
-        for triple in triples:
-            original_triple = get_original_triple(triple, subgraph)
-            for el in original_triple:
-                if el.uri:
-                    query += f"<{el.__str__()}> "
-                else:
-                    value = el.__str__().strip()
-                    query += f"\"{value}\" "
-            query += '.'
-    else:
-        used_predicates = set()
-        query = "select ?uri where { "
-        for triple in triples:
-            original_triple = get_original_triple(triple, subgraph)
-            if original_triple[1].__str__() not in used_predicates:
-                used_predicates.add(original_triple[1].__str__())
-                if original_triple[0] == seed_entity:
-                    query += f"<{seed_entity.__str__()}> <{original_triple[1].__str__()}> ?uri."
-                else:
-                    query += f"?uri <{original_triple[1].__str__()}> <{seed_entity.__str__()}> ."
-    query += '}'
-    return query
-
-
-def is_boolean(question):
-    return (question.lower().startswith('is') or question.lower().startswith('are') or
-            question.lower().startswith('was') or question.lower().startswith('were') or
-            question.lower().startswith('did') or question.lower().startswith('do') or
-            question.lower().startswith('does'))
-
-
 def decouple_questions_and_answers(input_obj, seed_node, subgraph):
     questions = list()
     answer_queries = list()
     for element in input_obj["output"]:
         questions.append(element["question"])
-        answer_query = get_answer_query_from_graph(element["triples"], seed_node, subgraph, is_boolean(element["question"]))
+        # 1- LLM Based
+        # answer_query = get_answer_LLM_based(element["question"], element["triples"], subgraph)
+        # 2-Rule based
+        # answer_query = get_answer_query_from_graph(element["triples"], seed_node, subgraph, element["question"])
+        # 3- LLM based modified
+        answer_query = get_LLM_based_postprocessed(element["question"], element["triples"], subgraph)
+        # 4- Rule based modified
+        # answer_query = updated_get_answer_query_from_graph(element["triples"], subgraph, element["question"])
         answer_queries.append(answer_query)
     return questions, answer_queries
 
