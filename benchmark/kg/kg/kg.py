@@ -105,6 +105,7 @@ class NodeSchema:
 @dataclass
 class SubGraph:
     seed_node: Node
+    quadruples: List[Tuple[Node, Predicate, Node, int]] = field(default_factory=list)
     triples: List[Tuple[Node, Predicate, Node]] = field(default_factory=list)
 
     def __str__(self, representation: str = 'uri'):
@@ -113,6 +114,17 @@ class SubGraph:
             triple = self.get_triple_representation(triple, representation)
             triple_list.append(triple)
         return f"{triple_list}"
+
+    def get_triple_representation_for_optimized(self, triple : Tuple[Node, Predicate, Node]):
+        sub_, pred_, obj_ = triple
+        return (defrag_uri(str(sub_.uri)),
+        defrag_uri(str(pred_.uri)),
+        defrag_uri(str(obj_.uri)))
+
+    def get_quadruple_representation(self, quadruple: Tuple[Node, Predicate, Node, int]):
+        triple_representation = self.get_triple_representation_for_optimized(quadruple[:3])
+        return tuple(triple_representation) + (quadruple[3],)
+
 
     def get_triple_representation(self, triple : Tuple[Node, Predicate, Node], representation: str):
         output = list()
@@ -157,9 +169,10 @@ class SubGraph:
             quadruple = (*triple, count)
             quadruples.append(quadruple)
 
+        self.quadruples = quadruples
         summary_str = ""
         for quadruple in quadruples:
-            label_representation = self._get_triple_representation(quadruple[:3], representation)
+            label_representation = self.get_triple_representation_for_optimized(quadruple[:3])
             summary_str += f"{tuple(label_representation) + (quadruple[3],)}\n"
 
         return summary_str

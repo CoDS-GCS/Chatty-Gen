@@ -12,9 +12,10 @@ from langchain.callbacks import get_openai_callback
 from logger import logger
 from analysis import analyze_benchmark_sample
 from tracer import Tracer
-from kg.kg.kg import DblpKG, YagoKG, DbpediaKG, Node
+from kg.kg.kg import DblpKG, YagoKG, DbpediaKG, Node, defrag_uri
 from seed_node_extractor.sampling import get_seed_nodes
 from answer_creation import get_answer_LLM_based, get_answer_query_from_graph, get_LLM_based_postprocessed, updated_get_answer_query_from_graph
+from seed_node_extractor import utils
 
 langchain.debug = True
 
@@ -115,7 +116,7 @@ def filter_and_select_questions(original_questions):
 
     return selected_questions
 
-def decouple_questions_and_answers(input_obj, seed_node, subgraph):
+def decouple_questions_and_answers(input_obj, seed_node, subgraph, approach):
     questions = list()
     answer_queries = list()
     for element in input_obj["output"]:
@@ -125,7 +126,7 @@ def decouple_questions_and_answers(input_obj, seed_node, subgraph):
         # 2-Rule based
         # answer_query = get_answer_query_from_graph(element["triples"], seed_node, subgraph, element["question"])
         # 3- LLM based modified
-        answer_query = get_LLM_based_postprocessed(element["question"], element["triples"], subgraph)
+        answer_query = get_LLM_based_postprocessed(element["question"], element["triples"], subgraph, approach)
         # 4- Rule based modified
         # answer_query = updated_get_answer_query_from_graph(element["triples"], subgraph, element["question"])
         answer_queries.append(answer_query)
@@ -143,7 +144,8 @@ def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=3, lab
               (0: subgraph approach, 1: schema based approach, 2. summarized subgraph approach, 3: All approaches)
     """
     seed_nodes = get_seed_nodes(kg_name, dataset_size)
-
+    if label_predicate is not None:
+        utils.excluded_predicates.append(label_predicate)
     # seed_nodes = get_dummy_seeds(kg_name)
     # seed_nodes = [] # will be added by @reham
     # suggestion to use kg.get_seed_nodes(dataset_size)
@@ -199,7 +201,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, trace
                 output = n_question_from_subgraph_chain_without_example.get("chain").run(
                     {"subgraph": subgraph_uri_str, "n": n}
                 )
-                question_set, answer_queries = decouple_questions_and_answers(output.dict(), seed, subgraph)
+                question_set, answer_queries = decouple_questions_and_answers(output.dict(), seed, subgraph, "subgraph")
                 logger.info(f"INDEX : {idx} -- question set generation chain end --")
                 tracer_instance.add_data(idx, "questions", question_set)
 
@@ -211,7 +213,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, trace
                 ent_pronoun = pronoun_identification_chain.get("chain").run(
                     {"query": question_0, **payload_dict}
                 )
-                question_0_ent_pron = ent_pronoun["output"]
+                question_0_ent_pron = ent_pronoun.dict()["output"]
                 logger.info(f"INDEX : {idx} -- pronoun identify chain end --")
                 tracer_instance.add_data(idx, "pron_indetify", question_0_ent_pron)
 
@@ -225,7 +227,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, trace
                 output = pronoun_substitution_chain.get("chain").run(
                     {**query_dict, **payload_dict}
                 )
-                transformed_questions = output["output"]
+                transformed_questions = output.dict()["output"]
                 logger.info(f"INDEX : {idx} -- pronoun substitute chain end --")
                 tracer_instance.add_data(idx, "pron_sub", transformed_questions)
 
@@ -292,6 +294,7 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predi
         question_set = None
         filtered_set = None
         cb_dict = None
+        answer_queries = None
         try:
             with get_openai_callback() as cb:
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
@@ -299,7 +302,7 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predi
                 output = n_question_from_summarized_subgraph_chain_without_example.get("chain").run(
                     {"subgraph": subgraph_str, "n": n}
                 )
-                question_set = output["output"]
+                question_set, answer_queries = decouple_questions_and_answers(output.dict(), seed, subgraph, "optimized")
                 logger.info(f"INDEX : {idx} -- question set generation chain end --")
                 tracer_instance.add_data(idx, "questions", question_set)
 
@@ -311,7 +314,7 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predi
                 ent_pronoun = pronoun_identification_chain.get("chain").run(
                     {"query": question_0, **payload_dict}
                 )
-                question_0_ent_pron = ent_pronoun["output"]
+                question_0_ent_pron = ent_pronoun.dict()["output"]
                 logger.info(f"INDEX : {idx} -- pronoun identify chain end --")
                 tracer_instance.add_data(idx, "pron_indetify", question_0_ent_pron)
 
@@ -325,7 +328,7 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predi
                 output = pronoun_substitution_chain.get("chain").run(
                     {**query_dict, **payload_dict}
                 )
-                transformed_questions = output["output"]
+                transformed_questions = output.dict()["output"]
                 logger.info(f"INDEX : {idx} -- pronoun substitute chain end --")
                 tracer_instance.add_data(idx, "pron_sub", transformed_questions)
 
@@ -345,6 +348,7 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predi
         dialogue = {
             "dialogue": question_set_dialogue,
             "original": question_set,
+            "queries": answer_queries,
             "filtered": filtered_set,
             "cost": cb_dict,
         }
@@ -406,7 +410,7 @@ def generate_dialogues_from_schema(kg_name, seed_nodes, label_predicate, tracer_
                 ent_pronoun = pronoun_identification_chain.get("chain").run(
                     {"query": question_0, **payload_dict}
                 )
-                question_0_ent_pron = ent_pronoun["output"]
+                question_0_ent_pron = ent_pronoun.dict()["output"]
                 logger.info(f"INDEX : {idx} -- pronoun identify chain end --")
                 tracer_instance.add_data(idx, "pron_indetify", question_0_ent_pron)
 
@@ -420,7 +424,7 @@ def generate_dialogues_from_schema(kg_name, seed_nodes, label_predicate, tracer_
                 output = pronoun_substitution_chain.get("chain").run(
                     {**query_dict, **payload_dict}
                 )
-                transformed_questions = output["output"]
+                transformed_questions = output.dict()["output"]
                 logger.info(f"INDEX : {idx} -- pronoun substitute chain end --")
                 tracer_instance.add_data(idx, "pron_sub", transformed_questions)
 

@@ -13,3 +13,5 @@ evaluate.py
 test_data.json
 todo.txt
 .vscode
+benchmark/traces/
+benchmark/*.log

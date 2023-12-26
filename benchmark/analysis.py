@@ -23,6 +23,8 @@ def question_type_distribution(data):
     exp_q_type = None
     for d in data:
         qset = d.get("filtered")
+        if qset is None:
+            continue
         q_types = count_starting_phrases(qset)
         if exp_q_type is None:
             exp_q_type = q_types.copy()
@@ -34,7 +36,12 @@ def question_type_distribution(data):
 
 def question_cost_distribution(data):
     # Convert the list of dictionaries into a DataFrame
-    df = pd.DataFrame([d['cost'] for d in data])
+    cost = []
+    for d in data:
+        if d['cost'] is not None:
+            cost.append(d['cost'])
+
+    df = pd.DataFrame(cost)
 
     # Calculate average, minimum, and maximum values for each field
     result = {
