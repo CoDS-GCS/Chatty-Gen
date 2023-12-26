@@ -35,13 +35,13 @@ def main():
     parser.add_argument(
         "--approach",
         type=int,
-        default=1,
+        default=0,
         help="Specify the approach",
     )
     parser.add_argument(
         "--label-predicate",
         type=str,
-        default="label",
+        default="http://www.w3.org/2000/01/rdf-schema#label",
         help="Specify the representative label predicate in KG",
     )
 

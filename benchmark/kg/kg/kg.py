@@ -196,7 +196,7 @@ class KG:
     - provides simple subgraph extractor for any seed node (1-hop star pattern)
     - uses redis cache for saving sparql query results for faster response
     """
-    def __init__(self, endpoints=[], redis_host="localhost", _redis_db_name=0, _verbose=False, _selection_method="select-one"):
+    def __init__(self, label_predicate=None, endpoints=[], redis_host="localhost", _redis_db_name=0, _verbose=False, _selection_method="select-one"):
         self.verbose = _verbose
         self.endpoints = endpoints
         if len(endpoints) == 0:
@@ -205,6 +205,56 @@ class KG:
         self.selection_method =_selection_method
         self.r = redis.Redis(host=redis_host, port=6379, db=_redis_db_name)
         self.logger = Logger().get_logger()
+        # self.label_predicate_url = self.get_label_predicate_uri(label_predicate)
+        # tried with just label suffix as input and finding full url from the kg, but the sparql-endpoint timeout
+        self.label_predicate_url = label_predicate
+    
+    def get_label_predicate_uri(self, label_predicate):
+        query_template = '''
+            SELECT DISTINCT ?predicate
+            WHERE {
+                ?s ?predicate ?o .
+                FILTER(STRENDS(STR(?predicate), "%s"))
+            }
+            LIMIT 1
+        '''
+        query = query_template % label_predicate
+        print(query)
+
+        result = self.shoot_custom_query(query)
+        if result and 'results' in result and 'bindings' in result['results']:
+            bindings = result['results']['bindings']
+            if bindings:
+                return bindings[0]['predicate']['value']
+
+        return None
+    
+    def get_label(self, uri):
+        "use predicate label url and get label"
+        label_query_template = """
+            SELECT ?label WHERE {
+                <%s> <%s> ?label .
+            }
+        """
+        query = label_query_template % (uri, self.label_predicate_url)
+        results = self.shoot_custom_query(query)
+        label = None
+        if (
+            "results" in results
+            and "bindings" in results["results"]
+            and len(results["results"]["bindings"]) > 0
+        ):
+            all_bindings = results["results"]["bindings"]
+            for r in all_bindings:
+                if label is None:
+                    if r["label"].get("xml:lang") is None:
+                        label = r["label"]["value"]
+                    elif r["label"].get("xml:lang") == "en":
+                        label = r["label"]["value"]
+                else:
+                    break
+            return label
+        return None
 
     def select_sparql_endpoint(self):
         """
@@ -263,12 +313,14 @@ class KG:
             objs = q_response.values_by_key('object')
             for p, o in zip(preds, objs):
                 if isinstance(p, URIRef):
-                    pred = Predicate(uri=p)
+                    p_label = self.get_label(str(p))
+                    pred = Predicate(uri=p, label=p_label)
                 else:
                     pred = Predicate(label=p)
                 
                 if isinstance(o, URIRef):
-                    obj = Node(uri=o)
+                    o_label = self.get_label(str(o))
+                    obj = Node(uri=o, label=o_label)
                 else:
                     obj = Node(label=o)
 
@@ -287,12 +339,14 @@ class KG:
             subs = q_response.values_by_key('subject')
             for p, s in zip(preds, subs):
                 if isinstance(p, URIRef):
-                    pred = Predicate(uri=p)
+                    p_label = self.get_label(str(p))
+                    pred = Predicate(uri=p, label=p_label)
                 else:
                     pred = Predicate(label=p)
                 
                 if isinstance(s, URIRef):
-                    subj = Node(uri=s)
+                    s_label = self.get_label(str(s))
+                    subj = Node(uri=s, label=s_label)
                 else:
                     subj = Node(label=s)
                 triples.append((subj, pred, seed_node))
@@ -326,8 +380,8 @@ class KG:
 
 
 class DblpKG(KG):
-    def __init__(self, rdf_schema_file=os.path.join(CURR_DIR, "dblp_rdf_schema.nt"), rdf_format="nt", endpoints=["http://206.12.95.86:8894/sparql/", "https://sparql.dblp.org/sparql"]):
-        super().__init__(endpoints)
+    def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dblp_rdf_schema.nt"), rdf_format="nt", endpoints=["http://206.12.95.86:8894/sparql/", "https://sparql.dblp.org/sparql"]):
+        super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to Dblp
 
         allowed_formats = ["nt", "xml", "n3", "trix"]
@@ -386,18 +440,18 @@ class DblpKG(KG):
 
 
 class YagoKG(KG):
-    def __init__(self, rdf_schema_file=os.path.join(CURR_DIR, "yago_rdf_schema.nt"), rdf_format="nt", endpoints=["http://206.12.95.86:8892/sparql/"]):
-            super().__init__(endpoints)
-            # Additional attributes or initialization specific to YAGO 
-            allowed_formats = ["nt", "xml", "n3", "trix"]
-            if not rdf_format in allowed_formats:
-                raise ValueError("invalid rdf_format, please provide any of these ")
-            self.schema = Graph()
-            self.schema.parse(rdf_schema_file, format=rdf_format)
-            self.class_namespace = RDFS
-            self.schema_namespace = Namespace("http://schema.org/") # yago does have domainIncludes and rangeIncludes from schema.org datamodel
-            self._classes = None
-            self._parsed_schema = None
+    def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "yago_rdf_schema.nt"), rdf_format="nt", endpoints=["http://206.12.95.86:8892/sparql/"]):
+        super().__init__(label_predicate, endpoints)
+        # Additional attributes or initialization specific to YAGO 
+        allowed_formats = ["nt", "xml", "n3", "trix"]
+        if not rdf_format in allowed_formats:
+            raise ValueError("invalid rdf_format, please provide any of these ")
+        self.schema = Graph()
+        self.schema.parse(rdf_schema_file, format=rdf_format)
+        self.class_namespace = RDFS
+        self.schema_namespace = Namespace("http://schema.org/") # yago does have domainIncludes and rangeIncludes from schema.org datamodel
+        self._classes = None
+        self._parsed_schema = None
 
     @property
     def parsed_schema(self):
@@ -446,8 +500,8 @@ class YagoKG(KG):
         return self.parsed_schema.get(seed_node.nodetype)
 
 class DbpediaKG(KG):
-    def __init__(self, rdf_schema_file=os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"), rdf_format="nt", endpoints=["http://dbpedia.org/sparql/", "http://live.dbpedia.org/sparql/"]):
-        super().__init__(endpoints)
+    def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"), rdf_format="nt", endpoints=["http://dbpedia.org/sparql/", "http://live.dbpedia.org/sparql/"]):
+        super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to DBPedia
         allowed_formats = ["nt", "xml", "n3", "trix"]
         if not rdf_format in allowed_formats:

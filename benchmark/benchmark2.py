@@ -10,6 +10,7 @@ from llm.prompt_chains import get_prompt_chains
 import langchain
 from langchain.callbacks import get_openai_callback
 from logger import logger
+from analysis import analyze_benchmark_sample
 from tracer import Tracer
 from kg.kg.kg import DblpKG, YagoKG, DbpediaKG, Node
 from seed_node_extractor.sampling import get_seed_nodes
@@ -70,7 +71,7 @@ def get_dummy_seeds(kg_name) -> List[Node]:
 
 
 def get_kg_instance(kg_name):
-    kgs = {"yago": YagoKG(), "dblp": DblpKG(), "dbpedia": DbpediaKG()}
+    kgs = {"yago": YagoKG, "dblp": DblpKG, "dbpedia": DbpediaKG}
     kg = kgs.get(kg_name, None)
     if kg is None:
         raise ValueError(f"kg : {kg_name} not supported")
@@ -204,7 +205,8 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, trace
 
     """
     benchmark_sample = []
-    kg = get_kg_instance(kg_name)
+    KG = get_kg_instance(kg_name)
+    kg = KG(label_predicate)
     for idx, seed in enumerate(seed_nodes):
         # seed = Node(uri=URIRef("https://dblp.org/rec/phd/Dobry87"))
         
@@ -261,7 +263,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, trace
                 tracer_instance.add_data(idx, "pron_sub", transformed_questions)
 
                 question_set_dialogue = [question_0, *transformed_questions]
-                filtered_set = filter_and_select_questions(question_set_dialogue)
+                filtered_set = [question_0, *filter_and_select_questions(transformed_questions)]
                 cb_dict = {
                     "total_tokens": cb.total_tokens,
                     "prompt_tokens": cb.prompt_tokens,
@@ -283,10 +285,15 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, trace
         print(dialogue)
         benchmark_sample.append(dialogue)
 
+    benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
+    benchmark = {
+        "data": benchmark_sample,
+        "analysis" : benchmark_analysis,
+    }
     directory = pathlib.Path(output_file).parent
     directory.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w") as f:
-        json.dump(benchmark_sample, f, indent=4)
+        json.dump(benchmark, f, indent=4)
 
 
 def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file):
@@ -297,7 +304,8 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predi
 
     """
     benchmark_sample = []
-    kg = get_kg_instance(kg_name)
+    KG = get_kg_instance(kg_name)
+    kg = KG(label_predicate)
     for idx, seed in enumerate(seed_nodes):
         # seed = Node(uri=URIRef("https://dblp.org/rec/phd/Dobry87"))
         
@@ -355,7 +363,7 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predi
                 tracer_instance.add_data(idx, "pron_sub", transformed_questions)
 
                 question_set_dialogue = [question_0, *transformed_questions]
-                filtered_set = filter_and_select_questions(question_set_dialogue)
+                filtered_set = [question_0, *filter_and_select_questions(transformed_questions)]
                 cb_dict = {
                     "total_tokens": cb.total_tokens,
                     "prompt_tokens": cb.prompt_tokens,
@@ -376,10 +384,15 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predi
         print(dialogue)
         benchmark_sample.append(dialogue)
 
+    benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
+    benchmark = {
+        "data": benchmark_sample,
+        "analysis" : benchmark_analysis,
+    }
     directory = pathlib.Path(output_file).parent
     directory.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w") as f:
-        json.dump(benchmark_sample, f, indent=4)
+        json.dump(benchmark, f, indent=4)
 
 
 
@@ -391,7 +404,8 @@ def generate_dialogues_from_schema(kg_name, seed_nodes, label_predicate, tracer_
 
     """
     benchmark_sample = []
-    kg = get_kg_instance(kg_name)
+    KG = get_kg_instance(kg_name)
+    kg = KG(label_predicate)
     for idx, seed in enumerate(seed_nodes):
         logger.info(f"INDEX : {idx} -- start --")
         tracer_instance.add_data(idx, "seed", asdict(seed))
@@ -444,7 +458,7 @@ def generate_dialogues_from_schema(kg_name, seed_nodes, label_predicate, tracer_
                 tracer_instance.add_data(idx, "pron_sub", transformed_questions)
 
                 question_set_dialogue = [question_0, *transformed_questions]
-                filtered_set = filter_and_select_questions(question_set_dialogue)
+                filtered_set = [question_0, *filter_and_select_questions(transformed_questions)]
                 cb_dict = {
                     "total_tokens": cb.total_tokens,
                     "prompt_tokens": cb.prompt_tokens,
@@ -465,7 +479,12 @@ def generate_dialogues_from_schema(kg_name, seed_nodes, label_predicate, tracer_
         print(dialogue)
         benchmark_sample.append(dialogue)
 
+    benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
+    benchmark = {
+        "data": benchmark_sample,
+        "analysis" : benchmark_analysis,
+    }
     directory = pathlib.Path(output_file).parent
     directory.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w") as f:
-        json.dump(benchmark_sample, f, indent=4)
+        json.dump(benchmark, f, indent=4)
