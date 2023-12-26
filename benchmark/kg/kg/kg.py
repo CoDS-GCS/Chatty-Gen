@@ -2,6 +2,7 @@ import os
 import warnings
 import random
 import re
+from collections import defaultdict
 import redis
 import json
 from rdflib import Graph, URIRef, Literal, RDF, RDFS, OWL
@@ -133,6 +134,35 @@ class SubGraph:
         #     defrag_uri(str(obj_.uri)))
         # else:
         #     raise ValueError('invalid representation, allowed ["uri", "label"]')
+    
+    def get_quadruple_summary(self, representation: str) -> str:
+        "create quadruple summary"
+        predicate_summary = defaultdict(int)
+        first_occurrence = {}
+
+        # Finding first occurrences of predicates
+        for triple_index, triple in enumerate(self.triples):
+            _, predicate, _ = triple
+            predicate_str = str(predicate)
+            if predicate_str not in first_occurrence:
+                first_occurrence[predicate_str] = triple_index
+
+            predicate_summary[predicate_str] += 1
+
+        # Forming quadruples with counts from predicate_summary
+        quadruples = []
+        for predicate_str, triple_index in first_occurrence.items():
+            triple = self.triples[triple_index]
+            count = predicate_summary[predicate_str]
+            quadruple = (*triple, count)
+            quadruples.append(quadruple)
+
+        summary_str = ""
+        for quadruple in quadruples:
+            label_representation = self._get_triple_representation(quadruple[:3], representation)
+            summary_str += f"{tuple(label_representation) + (quadruple[3],)}\n"
+
+        return summary_str
 
 @dataclass
 class SparqlQueryResponse:

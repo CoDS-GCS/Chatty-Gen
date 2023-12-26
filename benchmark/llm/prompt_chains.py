@@ -501,6 +501,37 @@ def get_n_question_from_schema_chain_without_example():
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
 
+def get_n_question_from_summarized_subgraph_chain_without_example():
+    n_q_response_schemas = [
+        ResponseSchema(
+            name="output", description="a list of questions", type="List[string]"
+        )
+    ]
+
+    n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
+        n_q_response_schemas
+    )
+    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
+
+    N_Q_PROMPT = PromptTemplate(
+        input_variables=[
+            "subgraph",
+            "n",
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of quadruples. Each quadruple consists of (subject, predicate, object, count). Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. The count in the quadruple signifies the number of occurrences of that specific predicate related to the subject entity. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two quadruples from the subgraph.   {format_instructions}
+
+        input: {subgraph}
+        n: {n}
+        output: """,
+    )
+
+    n_question_generator_chain = LLMChain(
+        llm=llm, prompt=N_Q_PROMPT, verbose=True, output_parser=n_q_json_output_parser
+    )
+    payload = {}
+    return {"chain": n_question_generator_chain, "payload": payload}
+
 def get_prompt_chains():
     prompt_chains = {
         "question_template_chain": get_question_template_chain,
@@ -509,5 +540,6 @@ def get_prompt_chains():
         "n_question_from_subgraph_chain_with_example": get_n_question_from_subgraph_chain_with_example(),
         "n_question_from_subgraph_chain_without_example": get_n_question_from_subgraph_chain_without_example(),
         "n_question_from_schema_chain_without_example": get_n_question_from_schema_chain_without_example(),
+        "n_question_from_summarized_subgraph_chain_without_example": get_n_question_from_summarized_subgraph_chain_without_example(),
     }
     return prompt_chains
