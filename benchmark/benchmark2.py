@@ -155,12 +155,12 @@ def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subg
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
         generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file)
-    if "subgraph-summarized" in approach:
+    if "schema" in approach:
         exp_name = f"{kg_name}_e3_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
         generate_dialogues_from_schema(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file)
-    if "schema" in approach:
+    if "subgraph-summarized" in approach:
         exp_name = f"{kg_name}_e11_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
