@@ -1,7 +1,5 @@
 import argparse
-import os
-from benchmark2 import  generate_dialogues
-
+from benchmark2 import generate_dialogues
 
 def main():
     # Creating the argument parser
@@ -14,28 +12,54 @@ def main():
         type=str,
         required=True,
         choices=kg_choices,
-        help=f"Choose a value for kg ({kg_choices})",
+        help=f"Choose a value for kg ({', '.join(kg_choices)})",
     )
     parser.add_argument(
         "--output-dir",
         type=str,
-        default="./out",
+        default="./results",
         help="Specify the output directory path",
+    )
+    parser.add_argument(
+        "--dataset-size",
+        type=int,
+        default=10,
+        help="Specify the dataset size",
+    )
+    parser.add_argument(
+        "--dialogue-size",
+        type=int,
+        default=5,
+        help="Specify the dialogue size",
+    )
+    parser.add_argument(
+        "--approach",
+        nargs='+',  # Allows multiple values
+        type=str,
+        default=["subgraph"],  # Default value if not provided
+        choices=["subgraph", "subgraph-summarized"],  # Available choices
+        help="Specify the approach (options: 'subgraph', 'subgraph-summarized')",
+    )
+    parser.add_argument(
+        "--label-predicate",
+        type=str,
+        default="http://www.w3.org/2000/01/rdf-schema#label",
+        help="Specify the representative label predicate in KG",
     )
 
     # Parsing the arguments
     args = parser.parse_args()
 
-    # Accessing the value of kg argument
+    # Accessing the values of arguments
     kg_name = args.kg
+    dataset_size = args.dataset_size
+    dialogue_size = args.dialogue_size
+    approach = args.approach
+    out_dir = args.output_dir
+    label_predicate = args.label_predicate
 
-    # Checking if kg value is valid
-    if kg_name is None:
-        parser.print_help()
-
-    generate_dialogues(kg_name)
-
-
+    # Generating dialogues using the provided arguments
+    generate_dialogues(kg_name, dataset_size, dialogue_size, approach, label_predicate, out_dir)
 
 if __name__ == "__main__":
     print("starting benchmark generation....")

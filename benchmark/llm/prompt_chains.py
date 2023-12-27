@@ -22,6 +22,9 @@ class QuestionItem(BaseModel):
 
 class LLMInput(BaseModel):
     output: List[QuestionItem]
+
+class SchemaInput(BaseModel):
+    output: List[str]
 def format_template_with_dict(template, values_dict):
     try:
         formatted_string = template.format(**values_dict)
@@ -147,18 +150,21 @@ def get_question_template_chain(placeholder):
 
 
 def get_pronoun_identification_chain():
-    p_idf_response_schemas = [
-        ResponseSchema(
-            name="output",
-            description="a tuple of Entity and its pronouns",
-            type="List[string]",
-        )
-    ]
-
-    p_idf_json_output_parser = StructuredOutputParser.from_response_schemas(
-        p_idf_response_schemas
-    )
+    # p_idf_response_schemas = [
+    #     ResponseSchema(
+    #         name="output",
+    #         description="a tuple of Entity and its pronouns",
+    #         type="List[string]",
+    #     )
+    # ]
+    #
+    # p_idf_json_output_parser = StructuredOutputParser.from_response_schemas(
+    #     p_idf_response_schemas
+    # )
+    # p_idf_json_format_instructions = p_idf_json_output_parser.get_format_instructions()
+    p_idf_json_output_parser = PydanticOutputParser(pydantic_object=SchemaInput)
     p_idf_json_format_instructions = p_idf_json_output_parser.get_format_instructions()
+
     P_IDF_PROMPT = PromptTemplate(
         input_variables=[
             "query",
@@ -282,17 +288,19 @@ def get_pronoun_identification_chain():
 
 
 def get_pronoun_substitution_chain():
-    p_sub_response_schemas = [
-        ResponseSchema(
-            name="output",
-            description="a list of transformed questions",
-            type="List[string]",
-        )
-    ]
+    # p_sub_response_schemas = [
+    #     ResponseSchema(
+    #         name="output",
+    #         description="a list of transformed questions",
+    #         type="List[string]",
+    #     )
+    # ]
 
-    p_sub_json_output_parser = StructuredOutputParser.from_response_schemas(
-        p_sub_response_schemas
-    )
+    # p_sub_json_output_parser = StructuredOutputParser.from_response_schemas(
+    #     p_sub_response_schemas
+    # )
+    # p_sub_json_format_instructions = p_sub_json_output_parser.get_format_instructions()
+    p_sub_json_output_parser = PydanticOutputParser(pydantic_object=SchemaInput)
     p_sub_json_format_instructions = p_sub_json_output_parser.get_format_instructions()
 
     P_SUB_PROMPT = PromptTemplate(
@@ -533,7 +541,6 @@ def get_answer_from_question_and_triple_zero_shot():
     )
     return {"chain": n_answer_generator_chain, "payload": {}}
 
-
 def get_target_answer_from_triples():
     n_q_response_schemas = [
         ResponseSchema(
@@ -566,6 +573,40 @@ def get_target_answer_from_triples():
     )
     return {"chain": n_answer_target_chain, "payload": {}}
 
+def get_n_question_from_summarized_subgraph_chain_without_example():
+    # n_q_response_schemas = [
+    #     ResponseSchema(
+    #         name="output", description="a list of questions", type="List[string]"
+    #     )
+    # ]
+    #
+    # n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
+    #     n_q_response_schemas
+    # )
+    # n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
+    n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
+    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
+
+    N_Q_PROMPT = PromptTemplate(
+        input_variables=[
+            "subgraph",
+            "n",
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of quadruples. Each quadruple consists of (subject, predicate, object, count). Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. The count in the quadruple signifies the number of occurrences of that specific predicate related to the subject entity. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two quadruples from the subgraph.  Return each question with the quadruple or quadruples used to generate the question.   {format_instructions}
+
+        input: {subgraph}
+        n: {n}
+        output: """,
+    )
+
+    n_question_generator_chain = LLMChain(
+        llm=llm, prompt=N_Q_PROMPT, verbose=True, output_parser=n_q_json_output_parser
+    )
+    payload = {}
+    return {"chain": n_question_generator_chain, "payload": payload}
+
+
 def get_prompt_chains():
     prompt_chains = {
         "question_template_chain": get_question_template_chain,
@@ -574,6 +615,7 @@ def get_prompt_chains():
         "n_question_from_subgraph_chain_with_example": get_n_question_from_subgraph_chain_with_example(),
         "n_question_from_subgraph_chain_without_example": get_n_question_from_subgraph_chain_without_example(),
         "n_question_from_schema_chain_without_example": get_n_question_from_schema_chain_without_example(),
+        "n_question_from_summarized_subgraph_chain_without_example": get_n_question_from_summarized_subgraph_chain_without_example(),
         "get_answer_from_question_and_triple_zero_shot": get_answer_from_question_and_triple_zero_shot(),
         "get_target_answer_from_triples": get_target_answer_from_triples()
     }

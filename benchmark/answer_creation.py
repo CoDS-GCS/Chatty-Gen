@@ -8,6 +8,12 @@ get_target_chain = prompt_chains.get("get_target_answer_from_triples")
 
 # Start Utils Function
 
+def get_triple_from_quadruple(quadruple, subgraph):
+    for el in subgraph.quadruples:
+        if str(subgraph.get_quadruple_representation(el)) == quadruple:
+            return el[:3]
+    return None
+
 
 def get_original_triple(triple, sub_graph):
     for el in sub_graph.triples:
@@ -29,7 +35,8 @@ def detect_is_count_query(question, triples):
     if len(triples) > 1:
         return True
     elif len(triples) == 1:
-        subj, pred, obj = triples[0][1:len(triples[0]) - 1].strip().split(',')
+        triple_components = triples[0][1:len(triples[0]) - 1].strip().split(',')
+        subj, pred, obj = triple_components[0], triple_components[1], triple_components[2]
         return not obj.strip().replace("'", "").isnumeric()
     return True
 
@@ -103,10 +110,13 @@ def get_select_query_with_target(triples, subgraph, target):
 
 # Start Different Answer creation Approaches
 # Inputs to LLM are question and triples and the output is the SPARQL query
-def get_answer_LLM_based(question, triples, subgraph):
+def get_answer_LLM_based(question, triples, subgraph, approach):
     triples_list = list()
     for triple in triples:
-        original_triple = get_original_triple(triple, subgraph)
+        if approach == "optimized":
+            original_triple = get_triple_from_quadruple(triple, subgraph)
+        else:
+            original_triple = get_original_triple(triple, subgraph)
         subject, predicate, object = original_triple
         triples_list.append((subject.__str__(), predicate.__str__(), object.__str__()))
 
@@ -147,23 +157,26 @@ def get_answer_query_from_graph(triples, seed_entity, subgraph, question):
 
 
 # LLM Based Approach followed by post processing for count and boolean Errors
-def get_LLM_based_postprocessed(question, triples, subgraph):
-    llm_query = get_answer_LLM_based(question, triples, subgraph)
+def get_LLM_based_postprocessed(question, triples, subgraph, approach):
+    llm_query = get_answer_LLM_based(question, triples, subgraph, approach)
     if is_boolean(question) and not llm_query.lower().startswith("ask"):
-        where_index = llm_query.index("where")
+        where_index = llm_query.lower().index("where")
         llm_query = 'ASK ' + llm_query[where_index:]
     else:
+        if approach == "optimized":
+            return llm_query
+
         is_count_query = detect_is_count_query(question, triples)
         if is_count_query and 'count(' not in llm_query.lower():
             variable_name = llm_query.split(' ')[1]
-            where_index = llm_query.index("where")
+            where_index = llm_query.lower().index("where")
             llm_query = 'SELECT (COUNT(' + variable_name + ') as ?count) ' + llm_query[where_index:]
         elif not is_count_query and 'count(' in llm_query.lower():
-            start = llm_query.index('count(')
+            start = llm_query.lower().index('count(')
             end = llm_query.index(')')
-            where_index = llm_query.index("where")
+            where_index = llm_query.lower().index("where")
             variable_name = llm_query[start + 6: end]
-            llm_query = 'SELECT (?' + variable_name + llm_query[where_index:]
+            llm_query = 'SELECT ' + variable_name + ' ' + llm_query[where_index:]
     return llm_query
 
 
