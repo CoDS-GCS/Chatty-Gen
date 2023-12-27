@@ -1,20 +1,36 @@
 import json
 import pandas as pd
 
-def count_starting_phrases(question_list):
-    starting_phrases = ["How many", "What", "Is", "When", "Who", "other"]
-    phrase_count = {phrase: 0 for phrase in starting_phrases}
+# def count_starting_phrases(question_list):
+#     starting_phrases = ["How many", "What", "Is", "When", "Who", "other"]
+#     phrase_count = {phrase: 0 for phrase in starting_phrases}
+
+#     total = 0
+#     for question in question_list:
+#         for phrase in starting_phrases:
+#             if question.startswith(phrase):
+#                 phrase_count[phrase] += 1
+#                 total += 1
+    
+#     phrase_count["other"] = len(question_list) - total
+
+#     return phrase_count
+
+def count_starting_phrases(question_list, n_gram=2):
+    phrase_count = {}
 
     total = 0
-
     for question in question_list:
-        for phrase in starting_phrases:
-            if question.startswith(phrase):
-                phrase_count[phrase] += 1
-                total += 1
-    
-    phrase_count["other"] = len(question_list) - total
-            
+        words = question.split()
+        if len(words) >= n_gram:
+            phrase = ' '.join(words[:n_gram])
+
+        if phrase in phrase_count:
+            phrase_count[phrase] += 1
+        else:
+            phrase_count[phrase] = 1
+
+        total += 1
 
     return phrase_count
 
@@ -30,6 +46,7 @@ def question_type_distribution(data):
             exp_q_type = q_types.copy()
             continue
         for i in q_types.keys():
+            exp_q_type.setdefault(i,0)
             exp_q_type[i] += q_types[i]
     return exp_q_type
 

@@ -17,7 +17,7 @@ def main():
     parser.add_argument(
         "--output-dir",
         type=str,
-        default="./out",
+        default="./results",
         help="Specify the output directory path",
     )
     parser.add_argument(
@@ -34,9 +34,11 @@ def main():
     )
     parser.add_argument(
         "--approach",
-        type=int,
-        default=0,
-        help="Specify the approach",
+        nargs='+',  # Allows multiple values
+        type=str,
+        default=["subgraph"],  # Default value if not provided
+        choices=["subgraph", "subgraph-summarized"],  # Available choices
+        help="Specify the approach (options: 'subgraph', 'subgraph-summarized')",
     )
     parser.add_argument(
         "--label-predicate",
@@ -53,10 +55,11 @@ def main():
     dataset_size = args.dataset_size
     dialogue_size = args.dialogue_size
     approach = args.approach
+    out_dir = args.output_dir
     label_predicate = args.label_predicate
 
     # Generating dialogues using the provided arguments
-    generate_dialogues(kg_name, dataset_size, dialogue_size, approach, label_predicate)
+    generate_dialogues(kg_name, dataset_size, dialogue_size, approach, label_predicate, out_dir)
 
 if __name__ == "__main__":
     print("starting benchmark generation....")

@@ -1,21 +1,19 @@
 import json
 import os
+import pathlib
 
 class Tracer:
-    _instance = None
+    def __init__(self, filename):
+        self.filename = filename
+        self.active_index = None
+        self.data = None
 
-    def __new__(cls, filename):
-        if cls._instance is None:
-            cls._instance = super(Tracer, cls).__new__(cls)
-            cls._instance.filename = filename
-            cls._instance.active_index = None
-            cls._instance.data = None
+        directory = pathlib.Path(self.filename).parent
+        directory.mkdir(parents=True, exist_ok=True)
+        if not os.path.exists(self.filename):
+            with open(self.filename, 'w'):
+                pass  # Create an empty file if it doesn't exist
 
-            if not os.path.exists(cls._instance.filename):
-                with open(cls._instance.filename, 'w'):
-                    pass  # Create an empty file if it doesn't exist
-
-        return cls._instance
 
     def add_data(self, index, key, value):
         if self.active_index is None:

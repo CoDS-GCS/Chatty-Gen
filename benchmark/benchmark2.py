@@ -1,5 +1,6 @@
 import sys
 sys.path.append('../')
+import os
 import random
 import pathlib
 import json
@@ -134,7 +135,7 @@ def decouple_questions_and_answers(input_obj, seed_node, subgraph, approach):
 
 
 
-def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=3, label_predicate=None):
+def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subgraph'], label_predicate=None, out_dir='./results'):
     """
     Generate the dialogues given the following inputs:
     kg_name: name of the required knowledge graph
@@ -149,20 +150,20 @@ def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=3, lab
     # seed_nodes = get_dummy_seeds(kg_name)
     # seed_nodes = [] # will be added by @reham
     # suggestion to use kg.get_seed_nodes(dataset_size)
-    if approach == 0 or approach == 3:
+    if "subgraph" in approach:
         exp_name = f"{kg_name}_e1_{dataset_size}_{dialogue_size}"
-        output_file = f"results/{exp_name}.json"
-        tracer_instance = Tracer(f'traces/{exp_name}.jsonl')
+        output_file = os.path.join(out_dir, f"{exp_name}.json")
+        tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
         generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file)
-    if approach == 1 or approach == 3:
+    if "subgraph-summarized" in approach:
         exp_name = f"{kg_name}_e3_{dataset_size}_{dialogue_size}"
-        output_file = f"results/{exp_name}.json"
-        tracer_instance = Tracer(f'traces/{exp_name}.jsonl')
+        output_file = os.path.join(out_dir, f"{exp_name}.json")
+        tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
         generate_dialogues_from_schema(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file)
-    if approach == 2 or approach == 3:
+    if "schema" in approach:
         exp_name = f"{kg_name}_e11_{dataset_size}_{dialogue_size}"
-        output_file = f"results/{exp_name}.json"
-        tracer_instance = Tracer(f'traces/{exp_name}.jsonl')
+        output_file = os.path.join(out_dir, f"{exp_name}.json")
+        tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
         generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file)
 
 
