@@ -16,6 +16,7 @@ from seed_node_extractor import utils
 
 CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 
+
 # Custom URI type with validation
 class URI:
     def __init__(self, uri: str):
@@ -30,6 +31,7 @@ class URI:
         uri_regex = re.compile(r"^[a-zA-Z0-9:/._-]+$")
         return bool(uri_regex.match(uri))
 
+
 # @dataclass
 # class Triple:
 #     sub: Node
@@ -43,10 +45,12 @@ class Node:
     uri: Optional[URIRef] = None
     label: Optional[Literal] = None
     nodetype: Optional[URIRef] = None
+
     def __init__(self, uri=None, nodetype=None, label=None):
         self.uri = uri
         self.nodetype = nodetype
         self.label = label
+
     def __str__(self):
         return str(self.uri) if self.uri else str(self.label)
 
@@ -69,12 +73,13 @@ def defrag_uri(uri):
     else:
         return ""
 
+
 @dataclass
 class NodeSchema:
     node: Node
     in_preds: List[Tuple[Predicate, Node]] = field(default_factory=list)
     out_preds: List[Tuple[Predicate, Node]] = field(default_factory=list)
-    
+
     def __str__(self, representation: str = 'uri'):
         triple_list = []
         for pair in self.in_preds:
@@ -89,15 +94,15 @@ class NodeSchema:
             triple_list.append(triple)
         return f"{triple_list}"
 
-    def _get_triple_representation(self, triple : Tuple[Node, Predicate, Node], representation: str):
+    def _get_triple_representation(self, triple: Tuple[Node, Predicate, Node], representation: str):
         if representation == 'label':
             sub_, pred_, obj_ = triple
             return (sub_.label, pred_.label, obj_.label)
         elif representation == 'uri':
             sub_, pred_, obj_ = triple
             return (defrag_uri(str(sub_.uri)),
-            defrag_uri(str(pred_.uri)),
-            defrag_uri(str(obj_.uri)))
+                    defrag_uri(str(pred_.uri)),
+                    defrag_uri(str(obj_.uri)))
         else:
             raise ValueError('invalid representation, allowed ["uri", "label"]')
 
@@ -115,24 +120,42 @@ class SubGraph:
             triple_list.append(triple)
         return f"{triple_list}"
 
-    def get_triple_representation_for_optimized(self, triple : Tuple[Node, Predicate, Node]):
+    def get_triple_representation_for_optimized(self, triple: Tuple[Node, Predicate, Node]):
         sub_, pred_, obj_ = triple
-        return (defrag_uri(str(sub_.uri)),
-        defrag_uri(str(pred_.uri)),
-        defrag_uri(str(obj_.uri)))
+        predicate = pred_.label if pred_.label else defrag_uri(str(pred_.uri))
+        if self.seed_node == sub_:
+            subject = sub_.label if sub_.label else defrag_uri(str(sub_.uri))
+            object = obj_.label if obj_.label else ""
+        elif self.seed_node == obj_:
+            subject = sub_.label if sub_.label else ""
+            object = obj_.label if obj_.label else defrag_uri(str(obj_.uri))
+        return (subject, predicate, object)
+
+    def get_triple_representation_no_object(self, triple: Tuple[Node, Predicate, Node]):
+        sub_, pred_, obj_ = triple
+        predicate = pred_.label if pred_.label else defrag_uri(str(pred_.uri))
+        if self.seed_node == sub_:
+            subject = sub_.label if sub_.label else defrag_uri(str(sub_.uri))
+            return (subject, predicate, '')
+        elif self.seed_node == obj_:
+            object = obj_.label if obj_.label else defrag_uri(str(obj_.uri))
+            return('', predicate, object)
 
     def get_quadruple_representation(self, quadruple: Tuple[Node, Predicate, Node, int]):
         triple_representation = self.get_triple_representation_for_optimized(quadruple[:3])
         return tuple(triple_representation) + (quadruple[3],)
 
-
-    def get_triple_representation(self, triple : Tuple[Node, Predicate, Node], representation: str):
+    def get_triple_representation(self, triple: Tuple[Node, Predicate, Node], representation: str):
         output = list()
         for el in triple:
-            if el.uri:
-                output.append(defrag_uri(str(el.uri)))
-            elif el.label:
+            # if el.uri:
+            #     output.append(defrag_uri(str(el.uri)))
+            # elif el.label:
+            #     output.append(str(el.label))
+            if el.label:
                 output.append(str(el.label))
+            elif el.uri:
+                output.append(defrag_uri(str(el.uri)))
             else:
                 raise ValueError('Invalid Element in Tuple, No URI or label for ', el)
         return tuple(output)
@@ -146,7 +169,7 @@ class SubGraph:
         #     defrag_uri(str(obj_.uri)))
         # else:
         #     raise ValueError('invalid representation, allowed ["uri", "label"]')
-    
+
     def get_quadruple_summary(self, representation: str) -> str:
         "create quadruple summary"
         predicate_summary = defaultdict(int)
@@ -177,6 +200,28 @@ class SubGraph:
 
         return summary_str
 
+    def get_summarized_graph(self):
+        seen_predicates = set()
+        summarized_triples = list()
+        for triple in self.triples:
+            _, predicate, _ = triple
+            if str(predicate) not in seen_predicates:
+                seen_predicates.add(str(predicate))
+                summarized_triples.append(triple)
+        return summarized_triples
+
+    def get_summarized_graph_str(self, approach):
+        summarized_graph = self.get_summarized_graph()
+        triple_list = []
+        for triple in summarized_graph:
+            if approach == "default":
+                triple = self.get_triple_representation_for_optimized(triple)
+            elif approach == "no_object":
+                triple = self.get_triple_representation_no_object(triple)
+            triple_list.append(triple)
+        return f"{triple_list}"
+
+
 @dataclass
 class SparqlQueryResponse:
     head: Dict[str, List[str]]
@@ -202,6 +247,7 @@ class SparqlQueryResponse:
 
         return values
 
+
 class KG:
     """
     Knowledge Graph Interface - extend it for various usecases
@@ -209,19 +255,21 @@ class KG:
     - provides simple subgraph extractor for any seed node (1-hop star pattern)
     - uses redis cache for saving sparql query results for faster response
     """
-    def __init__(self, label_predicate=None, endpoints=[], redis_host="localhost", _redis_db_name=0, _verbose=False, _selection_method="select-one"):
+
+    def __init__(self, type_to_predicate_map=None, endpoints=[], redis_host="localhost", _redis_db_name=0, _verbose=False,
+                 _selection_method="select-one"):
         self.verbose = _verbose
         self.endpoints = endpoints
         if len(endpoints) == 0:
             raise ValueError('Atleast one sparql endpoint required. use endpoints=["some endpoint uri"]')
         self.sparql_endpoint = endpoints[0]
-        self.selection_method =_selection_method
+        self.selection_method = _selection_method
         self.r = redis.Redis(host=redis_host, port=6379, db=_redis_db_name)
         self.logger = Logger().get_logger()
         # self.label_predicate_url = self.get_label_predicate_uri(label_predicate)
         # tried with just label suffix as input and finding full url from the kg, but the sparql-endpoint timeout
-        self.label_predicate_url = label_predicate
-    
+        self.type_to_predicate_map = type_to_predicate_map
+
     def get_label_predicate_uri(self, label_predicate):
         query_template = '''
             SELECT DISTINCT ?predicate
@@ -241,21 +289,31 @@ class KG:
                 return bindings[0]['predicate']['value']
 
         return None
-    
-    def get_label(self, uri):
+
+    def get_predicate_label_for_type(self, node):
+        if hasattr(node, 'nodetype') and node.nodetype is not None:
+            if str(node.nodetype) in self.type_to_predicate_map:
+                return self.type_to_predicate_map[str(node.nodetype)]
+        elif 'default' in self.type_to_predicate_map:
+            return self.type_to_predicate_map['default']
+        return None
+
+    def get_label(self, node):
         "use predicate label url and get label"
         label_query_template = """
             SELECT ?label WHERE {
                 <%s> <%s> ?label .
             }
         """
-        query = label_query_template % (uri, self.label_predicate_url)
+        uri = str(node.uri)
+        predicate = self.get_predicate_label_for_type(node)
+        query = label_query_template % (uri, predicate)
         results = self.shoot_custom_query(query)
         label = None
         if (
-            "results" in results
-            and "bindings" in results["results"]
-            and len(results["results"]["bindings"]) > 0
+                "results" in results
+                and "bindings" in results["results"]
+                and len(results["results"]["bindings"]) > 0
         ):
             all_bindings = results["results"]["bindings"]
             for r in all_bindings:
@@ -313,6 +371,8 @@ class KG:
         """
         try:
             triples = []
+            seed_label = self.get_label(seed_node)
+            seed_node.label = seed_label
             subject_ = seed_node.uri
             sparql_sub = f"""
             SELECT ?predicate ?object WHERE {{
@@ -326,14 +386,16 @@ class KG:
             objs = q_response.values_by_key('object')
             for p, o in zip(preds, objs):
                 if isinstance(p, URIRef):
-                    p_label = self.get_label(str(p))
-                    pred = Predicate(uri=p, label=p_label)
+                    pred = Predicate(uri=p)
+                    p_label = self.get_label(pred)
+                    pred.label = p_label
                 else:
                     pred = Predicate(label=p)
-                
+
                 if isinstance(o, URIRef):
-                    o_label = self.get_label(str(o))
-                    obj = Node(uri=o, label=o_label)
+                    obj = Node(uri=o)
+                    o_label = self.get_label(obj)
+                    obj.label = o_label
                 else:
                     obj = Node(label=o)
 
@@ -352,33 +414,36 @@ class KG:
             subs = q_response.values_by_key('subject')
             for p, s in zip(preds, subs):
                 if isinstance(p, URIRef):
-                    p_label = self.get_label(str(p))
-                    pred = Predicate(uri=p, label=p_label)
+                    pred = Predicate(uri=p)
+                    p_label = self.get_label(pred)
+                    pred.label = p_label
                 else:
                     pred = Predicate(label=p)
-                
+
                 if isinstance(s, URIRef):
-                    s_label = self.get_label(str(s))
-                    subj = Node(uri=s, label=s_label)
+                    subj = Node(uri=s)
+                    s_label = self.get_label(subj)
+                    subj.label = s_label
                 else:
                     subj = Node(label=s)
                 triples.append((subj, pred, seed_node))
-            
+
             subgraph = SubGraph(seed_node=seed_node, triples=triples)
             return subgraph
         except Exception as e:
             self.logger.exception("Error occurred while extracting subgraph: %s", str(e))
             return None
-    
+
     def get_seed_nodes(self, dataset_size: int) -> List[Node]:
         """
         TODO: Add logic for selection of seed nodes @reham
         """
         pass
 
-    def filter_subgraph(self, subgraph: SubGraph) -> SubGraph:
+    def filter_subgraph(self, subgraph: SubGraph, seed_node) -> SubGraph:
         """add rules or condition to remove unnecessary triples"""
         filtered_triples = list()
+        description_predicate = self.get_predicate_label_for_type(seed_node)
         for triple in subgraph.triples:
             # Skip Triples whose Subject or object is a blank node
             subject, predicate, object = triple
@@ -387,13 +452,18 @@ class KG:
 
             # Only include triples whose predicates not in pre-defined excluded list
             if predicate.__str__() not in utils.excluded_predicates:
-                filtered_triples.append(triple)
+                # check if the label predicate used to describe the type is in the triple
+                if seed_node == subject and not description_predicate == predicate.__str__():
+                    filtered_triples.append(triple)
+
+
         subgraph.triples = filtered_triples
         return subgraph
 
 
 class DblpKG(KG):
-    def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dblp_rdf_schema.nt"), rdf_format="nt", endpoints=["http://206.12.95.86:8894/sparql/", "https://sparql.dblp.org/sparql"]):
+    def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dblp_rdf_schema.nt"),
+                 rdf_format="nt", endpoints=["http://206.12.95.86:8894/sparql/", "https://sparql.dblp.org/sparql"]):
         super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to Dblp
 
@@ -433,10 +503,11 @@ class DblpKG(KG):
                 class_in_preds.extend(
                     [(in_p, x) for x in list(self.schema.objects(in_p, self.class_namespace.domain))]
                 )
-            class_in_preds = [(Predicate(uri=p), Node(uri=x,nodetype=x)) for p,x in class_in_preds]
-            class_out_preds = [(Predicate(uri=p), Node(uri=x,nodetype=x)) for p,x in class_out_preds]
+            class_in_preds = [(Predicate(uri=p), Node(uri=x, nodetype=x)) for p, x in class_in_preds]
+            class_out_preds = [(Predicate(uri=p), Node(uri=x, nodetype=x)) for p, x in class_out_preds]
             # if (len(class_out_preds) > 0) and (len(class_in_preds) > 0):
-            self._parsed_schema[class_] = NodeSchema(node=class_node, in_preds=class_in_preds, out_preds=class_out_preds)
+            self._parsed_schema[class_] = NodeSchema(node=class_node, in_preds=class_in_preds,
+                                                     out_preds=class_out_preds)
 
     def parse_schema_classes(self) -> Dict[str, Node]:
         # Iterate through the classes in the RDF graph
@@ -446,14 +517,14 @@ class DblpKG(KG):
             # class_comment = self.schema.value(class_uri, self.class_namespace.comment)
             self.classes[class_uri] = Node(uri=URIRef(class_uri), label=Literal(class_label))
 
-    
     def schema_extractor(self, seed_node: Node) -> NodeSchema:
         """based on the nodetype of seed_node and already parsed schma"""
         return self.parsed_schema.get(seed_node.nodetype)
 
 
 class YagoKG(KG):
-    def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "yago_rdf_schema.nt"), rdf_format="nt", endpoints=["http://206.12.95.86:8892/sparql/"]):
+    def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "yago_rdf_schema.nt"),
+                 rdf_format="nt", endpoints=["http://206.12.95.86:8892/sparql/"]):
         super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to YAGO 
         allowed_formats = ["nt", "xml", "n3", "trix"]
@@ -462,7 +533,8 @@ class YagoKG(KG):
         self.schema = Graph()
         self.schema.parse(rdf_schema_file, format=rdf_format)
         self.class_namespace = RDFS
-        self.schema_namespace = Namespace("http://schema.org/") # yago does have domainIncludes and rangeIncludes from schema.org datamodel
+        self.schema_namespace = Namespace(
+            "http://schema.org/")  # yago does have domainIncludes and rangeIncludes from schema.org datamodel
         self._classes = None
         self._parsed_schema = None
 
@@ -493,11 +565,12 @@ class YagoKG(KG):
                 class_in_preds.extend(
                     [(in_p, x) for x in list(self.schema.objects(in_p, self.schema_namespace.domainIncludes))]
                 )
-            
-            class_in_preds = [(Predicate(uri=p), Node(uri=x,nodetype=x)) for p,x in class_in_preds]
-            class_out_preds = [(Predicate(uri=p), Node(uri=x,nodetype=x)) for p,x in class_out_preds]
+
+            class_in_preds = [(Predicate(uri=p), Node(uri=x, nodetype=x)) for p, x in class_in_preds]
+            class_out_preds = [(Predicate(uri=p), Node(uri=x, nodetype=x)) for p, x in class_out_preds]
             # if (len(class_out_preds) > 0) and (len(class_in_preds) > 0):
-            self._parsed_schema[class_] = NodeSchema(node=class_node, in_preds=class_in_preds, out_preds=class_out_preds)
+            self._parsed_schema[class_] = NodeSchema(node=class_node, in_preds=class_in_preds,
+                                                     out_preds=class_out_preds)
 
     def parse_schema_classes(self) -> Dict[str, Node]:
         # Iterate through the classes in the RDF graph
@@ -507,13 +580,14 @@ class YagoKG(KG):
             # class_comment = self.schema.value(class_uri, self.class_namespace.comment)
             self.classes[class_uri] = Node(uri=URIRef(class_uri), label=Literal(class_label))
 
-    
     def schema_extractor(self, seed_node: Node) -> NodeSchema:
         """based on the nodetype of seed_node and already parsed schma"""
         return self.parsed_schema.get(seed_node.nodetype)
 
+
 class DbpediaKG(KG):
-    def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"), rdf_format="nt", endpoints=["http://dbpedia.org/sparql/", "http://live.dbpedia.org/sparql/"]):
+    def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"),
+                 rdf_format="nt", endpoints=["http://dbpedia.org/sparql/", "http://live.dbpedia.org/sparql/"]):
         super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to DBPedia
         allowed_formats = ["nt", "xml", "n3", "trix"]
@@ -553,10 +627,11 @@ class DbpediaKG(KG):
                 class_in_preds.extend(
                     [(in_p, x) for x in list(self.schema.objects(in_p, self.rdfs_namespace.domain))]
                 )
-            class_in_preds = [(Predicate(uri=p), Node(uri=x,nodetype=x)) for p,x in class_in_preds]
-            class_out_preds = [(Predicate(uri=p), Node(uri=x,nodetype=x)) for p,x in class_out_preds]
+            class_in_preds = [(Predicate(uri=p), Node(uri=x, nodetype=x)) for p, x in class_in_preds]
+            class_out_preds = [(Predicate(uri=p), Node(uri=x, nodetype=x)) for p, x in class_out_preds]
             # if (len(class_out_preds) > 0) and (len(class_in_preds) > 0):
-            self._parsed_schema[class_] = NodeSchema(node=class_node, in_preds=class_in_preds, out_preds=class_out_preds)
+            self._parsed_schema[class_] = NodeSchema(node=class_node, in_preds=class_in_preds,
+                                                     out_preds=class_out_preds)
 
     def parse_schema_classes(self):
         # Iterate through the classes in the RDF graph

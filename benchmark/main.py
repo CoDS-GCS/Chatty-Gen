@@ -23,7 +23,7 @@ def main():
     parser.add_argument(
         "--dataset-size",
         type=int,
-        default=10,
+        default=2,
         help="Specify the dataset size",
     )
     parser.add_argument(
@@ -40,10 +40,16 @@ def main():
         choices=["subgraph", "subgraph-summarized"],  # Available choices
         help="Specify the approach (options: 'subgraph', 'subgraph-summarized')",
     )
+    # parser.add_argument(
+    #     "--label-predicate",
+    #     type=str,
+    #     default="http://www.w3.org/2000/01/rdf-schema#label",
+    #     help="Specify the representative label predicate in KG",
+    # )
     parser.add_argument(
-        "--label-predicate",
+        "--label-predicates-file-name",
         type=str,
-        default="http://www.w3.org/2000/01/rdf-schema#label",
+        default="dblp_predicates_for_types.json",
         help="Specify the representative label predicate in KG",
     )
 
@@ -56,7 +62,8 @@ def main():
     dialogue_size = args.dialogue_size
     approach = args.approach
     out_dir = args.output_dir
-    label_predicate = args.label_predicate
+    # label_predicate = args.label_predicate
+    label_predicate = args.label_predicates_file_name
 
     # Generating dialogues using the provided arguments
     generate_dialogues(kg_name, dataset_size, dialogue_size, approach, label_predicate, out_dir)

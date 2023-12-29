@@ -593,7 +593,7 @@ def get_n_question_from_summarized_subgraph_chain_without_example():
             "n",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of quadruples. Each quadruple consists of (subject, predicate, object, count). Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. The count in the quadruple signifies the number of occurrences of that specific predicate related to the subject entity. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two quadruples from the subgraph.  Return each question with the quadruple or quadruples used to generate the question.   {format_instructions}
+        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each triple consists of (subject, predicate, object). Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph.  Return each question with the triple or triples used to generate the question.   {format_instructions}
 
         input: {subgraph}
         n: {n}

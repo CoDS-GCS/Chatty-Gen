@@ -1,0 +1,14 @@
+[
+  {
+    "type": "default",
+    "predicate": "http://www.w3.org/2000/01/rdf-schema#label"
+  },
+  {
+    "type": "https://dblp.org/rdf/schema#Publication",
+    "predicate": "https://dblp.org/rdf/schema#title"
+  },
+  {
+    "type": "https://dblp.org/rdf/schema#Article",
+    "predicate": "https://dblp.org/rdf/schema#title"
+  }
+]

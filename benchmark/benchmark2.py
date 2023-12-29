@@ -145,8 +145,11 @@ def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subg
               (0: subgraph approach, 1: schema based approach, 2. summarized subgraph approach, 3: All approaches)
     """
     seed_nodes = get_seed_nodes(kg_name, dataset_size)
+    # Parse the file to get a map between types and predicates to represent
     if label_predicate is not None:
-        utils.excluded_predicates.append(label_predicate)
+        file = open(label_predicate, 'r')
+        data = json.load(file)
+        type_to_predicate_map = {item["type"]: item["predicate"] for item in data}
     # seed_nodes = get_dummy_seeds(kg_name)
     # seed_nodes = [] # will be added by @reham
     # suggestion to use kg.get_seed_nodes(dataset_size)
@@ -154,20 +157,20 @@ def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subg
         exp_name = f"{kg_name}_e1_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
-        generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file)
+        generate_dialogues_from_subgraph(kg_name, seed_nodes, type_to_predicate_map, tracer_instance, dialogue_size, output_file)
     if "schema" in approach:
         exp_name = f"{kg_name}_e3_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
-        generate_dialogues_from_schema(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file)
+        generate_dialogues_from_schema(kg_name, seed_nodes, type_to_predicate_map, tracer_instance, dialogue_size, output_file)
     if "subgraph-summarized" in approach:
         exp_name = f"{kg_name}_e11_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
-        generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file)
+        generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, type_to_predicate_map, tracer_instance, dialogue_size, output_file)
 
 
-def generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file):
+def generate_dialogues_from_subgraph(kg_name, seed_nodes, type_to_predicate_map, tracer_instance, dialogue_size, output_file):
     """
     kgname
     benchmark size 
@@ -176,7 +179,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, trace
     """
     benchmark_sample = []
     KG = get_kg_instance(kg_name)
-    kg = KG(label_predicate)
+    kg = KG(type_to_predicate_map)
     for idx, seed in enumerate(seed_nodes):
         # seed = Node(uri=URIRef("https://dblp.org/rec/phd/Dobry87"))
         
@@ -184,7 +187,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, trace
         tracer_instance.add_data(idx, "seed", asdict(seed))
 
         subgraph = kg.subgraph_extractor(seed)
-        subgraph = kg.filter_subgraph(subgraph)
+        subgraph = kg.filter_subgraph(subgraph, seed)
         subgraph_uri_str = subgraph.__str__(representation='uri')
         
         tracer_instance.add_data(idx, "subgraph", subgraph_uri_str)
@@ -266,7 +269,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, label_predicate, trace
         json.dump(benchmark, f, indent=4)
 
 
-def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file):
+def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, type_to_predicate_map, tracer_instance, dialogue_size, output_file):
     """
     kgname
     benchmark size 
@@ -275,7 +278,7 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predi
     """
     benchmark_sample = []
     KG = get_kg_instance(kg_name)
-    kg = KG(label_predicate)
+    kg = KG(type_to_predicate_map)
     for idx, seed in enumerate(seed_nodes):
         # seed = Node(uri=URIRef("https://dblp.org/rec/phd/Dobry87"))
         
@@ -283,11 +286,11 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predi
         tracer_instance.add_data(idx, "seed", asdict(seed))
 
         subgraph = kg.subgraph_extractor(seed)
-        subgraph = kg.filter_subgraph(subgraph)
+        subgraph = kg.filter_subgraph(subgraph, seed)
         # subgraph_str = subgraph.__str__(representation='uri')
         # subgraph_str = subgraph.get_quadruple_summary(representation='label')
-        subgraph_str = subgraph.get_quadruple_summary(representation='uri')
-        
+        # subgraph_str = subgraph.get_quadruple_summary(representation='uri')
+        subgraph_str = subgraph.get_summarized_graph_str(approach='no_object')
         tracer_instance.add_data(idx, "subgraph", subgraph_str)
 
         # subgraph_uri_label = subgraph.__str__(representation='label')
@@ -325,10 +328,18 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, label_predi
                     "query_entity": question_0_ent_pron[0],
                     "query_pronouns": question_0_ent_pron[1],
                 }
-                payload_dict = pronoun_substitution_chain.get("payload")
-                output = pronoun_substitution_chain.get("chain").run(
-                    {**query_dict, **payload_dict}
-                )
+                try:
+                    payload_dict = pronoun_substitution_chain.get("payload")
+                    output = pronoun_substitution_chain.get("chain").run(
+                        {**query_dict, **payload_dict}
+                    )
+                except Exception as e:
+                    response = str(e)
+                    if response.startswith("Failed to parse SchemaInput from completion"):
+                        print("Retry ")
+                        output = pronoun_substitution_chain.get("chain").run(
+                            {**query_dict, **payload_dict}
+                        )
                 transformed_questions = output.dict()["output"]
                 logger.info(f"INDEX : {idx} -- pronoun substitute chain end --")
                 tracer_instance.add_data(idx, "pron_sub", transformed_questions)

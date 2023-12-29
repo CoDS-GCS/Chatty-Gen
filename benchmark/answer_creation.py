@@ -8,10 +8,11 @@ get_target_chain = prompt_chains.get("get_target_answer_from_triples")
 
 # Start Utils Function
 
-def get_triple_from_quadruple(quadruple, subgraph):
-    for el in subgraph.quadruples:
-        if str(subgraph.get_quadruple_representation(el)) == quadruple:
-            return el[:3]
+def get_triple_for_summarized(triple, subgraph):
+    for el in subgraph.triples:
+        # if str(subgraph.get_triple_representation_for_optimized(el)) == triple:
+        if str(subgraph.get_triple_representation_no_object(el)) == triple:
+            return el
     return None
 
 
@@ -114,7 +115,7 @@ def get_answer_LLM_based(question, triples, subgraph, approach):
     triples_list = list()
     for triple in triples:
         if approach == "optimized":
-            original_triple = get_triple_from_quadruple(triple, subgraph)
+            original_triple = get_triple_for_summarized(triple, subgraph)
         else:
             original_triple = get_original_triple(triple, subgraph)
         subject, predicate, object = original_triple
