@@ -26,7 +26,9 @@ pronoun_substitution_chain = prompt_chains.get("pronoun_substitution_chain")
 n_question_from_subgraph_chain_without_example = prompt_chains.get("n_question_from_subgraph_chain_without_example")
 n_question_from_summarized_subgraph_chain_without_example = prompt_chains.get("n_question_from_summarized_subgraph_chain_without_example")
 n_question_from_schema_chain_without_example = prompt_chains.get("n_question_from_schema_chain_without_example")
-
+n_question_from_subgraph_chain_using_seed_entity = prompt_chains.get("get_n_question_from_subgraph_chain_using_seed_entity")
+n_question_from_subgraph_chain_using_seed_entity_and_type = prompt_chains.get("get_n_question_from_subgraph_chain_using_seed_entity_and_type")
+representative_label_for_type = prompt_chains.get("get_representative_label_for_type")
 
 dblp_dummy_seeds = {
     "https://dblp.org/rdf/schema#Person": [
@@ -117,9 +119,10 @@ def filter_and_select_questions(original_questions):
 
     return selected_questions
 
-def decouple_questions_and_answers(input_obj, seed_node, subgraph, approach):
+def decouple_questions_and_answers(input_obj, subgraph, approach):
     questions = list()
     answer_queries = list()
+    triples = list()
     for element in input_obj["output"]:
         questions.append(element["question"])
         # 1- LLM Based
@@ -131,11 +134,12 @@ def decouple_questions_and_answers(input_obj, seed_node, subgraph, approach):
         # 4- Rule based modified
         # answer_query = updated_get_answer_query_from_graph(element["triples"], subgraph, element["question"])
         answer_queries.append(answer_query)
-    return questions, answer_queries
+        triples.append(element["triples"])
+    return questions, answer_queries, triples
 
 
 
-def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subgraph'], label_predicate=None, out_dir='./results'):
+def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subgraph'],  out_dir='./results', prompt=1):
     """
     Generate the dialogues given the following inputs:
     kg_name: name of the required knowledge graph
@@ -144,12 +148,17 @@ def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subg
     approach: The approach to be used to generate the dialogue
               (0: subgraph approach, 1: schema based approach, 2. summarized subgraph approach, 3: All approaches)
     """
-    seed_nodes = get_seed_nodes(kg_name, dataset_size)
-    # Parse the file to get a map between types and predicates to represent
-    if label_predicate is not None:
-        file = open(label_predicate, 'r')
-        data = json.load(file)
-        type_to_predicate_map = {item["type"]: item["predicate"] for item in data}
+    seed_nodes, sample_distribution = get_seed_nodes(kg_name, dataset_size)
+    KG = get_kg_instance(kg_name)
+    kg = KG()
+    type_to_predicate_map = dict()
+    file_name = f"{kg_name}_types_representative.json"
+    if os.path.exists(file_name):
+        file = open(file_name, 'r')
+        type_to_predicate_map = json.load(file)
+    type_to_predicate_map = get_representative_label_per_node_type(kg.sparql_endpoint, sample_distribution, seed_nodes, type_to_predicate_map, file_name)
+    kg.set_type_to_predicate_map(type_to_predicate_map)
+
     # seed_nodes = get_dummy_seeds(kg_name)
     # seed_nodes = [] # will be added by @reham
     # suggestion to use kg.get_seed_nodes(dataset_size)
@@ -157,20 +166,20 @@ def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subg
         exp_name = f"{kg_name}_e1_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
-        generate_dialogues_from_subgraph(kg_name, seed_nodes, type_to_predicate_map, tracer_instance, dialogue_size, output_file)
+        generate_dialogues_from_subgraph(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt)
     if "schema" in approach:
         exp_name = f"{kg_name}_e3_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
-        generate_dialogues_from_schema(kg_name, seed_nodes, type_to_predicate_map, tracer_instance, dialogue_size, output_file)
+        generate_dialogues_from_schema(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt)
     if "subgraph-summarized" in approach:
         exp_name = f"{kg_name}_e11_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
-        generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, type_to_predicate_map, tracer_instance, dialogue_size, output_file)
+        generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt)
 
 
-def generate_dialogues_from_subgraph(kg_name, seed_nodes, type_to_predicate_map, tracer_instance, dialogue_size, output_file):
+def generate_dialogues_from_subgraph(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt):
     """
     kgname
     benchmark size 
@@ -178,8 +187,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, type_to_predicate_map,
 
     """
     benchmark_sample = []
-    KG = get_kg_instance(kg_name)
-    kg = KG(type_to_predicate_map)
+
     for idx, seed in enumerate(seed_nodes):
         # seed = Node(uri=URIRef("https://dblp.org/rec/phd/Dobry87"))
         
@@ -198,14 +206,13 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, type_to_predicate_map,
         filtered_set = None
         cb_dict = None
         answer_queries = None
+        triples_used = None
         try:
-            with get_openai_callback() as cb:
+            with (get_openai_callback() as cb):
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
                 n = dialogue_size
-                output = n_question_from_subgraph_chain_without_example.get("chain").run(
-                    {"subgraph": subgraph_uri_str, "n": n}
-                )
-                question_set, answer_queries = decouple_questions_and_answers(output.dict(), seed, subgraph, "subgraph")
+                output = execute_question_generation_prompt("subgraph", prompt, subgraph_uri_str, n, seed)
+                question_set, answer_queries, triples_used = decouple_questions_and_answers(output.dict(), subgraph, "subgraph")
                 logger.info(f"INDEX : {idx} -- question set generation chain end --")
                 tracer_instance.add_data(idx, "questions", question_set)
 
@@ -252,6 +259,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, type_to_predicate_map,
             "dialogue": question_set_dialogue,
             "original": question_set,
             "queries": answer_queries,
+            "triples": triples_used,
             "filtered": filtered_set,
             "cost": cb_dict,
         }
@@ -269,7 +277,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, type_to_predicate_map,
         json.dump(benchmark, f, indent=4)
 
 
-def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, type_to_predicate_map, tracer_instance, dialogue_size, output_file):
+def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt):
     """
     kgname
     benchmark size 
@@ -277,8 +285,7 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, type_to_pre
 
     """
     benchmark_sample = []
-    KG = get_kg_instance(kg_name)
-    kg = KG(type_to_predicate_map)
+
     for idx, seed in enumerate(seed_nodes):
         # seed = Node(uri=URIRef("https://dblp.org/rec/phd/Dobry87"))
         
@@ -299,14 +306,13 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, type_to_pre
         filtered_set = None
         cb_dict = None
         answer_queries = None
+        triples_used = None
         try:
             with get_openai_callback() as cb:
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
                 n = dialogue_size
-                output = n_question_from_summarized_subgraph_chain_without_example.get("chain").run(
-                    {"subgraph": subgraph_str, "n": n}
-                )
-                question_set, answer_queries = decouple_questions_and_answers(output.dict(), seed, subgraph, "optimized")
+                output = execute_question_generation_prompt("summarized", prompt, subgraph_str, n, seed)
+                question_set, answer_queries, triples_used = decouple_questions_and_answers(output.dict(), subgraph, "optimized")
                 logger.info(f"INDEX : {idx} -- question set generation chain end --")
                 tracer_instance.add_data(idx, "questions", question_set)
 
@@ -361,6 +367,7 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, type_to_pre
             "dialogue": question_set_dialogue,
             "original": question_set,
             "queries": answer_queries,
+            "triples": triples_used,
             "filtered": filtered_set,
             "cost": cb_dict,
         }
@@ -378,8 +385,46 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, type_to_pre
         json.dump(benchmark, f, indent=4)
 
 
+def get_representative_label_per_node_type(endpoint, sampling_distribution, seed_nodes, exisiting_map, file_name):
+    type_per_label = exisiting_map
+    count = 0
+    for key, value in sampling_distribution.items():
+        if value == 0:
+            continue
+        key = key.strip()
+        if key not in type_per_label:
+            sample_node = seed_nodes[count]
+            sample_node_str = str(sample_node)
+            query = ("select distinct ?p where { {"
+                     f"<{sample_node_str}> ?p ?o"
+                     "} UNION {?s ?p "
+                     f"<{sample_node_str}>"
+                     "} } ")
+            result = utils.send_sparql_query(endpoint, query)
+            predicates = list()
+            for binding in result["results"]["bindings"]:
+                predicates.append(binding.get('p', {}).get('value', None))
 
-def generate_dialogues_from_schema(kg_name, seed_nodes, label_predicate, tracer_instance, dialogue_size, output_file):
+            try:
+                output = representative_label_for_type.get("chain").run(
+                    {"node_type": key, "predicates": ','.join(predicates)}
+                )
+                type_per_label[key] = output["predicate"].strip()
+            except Exception as e:
+                response = str(e)
+                print("response")
+                print(response)
+                if response.startswith("Got invalid return object. Expected key"):
+                    start_index = response.index('got')
+                    type_per_label[key] = response[start_index + 3: len(response)].strip()
+            with open(file_name, 'w') as file:
+                json.dump(type_per_label, file, indent=4)
+        # To keep the mapping between seed entities and types
+        count += value
+    return type_per_label
+
+
+def generate_dialogues_from_schema(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file):
     """
     kgname
     benchmark size 
@@ -387,8 +432,7 @@ def generate_dialogues_from_schema(kg_name, seed_nodes, label_predicate, tracer_
 
     """
     benchmark_sample = []
-    KG = get_kg_instance(kg_name)
-    kg = KG(label_predicate)
+
     for idx, seed in enumerate(seed_nodes):
         logger.info(f"INDEX : {idx} -- start --")
         tracer_instance.add_data(idx, "seed", asdict(seed))
@@ -471,3 +515,28 @@ def generate_dialogues_from_schema(kg_name, seed_nodes, label_predicate, tracer_
     directory.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w") as f:
         json.dump(benchmark, f, indent=4)
+
+
+def execute_question_generation_prompt(subgraph_approach, prompt, subgraph_str, n, seed):
+    output = None
+    if prompt == 1:
+        if subgraph_approach == "subgraph":
+            output = n_question_from_subgraph_chain_without_example.get("chain").run(
+                {"subgraph": subgraph_str, "n": n}
+            )
+        elif subgraph_approach == "summarized":
+            output = n_question_from_summarized_subgraph_chain_without_example.get("chain").run(
+                {"subgraph": subgraph_str, "n": n}
+            )
+    elif prompt == 2:
+        seed_entity = seed.label if seed.label else seed.uri
+        output = n_question_from_subgraph_chain_using_seed_entity.get("chain").run(
+            {"e": seed_entity, "subgraph": subgraph_str, "n": n}
+        )
+    elif prompt == 3:
+        seed_entity = seed.label if seed.label else seed.uri
+        seed_entity_type = defrag_uri(str(seed.nodetype))
+        output = n_question_from_subgraph_chain_using_seed_entity_and_type.get("chain").run(
+            {"e": seed_entity, "e_type": seed_entity_type, "subgraph": subgraph_str, "n": n}
+        )
+    return output

@@ -587,13 +587,26 @@ def get_n_question_from_summarized_subgraph_chain_without_example():
     n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
+    # N_Q_PROMPT = PromptTemplate(
+    #     input_variables=[
+    #         "subgraph",
+    #         "n",
+    #     ],
+    #     partial_variables={"format_instructions": n_q_json_format_instructions},
+    #     template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each triple consists of (subject, predicate, object). Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph.  Return each question with the triple or triples used to generate the question.   {format_instructions}
+    #
+    #     input: {subgraph}
+    #     n: {n}
+    #     output: """,
+    # )
+
     N_Q_PROMPT = PromptTemplate(
         input_variables=[
             "subgraph",
             "n",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each triple consists of (subject, predicate, object). Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph.  Return each question with the triple or triples used to generate the question.   {format_instructions}
+        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5 {format_instructions}.
 
         input: {subgraph}
         n: {n}
@@ -601,7 +614,97 @@ def get_n_question_from_summarized_subgraph_chain_without_example():
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT, verbose=True, output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=False,
+        output_parser=n_q_json_output_parser
+    )
+    payload = {}
+    return {"chain": n_question_generator_chain, "payload": payload}
+
+
+def get_n_question_from_subgraph_chain_using_seed_entity():
+    n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
+    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
+
+    N_Q_PROMPT = PromptTemplate(
+        input_variables=[
+            "e",
+            "subgraph",
+            "n",
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5 {format_instructions}.
+
+        e: {e}
+        input: {subgraph}
+        n: {n}
+        output: """,
+    )
+
+    n_question_generator_chain = LLMChain(
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=True,
+        output_parser=n_q_json_output_parser
+    )
+    payload = {}
+    return {"chain": n_question_generator_chain, "payload": payload}
+
+def get_n_question_from_subgraph_chain_using_seed_entity_and_type():
+    n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
+    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
+
+    N_Q_PROMPT = PromptTemplate(
+        input_variables=[
+            "e",
+            "e_type",
+            "subgraph",
+            "n",
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5 {format_instructions}.
+
+        e: {e}
+        e type: {e_type}
+        input: {subgraph}
+        n: {n}
+        output: """,
+    )
+
+    n_question_generator_chain = LLMChain(
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=False,
+        output_parser=n_q_json_output_parser
+    )
+    payload = {}
+    return {"chain": n_question_generator_chain, "payload": payload}
+
+def get_representative_label_for_type():
+    n_q_response_schemas = [
+        ResponseSchema(
+            name="predicate", description="The most representative predicate", type="string"
+        )
+    ]
+
+    n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
+        n_q_response_schemas
+    )
+    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
+
+    N_Q_PROMPT = PromptTemplate(
+        input_variables=[
+            "node_type",
+            "predicates",
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""Given a {node_type} with predicates {predicates}, suggest the most representative predicate {format_instructions}.
+
+        predicate: """,
+    )
+
+    n_question_generator_chain = LLMChain(
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=False,
+        output_parser=n_q_json_output_parser
     )
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
@@ -617,6 +720,9 @@ def get_prompt_chains():
         "n_question_from_schema_chain_without_example": get_n_question_from_schema_chain_without_example(),
         "n_question_from_summarized_subgraph_chain_without_example": get_n_question_from_summarized_subgraph_chain_without_example(),
         "get_answer_from_question_and_triple_zero_shot": get_answer_from_question_and_triple_zero_shot(),
-        "get_target_answer_from_triples": get_target_answer_from_triples()
+        "get_target_answer_from_triples": get_target_answer_from_triples(),
+        "get_n_question_from_subgraph_chain_using_seed_entity": get_n_question_from_subgraph_chain_using_seed_entity(),
+        "get_n_question_from_subgraph_chain_using_seed_entity_and_type": get_n_question_from_subgraph_chain_using_seed_entity_and_type(),
+        "get_representative_label_for_type": get_representative_label_for_type()
     }
     return prompt_chains

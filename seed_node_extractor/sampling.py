@@ -27,7 +27,47 @@ def check_is_human_readable(label):
 
 
 # Number of samples should be less than len rare types
-def get_samples_for_rare_types(rare_types, num_samples, prefix):
+# For random sampling
+# def get_samples_for_rare_types(rare_types, num_samples, prefix):
+#     included_types = random.sample(rare_types, num_samples)
+#     node_samples = list()
+#     for type in included_types:
+#         file_name = utils.get_file_name_from_type(type)
+#         human_readable_type = f"index_data/{prefix}/{file_name}.txt"
+#         with open(human_readable_type, "r") as file:
+#             lines = file.readlines()
+#         data = [line.strip().split('\t') for line in lines]
+#         sampled = False
+#         while not sampled:
+#             sampled_entities = random.sample(data, k=1)
+#             if check_is_human_readable(utils.get_name(sampled_entities[0][0])) and int(sampled_entities[0][1]) > 2:
+#                 sampled = True
+#                 node_samples.append(Node(uri=URIRef(sampled_entities[0][0]), nodetype=URIRef(type.strip())))
+#     return node_samples
+
+# For Random Sampling
+# def get_samples_for_type(type, num_samples, prefix):
+#     file_name = utils.get_file_name_from_type(type)
+#     human_readable_type = f"index_data/{prefix}/{file_name}.txt"
+#     with open(human_readable_type, "r") as file:
+#         lines = file.readlines()
+#
+#     data = [line.strip().split('\t') for line in lines]
+#     samples = list()
+#     sample_count = num_samples
+#     while len(samples) < num_samples:
+#         sampled_entities = random.sample(data, k=sample_count)
+#         for entity in sampled_entities:
+#             if check_is_human_readable(utils.get_name(entity[0])) and entity[0] not in samples and int(entity[1]) >= 2:
+#                 samples.append(entity[0])
+#         sample_count = num_samples - len(samples)
+#
+#     node_samples = list()
+#     for sample in samples:
+#         node_samples.append(Node(uri=URIRef(sample), nodetype=URIRef(type.strip())))
+#     return node_samples
+
+def get_samples_for_rare_types(rare_types, num_samples, prefix, str_samples_so_far):
     included_types = random.sample(rare_types, num_samples)
     node_samples = list()
     for type in included_types:
@@ -36,48 +76,51 @@ def get_samples_for_rare_types(rare_types, num_samples, prefix):
         with open(human_readable_type, "r") as file:
             lines = file.readlines()
         data = [line.strip().split('\t') for line in lines]
-        sampled = False
-        while not sampled:
-            sampled_entities = random.sample(data, k=1)
-            if check_is_human_readable(utils.get_name(sampled_entities[0][0])) and int(sampled_entities[0][1]) > 2:
-                sampled = True
-                node_samples.append(Node(uri=URIRef(sampled_entities[0][0]), nodetype=URIRef(type.strip())))
+        data = [(type_, int(count)) for type_, count in data]
+        sorted_data = sorted(data, key=lambda x: x[1], reverse=True)
+        sorted_count = 0
+        while sorted_data[sorted_count][0] in str_samples_so_far:
+            sorted_count += 1
+        node_samples.append(Node(uri=URIRef(sorted_data[0][0]), nodetype=URIRef(type.strip())))
     return node_samples
 
 
-def get_samples_for_type(type, num_samples, prefix):
+#  For top k
+def get_samples_for_type(type, num_samples, prefix, str_samples_so_far):
     file_name = utils.get_file_name_from_type(type)
     human_readable_type = f"index_data/{prefix}/{file_name}.txt"
     with open(human_readable_type, "r") as file:
         lines = file.readlines()
 
     data = [line.strip().split('\t') for line in lines]
-    samples = list()
-    sample_count = num_samples
-    while len(samples) < num_samples:
-        sampled_entities = random.sample(data, k=sample_count)
-        for entity in sampled_entities:
-            if check_is_human_readable(utils.get_name(entity[0])) and entity[0] not in samples and int(entity[1]) >= 2:
-                samples.append(entity[0])
-        sample_count = num_samples - len(samples)
-
+    data = [(type_, int(count)) for type_, count in data]
+    sorted_data = sorted(data, key=lambda x: x[1], reverse=True)
     node_samples = list()
-    for sample in samples:
-        node_samples.append(Node(uri=URIRef(sample), nodetype=URIRef(type.strip())))
-    return node_samples
+    str_samples = list()
+    sorted_count = 0
+    for i in range(num_samples):
+        while sorted_data[sorted_count][0] in str_samples_so_far:
+            sorted_count += 1
+        node_samples.append(Node(uri=URIRef(sorted_data[sorted_count][0]), nodetype=URIRef(type.strip())))
+        str_samples.append(sorted_data[sorted_count][0])
+        sorted_count += 1
+    return node_samples, str_samples
 
 
 def return_seed_nodes(samples_per_type, rare_types, prefix):
-    samples = list()
+    node_samples = list()
+    str_samples = list()
     for key, value in samples_per_type.items():
         if value > 0:
             if key == "Merged":
-                merged_samples = get_samples_for_rare_types(rare_types, value, prefix)
-                samples.extend(merged_samples)
+                merged_samples = get_samples_for_rare_types(rare_types, value, prefix, str_samples)
+                node_samples.extend(merged_samples)
+                str_samples.extend(str_type_samples)
             else:
-                type_samples = get_samples_for_type(key, value, prefix)
-                samples.extend(type_samples)
-    return samples
+                node_type_samples, str_type_samples = get_samples_for_type(key, value, prefix, str_samples)
+                node_samples.extend(node_type_samples)
+                str_samples.extend(str_type_samples)
+    return node_samples
 
 def merge_rare_types(input_df):
     json_object = json.loads(input_df)
@@ -140,7 +183,7 @@ def get_seed_nodes(knowledge_graph_prefix, num_samples = 100):
     sample_distribution = get_sample_distribution(update_df, num_samples)
     # print(sample_distribution)
     seed_nodes = return_seed_nodes(sample_distribution, rare_types, knowledge_graph_prefix)
-    return seed_nodes
+    return seed_nodes, sample_distribution
 
 
 if __name__ == '__main__':

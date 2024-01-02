@@ -23,7 +23,7 @@ def main():
     parser.add_argument(
         "--dataset-size",
         type=int,
-        default=2,
+        default=10,
         help="Specify the dataset size",
     )
     parser.add_argument(
@@ -47,10 +47,12 @@ def main():
     #     help="Specify the representative label predicate in KG",
     # )
     parser.add_argument(
-        "--label-predicates-file-name",
+        "--prompt",
+        nargs='+',  # Allows multiple values
         type=str,
-        default="dblp_predicates_for_types.json",
-        help="Specify the representative label predicate in KG",
+        default=1,  # Default value if not provided
+        choices=[1, 2, 3],  # Available choices
+        help="Specify the prompt to use for question generations(1: using only subgraph, 2: using subgraph and seed node, 3: using subgraph, seed node and its type)",
     )
 
     # Parsing the arguments
@@ -63,10 +65,11 @@ def main():
     approach = args.approach
     out_dir = args.output_dir
     # label_predicate = args.label_predicate
-    label_predicate = args.label_predicates_file_name
+    # label_predicate = args.label_predicates_file_name
+    prompt = args.prompt
 
     # Generating dialogues using the provided arguments
-    generate_dialogues(kg_name, dataset_size, dialogue_size, approach, label_predicate, out_dir)
+    generate_dialogues(kg_name, dataset_size, dialogue_size, approach, out_dir, prompt)
 
 if __name__ == "__main__":
     print("starting benchmark generation....")
