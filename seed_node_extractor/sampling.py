@@ -107,19 +107,19 @@ def get_samples_for_type(type, num_samples, prefix, str_samples_so_far):
     return node_samples, str_samples
 
 
-def return_seed_nodes(samples_per_type, rare_types, prefix):
+def return_seed_nodes(samples_per_type, prefix):
     node_samples = list()
     str_samples = list()
     for key, value in samples_per_type.items():
         if value > 0:
-            if key == "Merged":
-                merged_samples = get_samples_for_rare_types(rare_types, value, prefix, str_samples)
-                node_samples.extend(merged_samples)
-                str_samples.extend(str_type_samples)
-            else:
-                node_type_samples, str_type_samples = get_samples_for_type(key, value, prefix, str_samples)
-                node_samples.extend(node_type_samples)
-                str_samples.extend(str_type_samples)
+            # if key == "Merged":
+            #     merged_samples = get_samples_for_rare_types(rare_types, value, prefix, str_samples)
+            #     node_samples.extend(merged_samples)
+            #     str_samples.extend(str_type_samples)
+            # else:
+            node_type_samples, str_type_samples = get_samples_for_type(key, value, prefix, str_samples)
+            node_samples.extend(node_type_samples)
+            str_samples.extend(str_type_samples)
     return node_samples
 
 def merge_rare_types(input_df):
@@ -139,18 +139,27 @@ def merge_rare_types(input_df):
     new_obj.append({"Type": "Merged", 'Count': total_count, 'percentage': total_percentage})
     return new_obj, rare_types
 
+def remove_rare_types(input_df):
+    threshold = 1
+    filtered_df = input_df[input_df['percentage'] > threshold]
+    filtered_df = filtered_df.drop(columns=['percentage'])
+    total_count = filtered_df['Num_Entities'].sum()
+    percentage_df = filtered_df.copy()
+    percentage_df['percentage'] = (percentage_df['Num_Entities'] / total_count) * 100
+    print(percentage_df)
+    return percentage_df.to_json(orient='records')
 
 def get_sample_distribution(input, total_samples):
     samples_per_type = {}
     used_samples = 0
     for inst in input:
-        if inst['Type'] == 'Merged':
-            continue
+        # if inst['Type'] == 'Merged':
+        #     continue
         samples = round((inst['percentage'] / 100) * total_samples)
         samples_per_type[inst['Type']] = samples
         used_samples += samples
 
-    samples_per_type['Merged'] = max(total_samples - used_samples, 0)
+    # samples_per_type['Merged'] = max(total_samples - used_samples, 0)
     return samples_per_type
 
 def calculate_class_importance(input_df):
@@ -159,7 +168,8 @@ def calculate_class_importance(input_df):
     total_count = input_df['Num_Entities'].sum()
     percentage_df = input_df.copy()
     percentage_df['percentage'] = (percentage_df['Num_Entities'] / total_count) * 100
-    return percentage_df.to_json(orient='records')
+    return percentage_df
+    # return percentage_df.to_json(orient='records')
 
 
 def remove_low_richness(file_name):
@@ -178,11 +188,13 @@ def get_seed_nodes(knowledge_graph_prefix, num_samples = 100):
     # Calculate importance
     percentage_df = calculate_class_importance(filtered_df)
     # Merge types less than one percent
-    update_df, rare_types = merge_rare_types(percentage_df)
+    update_df = remove_rare_types(percentage_df)
+    # update_df, rare_types = merge_rare_types(percentage_df)
     # num_samples = 100
-    sample_distribution = get_sample_distribution(update_df, num_samples)
-    # print(sample_distribution)
-    seed_nodes = return_seed_nodes(sample_distribution, rare_types, knowledge_graph_prefix)
+    json_object = json.loads(update_df)
+    sample_distribution = get_sample_distribution(json_object, num_samples)
+    print(sample_distribution)
+    seed_nodes = return_seed_nodes(sample_distribution, knowledge_graph_prefix)
     return seed_nodes, sample_distribution
 
 
@@ -204,11 +216,13 @@ if __name__ == '__main__':
     # Calculate importance
     percentage_df = calculate_class_importance(filtered_df)
     # Merge types less than one percent
-    update_df, rare_types = merge_rare_types(percentage_df)
+    # update_df, rare_types = merge_rare_types(percentage_df)
+    update_df = remove_rare_types(percentage_df)
     num_samples = 100
-    sample_distribution = get_sample_distribution(update_df, num_samples)
+    json_object = json.loads(update_df)
+    sample_distribution = get_sample_distribution(json_object, num_samples)
     print(sample_distribution)
-    seed_nodes = return_seed_nodes(sample_distribution, rare_types, knowledge_graph_prefix)
+    seed_nodes = return_seed_nodes(sample_distribution, knowledge_graph_prefix)
     for seed_node in seed_nodes:
         print(str(seed_node))
 

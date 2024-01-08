@@ -17,6 +17,7 @@ from kg.kg.kg import DblpKG, YagoKG, DbpediaKG, Node, defrag_uri
 from seed_node_extractor.sampling import get_seed_nodes
 from answer_creation import get_answer_LLM_based, get_answer_query_from_graph, get_LLM_based_postprocessed, updated_get_answer_query_from_graph
 from seed_node_extractor import utils
+from answer_validation import validate_query
 
 langchain.debug = True
 
@@ -29,6 +30,7 @@ n_question_from_schema_chain_without_example = prompt_chains.get("n_question_fro
 n_question_from_subgraph_chain_using_seed_entity = prompt_chains.get("get_n_question_from_subgraph_chain_using_seed_entity")
 n_question_from_subgraph_chain_using_seed_entity_and_type = prompt_chains.get("get_n_question_from_subgraph_chain_using_seed_entity_and_type")
 representative_label_for_type = prompt_chains.get("get_representative_label_for_type")
+pronoun_identification_and_substitution_chain = prompt_chains.get("get_pronoun_identification_and_substitution_chain_without_example")
 
 dblp_dummy_seeds = {
     "https://dblp.org/rdf/schema#Person": [
@@ -119,10 +121,11 @@ def filter_and_select_questions(original_questions):
 
     return selected_questions
 
-def decouple_questions_and_answers(input_obj, subgraph, approach):
+def decouple_questions_and_answers(input_obj, subgraph, approach, endpoint, seed_node_uri):
     questions = list()
     answer_queries = list()
     triples = list()
+    query_results = dict()
     for element in input_obj["output"]:
         questions.append(element["question"])
         # 1- LLM Based
@@ -134,8 +137,14 @@ def decouple_questions_and_answers(input_obj, subgraph, approach):
         # 4- Rule based modified
         # answer_query = updated_get_answer_query_from_graph(element["triples"], subgraph, element["question"])
         answer_queries.append(answer_query)
+        status = validate_query(answer_query, element["triples"], endpoint, subgraph, seed_node_uri, approach)
+        if status in query_results:
+            query_results[status] += 1
+        else:
+            query_results[status] = 1
         triples.append(element["triples"])
-    return questions, answer_queries, triples
+
+    return questions, answer_queries, triples, query_results
 
 
 
@@ -166,20 +175,20 @@ def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subg
         exp_name = f"{kg_name}_e1_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
-        generate_dialogues_from_subgraph(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt)
+        generate_dialogues_from_subgraph(seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt)
     if "schema" in approach:
         exp_name = f"{kg_name}_e3_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
-        generate_dialogues_from_schema(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt)
+        generate_dialogues_from_schema(seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt)
     if "subgraph-summarized" in approach:
         exp_name = f"{kg_name}_e11_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
-        generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt)
+        generate_dialogues_from_summarized_subgraph(seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt)
 
 
-def generate_dialogues_from_subgraph(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt):
+def generate_dialogues_from_subgraph(seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt):
     """
     kgname
     benchmark size 
@@ -207,43 +216,64 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, kg, tracer_instance, d
         cb_dict = None
         answer_queries = None
         triples_used = None
+        answer_status_dict = None
         try:
             with (get_openai_callback() as cb):
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
                 n = dialogue_size
+
                 output = execute_question_generation_prompt("subgraph", prompt, subgraph_uri_str, n, seed)
-                question_set, answer_queries, triples_used = decouple_questions_and_answers(output.dict(), subgraph, "subgraph")
+                question_set, answer_queries, triples_used, answer_status_dict  = decouple_questions_and_answers(output.dict(), subgraph, "subgraph", kg.sparql_endpoint, seed.uri)
+
                 logger.info(f"INDEX : {idx} -- question set generation chain end --")
                 tracer_instance.add_data(idx, "questions", question_set)
 
                 logger.info(f"INDEX : {idx} -- question set : {question_set} --")
                 question_0 = question_set[0]
 
-                logger.info(f"INDEX : {idx} -- pronoun identify chain start --")
-                payload_dict = pronoun_identification_chain.get("payload")
-                ent_pronoun = pronoun_identification_chain.get("chain").run(
-                    {"query": question_0, **payload_dict}
-                )
-                question_0_ent_pron = ent_pronoun.dict()["output"]
-                logger.info(f"INDEX : {idx} -- pronoun identify chain end --")
-                tracer_instance.add_data(idx, "pron_indetify", question_0_ent_pron)
-
-                logger.info(f"INDEX : {idx} -- pronoun substitute chain start --")
-                query_dict = {
-                    "query_inp": question_set[1:],
-                    "query_entity": question_0_ent_pron[0],
-                    "query_pronouns": question_0_ent_pron[1],
-                }
-                payload_dict = pronoun_substitution_chain.get("payload")
-                output = pronoun_substitution_chain.get("chain").run(
-                    {**query_dict, **payload_dict}
+                logger.info(f"INDEX : {idx} -- pronoun identify and substitute chain start --")
+                seed_entity = seed.label if seed.label else seed.uri
+                output = pronoun_identification_and_substitution_chain.get("chain").run(
+                    {"entity": seed_entity, "questions": question_set[1:]}
                 )
                 transformed_questions = output.dict()["output"]
-                logger.info(f"INDEX : {idx} -- pronoun substitute chain end --")
+                # logger.info(f"INDEX : {idx} -- pronoun identify chain start --")
+                # payload_dict = pronoun_identification_chain.get("payload")
+                # ent_pronoun = pronoun_identification_chain.get("chain").run(
+                #     {"query": question_0, **payload_dict}
+                # )
+                # question_0_ent_pron = ent_pronoun.dict()["output"]
+                # logger.info(f"INDEX : {idx} -- pronoun identify chain end --")
+                # tracer_instance.add_data(idx, "pron_indetify", question_0_ent_pron)
+                #
+                # logger.info(f"INDEX : {idx} -- pronoun substitute chain start --")
+                # query_dict = {
+                #     "query_inp": question_set[1:],
+                #     "query_entity": question_0_ent_pron[0],
+                #     "query_pronouns": question_0_ent_pron[1],
+                # }
+                # payload_dict = pronoun_substitution_chain.get("payload")
+                # try:
+                #     output = pronoun_substitution_chain.get("chain").run(
+                #         {**query_dict, **payload_dict}
+                #     )
+                #     transformed_questions = output.dict()["output"]
+                #     print("transformed_questions")
+                #     print(transformed_questions)
+                # except Exception as e:
+                #     response = str(e)
+                #     print("response")
+                #     print(response)
+                #     if response.startswith("Failed to parse SchemaInput from completion"):
+                #         start_index = response.index('[')
+                #         end_index = response.index(']')
+                #         transformed_questions = response[start_index:end_index+1]
+                # logger.info(f"INDEX : {idx} -- pronoun substitute chain end --")
+                logger.info(f"INDEX : {idx} -- pronoun identify and substitute chain end --")
                 tracer_instance.add_data(idx, "pron_sub", transformed_questions)
 
                 question_set_dialogue = [question_0, *transformed_questions]
-                filtered_set = [question_0, *filter_and_select_questions(transformed_questions)]
+                # filtered_set = [question_0, *filter_and_select_questions(transformed_questions)]
                 cb_dict = {
                     "total_tokens": cb.total_tokens,
                     "prompt_tokens": cb.prompt_tokens,
@@ -260,8 +290,9 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, kg, tracer_instance, d
             "original": question_set,
             "queries": answer_queries,
             "triples": triples_used,
-            "filtered": filtered_set,
+            # "filtered": filtered_set,
             "cost": cb_dict,
+            "query_status": answer_status_dict
         }
         print(dialogue)
         benchmark_sample.append(dialogue)
@@ -277,7 +308,7 @@ def generate_dialogues_from_subgraph(kg_name, seed_nodes, kg, tracer_instance, d
         json.dump(benchmark, f, indent=4)
 
 
-def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt):
+def generate_dialogues_from_summarized_subgraph(seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt):
     """
     kgname
     benchmark size 
@@ -307,51 +338,62 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, kg, tracer_
         cb_dict = None
         answer_queries = None
         triples_used = None
+        answer_status_dict = None
         try:
             with get_openai_callback() as cb:
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
                 n = dialogue_size
                 output = execute_question_generation_prompt("summarized", prompt, subgraph_str, n, seed)
-                question_set, answer_queries, triples_used = decouple_questions_and_answers(output.dict(), subgraph, "optimized")
+                question_set, answer_queries, triples_used, answer_status_dict = decouple_questions_and_answers(output.dict(), subgraph, "optimized", kg.sparql_endpoint, seed.uri)
                 logger.info(f"INDEX : {idx} -- question set generation chain end --")
                 tracer_instance.add_data(idx, "questions", question_set)
 
                 logger.info(f"INDEX : {idx} -- question set : {question_set} --")
                 question_0 = question_set[0]
 
-                logger.info(f"INDEX : {idx} -- pronoun identify chain start --")
-                payload_dict = pronoun_identification_chain.get("payload")
-                ent_pronoun = pronoun_identification_chain.get("chain").run(
-                    {"query": question_0, **payload_dict}
+                logger.info(f"INDEX : {idx} -- pronoun identify and substitute chain start --")
+                seed_entity = seed.label if seed.label else seed.uri
+                output = pronoun_identification_and_substitution_chain.get("chain").run(
+                    {"entity": seed_entity, "questions": question_set[1:]}
                 )
-                question_0_ent_pron = ent_pronoun.dict()["output"]
-                logger.info(f"INDEX : {idx} -- pronoun identify chain end --")
-                tracer_instance.add_data(idx, "pron_indetify", question_0_ent_pron)
-
-                logger.info(f"INDEX : {idx} -- pronoun substitute chain start --")
-                query_dict = {
-                    "query_inp": question_set[1:],
-                    "query_entity": question_0_ent_pron[0],
-                    "query_pronouns": question_0_ent_pron[1],
-                }
-                try:
-                    payload_dict = pronoun_substitution_chain.get("payload")
-                    output = pronoun_substitution_chain.get("chain").run(
-                        {**query_dict, **payload_dict}
-                    )
-                except Exception as e:
-                    response = str(e)
-                    if response.startswith("Failed to parse SchemaInput from completion"):
-                        print("Retry ")
-                        output = pronoun_substitution_chain.get("chain").run(
-                            {**query_dict, **payload_dict}
-                        )
                 transformed_questions = output.dict()["output"]
-                logger.info(f"INDEX : {idx} -- pronoun substitute chain end --")
+
+                # logger.info(f"INDEX : {idx} -- pronoun identify chain start --")
+                # payload_dict = pronoun_identification_chain.get("payload")
+                # ent_pronoun = pronoun_identification_chain.get("chain").run(
+                #     {"query": question_0, **payload_dict}
+                # )
+                #
+                # question_0_ent_pron = ent_pronoun.dict()["output"]
+                # logger.info(f"INDEX : {idx} -- pronoun identify chain end --")
+                # tracer_instance.add_data(idx, "pron_indetify", question_0_ent_pron)
+
+                # logger.info(f"INDEX : {idx} -- pronoun substitute chain start --")
+                # query_dict = {
+                #     "query_inp": question_set[1:],
+                #     "query_entity": question_0_ent_pron[0],
+                #     "query_pronouns": question_0_ent_pron[1],
+                # }
+                # try:
+                #     payload_dict = pronoun_substitution_chain.get("payload")
+                #     output = pronoun_substitution_chain.get("chain").run(
+                #         {**query_dict, **payload_dict}
+                #     )
+                #     transformed_questions = output.dict()["output"]
+                # except Exception as e:
+                #     response = str(e)
+                #     print("response")
+                #     print(response)
+                #     if response.startswith("Failed to parse SchemaInput from completion"):
+                #         start_index = response.index['[']
+                #         end_index = response.index(']')
+                #         transformed_questions = response[start_index:end_index + 1]
+
+                logger.info(f"INDEX : {idx} -- pronoun identify and substitute chain end --")
                 tracer_instance.add_data(idx, "pron_sub", transformed_questions)
 
                 question_set_dialogue = [question_0, *transformed_questions]
-                filtered_set = [question_0, *filter_and_select_questions(transformed_questions)]
+                # filtered_set = [question_0, *filter_and_select_questions(transformed_questions)]
                 cb_dict = {
                     "total_tokens": cb.total_tokens,
                     "prompt_tokens": cb.prompt_tokens,
@@ -368,8 +410,9 @@ def generate_dialogues_from_summarized_subgraph(kg_name, seed_nodes, kg, tracer_
             "original": question_set,
             "queries": answer_queries,
             "triples": triples_used,
-            "filtered": filtered_set,
+            # "filtered": filtered_set,
             "cost": cb_dict,
+            "query_status": answer_status_dict
         }
         print(dialogue)
         benchmark_sample.append(dialogue)
@@ -424,7 +467,7 @@ def get_representative_label_per_node_type(endpoint, sampling_distribution, seed
     return type_per_label
 
 
-def generate_dialogues_from_schema(kg_name, seed_nodes, kg, tracer_instance, dialogue_size, output_file):
+def generate_dialogues_from_schema(seed_nodes, kg, tracer_instance, dialogue_size, output_file):
     """
     kgname
     benchmark size 

@@ -9,16 +9,20 @@ get_target_chain = prompt_chains.get("get_target_answer_from_triples")
 # Start Utils Function
 
 def get_triple_for_summarized(triple, subgraph):
+    triple = triple.replace('"', '').replace("'", "")
     for el in subgraph.triples:
         # if str(subgraph.get_triple_representation_for_optimized(el)) == triple:
-        if str(subgraph.get_triple_representation_no_object(el)) == triple:
+        seralized_triple = str(subgraph.get_triple_representation_no_object(el)).replace('"', '').replace("'", "")
+        if seralized_triple == triple:
             return el
     return None
 
 
 def get_original_triple(triple, sub_graph):
+    triple = triple.replace('"', '').replace("'", "")
     for el in sub_graph.triples:
-        if str(sub_graph.get_triple_representation(el, 'uri')) == triple:
+        seralized_triple = str(sub_graph.get_triple_representation(el, 'uri')).replace('"', '').replace("'", "")
+        if seralized_triple == triple:
             return el
     return None
 

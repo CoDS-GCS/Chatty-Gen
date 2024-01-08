@@ -710,6 +710,50 @@ def get_representative_label_for_type():
     return {"chain": n_question_generator_chain, "payload": payload}
 
 
+def get_pronoun_identification_and_substitution_chain_without_example():
+    p_sub_json_output_parser = PydanticOutputParser(pydantic_object=SchemaInput)
+    p_sub_json_format_instructions = p_sub_json_output_parser.get_format_instructions()
+
+    # P_SUB_PROMPT = PromptTemplate(
+    #     input_variables=[
+    #         "entity",
+    #         "questions",
+    #     ],
+    #     partial_variables={"format_instructions": p_sub_json_format_instructions},
+    #     template="""Given an entity and a set of questions or sentences focused on this entity, Choose the appropriate pronoun that refers to it. Return the questions with the entity replaced with its pronoun.
+    # {format_instructions}
+    #
+    # entity: {entity}
+    # input: "{questions}"
+    # output: """,
+    # )
+
+    P_SUB_PROMPT = PromptTemplate(
+        input_variables=[
+            "entity",
+            "questions",
+        ],
+        partial_variables={"format_instructions": p_sub_json_format_instructions},
+        template="""Given an entity and a set of questions or sentences focused on this entity, choose the appropriate pronoun that refers to it. Replace the entity with its pronoun in the questions and return the modified questions. Ensure that the modified questions do not contain the original entity and that the pronoun used in the modified questions is contextually appropriate and grammatically correct.
+    {format_instructions}
+
+    entity: {entity}
+    input: "{questions}"
+    output: """,
+    )
+
+    pronoun_substitution_chain = LLMChain(
+        llm=llm,
+        prompt=P_SUB_PROMPT,
+        verbose=False,
+        output_parser=p_sub_json_output_parser,
+    )
+
+    return {
+        "chain": pronoun_substitution_chain, "payload": {}
+    }
+
+
 def get_prompt_chains():
     prompt_chains = {
         "question_template_chain": get_question_template_chain,
@@ -723,6 +767,7 @@ def get_prompt_chains():
         "get_target_answer_from_triples": get_target_answer_from_triples(),
         "get_n_question_from_subgraph_chain_using_seed_entity": get_n_question_from_subgraph_chain_using_seed_entity(),
         "get_n_question_from_subgraph_chain_using_seed_entity_and_type": get_n_question_from_subgraph_chain_using_seed_entity_and_type(),
-        "get_representative_label_for_type": get_representative_label_for_type()
+        "get_representative_label_for_type": get_representative_label_for_type(),
+        "get_pronoun_identification_and_substitution_chain_without_example": get_pronoun_identification_and_substitution_chain_without_example()
     }
     return prompt_chains
