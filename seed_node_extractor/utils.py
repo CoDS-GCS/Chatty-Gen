@@ -13,6 +13,14 @@ excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http:
                        'http://xmlns.com/foaf/0.1/primaryTopic', 'http://xmlns.com/foaf/0.1/logo',
                        'http://purl.org/dc/elements/1.1/rights', 'http://www.w3.org/2000/01/rdf-schema#label']
 
+knowledge_graph_to_uri = {
+    "dbpedia": ("http://206.12.95.86:8890/sparql", "dbpedia"),
+    # "lc_quad": "http://206.12.95.86:8891/sparql",
+    "microsoft_academic": ("http://206.12.97.159:8890/sparql", "makg"),
+    "yago": ("http://206.12.95.86:8892/sparql", "yago"),
+    "dblp": ("http://206.12.95.86:8894/sparql", "dblp"),
+}
+
 # Returns only KG specific types
 def sparql_results_to_dataframe(results, kg):
     data = []

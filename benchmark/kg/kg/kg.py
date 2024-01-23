@@ -13,7 +13,6 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 from logger import Logger
 from seed_node_extractor import utils
 
-
 CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 
 

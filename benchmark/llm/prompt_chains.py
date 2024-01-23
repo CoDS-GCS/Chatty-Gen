@@ -109,7 +109,7 @@ def get_question_template_chain(placeholder):
     question_template_chain = LLMChain(
         llm=llm,
         prompt=SUBJECT_QUESTION_TEMPLATE_PROMPT,
-        verbose=True,
+        verbose=False,
         output_parser=json_output_parser,
     )
     payload = {
@@ -210,7 +210,7 @@ def get_pronoun_identification_chain():
     pronoun_identification_chain = LLMChain(
         llm=llm,
         prompt=P_IDF_PROMPT,
-        verbose=True,
+        verbose=False,
         output_parser=p_idf_json_output_parser,
     )
     pronoun_examples_data = {
@@ -332,7 +332,7 @@ def get_pronoun_substitution_chain():
     pronoun_substitution_chain = LLMChain(
         llm=llm,
         prompt=P_SUB_PROMPT,
-        verbose=True,
+        verbose=False,
         output_parser=p_sub_json_output_parser,
     )
     example_entity = "Michael A. Kochte"
@@ -390,7 +390,9 @@ def get_n_question_from_subgraph_chain_without_example():
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT, verbose=True, output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=False,
+        output_parser=n_q_json_output_parser
     )
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
@@ -466,7 +468,9 @@ def get_n_question_from_subgraph_chain_with_example():
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT, verbose=True, output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=False,
+        output_parser=n_q_json_output_parser
     )
     payload = {
         "example_subgraph": example_subgraph,
@@ -504,7 +508,9 @@ def get_n_question_from_schema_chain_without_example():
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT, verbose=True, output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=False,
+        output_parser=n_q_json_output_parser
     )
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
@@ -537,7 +543,9 @@ def get_answer_from_question_and_triple_zero_shot():
     )
 
     n_answer_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT, verbose=True, output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=False,
+        output_parser=n_q_json_output_parser
     )
     return {"chain": n_answer_generator_chain, "payload": {}}
 
@@ -569,7 +577,9 @@ def get_target_answer_from_triples():
     )
 
     n_answer_target_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT, verbose=True, output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=False,
+        output_parser=n_q_json_output_parser
     )
     return {"chain": n_answer_target_chain, "payload": {}}
 
@@ -754,6 +764,45 @@ def get_pronoun_identification_and_substitution_chain_without_example():
     }
 
 
+def get_validate_question_quality():
+
+    n_q_response_schemas = [
+        ResponseSchema(
+            name="output", description="valid or not valid", type="string"
+        )
+    ]
+
+    n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
+        n_q_response_schemas
+    )
+    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
+
+
+    P_SUB_PROMPT = PromptTemplate(
+        input_variables=[
+            "questions",
+        ],
+        # partial_variables={"format_instructions": n_q_json_format_instructions},
+        template=""" Given a set of questions about a specified entity, determine the validity of the input based on the following criteria:
+        1. The first question must explicitly mention the entity and cannot use a pronoun to refer to it.
+        2. Subsequent questions should be relevant and appropriately formulated.
+        If both conditions are met, consider the input "Valid." Otherwise, consider it "Not Valid."
+
+    Input:  "{questions}"
+    output: """,
+    )
+
+    question_validation_chain = LLMChain(
+        llm=llm,
+        prompt=P_SUB_PROMPT,
+        verbose=False,
+        # output_parser=n_q_json_output_parser,
+    )
+
+    return {
+        "chain": question_validation_chain, "payload": {}
+    }
+
 def get_prompt_chains():
     prompt_chains = {
         "question_template_chain": get_question_template_chain,
@@ -768,6 +817,7 @@ def get_prompt_chains():
         "get_n_question_from_subgraph_chain_using_seed_entity": get_n_question_from_subgraph_chain_using_seed_entity(),
         "get_n_question_from_subgraph_chain_using_seed_entity_and_type": get_n_question_from_subgraph_chain_using_seed_entity_and_type(),
         "get_representative_label_for_type": get_representative_label_for_type(),
-        "get_pronoun_identification_and_substitution_chain_without_example": get_pronoun_identification_and_substitution_chain_without_example()
+        "get_pronoun_identification_and_substitution_chain_without_example": get_pronoun_identification_and_substitution_chain_without_example(),
+        "get_validate_question_quality": get_validate_question_quality()
     }
     return prompt_chains
