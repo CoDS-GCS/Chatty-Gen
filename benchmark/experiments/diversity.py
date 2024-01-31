@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from seed_node_extractor import utils, sampling
 import numpy as np
+from collections import OrderedDict
 
 
 def get_types_for_nodes(seed_nodes, kg_name, non_rare_types):
@@ -34,17 +35,33 @@ def get_types_for_nodes(seed_nodes, kg_name, non_rare_types):
 
 def get_types_for_kg(kg_name):
     knowledge_graph_prefix = utils.knowledge_graph_to_uri[kg_name][1]
+    knowledge_graph_uri = utils.knowledge_graph_to_uri[kg_name][0]
     average_richness_file = f"../index_data/{knowledge_graph_prefix}/average_per_type.txt"
     filtered_df = sampling.remove_low_richness(average_richness_file)
     percentage_df = sampling.calculate_class_importance(filtered_df)
     update_df = sampling.remove_rare_types(percentage_df)
-    json_object = json.loads(update_df)
+    cleaned_df = sampling.eliminate_dominated_parents(update_df, knowledge_graph_uri)
+    json_object = json.loads(cleaned_df)
     return pd.DataFrame(json_object)
 
 
-def plot_comparison(benchmark_data, kg_data):
+def plot_comparison(benchmark_data, kg_data, kg_name):
+    benchmark_data = OrderedDict(sorted(benchmark_data.items(), key=lambda item: item[1], reverse=True))
+    kg_data = OrderedDict(sorted(kg_data.items(), key=lambda item: item[1], reverse=True))
 
     labels = list(set(benchmark_data.keys()) | set(kg_data.keys()))
+
+    labels = list()
+
+    for item in kg_data.keys():
+        if item not in labels:
+            labels.append(item)
+
+    for item in benchmark_data.keys():
+        if item not in labels:
+            labels.append(item)
+
+
     # Create an array of indices for the labels
     x = np.arange(len(labels))
 
@@ -67,19 +84,20 @@ def plot_comparison(benchmark_data, kg_data):
         ax.text(i + bar_width / 2, value + 0.1, str(round(value, 1)), ha='center', va='bottom')
 
     # Set labels and title
-    ax.set_xlabel('Node Types')
+    ax.set_xlabel(f"Node Types for {kg_name.upper()}")
     ax.set_ylabel('Percentage')
     ax.set_xticks(x)
-    ax.set_xticklabels(labels, rotation=45, ha='right')
+    ax.set_xticklabels(labels, rotation=0, ha='center')
     ax.legend()
 
-    plt.savefig('diversity.pdf', bbox_inches='tight')
+    output_file = f"{kg_name}_diversity.pdf"
+    plt.savefig(output_file, bbox_inches='tight')
     plt.tight_layout()
     plt.show()
 
 
 if __name__ == '__main__':
-    file = '../Debug/dblp_e11_20_5.json'
+    file = '../output_26/dblp_e11_20_5.json'
     kg_name = file.split('/')[-1].split('_')[0]
     file = open(file, 'r')
     file_data = json.load(file)
@@ -106,7 +124,7 @@ if __name__ == '__main__':
     benchmark_data = dict()
     for obj in json_object:
         benchmark_data[utils.get_name(obj['Type']).strip()] = obj['percentage']
-    plot_comparison(benchmark_data, kg_data)
+    plot_comparison(benchmark_data, kg_data, kg_name)
 
 
 

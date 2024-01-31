@@ -148,8 +148,8 @@ def remove_rare_types(input_df):
     total_count = filtered_df['Num_Entities'].sum()
     percentage_df = filtered_df.copy()
     percentage_df['percentage'] = (percentage_df['Num_Entities'] / total_count) * 100
-    print(percentage_df)
-    return percentage_df.to_json(orient='records')
+    # return percentage_df.to_json(orient='records')
+    return percentage_df
 
 def get_sample_distribution(input, total_samples):
     samples_per_type = {}
@@ -165,7 +165,6 @@ def get_sample_distribution(input, total_samples):
     return samples_per_type
 
 def calculate_class_importance(input_df):
-    # counts = pd.DataFrame(input)
     input_df['Count'] = input_df['Num_Entities'].astype(int)
     total_count = input_df['Num_Entities'].sum()
     percentage_df = input_df.copy()
@@ -183,7 +182,9 @@ def remove_low_richness(file_name):
     return result_df
 
 
-def get_seed_nodes(knowledge_graph_prefix, num_samples = 100):
+def get_seed_nodes(kg_name, num_samples = 100):
+    knowledge_graph_uri = utils.knowledge_graph_to_uri[kg_name][0]
+    knowledge_graph_prefix = utils.knowledge_graph_to_uri[kg_name][1]
     average_richness_file = f"index_data/{knowledge_graph_prefix}/average_per_type.txt"
     # Removed richness less than 2
     filtered_df = remove_low_richness(average_richness_file)
@@ -192,12 +193,50 @@ def get_seed_nodes(knowledge_graph_prefix, num_samples = 100):
     # Merge types less than one percent
     update_df = remove_rare_types(percentage_df)
     # update_df, rare_types = merge_rare_types(percentage_df)
+    cleaned_df = eliminate_dominated_parents(update_df, knowledge_graph_uri)
     # num_samples = 100
-    json_object = json.loads(update_df)
+    json_object = json.loads(cleaned_df)
     sample_distribution = get_sample_distribution(json_object, num_samples)
     print(sample_distribution)
     seed_nodes = return_seed_nodes(sample_distribution, knowledge_graph_prefix)
     return seed_nodes, sample_distribution
+
+
+def get_parents(children_names, knowledge_graph_uri):
+    parents = list()
+    for child in children_names:
+        query = ("select ?parent where {"
+                 f"<{child.strip()}> "
+                 "<http://www.w3.org/2000/01/rdf-schema#subClassOf> ?parent}")
+        results = utils.send_sparql_query(knowledge_graph_uri, query)
+        parent_exist = False
+        for binding in results['results']['bindings']:
+            parent = binding.get('parent', {}).get('value', None)
+            if parent in children_names:
+                parents.append(parent)
+                parent_exist = True
+        if not parent_exist:
+            parents.append(None)
+    return parents
+
+
+
+def eliminate_dominated_parents(df, knowledge_graph_uri):
+    df['Type'] = df['Type'].str.strip()
+    children_names = [x.strip() for x in df['Type'].values]
+    parents = get_parents(children_names, knowledge_graph_uri)
+    types_to_remove = list()
+    for child, parent in zip(children_names, parents):
+        if parent is not None:
+            count_child = df[df['Type'] == child]['Num_Entities'].values[0]
+            count_parent = df[df['Type'] == parent]['Num_Entities'].values[0]
+            if count_child / (count_parent * 1.0) > 0.99:
+                types_to_remove.append(parent)
+    df_cleaned = df[~df['Type'].isin(types_to_remove)]
+    print(df_cleaned)
+    return df_cleaned.to_json(orient='records')
+
+
 
 
 if __name__ == '__main__':
@@ -211,17 +250,20 @@ if __name__ == '__main__':
     kg = "dblp"
     knowledge_graph_uri = knowledge_graph_to_uri[kg][0]
     knowledge_graph_prefix = knowledge_graph_to_uri[kg][1]
-
     average_richness_file = f"index_data/{knowledge_graph_prefix}/average_per_type.txt"
     # Removed richness less than 2
     filtered_df = remove_low_richness(average_richness_file)
     # Calculate importance
     percentage_df = calculate_class_importance(filtered_df)
-    # Merge types less than one percent
-    # update_df, rare_types = merge_rare_types(percentage_df)
+    # # Merge types less than one percent
+    # # update_df, rare_types = merge_rare_types(percentage_df)
+    print(percentage_df)
     update_df = remove_rare_types(percentage_df)
+    print(update_df)
+    # Remove Dominated Parents i.e. once child forms more than 99% of the parent
+    cleaned_df = eliminate_dominated_parents(update_df, knowledge_graph_uri)
     num_samples = 100
-    json_object = json.loads(update_df)
+    json_object = json.loads(cleaned_df)
     sample_distribution = get_sample_distribution(json_object, num_samples)
     print(sample_distribution)
     seed_nodes = return_seed_nodes(sample_distribution, knowledge_graph_prefix)

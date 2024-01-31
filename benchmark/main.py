@@ -40,6 +40,14 @@ def main():
         choices=["subgraph", "subgraph-summarized"],  # Available choices
         help="Specify the approach (options: 'subgraph', 'subgraph-summarized')",
     )
+
+    parser.add_argument(
+        "--use-label",
+        nargs='+',  # Allows multiple values
+        type=bool,
+        default=True,  # Default value if not provided
+        help="Specify whether to use a label or use the information from the URI",
+    )
     # parser.add_argument(
     #     "--label-predicate",
     #     type=str,
@@ -67,9 +75,10 @@ def main():
     # label_predicate = args.label_predicate
     # label_predicate = args.label_predicates_file_name
     prompt = args.prompt
+    use_label = args.use_label
 
     # Generating dialogues using the provided arguments
-    generate_dialogues(kg_name, dataset_size, dialogue_size, approach, out_dir, prompt)
+    generate_dialogues(kg_name, dataset_size, dialogue_size, approach, out_dir, prompt, use_label)
 
 if __name__ == "__main__":
     print("starting benchmark generation....")

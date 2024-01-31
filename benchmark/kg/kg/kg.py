@@ -268,9 +268,13 @@ class KG:
         # self.label_predicate_url = self.get_label_predicate_uri(label_predicate)
         # tried with just label suffix as input and finding full url from the kg, but the sparql-endpoint timeout
         self.type_to_predicate_map = type_to_predicate_map
+        self.use_label = True
 
     def set_type_to_predicate_map(self, type_to_predicate_map):
         self.type_to_predicate_map = type_to_predicate_map
+
+    def set_use_label(self, use_label):
+        self.use_label = use_label
 
     def get_label_predicate_uri(self, label_predicate):
         query_template = '''
@@ -307,6 +311,9 @@ class KG:
                 <%s> <%s> ?label .
             }
         """
+        if not self.use_label:
+            return None
+
         uri = str(node.uri)
         predicate = self.get_predicate_label_for_type(node)
         query = label_query_template % (uri, predicate)

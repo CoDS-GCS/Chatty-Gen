@@ -151,7 +151,7 @@ def decouple_questions_and_answers(input_obj, subgraph, approach, endpoint, seed
 
 
 
-def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subgraph'],  out_dir='./results', prompt=1):
+def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subgraph'],  out_dir='./results', prompt=1, use_label=True):
     """
     Generate the dialogues given the following inputs:
     kg_name: name of the required knowledge graph
@@ -164,13 +164,15 @@ def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subg
     KG = get_kg_instance(kg_name)
     kg = KG()
     type_to_predicate_map = dict()
-    file_name = f"{kg_name}_types_representative.json"
-    if os.path.exists(file_name):
-        file = open(file_name, 'r')
-        type_to_predicate_map = json.load(file)
-    type_to_predicate_map = get_representative_label_per_node_type(kg.sparql_endpoint, sample_distribution, seed_nodes, type_to_predicate_map, file_name)
+    if use_label:
+        file_name = f"{kg_name}_types_representative.json"
+        if os.path.exists(file_name):
+            file = open(file_name, 'r')
+            type_to_predicate_map = json.load(file)
+        type_to_predicate_map = get_representative_label_per_node_type(kg.sparql_endpoint, sample_distribution, seed_nodes, type_to_predicate_map, file_name)
     kg.set_type_to_predicate_map(type_to_predicate_map)
-
+    kg.set_use_label(use_label)
+    
     # seed_nodes = get_dummy_seeds(kg_name)
     # seed_nodes = [] # will be added by @reham
     # suggestion to use kg.get_seed_nodes(dataset_size)
@@ -482,19 +484,22 @@ def get_representative_label_per_node_type(endpoint, sampling_distribution, seed
         if key not in type_per_label:
             sample_node = seed_nodes[count]
             sample_node_str = str(sample_node)
-            query = ("select distinct ?p where { {"
-                     f"<{sample_node_str}> ?p ?o"
-                     "} UNION {?s ?p "
+            query = ("select distinct ?p, ?ent where { {"
+                     f"<{sample_node_str}> ?p ?ent"
+                     "} UNION {?ent ?p "
                      f"<{sample_node_str}>"
                      "} } ")
             result = utils.send_sparql_query(endpoint, query)
             predicates = list()
             for binding in result["results"]["bindings"]:
-                predicates.append(binding.get('p', {}).get('value', None))
+                entity_type = binding.get('ent', {}).get('type', None)
+                predicate = binding.get('p', {}).get('value', None)
+                if entity_type == 'literal' and predicate not in predicates:
+                    predicates.append(predicate)
 
             try:
                 output = representative_label_for_type.get("chain").run(
-                    {"node_type": key, "predicates": ','.join(predicates)}
+                    {"node_type": key, "predicates": ', '.join(predicates)}
                 )
                 type_per_label[key] = output["predicate"].strip()
             except Exception as e:

@@ -784,7 +784,7 @@ def get_validate_question_quality():
         ],
         # partial_variables={"format_instructions": n_q_json_format_instructions},
         template=""" Given a set of questions about a specified entity, determine the validity of the input based on the following criteria:
-        1. The first question must explicitly mention the entity and cannot use a pronoun to refer to it.
+        1. The first question must explicitly mention the specified entity and cannot use a pronoun to refer to it.
         2. Subsequent questions should be relevant and appropriately formulated.
         If both conditions are met, consider the input "Valid." Otherwise, consider it "Not Valid."
 
