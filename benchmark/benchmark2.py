@@ -224,7 +224,7 @@ def generate_dialogues_from_subgraph(seed_nodes, kg, tracer_instance, dialogue_s
         triples_used = None
         answer_status_dict = None
         try:
-            with (get_openai_callback() as cb):
+            with get_openai_callback() as cb:
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
                 n = dialogue_size
                 try:
@@ -309,6 +309,7 @@ def generate_dialogues_from_subgraph(seed_nodes, kg, tracer_instance, dialogue_s
 
         dialogue = {
             "seed_entity": str(seed.uri),
+            "seed_label": str(seed.label),
             "dialogue": question_set_dialogue,
             "original": question_set,
             "queries": answer_queries,
@@ -366,7 +367,7 @@ def generate_dialogues_from_summarized_subgraph(seed_nodes, kg, tracer_instance,
         triples_used = None
         answer_status_dict = None
         try:
-            with (get_openai_callback() as cb):
+            with get_openai_callback() as cb:
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
                 n = dialogue_size
                 try:
@@ -449,6 +450,7 @@ def generate_dialogues_from_summarized_subgraph(seed_nodes, kg, tracer_instance,
 
         dialogue = {
             "seed_entity": str(seed.uri),
+            "seed_label": str(seed.label),
             "dialogue": question_set_dialogue,
             "original": question_set,
             "queries": answer_queries,

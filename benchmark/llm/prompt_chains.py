@@ -764,7 +764,7 @@ def get_pronoun_identification_and_substitution_chain_without_example():
     }
 
 
-def get_validate_question_quality():
+def get_validate_question_quality_old():
 
     n_q_response_schemas = [
         ResponseSchema(
@@ -802,6 +802,49 @@ def get_validate_question_quality():
     return {
         "chain": question_validation_chain, "payload": {}
     }
+
+def get_validate_question_quality():
+
+    n_q_response_schemas = [
+        ResponseSchema(
+            name="output", description="valid or not valid", type="string"
+        )
+    ]
+
+    n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
+        n_q_response_schemas
+    )
+    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
+
+
+    P_SUB_PROMPT = PromptTemplate(
+        input_variables=[
+            "entity",
+            "dialogue",
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""Given an entity and a dialogue (defined as a list of questions) about that entity, determine the dialogue is valid or invalid based on the following criteria:
+
+        The first question in the list should be specific to the entity by mentioning it directly (not a generic entity class).
+        The subsequent questions from the list must be grammatically correct. 
+
+        "entity" : {entity}
+        "dialogue" : {dialogue}
+        {format_instructions}
+
+        output: """,
+    )
+
+    question_validation_chain = LLMChain(
+        llm=llm,
+        prompt=P_SUB_PROMPT,
+        verbose=True,
+    )
+
+    return {
+        "chain": question_validation_chain, "payload": {}
+    }
+
 
 def get_prompt_chains():
     prompt_chains = {
