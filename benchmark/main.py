@@ -48,6 +48,14 @@ def main():
         default=True,  # Default value if not provided
         help="Specify whether to use a label or use the information from the URI",
     )
+
+    parser.add_argument(
+        "--seed-nodes-file",
+        type=str,
+        default='seed_nodes.txt',
+        help="Specify the file name for the required seed nodes",
+    )
+
     # parser.add_argument(
     #     "--label-predicate",
     #     type=str,
@@ -73,12 +81,12 @@ def main():
     approach = args.approach
     out_dir = args.output_dir
     # label_predicate = args.label_predicate
-    # label_predicate = args.label_predicates_file_name
+    seed_nodes_file = args.seed_nodes_file
     prompt = args.prompt
     use_label = args.use_label
 
     # Generating dialogues using the provided arguments
-    generate_dialogues(kg_name, dataset_size, dialogue_size, approach, out_dir, prompt, use_label)
+    generate_dialogues(kg_name, dataset_size, dialogue_size, approach, out_dir, prompt, use_label, seed_nodes_file)
 
 if __name__ == "__main__":
     print("starting benchmark generation....")

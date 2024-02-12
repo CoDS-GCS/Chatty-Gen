@@ -24,7 +24,8 @@ def get_all_nodes_for_type(type, sparql_endpoint, offset):
     data = []
     for binding in query_result['results']['bindings']:
         entity = binding.get('entity', {}).get('value', None)
-        data.append(entity)
+        if entity.startswith('http://') or entity.startswith('https://'):
+            data.append(entity)
     return data
 
 

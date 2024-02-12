@@ -14,7 +14,7 @@ def get_triple_for_summarized(triple, subgraph):
         # if str(subgraph.get_triple_representation_for_optimized(el)) == triple:
         seralized_triple = str(subgraph.get_triple_representation_no_object(el)).replace('"', '').replace("'", "")
         if seralized_triple == triple:
-            return el
+            return subgraph.get_triple_with_uris_no_object(el)
     return None
 
 
@@ -119,10 +119,10 @@ def get_answer_LLM_based(question, triples, subgraph, approach):
     triples_list = list()
     for triple in triples:
         if approach == "optimized":
-            original_triple = get_triple_for_summarized(triple, subgraph)
+            returned_triple = get_triple_for_summarized(triple, subgraph)
         else:
-            original_triple = get_original_triple(triple, subgraph)
-        subject, predicate, object = original_triple
+            returned_triple = get_original_triple(triple, subgraph)
+        subject, predicate, object = returned_triple
         triples_list.append((subject.__str__(), predicate.__str__(), object.__str__()))
 
     output = get_answer_chain.get("chain").run({"question": question, "triples": triples_list})

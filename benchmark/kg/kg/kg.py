@@ -140,6 +140,13 @@ class SubGraph:
             object = obj_.label if obj_.label else defrag_uri(str(obj_.uri))
             return('', predicate, object)
 
+    def get_triple_with_uris_no_object(self, triple: Tuple[Node, Predicate, Node]):
+        sub_, pred_, obj_ = triple
+        if self.seed_node == sub_:
+            return (sub_.uri, pred_.uri, '')
+        elif self.seed_node == obj_:
+            return ('', pred_.uri, obj_.uri)
+            
     def get_quadruple_representation(self, quadruple: Tuple[Node, Predicate, Node, int]):
         triple_representation = self.get_triple_representation_for_optimized(quadruple[:3])
         return tuple(triple_representation) + (quadruple[3],)
@@ -372,6 +379,14 @@ class KG:
             self.logger.exception("Error occurred while executing custom query: %s", str(e))
             return None
 
+    def estimate_graph_size(self, seed_node: Node):
+        seed_uri = seed_node.uri
+        sparql = f"""SELECT count(*) as ?count WHERE {{ {{?s ?p <{seed_uri}>}} Union {{<{seed_uri}> ?p ?o}} }}"""
+        sub_result = utils.send_sparql_query(self.sparql_endpoint, sparql)
+        sub_count = sub_result["results"]["bindings"][0].get('count', {}).get('value', None)
+        return int(sub_count)
+
+
     def subgraph_extractor(self, seed_node: Node) -> SubGraph:
         """
         subgraph in two steps - two SPARQL
@@ -396,15 +411,15 @@ class KG:
             for p, o in zip(preds, objs):
                 if isinstance(p, URIRef):
                     pred = Predicate(uri=p)
-                    p_label = self.get_label(pred)
-                    pred.label = p_label
+                    # p_label = self.get_label(pred)
+                    # pred.label = p_label
                 else:
                     pred = Predicate(label=p)
 
                 if isinstance(o, URIRef):
                     obj = Node(uri=o)
-                    o_label = self.get_label(obj)
-                    obj.label = o_label
+                    # o_label = self.get_label(obj)
+                    # obj.label = o_label
                 else:
                     obj = Node(label=o)
 
@@ -424,15 +439,15 @@ class KG:
             for p, s in zip(preds, subs):
                 if isinstance(p, URIRef):
                     pred = Predicate(uri=p)
-                    p_label = self.get_label(pred)
-                    pred.label = p_label
+                    # p_label = self.get_label(pred)
+                    # pred.label = p_label
                 else:
                     pred = Predicate(label=p)
 
                 if isinstance(s, URIRef):
                     subj = Node(uri=s)
-                    s_label = self.get_label(subj)
-                    subj.label = s_label
+                    # s_label = self.get_label(subj)
+                    # subj.label = s_label
                 else:
                     subj = Node(label=s)
                 triples.append((subj, pred, seed_node))
@@ -596,7 +611,7 @@ class YagoKG(KG):
 
 class DbpediaKG(KG):
     def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"),
-                 rdf_format="nt", endpoints=["http://dbpedia.org/sparql/", "http://live.dbpedia.org/sparql/"]):
+                 rdf_format="nt", endpoints=["http://206.12.95.86:8890/sparql/", "http://dbpedia.org/sparql/", "http://live.dbpedia.org/sparql/"]):
         super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to DBPedia
         allowed_formats = ["nt", "xml", "n3", "trix"]

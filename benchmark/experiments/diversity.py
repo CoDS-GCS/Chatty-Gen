@@ -49,7 +49,6 @@ def plot_comparison(benchmark_data, kg_data, kg_name):
     benchmark_data = OrderedDict(sorted(benchmark_data.items(), key=lambda item: item[1], reverse=True))
     kg_data = OrderedDict(sorted(kg_data.items(), key=lambda item: item[1], reverse=True))
 
-    labels = list(set(benchmark_data.keys()) | set(kg_data.keys()))
 
     labels = list()
 
@@ -87,7 +86,7 @@ def plot_comparison(benchmark_data, kg_data, kg_name):
     ax.set_xlabel(f"Node Types for {kg_name.upper()}")
     ax.set_ylabel('Percentage')
     ax.set_xticks(x)
-    ax.set_xticklabels(labels, rotation=0, ha='center')
+    ax.set_xticklabels(labels, rotation=45, ha='right')
     ax.legend()
 
     output_file = f"{kg_name}_diversity.pdf"

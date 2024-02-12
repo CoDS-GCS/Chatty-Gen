@@ -8,18 +8,6 @@ from benchmark.kg.kg.kg import Node
 from rdflib import URIRef
 
 
-# class Node:
-#     uri: str
-#     type: str
-#
-#     def __init__(self, uri, type):
-#         self.uri = uri
-#         self.type = type
-#
-#     def __str__(self):
-#         return f"Type:{self.type}, URI:{self.uri}"
-
-
 # This is an initial implementation, which search for any character is the string
 def check_is_human_readable(label):
     for char in label:
@@ -161,7 +149,19 @@ def get_sample_distribution(input, total_samples):
         samples_per_type[inst['Type']] = samples
         used_samples += samples
 
-    # samples_per_type['Merged'] = max(total_samples - used_samples, 0)
+    remaining_samples = total_samples - used_samples
+    for node_type in samples_per_type:
+        if remaining_samples > 0 and samples_per_type[node_type] == 0:
+            samples_per_type[node_type] += 1
+            remaining_samples -= 1
+
+    index = 0
+    while remaining_samples > 0:
+        node_type = list(samples_per_type.keys())[index]
+        samples_per_type[node_type] += 1
+        remaining_samples -= 1
+        index = (index + 1) % len(samples_per_type)
+
     return samples_per_type
 
 def calculate_class_importance(input_df):
