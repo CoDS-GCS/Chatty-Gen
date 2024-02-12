@@ -21,7 +21,7 @@ def evaluate_question_quality_old(data, chain):
 def evaluate_question_quality(data, chain):
     valid, not_valid = 0, 0
     for inst in data:
-        entity = inst['seed_entity']
+        entity = inst['seed_label']
         dialogue = inst['dialogue']
         output = chain.get("chain").run({"entity": entity, "dialogue": dialogue})
         print(output)
