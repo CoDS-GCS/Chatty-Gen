@@ -17,15 +17,12 @@ def perform_operation(kg, seed):
     start_time = time.time()
     estimate = kg.estimate_graph_size(seed)
     if estimate > 1000:
-        # print("High Estimate for seed ", seed)
         return None
-    if str(seed.uri) == 'http://dbpedia.org/resource/1980_in_spaceflight':
-        x = 1
     subgraph = kg.subgraph_extractor(seed)
     end_time = time.time()
     # print("Subgraph Extracted After ", end_time - start_time, " seconds")
     subgraph = kg.filter_subgraph(subgraph, seed)
-    if len(seed.label.split(' ')) > max_label_length or len(subgraph.triples) > 400:
+    if seed.label and len(seed.label.split(' ')) > max_label_length or len(subgraph.triples) > 400:
         return None
     # print("Subgraph filtered After ", time.time() - end_time, " seconds")
     return subgraph
@@ -49,11 +46,12 @@ def get_representative_label_per_node_type(endpoint, sampling_distribution, seed
         if key not in type_per_label:
             sample_node = seed_nodes[count]
             sample_node_str = str(sample_node)
-            query = ("select distinct ?p, ?ent where { {"
-                     f"<{sample_node_str}> ?p ?ent"
-                     "} UNION {?ent ?p "
-                     f"<{sample_node_str}>"
-                     "} } ")
+            query = f"select distinct ?p, ?ent where {{ <{sample_node_str}> ?p ?ent}}"
+            # query = ("select distinct ?p, ?ent where { {"
+            #          f"<{sample_node_str}> ?p ?ent"
+            #          "} UNION {?ent ?p "
+            #          f"<{sample_node_str}>"
+            #          "} } ")
             result = utils.send_sparql_query(endpoint, query)
             predicates = list()
             for binding in result["results"]["bindings"]:
@@ -102,12 +100,10 @@ def retrieve_seed_nodes_with_subgraphs(kg_name, dataset_size, sampler, use_label
         try:
             subgraph = func_timeout(300, perform_operation, args=(kg, seed))
             if subgraph is None:
-                print(f"Skipped node {seed.uri}")
                 new_node = sampler.sample_node(seed.nodetype)
                 seed_nodes.append(new_node)
                 continue
-            print(f"{seed.uri}\t{seed.label}")
-            # print(f"{seed.uri}")
+            # print(f"{seed.uri}\t{seed.label}")
             key = seed.label if seed.label else seed.uri
             seednode_to_subgraph_map[key] = subgraph
             final_seed_nodes.append(seed)

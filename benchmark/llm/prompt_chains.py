@@ -25,6 +25,9 @@ class LLMInput(BaseModel):
 
 class SchemaInput(BaseModel):
     output: List[str]
+
+class Item(BaseModel):
+    output: str
 def format_template_with_dict(template, values_dict):
     try:
         formatted_string = template.format(**values_dict)
@@ -395,7 +398,7 @@ def get_n_question_from_subgraph_chain_without_example():
         output_parser=n_q_json_output_parser
     )
     payload = {}
-    return {"chain": n_question_generator_chain, "payload": payload}
+    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT}
 
 def get_n_question_from_subgraph_chain_with_example():
     # Define your desired data structure.
@@ -629,7 +632,7 @@ def get_n_question_from_summarized_subgraph_chain_without_example():
         output_parser=n_q_json_output_parser
     )
     payload = {}
-    return {"chain": n_question_generator_chain, "payload": payload}
+    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT}
 
 
 def get_n_question_from_subgraph_chain_using_seed_entity():
@@ -706,7 +709,7 @@ def get_representative_label_for_type():
             "predicates",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""Given a {node_type} with predicates {predicates}, suggest the most representative predicate {format_instructions}.
+        template="""Given the specified node type {node_type}  and its associated predicates {predicates}, choose a suitable predicate to serve as a label for this type. {format_instructions}.
 
         predicate: """,
     )
@@ -825,8 +828,8 @@ def get_validate_question_quality():
         partial_variables={"format_instructions": n_q_json_format_instructions},
         template="""Given an entity and a dialogue (defined as a list of questions) about that entity, determine the dialogue is valid or invalid based on the following criteria:
 
-        The first question in the list should be specific to the entity by mentioning it directly (not a generic entity class).
-        The subsequent questions from the list must be grammatically correct. 
+        1. The first question in the list should be specific to the entity by mentioning it directly (not a generic entity class).
+        2. The subsequent questions from the list must be grammatically correct.
 
         "entity" : {entity}
         "dialogue" : {dialogue}
@@ -839,12 +842,15 @@ def get_validate_question_quality():
         llm=llm,
         prompt=P_SUB_PROMPT,
         verbose=True,
+        output_parser=PydanticOutputParser(pydantic_object=Item)
     )
 
     return {
         "chain": question_validation_chain, "payload": {}
     }
 
+def get_num_tokens(prompt):
+    return llm.get_num_tokens(prompt)
 
 def get_prompt_chains():
     prompt_chains = {

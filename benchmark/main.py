@@ -36,7 +36,7 @@ def main():
         "--approach",
         nargs='+',  # Allows multiple values
         type=str,
-        default=["subgraph"],  # Default value if not provided
+        default=["subgraph-summarized"],  # Default value if not provided
         choices=["subgraph", "subgraph-summarized"],  # Available choices
         help="Specify the approach (options: 'subgraph', 'subgraph-summarized')",
     )
@@ -52,7 +52,8 @@ def main():
     parser.add_argument(
         "--seed-nodes-file",
         type=str,
-        default='seed_nodes.txt',
+        # default='test_seeds.txt',
+        default=None,
         help="Specify the file name for the required seed nodes",
     )
 

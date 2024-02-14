@@ -24,10 +24,10 @@ def evaluate_question_quality(data, chain):
         entity = inst['seed_label']
         dialogue = inst['dialogue']
         output = chain.get("chain").run({"entity": entity, "dialogue": dialogue})
-        print(output)
-        if output == 'valid':
+        output = output.dict()['output']
+        if output.lower() == 'valid':
             valid += 1
-        elif output == 'not valid':
+        elif output.lower() == 'not valid':
             not_valid += 1
         else:
             print("Result:\n", output)

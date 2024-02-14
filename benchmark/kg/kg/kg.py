@@ -326,6 +326,8 @@ class KG:
         query = label_query_template % (uri, predicate)
         results = self.shoot_custom_query(query)
         label = None
+        if results is None:
+            return None
         if (
                 "results" in results
                 and "bindings" in results["results"]
@@ -364,15 +366,21 @@ class KG:
         Shoot any custom query and get the SPARQL results as a dictionary
         """
         try:
-            caching_answer = self.r.get(_custom_query)
-            if caching_answer:
-                # print "@caching layer"
-                return json.loads(caching_answer)
+            # caching_answer = self.r.get(_custom_query)
+            # if caching_answer:
+            # print "@caching layer"
+            # return json.loads(caching_answer)
             sparql = SPARQLWrapper(self.select_sparql_endpoint())
             sparql.setQuery(_custom_query)
             sparql.setReturnFormat(JSON)
+            # try:
             caching_answer = sparql.query().convert()
-            self.r.set(_custom_query, json.dumps(caching_answer))
+            # except Exception as e:
+            #     print(e)
+            #     print("Retrying With queries")
+            #     time.sleep(5)
+            #     caching_answer = sparql.query().convert()
+            # self.r.set(_custom_query, json.dumps(caching_answer))
             return caching_answer
 
         except Exception as e:
@@ -396,7 +404,8 @@ class KG:
         try:
             triples = []
             seed_label = self.get_label(seed_node)
-            seed_node.label = seed_label
+            if seed_label:
+                seed_node.label = seed_label
             subject_ = seed_node.uri
             sparql_sub = f"""
             SELECT ?predicate ?object WHERE {{
@@ -408,7 +417,10 @@ class KG:
             # keys = q_response.get_keys()
             preds = q_response.values_by_key('predicate')
             objs = q_response.values_by_key('object')
+            i = 0
             for p, o in zip(preds, objs):
+                # print("In loop ", i)
+                # i += 1
                 if isinstance(p, URIRef):
                     pred = Predicate(uri=p)
                     # p_label = self.get_label(pred)
@@ -425,6 +437,7 @@ class KG:
 
                 triples.append((seed_node, pred, obj))
 
+            # print("out loop subject")
             object_ = seed_node.uri
             sparql_obj = f"""
             SELECT ?predicate ?subject WHERE {{
@@ -436,7 +449,10 @@ class KG:
             # keys = q_response.get_keys()
             preds = q_response.values_by_key('predicate')
             subs = q_response.values_by_key('subject')
+            i = 0
             for p, s in zip(preds, subs):
+                # print("in loop object ", i)
+                # i+=1
                 if isinstance(p, URIRef):
                     pred = Predicate(uri=p)
                     # p_label = self.get_label(pred)
