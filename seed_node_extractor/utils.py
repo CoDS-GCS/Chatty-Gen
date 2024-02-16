@@ -17,7 +17,7 @@ knowledge_graph_to_uri = {
     "dbpedia": ("http://206.12.95.86:8890/sparql", "dbpedia"),
     # "lc_quad": "http://206.12.95.86:8891/sparql",
     "microsoft_academic": ("http://206.12.97.159:8890/sparql", "makg"),
-    "yago": ("http://206.12.95.86:8892/sparql", "yago"),
+    "yago": ("http://206.12.95.86:8892/sparql", "schema"),
     "dblp": ("http://206.12.95.86:8894/sparql", "dblp"),
 }
 

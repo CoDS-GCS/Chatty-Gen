@@ -85,8 +85,8 @@ def bar_chart_for_one_question_word(baseline_data, approach_data, kg_name):
 
     # Create the grouped bar chart
     fig, ax = plt.subplots()
-    bar1 = ax.bar(x - bar_width / 2, values_baseline, bar_width, label='Baseline')
-    bar2 = ax.bar(x + bar_width / 2, values_approach, bar_width, label='Approach')
+    bar1 = ax.bar(x - bar_width / 2, values_baseline, bar_width, label='Subgraph')
+    bar2 = ax.bar(x + bar_width / 2, values_approach, bar_width, label='Summarized')
 
     for i, value in enumerate(values_baseline):
         ax.text(i - bar_width / 2, value + 0.1, str(value), ha='center', va='bottom')
