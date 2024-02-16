@@ -1,19 +1,23 @@
 import random
 import langchain
 from langchain.prompts import PromptTemplate
-from langchain.llms import OpenAI
+
+# from langchain.llms import OpenAI, VertexAI
+from langchain_google_vertexai import VertexAI
 from langchain.output_parsers import (
     StructuredOutputParser,
     ResponseSchema,
-    PydanticOutputParser
+    PydanticOutputParser,
 )
-from pydantic import BaseModel, Field, validator
+from langchain_core.pydantic_v1 import BaseModel
 from langchain.chains import LLMChain
-from typing import List, Optional
+from typing import List
 
 langchain.debug = True
 
-llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=False)
+# llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=False)
+llm = VertexAI(model_name="gemini-pro", temperature=0.5, streaming=False)
+
 
 class QuestionItem(BaseModel):
     question: str
@@ -23,11 +27,15 @@ class QuestionItem(BaseModel):
 class LLMInput(BaseModel):
     output: List[QuestionItem]
 
+
 class SchemaInput(BaseModel):
     output: List[str]
 
+
 class Item(BaseModel):
     output: str
+
+
 def format_template_with_dict(template, values_dict):
     try:
         formatted_string = template.format(**values_dict)
@@ -134,6 +142,7 @@ def get_question_template_chain(placeholder):
         max_retry = 3
         i = 0
         retry = False
+        output = None
         while not retry and i < max_retry:
             try:
                 i += 1
@@ -142,7 +151,7 @@ def get_question_template_chain(placeholder):
                 if valid_output(output, placeholder):
                     break
             except Exception as e:
-                print("ERROR: retry...{i}")
+                print(f"ERROR: retry...{i} - {e}")
                 continue
 
         if output is None:
@@ -274,7 +283,7 @@ def get_pronoun_identification_chain():
 
     def select_random_pronoun_examples():
         out = []
-        for k, v in pronoun_examples_data.items():
+        for _, v in pronoun_examples_data.items():
             out.append(random.choice(v))
         return out
 
@@ -393,12 +402,15 @@ def get_n_question_from_subgraph_chain_without_example():
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT, verbose=False, output_parser=n_q_json_output_parser
     )
     payload = {}
-    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT}
+    return {
+        "chain": n_question_generator_chain,
+        "payload": payload,
+        "prompt": N_Q_PROMPT,
+    }
+
 
 def get_n_question_from_subgraph_chain_with_example():
     # Define your desired data structure.
@@ -471,9 +483,7 @@ def get_n_question_from_subgraph_chain_with_example():
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT, verbose=False, output_parser=n_q_json_output_parser
     )
     payload = {
         "example_subgraph": example_subgraph,
@@ -481,6 +491,7 @@ def get_n_question_from_subgraph_chain_with_example():
         "example_output": example_output,
     }
     return {"chain": n_question_generator_chain, "payload": payload}
+
 
 def get_n_question_from_schema_chain_without_example():
     n_q_response_schemas = [
@@ -511,18 +522,15 @@ def get_n_question_from_schema_chain_without_example():
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT, verbose=False, output_parser=n_q_json_output_parser
     )
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
 
+
 def get_answer_from_question_and_triple_zero_shot():
     n_q_response_schemas = [
-        ResponseSchema(
-            name="sparql", description="a SPARQL query", type="string"
-        )
+        ResponseSchema(name="sparql", description="a SPARQL query", type="string")
     ]
 
     n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
@@ -546,11 +554,10 @@ def get_answer_from_question_and_triple_zero_shot():
     )
 
     n_answer_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT, verbose=False, output_parser=n_q_json_output_parser
     )
     return {"chain": n_answer_generator_chain, "payload": {}}
+
 
 def get_target_answer_from_triples():
     n_q_response_schemas = [
@@ -580,11 +587,10 @@ def get_target_answer_from_triples():
     )
 
     n_answer_target_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT, verbose=False, output_parser=n_q_json_output_parser
     )
     return {"chain": n_answer_target_chain, "payload": {}}
+
 
 def get_n_question_from_summarized_subgraph_chain_without_example():
     # n_q_response_schemas = [
@@ -627,12 +633,14 @@ def get_n_question_from_summarized_subgraph_chain_without_example():
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT, verbose=False, output_parser=n_q_json_output_parser
     )
     payload = {}
-    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT}
+    return {
+        "chain": n_question_generator_chain,
+        "payload": payload,
+        "prompt": N_Q_PROMPT,
+    }
 
 
 def get_n_question_from_subgraph_chain_using_seed_entity():
@@ -655,12 +663,11 @@ def get_n_question_from_subgraph_chain_using_seed_entity():
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
-        verbose=True,
-        output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT, verbose=True, output_parser=n_q_json_output_parser
     )
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
+
 
 def get_n_question_from_subgraph_chain_using_seed_entity_and_type():
     n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
@@ -684,17 +691,18 @@ def get_n_question_from_subgraph_chain_using_seed_entity_and_type():
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT, verbose=False, output_parser=n_q_json_output_parser
     )
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
 
+
 def get_representative_label_for_type():
     n_q_response_schemas = [
         ResponseSchema(
-            name="predicate", description="The most representative predicate", type="string"
+            name="predicate",
+            description="The most representative predicate",
+            type="string",
         )
     ]
 
@@ -715,9 +723,7 @@ def get_representative_label_for_type():
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser
+        llm=llm, prompt=N_Q_PROMPT, verbose=False, output_parser=n_q_json_output_parser
     )
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
@@ -762,24 +768,19 @@ def get_pronoun_identification_and_substitution_chain_without_example():
         output_parser=p_sub_json_output_parser,
     )
 
-    return {
-        "chain": pronoun_substitution_chain, "payload": {}
-    }
+    return {"chain": pronoun_substitution_chain, "payload": {}}
 
 
 def get_validate_question_quality_old():
 
     n_q_response_schemas = [
-        ResponseSchema(
-            name="output", description="valid or not valid", type="string"
-        )
+        ResponseSchema(name="output", description="valid or not valid", type="string")
     ]
 
     n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
         n_q_response_schemas
     )
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
-
 
     P_SUB_PROMPT = PromptTemplate(
         input_variables=[
@@ -802,23 +803,19 @@ def get_validate_question_quality_old():
         # output_parser=n_q_json_output_parser,
     )
 
-    return {
-        "chain": question_validation_chain, "payload": {}
-    }
+    return {"chain": question_validation_chain, "payload": {}}
+
 
 def get_validate_question_quality():
 
     n_q_response_schemas = [
-        ResponseSchema(
-            name="output", description="valid or not valid", type="string"
-        )
+        ResponseSchema(name="output", description="valid or not valid", type="string")
     ]
 
     n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
         n_q_response_schemas
     )
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
-
 
     P_SUB_PROMPT = PromptTemplate(
         input_variables=[
@@ -842,15 +839,15 @@ def get_validate_question_quality():
         llm=llm,
         prompt=P_SUB_PROMPT,
         verbose=True,
-        output_parser=PydanticOutputParser(pydantic_object=Item)
+        output_parser=PydanticOutputParser(pydantic_object=Item),
     )
 
-    return {
-        "chain": question_validation_chain, "payload": {}
-    }
+    return {"chain": question_validation_chain, "payload": {}}
+
 
 def get_num_tokens(prompt):
     return llm.get_num_tokens(prompt)
+
 
 def get_prompt_chains():
     prompt_chains = {
@@ -867,6 +864,6 @@ def get_prompt_chains():
         "get_n_question_from_subgraph_chain_using_seed_entity_and_type": get_n_question_from_subgraph_chain_using_seed_entity_and_type(),
         "get_representative_label_for_type": get_representative_label_for_type(),
         "get_pronoun_identification_and_substitution_chain_without_example": get_pronoun_identification_and_substitution_chain_without_example(),
-        "get_validate_question_quality": get_validate_question_quality()
+        "get_validate_question_quality": get_validate_question_quality(),
     }
     return prompt_chains

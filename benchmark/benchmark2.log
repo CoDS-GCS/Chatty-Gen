@@ -269,3 +269,51 @@
 2023-12-17 22:44:32,928 - logger - INFO - INDEX : 5 -- pronoun identify chain end --
 2023-12-17 22:44:32,928 - logger - INFO - INDEX : 5 -- pronoun substitute chain start --
 2023-12-17 22:44:33,549 - logger - INFO - INDEX : 5 -- pronoun substitute chain end --
+2024-02-16 17:24:32,567 - logger - INFO - INDEX : 0 -- start --
+2024-02-16 17:24:32,568 - logger - ERROR - Error occurred while executing custom query: Error 111 connecting to localhost:6379. Connection refused.
+Traceback (most recent call last):
+  File "/home/omij/DATA/CODS/Chatbot-Resources/.venv/lib/python3.10/site-packages/redis/connection.py", line 264, in connect
+    sock = self.retry.call_with_retry(
+  File "/home/omij/DATA/CODS/Chatbot-Resources/.venv/lib/python3.10/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/omij/DATA/CODS/Chatbot-Resources/.venv/lib/python3.10/site-packages/redis/connection.py", line 265, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/home/omij/DATA/CODS/Chatbot-Resources/.venv/lib/python3.10/site-packages/redis/connection.py", line 627, in _connect
+    raise err
+  File "/home/omij/DATA/CODS/Chatbot-Resources/.venv/lib/python3.10/site-packages/redis/connection.py", line 615, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/omij/DATA/CODS/Chatbot-Resources/benchmark/kg/kg/kg.py", line 360, in shoot_custom_query
+    caching_answer = self.r.get(_custom_query)
+  File "/home/omij/DATA/CODS/Chatbot-Resources/.venv/lib/python3.10/site-packages/redis/commands/core.py", line 1829, in get
+    return self.execute_command("GET", name)
+  File "/home/omij/DATA/CODS/Chatbot-Resources/.venv/lib/python3.10/site-packages/redis/client.py", line 533, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/home/omij/DATA/CODS/Chatbot-Resources/.venv/lib/python3.10/site-packages/redis/connection.py", line 1086, in get_connection
+    connection.connect()
+  File "/home/omij/DATA/CODS/Chatbot-Resources/.venv/lib/python3.10/site-packages/redis/connection.py", line 270, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+2024-02-16 17:24:32,572 - logger - ERROR - Error occurred while extracting subgraph: argument of type 'NoneType' is not iterable
+Traceback (most recent call last):
+  File "/home/omij/DATA/CODS/Chatbot-Resources/benchmark/kg/kg/kg.py", line 383, in subgraph_extractor
+    seed_label = self.get_label(seed_node)
+  File "/home/omij/DATA/CODS/Chatbot-Resources/benchmark/kg/kg/kg.py", line 323, in get_label
+    "results" in results
+TypeError: argument of type 'NoneType' is not iterable
+2024-02-16 17:34:05,126 - logger - INFO - INDEX : 0 -- start --
+2024-02-16 17:34:38,189 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-16 17:34:42,442 - logger - INFO - INDEX : 0 -- ERROR: 0 : unmatched '}' (<unknown>, line 1) --
+2024-02-16 17:34:42,442 - logger - INFO - INDEX : 1 -- start --
+2024-02-16 17:35:11,602 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-16 17:35:13,608 - logger - INFO - INDEX : 1 -- ERROR: 1 : 'tuple' object has no attribute 'replace' --
+2024-02-16 17:35:13,609 - logger - INFO - INDEX : 2 -- start --
+2024-02-16 17:35:59,489 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-16 17:36:09,511 - logger - INFO - INDEX : 2 -- ERROR: 2 : 'tuple' object has no attribute 'replace' --
+2024-02-16 17:36:09,511 - logger - INFO - INDEX : 3 -- start --
+2024-02-16 17:36:32,094 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-16 17:36:37,426 - logger - INFO - INDEX : 3 -- ERROR: 3 : 'tuple' object has no attribute 'replace' --
