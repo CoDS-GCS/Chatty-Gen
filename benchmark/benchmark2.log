@@ -269,3 +269,947 @@
 2023-12-17 22:44:32,928 - logger - INFO - INDEX : 5 -- pronoun identify chain end --
 2023-12-17 22:44:32,928 - logger - INFO - INDEX : 5 -- pronoun substitute chain start --
 2023-12-17 22:44:33,549 - logger - INFO - INDEX : 5 -- pronoun substitute chain end --
+2024-02-19 22:12:14,667 - logger - INFO - INDEX : 0 -- start --
+2024-02-19 22:12:14,668 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-19 22:12:18,421 - logger - INFO - INDEX : 0 -- ERROR: 0 : string indices must be integers --
+2024-02-19 22:12:28,642 - logger - INFO - INDEX : 1 -- start --
+2024-02-19 22:12:28,642 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-19 22:12:32,667 - logger - INFO - INDEX : 1 -- ERROR: 1 : string indices must be integers --
+2024-02-19 22:12:40,523 - logger - INFO - INDEX : 2 -- start --
+2024-02-19 22:12:40,524 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-19 22:13:25,912 - logger - INFO - INDEX : 0 -- start --
+2024-02-19 22:13:25,912 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-19 22:13:38,722 - logger - INFO - INDEX : 1 -- start --
+2024-02-19 22:13:38,722 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-19 22:13:49,964 - logger - INFO - INDEX : 2 -- start --
+2024-02-19 22:13:49,964 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-19 22:13:59,771 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-19 22:13:59,771 - logger - INFO - INDEX : 2 -- question set : ['What is the birth place of Alastair Ralphs?', 'What is the nationality of Alastair Ralphs?', 'Does Alastair Ralphs have any alternate names?', 'When was Alastair Ralphs born?'] --
+2024-02-19 22:13:59,772 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-19 22:14:01,653 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-19 22:14:01,653 - logger - INFO - INDEX : 3 -- start --
+2024-02-19 22:14:01,654 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-19 22:14:03,086 - logger - INFO - INDEX : 3 -- ERROR: 3 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:15:00,587 - logger - INFO - INDEX : 4 -- start --
+2024-02-19 22:15:00,587 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-19 22:15:06,522 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-19 22:15:06,522 - logger - INFO - INDEX : 4 -- question set : ["What is the publication date of 'A Bad Night'?", "What genre does 'A Bad Night' belong to?", "Who is the author of 'A Bad Night'?"] --
+2024-02-19 22:15:06,522 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-19 22:15:07,289 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-19 22:15:07,289 - logger - INFO - INDEX : 5 -- start --
+2024-02-19 22:15:07,289 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-19 22:15:10,366 - logger - INFO - INDEX : 5 -- ERROR: 5 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:15:17,950 - logger - INFO - INDEX : 6 -- start --
+2024-02-19 22:15:17,951 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-19 22:15:20,401 - logger - INFO - INDEX : 6 -- ERROR: 6 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:15:28,438 - logger - INFO - INDEX : 7 -- start --
+2024-02-19 22:15:28,439 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-19 22:15:31,566 - logger - INFO - INDEX : 7 -- ERROR: 7 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:23:29,546 - logger - INFO - INDEX : 0 -- start --
+2024-02-19 22:23:29,549 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-19 22:25:18,215 - logger - INFO - INDEX : 0 -- start --
+2024-02-19 22:25:18,220 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-19 22:27:21,848 - logger - INFO - INDEX : 0 -- start --
+2024-02-19 22:27:21,850 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-19 22:27:35,011 - logger - INFO - INDEX : 1 -- start --
+2024-02-19 22:27:35,012 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-19 22:27:45,741 - logger - INFO - INDEX : 2 -- start --
+2024-02-19 22:27:45,741 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-19 22:27:54,842 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-19 22:27:54,843 - logger - INFO - INDEX : 2 -- question set : ['What is the birth place of Alastair Ralphs?', 'What is the nationality of Alastair Ralphs?', 'Does Alastair Ralphs have any alternate names?', 'When was Alastair Ralphs born?'] --
+2024-02-19 22:27:54,843 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-19 22:27:55,604 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-19 22:27:55,604 - logger - INFO - INDEX : 3 -- start --
+2024-02-19 22:27:55,605 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-19 22:27:56,832 - logger - INFO - INDEX : 3 -- ERROR: 3 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:28:54,957 - logger - INFO - INDEX : 4 -- start --
+2024-02-19 22:28:54,957 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-19 22:28:57,658 - logger - INFO - INDEX : 4 -- ERROR: 4 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:28:59,685 - logger - INFO - INDEX : 5 -- start --
+2024-02-19 22:28:59,685 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-19 22:29:02,377 - logger - INFO - INDEX : 5 -- ERROR: 5 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:29:10,440 - logger - INFO - INDEX : 6 -- start --
+2024-02-19 22:29:10,441 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-19 22:29:13,737 - logger - INFO - INDEX : 6 -- ERROR: 6 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:29:21,051 - logger - INFO - INDEX : 7 -- start --
+2024-02-19 22:29:21,052 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-19 22:29:32,065 - logger - INFO - INDEX : 7 -- question set generation chain end --
+2024-02-19 22:29:32,066 - logger - INFO - INDEX : 7 -- question set : ['What is an alternate name for Vatican City?', 'Does Vatican City have any awards?', 'When was Vatican City founded?', 'What is the geographical information related to Vatican City?', 'What is Vatican City a member of?'] --
+2024-02-19 22:29:32,066 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain start --
+2024-02-19 22:29:33,037 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain end --
+2024-02-19 22:29:33,037 - logger - INFO - INDEX : 8 -- start --
+2024-02-19 22:29:33,039 - logger - INFO - INDEX : 8 -- question set generation chain start --
+2024-02-19 22:29:36,271 - logger - INFO - INDEX : 8 -- ERROR: 8 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:29:38,279 - logger - INFO - INDEX : 9 -- start --
+2024-02-19 22:29:38,280 - logger - INFO - INDEX : 9 -- question set generation chain start --
+2024-02-19 22:41:04,826 - logger - INFO - INDEX : 0 -- start --
+2024-02-19 22:41:04,827 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-19 22:41:15,501 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-19 22:41:15,501 - logger - INFO - INDEX : 0 -- question set : ['What is the birth place of Michael Jackson?', 'How many children does Michael Jackson have?', 'Is Michael Jackson married?', 'What is the nationality of Michael Jackson?', 'When did Michael Jackson pass away?'] --
+2024-02-19 22:41:15,501 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-19 22:41:16,348 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-19 22:41:16,349 - logger - INFO - INDEX : 1 -- start --
+2024-02-19 22:41:16,350 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-19 22:41:18,835 - logger - INFO - INDEX : 1 -- ERROR: 1 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:41:27,051 - logger - INFO - INDEX : 2 -- start --
+2024-02-19 22:41:27,052 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-19 22:41:37,702 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-19 22:41:37,702 - logger - INFO - INDEX : 2 -- question set : ['What is the birth place of John Lennon?', 'How many children does John Lennon have?', 'Is John Lennon married?', 'What is the nationality of John Lennon?', 'When did John Lennon pass away?'] --
+2024-02-19 22:41:37,702 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-19 22:41:38,580 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-19 22:41:38,581 - logger - INFO - INDEX : 3 -- start --
+2024-02-19 22:41:38,583 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-19 22:41:41,924 - logger - INFO - INDEX : 3 -- ERROR: 3 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:41:43,162 - logger - INFO - INDEX : 4 -- start --
+2024-02-19 22:41:43,163 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-19 22:41:46,307 - logger - INFO - INDEX : 4 -- ERROR: 4 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:43:03,441 - logger - INFO - INDEX : 5 -- start --
+2024-02-19 22:43:03,442 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-19 22:43:13,077 - logger - INFO - INDEX : 5 -- question set generation chain end --
+2024-02-19 22:43:13,077 - logger - INFO - INDEX : 5 -- question set : ['What is the birth place of Adolf Hitler?', 'How many awards did Adolf Hitler receive?', 'Who is the spouse of Adolf Hitler?', 'When did Adolf Hitler die?', 'What is the nationality of Adolf Hitler?'] --
+2024-02-19 22:43:13,077 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain start --
+2024-02-19 22:43:14,346 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain end --
+2024-02-19 22:43:14,346 - logger - INFO - INDEX : 6 -- start --
+2024-02-19 22:43:14,348 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-19 22:43:24,065 - logger - INFO - INDEX : 6 -- question set generation chain end --
+2024-02-19 22:43:24,065 - logger - INFO - INDEX : 6 -- question set : ['What is the country of origin of Bates Motel (TV series)?', 'How many episodes does Bates Motel (TV series) have?', 'Who is the creator of Bates Motel (TV series)?', 'When was Bates Motel (TV series) published?', 'What genre does Bates Motel (TV series) belong to?'] --
+2024-02-19 22:43:24,066 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain start --
+2024-02-19 22:43:25,096 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain end --
+2024-02-19 22:43:25,096 - logger - INFO - INDEX : 7 -- start --
+2024-02-19 22:43:25,098 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-19 22:43:34,169 - logger - INFO - INDEX : 7 -- question set generation chain end --
+2024-02-19 22:43:34,169 - logger - INFO - INDEX : 7 -- question set : ['What is the alternate name of Benin?', 'When was Benin founded?', 'Is Benin a member of any organization?', 'What places does Benin contain?', 'Is Benin contained within another place?'] --
+2024-02-19 22:43:34,169 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain start --
+2024-02-19 22:43:35,233 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain end --
+2024-02-19 22:44:39,049 - logger - INFO - INDEX : 0 -- start --
+2024-02-19 22:44:39,050 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-19 22:44:52,132 - logger - INFO - INDEX : 1 -- start --
+2024-02-19 22:44:52,133 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-19 22:45:05,071 - logger - INFO - INDEX : 2 -- start --
+2024-02-19 22:45:05,072 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-19 22:45:16,200 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-19 22:45:16,201 - logger - INFO - INDEX : 2 -- question set : ["What is Alastair Ralphs' birth place?", "What is Alastair Ralphs' nationality?", 'Does Alastair Ralphs have any alternate names?', 'When was Alastair Ralphs born?'] --
+2024-02-19 22:45:16,201 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-19 22:45:16,877 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-19 22:45:16,877 - logger - INFO - INDEX : 3 -- start --
+2024-02-19 22:45:16,878 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-19 22:45:18,327 - logger - INFO - INDEX : 3 -- ERROR: 3 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:46:15,809 - logger - INFO - INDEX : 4 -- start --
+2024-02-19 22:46:15,809 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-19 22:46:21,720 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-19 22:46:21,721 - logger - INFO - INDEX : 4 -- question set : ['What is the date Published of A Bad Night?', 'What is the genre of A Bad Night?', 'Who is the author of A Bad Night?'] --
+2024-02-19 22:46:21,721 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-19 22:46:22,307 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-19 22:46:22,307 - logger - INFO - INDEX : 5 -- start --
+2024-02-19 22:46:22,309 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-19 22:46:24,892 - logger - INFO - INDEX : 5 -- ERROR: 5 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:46:32,410 - logger - INFO - INDEX : 6 -- start --
+2024-02-19 22:46:32,411 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-19 22:46:41,906 - logger - INFO - INDEX : 6 -- question set generation chain end --
+2024-02-19 22:46:41,906 - logger - INFO - INDEX : 6 -- question set : ['What is the birth place of George Harrison?', 'How many nationalities does George Harrison have?', 'Does George Harrison have any awards?', 'When did George Harrison pass away?', 'What are the occupations of George Harrison?'] --
+2024-02-19 22:46:41,906 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain start --
+2024-02-19 22:46:42,828 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain end --
+2024-02-19 22:46:42,828 - logger - INFO - INDEX : 7 -- start --
+2024-02-19 22:46:42,829 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-19 22:46:52,470 - logger - INFO - INDEX : 7 -- question set generation chain end --
+2024-02-19 22:46:52,471 - logger - INFO - INDEX : 7 -- question set : ['What is an alternate name for Vatican City?', 'Does Vatican City have any awards?', 'When was Vatican City founded?', 'Is Vatican City a member of any organization?'] --
+2024-02-19 22:46:52,471 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain start --
+2024-02-19 22:46:53,302 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain end --
+2024-02-19 22:46:53,303 - logger - INFO - INDEX : 8 -- start --
+2024-02-19 22:46:53,304 - logger - INFO - INDEX : 8 -- question set generation chain start --
+2024-02-19 22:46:56,156 - logger - INFO - INDEX : 8 -- ERROR: 8 : cannot unpack non-iterable NoneType object --
+2024-02-19 22:47:04,263 - logger - INFO - INDEX : 9 -- start --
+2024-02-19 22:47:04,264 - logger - INFO - INDEX : 9 -- question set generation chain start --
+2024-02-19 22:47:14,150 - logger - INFO - INDEX : 9 -- question set generation chain end --
+2024-02-19 22:47:14,150 - logger - INFO - INDEX : 9 -- question set : ['List all the awards received by Adolf Hitler.', 'What is the nationality of Adolf Hitler?', 'Who is the spouse of Adolf Hitler?', 'When was Adolf Hitler born?', 'List the parents of Adolf Hitler.'] --
+2024-02-19 22:47:14,150 - logger - INFO - INDEX : 9 -- pronoun identify and substitute chain start --
+2024-02-19 22:47:15,190 - logger - INFO - INDEX : 9 -- pronoun identify and substitute chain end --
+2024-02-20 10:14:09,900 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 10:14:09,901 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 10:14:14,935 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:16:29,900 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 10:18:36,398 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 10:18:40,439 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:22:20,788 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 10:22:20,789 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 10:22:22,924 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:24:34,924 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 10:24:34,926 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 10:24:36,986 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:26:32,217 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 10:26:32,218 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 10:26:34,526 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:26:35,227 - logger - INFO - INDEX : 1 -- start --
+2024-02-20 10:26:35,227 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-20 10:26:37,919 - logger - INFO - INDEX : 1 -- ERROR: 1 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:26:38,596 - logger - INFO - INDEX : 2 -- start --
+2024-02-20 10:26:38,597 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-20 10:26:54,294 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-20 10:26:54,295 - logger - INFO - INDEX : 2 -- question set : ['What is the bibtex Type of the publication Hybrid neural networks for gasoline blending system modeling.?', 'Who authored the publication Hybrid neural networks for gasoline blending system modeling.?', 'In which year was the publication Hybrid neural networks for gasoline blending system modeling. published?', 'Is the publication Hybrid neural networks for gasoline blending system modeling. listed on the Table of Contents page?', 'In which book was the publication Hybrid neural networks for gasoline blending system modeling. published?'] --
+2024-02-20 10:26:54,295 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-20 10:26:56,038 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-20 10:26:56,038 - logger - INFO - INDEX : 3 -- start --
+2024-02-20 10:26:56,038 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-20 10:27:09,083 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2024-02-20 10:27:09,083 - logger - INFO - INDEX : 3 -- question set : ['What is the primary Full Creator Name of Christian Albers?', 'Is there a primary Full Creator Name associated with Christian Albers?', "When was Christian Albers' primary Full Creator Name recorded?", 'List the primary Full Creator Name of Christian Albers.', 'How many primary Full Creator Names does Christian Albers have?'] --
+2024-02-20 10:27:09,084 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain start --
+2024-02-20 10:27:10,891 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain end --
+2024-02-20 10:27:10,892 - logger - INFO - INDEX : 4 -- start --
+2024-02-20 10:27:10,893 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-20 10:27:16,324 - logger - INFO - INDEX : 4 -- ERROR: 4 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:27:17,006 - logger - INFO - INDEX : 5 -- start --
+2024-02-20 10:27:17,007 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-20 10:27:19,186 - logger - INFO - INDEX : 5 -- ERROR: 5 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:27:19,864 - logger - INFO - INDEX : 6 -- start --
+2024-02-20 10:27:19,865 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-20 10:27:24,107 - logger - INFO - INDEX : 6 -- ERROR: 6 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:27:24,787 - logger - INFO - INDEX : 7 -- start --
+2024-02-20 10:27:24,788 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-20 10:27:39,806 - logger - INFO - INDEX : 7 -- question set generation chain end --
+2024-02-20 10:27:39,806 - logger - INFO - INDEX : 7 -- question set : ["List all the authors of the publication 'Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.'", "What is the DOI of the publication 'Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.'?", "Was the publication 'Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.' listed on the Table of Contents page?", "In which journal was the publication 'Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.' published?", "What is the year of publication for the paper 'Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.'?"] --
+2024-02-20 10:27:39,807 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain start --
+2024-02-20 10:27:45,107 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain end --
+2024-02-20 10:27:45,107 - logger - INFO - INDEX : 8 -- start --
+2024-02-20 10:27:45,108 - logger - INFO - INDEX : 8 -- question set generation chain start --
+2024-02-20 10:27:50,828 - logger - INFO - INDEX : 8 -- ERROR: 8 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:27:51,502 - logger - INFO - INDEX : 9 -- start --
+2024-02-20 10:27:51,503 - logger - INFO - INDEX : 9 -- question set generation chain start --
+2024-02-20 10:27:55,950 - logger - INFO - INDEX : 9 -- ERROR: 9 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:27:56,621 - logger - INFO - INDEX : 10 -- start --
+2024-02-20 10:27:56,622 - logger - INFO - INDEX : 10 -- question set generation chain start --
+2024-02-20 10:28:11,460 - logger - INFO - INDEX : 10 -- question set generation chain end --
+2024-02-20 10:28:11,461 - logger - INFO - INDEX : 10 -- question set : ['Who authored Communication with an Automatic Computer?', 'How many creators contributed to Communication with an Automatic Computer?', 'Is there a primary Electronic Edition for Communication with an Automatic Computer?', 'Who published Communication with an Automatic Computer?'] --
+2024-02-20 10:28:11,461 - logger - INFO - INDEX : 10 -- pronoun identify and substitute chain start --
+2024-02-20 10:28:12,386 - logger - INFO - INDEX : 10 -- pronoun identify and substitute chain end --
+2024-02-20 10:28:12,386 - logger - INFO - INDEX : 11 -- start --
+2024-02-20 10:28:12,387 - logger - INFO - INDEX : 11 -- question set generation chain start --
+2024-02-20 10:28:17,453 - logger - INFO - INDEX : 11 -- ERROR: 11 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:28:18,149 - logger - INFO - INDEX : 12 -- start --
+2024-02-20 10:28:18,149 - logger - INFO - INDEX : 12 -- question set generation chain start --
+2024-02-20 10:28:32,640 - logger - INFO - INDEX : 12 -- question set generation chain end --
+2024-02-20 10:28:32,641 - logger - INFO - INDEX : 12 -- question set : ['What is the bibtex Type of the publication A Characterization of Prolog Execution?', 'Who authored the publication A Characterization of Prolog Execution?', 'How many creators are associated with the publication A Characterization of Prolog Execution?', 'Was the publication A Characterization of Prolog Execution accepted by a school for a thesis?', 'In what year was the publication A Characterization of Prolog Execution published?'] --
+2024-02-20 10:28:32,641 - logger - INFO - INDEX : 12 -- pronoun identify and substitute chain start --
+2024-02-20 10:28:34,110 - logger - INFO - INDEX : 12 -- pronoun identify and substitute chain end --
+2024-02-20 10:29:58,805 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 10:29:58,807 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 10:30:03,649 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:30:04,403 - logger - INFO - INDEX : 1 -- start --
+2024-02-20 10:30:04,404 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-20 10:30:17,928 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2024-02-20 10:30:17,928 - logger - INFO - INDEX : 1 -- question set : ['What is the birth place of Antony Cheng?', 'How many former coaches did Antony Cheng have?', 'What is the gender of Antony Cheng?', 'When did Antony Cheng begin skating?', 'What is the height of Antony Cheng?'] --
+2024-02-20 10:30:17,928 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain start --
+2024-02-20 10:30:19,482 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain end --
+2024-02-20 10:30:19,483 - logger - INFO - INDEX : 2 -- start --
+2024-02-20 10:30:19,484 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-20 10:30:23,613 - logger - INFO - INDEX : 2 -- ERROR: 2 : cannot unpack non-iterable NoneType object --
+2024-02-20 10:30:24,428 - logger - INFO - INDEX : 3 -- start --
+2024-02-20 10:30:24,429 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-20 10:30:39,119 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2024-02-20 10:30:39,119 - logger - INFO - INDEX : 3 -- question set : ['What is the abstract of Abiko Station?', 'How many tracks does Abiko Station have?', 'What is the serving railway line of Abiko Station?', 'What is the country of Abiko Station?'] --
+2024-02-20 10:30:39,119 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain start --
+2024-02-20 10:30:40,353 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain end --
+2024-02-20 10:30:40,353 - logger - INFO - INDEX : 4 -- start --
+2024-02-20 10:30:40,355 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-20 10:30:53,613 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-20 10:30:53,613 - logger - INFO - INDEX : 4 -- question set : ['What is the population total of Ala, Trentino?', 'What is the elevation of Ala, Trentino?', 'What is the region of Ala, Trentino?', 'What is the country of Ala, Trentino?', 'What is the province of Ala, Trentino?'] --
+2024-02-20 10:30:53,613 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-20 10:30:54,906 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-20 10:30:54,907 - logger - INFO - INDEX : 5 -- start --
+2024-02-20 10:30:54,908 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-20 10:31:08,408 - logger - INFO - INDEX : 5 -- question set generation chain end --
+2024-02-20 10:31:08,408 - logger - INFO - INDEX : 5 -- question set : ['What is the gender of Bello Babatounde?', 'When was Bello Babatounde born?', 'What is the birth place of Bello Babatounde?', 'What is the given name of Bello Babatounde?', 'What is the surname of Bello Babatounde?'] --
+2024-02-20 10:31:08,408 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain start --
+2024-02-20 10:31:09,686 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain end --
+2024-02-20 10:31:09,687 - logger - INFO - INDEX : 6 -- start --
+2024-02-20 10:31:09,688 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-20 10:31:23,447 - logger - INFO - INDEX : 6 -- question set generation chain end --
+2024-02-20 10:31:23,448 - logger - INFO - INDEX : 6 -- question set : ['What is the subject of entity 10?', 'Is there an abstract available for entity 10?', 'What is the wiki Page ID of entity 10?', 'What is the wiki Page Revision ID of entity 10?', 'Was entity 10 derived from any other source?'] --
+2024-02-20 10:31:23,448 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain start --
+2024-02-20 10:31:24,907 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain end --
+2024-02-20 11:14:54,764 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 11:14:54,765 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 11:15:00,478 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:15:01,047 - logger - INFO - INDEX : 1 -- start --
+2024-02-20 11:15:01,049 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-20 11:18:05,555 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 11:18:05,557 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 11:18:09,203 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:18:09,798 - logger - INFO - INDEX : 1 -- start --
+2024-02-20 11:18:09,800 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-20 11:18:13,884 - logger - INFO - INDEX : 1 -- ERROR: 1 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:18:14,342 - logger - INFO - INDEX : 2 -- start --
+2024-02-20 11:18:14,343 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-20 11:18:27,125 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-20 11:18:27,125 - logger - INFO - INDEX : 2 -- question set : ['Is there a depiction associated with entity 1?', 'What is the wiki Page ID of entity 1?', 'When was entity 1 derived from?'] --
+2024-02-20 11:18:27,125 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-20 11:18:28,109 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-20 11:18:28,109 - logger - INFO - INDEX : 3 -- start --
+2024-02-20 11:18:28,112 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-20 11:18:41,870 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2024-02-20 11:18:41,870 - logger - INFO - INDEX : 3 -- question set : ['What is the opening date of Abiko Station (Chiba)?', 'How many tracks does Abiko Station (Chiba) have?', 'Is Abiko Station (Chiba) serving any railway line?', 'What is the abstract of Abiko Station (Chiba)?', 'Who is the operator of Abiko Station (Chiba)?'] --
+2024-02-20 11:18:41,870 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain start --
+2024-02-20 11:18:43,074 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain end --
+2024-02-20 11:18:43,074 - logger - INFO - INDEX : 4 -- start --
+2024-02-20 11:18:43,077 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-20 11:18:57,153 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-20 11:18:57,153 - logger - INFO - INDEX : 4 -- question set : ['What is the population total of Ala, Trentino?', 'What is the region of Ala, Trentino?', 'What is the country of Ala, Trentino?', 'What is the province of Ala, Trentino?', 'What is the abstract of Ala, Trentino?'] --
+2024-02-20 11:18:57,153 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-20 11:18:58,652 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-20 11:18:58,652 - logger - INFO - INDEX : 5 -- start --
+2024-02-20 11:18:58,654 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-20 11:19:12,136 - logger - INFO - INDEX : 5 -- question set generation chain end --
+2024-02-20 11:19:12,136 - logger - INFO - INDEX : 5 -- question set : ['What is the gender of Bello Babatounde?', 'When was Bello Babatounde born?', 'What is the birth place of Bello Babatounde?', 'What is the given name of Bello Babatounde?', 'What is the surname of Bello Babatounde?'] --
+2024-02-20 11:19:12,136 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain start --
+2024-02-20 11:19:13,479 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain end --
+2024-02-20 11:19:13,479 - logger - INFO - INDEX : 6 -- start --
+2024-02-20 11:19:13,480 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-20 11:19:25,777 - logger - INFO - INDEX : 6 -- question set generation chain end --
+2024-02-20 11:19:25,777 - logger - INFO - INDEX : 6 -- question set : ['What is the homepage of Bloomberg Radio?', 'What is the format of Bloomberg Radio?', 'What is the name of Bloomberg Radio?', 'Who is the owner of Bloomberg Radio?', 'What is the webcast of Bloomberg Radio?'] --
+2024-02-20 11:19:25,778 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain start --
+2024-02-20 11:19:27,450 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain end --
+2024-02-20 11:20:31,771 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 11:20:31,773 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 11:20:37,777 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:20:38,227 - logger - INFO - INDEX : 1 -- start --
+2024-02-20 11:20:38,228 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-20 11:20:42,329 - logger - INFO - INDEX : 1 -- ERROR: 1 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:20:42,824 - logger - INFO - INDEX : 2 -- start --
+2024-02-20 11:20:42,825 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-20 11:20:48,325 - logger - INFO - INDEX : 2 -- ERROR: 2 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:20:48,763 - logger - INFO - INDEX : 3 -- start --
+2024-02-20 11:20:48,763 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-20 11:21:03,053 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2024-02-20 11:21:03,054 - logger - INFO - INDEX : 3 -- question set : ['What is the primary Full Creator Name of entity 10453?', 'Is there a primary Full Creator Name for entity 10453?', 'How many primary Full Creator Names does entity 10453 have?', 'List the primary Full Creator Names of entity 10453.', 'When was the primary Full Creator Name of entity 10453 recorded?'] --
+2024-02-20 11:21:03,054 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain start --
+2024-02-20 11:21:04,578 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain end --
+2024-02-20 11:21:04,579 - logger - INFO - INDEX : 4 -- start --
+2024-02-20 11:21:04,580 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-20 11:21:09,857 - logger - INFO - INDEX : 4 -- ERROR: 4 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:21:10,295 - logger - INFO - INDEX : 5 -- start --
+2024-02-20 11:21:10,296 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-20 11:21:13,433 - logger - INFO - INDEX : 5 -- ERROR: 5 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:21:13,897 - logger - INFO - INDEX : 6 -- start --
+2024-02-20 11:21:13,898 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-20 11:21:19,136 - logger - INFO - INDEX : 6 -- ERROR: 6 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:21:19,571 - logger - INFO - INDEX : 7 -- start --
+2024-02-20 11:21:19,572 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-20 11:21:25,356 - logger - INFO - INDEX : 7 -- ERROR: 7 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:21:25,799 - logger - INFO - INDEX : 8 -- start --
+2024-02-20 11:21:25,800 - logger - INFO - INDEX : 8 -- question set generation chain start --
+2024-02-20 11:21:42,018 - logger - INFO - INDEX : 8 -- question set generation chain end --
+2024-02-20 11:21:42,018 - logger - INFO - INDEX : 8 -- question set : ['What is the bibtex Type of Abelard GS19?', 'Who authored Abelard GS19?', 'In which journal was Abelard GS19 published?', 'What is the year of publication for Abelard GS19?', 'Is Abelard GS19 listed on the Table of Contents page?'] --
+2024-02-20 11:21:42,018 - logger - INFO - INDEX : 8 -- pronoun identify and substitute chain start --
+2024-02-20 11:21:43,202 - logger - INFO - INDEX : 8 -- pronoun identify and substitute chain end --
+2024-02-20 11:21:43,202 - logger - INFO - INDEX : 9 -- start --
+2024-02-20 11:21:43,203 - logger - INFO - INDEX : 9 -- question set generation chain start --
+2024-02-20 11:21:47,276 - logger - INFO - INDEX : 9 -- ERROR: 9 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:21:47,719 - logger - INFO - INDEX : 10 -- start --
+2024-02-20 11:21:47,720 - logger - INFO - INDEX : 10 -- question set generation chain start --
+2024-02-20 11:21:52,426 - logger - INFO - INDEX : 10 -- ERROR: 10 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:21:52,867 - logger - INFO - INDEX : 11 -- start --
+2024-02-20 11:21:52,869 - logger - INFO - INDEX : 11 -- question set generation chain start --
+2024-02-20 11:22:08,467 - logger - INFO - INDEX : 11 -- question set generation chain end --
+2024-02-20 11:22:08,468 - logger - INFO - INDEX : 11 -- question set : ["Is publication '0001 MR020' listed on the Table of Contents page?", "When was publication '0001 MR020' published?", "In which book was publication '0001 MR020' published?"] --
+2024-02-20 11:22:08,468 - logger - INFO - INDEX : 11 -- pronoun identify and substitute chain start --
+2024-02-20 11:22:09,348 - logger - INFO - INDEX : 11 -- pronoun identify and substitute chain end --
+2024-02-20 11:22:09,349 - logger - INFO - INDEX : 12 -- start --
+2024-02-20 11:22:09,350 - logger - INFO - INDEX : 12 -- question set generation chain start --
+2024-02-20 11:22:13,126 - logger - INFO - INDEX : 12 -- ERROR: 12 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:22:14,611 - logger - INFO - INDEX : 13 -- start --
+2024-02-20 11:22:14,612 - logger - INFO - INDEX : 13 -- question set generation chain start --
+2024-02-20 11:22:18,538 - logger - INFO - INDEX : 13 -- ERROR: 13 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:22:18,979 - logger - INFO - INDEX : 14 -- start --
+2024-02-20 11:22:18,980 - logger - INFO - INDEX : 14 -- question set generation chain start --
+2024-02-20 11:22:23,300 - logger - INFO - INDEX : 14 -- ERROR: 14 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:22:23,784 - logger - INFO - INDEX : 15 -- start --
+2024-02-20 11:22:23,785 - logger - INFO - INDEX : 15 -- question set generation chain start --
+2024-02-20 11:22:27,977 - logger - INFO - INDEX : 15 -- ERROR: 15 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:22:28,422 - logger - INFO - INDEX : 16 -- start --
+2024-02-20 11:22:28,423 - logger - INFO - INDEX : 16 -- question set generation chain start --
+2024-02-20 11:22:32,426 - logger - INFO - INDEX : 16 -- ERROR: 16 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:22:32,870 - logger - INFO - INDEX : 17 -- start --
+2024-02-20 11:22:32,871 - logger - INFO - INDEX : 17 -- question set generation chain start --
+2024-02-20 11:22:36,964 - logger - INFO - INDEX : 17 -- ERROR: 17 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:22:37,404 - logger - INFO - INDEX : 18 -- start --
+2024-02-20 11:22:37,405 - logger - INFO - INDEX : 18 -- question set generation chain start --
+2024-02-20 11:22:42,259 - logger - INFO - INDEX : 18 -- ERROR: 18 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:22:42,786 - logger - INFO - INDEX : 19 -- start --
+2024-02-20 11:22:42,787 - logger - INFO - INDEX : 19 -- question set generation chain start --
+2024-02-20 11:22:47,006 - logger - INFO - INDEX : 19 -- ERROR: 19 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:22:47,457 - logger - INFO - INDEX : 20 -- start --
+2024-02-20 11:22:47,458 - logger - INFO - INDEX : 20 -- question set generation chain start --
+2024-02-20 11:22:51,894 - logger - INFO - INDEX : 20 -- ERROR: 20 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:22:52,319 - logger - INFO - INDEX : 21 -- start --
+2024-02-20 11:22:52,319 - logger - INFO - INDEX : 21 -- question set generation chain start --
+2024-02-20 11:22:57,289 - logger - INFO - INDEX : 21 -- ERROR: 21 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:22:57,728 - logger - INFO - INDEX : 22 -- start --
+2024-02-20 11:22:57,729 - logger - INFO - INDEX : 22 -- question set generation chain start --
+2024-02-20 11:23:01,448 - logger - INFO - INDEX : 22 -- ERROR: 22 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:23:01,889 - logger - INFO - INDEX : 23 -- start --
+2024-02-20 11:23:01,890 - logger - INFO - INDEX : 23 -- question set generation chain start --
+2024-02-20 11:23:05,620 - logger - INFO - INDEX : 23 -- ERROR: 23 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:23:06,042 - logger - INFO - INDEX : 24 -- start --
+2024-02-20 11:23:06,043 - logger - INFO - INDEX : 24 -- question set generation chain start --
+2024-02-20 11:23:12,092 - logger - INFO - INDEX : 24 -- ERROR: 24 : Got invalid JSON object. Error: Extra data: line 4 column 1 (char 124) --
+2024-02-20 11:23:12,539 - logger - INFO - INDEX : 25 -- start --
+2024-02-20 11:23:12,540 - logger - INFO - INDEX : 25 -- question set generation chain start --
+2024-02-20 11:23:16,652 - logger - INFO - INDEX : 25 -- ERROR: 25 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:23:17,091 - logger - INFO - INDEX : 26 -- start --
+2024-02-20 11:23:17,092 - logger - INFO - INDEX : 26 -- question set generation chain start --
+2024-02-20 11:23:33,683 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 11:23:33,685 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 11:23:37,926 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:23:38,356 - logger - INFO - INDEX : 1 -- start --
+2024-02-20 11:23:38,357 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-20 11:23:41,734 - logger - INFO - INDEX : 1 -- ERROR: 1 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:23:42,202 - logger - INFO - INDEX : 2 -- start --
+2024-02-20 11:23:42,203 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-20 11:23:56,574 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-20 11:23:56,574 - logger - INFO - INDEX : 2 -- question set : ["What is the bibtex Type of entity '0001 L14'?", "Who authored entity '0001 L14'?", "Is entity '0001 L14' listed on a Table of Contents page?", "In which year was entity '0001 L14' published?", "What is the DOI of entity '0001 L14'?"] --
+2024-02-20 11:23:56,574 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-20 11:23:57,767 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-20 11:23:57,768 - logger - INFO - INDEX : 3 -- start --
+2024-02-20 11:23:57,769 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-20 11:24:12,502 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2024-02-20 11:24:12,502 - logger - INFO - INDEX : 3 -- question set : ['What is the primary Full Creator Name for entity 10453?', 'Is there a primary Full Creator Name for entity 10453?', 'When was the primary Full Creator Name last updated for entity 10453?', 'List all primary Full Creator Names for entity 10453.', 'How many primary Full Creator Names does entity 10453 have?'] --
+2024-02-20 11:24:12,503 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain start --
+2024-02-20 11:24:14,375 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain end --
+2024-02-20 11:24:14,375 - logger - INFO - INDEX : 4 -- start --
+2024-02-20 11:24:14,376 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-20 11:24:30,231 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-20 11:24:30,232 - logger - INFO - INDEX : 4 -- question set : ["Is entity '0056 YG15' associated with a primary electronic edition?", "What is the year of publication for entity '0056 YG15'?", "In which journal was entity '0056 YG15' published?"] --
+2024-02-20 11:24:30,232 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-20 11:24:31,149 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-20 11:24:31,149 - logger - INFO - INDEX : 5 -- start --
+2024-02-20 11:24:31,149 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-20 11:24:43,446 - logger - INFO - INDEX : 5 -- question set generation chain end --
+2024-02-20 11:24:43,447 - logger - INFO - INDEX : 5 -- question set : ['What type of publication is Dan90?', 'Who authored Dan90?', 'How many creators are associated with Dan90?', 'Was Dan90 accepted by a school for a thesis?', 'In what year was Dan90 published?'] --
+2024-02-20 11:24:43,447 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain start --
+2024-02-20 11:24:45,488 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain end --
+2024-02-20 11:24:45,489 - logger - INFO - INDEX : 6 -- start --
+2024-02-20 11:24:45,490 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-20 11:24:50,120 - logger - INFO - INDEX : 6 -- ERROR: 6 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:24:50,569 - logger - INFO - INDEX : 7 -- start --
+2024-02-20 11:24:50,571 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-20 11:24:54,498 - logger - INFO - INDEX : 7 -- ERROR: 7 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:24:54,906 - logger - INFO - INDEX : 8 -- start --
+2024-02-20 11:24:54,907 - logger - INFO - INDEX : 8 -- question set generation chain start --
+2024-02-20 11:24:59,601 - logger - INFO - INDEX : 8 -- ERROR: 8 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:25:00,002 - logger - INFO - INDEX : 9 -- start --
+2024-02-20 11:25:00,002 - logger - INFO - INDEX : 9 -- question set generation chain start --
+2024-02-20 11:25:04,923 - logger - INFO - INDEX : 9 -- ERROR: 9 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:25:05,345 - logger - INFO - INDEX : 10 -- start --
+2024-02-20 11:25:05,345 - logger - INFO - INDEX : 10 -- question set generation chain start --
+2024-02-20 11:25:10,062 - logger - INFO - INDEX : 10 -- ERROR: 10 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:25:10,456 - logger - INFO - INDEX : 11 -- start --
+2024-02-20 11:25:10,457 - logger - INFO - INDEX : 11 -- question set generation chain start --
+2024-02-20 11:25:14,466 - logger - INFO - INDEX : 11 -- ERROR: 11 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:25:14,889 - logger - INFO - INDEX : 12 -- start --
+2024-02-20 11:25:14,891 - logger - INFO - INDEX : 12 -- question set generation chain start --
+2024-02-20 11:25:19,684 - logger - INFO - INDEX : 12 -- ERROR: 12 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:25:20,117 - logger - INFO - INDEX : 13 -- start --
+2024-02-20 11:25:20,117 - logger - INFO - INDEX : 13 -- question set generation chain start --
+2024-02-20 11:25:24,194 - logger - INFO - INDEX : 13 -- ERROR: 13 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:25:24,595 - logger - INFO - INDEX : 14 -- start --
+2024-02-20 11:25:24,596 - logger - INFO - INDEX : 14 -- question set generation chain start --
+2024-02-20 11:25:30,088 - logger - INFO - INDEX : 14 -- ERROR: 14 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:25:30,772 - logger - INFO - INDEX : 15 -- start --
+2024-02-20 11:25:30,773 - logger - INFO - INDEX : 15 -- question set generation chain start --
+2024-02-20 11:25:35,118 - logger - INFO - INDEX : 15 -- ERROR: 15 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:25:35,520 - logger - INFO - INDEX : 16 -- start --
+2024-02-20 11:25:35,520 - logger - INFO - INDEX : 16 -- question set generation chain start --
+2024-02-20 11:25:40,579 - logger - INFO - INDEX : 16 -- ERROR: 16 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:25:40,974 - logger - INFO - INDEX : 17 -- start --
+2024-02-20 11:25:40,975 - logger - INFO - INDEX : 17 -- question set generation chain start --
+2024-02-20 11:25:45,801 - logger - INFO - INDEX : 17 -- ERROR: 17 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:25:46,239 - logger - INFO - INDEX : 18 -- start --
+2024-02-20 11:25:46,240 - logger - INFO - INDEX : 18 -- question set generation chain start --
+2024-02-20 11:25:59,804 - logger - INFO - INDEX : 18 -- question set generation chain end --
+2024-02-20 11:25:59,804 - logger - INFO - INDEX : 18 -- question set : ['What is the bibtex Type of Mitchell93?', 'Who authored Mitchell93?', 'How many creators are associated with Mitchell93?', "Was Mitchell93's thesis accepted by a school?", 'In which year was Mitchell93 published?'] --
+2024-02-20 11:25:59,805 - logger - INFO - INDEX : 18 -- pronoun identify and substitute chain start --
+2024-02-20 11:26:00,862 - logger - INFO - INDEX : 18 -- pronoun identify and substitute chain end --
+2024-02-20 11:35:09,966 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 11:35:09,968 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 11:35:14,443 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:35:18,462 - logger - INFO - INDEX : 1 -- start --
+2024-02-20 11:35:18,463 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-20 11:35:23,045 - logger - INFO - INDEX : 1 -- ERROR: 1 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:35:23,713 - logger - INFO - INDEX : 2 -- start --
+2024-02-20 11:35:23,715 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-20 11:35:39,426 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-20 11:35:39,426 - logger - INFO - INDEX : 2 -- question set : ['What is the bibtex Type of the publication?', 'Who authored the publication?', 'In which year was the publication published?', 'Where was the publication listed on the Table of Contents page?', 'Was the publication published as part of another publication?'] --
+2024-02-20 11:35:39,426 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-20 11:35:40,859 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-20 11:35:40,860 - logger - INFO - INDEX : 3 -- start --
+2024-02-20 11:35:40,861 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-20 11:35:44,854 - logger - INFO - INDEX : 3 -- ERROR: 3 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:35:48,081 - logger - INFO - INDEX : 4 -- start --
+2024-02-20 11:35:48,082 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-20 11:36:02,294 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-20 11:36:02,295 - logger - INFO - INDEX : 4 -- question set : ['What is the bibtex Type of the publication Sparse Differential Resultant for Laurent Differential Polynomials.?', 'Who authored the publication Sparse Differential Resultant for Laurent Differential Polynomials.?', 'In which year was the publication Sparse Differential Resultant for Laurent Differential Polynomials. published?', 'What is the journal in which the publication Sparse Differential Resultant for Laurent Differential Polynomials. was published?', 'On which page is the publication Sparse Differential Resultant for Laurent Differential Polynomials. listed on the Table of Contents?'] --
+2024-02-20 11:36:02,295 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-20 11:36:03,625 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-20 11:36:03,625 - logger - INFO - INDEX : 5 -- start --
+2024-02-20 11:36:03,626 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-20 11:36:23,695 - logger - INFO - INDEX : 5 -- question set generation chain end --
+2024-02-20 11:36:23,696 - logger - INFO - INDEX : 5 -- question set : ["What is the bibtex Type of 'Modellbasierte Extraktion, Repräsentation und Analyse von Traceability-Informationen.'?", "Who authored 'Modellbasierte Extraktion, Repräsentation und Analyse von Traceability-Informationen.'?", "In which year was 'Modellbasierte Extraktion, Repräsentation und Analyse von Traceability-Informationen.' published?", "Does 'Modellbasierte Extraktion, Repräsentation und Analyse von Traceability-Informationen.' have an other Electronic Edition?"] --
+2024-02-20 11:36:23,696 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain start --
+2024-02-20 11:36:25,198 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain end --
+2024-02-20 11:36:25,198 - logger - INFO - INDEX : 6 -- start --
+2024-02-20 11:36:25,200 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-20 11:36:41,250 - logger - INFO - INDEX : 6 -- question set generation chain end --
+2024-02-20 11:36:41,251 - logger - INFO - INDEX : 6 -- question set : ["What is the type of the publication 'Spekulative Optimierungen in interpretativen virtuellen Maschinen'?", "Who authored 'Spekulative Optimierungen in interpretativen virtuellen Maschinen'?", "In which year was 'Spekulative Optimierungen in interpretativen virtuellen Maschinen' published?", "Who published 'Spekulative Optimierungen in interpretativen virtuellen Maschinen'?"] --
+2024-02-20 11:36:41,251 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain start --
+2024-02-20 11:36:42,101 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain end --
+2024-02-20 11:36:42,102 - logger - INFO - INDEX : 7 -- start --
+2024-02-20 11:36:42,102 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-20 11:36:53,759 - logger - INFO - INDEX : 7 -- question set generation chain end --
+2024-02-20 11:36:53,759 - logger - INFO - INDEX : 7 -- question set : ['What is the ORCID of Michael Felsberg?', 'What is the primary affiliation of Michael Felsberg?', 'What is the primary full creator name of Michael Felsberg?', 'Does Michael Felsberg have a primary homepage?'] --
+2024-02-20 11:36:53,759 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain start --
+2024-02-20 11:36:55,086 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain end --
+2024-02-20 11:42:53,292 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 11:42:53,293 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 11:43:05,429 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-20 11:43:05,429 - logger - INFO - INDEX : 0 -- question set : ['What is the sub event of the 1886 Wimbledon Championships?', 'What is an alternate name for the 1886 Wimbledon Championships?', 'When did the 1886 Wimbledon Championships start?', 'When did the 1886 Wimbledon Championships end?'] --
+2024-02-20 11:43:05,429 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-20 11:43:06,472 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-20 11:43:06,472 - logger - INFO - INDEX : 1 -- start --
+2024-02-20 11:43:06,473 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-20 11:43:18,435 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2024-02-20 11:43:18,435 - logger - INFO - INDEX : 1 -- question set : ['What is the start date of the event?', 'Where did the event take place?', 'Was the event an alternate name for another event?', 'When did the event end?', 'How many sub-events were there?'] --
+2024-02-20 11:43:18,435 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain start --
+2024-02-20 11:43:19,568 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain end --
+2024-02-20 11:43:19,569 - logger - INFO - INDEX : 2 -- start --
+2024-02-20 11:43:19,570 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-20 11:43:32,734 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-20 11:43:32,734 - logger - INFO - INDEX : 2 -- question set : ["What is Abraham Albert Heaps's nationality?", 'When was Abraham Albert Heaps born?', 'Where did Abraham Albert Heaps die?', 'What occupation did Abraham Albert Heaps have?', 'What languages does Abraham Albert Heaps know?'] --
+2024-02-20 11:43:32,735 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-20 11:43:33,845 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-20 11:43:33,845 - logger - INFO - INDEX : 3 -- start --
+2024-02-20 11:43:33,846 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-20 11:43:47,145 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2024-02-20 11:43:47,146 - logger - INFO - INDEX : 3 -- question set : ['What is the alternate name of Abbey of St. Medard?', 'Where is Abbey of St. Medard located?', 'Is Abbey of St. Medard a geo location?', 'What is contained in the place Abbey of St. Medard?'] --
+2024-02-20 11:43:47,146 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain start --
+2024-02-20 11:43:48,443 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain end --
+2024-02-20 11:43:48,444 - logger - INFO - INDEX : 4 -- start --
+2024-02-20 11:43:48,444 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-20 11:44:02,187 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-20 11:44:02,187 - logger - INFO - INDEX : 4 -- question set : ['What is the date Created of A Princess of Mars?', 'What is an alternate Name of A Princess of Mars?', 'What is the in Language of A Princess of Mars?', 'When was A Princess of Mars published?', 'Who is the author of A Princess of Mars?'] --
+2024-02-20 11:44:02,188 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-20 11:44:05,180 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-20 11:56:55,284 - logger - INFO - INDEX : 0 -- start --
+2024-02-20 11:56:55,286 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-20 11:57:02,266 - logger - INFO - INDEX : 0 -- ERROR: 0 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:57:02,939 - logger - INFO - INDEX : 1 -- start --
+2024-02-20 11:57:02,940 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-20 11:57:07,224 - logger - INFO - INDEX : 1 -- ERROR: 1 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:57:08,195 - logger - INFO - INDEX : 2 -- start --
+2024-02-20 11:57:08,196 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-20 11:57:12,045 - logger - INFO - INDEX : 2 -- ERROR: 2 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:57:12,750 - logger - INFO - INDEX : 3 -- start --
+2024-02-20 11:57:12,752 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-20 11:57:16,143 - logger - INFO - INDEX : 3 -- ERROR: 3 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:57:18,076 - logger - INFO - INDEX : 4 -- start --
+2024-02-20 11:57:18,077 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-20 11:57:30,923 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-20 11:57:30,924 - logger - INFO - INDEX : 4 -- question set : ['What is the population total of Ala, Trentino?', 'What is the elevation of Ala, Trentino?', 'In which country is Ala, Trentino located?', 'What is the area total of Ala, Trentino?', 'What is the region of Ala, Trentino?'] --
+2024-02-20 11:57:30,924 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-20 11:57:32,559 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-20 11:57:32,560 - logger - INFO - INDEX : 5 -- start --
+2024-02-20 11:57:32,561 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-20 11:57:36,620 - logger - INFO - INDEX : 5 -- ERROR: 5 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:57:39,178 - logger - INFO - INDEX : 6 -- start --
+2024-02-20 11:57:39,179 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-20 11:57:51,532 - logger - INFO - INDEX : 6 -- question set generation chain end --
+2024-02-20 11:57:51,533 - logger - INFO - INDEX : 6 -- question set : ['What is the nationality of Michael Manning (fetish artist)?', 'When was Michael Manning (fetish artist) born?', 'What is the gender of Michael Manning (fetish artist)?', 'What is the birth place of Michael Manning (fetish artist)?', 'What is the abstract of Michael Manning (fetish artist)?'] --
+2024-02-20 11:57:51,533 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain start --
+2024-02-20 11:57:52,592 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain end --
+2024-02-20 11:57:52,592 - logger - INFO - INDEX : 7 -- start --
+2024-02-20 11:57:52,593 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-20 11:58:06,139 - logger - INFO - INDEX : 7 -- question set generation chain end --
+2024-02-20 11:58:06,140 - logger - INFO - INDEX : 7 -- question set : ['Is there a subject associated with entity 10?', 'What is the abstract of entity 10?', 'When was entity 10 derived from?'] --
+2024-02-20 11:58:06,140 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain start --
+2024-02-20 11:58:07,338 - logger - INFO - INDEX : 7 -- pronoun identify and substitute chain end --
+2024-02-20 11:58:07,338 - logger - INFO - INDEX : 8 -- start --
+2024-02-20 11:58:07,340 - logger - INFO - INDEX : 8 -- question set generation chain start --
+2024-02-20 11:58:11,086 - logger - INFO - INDEX : 8 -- ERROR: 8 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:58:11,773 - logger - INFO - INDEX : 9 -- start --
+2024-02-20 11:58:11,775 - logger - INFO - INDEX : 9 -- question set generation chain start --
+2024-02-20 11:58:15,326 - logger - INFO - INDEX : 9 -- ERROR: 9 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:58:16,815 - logger - INFO - INDEX : 10 -- start --
+2024-02-20 11:58:16,816 - logger - INFO - INDEX : 10 -- question set generation chain start --
+2024-02-20 11:58:29,914 - logger - INFO - INDEX : 10 -- question set generation chain end --
+2024-02-20 11:58:29,915 - logger - INFO - INDEX : 10 -- question set : ['What is the type of Avalon?', 'In which country is Avalon located?', 'What is the state of Avalon?', 'What is the postcode of Avalon?', 'What is the abstract of Avalon?'] --
+2024-02-20 11:58:29,915 - logger - INFO - INDEX : 10 -- pronoun identify and substitute chain start --
+2024-02-20 11:58:30,995 - logger - INFO - INDEX : 10 -- pronoun identify and substitute chain end --
+2024-02-20 11:58:30,995 - logger - INFO - INDEX : 11 -- start --
+2024-02-20 11:58:30,996 - logger - INFO - INDEX : 11 -- question set generation chain start --
+2024-02-20 11:58:35,154 - logger - INFO - INDEX : 11 -- ERROR: 11 : cannot unpack non-iterable NoneType object --
+2024-02-20 11:58:36,178 - logger - INFO - INDEX : 12 -- start --
+2024-02-20 11:58:36,178 - logger - INFO - INDEX : 12 -- question set generation chain start --
+2024-02-20 11:58:50,852 - logger - INFO - INDEX : 12 -- question set generation chain end --
+2024-02-20 11:58:50,852 - logger - INFO - INDEX : 12 -- question set : ['What is the birth date of Pat Schroeder?', 'What is the alma mater of Pat Schroeder?', 'What is the gender of Pat Schroeder?', 'What is the party of Pat Schroeder?', 'Who was the predecessor of Pat Schroeder?'] --
+2024-02-20 11:58:50,852 - logger - INFO - INDEX : 12 -- pronoun identify and substitute chain start --
+2024-02-20 11:58:52,187 - logger - INFO - INDEX : 12 -- pronoun identify and substitute chain end --
+2024-02-21 10:21:16,586 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 10:21:16,587 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 10:21:30,742 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-21 10:21:30,743 - logger - INFO - INDEX : 0 -- question set : ['What is the sub event of 1886 Wimbledon Championships?', 'What is an alternate name for 1886 Wimbledon Championships?', 'When did 1886 Wimbledon Championships start?', 'When did 1886 Wimbledon Championships end?'] --
+2024-02-21 10:21:30,743 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-21 10:21:31,749 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-21 10:21:31,750 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 10:21:31,751 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 10:21:47,952 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2024-02-21 10:21:47,952 - logger - INFO - INDEX : 1 -- question set : ['List all alternate names of the 1930 FIFA World Cup.', 'When did the 1930 FIFA World Cup start?', 'Where did the 1930 FIFA World Cup take place?', 'When did the 1930 FIFA World Cup end?'] --
+2024-02-21 10:21:47,952 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain start --
+2024-02-21 10:21:48,812 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain end --
+2024-02-21 10:21:48,813 - logger - INFO - INDEX : 2 -- start --
+2024-02-21 10:21:48,814 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-21 10:22:00,996 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-21 10:22:00,996 - logger - INFO - INDEX : 2 -- question set : ['What is the birth place of Abraham Albert Heaps?', 'What is the nationality of Abraham Albert Heaps?', 'When did Abraham Albert Heaps die?', 'What is the given name of Abraham Albert Heaps?', 'What occupation does Abraham Albert Heaps have?'] --
+2024-02-21 10:22:00,996 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-21 10:22:03,043 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-21 10:22:03,043 - logger - INFO - INDEX : 3 -- start --
+2024-02-21 10:22:03,044 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-21 10:22:06,364 - logger - INFO - INDEX : 3 -- ERROR: 3 : cannot unpack non-iterable NoneType object --
+2024-02-21 10:22:08,225 - logger - INFO - INDEX : 4 -- start --
+2024-02-21 10:22:08,225 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-21 10:22:25,607 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-21 10:22:25,608 - logger - INFO - INDEX : 4 -- question set : ['What is the date Created of A Princess of Mars?', 'What is the alternate Name of A Princess of Mars?', 'What is the in Language of A Princess of Mars?', 'What is the date Published of A Princess of Mars?', 'Who is the author of A Princess of Mars?'] --
+2024-02-21 10:22:25,608 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-21 10:22:27,199 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-21 10:22:27,199 - logger - INFO - INDEX : 5 -- start --
+2024-02-21 10:22:27,200 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-21 10:22:30,945 - logger - INFO - INDEX : 5 -- ERROR: 5 : cannot unpack non-iterable NoneType object --
+2024-02-21 10:23:11,101 - logger - INFO - INDEX : 6 -- start --
+2024-02-21 10:23:11,101 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-21 10:23:23,061 - logger - INFO - INDEX : 6 -- question set generation chain end --
+2024-02-21 10:23:23,062 - logger - INFO - INDEX : 6 -- question set : ['What is the alternate name of Abeno Cues Town?', 'When was Abeno Cues Town founded?', 'Where is Abeno Cues Town located?', 'What is the geographical information related to Abeno Cues Town?', 'What place does Abeno Cues Town belong to?'] --
+2024-02-21 10:23:23,062 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain start --
+2024-02-21 10:23:24,243 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain end --
+2024-02-21 10:25:32,549 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 10:25:32,551 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 10:25:52,125 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 10:25:52,126 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 10:26:05,968 - logger - INFO - INDEX : 2 -- start --
+2024-02-21 10:26:05,970 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-21 10:26:19,246 - logger - INFO - INDEX : 3 -- start --
+2024-02-21 10:26:19,247 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-21 10:26:30,757 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2024-02-21 10:26:30,757 - logger - INFO - INDEX : 3 -- question set : ['What is the ORCID of Uwe Zdun?', 'What is the primary affiliation of Uwe Zdun?', 'What is the primary full creator name of Uwe Zdun?', 'Does Uwe Zdun have a primary homepage?'] --
+2024-02-21 10:26:30,757 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain start --
+2024-02-21 10:26:31,500 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain end --
+2024-02-21 10:26:31,500 - logger - INFO - INDEX : 4 -- start --
+2024-02-21 10:26:31,502 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-21 10:26:46,719 - logger - INFO - INDEX : 5 -- start --
+2024-02-21 10:26:46,720 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-21 10:27:18,547 - logger - INFO - INDEX : 5 -- question set generation chain end --
+2024-02-21 10:27:18,548 - logger - INFO - INDEX : 5 -- question set : ["What is the bibtex Type of the publication 'Modellbasierte Extraktion, Repräsentation und Analyse von Traceability-Informationen.'?", "Who authored the publication 'Modellbasierte Extraktion, Repräsentation und Analyse von Traceability-Informationen.'?", "In what year was the publication 'Modellbasierte Extraktion, Repräsentation und Analyse von Traceability-Informationen.' published?", "Does the publication 'Modellbasierte Extraktion, Repräsentation und Analyse von Traceability-Informationen.' have any other Electronic Edition?", "Was the publication 'Modellbasierte Extraktion, Repräsentation und Analyse von Traceability-Informationen.' accepted by any school for a thesis?"] --
+2024-02-21 10:27:18,548 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain start --
+2024-02-21 10:27:20,486 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain end --
+2024-02-21 10:27:20,487 - logger - INFO - INDEX : 6 -- start --
+2024-02-21 10:27:20,489 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-21 10:27:35,798 - logger - INFO - INDEX : 6 -- question set generation chain end --
+2024-02-21 10:27:35,799 - logger - INFO - INDEX : 6 -- question set : ['What is the bibtex Type of Spekulative Optimierungen in interpretativen virtuellen Maschinen.?', 'Who authored Spekulative Optimierungen in interpretativen virtuellen Maschinen.?', 'What is the ISBN of Spekulative Optimierungen in interpretativen virtuellen Maschinen.?', 'In which year was Spekulative Optimierungen in interpretativen virtuellen Maschinen. published?'] --
+2024-02-21 10:27:35,799 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain start --
+2024-02-21 10:27:37,129 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain end --
+2024-02-21 10:27:37,129 - logger - INFO - INDEX : 7 -- start --
+2024-02-21 10:27:37,129 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-21 10:27:43,620 - logger - INFO - INDEX : 7 -- ERROR: 7 : cannot unpack non-iterable NoneType object --
+2024-02-21 10:27:44,319 - logger - INFO - INDEX : 8 -- start --
+2024-02-21 10:27:44,320 - logger - INFO - INDEX : 8 -- question set generation chain start --
+2024-02-21 10:27:58,171 - logger - INFO - INDEX : 8 -- ERROR: 8 : cannot unpack non-iterable NoneType object --
+2024-02-21 10:27:58,928 - logger - INFO - INDEX : 9 -- start --
+2024-02-21 10:27:58,930 - logger - INFO - INDEX : 9 -- question set generation chain start --
+2024-02-21 10:28:15,196 - logger - INFO - INDEX : 9 -- question set generation chain end --
+2024-02-21 10:28:15,196 - logger - INFO - INDEX : 9 -- question set : ['What is the bibtex Type of the publication Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk.?', 'Who authored the publication Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk.?', 'In which year was the publication Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk. published?', 'Is the publication Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk. listed on the Table of Contents page?', 'In which book was the publication Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk. published?'] --
+2024-02-21 10:28:15,197 - logger - INFO - INDEX : 9 -- pronoun identify and substitute chain start --
+2024-02-21 10:28:16,282 - logger - INFO - INDEX : 9 -- pronoun identify and substitute chain end --
+2024-02-21 10:28:16,283 - logger - INFO - INDEX : 10 -- start --
+2024-02-21 10:28:16,283 - logger - INFO - INDEX : 10 -- question set generation chain start --
+2024-02-21 10:28:37,694 - logger - INFO - INDEX : 10 -- question set generation chain end --
+2024-02-21 10:28:37,694 - logger - INFO - INDEX : 10 -- question set : ['What is the bibtex Type of Trust-Region Methods on Riemannian Manifolds.?', 'Who authored Trust-Region Methods on Riemannian Manifolds.?', 'In which year was Trust-Region Methods on Riemannian Manifolds. published?', 'What is the pagination of Trust-Region Methods on Riemannian Manifolds.?', 'In which journal was Trust-Region Methods on Riemannian Manifolds. published?'] --
+2024-02-21 10:28:37,694 - logger - INFO - INDEX : 10 -- pronoun identify and substitute chain start --
+2024-02-21 10:28:39,198 - logger - INFO - INDEX : 10 -- pronoun identify and substitute chain end --
+2024-02-21 13:13:11,171 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:13:11,173 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:13:17,730 - logger - INFO - INDEX : 0 -- ERROR: 0 : string indices must be integers --
+2024-02-21 13:13:21,796 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 13:13:21,797 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 13:13:27,043 - logger - INFO - INDEX : 1 -- ERROR: 1 : string indices must be integers --
+2024-02-21 13:13:27,702 - logger - INFO - INDEX : 2 -- start --
+2024-02-21 13:13:27,703 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-21 13:13:32,486 - logger - INFO - INDEX : 2 -- ERROR: 2 : string indices must be integers --
+2024-02-21 13:13:33,148 - logger - INFO - INDEX : 3 -- start --
+2024-02-21 13:13:33,148 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-21 13:14:52,538 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:14:52,545 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:15:56,761 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:15:56,763 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:16:02,964 - logger - INFO - INDEX : 0 -- ERROR: 0 : 'tuple' object has no attribute 'replace' --
+2024-02-21 13:17:52,414 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:17:52,421 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:19:47,638 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:19:47,644 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:21:34,502 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:21:34,503 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:23:29,385 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:23:29,392 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:25:26,215 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:25:26,217 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:25:40,694 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-21 13:25:40,695 - logger - INFO - INDEX : 0 -- question set : ['What is the bibtex Type of the publication Systems of Logic Based on Ordinals.?', 'Who authored the publication Systems of Logic Based on Ordinals.?', 'Does the publication Systems of Logic Based on Ordinals. have a DOI?', 'In what year was the publication Systems of Logic Based on Ordinals. published?'] --
+2024-02-21 13:25:40,695 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-21 13:25:41,765 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-21 13:25:41,765 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 13:25:41,766 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 13:25:50,828 - logger - INFO - INDEX : 2 -- start --
+2024-02-21 13:25:50,830 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-21 13:25:55,970 - logger - INFO - INDEX : 3 -- start --
+2024-02-21 13:25:55,971 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-21 13:26:10,253 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2024-02-21 13:26:10,253 - logger - INFO - INDEX : 3 -- question set : ['Is Uwe Zdun associated with any primary Affiliation?', 'What is the primary Full Creator Name of Uwe Zdun?', 'When was the primary Homepage of Uwe Zdun created?'] --
+2024-02-21 13:26:10,254 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain start --
+2024-02-21 13:26:12,140 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain end --
+2024-02-21 13:26:12,140 - logger - INFO - INDEX : 4 -- start --
+2024-02-21 13:26:12,142 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-21 13:26:17,937 - logger - INFO - INDEX : 5 -- start --
+2024-02-21 13:26:17,939 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-21 13:26:25,792 - logger - INFO - INDEX : 6 -- start --
+2024-02-21 13:26:25,794 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-21 13:26:31,651 - logger - INFO - INDEX : 7 -- start --
+2024-02-21 13:26:31,652 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-21 13:26:38,133 - logger - INFO - INDEX : 8 -- start --
+2024-02-21 13:26:38,135 - logger - INFO - INDEX : 8 -- question set generation chain start --
+2024-02-21 13:27:14,543 - logger - INFO - INDEX : 9 -- start --
+2024-02-21 13:27:14,545 - logger - INFO - INDEX : 9 -- question set generation chain start --
+2024-02-21 13:27:22,083 - logger - INFO - INDEX : 10 -- start --
+2024-02-21 13:27:22,084 - logger - INFO - INDEX : 10 -- question set generation chain start --
+2024-02-21 13:27:41,674 - logger - INFO - INDEX : 10 -- question set generation chain end --
+2024-02-21 13:27:41,674 - logger - INFO - INDEX : 10 -- question set : ['What is the bibtex Type of the publication Trust-Region Methods on Riemannian Manifolds.?', 'Who authored the publication Trust-Region Methods on Riemannian Manifolds.?', 'In which year was the publication Trust-Region Methods on Riemannian Manifolds. published?', 'What is the journal where Trust-Region Methods on Riemannian Manifolds. was published?', 'What is the volume of the journal where Trust-Region Methods on Riemannian Manifolds. was published?'] --
+2024-02-21 13:27:41,675 - logger - INFO - INDEX : 10 -- pronoun identify and substitute chain start --
+2024-02-21 13:27:42,803 - logger - INFO - INDEX : 10 -- pronoun identify and substitute chain end --
+2024-02-21 13:27:42,803 - logger - INFO - INDEX : 11 -- start --
+2024-02-21 13:27:42,805 - logger - INFO - INDEX : 11 -- question set generation chain start --
+2024-02-21 13:27:54,319 - logger - INFO - INDEX : 11 -- question set generation chain end --
+2024-02-21 13:27:54,319 - logger - INFO - INDEX : 11 -- question set : ['What is the bibtex Type of the work Cluster abstraction of graph transformation systems.?', 'Who authored the work Cluster abstraction of graph transformation systems.?', 'Does the work Cluster abstraction of graph transformation systems. have an other Electronic Edition?', 'What is the primary Electronic Edition of the work Cluster abstraction of graph transformation systems.?'] --
+2024-02-21 13:27:54,320 - logger - INFO - INDEX : 11 -- pronoun identify and substitute chain start --
+2024-02-21 13:27:55,520 - logger - INFO - INDEX : 11 -- pronoun identify and substitute chain end --
+2024-02-21 13:27:55,520 - logger - INFO - INDEX : 12 -- start --
+2024-02-21 13:27:55,521 - logger - INFO - INDEX : 12 -- question set generation chain start --
+2024-02-21 13:28:00,792 - logger - INFO - INDEX : 13 -- start --
+2024-02-21 13:28:00,794 - logger - INFO - INDEX : 13 -- question set generation chain start --
+2024-02-21 13:28:07,384 - logger - INFO - INDEX : 14 -- start --
+2024-02-21 13:28:07,386 - logger - INFO - INDEX : 14 -- question set generation chain start --
+2024-02-21 13:28:13,415 - logger - INFO - INDEX : 15 -- start --
+2024-02-21 13:28:13,416 - logger - INFO - INDEX : 15 -- question set generation chain start --
+2024-02-21 13:28:38,319 - logger - INFO - INDEX : 15 -- question set generation chain end --
+2024-02-21 13:28:38,319 - logger - INFO - INDEX : 15 -- question set : ["Who authored the publication titled 'Detecting Adversarial Audio via Activation Quantization Error.'?", "In which year was the publication titled 'Detecting Adversarial Audio via Activation Quantization Error.' published?", "Where was the publication titled 'Detecting Adversarial Audio via Activation Quantization Error.' published?", "What is the primary Electronic Edition of the publication titled 'Detecting Adversarial Audio via Activation Quantization Error.'?"] --
+2024-02-21 13:28:38,320 - logger - INFO - INDEX : 15 -- pronoun identify and substitute chain start --
+2024-02-21 13:28:39,635 - logger - INFO - INDEX : 15 -- pronoun identify and substitute chain end --
+2024-02-21 13:31:53,320 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:31:53,326 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:33:01,638 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-21 13:33:01,639 - logger - INFO - INDEX : 0 -- question set : ["List all the types associated with the publication 'Systems of Logic Based on Ordinals.'", "How many creators are associated with the publication 'Systems of Logic Based on Ordinals.'?", "Is there any other electronic edition associated with the publication 'Systems of Logic Based on Ordinals.'?", "What is the primary electronic edition of the publication 'Systems of Logic Based on Ordinals.'?", "In what year was the publication 'Systems of Logic Based on Ordinals.' published?"] --
+2024-02-21 13:33:01,640 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-21 13:33:03,336 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-21 13:33:03,337 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 13:33:03,342 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 13:37:51,386 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:37:51,392 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:38:22,915 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-21 13:38:22,915 - logger - INFO - INDEX : 0 -- question set : ["What is the type of the publication 'Systems of Logic Based on Ordinals.'?", "Who authored the publication 'Systems of Logic Based on Ordinals.'?", "Does the publication 'Systems of Logic Based on Ordinals.' have a DOI?", "In what year was the publication 'Systems of Logic Based on Ordinals.' published?"] --
+2024-02-21 13:38:22,916 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-21 13:38:27,524 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-21 13:38:27,526 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 13:38:27,530 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 13:38:42,407 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2024-02-21 13:38:42,408 - logger - INFO - INDEX : 1 -- question set : ['What is the bibtex Type of Cooperative Situation Awareness in Transportation?', 'Who authored Cooperative Situation Awareness in Transportation?', 'In what year was Cooperative Situation Awareness in Transportation published?', 'Does Cooperative Situation Awareness in Transportation have an ISBN?'] --
+2024-02-21 13:38:42,408 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain start --
+2024-02-21 13:38:43,394 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain end --
+2024-02-21 13:38:43,394 - logger - INFO - INDEX : 2 -- start --
+2024-02-21 13:38:43,397 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-21 13:39:56,600 - logger - INFO - INDEX : 3 -- start --
+2024-02-21 13:39:56,602 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-21 13:40:08,993 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2024-02-21 13:40:08,994 - logger - INFO - INDEX : 3 -- question set : ['What is the ORCID of Uwe Zdun?', 'What is the primary affiliation of Uwe Zdun?', 'What is the primary full creator name of Uwe Zdun?', 'Does Uwe Zdun have a primary homepage?'] --
+2024-02-21 13:40:08,995 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain start --
+2024-02-21 13:40:09,988 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain end --
+2024-02-21 13:40:09,989 - logger - INFO - INDEX : 4 -- start --
+2024-02-21 13:40:09,990 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-21 13:40:28,264 - logger - INFO - INDEX : 5 -- start --
+2024-02-21 13:40:28,270 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-21 13:41:19,452 - logger - INFO - INDEX : 5 -- question set generation chain end --
+2024-02-21 13:41:19,453 - logger - INFO - INDEX : 5 -- question set : ["Who authored the publication entitled 'Pruning Depthwise Separable Convolutions for MobileNet Compression.'?", "In which year was the publication entitled 'Pruning Depthwise Separable Convolutions for MobileNet Compression.' published?", "Where was the publication entitled 'Pruning Depthwise Separable Convolutions for MobileNet Compression.' listed on the Table of Contents page?"] --
+2024-02-21 13:41:19,453 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain start --
+2024-02-21 13:41:20,280 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain end --
+2024-02-21 13:41:20,281 - logger - INFO - INDEX : 6 -- start --
+2024-02-21 13:41:20,288 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-21 13:41:40,097 - logger - INFO - INDEX : 6 -- question set generation chain end --
+2024-02-21 13:41:40,098 - logger - INFO - INDEX : 6 -- question set : ["What is the type of the publication 'Improved Complexity Bounds for Counting Points on Hyperelliptic Curves'?", "Who authored the publication 'Improved Complexity Bounds for Counting Points on Hyperelliptic Curves'?", "In which year was the publication 'Improved Complexity Bounds for Counting Points on Hyperelliptic Curves' published?", "What is the DOI of the publication 'Improved Complexity Bounds for Counting Points on Hyperelliptic Curves'?", "In which journal was the publication 'Improved Complexity Bounds for Counting Points on Hyperelliptic Curves' published?"] --
+2024-02-21 13:41:40,098 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain start --
+2024-02-21 13:41:41,812 - logger - INFO - INDEX : 6 -- pronoun identify and substitute chain end --
+2024-02-21 13:44:10,615 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:44:10,617 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:44:22,198 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-21 13:44:22,198 - logger - INFO - INDEX : 0 -- question set : ['What is the sub event of 1886 Wimbledon Championships?', 'What is an alternate name for 1886 Wimbledon Championships?', 'When did 1886 Wimbledon Championships start?', 'When did 1886 Wimbledon Championships end?'] --
+2024-02-21 13:44:22,198 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-21 13:44:23,361 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-21 13:44:23,361 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 13:44:23,362 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 13:44:53,835 - logger - INFO - INDEX : 2 -- start --
+2024-02-21 13:44:53,836 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-21 13:45:06,587 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-21 13:45:06,588 - logger - INFO - INDEX : 2 -- question set : ['What is the birth place of Abraham Albert Heaps?', 'What is the nationality of Abraham Albert Heaps?', 'When did Abraham Albert Heaps die?', 'What is the given name of Abraham Albert Heaps?', 'What occupation does Abraham Albert Heaps have?'] --
+2024-02-21 13:45:06,588 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-21 13:45:08,519 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-21 13:45:08,519 - logger - INFO - INDEX : 3 -- start --
+2024-02-21 13:45:08,520 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-21 13:45:18,127 - logger - INFO - INDEX : 4 -- start --
+2024-02-21 13:45:18,129 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-21 13:45:32,413 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-21 13:45:32,413 - logger - INFO - INDEX : 4 -- question set : ['What is the date Created of A Princess of Mars?', 'What is the alternate Name of A Princess of Mars?', 'What is the in Language of A Princess of Mars?', 'What is the date Published of A Princess of Mars?', 'Who is the author of A Princess of Mars?'] --
+2024-02-21 13:45:32,413 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-21 13:45:33,710 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-21 13:45:33,710 - logger - INFO - INDEX : 5 -- start --
+2024-02-21 13:45:33,712 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-21 13:46:10,529 - logger - INFO - INDEX : 6 -- start --
+2024-02-21 13:46:10,530 - logger - INFO - INDEX : 6 -- question set generation chain start --
+2024-02-21 13:46:51,975 - logger - INFO - INDEX : 7 -- start --
+2024-02-21 13:46:51,976 - logger - INFO - INDEX : 7 -- question set generation chain start --
+2024-02-21 13:47:13,852 - logger - INFO - INDEX : 8 -- start --
+2024-02-21 13:47:13,852 - logger - INFO - INDEX : 8 -- question set generation chain start --
+2024-02-21 13:47:21,312 - logger - INFO - INDEX : 9 -- start --
+2024-02-21 13:47:21,312 - logger - INFO - INDEX : 9 -- question set generation chain start --
+2024-02-21 13:47:33,431 - logger - INFO - INDEX : 9 -- question set generation chain end --
+2024-02-21 13:47:33,432 - logger - INFO - INDEX : 9 -- question set : ['What is the sub event of the 2010 Wimbledon Championships?', 'What is an alternate name for the 2010 Wimbledon Championships?', 'When did the 2010 Wimbledon Championships start?', 'When did the 2010 Wimbledon Championships end?'] --
+2024-02-21 13:47:33,432 - logger - INFO - INDEX : 9 -- pronoun identify and substitute chain start --
+2024-02-21 13:47:34,441 - logger - INFO - INDEX : 9 -- pronoun identify and substitute chain end --
+2024-02-21 13:47:34,441 - logger - INFO - INDEX : 10 -- start --
+2024-02-21 13:47:34,442 - logger - INFO - INDEX : 10 -- question set generation chain start --
+2024-02-21 13:47:47,401 - logger - INFO - INDEX : 10 -- question set generation chain end --
+2024-02-21 13:47:47,402 - logger - INFO - INDEX : 10 -- question set : ['What is the founding date of Aberbargoed Hospital?', 'Where is Aberbargoed Hospital located?', 'Is Aberbargoed Hospital dissolved?', 'What is the geo information for Aberbargoed Hospital?', 'In which place is Aberbargoed Hospital contained?'] --
+2024-02-21 13:47:47,402 - logger - INFO - INDEX : 10 -- pronoun identify and substitute chain start --
+2024-02-21 13:47:48,471 - logger - INFO - INDEX : 10 -- pronoun identify and substitute chain end --
+2024-02-21 13:53:11,999 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:53:12,004 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:54:14,586 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-21 13:54:14,587 - logger - INFO - INDEX : 0 -- question set : ['What is the sub event of 1886 Wimbledon Championships?', 'When did the 1886 Wimbledon Championships start?', 'What is an alternate name for the 1886 Wimbledon Championships?', 'When did the 1886 Wimbledon Championships end?'] --
+2024-02-21 13:54:14,588 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-21 13:54:15,650 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-21 13:54:15,650 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 13:54:15,652 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 13:54:42,436 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2024-02-21 13:54:42,437 - logger - INFO - INDEX : 1 -- question set : ['What is the start date of the 1930 FIFA World Cup?', 'Where did the 1930 FIFA World Cup take place?', 'When did the 1930 FIFA World Cup end?', 'Is there an alternate name for the 1930 FIFA World Cup?', 'What type of event is the 1930 FIFA World Cup?'] --
+2024-02-21 13:54:42,437 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain start --
+2024-02-21 13:54:45,254 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain end --
+2024-02-21 13:54:45,255 - logger - INFO - INDEX : 2 -- start --
+2024-02-21 13:54:45,261 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-21 13:54:57,591 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-21 13:54:57,592 - logger - INFO - INDEX : 2 -- question set : ["What is Abraham Albert Heaps' birth place?", "What is Abraham Albert Heaps' nationality?", 'When did Abraham Albert Heaps die?', "What is Abraham Albert Heaps' given name?", 'What occupation does Abraham Albert Heaps have?'] --
+2024-02-21 13:54:57,592 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-21 13:54:59,685 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-21 13:54:59,686 - logger - INFO - INDEX : 3 -- start --
+2024-02-21 13:54:59,689 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-21 13:58:16,380 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 13:58:16,385 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 13:58:20,832 - logger - INFO - INDEX : 0 -- ERROR: 0 : 'int' object is not subscriptable --
+2024-02-21 13:58:50,956 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 13:58:50,959 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 13:58:54,884 - logger - INFO - INDEX : 1 -- ERROR: 1 : 'int' object is not subscriptable --
+2024-02-21 14:01:23,084 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 14:01:23,089 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 14:01:33,268 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-21 14:01:33,269 - logger - INFO - INDEX : 0 -- question set : ['What is the sub event of 1886 Wimbledon Championships?', 'What is an alternate name for 1886 Wimbledon Championships?', 'When did the 1886 Wimbledon Championships start?', 'When did the 1886 Wimbledon Championships end?'] --
+2024-02-21 14:01:33,269 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-21 14:01:34,122 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-21 14:01:34,123 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 14:01:34,129 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 14:01:44,291 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2024-02-21 14:01:44,291 - logger - INFO - INDEX : 1 -- question set : ['What is the alternate name of the 1930 FIFA World Cup?', 'When did the 1930 FIFA World Cup start?', 'Where did the 1930 FIFA World Cup take place?', 'When did the 1930 FIFA World Cup end?'] --
+2024-02-21 14:01:44,292 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain start --
+2024-02-21 14:01:47,325 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain end --
+2024-02-21 14:01:47,326 - logger - INFO - INDEX : 2 -- start --
+2024-02-21 14:01:47,332 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-21 14:01:58,557 - logger - INFO - INDEX : 2 -- question set generation chain end --
+2024-02-21 14:01:58,558 - logger - INFO - INDEX : 2 -- question set : ["What is Abraham Albert Heaps' birth place?", "What is Abraham Albert Heaps' nationality?", 'When did Abraham Albert Heaps die?', "What is Abraham Albert Heaps' given name?", "What is Abraham Albert Heaps' occupation?"] --
+2024-02-21 14:01:58,559 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain start --
+2024-02-21 14:01:59,843 - logger - INFO - INDEX : 2 -- pronoun identify and substitute chain end --
+2024-02-21 14:01:59,844 - logger - INFO - INDEX : 3 -- start --
+2024-02-21 14:01:59,850 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-21 14:02:09,968 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2024-02-21 14:02:09,969 - logger - INFO - INDEX : 3 -- question set : ['What is an alternate name for Abbey of St. Medard?', 'Where is Abbey of St. Medard located?', 'Is Abbey of St. Medard contained in a place?'] --
+2024-02-21 14:02:09,969 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain start --
+2024-02-21 14:02:11,233 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain end --
+2024-02-21 14:02:11,234 - logger - INFO - INDEX : 4 -- start --
+2024-02-21 14:02:11,239 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-21 14:02:24,262 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-21 14:02:24,263 - logger - INFO - INDEX : 4 -- question set : ['What is the date Created of A Princess of Mars?', 'Who is the author of A Princess of Mars?', 'What is an alternate Name for A Princess of Mars?', 'In what Language is A Princess of Mars written?', 'When was A Princess of Mars published?'] --
+2024-02-21 14:02:24,264 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-21 14:02:25,137 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-21 14:03:52,205 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 14:03:52,213 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 14:07:00,964 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 14:07:00,971 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 14:07:34,492 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-21 14:07:34,493 - logger - INFO - INDEX : 0 -- question set : ['What is the birth place of Antony Cheng?', 'How many former coaches did Antony Cheng have?', 'When did Antony Cheng begin skating?', 'What is the height of Antony Cheng?', 'In which country does Antony Cheng reside?'] --
+2024-02-21 14:07:34,494 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-21 14:07:36,012 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-21 14:07:36,013 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 14:07:36,026 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 14:09:35,598 - logger - INFO - INDEX : 1 -- ERROR: 1 : cannot unpack non-iterable NoneType object --
+2024-02-21 14:09:36,763 - logger - INFO - INDEX : 2 -- start --
+2024-02-21 14:09:36,764 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-21 14:09:39,952 - logger - INFO - INDEX : 2 -- ERROR: 2 : cannot unpack non-iterable NoneType object --
+2024-02-21 14:09:40,699 - logger - INFO - INDEX : 3 -- start --
+2024-02-21 14:09:40,706 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-21 14:11:02,317 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 14:11:02,324 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 14:11:14,584 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-21 14:11:14,586 - logger - INFO - INDEX : 0 -- question set : ['What is the birth place of Antony Cheng?', 'How many skating clubs has Antony Cheng been a part of?', 'When did Antony Cheng start skating?', 'Who is the coach of Antony Cheng?', 'What is the gender of Antony Cheng?'] --
+2024-02-21 14:11:14,586 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-21 14:11:16,178 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-21 14:11:16,179 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 14:11:16,186 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 14:11:29,223 - logger - INFO - INDEX : 2 -- start --
+2024-02-21 14:11:29,225 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-21 14:14:00,863 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 14:14:00,870 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 14:14:12,878 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-21 14:14:12,879 - logger - INFO - INDEX : 0 -- question set : ['What is the birth place of Antony Cheng?', 'What is the gender of Antony Cheng?', 'Who is the former coach of Antony Cheng?', 'What is the height of Antony Cheng?', 'In which country does Antony Cheng reside?'] --
+2024-02-21 14:14:12,880 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-21 14:14:14,059 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-21 14:14:14,060 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 14:14:14,066 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 14:18:39,388 - logger - INFO - INDEX : 0 -- start --
+2024-02-21 14:18:39,394 - logger - INFO - INDEX : 0 -- question set generation chain start --
+2024-02-21 14:18:52,068 - logger - INFO - INDEX : 0 -- question set generation chain end --
+2024-02-21 14:18:52,069 - logger - INFO - INDEX : 0 -- question set : ['What is the birth place of Antony Cheng?', 'How many former clubs did Antony Cheng have?', 'Is Antony Cheng a male or female?', 'When did Antony Cheng begin skating?', 'What is the residence of Antony Cheng?'] --
+2024-02-21 14:18:52,070 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain start --
+2024-02-21 14:18:53,254 - logger - INFO - INDEX : 0 -- pronoun identify and substitute chain end --
+2024-02-21 14:18:53,255 - logger - INFO - INDEX : 1 -- start --
+2024-02-21 14:18:53,259 - logger - INFO - INDEX : 1 -- question set generation chain start --
+2024-02-21 14:19:05,002 - logger - INFO - INDEX : 1 -- question set generation chain end --
+2024-02-21 14:19:05,003 - logger - INFO - INDEX : 1 -- question set : ['What is the homepage of Bloomberg Radio?', 'What is the format of Bloomberg Radio?', 'What is the alias of Bloomberg Radio?', 'Who is the owner of Bloomberg Radio?', 'What is the webcast of Bloomberg Radio?'] --
+2024-02-21 14:19:05,003 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain start --
+2024-02-21 14:19:06,096 - logger - INFO - INDEX : 1 -- pronoun identify and substitute chain end --
+2024-02-21 14:19:06,096 - logger - INFO - INDEX : 2 -- start --
+2024-02-21 14:19:06,098 - logger - INFO - INDEX : 2 -- question set generation chain start --
+2024-02-21 14:19:16,985 - logger - INFO - INDEX : 3 -- start --
+2024-02-21 14:19:16,995 - logger - INFO - INDEX : 3 -- question set generation chain start --
+2024-02-21 14:21:19,906 - logger - INFO - INDEX : 3 -- question set generation chain end --
+2024-02-21 14:21:19,907 - logger - INFO - INDEX : 3 -- question set : ['What is the opening date of Abiko Station?', 'How many tracks does Abiko Station have?', 'Is Abiko Station serving a railway line?', 'What is the abstract of Abiko Station?', 'What is the country where Abiko Station is located?'] --
+2024-02-21 14:21:19,907 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain start --
+2024-02-21 14:21:21,818 - logger - INFO - INDEX : 3 -- pronoun identify and substitute chain end --
+2024-02-21 14:21:21,818 - logger - INFO - INDEX : 4 -- start --
+2024-02-21 14:21:21,823 - logger - INFO - INDEX : 4 -- question set generation chain start --
+2024-02-21 14:21:35,795 - logger - INFO - INDEX : 4 -- question set generation chain end --
+2024-02-21 14:21:35,796 - logger - INFO - INDEX : 4 -- question set : ['What is the population total of Ala, Trentino?', 'What is the region of Ala, Trentino?', 'What is the country of Ala, Trentino?', 'What is the province of Ala, Trentino?', 'What is the elevation of Ala, Trentino?'] --
+2024-02-21 14:21:35,797 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain start --
+2024-02-21 14:21:36,444 - logger - INFO - INDEX : 4 -- pronoun identify and substitute chain end --
+2024-02-21 14:21:36,445 - logger - INFO - INDEX : 5 -- start --
+2024-02-21 14:21:36,450 - logger - INFO - INDEX : 5 -- question set generation chain start --
+2024-02-21 14:21:48,298 - logger - INFO - INDEX : 5 -- question set generation chain end --
+2024-02-21 14:21:48,299 - logger - INFO - INDEX : 5 -- question set : ['Is there an abstract associated with entity 10?', 'What is the subject of entity 10?', 'When was the wiki Page Revision ID last updated for entity 10?'] --
+2024-02-21 14:21:48,299 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain start --
+2024-02-21 14:21:49,632 - logger - INFO - INDEX : 5 -- pronoun identify and substitute chain end --

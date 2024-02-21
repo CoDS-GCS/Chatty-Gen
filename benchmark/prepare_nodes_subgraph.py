@@ -27,6 +27,12 @@ def perform_operation(kg, seed):
     # print("Subgraph filtered After ", time.time() - end_time, " seconds")
     return subgraph
 
+def perform_operation_new(kg, seed):
+    subgraph = kg.subgraph_extractor(seed)
+    subgraph = kg.filter_subgraph(subgraph, seed)
+    if len(subgraph.triples) > 400:
+        return None
+    return subgraph
 
 def get_kg_instance(kg_name):
     kgs = {"yago": YagoKG, "dblp": DblpKG, "dbpedia": DbpediaKG}
@@ -79,6 +85,37 @@ def get_representative_label_per_node_type(endpoint, sampling_distribution, seed
     return type_per_label
 
 
+def retrieve_seed_nodes_with_subgraphs_new(kg_name, dataset_size, sampler, use_label):
+    seed_nodes, sample_distribution, type_to_predicate_map = sampler.retrieve_initial_list_top_k(kg_name, dataset_size)
+    seednode_to_subgraph_map = dict()
+    final_seed_nodes = list()
+    KG = get_kg_instance(kg_name)
+    kg = KG()
+    kg.set_type_to_predicate_map(type_to_predicate_map)
+    kg.set_use_label(use_label)
+    for seed in seed_nodes:
+        try:
+            subgraph = func_timeout(300, perform_operation_new, args=(kg, seed))
+            if subgraph is None:
+                new_node = sampler.sample_node_new(seed.nodetype)
+                seed_nodes.append(new_node)
+                continue
+            # print(f"{seed.uri}\t{seed.label}")
+            key = seed.label if seed.label else seed.uri
+            seednode_to_subgraph_map[key] = subgraph
+            final_seed_nodes.append(seed)
+        except FunctionTimedOut:
+            print("Operation timed out for seed ", seed)
+            new_node = sampler.sample_node_new(seed.nodetype)
+            seed_nodes.append(new_node)
+        except Exception as e:
+            traceback.print_exc()
+            print("Error while Handling seed ", seed)
+            print(e)
+
+    return final_seed_nodes, seednode_to_subgraph_map, kg
+
+
 def retrieve_seed_nodes_with_subgraphs(kg_name, dataset_size, sampler, use_label):
     seed_nodes, sample_distribution = sampler.retrieve_initial_list_top_k(dataset_size)
     KG = get_kg_instance(kg_name)
@@ -124,7 +161,8 @@ def retrieve_one_node_with_subgraph(sampler, node_type, kg):
     while not valid:
         try:
             seed_node = sampler.sample_node(node_type)
-            subgraph = func_timeout(300, perform_operation, args=(kg, seed_node))
+            # subgraph = func_timeout(300, perform_operation, args=(kg, seed_node))
+            subgraph = func_timeout(300, perform_operation_new, args=(kg, seed_node))
             valid = subgraph is not None
         except FunctionTimedOut:
             print("Operation timed out for seed ", seed_node)
