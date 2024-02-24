@@ -11,7 +11,8 @@ excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http:
                        'http://xmlns.com/foaf/0.1/thumbnail', 'http://www.w3.org/2002/07/owl#differentFrom',
                        'http://xmlns.com/foaf/0.1/isPrimaryTopicOf', 'http://purl.org/dc/elements/1.1/type',
                        'http://xmlns.com/foaf/0.1/primaryTopic', 'http://xmlns.com/foaf/0.1/logo',
-                       'http://purl.org/dc/elements/1.1/rights', 'http://www.w3.org/2000/01/rdf-schema#label']
+                       'http://purl.org/dc/elements/1.1/rights', 'http://www.w3.org/2000/01/rdf-schema#label',
+                       'http://dbpedia.org/ontology/thumbnail']
 
 knowledge_graph_to_uri = {
     "dbpedia": ("http://206.12.95.86:8890/sparql", "dbpedia"),
@@ -28,7 +29,7 @@ def sparql_results_to_dataframe(results, kg):
     for binding in results['results']['bindings']:
         type = binding.get('type', {}).get('value', None)
         count = binding.get('count', {}).get('value', None)
-        if kg in type:
+        if kg in type and type not in ['http://dbpedia.org/ontology/Image', 'http://schema.org/GeoCoordinates', 'http://dbpedia.org/ontology/CareerStation']:
             data.append({'Type': type, 'Count': count})
 
     return data

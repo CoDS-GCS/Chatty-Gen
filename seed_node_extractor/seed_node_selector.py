@@ -4,6 +4,110 @@ from benchmark.kg.kg.kg import Node
 from rdflib import URIRef
 import json
 import random
+import pandas as pd
+import concurrent.futures
+import os
+
+from benchmark.llm.prompt_chains import get_prompt_chains
+
+prompt_chains = get_prompt_chains()
+representative_label_for_type = prompt_chains.get("get_representative_label_for_type")
+max_label_length = 10
+
+
+class NodeType:
+    sample_index: int
+    current_data: list
+    offset: int
+    node_type: str
+    predicate_label: str
+
+    def __init__(self, node_type, predicate_label):
+        self.node_type = node_type
+        self.offset = 0
+        self.current_data = []
+        self.sample_index = 0
+        self.predicate_label = predicate_label
+
+    def get_graph_size(self, node, knowledge_graph_uri):
+        sparql = f"""SELECT count(*) as ?count WHERE {{ {{?s ?p <{node}>}} Union {{<{node}> ?p ?o}} }}"""
+        sub_result = utils.send_sparql_query(knowledge_graph_uri, sparql)
+        sub_count = sub_result["results"]["bindings"][0].get('count', {}).get('value', None)
+        return int(sub_count)
+
+    def get_distinct_predicates(self, node, knowledge_graph_uri):
+        sparql = f"""SELECT count(distinct ?p) as ?count WHERE {{ {{?s ?p <{node}>}} Union {{<{node}> ?p ?o}} }}"""
+        sub_result = utils.send_sparql_query(knowledge_graph_uri, sparql)
+        sub_count = sub_result["results"]["bindings"][0].get('count', {}).get('value', None)
+        return int(sub_count)
+
+    def populate_data(self, knowledge_graph_uri):
+        query = f"""
+             SELECT ?entity Count(?predicate) as ?count
+             WHERE {{
+               {{
+                 ?entity ?predicate ?object .
+                 ?entity rdf:type <{self.node_type}> .
+               }}
+               UNION
+               {{
+                 ?subject ?predicate ?entity .
+                 ?entity rdf:type <{self.node_type}> .
+               }}
+             }}
+             order by Desc(?count)
+             limit 1000
+             offset {self.offset}
+             """
+
+        result = utils.send_sparql_query(knowledge_graph_uri, query)
+        data = []
+        for binding in result['results']['bindings']:
+            entity = binding.get('entity', {}).get('value', None)
+            count = binding.get('count', {}).get('value', None)
+            count = int(count)
+            if count < 1000:
+                data.append(entity)
+        self.offset += 1000
+        self.current_data = data
+        self.sample_index = 0
+
+    def get_data(self, knowledge_graph_uri):
+        query = f"""
+            Select ?entity ?label
+            where {{ ?entity rdf:type <{self.node_type}> . ?entity <{self.predicate_label}> ?label}}
+            limit 10000
+            offset {self.offset}
+        """
+        result = utils.send_sparql_query(knowledge_graph_uri, query)
+        data = []
+        for binding in result['results']['bindings']:
+            entity = binding.get('entity', {}).get('value', None)
+            label = binding.get('label', {}).get('value', None)
+            if len(label.split(' ')) <= max_label_length:
+                data.append({'entity': entity, 'label': label})
+        self.offset += 10000
+        self.current_data = data
+        self.sample_index = 0
+
+    def get_one_sample(self, knowledge_graph_uri, sampled_nodes):
+        while True:
+            if self.sample_index == len(self.current_data):
+                self.get_data(knowledge_graph_uri)
+
+            node = self.current_data[self.sample_index]
+            self.sample_index += 1
+            graph_size = self.get_graph_size(node["entity"], knowledge_graph_uri)
+            distinct_predicates = self.get_distinct_predicates(node["entity"], knowledge_graph_uri)
+            if node["entity"] not in sampled_nodes and 20 < graph_size < 1000 and distinct_predicates > 10:
+                sampled_nodes.append(node["entity"])
+                return Node(uri=URIRef(node["entity"]), nodetype=URIRef(self.node_type.strip()))
+
+    def get_samples(self, num_samples, knowledge_graph_uri, sampled_nodes):
+        node_samples = list()
+        for i in range(num_samples):
+            node_samples.append(self.get_one_sample(knowledge_graph_uri, sampled_nodes))
+        return node_samples
 
 
 class SeedNodeSelector:
@@ -12,6 +116,8 @@ class SeedNodeSelector:
         self.sampled_nodes = list()
         self.is_random = is_random
         self.type_to_index = dict()
+        self.type_to_offset = dict()
+        self.type_toNodetype = dict()
         self.knowledge_graph_uri = utils.knowledge_graph_to_uri[kg_name][0]
         self.knowledge_graph_prefix = utils.knowledge_graph_to_uri[kg_name][1]
         self.seed_nodes_file = seed_nodes_file
@@ -27,7 +133,6 @@ class SeedNodeSelector:
                 node_type_samples = self.get_samples_for_type(key, value, prefix)
                 node_samples.extend(node_type_samples)
         return node_samples
-
 
     def get_samples_for_type(self, node_type, num_samples, prefix):
         file_name = utils.get_file_name_from_type(node_type)
@@ -63,9 +168,11 @@ class SeedNodeSelector:
             self.type_to_index[node_type] = sorted_count
             return node_samples
 
-    def retrieve_initial_list_top_k(self, num_samples=100):
+    def retrieve_initial_list_top_k(self, kg_name, num_samples=100):
+        # def retrieve_initial_list_top_k(self, num_samples=100):
         if self.seed_nodes_file is None:
-            return self.retrieve_initial_list_top_k_from_kg(num_samples)
+            return self.retrieve_initial_list_top_k_from_kg_new(num_samples, kg_name)
+            # return self.retrieve_initial_list_top_k_from_kg(num_samples)
         else:
             seralized_nodes = ""
             for i in range(num_samples):
@@ -74,8 +181,8 @@ class SeedNodeSelector:
                 seralized_nodes += f"<{self.file_seeds[self.seed_file_index].strip()}> "
                 self.seed_file_index += 1
             query = ("select distinct ?entity, ?type where {VALUES ?entity {"
-                             f"{seralized_nodes}"
-                             "} ?entity rdf:type ?type}")
+                     f"{seralized_nodes}"
+                     "} ?entity rdf:type ?type}")
             result = utils.send_sparql_query(self.knowledge_graph_uri, query)
             processed_nodes = set()
             node_samples = list()
@@ -94,6 +201,43 @@ class SeedNodeSelector:
 
             return node_samples, distribution
 
+    def get_node_for_label_extraction(self, node_type):
+        query = f""" select ?entity where {{ ?entity rdf:type <{node_type}>}} Limit 1"""
+        result = utils.send_sparql_query(self.knowledge_graph_uri, query)
+        for binding in result["results"]["bindings"]:
+            node = binding.get('entity', {}).get('value', None)
+            return node
+
+    def get_representative_label_per_node_type(self, sampling_distribution, exisiting_map, file_name):
+        type_per_label = exisiting_map
+        for key, value in sampling_distribution.items():
+            if value == 0:
+                continue
+            key = key.strip()
+            if key not in type_per_label:
+                sample_node = self.get_node_for_label_extraction(key)
+                query = f"select distinct ?p, ?ent where {{ <{sample_node}> ?p ?ent}}"
+                result = utils.send_sparql_query(self.knowledge_graph_uri, query)
+                predicates = list()
+                for binding in result["results"]["bindings"]:
+                    entity_type = binding.get('ent', {}).get('type', None)
+                    predicate = binding.get('p', {}).get('value', None)
+                    if entity_type == 'literal' and predicate not in predicates:
+                        predicates.append(predicate)
+
+                try:
+                    output = representative_label_for_type.get("chain").run(
+                        {"node_type": key, "predicates": ', '.join(predicates)}
+                    )
+                    type_per_label[key] = output["predicate"].strip()
+                except Exception as e:
+                    response = str(e)
+                    if response.startswith("Got invalid return object. Expected key"):
+                        start_index = response.index('got')
+                        type_per_label[key] = response[start_index + 3: len(response)].strip()
+                with open(file_name, 'w') as file:
+                    json.dump(type_per_label, file, indent=4)
+        return type_per_label
 
     def retrieve_initial_list_top_k_from_kg(self, num_samples=100):
         average_richness_file = f"index_data/{self.knowledge_graph_prefix}/average_per_type.txt"
@@ -104,12 +248,14 @@ class SeedNodeSelector:
         json_object = json.loads(cleaned_df)
         sample_distribution = sampling.get_sample_distribution(json_object, num_samples)
         print(sample_distribution)
+
         seed_nodes = self.return_seed_nodes(sample_distribution, self.knowledge_graph_prefix)
         return seed_nodes, sample_distribution
 
     def sample_node(self, node_type):
         if self.seed_nodes_file is None:
-            return self.sample_node_from_kg(node_type)
+            return self.sample_node_from_kg_new(node_type)
+            # return self.sample_node_from_kg(node_type)
         else:
             if self.seed_file_index >= len(self.file_seeds):
                 raise Exception("Seed file index is out of range")
@@ -124,9 +270,135 @@ class SeedNodeSelector:
         node = self.get_samples_for_type(node_type, 1, self.knowledge_graph_prefix)
         return node[0]
 
+    def sample_node_from_kg_new(self, node_type):
+        node_type = str(node_type)
+        nodetype_obj = self.type_toNodetype[node_type]
+        return nodetype_obj.get_one_sample(self.knowledge_graph_uri, self.sampled_nodes)
+
+    def return_seed_nodes_new(self, samples_per_type, type_to_label):
+        node_samples = list()
+        for key, value in samples_per_type.items():
+            if value > 0:
+                if key in self.type_toNodetype:
+                    nodeTypeObj = self.type_toNodetype[key]
+                else:
+                    nodeTypeObj = NodeType(key, type_to_label[key])
+                    self.type_toNodetype[key] = nodeTypeObj
+                node_type_samples = nodeTypeObj.get_samples(value, self.knowledge_graph_uri, self.sampled_nodes)
+                node_samples.extend(node_type_samples)
+        return node_samples
+
+    def get_distinct_sample(self, node_type):
+        query = f"""
+        SELECT (AVG(?count) as ?average_count)
+        WHERE {{
+          {{
+            SELECT ?entity (COUNT(DISTINCT ?p) as ?count)
+            WHERE {{
+              {{ ?entity rdf:type <{node_type}>. ?entity ?p ?o }}
+              UNION
+              {{ ?entity rdf:type <{node_type}>. ?s ?p ?entity }}
+            }}
+            GROUP BY ?entity
+            LIMIT 1000
+          }}
+        }}
+        """
+        result = utils.send_sparql_query(self.knowledge_graph_uri, query)
+        for binding in result['results']['bindings']:
+            average = binding.get('average_count', {}).get('value', None)
+            average = int(average)
+        return {"Type": node_type, "average": average}
+
+    def remove_poor_types(self, input_df):
+        types = input_df['Type'].values
+        num_threads = 10
+        results = []
+        with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
+            futures = [executor.submit(self.get_distinct_sample, type) for type in types]
+            for future in concurrent.futures.as_completed(futures):
+                result = future.result()
+                results.extend(result)
+
+        excluded_list = list()
+        for result in results:
+            if result['average'] < 5:
+                excluded_list.append(result['Type'])
+        df_cleaned = input_df[~input_df['Type'].isin(excluded_list)]
+        print(df_cleaned)
+        return df_cleaned.to_json(orient='records')
+
+    def eliminate_dominated_parents(self, df, knowledge_graph_uri):
+        df['Type'] = df['Type'].str.strip()
+        children_names = [x.strip() for x in df['Type'].values]
+        parents = sampling.get_parents(children_names, knowledge_graph_uri)
+        types_to_remove = list()
+        for child, parent in zip(children_names, parents):
+            if parent is not None:
+                count_child = df[df['Type'] == child]['Count'].values[0]
+                count_parent = df[df['Type'] == parent]['Count'].values[0]
+                if count_child / (count_parent * 1.0) > 0.99:
+                    types_to_remove.append(parent)
+        df_cleaned = df[~df['Type'].isin(types_to_remove)]
+        print(df_cleaned)
+        return df_cleaned.to_json(orient='records')
+        # return df_cleaned
+
+    def remove_rare_types(self, input_df):
+        threshold = 1
+        filtered_df = input_df[input_df['percentage'] > threshold]
+        filtered_df = filtered_df.drop(columns=['percentage'])
+        total_count = filtered_df['Count'].sum()
+        percentage_df = filtered_df.copy()
+        percentage_df['percentage'] = (percentage_df['Count'] / total_count) * 100
+        # return percentage_df.to_json(orient='records')
+        return percentage_df
+
+    def calculate_class_importance(self, input_df):
+        input_df['Count'] = input_df['Count'].astype(int)
+        total_count = input_df['Count'].sum()
+        percentage_df = input_df.copy()
+        percentage_df['percentage'] = (percentage_df['Count'] / total_count) * 100
+        return percentage_df
+
+    def retrieve_initial_list_top_k_from_kg_new(self, num_samples, kg_name):
+        kg_type_distribution = utils.get_type_distrubution(self.knowledge_graph_uri, self.knowledge_graph_prefix)
+        distribution = pd.DataFrame(kg_type_distribution)
+        percentage_df = self.calculate_class_importance(distribution)
+        update_df = self.remove_rare_types(percentage_df)
+        cleaned_df = self.eliminate_dominated_parents(update_df, self.knowledge_graph_uri)
+        # cleaned_df = self.remove_poor_types(cleaned_df)
+        json_object = json.loads(cleaned_df)
+        sample_distribution = sampling.get_sample_distribution(json_object, num_samples)
+        print(sample_distribution)
+        file_name = f"{kg_name}_types_representative.json"
+        if os.path.exists(file_name):
+            file = open(file_name, 'r')
+            type_to_predicate_map = json.load(file)
+        nodetype_to_label = self.get_representative_label_per_node_type(sample_distribution, type_to_predicate_map,
+                                                                        file_name)
+        seed_nodes = self.return_seed_nodes_new(sample_distribution, nodetype_to_label)
+        return seed_nodes, sample_distribution, nodetype_to_label
+
+    # def retrieve_node_parallel(self, type, num_entities):
+    #     num_threads = 10
+    #     results = []
+    #
+    #     with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
+    #                      offsets = range(0, num_entities, 10000)
+    #                  futures = [executor.submit(self.get_all_entities_with_size, type, offset) for offset in offsets]
+    #
+    #     for future in concurrent.futures.as_completed(futures):
+    #         result = future.result()
+    #         results.extend(result)
+    #
+    #     return results
+
 
 if __name__ == '__main__':
-    sampler = SeedNodeSelector('dblp')
-    initial, sample = sampler.retrieve_initial_list_top_k(10)
+    kg_name = 'dbpedia'
+    sampler = SeedNodeSelector(kg_name)
+    # initial, sample = sampler.retrieve_initial_list_top_k(10)
+    initial, sample = sampler.retrieve_initial_list_top_k_from_kg_new(20, kg_name)
     for seed in initial:
-        print(seed)
+        print(f"{seed.uri}\t{seed.nodetype}")
