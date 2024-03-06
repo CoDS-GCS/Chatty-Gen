@@ -1,5 +1,6 @@
 import argparse
 from benchmark2 import generate_dialogues
+import pdb
 
 def main():
     # Creating the argument parser
@@ -85,6 +86,8 @@ def main():
     seed_nodes_file = args.seed_nodes_file
     prompt = args.prompt
     use_label = args.use_label
+    pdb.set_trace()
+    print("using labels: ----", use_label)
 
     # Generating dialogues using the provided arguments
     generate_dialogues(kg_name, dataset_size, dialogue_size, approach, out_dir, prompt, use_label, seed_nodes_file)

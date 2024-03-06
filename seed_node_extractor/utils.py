@@ -1,6 +1,15 @@
 import requests
 import re
+import redis
 import time
+import json
+
+redis_client = None
+
+
+def initialize_redis(redis_host="localhost", redis_port=6379):
+    global redis_client
+    redis_client = redis.Redis(host=redis_host, port=redis_port)
 
 excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://www.w3.org/2002/07/owl#sameAs',
                        'http://schema.org/image', 'http://schema.org/sameAs',
@@ -34,7 +43,23 @@ def sparql_results_to_dataframe(results, kg):
 
     return data
 
+
 def execute_sparql_query(endpoint_url, query):
+    global redis_client
+
+    if redis_client is None:
+        initialize_redis()
+
+    # Check if the response is cached
+    cache_key = f"{endpoint_url}_{query}"
+    print(cache_key)
+    cached_result = redis_client.get(cache_key)
+    if cached_result:
+        print("Result found in cache.")
+        return 200, json.loads(cached_result.decode())
+
+    print("cache miss")
+
     headers = {
         'Content-Type': 'application/sparql-query',
         'Accept': 'application/json'
@@ -44,14 +69,19 @@ def execute_sparql_query(endpoint_url, query):
         'query': query,
     }
 
-    response = requests.get(endpoint_url, headers=headers, params=params)
+    return 404, "ERROR"
 
-    if response.status_code == 200:
-        return response.status_code, response.json()
-    else:
-        print(f"Error: {response.status_code}")
-        print(response.text)
-        return response.status_code, response.text
+#    response = requests.get(endpoint_url, headers=headers, params=params)
+#
+#    if response.status_code == 200:
+#        # Cache the response
+#        redis_client.set(cache_key, json.dumps(response.json()))
+#        print("Result cached.")
+#        return response.status_code, response.json()
+#    else:
+#        print(f"Error: {response.status_code}")
+#        print(response.text)
+#        return response.status_code, response.text
 
 def send_sparql_query(endpoint_url, query):
     repeat = True

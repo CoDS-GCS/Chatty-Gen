@@ -17,3 +17,4 @@ benchmark/traces/
 benchmark/*.log
 not_to_push/
 index_data/
+*.jsonl

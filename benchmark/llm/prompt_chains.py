@@ -7,18 +7,39 @@ from langchain.output_parsers import (
     ResponseSchema,
     PydanticOutputParser
 )
+import os
+import tiktoken
+from llm.openllm_local import OpenLLM
 from pydantic import BaseModel, Field, validator
 from langchain.chains import LLMChain
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 langchain.debug = True
 
-llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=False)
+tiktoken_cache_dir = "../tiktoken-cache"
+os.environ["TIKTOKEN_CACHE_DIR"] = tiktoken_cache_dir
+
+# llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=False)
+
+server_url = "http://localhost:3306"
+llm_config = {
+    'max_new_tokens': 320,
+    'early_stopping': "```",
+    'do_sample': True
+}
+llm = OpenLLM(server_url=server_url)
+print(vars(llm))
+print(llm)
+
+openai_embedding = tiktoken.encoding_for_model("gpt-3.5-turbo")
+
+# class QuestionItem(BaseModel):
+#     question: str
+#     triples: List[str]
 
 class QuestionItem(BaseModel):
     question: str
     triples: List[str]
-
 
 class LLMInput(BaseModel):
     output: List[QuestionItem]
@@ -28,6 +49,7 @@ class SchemaInput(BaseModel):
 
 class Item(BaseModel):
     output: str
+
 def format_template_with_dict(template, values_dict):
     try:
         formatted_string = template.format(**values_dict)
@@ -619,19 +641,24 @@ def get_n_question_from_summarized_subgraph_chain_without_example():
             "n",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5 {format_instructions}.
-
-        input: {subgraph}
-        n: {n}
-        output: """,
+        template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a
+        knowledge graph, represented as a list of triples. Each question should relate to a
+        shared entity (e) within the subgraph and should fall into one of the following
+        categories: list, count, boolean, wh (open-ended), or date-related questions. Each
+        question should be answerable solely from the information in the provided subgraph
+        without explicitly mentioning it. The questions can be equivalent to one or two triples
+        from the subgraph. Return each question with the triple or triples used to generate the
+        question. Maximum number of returned triples per questions is 5
+        {format_instructions}.\n\ninput: {subgraph}\nn: {n}\noutput:\n\n### Response:```json""",
     )
 
     n_question_generator_chain = LLMChain(
         llm=llm, prompt=N_Q_PROMPT,
         verbose=False,
-        output_parser=n_q_json_output_parser
+        output_parser=n_q_json_output_parser,
+        llm_kwargs=llm_config
     )
-    payload = {}
+    payload = {"stop": "```\n\n"}
     return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT}
 
 
@@ -850,7 +877,7 @@ def get_validate_question_quality():
     }
 
 def get_num_tokens(prompt):
-    return llm.get_num_tokens(prompt)
+    return len(openai_embedding.encode(prompt))
 
 def get_prompt_chains():
     prompt_chains = {

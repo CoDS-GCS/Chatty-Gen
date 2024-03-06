@@ -3,6 +3,9 @@ import time
 
 sys.path.append('../')
 import os
+import re
+import pdb
+import traceback
 import random
 import pathlib
 import json
@@ -26,6 +29,7 @@ import ast
 import re
 
 langchain.debug = True
+
 
 prompt_chains = get_prompt_chains()
 pronoun_identification_chain = prompt_chains.get("pronoun_identification_chain")
@@ -121,11 +125,14 @@ def filter_and_select_questions(original_questions):
     return selected_questions
 
 def decouple_questions_and_answers(input_obj, subgraph, approach, endpoint, seed_node_uri):
+    # pdb.set_trace()
     questions = list()
     answer_queries = list()
     triples = list()
     query_results = dict()
     for element in input_obj["output"]:
+        # element = element[1][0].dict()
+        print("element-", element)
         # 1- LLM Based
         # answer_query = get_answer_LLM_based(element["question"], element["triples"], subgraph)
         # 2-Rule based
@@ -299,6 +306,7 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
                     # This is a trigger to sample the new node
                     question_set = None
         except Exception as e:
+            traceback.print_exc()
             logger.info(f"INDEX : {idx} -- ERROR: {idx} : {e} --")
             tracer_instance.save_to_file()
 
@@ -371,13 +379,16 @@ def validate_triples_output(subgraph, output, approach):
     return True
 
 
+
 def execute_dialogue_generation_prompt(seed_entity, question_set):
     try:
-        output = pronoun_identification_and_substitution_chain.get("chain").run(
-            {"entity": seed_entity, "questions": question_set[1:]}
-        )
-        transformed_questions = output.dict()["output"]
+        ch = pronoun_identification_and_substitution_chain.get("chain")
+        post_processor = pronoun_identification_and_substitution_chain.get("post_processor")
+        llm_result = ch.generate([{"entity": seed_entity, "questions": question_set[1:]}], None)
+        output = post_processor(llm_result)
+        transformed_questions = output["output"]
     except Exception as e:
+        traceback.print_exc()
         response = str(e)
         if response.startswith("Failed to parse SchemaInput from completion"):
             start_index = response.index('[')
@@ -488,6 +499,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     # This is a trigger to sample the new node
                     question_set = None
         except Exception as e:
+            traceback.print_exc()
             logger.info(f"INDEX : {idx} -- ERROR: {idx} : {e} --")
             tracer_instance.save_to_file()
 
@@ -514,22 +526,22 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
             end_time = time.time()
             total_time += (end_time - start_time)
             processed_seeds += 1
-    benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
-    benchmark = {
-        "data": benchmark_sample,
-        "analysis" : benchmark_analysis,
-        "total_time": total_time,
-        "average_time": total_time / processed_seeds,
-        "Context Length Error": context_length_limit_error,
-        "Question Validation Error": question_validation_error,
-        "Triples Validation Error": triple_validation_error,
-        "Dialogue Validation Error": dialogue_validation_error,
-    }
-    directory = pathlib.Path(output_file).parent
-    directory.mkdir(parents=True, exist_ok=True)
-    with open(output_file, "w") as f:
-        json.dump(benchmark, f, indent=4)
 
+        benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
+        benchmark = {
+            "data": benchmark_sample,
+            "analysis" : benchmark_analysis,
+            "total_time": total_time,
+            "average_time": 0 if processed_seeds == 0 else (total_time / processed_seeds),
+            "Context Length Error": context_length_limit_error,
+            "Question Validation Error": question_validation_error,
+            "Triples Validation Error": triple_validation_error,
+            "Dialogue Validation Error": dialogue_validation_error,
+        }
+        directory = pathlib.Path(output_file).parent
+        directory.mkdir(parents=True, exist_ok=True)
+        with open(output_file, "w") as f:
+            json.dump(benchmark, f, indent=4)
 
 
 
@@ -604,6 +616,7 @@ def generate_dialogues_from_schema(seed_nodes, kg, tracer_instance, dialogue_siz
                     # "total_cost": cb.total_cost
                 }
         except Exception as e:
+            traceback.print_exc()
             logger.info(f"INDEX : {idx} -- ERROR: {idx} : {e} --")
             tracer_instance.save_to_file()
 
@@ -626,6 +639,17 @@ def generate_dialogues_from_schema(seed_nodes, kg, tracer_instance, dialogue_siz
     with open(output_file, "w") as f:
         json.dump(benchmark, f, indent=4)
 
+def trim_after_first_occurrence(text, pattern):
+    # Find the first occurrence of the pattern
+    match = re.search(pattern, text)
+    
+    # If the pattern is found, return the text up to the first occurrence
+    if match:
+        return text[:match.end()]
+    else:
+        # If the pattern is not found, return the original text
+        return text
+
 
 def execute_question_generation_prompt(subgraph_approach, prompt, subgraph_str, n, seed):
     output = None
@@ -641,13 +665,35 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph_str, 
                     {"subgraph": subgraph_str, "n": n}
                 )
             elif subgraph_approach == "summarized":
+                # pdb.set_trace()
                 prompt = n_question_from_summarized_subgraph_chain_without_example.get("prompt").format(subgraph=subgraph_str, n=n)
                 num_tokens = get_num_tokens(prompt)
                 if num_tokens > 4097:
                     return None
-                output = n_question_from_summarized_subgraph_chain_without_example.get("chain").run(
-                    {"subgraph": subgraph_str, "n": n}
-                )
+#             output = n_question_from_summarized_subgraph_chain_without_example.get("chain").run(
+#                 {"subgraph": subgraph_str, "n": n}
+#             )
+                ch = n_question_from_summarized_subgraph_chain_without_example.get("chain")
+                llm_result = ch.generate([{"subgraph": subgraph_str, "n": n}], None)
+                print(llm_result)
+                for generation in llm_result.generations:
+                    trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
+                    if not('\"output\":' in generation[0].text or '"output":' in generation[0].text):
+                        generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
+                    else:
+                        generation[0].text = "```json" + trimmed_with_backtick_at_end
+                    print("gen-text: ", generation[0].text)
+                output = [
+                    # Get the text of the top generated string.
+                    {
+                        ch.output_key: ch.output_parser.parse_result(generation),
+                        "full_generation": generation,
+                    }
+                    for generation in llm_result.generations
+                ]
+                if ch.return_final_only:
+                    output = [{ch.output_key: r[ch.output_key]} for r in output]
+                print(output)
         elif prompt == 2:
             seed_entity = seed.label if seed.label else seed.uri
             output = n_question_from_subgraph_chain_using_seed_entity.get("chain").run(
@@ -659,8 +705,9 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph_str, 
             output = n_question_from_subgraph_chain_using_seed_entity_and_type.get("chain").run(
                 {"e": seed_entity, "e_type": seed_entity_type, "subgraph": subgraph_str, "n": n}
             )
-        output = output.dict()
+        output = output[0][ch.output_key].dict()
     except Exception as e:
+        traceback.print_exc()
         response = str(e)
         if response.startswith("Failed to parse LLMInput from completion"):
             start_index = response.index('[')

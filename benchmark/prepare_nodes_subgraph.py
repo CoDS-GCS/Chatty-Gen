@@ -2,6 +2,8 @@ import time
 import os
 import json
 import traceback
+import re
+import pdb
 
 from func_timeout import func_timeout, FunctionTimedOut
 from kg.kg.kg import DblpKG, YagoKG, DbpediaKG
@@ -41,8 +43,19 @@ def get_kg_instance(kg_name):
         raise ValueError(f"kg : {kg_name} not supported")
     return kg
 
+def trim_after_first_occurrence(text, pattern):
+    # Find the first occurrence of the pattern
+    match = re.search(pattern, text)
+    
+    # If the pattern is found, return the text up to the first occurrence
+    if match:
+        return text[:match.end()]
+    else:
+        # If the pattern is not found, return the original text
+        return text
 
 def get_representative_label_per_node_type(endpoint, sampling_distribution, seed_nodes, exisiting_map, file_name):
+    # pdb.set_trace()
     type_per_label = exisiting_map
     count = 0
     for key, value in sampling_distribution.items():
@@ -59,6 +72,8 @@ def get_representative_label_per_node_type(endpoint, sampling_distribution, seed
             #          f"<{sample_node_str}>"
             #          "} } ")
             result = utils.send_sparql_query(endpoint, query)
+            if result is None:
+                continue
             predicates = list()
             for binding in result["results"]["bindings"]:
                 entity_type = binding.get('ent', {}).get('type', None)
@@ -67,9 +82,27 @@ def get_representative_label_per_node_type(endpoint, sampling_distribution, seed
                     predicates.append(predicate)
 
             try:
-                output = representative_label_for_type.get("chain").run(
-                    {"node_type": key, "predicates": ', '.join(predicates)}
-                )
+#                 output = representative_label_for_type.get("chain").run(
+#                     {"node_type": key, "predicates": ', '.join(predicates)}
+#                 )
+                ch = representative_label_for_type.get("chain")
+                llm_result = ch.generate([{"node_type": key, "predicates": ', '.join(predicates)}], None)
+                print(llm_result)
+                for generation in llm_result.generations:
+                    generation[0].text = "```json" + trim_after_first_occurrence(generation[0].text, "```")
+                    print("gen-text: ", generation[0].text)
+                output = [
+                    # Get the text of the top generated string.
+                    {
+                        ch.output_key: ch.output_parser.parse_result(generation),
+                        "full_generation": generation,
+                    }
+                    for generation in llm_result.generations
+                ]
+                if ch.return_final_only:
+                    output = [{ch.output_key: r[ch.output_key]} for r in output]
+                output = output[0][ch.output_key].dict()
+                print(output)
                 type_per_label[key] = output["predicate"].strip()
             except Exception as e:
                 response = str(e)
@@ -86,6 +119,7 @@ def get_representative_label_per_node_type(endpoint, sampling_distribution, seed
 
 
 def retrieve_seed_nodes_with_subgraphs_new(kg_name, dataset_size, sampler, use_label):
+    # pdb.set_trace()
     seed_nodes, sample_distribution, type_to_predicate_map = sampler.retrieve_initial_list_top_k(kg_name, dataset_size)
     seednode_to_subgraph_map = dict()
     final_seed_nodes = list()
@@ -117,6 +151,7 @@ def retrieve_seed_nodes_with_subgraphs_new(kg_name, dataset_size, sampler, use_l
 
 
 def retrieve_seed_nodes_with_subgraphs(kg_name, dataset_size, sampler, use_label):
+    # pdb.set_trace()
     seed_nodes, sample_distribution = sampler.retrieve_initial_list_top_k(dataset_size)
     KG = get_kg_instance(kg_name)
     kg = KG()
@@ -135,7 +170,8 @@ def retrieve_seed_nodes_with_subgraphs(kg_name, dataset_size, sampler, use_label
     final_seed_nodes = list()
     for seed in seed_nodes:
         try:
-            subgraph = func_timeout(300, perform_operation, args=(kg, seed))
+            # subgraph = func_timeout(3, perform_operation, args=(kg, seed))
+            subgraph = perform_operation(kg, seed)
             if subgraph is None:
                 new_node = sampler.sample_node(seed.nodetype)
                 seed_nodes.append(new_node)
