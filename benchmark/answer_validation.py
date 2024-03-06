@@ -26,16 +26,32 @@ def get_answers_from_subgraph(subgraph, triples, seed_node_uri):
         elif triple[2].__str__() == seed_node_uri:
             answers.append(triple[0].__str__())
     return answers
+
+def get_namespace_prefix():
+    prefix = """
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX yago: <http://yago-knowledge.org/resource/>
+    PREFIX dbo: <http://dbpedia.org/ontology/>
+    PREFIX owl: <http://www.w3.org/2002/07/owl#>
+    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+    PREFIX schema: <http://schema.org/>
+    """
+    return prefix
+
 def validate_query(query_string, triples_used, endpoint, subgraph, seed_node_uri, approach):
     """
     Returns 0: if the query is executable and correct, 1: query is executable but answer is wrong,
     2: query is not executable
     """
     if query_string.lower().startswith('ask'):
+        query_string = get_namespace_prefix() + query_string
         return validate_ask_query(query_string, triples_used, endpoint, subgraph, seed_node_uri)
     elif 'count(' in query_string.lower():
+        query_string = get_namespace_prefix() + query_string
         return validate_count_query(query_string, triples_used, endpoint, subgraph, seed_node_uri, approach)
     else:
+        query_string = get_namespace_prefix() + query_string
         return validate_select_query(query_string, triples_used, endpoint, subgraph, seed_node_uri, approach)
 
 

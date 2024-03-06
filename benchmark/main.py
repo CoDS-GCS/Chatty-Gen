@@ -1,5 +1,5 @@
 import argparse
-from benchmark2 import generate_dialogues
+from benchmark2_openllm import generate_dialogues
 import pdb
 
 def main():
@@ -86,7 +86,7 @@ def main():
     seed_nodes_file = args.seed_nodes_file
     prompt = args.prompt
     use_label = args.use_label
-    pdb.set_trace()
+    # pdb.set_trace()
     print("using labels: ----", use_label)
 
     # Generating dialogues using the provided arguments

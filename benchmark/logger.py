@@ -34,7 +34,7 @@ class Logger:
         return self.logger
 
 logger_obj = Logger()
-logger_obj.configure_logger(file_path="benchmark2.log")
+logger_obj.configure_logger(file_path="benchmark2-dbpedia.log")
 
 # Getting the configured logger instance
 logger = logger_obj.get_logger()

@@ -10,11 +10,12 @@ get_target_chain = prompt_chains.get("get_target_answer_from_triples")
 # Start Utils Function
 
 def get_triple_for_summarized(triple, subgraph):
-    triple = triple.replace('"', '').replace("'", "")
+    # triple = triple.replace('"', '').replace("'", "")
     for el in subgraph.triples:
         # if str(subgraph.get_triple_representation_for_optimized(el)) == triple:
-        seralized_triple = str(subgraph.get_triple_representation_no_object(el)).replace('"', '').replace("'", "")
-        if seralized_triple == triple:
+        # seralized_triple = str(subgraph.get_triple_representation_no_object(el)).replace('"', '').replace("'", "")
+        seralized_triple = subgraph.get_triple_representation_no_object(el)
+        if seralized_triple[0] == triple[0] and seralized_triple[1] == triple[1]:
             return subgraph.get_triple_with_uris_no_object(el)
     return None
 
@@ -117,7 +118,7 @@ def get_select_query_with_target(triples, subgraph, target):
 # Start Different Answer creation Approaches
 # Inputs to LLM are question and triples and the output is the SPARQL query
 def get_answer_LLM_based(question, triples, subgraph, approach):
-    pdb.set_trace()
+    # pdb.set_trace()
     triples_list = list()
     for triple in triples:
         if approach == "optimized":
@@ -127,7 +128,10 @@ def get_answer_LLM_based(question, triples, subgraph, approach):
         subject, predicate, object = returned_triple
         triples_list.append((subject.__str__(), predicate.__str__(), object.__str__()))
 
-    output = get_answer_chain.get("chain").run({"question": question, "triples": triples_list})
+    ch = get_answer_chain.get("chain")
+    post_processor = get_answer_chain.get("post_processor")
+    llm_result = ch.generate([{"question": question, "triples": triples_list}], None)
+    output = post_processor(llm_result)
     return output['sparql']
 
 

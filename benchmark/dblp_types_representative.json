@@ -1,0 +1,9 @@
+{
+    "https://dblp.org/rdf/schema#Publication": "https://dblp.org/rdf/schema#title",
+    "https://dblp.org/rdf/schema#Inproceedings": "https://dblp.org/rdf/schema#title",
+    "https://dblp.org/rdf/schema#Creator": "https://dblp.org/rdf/schema#primaryFullCreatorName",
+    "https://dblp.org/rdf/schema#Person": "http://www.w3.org/2000/01/rdf-schema#label",
+    "https://dblp.org/rdf/schema#Article": "https://dblp.org/rdf/schema#title",
+    "https://dblp.org/rdf/schema#Informal": "https://dblp.org/rdf/schema#title",
+    "https://dblp.org/rdf/schema#Book": "https://dblp.org/rdf/schema#title"
+}
