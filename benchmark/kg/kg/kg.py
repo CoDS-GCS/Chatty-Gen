@@ -523,8 +523,8 @@ class KG:
 
 class DblpKG(KG):
     def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dblp_rdf_schema.nt"),
-                 # rdf_format="nt", endpoints=["http://206.12.95.86:8894/sparql/", "https://sparql.dblp.org/sparql"]):
-                 rdf_format="nt", endpoints=[f"http://{host}:8894/sparql/"]):
+                 rdf_format="nt", endpoints=["http://206.12.95.86:8894/sparql/", "https://sparql.dblp.org/sparql"]):
+                 # rdf_format="nt", endpoints=[f"http://{host}:8894/sparql/"]):
         super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to Dblp
 
@@ -585,8 +585,8 @@ class DblpKG(KG):
 
 class YagoKG(KG):
     def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "yago_rdf_schema.nt"),
-                 # rdf_format="nt", endpoints=["http://206.12.95.86:8892/sparql/"]):
-                 rdf_format="nt", endpoints=[f"http://{host}:8892/sparql/"]):
+                 rdf_format="nt", endpoints=["http://206.12.95.86:8892/sparql/"]):
+                 # rdf_format="nt", endpoints=[f"http://{host}:8892/sparql/"]):
         super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to YAGO 
         allowed_formats = ["nt", "xml", "n3", "trix"]
@@ -649,8 +649,8 @@ class YagoKG(KG):
 
 class DbpediaKG(KG):
     def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"),
-                 # rdf_format="nt", endpoints=["http://206.12.95.86:8890/sparql/", "http://dbpedia.org/sparql/", "http://live.dbpedia.org/sparql/"]):
-                 rdf_format="nt", endpoints=[f"http://{host}:8890/sparql/"]):
+                 rdf_format="nt", endpoints=["http://206.12.95.86:8890/sparql/", "http://dbpedia.org/sparql/", "http://live.dbpedia.org/sparql/"]):
+                 # rdf_format="nt", endpoints=[f"http://{host}:8890/sparql/"]):
         super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to DBPedia
         allowed_formats = ["nt", "xml", "n3", "trix"]

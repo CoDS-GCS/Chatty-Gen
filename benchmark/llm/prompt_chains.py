@@ -21,7 +21,7 @@ langchain.debug = True
 tiktoken_cache_dir = "../tiktoken-cache"
 os.environ["TIKTOKEN_CACHE_DIR"] = tiktoken_cache_dir
 
-# llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=False)
+llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=False)
 
 llm_port = os.getenv("LLMPORT", 3307)
 server_url = f"http://localhost:{llm_port}"
@@ -31,9 +31,7 @@ llm_config = {
     'early_stopping': "```",
     'do_sample': True
 }
-llm = OpenLLM(server_url=server_url)
-print(vars(llm))
-print(llm)
+# llm = OpenLLM(server_url=server_url)
 
 openai_embedding = tiktoken.encoding_for_model("gpt-3.5-turbo")
 
@@ -687,7 +685,7 @@ def get_n_question_from_summarized_subgraph_chain_without_example():
         llm=llm, prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser,
-        llm_kwargs=llm_config
+        # llm_kwargs=llm_config
     )
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain 
@@ -742,7 +740,7 @@ def get_n_question_from_summarized_subgraph_chain_without_example_new():
         llm=llm, prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser,
-        llm_kwargs=llm_config
+        # llm_kwargs=llm_config
     )
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain
@@ -791,7 +789,7 @@ def get_triple_for_question_given_subgraph_chain_without_example():
         llm=llm, prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser,
-        llm_kwargs=llm_config
+        # llm_kwargs=llm_config
     )
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain
@@ -903,7 +901,7 @@ def get_representative_label_for_type():
         llm=llm, prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser,
-        llm_kwargs=llm_config
+        # llm_kwargs=llm_config
     )
     payload = {"stop": "```\n\n"}
     return {"chain": n_question_generator_chain, "payload": payload}
