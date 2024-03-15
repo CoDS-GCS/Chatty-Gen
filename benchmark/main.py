@@ -1,6 +1,6 @@
 import argparse
-from benchmark2_openllm import generate_dialogues
-import pdb
+from benchmark2_openllm import generate_dialogues as gen_diag_openllm
+from benchmark2 import generate_dialogues as gen_diag
 
 def main():
     # Creating the argument parser
@@ -72,6 +72,13 @@ def main():
         choices=[1, 2, 3],  # Available choices
         help="Specify the prompt to use for question generations(1: using only subgraph, 2: using subgraph and seed node, 3: using subgraph, seed node and its type)",
     )
+    
+    parser.add_argument(
+        "--pipeline-type",
+        type=str,
+        default="simplified",
+        help="Specify the pipeline type",
+    )
 
     # Parsing the arguments
     args = parser.parse_args()
@@ -89,6 +96,10 @@ def main():
     # pdb.set_trace()
     print("using labels: ----", use_label)
 
+    if args.pipeline_type == "simplified":
+        generate_dialogues = gen_diag_openllm
+    else:
+        generate_dialogues = gen_diag
     # Generating dialogues using the provided arguments
     generate_dialogues(kg_name, dataset_size, dialogue_size, approach, out_dir, prompt, use_label, seed_nodes_file)
 

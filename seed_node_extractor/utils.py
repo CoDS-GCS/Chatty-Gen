@@ -30,13 +30,15 @@ excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http:
 #     "yago": ("http://206.12.95.86:8892/sparql", "schema"),
 #     "dblp": ("http://206.12.95.86:8894/sparql", "dblp"),
 # }
-
+remotehost = "nc20451.narval.calcul.quebec"
+localhost = "localhost"
+host = localhost
 knowledge_graph_to_uri = {
-    "dbpedia": ("http://localhost:8890/sparql", "dbpedia"),
+    "dbpedia": (f"http://{host}:8890/sparql", "dbpedia"),
     # "lc_quad": "http://206.12.95.86:8891/sparql",
-    "microsoft_academic": ("http://localhost:8890/sparql", "makg"),
-    "yago": ("http://localhost:8892/sparql", "schema"),
-    "dblp": ("http://localhost:8894/sparql", "dblp"),
+    "microsoft_academic": (f"http://{host}:8890/sparql", "makg"),
+    "yago": (f"http://{host}:8892/sparql", "schema"),
+    "dblp": (f"http://{host}:8894/sparql", "dblp"),
 }
 
 # Returns only KG specific types
@@ -65,7 +67,7 @@ def execute_sparql_query(endpoint_url, query):
     # print(cache_key)
     cached_result = redis_client.get(cache_key)
     if cached_result:
-        print("Result found in cache.")
+        # print("Result found in cache.")
         return 200, json.loads(cached_result.decode())
 
     print("cache miss")

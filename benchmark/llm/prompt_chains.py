@@ -23,7 +23,9 @@ os.environ["TIKTOKEN_CACHE_DIR"] = tiktoken_cache_dir
 
 # llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=False)
 
-server_url = "http://localhost:3307"
+llm_port = os.getenv("LLMPORT", 3307)
+server_url = f"http://localhost:{llm_port}"
+# server_url = "http://ng10607.narval.calcul.quebec:3307"
 llm_config = {
     'max_new_tokens': 512,
     'early_stopping': "```",
@@ -41,7 +43,8 @@ openai_embedding = tiktoken.encoding_for_model("gpt-3.5-turbo")
 
 class QuestionItem(BaseModel):
     question: str
-    triples: List[str]
+    triples: List[Tuple[str,str,str]]
+    # triples: List[str]
 
 class LLMInput(BaseModel):
     output: List[QuestionItem]
@@ -575,8 +578,8 @@ def get_answer_from_question_and_triple_zero_shot():
             "triples",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        # template="""### Instruction:\nGiven a question and set of triples used to generate this question. Create the SPARQL query representing the question. Do not include the answer in the query.\n{format_instructions}\n\nquestion: {question}\ntriples: {triples}\n\n### Response:```json""",
-        template="""### Instruction:\nGiven a question and set of triples of form (subject, predicate, object) where object is unknown, used to generate this question. Write the SPARQL query representing the question. You must use only the given URIs.\n{format_instructions}\n\nquestion: {question}\ntriples: {triples}\n\n### Response:```json""",
+        template="""### Instruction:\nGiven a question and set of triples used to generate this question. Create the SPARQL query representing the question. Do not include the answer in the query.\n{format_instructions}\n\nquestion: {question}\ntriples: {triples}\n\n### Response:```json""",
+        # template="""### Instruction:\nGiven a question and set of triples of form (subject, predicate, object) where object is unknown, used to generate this question. Write the SPARQL query representing the question. You must use only the given URIs.\n{format_instructions}\n\nquestion: {question}\ntriples: {triples}\n\n### Response:```json""",
     )
 
     n_answer_generator_chain = LLMChain(

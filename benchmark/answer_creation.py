@@ -1,6 +1,5 @@
 from llm.prompt_chains import get_prompt_chains
 from kg.kg.kg import defrag_uri
-import pdb
 
 prompt_chains = get_prompt_chains()
 get_answer_chain = prompt_chains.get("get_answer_from_question_and_triple_zero_shot")
@@ -118,7 +117,6 @@ def get_select_query_with_target(triples, subgraph, target):
 # Start Different Answer creation Approaches
 # Inputs to LLM are question and triples and the output is the SPARQL query
 def get_answer_LLM_based(question, triples, subgraph, approach):
-    # pdb.set_trace()
     triples_list = list()
     for triple in triples:
         if approach == "optimized":

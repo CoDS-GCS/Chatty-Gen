@@ -448,7 +448,33 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
     question_validation_error = 0
     triple_validation_error = 0
     dialogue_validation_error = 0
+    failed_stage = {
+        "question_triple": 0,
+        "sparql_generation": 0,
+    }
+    # skipped_index = len(seed_nodes)
+    # for i in range(500):
+    #     # Sample a new node and add it to seed nodes
+    #     new_seed, subgraph = retrieve_one_node_with_subgraph(sampler, seed.nodetype, kg)
+    #     key = new_seed.label if new_seed.label else new_seed.uri
+    #     seed_nodes.append(new_seed)
+    #     seednode_to_subgraph_map[key] = subgraph
+
+    #     if new_seed.uri != "http://yago-knowledge.org/resource/Allentown_State_Hospital":
+    #         skipped_index += 1
+    #     else:
+    #         break
+
+    # for idx, seed in enumerate(seed_nodes[18:]):
     for idx, seed in enumerate(seed_nodes):
+        # if len(benchmark_sample) >= 3:
+        #     break
+        if idx>500:
+            break
+        # if seed.uri != "http://yago-knowledge.org/resource/Allentown_State_Hospital":
+        #     skipped_index += 1
+        # else:
+        #     break
         start_time = time.time()
         logger.info(f"INDEX : {idx} -- start --")
         tracer_instance.add_data(idx, "seed", asdict(seed))
@@ -484,6 +510,10 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                 if output is None:
                     context_length_limit_error += 1
                     print("output none context length limit error")
+                    new_seed, new_subgraph = retrieve_one_node_with_subgraph(sampler, seed.nodetype, kg)
+                    key = new_seed.label if new_seed.label else new_seed.uri
+                    seed_nodes.append(new_seed)
+                    seednode_to_subgraph_map[key] = new_subgraph
                     continue
                     # break
 #                     valid_question = validate_questions_output(seed_entity, output)
@@ -500,6 +530,8 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
 
                 question_validation_error += 1 if output.get("q_err",0) > 0 else 0
                 triple_validation_error += 1 if output.get("t_err",0) > 0 else 0
+                if output.get("q_err",0) > 0 or output.get("t_err",0) > 0:
+                    failed_stage["question_triple"] += 1
                 del output["q_err"]
                 del output["t_err"]
 
@@ -544,6 +576,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     }
 
                 else:
+                    failed_stage["sparql_generation"] += 1
                     # This is a trigger to sample the new node
                     question_set = None
         except Exception as e:
@@ -577,10 +610,12 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
 
         benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
         benchmark = {
+            "seeds_used": idx,
             "data": benchmark_sample,
             "analysis" : benchmark_analysis,
             "total_time": total_time,
             "average_time": 0 if processed_seeds == 0 else (total_time / processed_seeds),
+            "failed_stage": failed_stage,
             "Context Length Error": context_length_limit_error,
             "Question Validation Error": question_validation_error,
             "Triples Validation Error": triple_validation_error,

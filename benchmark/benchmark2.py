@@ -125,13 +125,11 @@ def filter_and_select_questions(original_questions):
     return selected_questions
 
 def decouple_questions_and_answers(input_obj, subgraph, approach, endpoint, seed_node_uri):
-    # pdb.set_trace()
     questions = list()
     answer_queries = list()
     triples = list()
     query_results = dict()
     for element in input_obj["output"]:
-        # element = element[1][0].dict()
         print("element-", element)
         # 1- LLM Based
         # answer_query = get_answer_LLM_based(element["question"], element["triples"], subgraph)
@@ -366,14 +364,23 @@ def validate_questions_output(seed, questions):
 def validate_triples_output(subgraph, output, approach):
     for instance in output["output"]:
         triples = instance["triples"]
-        if len(triples) > 0 and '(' not in triples[0] and ')' not in triples[0]:
-            if len(triples) == 3:
-                triples = [str(tuple(triples))]
-            elif len(triples) == 2:
-                triples = [str((triples[0], triples[1], ''))]
-            instance["triples"] = triples
+        if isinstance(triples, list) and isinstance(triples[0], str):
+            triples = [triples]
+        triples_ = []
+        for t in triples:
+            if len(t) > 1:
+                t_ = (t[0], t[1], '')
+                triples_.append(t_)
+        # if len(triples) > 0 and '(' not in triples[0] and ')' not in triples[0]:
+        #     if len(triples) == 3:
+        #         triples = [str(tuple(triples))]
+        #     elif len(triples) == 2:
+        #         triples = [str((triples[0], triples[1], ''))]
+        instance["triples"] = triples_
 
-        for triple in triples:
+        print("TRIPLES")
+        for triple in triples_:
+            print("t --> ", triple)
             if not subgraph.contain_triple(triple, approach):
                 return False
     return True
@@ -413,7 +420,13 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
     question_validation_error = 0
     triple_validation_error = 0
     dialogue_validation_error = 0
+    failed_stage = {
+        "question_triple": 0,
+        "sparql_generation": 0,
+    }
     for idx, seed in enumerate(seed_nodes):
+        if idx>500:
+            break
         start_time = time.time()
         logger.info(f"INDEX : {idx} -- start --")
         tracer_instance.add_data(idx, "seed", asdict(seed))
@@ -454,12 +467,16 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     if retry == 3:
                         break
                 if not valid_question:
+                    print("not valid question")
                     question_validation_error += 1
                 elif not valid_triples:
+                    print("not valid triple")
                     triple_validation_error += 1
 
                 if output is not None and valid_question and valid_triples:
                     question_set, answer_queries, triples_used, answer_status_dict = decouple_questions_and_answers(output, subgraph, "optimized", kg.sparql_endpoint, seed.uri)
+                else:
+                    failed_stage["question_triple"] += 1
 
                 if question_set and len(question_set) > 2:
                     logger.info(f"INDEX : {idx} -- question set generation chain end --")
@@ -496,6 +513,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     }
 
                 else:
+                    failed_stage["sparql_generation"] += 1
                     # This is a trigger to sample the new node
                     question_set = None
         except Exception as e:
@@ -529,10 +547,12 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
 
         benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
         benchmark = {
+            "seeds_used": idx,
             "data": benchmark_sample,
             "analysis" : benchmark_analysis,
             "total_time": total_time,
             "average_time": 0 if processed_seeds == 0 else (total_time / processed_seeds),
+            "failed_stage": failed_stage,
             "Context Length Error": context_length_limit_error,
             "Question Validation Error": question_validation_error,
             "Triples Validation Error": triple_validation_error,
