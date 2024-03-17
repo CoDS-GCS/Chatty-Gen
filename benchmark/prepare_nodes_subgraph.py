@@ -72,9 +72,8 @@ def get_representative_label_per_node_type(endpoint, sampling_distribution, seed
             #          f"<{sample_node_str}>"
             #          "} } ")
             result = utils.send_sparql_query(endpoint, query)
-            # TODO: recall why it was added
-            if result is None:
-                continue
+            # if result is None:
+                # continue
             predicates = list()
             for binding in result["results"]["bindings"]:
                 entity_type = binding.get('ent', {}).get('type', None)
