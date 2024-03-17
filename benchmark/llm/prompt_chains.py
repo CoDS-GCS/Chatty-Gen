@@ -35,17 +35,19 @@ llm_config = {
 
 openai_embedding = tiktoken.encoding_for_model("gpt-3.5-turbo")
 
-# class QuestionItem(BaseModel):
-#     question: str
-#     triples: List[str]
-
 class QuestionItem(BaseModel):
     question: str
-    triples: List[Tuple[str,str,str]]
-    # triples: List[str]
+    triples: List[str]
 
 class LLMInput(BaseModel):
     output: List[QuestionItem]
+
+class QuestionSchema(BaseModel):
+    question: str
+    triples: List[Tuple[str,str,str]]
+
+class QuestionSet(BaseModel):
+    output: List[QuestionSchema]
 
 class Triples(BaseModel):
     triples: List[Tuple[str, str, str]]
@@ -656,7 +658,7 @@ def get_n_question_from_summarized_subgraph_chain_without_example():
     #     n_q_response_schemas
     # )
     # n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
-    n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
+    n_q_json_output_parser = PydanticOutputParser(pydantic_object=QuestionSet)
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
     # N_Q_PROMPT = PromptTemplate(

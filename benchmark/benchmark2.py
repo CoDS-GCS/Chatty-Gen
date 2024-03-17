@@ -362,28 +362,39 @@ def validate_questions_output(seed, questions):
     return True
 
 def validate_triples_output(subgraph, output, approach):
-    for instance in output["output"]:
-        triples = instance["triples"]
-        if isinstance(triples, list) and isinstance(triples[0], str):
-            triples = [triples]
-        triples_ = []
-        for t in triples:
-            if len(t) > 1:
-                t_ = (t[0], t[1], '')
-                triples_.append(t_)
-        # if len(triples) > 0 and '(' not in triples[0] and ')' not in triples[0]:
-        #     if len(triples) == 3:
-        #         triples = [str(tuple(triples))]
-        #     elif len(triples) == 2:
-        #         triples = [str((triples[0], triples[1], ''))]
-        instance["triples"] = triples_
+    if approach == "subgraph":
+        for instance in output["output"]:
+            triples = instance["triples"]
+            if len(triples) > 0 and '(' not in triples[0] and ')' not in triples[0]:
+                if len(triples) == 3:
+                    triples = [str(tuple(triples))]
+                elif len(triples) == 2:
+                    triples = [str((triples[0], triples[1], ''))]
+                instance["triples"] = triples
 
-        print("TRIPLES")
-        for triple in triples_:
-            print("t --> ", triple)
-            if not subgraph.contain_triple(triple, approach):
-                return False
-    return True
+            for triple in triples:
+                if not subgraph.contain_triple(triple, approach):
+                    return False
+        return True
+
+    else:
+        for instance in output["output"]:
+            triples = instance["triples"]
+            if isinstance(triples, list) and isinstance(triples[0], str):
+                triples = [triples]
+            triples_ = []
+            for t in triples:
+                if len(t) > 1:
+                    t_ = (t[0], t[1], '')
+                    triples_.append(t_)
+            instance["triples"] = triples_
+
+            print("TRIPLES")
+            for triple in triples_:
+                print("t --> ", triple)
+                if not subgraph.contain_triple(triple, approach):
+                    return False
+        return True
 
 
 
@@ -684,15 +695,13 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph_str, 
                 output = n_question_from_subgraph_chain_without_example.get("chain").run(
                     {"subgraph": subgraph_str, "n": n}
                 )
+                output = output.dict()
             elif subgraph_approach == "summarized":
                 # pdb.set_trace()
                 prompt = n_question_from_summarized_subgraph_chain_without_example.get("prompt").format(subgraph=subgraph_str, n=n)
                 num_tokens = get_num_tokens(prompt)
                 if num_tokens > 4097:
                     return None
-#             output = n_question_from_summarized_subgraph_chain_without_example.get("chain").run(
-#                 {"subgraph": subgraph_str, "n": n}
-#             )
                 ch = n_question_from_summarized_subgraph_chain_without_example.get("chain")
                 llm_result = ch.generate([{"subgraph": subgraph_str, "n": n}], None)
                 print(llm_result)
@@ -713,7 +722,7 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph_str, 
                 ]
                 if ch.return_final_only:
                     output = [{ch.output_key: r[ch.output_key]} for r in output]
-                print(output)
+                output = output[0][ch.output_key].dict()
         elif prompt == 2:
             seed_entity = seed.label if seed.label else seed.uri
             output = n_question_from_subgraph_chain_using_seed_entity.get("chain").run(
@@ -725,7 +734,6 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph_str, 
             output = n_question_from_subgraph_chain_using_seed_entity_and_type.get("chain").run(
                 {"e": seed_entity, "e_type": seed_entity_type, "subgraph": subgraph_str, "n": n}
             )
-        output = output[0][ch.output_key].dict()
     except Exception as e:
         traceback.print_exc()
         response = str(e)

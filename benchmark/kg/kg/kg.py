@@ -211,18 +211,23 @@ class SubGraph:
         return summary_str
 
     def contain_triple(self, triple, approach):
-        # triple = triple.replace('"', '').replace("'", "")
-        for el in self.triples:
-            seralized_triple = ""
-            if approach == "optimized":
-                seralized_triple = self.get_triple_representation_no_object(el)
-            elif approach == "subgraph":
+        if approach == "subgraph":
+            triple = triple.replace('"', '').replace("'", "")
+            for el in self.triples:
+                seralized_triple = ""
                 seralized_triple = self.get_triple_representation(el, 'uri')
-            # seralized_triple = str(seralized_triple)
-            # seralized_triple = seralized_triple.replace('"', '').replace("'", "")
-            if triple == seralized_triple:
-                return True
-        return False
+                seralized_triple = str(seralized_triple)
+                seralized_triple = seralized_triple.replace('"', '').replace("'", "")
+                if triple == seralized_triple:
+                    return True
+            return False
+        elif approach == "optimized":
+            for el in self.triples:
+                seralized_triple = ""
+                seralized_triple = self.get_triple_representation_no_object(el)
+                if triple == seralized_triple:
+                    return True
+            return False
 
     def get_summarized_graph(self):
         seen_predicates = set()
