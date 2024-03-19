@@ -524,9 +524,11 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     }
 
                 else:
-                    failed_stage["sparql_generation"] += 1
+                    if question_set and len(question_set) < 3:
+                        failed_stage["sparql_generation"] += 1
                     # This is a trigger to sample the new node
                     question_set = None
+
         except Exception as e:
             traceback.print_exc()
             logger.info(f"INDEX : {idx} -- ERROR: {idx} : {e} --")
