@@ -220,7 +220,13 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
     question_validation_error = 0
     triple_validation_error = 0
     dialogue_validation_error = 0
+    failed_stage = {
+        "question_triple": 0,
+        "sparql_generation": 0,
+    }
     for idx, seed in enumerate(seed_nodes):
+        if idx>500:
+            break
         start_time = time.time()
         logger.info(f"INDEX : {idx} -- start --")
         tracer_instance.add_data(idx, "seed", asdict(seed))
@@ -249,7 +255,7 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
                 valid_question = False
                 valid_triples = False
                 retry = 0
-                while not valid_question and not valid_triples:
+                while not (valid_question and valid_triples):
                     output = execute_question_generation_prompt("subgraph", prompt, subgraph_uri_str, n, seed)
                     if output is None:
                         context_length_limit_error += 1
@@ -267,6 +273,8 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
                 if output is not None and valid_question and valid_triples:
                     question_set, answer_queries, triples_used, answer_status_dict = decouple_questions_and_answers(
                         output, subgraph, "subgraph", kg.sparql_endpoint, seed.uri)
+                else:
+                    failed_stage["question_triple"] += 1
 
                 if question_set and len(question_set) > 2:
                     logger.info(f"INDEX : {idx} -- question set generation chain end --")
@@ -301,6 +309,8 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
                         # "total_cost": cb.total_cost
                     }
                 else:
+                    if question_set and len(question_set) < 3:
+                        failed_stage["sparql_generation"] += 1
                     # This is a trigger to sample the new node
                     question_set = None
         except Exception as e:
@@ -331,25 +341,28 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
             end_time = time.time()
             total_time += (end_time - start_time)
             processed_seeds += 1
-    benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
-    benchmark = {
-        "data": benchmark_sample,
-        "analysis" : benchmark_analysis,
-        "total_time": total_time,
-        "average_time": total_time / processed_seeds,
-        "Skipped Context Length": context_length_limit_error,
-        "Question Validation Error": question_validation_error,
-        "Triples Validation Error": triple_validation_error,
-        "Dialogue Validation Error": dialogue_validation_error,
-    }
-    directory = pathlib.Path(output_file).parent
-    directory.mkdir(parents=True, exist_ok=True)
-    with open(output_file, "w") as f:
-        json.dump(benchmark, f, indent=4)
+
+        benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
+        benchmark = {
+            "data": benchmark_sample,
+            "analysis" : benchmark_analysis,
+            "total_time": total_time,
+            "average_time": total_time / processed_seeds,
+            "Skipped Context Length": context_length_limit_error,
+            "Question Validation Error": question_validation_error,
+            "Triples Validation Error": triple_validation_error,
+            "Dialogue Validation Error": dialogue_validation_error,
+        }
+        directory = pathlib.Path(output_file).parent
+        directory.mkdir(parents=True, exist_ok=True)
+        with open(output_file, "w") as f:
+            json.dump(benchmark, f, indent=4)
 
 def validate_dialogue_output(seed, dialogue):
+    if seed[-1] == '.':
+        seed = seed[:-1]
     for question in dialogue:
-        if seed in question:
+        if seed.lower() in question.lower():
             return False
     return True
 
@@ -357,7 +370,7 @@ def validate_questions_output(seed, questions):
     if seed[-1] == '.':
         seed = seed[:-1]
     for question in questions["output"]:
-        if seed not in question["question"]:
+        if seed.lower() not in question["question"].lower():
             return False
     return True
 
@@ -467,7 +480,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                 valid_question = False
                 valid_triples = False
                 retry = 0
-                while not valid_question and not valid_triples:
+                while not (valid_question and valid_triples):
                     output = execute_question_generation_prompt("summarized", prompt, subgraph_str, n, seed)
                     if output is None:
                         context_length_limit_error += 1

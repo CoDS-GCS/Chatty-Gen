@@ -354,15 +354,17 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
         json.dump(benchmark, f, indent=4)
 
 def validate_dialogue_output(seed, dialogue):
+    if seed[-1] == '.':
+        seed = seed[:-1]
     for question in dialogue:
-        if seed in question:
+        if seed.lower() in question.lower():
             return False
     return True
 
 def validate_single_questions_output(seed, question):
     if seed[-1] == '.':
         seed = seed[:-1]
-    if seed not in question:
+    if seed.lower() not in question.lower():
         return False
     return True
 
@@ -394,7 +396,7 @@ def validate_questions_output(seed, questions):
     if seed[-1] == '.':
         seed = seed[:-1]
     for question in questions["output"]:
-        if seed not in question["question"]:
+        if seed.lower() not in question["question"].lower():
             return False
     return True
 
@@ -528,8 +530,12 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
 #                     print(f"triple validation error, count: {triple_validation_error}")
 #                     triple_validation_error += 1
 
-                question_validation_error += 1 if output.get("q_err",0) > 0 else 0
-                triple_validation_error += 1 if output.get("t_err",0) > 0 else 0
+                if output.get("q_err", 0) > 0:
+                    question_validation_error += 1
+                elif output.get("t_err",0) > 0:
+                    triple_validation_error += 1
+                # question_validation_error += 1 if output.get("q_err",0) > 0 else 0
+                # triple_validation_error += 1 if output.get("t_err",0) > 0 else 0
                 if output.get("q_err",0) > 0 or output.get("t_err",0) > 0:
                     failed_stage["question_triple"] += 1
                 del output["q_err"]
@@ -576,7 +582,8 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     }
 
                 else:
-                    failed_stage["sparql_generation"] += 1
+                    if question_set and len(question_set) < 3:
+                        failed_stage["sparql_generation"] += 1
                     # This is a trigger to sample the new node
                     question_set = None
         except Exception as e:
