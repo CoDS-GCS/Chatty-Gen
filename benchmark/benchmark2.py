@@ -344,11 +344,13 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
 
         benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
         benchmark = {
+            "seeds_used": idx,
             "data": benchmark_sample,
             "analysis" : benchmark_analysis,
             "total_time": total_time,
-            "average_time": total_time / processed_seeds,
-            "Skipped Context Length": context_length_limit_error,
+            "average_time": 0 if processed_seeds == 0 else (total_time / processed_seeds),
+            "failed_stage": failed_stage,
+            "Context Length Error": context_length_limit_error,
             "Question Validation Error": question_validation_error,
             "Triples Validation Error": triple_validation_error,
             "Dialogue Validation Error": dialogue_validation_error,
