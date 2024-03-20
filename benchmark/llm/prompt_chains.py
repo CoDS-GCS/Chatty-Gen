@@ -14,18 +14,24 @@ from llm.openllm_local import OpenLLM
 from pydantic import BaseModel, Field, validator
 from langchain.chains import LLMChain
 from typing import List, Optional, Tuple
-import pdb
+from appconfig import config
 
 langchain.debug = True
 
 tiktoken_cache_dir = "../tiktoken-cache"
 os.environ["TIKTOKEN_CACHE_DIR"] = tiktoken_cache_dir
 
-llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=False)
+llms_dict = {
+    1: OpenLLM(server_url=config.pipeline_stages[0][2]),
+    2: OpenLLM(server_url=config.pipeline_stages[1][2]),
+    3: OpenLLM(server_url=config.pipeline_stages[2][2]),
+}
+
+
+llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=False, api_key=config.openai_api_key)
 
 llm_port = os.getenv("LLMPORT", 3307)
 server_url = f"http://localhost:{llm_port}"
-# server_url = "http://ng10607.narval.calcul.quebec:3307"
 llm_config = {
     'max_new_tokens': 512,
     'early_stopping': "```",
@@ -328,6 +334,7 @@ def get_pronoun_identification_chain():
     return {
         "chain": pronoun_identification_chain,
         "payload": examples_dict,
+        "prompt": P_IDF_PROMPT
     }
 
 
@@ -402,6 +409,7 @@ def get_pronoun_substitution_chain():
     return {
         "chain": pronoun_substitution_chain,
         "payload": examples_dict,
+        "prompt": P_SUB_PROMPT
     }
 
 
@@ -521,7 +529,7 @@ def get_n_question_from_subgraph_chain_with_example():
         "example_n": example_n,
         "example_output": example_output,
     }
-    return {"chain": n_question_generator_chain, "payload": payload}
+    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT}
 
 def get_n_question_from_schema_chain_without_example():
     n_q_response_schemas = [
@@ -557,7 +565,7 @@ def get_n_question_from_schema_chain_without_example():
         output_parser=n_q_json_output_parser
     )
     payload = {}
-    return {"chain": n_question_generator_chain, "payload": payload}
+    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT}
 
 def get_answer_from_question_and_triple_zero_shot():
     n_q_response_schemas = [
@@ -572,7 +580,7 @@ def get_answer_from_question_and_triple_zero_shot():
 
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
-    N_Q_PROMPT = PromptTemplate(
+    ANS_QUE_PROMPT = PromptTemplate(
         input_variables=[
             "question",
             "triples",
@@ -583,7 +591,7 @@ def get_answer_from_question_and_triple_zero_shot():
     )
 
     n_answer_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
+        llm=llm, prompt=ANS_QUE_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser
     )
@@ -611,7 +619,7 @@ def get_answer_from_question_and_triple_zero_shot():
         output = output[0][ch.output_key]
         print(output)
         return output
-    return {"chain": n_answer_generator_chain, "payload": {}, "post_processor": post_processor}
+    return {"chain": n_answer_generator_chain, "payload": {}, "post_processor": post_processor, "prompt": ANS_QUE_PROMPT}
 
 def get_target_answer_from_triples():
     n_q_response_schemas = [
@@ -626,7 +634,7 @@ def get_target_answer_from_triples():
 
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
-    N_Q_PROMPT = PromptTemplate(
+    ANS_TARGET_PROMPT = PromptTemplate(
         input_variables=[
             "question",
             "triples",
@@ -641,11 +649,11 @@ def get_target_answer_from_triples():
     )
 
     n_answer_target_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
+        llm=llm, prompt=ANS_TARGET_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser
     )
-    return {"chain": n_answer_target_chain, "payload": {}}
+    return {"chain": n_answer_target_chain, "payload": {}, "prompt": ANS_TARGET_PROMPT}
 
 def get_n_question_from_summarized_subgraph_chain_without_example():
     # n_q_response_schemas = [
@@ -845,7 +853,7 @@ def get_n_question_from_subgraph_chain_using_seed_entity():
         output_parser=n_q_json_output_parser
     )
     payload = {}
-    return {"chain": n_question_generator_chain, "payload": payload}
+    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT,}
 
 def get_n_question_from_subgraph_chain_using_seed_entity_and_type():
     n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
@@ -874,7 +882,7 @@ def get_n_question_from_subgraph_chain_using_seed_entity_and_type():
         output_parser=n_q_json_output_parser
     )
     payload = {}
-    return {"chain": n_question_generator_chain, "payload": payload}
+    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT,}
 
 def get_representative_label_for_type():
     n_q_response_schemas = [
@@ -906,7 +914,7 @@ def get_representative_label_for_type():
         # llm_kwargs=llm_config
     )
     payload = {"stop": "```\n\n"}
-    return {"chain": n_question_generator_chain, "payload": payload}
+    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT,}
 
 
 def get_pronoun_identification_and_substitution_chain_without_example():
@@ -970,7 +978,7 @@ def get_pronoun_identification_and_substitution_chain_without_example():
         return output
 
     return {
-        "chain": pronoun_substitution_chain, "payload": {}, "post_processor": post_processor
+        "chain": pronoun_substitution_chain, "payload": {}, "post_processor": post_processor, "prompt": P_SUB_PROMPT,
     }
 
 
@@ -1062,22 +1070,22 @@ def get_num_tokens(prompt):
 def get_prompt_chains():
     prompt_chains = {
         "question_template_chain": get_question_template_chain,
-        "pronoun_identification_chain": get_pronoun_identification_chain(),
-        "pronoun_substitution_chain": get_pronoun_substitution_chain(),
-        "n_question_from_subgraph_chain_with_example": get_n_question_from_subgraph_chain_with_example(),
-        "n_question_from_subgraph_chain_without_example": get_n_question_from_subgraph_chain_without_example(),
-        "n_question_from_schema_chain_without_example": get_n_question_from_schema_chain_without_example(),
-        "n_question_from_summarized_subgraph_chain_without_example": get_n_question_from_summarized_subgraph_chain_without_example(),
-        "get_answer_from_question_and_triple_zero_shot": get_answer_from_question_and_triple_zero_shot(),
-        "get_target_answer_from_triples": get_target_answer_from_triples(),
-        "get_n_question_from_subgraph_chain_using_seed_entity": get_n_question_from_subgraph_chain_using_seed_entity(),
-        "get_n_question_from_subgraph_chain_using_seed_entity_and_type": get_n_question_from_subgraph_chain_using_seed_entity_and_type(),
-        "get_representative_label_for_type": get_representative_label_for_type(),
-        "get_pronoun_identification_and_substitution_chain_without_example": get_pronoun_identification_and_substitution_chain_without_example(),
-        "get_validate_question_quality": get_validate_question_quality(),
+        "pronoun_identification_chain": get_pronoun_identification_chain,
+        "pronoun_substitution_chain": get_pronoun_substitution_chain,
+        "n_question_from_subgraph_chain_with_example": get_n_question_from_subgraph_chain_with_example,
+        "n_question_from_subgraph_chain_without_example": get_n_question_from_subgraph_chain_without_example,
+        "n_question_from_schema_chain_without_example": get_n_question_from_schema_chain_without_example,
+        "n_question_from_summarized_subgraph_chain_without_example": get_n_question_from_summarized_subgraph_chain_without_example,
+        "get_answer_from_question_and_triple_zero_shot": get_answer_from_question_and_triple_zero_shot,
+        "get_target_answer_from_triples": get_target_answer_from_triples,
+        "get_n_question_from_subgraph_chain_using_seed_entity": get_n_question_from_subgraph_chain_using_seed_entity,
+        "get_n_question_from_subgraph_chain_using_seed_entity_and_type": get_n_question_from_subgraph_chain_using_seed_entity_and_type,
+        "get_representative_label_for_type": get_representative_label_for_type,
+        "get_pronoun_identification_and_substitution_chain_without_example": get_pronoun_identification_and_substitution_chain_without_example,
+        "get_validate_question_quality": get_validate_question_quality,
         "n_question_from_summarized_subgraph_chain_without_example_new":
-        get_n_question_from_summarized_subgraph_chain_without_example_new(),
+        get_n_question_from_summarized_subgraph_chain_without_example_new,
         "get_triple_for_question_given_subgraph_chain_without_example":
-        get_triple_for_question_given_subgraph_chain_without_example()
+        get_triple_for_question_given_subgraph_chain_without_example
     }
     return prompt_chains

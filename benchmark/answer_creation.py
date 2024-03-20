@@ -1,5 +1,9 @@
 from llm.prompt_chains import get_prompt_chains
 from kg.kg.kg import defrag_uri
+from appconfig import config
+from redis_util import RedisClient
+
+redis_client = RedisClient()
 
 prompt_chains = get_prompt_chains()
 get_answer_chain = prompt_chains.get("get_answer_from_question_and_triple_zero_shot")
@@ -87,8 +91,13 @@ def get_unknown_from_llm(question, triples, subgraph):
         original_triple = get_original_triple(triple, subgraph)
         subject, predicate, object = original_triple
         triples_list.append((subject.__str__(), predicate.__str__(), object.__str__()))
+    
+    prompt = get_target_chain.get("prompt").format(question=question, triples=triples_list)
 
-    output = get_target_chain.get("chain").run({"question": question, "triples": triples_list})
+    output = redis_client.get(prompt)
+    if output is None:
+        output = get_target_chain.get("chain").run({"question": question, "triples": triples_list})
+        redis_client.set(prompt, output)
     return output['target']
 
 
@@ -126,10 +135,14 @@ def get_answer_LLM_based(question, triples, subgraph, approach):
         subject, predicate, object = returned_triple
         triples_list.append((subject.__str__(), predicate.__str__(), object.__str__()))
 
-    ch = get_answer_chain.get("chain")
-    post_processor = get_answer_chain.get("post_processor")
-    llm_result = ch.generate([{"question": question, "triples": triples_list}], None)
-    output = post_processor(llm_result)
+    prompt = get_answer_chain.get("prompt").format(question=question, triples=triples_list)
+    output = redis_client.get(prompt)
+    if output is None:
+        ch = get_answer_chain.get("chain")
+        post_processor = get_answer_chain.get("post_processor")
+        llm_result = ch.generate([{"question": question, "triples": triples_list}], None)
+        output = post_processor(llm_result)
+        redis_client.set(prompt, output)
     return output['sparql']
 
 
