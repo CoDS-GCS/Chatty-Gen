@@ -30,7 +30,7 @@ def perform_operation(kg, seed):
 def perform_operation_new(kg, seed):
     subgraph = kg.subgraph_extractor(seed)
     subgraph = kg.filter_subgraph(subgraph, seed)
-    if len(subgraph.triples) > 400:
+    if len(subgraph.triples) > 400 or len(subgraph.triples) < 5:
         return None
     return subgraph
 
@@ -97,7 +97,7 @@ def retrieve_seed_nodes_with_subgraphs_new(kg_name, dataset_size, sampler, use_l
         try:
             subgraph = func_timeout(300, perform_operation_new, args=(kg, seed))
             if subgraph is None:
-                new_node = sampler.sample_node_new(seed.nodetype)
+                new_node = sampler.sample_node(seed.nodetype)
                 seed_nodes.append(new_node)
                 continue
             # print(f"{seed.uri}\t{seed.label}")

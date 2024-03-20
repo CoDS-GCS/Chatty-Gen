@@ -82,32 +82,31 @@ def bar_chart_for_one_question_word(baseline_data, approach_data, kg_name):
 
     # Define bar width
     bar_width = 0.35
+    font_size = 16
 
     # Create the grouped bar chart
-    fig, ax = plt.subplots()
-    bar1 = ax.bar(x - bar_width / 2, values_baseline, bar_width, label='Subgraph')
-    bar2 = ax.bar(x + bar_width / 2, values_approach, bar_width, label='Summarized')
+    fig, ax = plt.subplots(figsize=(9, 7))
+    bar1 = ax.bar(x - bar_width / 2, values_baseline, bar_width, label='Subgraph Baseline', color='red')
+    bar2 = ax.bar(x + bar_width / 2, values_approach, bar_width, label='CoKG', color='tab:green')
 
     for i, value in enumerate(values_baseline):
-        ax.text(i - bar_width / 2, value + 0.1, str(value), ha='center', va='bottom')
+        ax.text(i - bar_width / 2, value + 0.1, str(value), ha='center', va='bottom', fontsize=10)
 
     for i, value in enumerate(values_approach):
-        ax.text(i + bar_width / 2, value + 0.1, str(value), ha='center', va='bottom')
+        ax.text(i + bar_width / 2, value + 0.1, str(value), ha='center', va='bottom', fontsize=10)
 
     # Set labels and title
-    ax.set_xlabel('Question prefix for '+ kg_name.upper())
-    ax.set_ylabel('Count')
+    ax.set_xlabel('Question prefix for '+ kg_name.upper(),  labelpad=10., fontsize=font_size)
+    ax.set_ylabel('Count', fontsize=font_size)
     # ax.set_title('Comparison of Approaches')
     ax.set_xticks(x)
     # ax.set_xticklabels(labels, rotation=45, ha='right')
-    ax.set_xticklabels(labels, rotation=0, ha='center')
-    ax.legend()
-    output_file = f"{kg_name}_complexity.pdf"
+    ax.set_xticklabels(labels, rotation=0, ha='center', fontsize=font_size)
+    ax.legend(loc='upper right', fontsize=13)
+    output_file = f"Figures/{kg_name}__test_complexity.pdf"
+    fig.tight_layout()
+    plt.subplots_adjust(left=0.2, bottom=0.2, right=1.35)
     plt.savefig(output_file, bbox_inches='tight')
-    # Show the plot
-    plt.tight_layout()
-    plt.show()
-
 
 
 if __name__ == '__main__':

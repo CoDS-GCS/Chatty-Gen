@@ -12,7 +12,12 @@ excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http:
                        'http://xmlns.com/foaf/0.1/isPrimaryTopicOf', 'http://purl.org/dc/elements/1.1/type',
                        'http://xmlns.com/foaf/0.1/primaryTopic', 'http://xmlns.com/foaf/0.1/logo',
                        'http://purl.org/dc/elements/1.1/rights', 'http://www.w3.org/2000/01/rdf-schema#label',
-                       'http://dbpedia.org/ontology/thumbnail']
+                       'http://dbpedia.org/ontology/thumbnail', 'http://dbpedia.org/ontology/wikiPageID',
+                       'http://purl.org/dc/terms/subject', 'http://purl.org/linguistics/gold/hypernym',
+                       'http://xmlns.com/foaf/0.1/name', 'http://dbpedia.org/ontology/wikiPageRevisionID',
+                       'http://dbpedia.org/ontology/wikiPageRedirects', 'http://www.w3.org/ns/prov#wasDerivedFrom',
+                       'http://dbpedia.org/ontology/wikiPageExternalLink', 'http://dbpedia.org/ontology/abstract',
+                       'http://xmlns.com/foaf/0.1/depiction']
 
 knowledge_graph_to_uri = {
     "dbpedia": ("http://206.12.95.86:8890/sparql", "dbpedia"),
@@ -29,7 +34,10 @@ def sparql_results_to_dataframe(results, kg):
     for binding in results['results']['bindings']:
         type = binding.get('type', {}).get('value', None)
         count = binding.get('count', {}).get('value', None)
-        if kg in type and type not in ['http://dbpedia.org/ontology/Image', 'http://schema.org/GeoCoordinates', 'http://dbpedia.org/ontology/CareerStation']:
+        if (kg in type and type not in
+                ['http://dbpedia.org/ontology/Image', 'http://schema.org/GeoCoordinates',
+                 'http://dbpedia.org/ontology/CareerStation', 'http://dbpedia.org/ontology/TimePeriod',
+                 'http://bioschemas.org/Taxon']):
             data.append({'Type': type, 'Count': count})
 
     return data

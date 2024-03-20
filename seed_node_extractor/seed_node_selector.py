@@ -41,44 +41,24 @@ class NodeType:
         sub_count = sub_result["results"]["bindings"][0].get('count', {}).get('value', None)
         return int(sub_count)
 
-    def populate_data(self, knowledge_graph_uri):
-        query = f"""
-             SELECT ?entity Count(?predicate) as ?count
-             WHERE {{
-               {{
-                 ?entity ?predicate ?object .
-                 ?entity rdf:type <{self.node_type}> .
-               }}
-               UNION
-               {{
-                 ?subject ?predicate ?entity .
-                 ?entity rdf:type <{self.node_type}> .
-               }}
-             }}
-             order by Desc(?count)
-             limit 1000
-             offset {self.offset}
-             """
 
-        result = utils.send_sparql_query(knowledge_graph_uri, query)
-        data = []
-        for binding in result['results']['bindings']:
-            entity = binding.get('entity', {}).get('value', None)
-            count = binding.get('count', {}).get('value', None)
-            count = int(count)
-            if count < 1000:
-                data.append(entity)
-        self.offset += 1000
-        self.current_data = data
-        self.sample_index = 0
+    def get_data(self, knowledge_graph_uri, knowledge_graph_prefix):
+        if 'schema' == knowledge_graph_prefix:
+            query = f"""
+                   Select ?entity ?label
+                   where {{ ?entity rdf:type <{self.node_type}> . ?entity <{self.predicate_label}> ?label . FILTER (lang(?label) = "en")}}
 
-    def get_data(self, knowledge_graph_uri):
-        query = f"""
-            Select ?entity ?label
-            where {{ ?entity rdf:type <{self.node_type}> . ?entity <{self.predicate_label}> ?label}}
-            limit 10000
-            offset {self.offset}
-        """
+                   limit 10000
+                   offset {self.offset}
+                       """
+        else:
+            query = f"""
+                Select ?entity ?label
+                where {{ ?entity rdf:type <{self.node_type}> . ?entity <{self.predicate_label}> ?label . }}
+                
+                limit 10000
+                offset {self.offset}
+            """
         result = utils.send_sparql_query(knowledge_graph_uri, query)
         data = []
         for binding in result['results']['bindings']:
@@ -90,10 +70,10 @@ class NodeType:
         self.current_data = data
         self.sample_index = 0
 
-    def get_one_sample(self, knowledge_graph_uri, sampled_nodes):
+    def get_one_sample(self, knowledge_graph_uri, knowledge_graph_prefix, sampled_nodes):
         while True:
             if self.sample_index == len(self.current_data):
-                self.get_data(knowledge_graph_uri)
+                self.get_data(knowledge_graph_uri, knowledge_graph_prefix)
 
             node = self.current_data[self.sample_index]
             self.sample_index += 1
@@ -103,10 +83,10 @@ class NodeType:
                 sampled_nodes.append(node["entity"])
                 return Node(uri=URIRef(node["entity"]), nodetype=URIRef(self.node_type.strip()))
 
-    def get_samples(self, num_samples, knowledge_graph_uri, sampled_nodes):
+    def get_samples(self, num_samples, knowledge_graph_uri, knowledge_graph_prefix, sampled_nodes):
         node_samples = list()
         for i in range(num_samples):
-            node_samples.append(self.get_one_sample(knowledge_graph_uri, sampled_nodes))
+            node_samples.append(self.get_one_sample(knowledge_graph_uri, knowledge_graph_prefix, sampled_nodes))
         return node_samples
 
 
@@ -273,7 +253,7 @@ class SeedNodeSelector:
     def sample_node_from_kg_new(self, node_type):
         node_type = str(node_type)
         nodetype_obj = self.type_toNodetype[node_type]
-        return nodetype_obj.get_one_sample(self.knowledge_graph_uri, self.sampled_nodes)
+        return nodetype_obj.get_one_sample(self.knowledge_graph_uri, self.knowledge_graph_prefix, self.sampled_nodes)
 
     def return_seed_nodes_new(self, samples_per_type, type_to_label):
         node_samples = list()
@@ -284,7 +264,7 @@ class SeedNodeSelector:
                 else:
                     nodeTypeObj = NodeType(key, type_to_label[key])
                     self.type_toNodetype[key] = nodeTypeObj
-                node_type_samples = nodeTypeObj.get_samples(value, self.knowledge_graph_uri, self.sampled_nodes)
+                node_type_samples = nodeTypeObj.get_samples(value, self.knowledge_graph_uri, self.knowledge_graph_prefix, self.sampled_nodes)
                 node_samples.extend(node_type_samples)
         return node_samples
 
@@ -380,25 +360,12 @@ class SeedNodeSelector:
         seed_nodes = self.return_seed_nodes_new(sample_distribution, nodetype_to_label)
         return seed_nodes, sample_distribution, nodetype_to_label
 
-    # def retrieve_node_parallel(self, type, num_entities):
-    #     num_threads = 10
-    #     results = []
-    #
-    #     with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
-    #                      offsets = range(0, num_entities, 10000)
-    #                  futures = [executor.submit(self.get_all_entities_with_size, type, offset) for offset in offsets]
-    #
-    #     for future in concurrent.futures.as_completed(futures):
-    #         result = future.result()
-    #         results.extend(result)
-    #
-    #     return results
 
 
 if __name__ == '__main__':
     kg_name = 'dbpedia'
     sampler = SeedNodeSelector(kg_name)
     # initial, sample = sampler.retrieve_initial_list_top_k(10)
-    initial, sample = sampler.retrieve_initial_list_top_k_from_kg_new(20, kg_name)
+    initial, sample, _ = sampler.retrieve_initial_list_top_k_from_kg_new(20, kg_name)
     for seed in initial:
         print(f"{seed.uri}\t{seed.nodetype}")
