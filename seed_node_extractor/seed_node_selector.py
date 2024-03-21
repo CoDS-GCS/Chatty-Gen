@@ -9,11 +9,13 @@ import pandas as pd
 import concurrent.futures
 import os
 import re
-
 from benchmark.llm.prompt_chains import get_prompt_chains
+from benchmark.llm.llms import llms_dict
+
+llm = llms_dict["question_generation_model"]
 
 prompt_chains = get_prompt_chains()
-representative_label_for_type = prompt_chains.get("get_representative_label_for_type")
+representative_label_for_type = prompt_chains.get("get_representative_label_for_type")(llm)
 max_label_length = 10
 
 def trim_after_first_occurrence(text, pattern):
@@ -239,9 +241,6 @@ class SeedNodeSelector:
                         predicates.append(predicate)
 
                 try:
-#                 output = representative_label_for_type.get("chain").run(
-#                     {"node_type": key, "predicates": ', '.join(predicates)}
-#                 )
                     # pdb.set_trace()
                     ch = representative_label_for_type.get("chain")
                     llm_result = ch.generate([{"node_type": key, "predicates": ', '.join(predicates)}], None)
@@ -410,7 +409,7 @@ class SeedNodeSelector:
         if os.path.exists(file_name):
             file = open(file_name, 'r')
             type_to_predicate_map = json.load(file)
-        nodetype_to_label = self.get_representative_label_per_node_type(sample_distribution, type_to_predicate_map,                                                                   file_name)
+        nodetype_to_label = self.get_representative_label_per_node_type(sample_distribution, type_to_predicate_map,file_name)
         seed_nodes = self.return_seed_nodes_new(sample_distribution, nodetype_to_label)
         return seed_nodes, sample_distribution, nodetype_to_label
 

@@ -3,13 +3,11 @@ import re
 import redis
 import time
 import json
+from benchmark.appconfig import config
+from benchmark.redis_util import RedisClient
 
-redis_client = None
+redis_client = RedisClient()
 
-
-def initialize_redis(redis_host="localhost", redis_port=6379):
-    global redis_client
-    redis_client = redis.Redis(host=redis_host, port=redis_port)
 
 excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://www.w3.org/2002/07/owl#sameAs',
                        'http://schema.org/image', 'http://schema.org/sameAs',
@@ -23,23 +21,14 @@ excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http:
                        'http://purl.org/dc/elements/1.1/rights', 'http://www.w3.org/2000/01/rdf-schema#label',
                        'http://dbpedia.org/ontology/thumbnail']
 
+host = config.kghost
 knowledge_graph_to_uri = {
-    "dbpedia": ("http://206.12.95.86:8890/sparql", "dbpedia"),
+    "dbpedia": (f"http://{host}:8890/sparql", "dbpedia"),
     # "lc_quad": "http://206.12.95.86:8891/sparql",
-    "microsoft_academic": ("http://206.12.97.159:8890/sparql", "makg"),
-    "yago": ("http://206.12.95.86:8892/sparql", "schema"),
-    "dblp": ("http://206.12.95.86:8894/sparql", "dblp"),
+    "microsoft_academic": (f"http://{host}:8890/sparql", "makg"),
+    "yago": (f"http://{host}:8892/sparql", "schema"),
+    "dblp": (f"http://{host}:8894/sparql", "dblp"),
 }
-remotehost = "nc20451.narval.calcul.quebec"
-localhost = "localhost"
-host = localhost
-# knowledge_graph_to_uri = {
-#     "dbpedia": (f"http://{host}:8890/sparql", "dbpedia"),
-#     # "lc_quad": "http://206.12.95.86:8891/sparql",
-#     "microsoft_academic": (f"http://{host}:8890/sparql", "makg"),
-#     "yago": (f"http://{host}:8892/sparql", "schema"),
-#     "dblp": (f"http://{host}:8894/sparql", "dblp"),
-# }
 
 # Returns only KG specific types
 def sparql_results_to_dataframe(results, kg):
@@ -59,16 +48,13 @@ def sparql_results_to_dataframe(results, kg):
 def execute_sparql_query(endpoint_url, query):
     global redis_client
 
-    if redis_client is None:
-        initialize_redis()
-
     # Check if the response is cached
     cache_key = f"{endpoint_url}_{query}"
     # print(cache_key)
     cached_result = redis_client.get(cache_key)
     if cached_result:
         # print("Result found in cache.")
-        return 200, json.loads(cached_result.decode())
+        return 200, cached_result
 
     print("cache miss")
 

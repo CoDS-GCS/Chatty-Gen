@@ -1,9 +1,13 @@
 from llm.prompt_chains import get_prompt_chains
+from llm.llms import llms_dict 
 from kg.kg.kg import defrag_uri
 
+llm = llms_dict["sparql_generation_model"]
+print(llm)
+
 prompt_chains = get_prompt_chains()
-get_answer_chain = prompt_chains.get("get_answer_from_question_and_triple_zero_shot")
-get_target_chain = prompt_chains.get("get_target_answer_from_triples")
+get_answer_chain = prompt_chains.get("get_answer_from_question_and_triple_zero_shot")(llm)
+get_target_chain = prompt_chains.get("get_target_answer_from_triples")(llm)
 
 
 # Start Utils Function
