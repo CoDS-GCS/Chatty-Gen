@@ -1,6 +1,7 @@
 from llm.prompt_chains import get_prompt_chains
 from llm.llms import llms_dict 
 from kg.kg.kg import defrag_uri
+from errors import JsonParsingError, ContextLengthError
 
 llm = llms_dict["sparql_generation_model"]
 print(llm)
@@ -130,11 +131,15 @@ def get_answer_LLM_based(question, triples, subgraph, approach):
         subject, predicate, object = returned_triple
         triples_list.append((subject.__str__(), predicate.__str__(), object.__str__()))
 
-    ch = get_answer_chain.get("chain")
-    post_processor = get_answer_chain.get("post_processor")
-    llm_result = ch.generate([{"question": question, "triples": triples_list}], None)
-    output = post_processor(llm_result)
-    return output['sparql']
+    try:
+
+        ch = get_answer_chain.get("chain")
+        post_processor = get_answer_chain.get("post_processor")
+        llm_result = ch.generate([{"question": question, "triples": triples_list}], None)
+        output = post_processor(llm_result)
+        return output['sparql']
+    except Exception:
+        raise JsonParsingError()
 
 
 # Fully Rule Based Approach

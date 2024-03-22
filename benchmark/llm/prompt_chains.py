@@ -411,20 +411,38 @@ def get_n_question_from_subgraph_chain_without_example(llm):
             "n",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5 {format_instructions}.
-
-        input: {subgraph}
-        n: {n}
-        output: """,
+        template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5\n\n{format_instructions}.\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
     )
-
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
+        llm=llm["llm"], prompt=N_Q_PROMPT,
         verbose=False,
-        output_parser=n_q_json_output_parser
+        output_parser=n_q_json_output_parser,
+        llm_kwargs=llm["config"]
     )
-    payload = {}
-    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT}
+
+    payload = {"stop": "```\n\n"}
+    ch = n_question_generator_chain 
+    def post_processor(llm_result):
+        for generation in llm_result.generations:
+            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
+            if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
+                generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
+            else:
+                generation[0].text = "```json" + trimmed_with_backtick_at_end
+        output = [
+            # Get the text of the top generated string.
+            {
+                ch.output_key: ch.output_parser.parse_result(generation),
+                "full_generation": generation,
+            }
+            for generation in llm_result.generations
+        ]
+        if ch.return_final_only:
+            output = [{ch.output_key: r[ch.output_key]} for r in output]
+        output = output[0][ch.output_key].dict()
+        print(output)
+        return output
+    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT, "post_processor": post_processor}
 
 def get_n_question_from_subgraph_chain_with_example():
     # Define your desired data structure.
@@ -544,7 +562,7 @@ def get_n_question_from_schema_chain_without_example(llm):
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
 
-def get_answer_from_question_and_triple_zero_shot(llm):
+def get_answer_from_question_and_triple_zero_shot(llm:dict):
     n_q_response_schemas = [
         ResponseSchema(
             name="sparql", description="a SPARQL query", type="string"
@@ -568,7 +586,7 @@ def get_answer_from_question_and_triple_zero_shot(llm):
     )
 
     n_answer_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
+        llm=llm["llm"], prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser
     )
@@ -598,7 +616,7 @@ def get_answer_from_question_and_triple_zero_shot(llm):
         return output
     return {"chain": n_answer_generator_chain, "payload": {}, "post_processor": post_processor}
 
-def get_target_answer_from_triples(llm):
+def get_target_answer_from_triples(llm:dict):
     n_q_response_schemas = [
         ResponseSchema(
             name="target", description="a part of given triple", type="string"
@@ -626,7 +644,7 @@ def get_target_answer_from_triples(llm):
     )
 
     n_answer_target_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
+        llm=llm["llm"], prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser
     )
@@ -643,7 +661,8 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
     #     n_q_response_schemas
     # )
     # n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
-    n_q_json_output_parser = PydanticOutputParser(pydantic_object=QuestionSet)
+    # n_q_json_output_parser = PydanticOutputParser(pydantic_object=QuestionSet)
+    n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
     # N_Q_PROMPT = PromptTemplate(
@@ -669,10 +688,10 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
+        llm=llm["llm"], prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser,
-        llm_kwargs=llm_config
+        llm_kwargs=llm["config"]
     )
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain 
@@ -700,7 +719,7 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
         return output
     return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT, "post_processor": post_processor}
 
-def get_n_question_from_summarized_subgraph_chain_without_example_new(llm):
+def get_n_question_from_summarized_subgraph_chain_without_example_without_triple(llm):
     n_q_response_schemas = [
         ResponseSchema(
             name="output", description="a list of questions", type="List[string]"
@@ -722,10 +741,10 @@ def get_n_question_from_summarized_subgraph_chain_without_example_new(llm):
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
+        llm=llm["llm"], prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser,
-        llm_kwargs=llm_config
+        llm_kwargs=llm["config"]
     )
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain
@@ -771,10 +790,10 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
+        llm=llm["llm"], prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser,
-        llm_kwargs=llm_config
+        llm_kwargs=llm["config"]
     )
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain
@@ -799,7 +818,6 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
         if ch.return_final_only:
             output = [{ch.output_key: r[ch.output_key]} for r in output]
         output = output[0][ch.output_key].dict()
-        print("output-llmchain", output)
         return output["triples"]
     return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT, "post_processor": post_processor}
 
@@ -823,7 +841,7 @@ def get_n_question_from_subgraph_chain_using_seed_entity(llm):
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
+        llm=llm["llm"], prompt=N_Q_PROMPT,
         verbose=True,
         output_parser=n_q_json_output_parser
     )
@@ -852,14 +870,14 @@ def get_n_question_from_subgraph_chain_using_seed_entity_and_type(llm):
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
+        llm=llm["llm"], prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser
     )
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
 
-def get_representative_label_for_type(llm):
+def get_representative_label_for_type(llm:dict):
     n_q_response_schemas = [
         ResponseSchema(
             name="predicate", description="The most representative predicate", type="string"
@@ -883,10 +901,10 @@ def get_representative_label_for_type(llm):
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm, prompt=N_Q_PROMPT,
+        llm=llm["llm"], prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser,
-        llm_kwargs=llm_config
+        llm_kwargs=llm["config"]
     )
     payload = {"stop": "```\n\n"}
     return {"chain": n_question_generator_chain, "payload": payload}
@@ -921,10 +939,11 @@ def get_pronoun_identification_and_substitution_chain_without_example(llm):
     )
 
     pronoun_substitution_chain = LLMChain(
-        llm=llm,
+        llm=llm["llm"],
         prompt=P_SUB_PROMPT,
         verbose=False,
         output_parser=p_sub_json_output_parser,
+        llm_kwargs=llm_config
     )
     ch = pronoun_substitution_chain
     
@@ -1056,8 +1075,7 @@ def get_prompt_chains():
         "get_representative_label_for_type": get_representative_label_for_type,
         "get_pronoun_identification_and_substitution_chain_without_example": get_pronoun_identification_and_substitution_chain_without_example,
         "get_validate_question_quality": get_validate_question_quality,
-        "n_question_from_summarized_subgraph_chain_without_example_new":
-        get_n_question_from_summarized_subgraph_chain_without_example_new,
+        "n_question_from_summarized_subgraph_chain_without_example_without_triple": get_n_question_from_summarized_subgraph_chain_without_example_without_triple,
         "get_triple_for_question_given_subgraph_chain_without_example":
         get_triple_for_question_given_subgraph_chain_without_example
     }

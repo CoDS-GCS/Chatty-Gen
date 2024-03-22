@@ -15,7 +15,7 @@ URL_PATTERN = r'^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?
 class LLMInfo:
     model_name: str = None
     model_type: ModelType = None
-    model_endpoint: str = None
+    model_endpoint: Optional[str] = None
     model_apikey: Optional[str] = None
 
     def __post_init__(self):
@@ -23,9 +23,7 @@ class LLMInfo:
             raise ValueError("Model name cannot be empty")
         if not self.model_type:
             raise ValueError("Model type cannot be empty")
-        if not self.model_endpoint:
-            raise ValueError("Model endpoint cannot be empty")
-        if not re.match(URL_PATTERN, self.model_endpoint):
+        if self.model_endpoint and not re.match(URL_PATTERN, self.model_endpoint):
             raise ValueError("Model endpoint must be a valid URL")
     
     @classmethod
@@ -35,10 +33,6 @@ class LLMInfo:
 
 @dataclass
 class Config:
-    openllm: bool = True
-    modelname: str = "default_model"
-    openllm_endpoint: str = "default_endpoint"
-    openai_api_key: str = "default_api_key"
     kgname: str = "default_kg"
     temperature: float = 0.5
     kghost : str = "localhost"

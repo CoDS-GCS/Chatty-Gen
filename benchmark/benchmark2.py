@@ -4,12 +4,10 @@ import time
 sys.path.append('../')
 import os
 import re
-import pdb
 import traceback
 import random
 import pathlib
 import json
-from typing import List
 from dataclasses import asdict
 from llm.prompt_chains import get_prompt_chains
 from llm.llms import get_num_tokens, llms_dict
@@ -19,14 +17,14 @@ from logger import logger
 from analysis import analyze_benchmark_sample
 from tracer import Tracer
 from kg.kg.kg import defrag_uri
-from seed_node_extractor.sampling import get_seed_nodes
-from answer_creation import get_answer_LLM_based, get_answer_query_from_graph, get_LLM_based_postprocessed, updated_get_answer_query_from_graph
-from seed_node_extractor import utils
+from answer_creation import get_LLM_based_postprocessed
 from answer_validation import validate_query
 from seed_node_extractor.seed_node_selector import SeedNodeSelector
-from prepare_nodes_subgraph import retrieve_seed_nodes_with_subgraphs, retrieve_one_node_with_subgraph, retrieve_seed_nodes_with_subgraphs_new
+from prepare_nodes_subgraph import retrieve_one_node_with_subgraph, retrieve_seed_nodes_with_subgraphs_new
 import ast
 import re
+from appconfig import config
+from errors import JsonParsingError, ContextLengthError
 
 langchain.debug = True
 
@@ -41,6 +39,8 @@ n_question_from_summarized_subgraph_chain_without_example = prompt_chains.get("n
 n_question_from_subgraph_chain_using_seed_entity = prompt_chains.get("get_n_question_from_subgraph_chain_using_seed_entity")(questions_triple_llm)
 n_question_from_subgraph_chain_using_seed_entity_and_type = prompt_chains.get("get_n_question_from_subgraph_chain_using_seed_entity_and_type")(questions_triple_llm)
 pronoun_identification_and_substitution_chain = prompt_chains.get("get_pronoun_identification_and_substitution_chain_without_example")(questions_dialogue_llm)
+get_triple_for_question_given_subgraph_chain_without_example = prompt_chains.get("get_triple_for_question_given_subgraph_chain_without_example")(questions_triple_llm)
+n_question_from_summarized_subgraph_chain_without_example_without_triple = prompt_chains.get("n_question_from_summarized_subgraph_chain_without_example_without_triple")(questions_triple_llm)
 
 
 
@@ -87,24 +87,27 @@ def decouple_questions_and_answers(input_obj, subgraph, approach, endpoint, seed
     query_results = dict()
     for element in input_obj["output"]:
         print("element-", element)
-        # 1- LLM Based
-        # answer_query = get_answer_LLM_based(element["question"], element["triples"], subgraph)
-        # 2-Rule based
-        # answer_query = get_answer_query_from_graph(element["triples"], seed_node, subgraph, element["question"])
-        # 3- LLM based modified
-        answer_query = get_LLM_based_postprocessed(element["question"], element["triples"], subgraph, approach)
-        # 4- Rule based modified
-        # answer_query = updated_get_answer_query_from_graph(element["triples"], subgraph, element["question"])
-        status = validate_query(answer_query, element["triples"], endpoint, subgraph, seed_node_uri, approach)
-        if status in query_results:
-            query_results[status] += 1
-        else:
-            query_results[status] = 1
+        try:
+            # 1- LLM Based
+            # answer_query = get_answer_LLM_based(element["question"], element["triples"], subgraph)
+            # 2-Rule based
+            # answer_query = get_answer_query_from_graph(element["triples"], seed_node, subgraph, element["question"])
+            # 3- LLM based modified
+            answer_query = get_LLM_based_postprocessed(element["question"], element["triples"], subgraph, approach)
+            # 4- Rule based modified
+            # answer_query = updated_get_answer_query_from_graph(element["triples"], subgraph, element["question"])
+            status = validate_query(answer_query, element["triples"], endpoint, subgraph, seed_node_uri, approach)
+            if status in query_results:
+                query_results[status] += 1
+            else:
+                query_results[status] = 1
 
-        if status == 'Correct':
-            questions.append(element["question"])
-            answer_queries.append(answer_query)
-            triples.append(element["triples"])
+            if status == 'Correct':
+                questions.append(element["question"])
+                answer_queries.append(answer_query)
+                triples.append(element["triples"])
+        except JsonParsingError:
+            continue
 
     return questions, answer_queries, triples, query_results
 
@@ -151,6 +154,7 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
     total_time = 0
     processed_seeds = 0
     context_length_limit_error = 0
+    json_parsing_error = 0
     question_validation_error = 0
     triple_validation_error = 0
     dialogue_validation_error = 0
@@ -181,6 +185,7 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
         answer_queries = None
         triples_used = None
         answer_status_dict = None
+        output = None
         try:
             with get_openai_callback() as cb:
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
@@ -190,23 +195,31 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
                 valid_triples = False
                 retry = 0
                 while not (valid_question and valid_triples):
-                    output = execute_question_generation_prompt("subgraph", prompt, subgraph_uri_str, n, seed)
-                    if output is None:
+                    try:
+                        output = execute_question_generation_prompt("subgraph", prompt, subgraph, n, seed)
+                        valid_question = validate_questions_output(seed_entity, output)
+                        valid_triples = validate_triples_output(subgraph, output, "subgraph")
+                    except ContextLengthError:
                         context_length_limit_error += 1
                         break
-                    valid_question = validate_questions_output(seed_entity, output)
-                    valid_triples = validate_triples_output(subgraph, output, "subgraph")
+                    except JsonParsingError:
+                        json_parsing_error += 1
+                        break
+
                     retry += 1
                     if retry == 3:
                         break
-                if not valid_question:
-                    question_validation_error += 1
-                elif not valid_triples:
-                    triple_validation_error += 1
 
-                if output is not None and valid_question and valid_triples:
-                    question_set, answer_queries, triples_used, answer_status_dict = decouple_questions_and_answers(
-                        output, subgraph, "subgraph", kg.sparql_endpoint, seed.uri)
+                if output is not None:
+                    if not valid_question:
+                        print("invalid question error")
+                        question_validation_error += 1
+                    elif not valid_triples:
+                        print("invalid triple error")
+                        triple_validation_error += 1
+                    else:
+                        question_set, answer_queries, triples_used, answer_status_dict = decouple_questions_and_answers(
+                            output, subgraph, "subgraph", kg.sparql_endpoint, seed.uri)
                 else:
                     failed_stage["question_triple"] += 1
 
@@ -243,8 +256,7 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
                         # "total_cost": cb.total_cost
                     }
                 else:
-                    if question_set and len(question_set) < 3:
-                        failed_stage["sparql_generation"] += 1
+                    failed_stage["sparql_generation"] += 1
                     # This is a trigger to sample the new node
                     question_set = None
         except Exception as e:
@@ -285,6 +297,7 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
             "average_time": 0 if processed_seeds == 0 else (total_time / processed_seeds),
             "failed_stage": failed_stage,
             "Context Length Error": context_length_limit_error,
+            "Json parsing Error": json_parsing_error,
             "Question Validation Error": question_validation_error,
             "Triples Validation Error": triple_validation_error,
             "Dialogue Validation Error": dialogue_validation_error,
@@ -307,6 +320,37 @@ def validate_questions_output(seed, questions):
         seed = seed[:-1]
     for question in questions["output"]:
         if seed.lower() not in question["question"].lower():
+            return False
+    return True
+
+def validate_single_questions_output(seed, question):
+    if seed[-1] == '.':
+        seed = seed[:-1]
+    if seed not in question:
+        return False
+    return True
+
+def validate_single_triples_output_v1(subgraph, triples, approach):
+    if len(triples) > 0 and '(' not in triples[0] and ')' not in triples[0]:
+        if len(triples) == 3:
+            triples = [str(tuple(triples))]
+        elif len(triples) == 2:
+            triples = [str((triples[0], triples[1], ''))]
+
+    for triple in triples:
+        if not subgraph.contain_triple(triple, approach):
+            return False
+    return True
+
+def validate_single_triples_output_v2(subgraph, triples, approach):
+    triples_ = []
+    for t in triples:
+        if len(t) > 1:
+            t_ = (t[0], t[1], '')
+            triples_.append(t_)
+
+    for t in triples_:
+        if not subgraph.contain_triple(t, approach):
             return False
     return True
 
@@ -377,6 +421,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
     total_time = 0
     processed_seeds = 0
     context_length_limit_error = 0
+    json_parsing_error = 0
     question_validation_error = 0
     triple_validation_error = 0
     dialogue_validation_error = 0
@@ -413,30 +458,69 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
                 n = dialogue_size
                 seed_entity = seed.label if seed.label else seed.uri
-                valid_question = False
-                valid_triples = False
-                retry = 0
-                while not (valid_question and valid_triples):
-                    output = execute_question_generation_prompt("summarized", prompt, subgraph_str, n, seed)
-                    if output is None:
-                        context_length_limit_error += 1
-                        break
-                    valid_question = validate_questions_output(seed_entity, output)
-                    valid_triples = validate_triples_output(subgraph, output, "optimized")
-                    retry += 1
-                    if retry == 3:
-                        break
-                if not valid_question:
-                    print("not valid question")
-                    question_validation_error += 1
-                elif not valid_triples:
-                    print("not valid triple")
-                    triple_validation_error += 1
+                if config.pipeline_type == "original":
+                    valid_question = False
+                    valid_triples = False
+                    retry = 0
+                    while not (valid_question and valid_triples):
+                        try:
+                            output = execute_question_generation_prompt("summarized", prompt, subgraph, n, seed, config.pipeline_type)
+                            if output is None:
+                                context_length_limit_error += 1
+                                break
+                            valid_question = validate_questions_output(seed_entity, output)
+                            valid_triples = validate_triples_output(subgraph, output, "optimized")
+                        except ContextLengthError:
+                            context_length_limit_error += 1
+                            break
+                        except JsonParsingError:
+                            json_parsing_error += 1
+                            break
 
-                if output is not None and valid_question and valid_triples:
-                    question_set, answer_queries, triples_used, answer_status_dict = decouple_questions_and_answers(output, subgraph, "optimized", kg.sparql_endpoint, seed.uri)
-                else:
-                    failed_stage["question_triple"] += 1
+                        retry += 1
+                        if retry == 3:
+                            break
+
+                    if output is not None:
+                        if not valid_question:
+                            print("not valid question")
+                            question_validation_error += 1
+                        elif not valid_triples:
+                            print("not valid triple")
+                            triple_validation_error += 1
+                        else:
+                            question_set, answer_queries, triples_used, answer_status_dict = decouple_questions_and_answers(output, subgraph, "optimized", kg.sparql_endpoint, seed.uri)
+                    else:
+                        failed_stage["question_triple"] += 1
+                
+                elif config.pipeline_type == "simplified":
+                    try:
+                        output = execute_question_generation_prompt("summarized", prompt, subgraph, n, seed, config.pipeline_type)
+                    except ContextLengthError:
+                        context_length_limit_error += 1
+                    except JsonParsingError:
+                        json_parsing_error += 1
+
+                    if output is not None:
+                        valid_question = False if output.get("q_err",0) > 0 else True
+                        valid_triples = False if output.get("t_err",0) > 0 else True
+                        del output["q_err"]
+                        del output["t_err"]
+                        if not valid_question:
+                            print("not valid question")
+                            question_validation_error += 1
+                        elif not valid_triples:
+                            print("not valid triple")
+                            triple_validation_error += 1
+                        else:
+                            question_set, answer_queries, triples_used, answer_status_dict = decouple_questions_and_answers(output, subgraph, "optimized", kg.sparql_endpoint, seed.uri)
+                    else:
+                        failed_stage["question_triple"] += 1
+                        new_seed, new_subgraph = retrieve_one_node_with_subgraph(sampler, seed.nodetype, kg)
+                        key = new_seed.label if new_seed.label else new_seed.uri
+                        seed_nodes.append(new_seed)
+                        seednode_to_subgraph_map[key] = new_subgraph
+                        continue
 
                 if question_set and len(question_set) > 2:
                     logger.info(f"INDEX : {idx} -- question set generation chain end --")
@@ -473,8 +557,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     }
 
                 else:
-                    if question_set and len(question_set) < 3:
-                        failed_stage["sparql_generation"] += 1
+                    failed_stage["sparql_generation"] += 1
                     # This is a trigger to sample the new node
                     question_set = None
 
@@ -516,6 +599,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
             "average_time": 0 if processed_seeds == 0 else (total_time / processed_seeds),
             "failed_stage": failed_stage,
             "Context Length Error": context_length_limit_error,
+            "Json parsing Error": json_parsing_error,
             "Question Validation Error": question_validation_error,
             "Triples Validation Error": triple_validation_error,
             "Dialogue Validation Error": dialogue_validation_error,
@@ -526,43 +610,78 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
             json.dump(benchmark, f, indent=4)
 
 
+def execute_question_triple_binding_prompt(subgraph, subgraph_str, question_list, seed_entity):
+    output_with_triple = []
+    q_err_cnt = 0
+    t_err_cnt = 0
+    ch = get_triple_for_question_given_subgraph_chain_without_example.get("chain")
+    post_processor = get_triple_for_question_given_subgraph_chain_without_example.get("post_processor")
+    for q in question_list:
+        try:
+            prompt = get_triple_for_question_given_subgraph_chain_without_example.get("prompt").format(subgraph=subgraph_str, question=q)
+            num_tokens = get_num_tokens(prompt)
+            if num_tokens > 4097:
+                return None
+            llm_result = ch.generate([{"subgraph":subgraph_str, "question":q}], None)
+            output = post_processor(llm_result) # output would be list of question
 
-def trim_after_first_occurrence(text, pattern):
-    # Find the first occurrence of the pattern
-    match = re.search(pattern, text)
-    
-    # If the pattern is found, return the text up to the first occurrence
-    if match:
-        return text[:match.end()]
-    else:
-        # If the pattern is not found, return the original text
-        return text
+            valid_question = validate_single_questions_output(seed_entity, q)
+            if not valid_question:
+                q_err_cnt += 1
+                continue
+            valid_triples = validate_single_triples_output_v2(subgraph, output, "optimized")
+            if not valid_triples:
+                t_err_cnt += 1
+                continue
+            if valid_question and valid_triples:
+                output_with_triple.append({"question":q, "triples":output})
+        except Exception as e:
+            print("Exception in triple binding, skipping question", e)
+            continue
+    return {"output": output_with_triple, "q_err": q_err_cnt, "t_err": t_err_cnt}
 
-
-def execute_question_generation_prompt(subgraph_approach, prompt, subgraph_str, n, seed):
+def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, seed, pipeline_type="original"):
     output = None
+    seed_entity = seed.label if seed.label else seed.uri
     try:
         if prompt == 1:
             if subgraph_approach == "subgraph":
-                prompt = n_question_from_subgraph_chain_without_example.get("prompt").format(
-                    subgraph=subgraph_str, n=n)
+                subgraph_str = subgraph.__str__(representation='uri')
+                prompt = n_question_from_subgraph_chain_without_example.get("prompt").format(subgraph=subgraph_str, n=n)
                 num_tokens = get_num_tokens(prompt)
                 if num_tokens > 4097:
-                    return None
-                output = n_question_from_subgraph_chain_without_example.get("chain").run(
-                    {"subgraph": subgraph_str, "n": n}
-                )
-                output = output.dict()
-            elif subgraph_approach == "summarized":
-                # pdb.set_trace()
-                prompt = n_question_from_summarized_subgraph_chain_without_example.get("prompt").format(subgraph=subgraph_str, n=n)
-                num_tokens = get_num_tokens(prompt)
-                if num_tokens > 4097:
-                    return None
-                ch = n_question_from_summarized_subgraph_chain_without_example.get("chain")
-                post_processor = n_question_from_summarized_subgraph_chain_without_example.get("post_processor")
+                    raise ContextLengthError()
+                ch = n_question_from_subgraph_chain_without_example.get("chain")
+                post_processor = n_question_from_subgraph_chain_without_example.get("post_processor")
                 llm_result = ch.generate([{"subgraph": subgraph_str, "n": n}], None)
                 output = post_processor(llm_result)
+            elif subgraph_approach == "summarized":
+                if pipeline_type == "original":
+                    subgraph_str = subgraph.get_summarized_graph_str(approach='no_object')
+                    # pdb.set_trace()
+                    prompt = n_question_from_summarized_subgraph_chain_without_example.get("prompt").format(subgraph=subgraph_str, n=n)
+                    num_tokens = get_num_tokens(prompt)
+                    if num_tokens > 4097:
+                        raise ContextLengthError()
+                    ch = n_question_from_summarized_subgraph_chain_without_example.get("chain")
+                    post_processor = n_question_from_summarized_subgraph_chain_without_example.get("post_processor")
+                    llm_result = ch.generate([{"subgraph": subgraph_str, "n": n}], None)
+                    output = post_processor(llm_result)
+                elif pipeline_type == "simplified":
+                    
+                    subgraph_str = subgraph.get_summarized_graph_str(approach='no_object')
+                    # pdb.set_trace()
+                    prompt = n_question_from_summarized_subgraph_chain_without_example_without_triple.get("prompt").format(subgraph=subgraph_str, n=n)
+                    num_tokens = get_num_tokens(prompt)
+                    if num_tokens > 4097:
+                        raise ContextLengthError()
+                    ch = n_question_from_summarized_subgraph_chain_without_example_without_triple.get("chain")
+                    post_processor = n_question_from_summarized_subgraph_chain_without_example_without_triple.get("post_processor")
+                    llm_result = ch.generate([{"subgraph":subgraph_str, "n":n}], None)
+                    output = post_processor(llm_result) # output would be list of question
+                    question_list = output["output"]
+                    output = execute_question_triple_binding_prompt(subgraph, subgraph_str, question_list,
+                    seed_entity)
         elif prompt == 2:
             seed_entity = seed.label if seed.label else seed.uri
             output = n_question_from_subgraph_chain_using_seed_entity.get("chain").run(
@@ -578,8 +697,9 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph_str, 
         traceback.print_exc()
         response = str(e)
         if response.startswith("Failed to parse LLMInput from completion"):
-            start_index = response.index('[')
-            end_index = response.index('Got:')
-            data = ast.literal_eval(response[start_index:end_index - 3])
-            output = {"output": data}
+            raise JsonParsingError()
+            # start_index = response.index('[')
+            # end_index = response.index('Got:')
+            # data = ast.literal_eval(response[start_index:end_index - 3])
+            # output = {"output": data}
     return output
