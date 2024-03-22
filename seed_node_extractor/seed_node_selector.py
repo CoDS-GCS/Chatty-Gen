@@ -3,17 +3,31 @@ import seed_node_extractor.sampling as sampling
 from benchmark.kg.kg.kg import Node
 from rdflib import URIRef
 import json
+import pdb
 import random
 import pandas as pd
 import concurrent.futures
 import os
-
+import re
 from benchmark.llm.prompt_chains import get_prompt_chains
+from benchmark.llm.llms import llms_dict
+
+llm = llms_dict["question_generation_model"]
 
 prompt_chains = get_prompt_chains()
-representative_label_for_type = prompt_chains.get("get_representative_label_for_type")
+representative_label_for_type = prompt_chains.get("get_representative_label_for_type")(llm)
 max_label_length = 10
 
+def trim_after_first_occurrence(text, pattern):
+    # Find the first occurrence of the pattern
+    match = re.search(pattern, text)
+    
+    # If the pattern is found, return the text up to the first occurrence
+    if match:
+        return text[:match.end()]
+    else:
+        # If the pattern is not found, return the original text
+        return text
 
 class NodeType:
     sample_index: int
@@ -91,6 +105,7 @@ class NodeType:
         self.sample_index = 0
 
     def get_one_sample(self, knowledge_graph_uri, sampled_nodes):
+        # pdb.set_trace()
         while True:
             if self.sample_index == len(self.current_data):
                 self.get_data(knowledge_graph_uri)
@@ -226,9 +241,25 @@ class SeedNodeSelector:
                         predicates.append(predicate)
 
                 try:
-                    output = representative_label_for_type.get("chain").run(
-                        {"node_type": key, "predicates": ', '.join(predicates)}
-                    )
+                    # pdb.set_trace()
+                    ch = representative_label_for_type.get("chain")
+                    llm_result = ch.generate([{"node_type": key, "predicates": ', '.join(predicates)}], None)
+                    print(llm_result)
+                    for generation in llm_result.generations:
+                        generation[0].text = "```json" + trim_after_first_occurrence(generation[0].text, "```")
+                        print("gen-text: ", generation[0].text)
+                    output = [
+                        # Get the text of the top generated string.
+                        {
+                            ch.output_key: ch.output_parser.parse_result(generation),
+                            "full_generation": generation,
+                        }
+                        for generation in llm_result.generations
+                    ]
+                    if ch.return_final_only:
+                        output = [{ch.output_key: r[ch.output_key]} for r in output]
+                    output = output[0][ch.output_key]
+                    print(output)
                     type_per_label[key] = output["predicate"].strip()
                 except Exception as e:
                     response = str(e)
@@ -271,6 +302,7 @@ class SeedNodeSelector:
         return node[0]
 
     def sample_node_from_kg_new(self, node_type):
+        # pdb.set_trace()
         node_type = str(node_type)
         nodetype_obj = self.type_toNodetype[node_type]
         return nodetype_obj.get_one_sample(self.knowledge_graph_uri, self.sampled_nodes)
@@ -362,6 +394,7 @@ class SeedNodeSelector:
         return percentage_df
 
     def retrieve_initial_list_top_k_from_kg_new(self, num_samples, kg_name):
+        # pdb.set_trace()
         kg_type_distribution = utils.get_type_distrubution(self.knowledge_graph_uri, self.knowledge_graph_prefix)
         distribution = pd.DataFrame(kg_type_distribution)
         percentage_df = self.calculate_class_importance(distribution)
@@ -372,11 +405,11 @@ class SeedNodeSelector:
         sample_distribution = sampling.get_sample_distribution(json_object, num_samples)
         print(sample_distribution)
         file_name = f"{kg_name}_types_representative.json"
+        type_to_predicate_map = dict()
         if os.path.exists(file_name):
             file = open(file_name, 'r')
             type_to_predicate_map = json.load(file)
-        nodetype_to_label = self.get_representative_label_per_node_type(sample_distribution, type_to_predicate_map,
-                                                                        file_name)
+        nodetype_to_label = self.get_representative_label_per_node_type(sample_distribution, type_to_predicate_map,file_name)
         seed_nodes = self.return_seed_nodes_new(sample_distribution, nodetype_to_label)
         return seed_nodes, sample_distribution, nodetype_to_label
 

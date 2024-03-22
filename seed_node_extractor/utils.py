@@ -1,6 +1,13 @@
 import requests
 import re
+import redis
 import time
+import json
+from benchmark.appconfig import config
+from benchmark.redis_util import RedisClient
+
+redis_client = RedisClient()
+
 
 excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://www.w3.org/2002/07/owl#sameAs',
                        'http://schema.org/image', 'http://schema.org/sameAs',
@@ -14,12 +21,13 @@ excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http:
                        'http://purl.org/dc/elements/1.1/rights', 'http://www.w3.org/2000/01/rdf-schema#label',
                        'http://dbpedia.org/ontology/thumbnail']
 
+host = config.kghost
 knowledge_graph_to_uri = {
-    "dbpedia": ("http://206.12.95.86:8890/sparql", "dbpedia"),
+    "dbpedia": (f"http://{host}:8890/sparql", "dbpedia"),
     # "lc_quad": "http://206.12.95.86:8891/sparql",
-    "microsoft_academic": ("http://206.12.97.159:8890/sparql", "makg"),
-    "yago": ("http://206.12.95.86:8892/sparql", "schema"),
-    "dblp": ("http://206.12.95.86:8894/sparql", "dblp"),
+    "microsoft_academic": (f"http://{host}:8890/sparql", "makg"),
+    "yago": (f"http://{host}:8892/sparql", "schema"),
+    "dblp": (f"http://{host}:8894/sparql", "dblp"),
 }
 
 # Returns only KG specific types
@@ -29,12 +37,27 @@ def sparql_results_to_dataframe(results, kg):
     for binding in results['results']['bindings']:
         type = binding.get('type', {}).get('value', None)
         count = binding.get('count', {}).get('value', None)
-        if kg in type and type not in ['http://dbpedia.org/ontology/Image', 'http://schema.org/GeoCoordinates', 'http://dbpedia.org/ontology/CareerStation']:
+        if kg in type and type not in ['http://dbpedia.org/ontology/Image',
+            'http://schema.org/GeoCoordinates', 'http://dbpedia.org/ontology/CareerStation',
+            'http://bioschemas.org/Taxon' ]:
             data.append({'Type': type, 'Count': count})
 
     return data
 
+
 def execute_sparql_query(endpoint_url, query):
+    global redis_client
+
+    # Check if the response is cached
+    cache_key = f"{endpoint_url}_{query}"
+    # print(cache_key)
+    cached_result = redis_client.get(cache_key)
+    if cached_result:
+        # print("Result found in cache.")
+        return 200, cached_result
+
+    print("cache miss")
+
     headers = {
         'Content-Type': 'application/sparql-query',
         'Accept': 'application/json'
@@ -44,9 +67,14 @@ def execute_sparql_query(endpoint_url, query):
         'query': query,
     }
 
+#     return 404, "ERROR"
+
     response = requests.get(endpoint_url, headers=headers, params=params)
 
     if response.status_code == 200:
+        # Cache the response
+        redis_client.set(cache_key, json.dumps(response.json()))
+        print("Result cached.")
         return response.status_code, response.json()
     else:
         print(f"Error: {response.status_code}")

@@ -1,59 +1,44 @@
 import random
-import re
 import langchain
 from langchain.prompts import PromptTemplate
+from langchain.llms import OpenAI
 from langchain.output_parsers import (
     StructuredOutputParser,
     ResponseSchema,
     PydanticOutputParser
 )
-from pydantic import BaseModel
+import os
+import tiktoken
+from llm.openllm_local import OpenLLM
+from pydantic import BaseModel, Field, validator
 from langchain.chains import LLMChain
-from typing import List, Tuple
+from typing import List, Optional
 
 langchain.debug = True
 
-llm_config = {
-    'max_new_tokens': 512,
-    'early_stopping': "```",
-    'do_sample': True
-}
+tiktoken_cache_dir = "../tiktoken-cache"
+os.environ["TIKTOKEN_CACHE_DIR"] = tiktoken_cache_dir
 
+# llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.5, streaming=False)
+
+server_url = "http://localhost:3301"
+llm = OpenLLM(server_url=server_url)
+
+openai_embedding = tiktoken.encoding_for_model("gpt-3.5-turbo")
 
 class QuestionItem(BaseModel):
     question: str
     triples: List[str]
 
+
 class LLMInput(BaseModel):
     output: List[QuestionItem]
-
-class QuestionSchema(BaseModel):
-    question: str
-    triples: List[Tuple[str,str,str]]
-
-class QuestionSet(BaseModel):
-    output: List[QuestionSchema]
-
-class Triples(BaseModel):
-    triples: List[Tuple[str, str, str]]
 
 class SchemaInput(BaseModel):
     output: List[str]
 
 class Item(BaseModel):
     output: str
-
-def trim_after_first_occurrence(text, pattern):
-    # Find the first occurrence of the pattern
-    match = re.search(pattern, text)
-    
-    # If the pattern is found, return the text up to the first occurrence
-    if match:
-        return text[:match.end()]
-    else:
-        # If the pattern is not found, return the original text
-        return text
-
 def format_template_with_dict(template, values_dict):
     try:
         formatted_string = template.format(**values_dict)
@@ -66,7 +51,7 @@ def format_template_with_dict(template, values_dict):
         return f"Error: error occurred: {str(e)}"
 
 
-def get_question_template_chain(placeholder, llm):
+def get_question_template_chain(placeholder):
     response_schemas = [
         ResponseSchema(
             name="output",
@@ -178,7 +163,7 @@ def get_question_template_chain(placeholder, llm):
     return {"chain": run_chain, "payload": payload}
 
 
-def get_pronoun_identification_chain(llm):
+def get_pronoun_identification_chain():
     # p_idf_response_schemas = [
     #     ResponseSchema(
     #         name="output",
@@ -316,7 +301,7 @@ def get_pronoun_identification_chain(llm):
     }
 
 
-def get_pronoun_substitution_chain(llm):
+def get_pronoun_substitution_chain():
     # p_sub_response_schemas = [
     #     ResponseSchema(
     #         name="output",
@@ -390,7 +375,7 @@ def get_pronoun_substitution_chain(llm):
     }
 
 
-def get_n_question_from_subgraph_chain_without_example(llm):
+def get_n_question_from_subgraph_chain_without_example():
     # n_q_response_schemas = [
     #     ResponseSchema(
     #         name="output", description="a list of questions", type="List[string]"
@@ -411,44 +396,20 @@ def get_n_question_from_subgraph_chain_without_example(llm):
             "n",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5\n\n{format_instructions}.\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
-    )
-    if llm["config"] is not None:
-        n_question_generator_chain = LLMChain(
-            llm=llm["llm"], prompt=N_Q_PROMPT,
-            verbose=False,
-            output_parser=n_q_json_output_parser,
-            llm_kwargs=llm["config"]
-        )
-    else:
-        n_question_generator_chain = LLMChain(
-            llm=llm["llm"], prompt=N_Q_PROMPT,
-            verbose=False,
-            output_parser=n_q_json_output_parser)
+        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5 {format_instructions}.
 
-    payload = {"stop": "```\n\n"}
-    ch = n_question_generator_chain 
-    def post_processor(llm_result):
-        for generation in llm_result.generations:
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
-            if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
-                generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
-            else:
-                generation[0].text = "```json" + trimmed_with_backtick_at_end
-        output = [
-            # Get the text of the top generated string.
-            {
-                ch.output_key: ch.output_parser.parse_result(generation),
-                "full_generation": generation,
-            }
-            for generation in llm_result.generations
-        ]
-        if ch.return_final_only:
-            output = [{ch.output_key: r[ch.output_key]} for r in output]
-        output = output[0][ch.output_key].dict()
-        print(output)
-        return output
-    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT, "post_processor": post_processor}
+        input: {subgraph}
+        n: {n}
+        output: """,
+    )
+
+    n_question_generator_chain = LLMChain(
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=False,
+        output_parser=n_q_json_output_parser
+    )
+    payload = {}
+    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT}
 
 def get_n_question_from_subgraph_chain_with_example():
     # Define your desired data structure.
@@ -532,7 +493,7 @@ def get_n_question_from_subgraph_chain_with_example():
     }
     return {"chain": n_question_generator_chain, "payload": payload}
 
-def get_n_question_from_schema_chain_without_example(llm):
+def get_n_question_from_schema_chain_without_example():
     n_q_response_schemas = [
         ResponseSchema(
             name="output", description="a list of questions", type="List[string]"
@@ -568,7 +529,7 @@ def get_n_question_from_schema_chain_without_example(llm):
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
 
-def get_answer_from_question_and_triple_zero_shot(llm:dict):
+def get_answer_from_question_and_triple_zero_shot():
     n_q_response_schemas = [
         ResponseSchema(
             name="sparql", description="a SPARQL query", type="string"
@@ -587,42 +548,22 @@ def get_answer_from_question_and_triple_zero_shot(llm:dict):
             "triples",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""### Instruction:\nGiven a question and set of triples used to generate this question. Create the SPARQL query representing the question. Do not include the answer in the query.\n{format_instructions}\n\nquestion: {question}\ntriples: {triples}\n\n### Response:```json""",
-        # template="""### Instruction:\nGiven a question and set of triples of form (subject, predicate, object) where object is unknown, used to generate this question. Write the SPARQL query representing the question. You must use only the given URIs.\n{format_instructions}\n\nquestion: {question}\ntriples: {triples}\n\n### Response:```json""",
+        template="""Given a question and set of triples used to generate this question. Create the SPARQL query representing the question. Do not include the answer in the query.
+        {format_instructions}
+
+        question: {question}
+        triples: {triples}
+        sparql: """,
     )
 
     n_answer_generator_chain = LLMChain(
-        llm=llm["llm"], prompt=N_Q_PROMPT,
+        llm=llm, prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser
     )
-    ch = n_answer_generator_chain
+    return {"chain": n_answer_generator_chain, "payload": {}}
 
-    def post_processor(llm_result):
-        # pdb.set_trace()
-        for generation in llm_result.generations:
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
-#             if not('\"sparql\":' in generation[0].text or '"sparql":' in generation[0].text):
-#                 generation[0].text = "```json\n{\n    \"sparql\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
-#             else:
-            generation[0].text = "```json" + trimmed_with_backtick_at_end
-            print("gen-text: ", generation[0].text)
-        output = [
-            # Get the text of the top generated string.
-            {
-                ch.output_key: ch.output_parser.parse_result(generation),
-                "full_generation": generation,
-            }
-            for generation in llm_result.generations
-        ]
-        if ch.return_final_only:
-            output = [{ch.output_key: r[ch.output_key]} for r in output]
-        output = output[0][ch.output_key]
-        print(output)
-        return output
-    return {"chain": n_answer_generator_chain, "payload": {}, "post_processor": post_processor}
-
-def get_target_answer_from_triples(llm:dict):
+def get_target_answer_from_triples():
     n_q_response_schemas = [
         ResponseSchema(
             name="target", description="a part of given triple", type="string"
@@ -650,13 +591,13 @@ def get_target_answer_from_triples(llm:dict):
     )
 
     n_answer_target_chain = LLMChain(
-        llm=llm["llm"], prompt=N_Q_PROMPT,
+        llm=llm, prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser
     )
     return {"chain": n_answer_target_chain, "payload": {}}
 
-def get_n_question_from_summarized_subgraph_chain_without_example(llm):
+def get_n_question_from_summarized_subgraph_chain_without_example():
     # n_q_response_schemas = [
     #     ResponseSchema(
     #         name="output", description="a list of questions", type="List[string]"
@@ -667,7 +608,6 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
     #     n_q_response_schemas
     # )
     # n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
-    # n_q_json_output_parser = PydanticOutputParser(pydantic_object=QuestionSet)
     n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
@@ -690,165 +630,23 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
             "n",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5\n\n{format_instructions}.\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
+        template="""Generate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5 {format_instructions}.
+
+        input: {subgraph}
+        n: {n}
+        output: """,
     )
 
-    if llm["config"] is not None:
-        n_question_generator_chain = LLMChain(
-            llm=llm["llm"], prompt=N_Q_PROMPT,
-            verbose=False,
-            output_parser=n_q_json_output_parser,
-            llm_kwargs=llm["config"]
-        )
-    else:
-        n_question_generator_chain = LLMChain(
-            llm=llm["llm"], prompt=N_Q_PROMPT,
-            verbose=False,
-            output_parser=n_q_json_output_parser
-        )
-
-    payload = {"stop": "```\n\n"}
-    ch = n_question_generator_chain 
-    def post_processor(llm_result):
-        for generation in llm_result.generations:
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
-            if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
-            # if not('\"output\":' in generation[0].text or '"output":' in generation[0].text):
-                generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
-            else:
-                generation[0].text = "```json" + trimmed_with_backtick_at_end
-            print("gen-text: ", generation[0].text)
-        output = [
-            # Get the text of the top generated string.
-            {
-                ch.output_key: ch.output_parser.parse_result(generation),
-                "full_generation": generation,
-            }
-            for generation in llm_result.generations
-        ]
-        if ch.return_final_only:
-            output = [{ch.output_key: r[ch.output_key]} for r in output]
-        output = output[0][ch.output_key].dict()
-        print(output)
-        return output
-    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT, "post_processor": post_processor}
-
-def get_n_question_from_summarized_subgraph_chain_without_example_without_triple(llm):
-    n_q_response_schemas = [
-        ResponseSchema(
-            name="output", description="a list of questions", type="List[string]"
-        )
-    ]
-   
-    n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
-        n_q_response_schemas
+    n_question_generator_chain = LLMChain(
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=False,
+        output_parser=n_q_json_output_parser
     )
-    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
-
-    N_Q_PROMPT = PromptTemplate(
-        input_variables=[
-            "subgraph",
-            "n",
-        ],
-        partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph.{format_instructions}\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
-    )
-
-    if llm["config"] is not None:
-        n_question_generator_chain = LLMChain(
-            llm=llm["llm"], prompt=N_Q_PROMPT,
-            verbose=False,
-            output_parser=n_q_json_output_parser,
-            llm_kwargs=llm["config"]
-        )
-    else:
-        n_question_generator_chain = LLMChain(
-            llm=llm["llm"], prompt=N_Q_PROMPT,
-            verbose=False,
-            output_parser=n_q_json_output_parser
-        )
-    payload = {"stop": "```\n\n"}
-    ch = n_question_generator_chain
-    
-    def post_processor(llm_result):
-        # pdb.set_trace()
-        for generation in llm_result.generations:
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
-            if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
-            # if not('\"output\":' in generation[0].text or '"output":' in generation[0].text):
-                generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
-            else:
-                generation[0].text = "```json" + trimmed_with_backtick_at_end
-            print("gen-text: ", generation[0].text)
-        output = [
-            # Get the text of the top generated string.
-            {
-                ch.output_key: ch.output_parser.parse_result(generation),
-                "full_generation": generation,
-            }
-            for generation in llm_result.generations
-        ]
-        if ch.return_final_only:
-            output = [{ch.output_key: r[ch.output_key]} for r in output]
-        output = output[0][ch.output_key]
-        print(output)
-        return output
-    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT,
-    "post_processor": post_processor}
+    payload = {}
+    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT}
 
 
-def get_triple_for_question_given_subgraph_chain_without_example(llm):
-    n_q_json_output_parser = PydanticOutputParser(pydantic_object=Triples)
-    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
-
-    N_Q_PROMPT = PromptTemplate(
-        input_variables=[
-            "subgraph",
-            "question",
-        ],
-        partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""### Instruction:\nGiven a question and a subgraph extracted from a knowledge graph, where the subgraph is represented as a list of triples, your task is to identify the specific triples within this subgraph that accurately represent the information needed to address the question. Each triple comprises a subject, a predicate, and an object, denoting a relationship between entities. Your objective is to discern and select the triples that contain relevant information essential for answering the question at hand. You must select triples from given triple list.\n\n{format_instructions}.\n\ninput: {subgraph}\nquestion: {question}\n\n### Response:```json""",
-    )
-
-    if llm['config'] is not None:
-        n_question_generator_chain = LLMChain(
-            llm=llm["llm"], prompt=N_Q_PROMPT,
-            verbose=False,
-            output_parser=n_q_json_output_parser,
-            llm_kwargs=llm["config"]
-        )
-    else:
-        n_question_generator_chain = LLMChain(
-            llm=llm["llm"], prompt=N_Q_PROMPT,
-            verbose=False,
-            output_parser=n_q_json_output_parser)
-    payload = {"stop": "```\n\n"}
-    ch = n_question_generator_chain
-    
-    def post_processor(llm_result):
-        # pdb.set_trace()
-        for generation in llm_result.generations:
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
-            if not('\"triples\":' in trimmed_with_backtick_at_end or '"triples":' in trimmed_with_backtick_at_end):
-                generation[0].text = "```json\n{\n    \"triples\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
-            else:
-                generation[0].text = "```json" + trimmed_with_backtick_at_end
-            print("gen-text: ", generation[0].text)
-        output = [
-            # Get the text of the top generated string.
-            {
-                ch.output_key: ch.output_parser.parse_result(generation),
-                "full_generation": generation,
-            }
-            for generation in llm_result.generations
-        ]
-        if ch.return_final_only:
-            output = [{ch.output_key: r[ch.output_key]} for r in output]
-        output = output[0][ch.output_key].dict()
-        return output["triples"]
-    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT, "post_processor": post_processor}
-
-def get_n_question_from_subgraph_chain_using_seed_entity(llm):
+def get_n_question_from_subgraph_chain_using_seed_entity():
     n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
@@ -868,14 +666,14 @@ def get_n_question_from_subgraph_chain_using_seed_entity(llm):
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm["llm"], prompt=N_Q_PROMPT,
+        llm=llm, prompt=N_Q_PROMPT,
         verbose=True,
         output_parser=n_q_json_output_parser
     )
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
 
-def get_n_question_from_subgraph_chain_using_seed_entity_and_type(llm):
+def get_n_question_from_subgraph_chain_using_seed_entity_and_type():
     n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
@@ -897,14 +695,14 @@ def get_n_question_from_subgraph_chain_using_seed_entity_and_type(llm):
     )
 
     n_question_generator_chain = LLMChain(
-        llm=llm["llm"], prompt=N_Q_PROMPT,
+        llm=llm, prompt=N_Q_PROMPT,
         verbose=False,
         output_parser=n_q_json_output_parser
     )
     payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
 
-def get_representative_label_for_type(llm:dict):
+def get_representative_label_for_type():
     n_q_response_schemas = [
         ResponseSchema(
             name="predicate", description="The most representative predicate", type="string"
@@ -922,29 +720,21 @@ def get_representative_label_for_type(llm:dict):
             "predicates",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""### Instruction: Given the specified node type {node_type}  and its associated
-        predicates {predicates}, choose a suitable predicate to serve as a label for this type.
-        {format_instructions}.\n\n### Response:```json""",
+        template="""Given the specified node type {node_type}  and its associated predicates {predicates}, choose a suitable predicate to serve as a label for this type. {format_instructions}.
+
+        predicate: """,
     )
 
-    if llm["config"] is not None:
-        n_question_generator_chain = LLMChain(
-            llm=llm["llm"], prompt=N_Q_PROMPT,
-            verbose=False,
-            output_parser=n_q_json_output_parser,
-            llm_kwargs=llm["config"]
-        )
-    else:
-        n_question_generator_chain = LLMChain(
-            llm=llm["llm"], prompt=N_Q_PROMPT,
-            verbose=False,
-            output_parser=n_q_json_output_parser)
-
-    payload = {"stop": "```\n\n"}
+    n_question_generator_chain = LLMChain(
+        llm=llm, prompt=N_Q_PROMPT,
+        verbose=False,
+        output_parser=n_q_json_output_parser
+    )
+    payload = {}
     return {"chain": n_question_generator_chain, "payload": payload}
 
 
-def get_pronoun_identification_and_substitution_chain_without_example(llm):
+def get_pronoun_identification_and_substitution_chain_without_example():
     p_sub_json_output_parser = PydanticOutputParser(pydantic_object=SchemaInput)
     p_sub_json_format_instructions = p_sub_json_output_parser.get_format_instructions()
 
@@ -968,57 +758,27 @@ def get_pronoun_identification_and_substitution_chain_without_example(llm):
             "questions",
         ],
         partial_variables={"format_instructions": p_sub_json_format_instructions},
-        template="""### Instruction:\nGiven an entity and a set of questions or sentences focused on this entity, choose the appropriate pronoun that refers to it. Replace the entity with its pronoun in the questions and return the modified questions. Ensure that the modified questions do not contain the original entity and that the pronoun used in the modified questions is contextually appropriate and grammatically correct.
-    {format_instructions}\n\nentity: {entity}\ninput: "{questions}"\n\n### Response:```json""",
+        template="""Given an entity and a set of questions or sentences focused on this entity, choose the appropriate pronoun that refers to it. Replace the entity with its pronoun in the questions and return the modified questions. Ensure that the modified questions do not contain the original entity and that the pronoun used in the modified questions is contextually appropriate and grammatically correct.
+    {format_instructions}
+
+    entity: {entity}
+    input: "{questions}"
+    output: """,
     )
 
-    if llm["config"] is not None:
-        pronoun_substitution_chain = LLMChain(
-            llm=llm["llm"],
-            prompt=P_SUB_PROMPT,
-            verbose=False,
-            output_parser=p_sub_json_output_parser,
-            llm_kwargs=llm["config"]
-        )
-    else:
-        pronoun_substitution_chain = LLMChain(
-            llm=llm["llm"],
-            prompt=P_SUB_PROMPT,
-            verbose=False,
-            output_parser=p_sub_json_output_parser,
-        )
-    ch = pronoun_substitution_chain
-    
-    def post_processor(llm_result):
-        # pdb.set_trace()
-        for generation in llm_result.generations:
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
-            if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
-#            if not('\"output\":' in generation[0].text or '"output":' in generation[0].text):
-                generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
-            else:
-                generation[0].text = "```json" + trimmed_with_backtick_at_end
-            print("gen-text: ", generation[0].text)
-        output = [
-            # Get the text of the top generated string.
-            {
-                ch.output_key: ch.output_parser.parse_result(generation),
-                "full_generation": generation,
-            }
-            for generation in llm_result.generations
-        ]
-        if ch.return_final_only:
-            output = [{ch.output_key: r[ch.output_key]} for r in output]
-        output = output[0][ch.output_key].dict()
-        print(output)
-        return output
+    pronoun_substitution_chain = LLMChain(
+        llm=llm,
+        prompt=P_SUB_PROMPT,
+        verbose=False,
+        output_parser=p_sub_json_output_parser,
+    )
 
     return {
-        "chain": pronoun_substitution_chain, "payload": {}, "post_processor": post_processor
+        "chain": pronoun_substitution_chain, "payload": {}
     }
 
 
-def get_validate_question_quality_old(llm):
+def get_validate_question_quality_old():
 
     n_q_response_schemas = [
         ResponseSchema(
@@ -1057,7 +817,7 @@ def get_validate_question_quality_old(llm):
         "chain": question_validation_chain, "payload": {}
     }
 
-def get_validate_question_quality(llm):
+def get_validate_question_quality():
 
     n_q_response_schemas = [
         ResponseSchema(
@@ -1100,25 +860,24 @@ def get_validate_question_quality(llm):
         "chain": question_validation_chain, "payload": {}
     }
 
+def get_num_tokens(prompt):
+    return len(openai_embedding.encode(prompt))
 
 def get_prompt_chains():
     prompt_chains = {
         "question_template_chain": get_question_template_chain,
-        "pronoun_identification_chain": get_pronoun_identification_chain,
-        "pronoun_substitution_chain": get_pronoun_substitution_chain,
-        "n_question_from_subgraph_chain_with_example": get_n_question_from_subgraph_chain_with_example,
-        "n_question_from_subgraph_chain_without_example": get_n_question_from_subgraph_chain_without_example,
-        "n_question_from_schema_chain_without_example": get_n_question_from_schema_chain_without_example,
-        "n_question_from_summarized_subgraph_chain_without_example": get_n_question_from_summarized_subgraph_chain_without_example,
-        "get_answer_from_question_and_triple_zero_shot": get_answer_from_question_and_triple_zero_shot,
-        "get_target_answer_from_triples": get_target_answer_from_triples,
-        "get_n_question_from_subgraph_chain_using_seed_entity": get_n_question_from_subgraph_chain_using_seed_entity,
-        "get_n_question_from_subgraph_chain_using_seed_entity_and_type": get_n_question_from_subgraph_chain_using_seed_entity_and_type,
-        "get_representative_label_for_type": get_representative_label_for_type,
-        "get_pronoun_identification_and_substitution_chain_without_example": get_pronoun_identification_and_substitution_chain_without_example,
-        "get_validate_question_quality": get_validate_question_quality,
-        "n_question_from_summarized_subgraph_chain_without_example_without_triple": get_n_question_from_summarized_subgraph_chain_without_example_without_triple,
-        "get_triple_for_question_given_subgraph_chain_without_example":
-        get_triple_for_question_given_subgraph_chain_without_example
+        "pronoun_identification_chain": get_pronoun_identification_chain(),
+        "pronoun_substitution_chain": get_pronoun_substitution_chain(),
+        "n_question_from_subgraph_chain_with_example": get_n_question_from_subgraph_chain_with_example(),
+        "n_question_from_subgraph_chain_without_example": get_n_question_from_subgraph_chain_without_example(),
+        "n_question_from_schema_chain_without_example": get_n_question_from_schema_chain_without_example(),
+        "n_question_from_summarized_subgraph_chain_without_example": get_n_question_from_summarized_subgraph_chain_without_example(),
+        "get_answer_from_question_and_triple_zero_shot": get_answer_from_question_and_triple_zero_shot(),
+        "get_target_answer_from_triples": get_target_answer_from_triples(),
+        "get_n_question_from_subgraph_chain_using_seed_entity": get_n_question_from_subgraph_chain_using_seed_entity(),
+        "get_n_question_from_subgraph_chain_using_seed_entity_and_type": get_n_question_from_subgraph_chain_using_seed_entity_and_type(),
+        "get_representative_label_for_type": get_representative_label_for_type(),
+        "get_pronoun_identification_and_substitution_chain_without_example": get_pronoun_identification_and_substitution_chain_without_example(),
+        "get_validate_question_quality": get_validate_question_quality()
     }
     return prompt_chains

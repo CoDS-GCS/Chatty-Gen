@@ -2,6 +2,7 @@ import os
 import warnings
 import random
 import re
+import time
 from collections import defaultdict
 import redis
 import json
@@ -11,10 +12,13 @@ from dataclasses import dataclass, field
 from typing import Optional, List, Tuple, Dict
 from SPARQLWrapper import SPARQLWrapper, JSON
 from logger import Logger
+from appconfig import config
 from seed_node_extractor import utils
 
 CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 
+host = config.kghost
+redis_host = config.redishost
 
 # Custom URI type with validation
 class URI:
@@ -207,20 +211,23 @@ class SubGraph:
         return summary_str
 
     def contain_triple(self, triple, approach):
-        triple = triple.replace('"', '').replace("'", "")
-        for el in self.triples:
-            seralized_triple = ""
-            if approach == "optimized":
-                seralized_triple = self.get_triple_representation_no_object(el)
-            elif approach == "subgraph":
+        if approach == "subgraph":
+            triple = triple.replace('"', '').replace("'", "")
+            for el in self.triples:
+                seralized_triple = ""
                 seralized_triple = self.get_triple_representation(el, 'uri')
-            seralized_triple = str(seralized_triple)
-            seralized_triple = seralized_triple.replace('"', '').replace("'", "")
-            if triple == seralized_triple:
-                return True
-        return False
-
-
+                seralized_triple = str(seralized_triple)
+                seralized_triple = seralized_triple.replace('"', '').replace("'", "")
+                if triple == seralized_triple:
+                    return True
+            return False
+        elif approach == "optimized":
+            for el in self.triples:
+                seralized_triple = ""
+                seralized_triple = self.get_triple_representation_no_object(el)
+                if triple == seralized_triple:
+                    return True
+            return False
 
     def get_summarized_graph(self):
         seen_predicates = set()
@@ -278,7 +285,7 @@ class KG:
     - uses redis cache for saving sparql query results for faster response
     """
 
-    def __init__(self, type_to_predicate_map=None, endpoints=[], redis_host="localhost", _redis_db_name=0, _verbose=False,
+    def __init__(self, type_to_predicate_map=None, endpoints=[], redis_host=redis_host, _redis_db_name=0, _verbose=False,
                  _selection_method="select-one"):
         self.verbose = _verbose
         self.endpoints = endpoints
@@ -382,21 +389,23 @@ class KG:
         Shoot any custom query and get the SPARQL results as a dictionary
         """
         try:
-            # caching_answer = self.r.get(_custom_query)
-            # if caching_answer:
-            # print "@caching layer"
-            # return json.loads(caching_answer)
+            caching_answer = self.r.get(_custom_query)
+            if caching_answer:
+                print("@caching layer")
+                return json.loads(caching_answer)
+            print("kg cache miss")
+#             return None
             sparql = SPARQLWrapper(self.select_sparql_endpoint())
             sparql.setQuery(_custom_query)
             sparql.setReturnFormat(JSON)
-            # try:
-            caching_answer = sparql.query().convert()
-            # except Exception as e:
-            #     print(e)
-            #     print("Retrying With queries")
-            #     time.sleep(5)
-            #     caching_answer = sparql.query().convert()
-            # self.r.set(_custom_query, json.dumps(caching_answer))
+            try:
+                caching_answer = sparql.query().convert()
+            except Exception as e:
+                print(e)
+                print("Retrying With queries")
+                time.sleep(5)
+                caching_answer = sparql.query().convert()
+            self.r.set(_custom_query, json.dumps(caching_answer))
             return caching_answer
 
         except Exception as e:
@@ -519,7 +528,8 @@ class KG:
 
 class DblpKG(KG):
     def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dblp_rdf_schema.nt"),
-                 rdf_format="nt", endpoints=["http://206.12.95.86:8894/sparql/", "https://sparql.dblp.org/sparql"]):
+                 # rdf_format="nt", endpoints=["http://206.12.95.86:8894/sparql/", "https://sparql.dblp.org/sparql"]):
+                 rdf_format="nt", endpoints=[f"http://{host}:8894/sparql/"]):
         super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to Dblp
 
@@ -580,7 +590,8 @@ class DblpKG(KG):
 
 class YagoKG(KG):
     def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "yago_rdf_schema.nt"),
-                 rdf_format="nt", endpoints=["http://206.12.95.86:8892/sparql/"]):
+                 # rdf_format="nt", endpoints=["http://206.12.95.86:8892/sparql/"]):
+                 rdf_format="nt", endpoints=[f"http://{host}:8892/sparql/"]):
         super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to YAGO 
         allowed_formats = ["nt", "xml", "n3", "trix"]
@@ -643,7 +654,8 @@ class YagoKG(KG):
 
 class DbpediaKG(KG):
     def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"),
-                 rdf_format="nt", endpoints=["http://206.12.95.86:8890/sparql/", "http://dbpedia.org/sparql/", "http://live.dbpedia.org/sparql/"]):
+                 # rdf_format="nt", endpoints=["http://206.12.95.86:8890/sparql/", "http://dbpedia.org/sparql/", "http://live.dbpedia.org/sparql/"]):
+                 rdf_format="nt", endpoints=[f"http://{host}:8890/sparql/"]):
         super().__init__(label_predicate, endpoints)
         # Additional attributes or initialization specific to DBPedia
         allowed_formats = ["nt", "xml", "n3", "trix"]

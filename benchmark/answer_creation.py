@@ -1,19 +1,25 @@
 from llm.prompt_chains import get_prompt_chains
+from llm.llms import llms_dict 
 from kg.kg.kg import defrag_uri
+from errors import JsonParsingError, ContextLengthError
+
+llm = llms_dict["sparql_generation_model"]
+print(llm)
 
 prompt_chains = get_prompt_chains()
-get_answer_chain = prompt_chains.get("get_answer_from_question_and_triple_zero_shot")
-get_target_chain = prompt_chains.get("get_target_answer_from_triples")
+get_answer_chain = prompt_chains.get("get_answer_from_question_and_triple_zero_shot")(llm)
+get_target_chain = prompt_chains.get("get_target_answer_from_triples")(llm)
 
 
 # Start Utils Function
 
 def get_triple_for_summarized(triple, subgraph):
-    triple = triple.replace('"', '').replace("'", "")
+    # triple = triple.replace('"', '').replace("'", "")
     for el in subgraph.triples:
         # if str(subgraph.get_triple_representation_for_optimized(el)) == triple:
-        seralized_triple = str(subgraph.get_triple_representation_no_object(el)).replace('"', '').replace("'", "")
-        if seralized_triple == triple:
+        # seralized_triple = str(subgraph.get_triple_representation_no_object(el)).replace('"', '').replace("'", "")
+        seralized_triple = subgraph.get_triple_representation_no_object(el)
+        if seralized_triple[0] == triple[0] and seralized_triple[1] == triple[1]:
             return subgraph.get_triple_with_uris_no_object(el)
     return None
 
@@ -125,8 +131,15 @@ def get_answer_LLM_based(question, triples, subgraph, approach):
         subject, predicate, object = returned_triple
         triples_list.append((subject.__str__(), predicate.__str__(), object.__str__()))
 
-    output = get_answer_chain.get("chain").run({"question": question, "triples": triples_list})
-    return output['sparql']
+    try:
+
+        ch = get_answer_chain.get("chain")
+        post_processor = get_answer_chain.get("post_processor")
+        llm_result = ch.generate([{"question": question, "triples": triples_list}], None)
+        output = post_processor(llm_result)
+        return output['sparql']
+    except Exception:
+        raise JsonParsingError()
 
 
 # Fully Rule Based Approach
