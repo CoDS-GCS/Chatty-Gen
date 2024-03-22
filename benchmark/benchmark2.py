@@ -459,6 +459,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
                 n = dialogue_size
                 seed_entity = seed.label if seed.label else seed.uri
+                seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
                 if config.pipeline_type == "original":
                     valid_question = False
                     valid_triples = False
@@ -466,7 +467,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     while not (valid_question and valid_triples):
                         try:
                             output = execute_question_generation_prompt("summarized", prompt, subgraph, n, seed, config.pipeline_type)
-                            valid_question = validate_questions_output(seed_entity, output)
+                            valid_question = validate_questions_output(seed_label, output)
                             valid_triples = validate_triples_output(subgraph, output, "optimized")
                         except ContextLengthError:
                             context_length_limit_error += 1
@@ -533,7 +534,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     retry = 0
                     while not valid:
                         transformed_questions = execute_dialogue_generation_prompt(seed_entity, question_set)
-                        valid = validate_dialogue_output(seed_entity, transformed_questions)
+                        valid = validate_dialogue_output(seed_label, transformed_questions)
                         retry += 1
                         if retry == 3:
                             break
@@ -574,7 +575,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
         else:
             dialogue = {
                 "seed_entity": str(seed.uri),
-                "seed_label": str(seed.label) if seed.label else defrag_uri(str(seed.uri)),
+                "seed_label": seed_label,
                 "dialogue": question_set_dialogue,
                 "original": question_set,
                 "queries": answer_queries,

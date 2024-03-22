@@ -1077,16 +1077,27 @@ def get_validate_question_quality(llm):
             "dialogue",
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""Given an entity and a dialogue (defined as a list of questions) about that entity, determine the dialogue is valid or invalid based on the following criteria:
-
-        1. The first question in the list should be specific to the entity by mentioning it directly (not a generic entity class).
-        2. The subsequent questions from the list must be grammatically correct.
-
-        "entity" : {entity}
+        template = """
+        Given a dialogue comprising a list of questions about the particular entity {entity}, assess whether the dialogue is valid or invalid according to the following guidelines:
+        1. The initial question in the dialogue must directly reference the entity itself, avoiding generic references.
+        2. Subsequent questions within the dialogue must adhere to grammatical correctness.
+        
+        "entity": {entity}
         "dialogue" : {dialogue}
         {format_instructions}
-
-        output: """,
+        
+        output: 
+        """
+        # template="""Given an entity and a dialogue (defined as a list of questions) about that entity, determine the dialogue is valid or invalid based on the following criteria:
+        #
+        # 1. The first question in the list should be specific to the entity by mentioning it directly (not a generic entity class).
+        # 2. The subsequent questions from the list must be grammatically correct.
+        #
+        # "entity" : {entity}
+        # "dialogue" : {dialogue}
+        # {format_instructions}
+        #
+        # output: """,
     )
 
     question_validation_chain = LLMChain(
