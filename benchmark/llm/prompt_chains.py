@@ -413,12 +413,18 @@ def get_n_question_from_subgraph_chain_without_example(llm):
         partial_variables={"format_instructions": n_q_json_format_instructions},
         template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5\n\n{format_instructions}.\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
     )
-    n_question_generator_chain = LLMChain(
-        llm=llm["llm"], prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser,
-        llm_kwargs=llm["config"]
-    )
+    if llm["config"] is not None:
+        n_question_generator_chain = LLMChain(
+            llm=llm["llm"], prompt=N_Q_PROMPT,
+            verbose=False,
+            output_parser=n_q_json_output_parser,
+            llm_kwargs=llm["config"]
+        )
+    else:
+        n_question_generator_chain = LLMChain(
+            llm=llm["llm"], prompt=N_Q_PROMPT,
+            verbose=False,
+            output_parser=n_q_json_output_parser)
 
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain 
@@ -687,12 +693,20 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
         template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5\n\n{format_instructions}.\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
     )
 
-    n_question_generator_chain = LLMChain(
-        llm=llm["llm"], prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser,
-        llm_kwargs=llm["config"]
-    )
+    if llm["config"] is not None:
+        n_question_generator_chain = LLMChain(
+            llm=llm["llm"], prompt=N_Q_PROMPT,
+            verbose=False,
+            output_parser=n_q_json_output_parser,
+            llm_kwargs=llm["config"]
+        )
+    else:
+        n_question_generator_chain = LLMChain(
+            llm=llm["llm"], prompt=N_Q_PROMPT,
+            verbose=False,
+            output_parser=n_q_json_output_parser
+        )
+
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain 
     def post_processor(llm_result):
@@ -740,12 +754,19 @@ def get_n_question_from_summarized_subgraph_chain_without_example_without_triple
         template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph.{format_instructions}\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
     )
 
-    n_question_generator_chain = LLMChain(
-        llm=llm["llm"], prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser,
-        llm_kwargs=llm["config"]
-    )
+    if llm["config"] is not None:
+        n_question_generator_chain = LLMChain(
+            llm=llm["llm"], prompt=N_Q_PROMPT,
+            verbose=False,
+            output_parser=n_q_json_output_parser,
+            llm_kwargs=llm["config"]
+        )
+    else:
+        n_question_generator_chain = LLMChain(
+            llm=llm["llm"], prompt=N_Q_PROMPT,
+            verbose=False,
+            output_parser=n_q_json_output_parser
+        )
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain
     
@@ -789,12 +810,18 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
         template="""### Instruction:\nGiven a question and a subgraph extracted from a knowledge graph, where the subgraph is represented as a list of triples, your task is to identify the specific triples within this subgraph that accurately represent the information needed to address the question. Each triple comprises a subject, a predicate, and an object, denoting a relationship between entities. Your objective is to discern and select the triples that contain relevant information essential for answering the question at hand. You must select triples from given triple list.\n\n{format_instructions}.\n\ninput: {subgraph}\nquestion: {question}\n\n### Response:```json""",
     )
 
-    n_question_generator_chain = LLMChain(
-        llm=llm["llm"], prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser,
-        llm_kwargs=llm["config"]
-    )
+    if llm['config'] is not None:
+        n_question_generator_chain = LLMChain(
+            llm=llm["llm"], prompt=N_Q_PROMPT,
+            verbose=False,
+            output_parser=n_q_json_output_parser,
+            llm_kwargs=llm["config"]
+        )
+    else:
+        n_question_generator_chain = LLMChain(
+            llm=llm["llm"], prompt=N_Q_PROMPT,
+            verbose=False,
+            output_parser=n_q_json_output_parser)
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain
     
@@ -900,12 +927,19 @@ def get_representative_label_for_type(llm:dict):
         {format_instructions}.\n\n### Response:```json""",
     )
 
-    n_question_generator_chain = LLMChain(
-        llm=llm["llm"], prompt=N_Q_PROMPT,
-        verbose=False,
-        output_parser=n_q_json_output_parser,
-        llm_kwargs=llm["config"]
-    )
+    if llm["config"] is not None:
+        n_question_generator_chain = LLMChain(
+            llm=llm["llm"], prompt=N_Q_PROMPT,
+            verbose=False,
+            output_parser=n_q_json_output_parser,
+            llm_kwargs=llm["config"]
+        )
+    else:
+        n_question_generator_chain = LLMChain(
+            llm=llm["llm"], prompt=N_Q_PROMPT,
+            verbose=False,
+            output_parser=n_q_json_output_parser)
+
     payload = {"stop": "```\n\n"}
     return {"chain": n_question_generator_chain, "payload": payload}
 
@@ -938,13 +972,21 @@ def get_pronoun_identification_and_substitution_chain_without_example(llm):
     {format_instructions}\n\nentity: {entity}\ninput: "{questions}"\n\n### Response:```json""",
     )
 
-    pronoun_substitution_chain = LLMChain(
-        llm=llm["llm"],
-        prompt=P_SUB_PROMPT,
-        verbose=False,
-        output_parser=p_sub_json_output_parser,
-        llm_kwargs=llm_config
-    )
+    if llm["config"] is not None:
+        pronoun_substitution_chain = LLMChain(
+            llm=llm["llm"],
+            prompt=P_SUB_PROMPT,
+            verbose=False,
+            output_parser=p_sub_json_output_parser,
+            llm_kwargs=llm["config"]
+        )
+    else:
+        pronoun_substitution_chain = LLMChain(
+            llm=llm["llm"],
+            prompt=P_SUB_PROMPT,
+            verbose=False,
+            output_parser=p_sub_json_output_parser,
+        )
     ch = pronoun_substitution_chain
     
     def post_processor(llm_result):

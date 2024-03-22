@@ -256,7 +256,8 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
                         # "total_cost": cb.total_cost
                     }
                 else:
-                    failed_stage["sparql_generation"] += 1
+                    if question_set and len(question_set) < 3:
+                        failed_stage["sparql_generation"] += 1
                     # This is a trigger to sample the new node
                     question_set = None
         except Exception as e:
@@ -326,7 +327,7 @@ def validate_questions_output(seed, questions):
 def validate_single_questions_output(seed, question):
     if seed[-1] == '.':
         seed = seed[:-1]
-    if seed not in question:
+    if seed.lower() not in question.lower():
         return False
     return True
 
@@ -465,9 +466,6 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     while not (valid_question and valid_triples):
                         try:
                             output = execute_question_generation_prompt("summarized", prompt, subgraph, n, seed, config.pipeline_type)
-                            if output is None:
-                                context_length_limit_error += 1
-                                break
                             valid_question = validate_questions_output(seed_entity, output)
                             valid_triples = validate_triples_output(subgraph, output, "optimized")
                         except ContextLengthError:
@@ -557,7 +555,8 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     }
 
                 else:
-                    failed_stage["sparql_generation"] += 1
+                    if question_set and len(question_set) < 3:
+                        failed_stage["sparql_generation"] += 1
                     # This is a trigger to sample the new node
                     question_set = None
 
@@ -697,9 +696,13 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
         traceback.print_exc()
         response = str(e)
         if response.startswith("Failed to parse LLMInput from completion"):
+            start_index = response.index('[')
+            end_index = response.index('Got:')
+            try:
+                data = ast.literal_eval(response[start_index:end_index - 3])
+                output = {"output": data}
+            except Exception as e:
+                raise JsonParsingError()
+        else:
             raise JsonParsingError()
-            # start_index = response.index('[')
-            # end_index = response.index('Got:')
-            # data = ast.literal_eval(response[start_index:end_index - 3])
-            # output = {"output": data}
     return output
