@@ -375,6 +375,8 @@ def validate_triples_output(subgraph, output, approach):
         for instance in output["output"]:
             triples = instance["triples"]
             if isinstance(triples, list) and isinstance(triples[0], str):
+                if "(" in triples[0] and  ')' in triples[0]:
+                    triples = triples[0].replace("(","").replace(")", "").replace("'","").split(', ')
                 triples = [triples]
             triples_ = []
             for t in triples:
@@ -454,6 +456,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
         answer_queries = None
         triples_used = None
         answer_status_dict = None
+        output = None
         try:
             with get_openai_callback() as cb:
                 logger.info(f"INDEX : {idx} -- question set generation chain start --")
