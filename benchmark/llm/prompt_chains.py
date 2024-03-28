@@ -304,7 +304,6 @@ def get_pronoun_identification_chain(llm):
             out.append(random.choice(v))
         return out
 
-    # TODO: fix randomness as it will be always same while generation
     pronoun_examples = select_random_pronoun_examples()
     examples_dict = {f"e_{idx+1}_inp": x[0] for idx, x in enumerate(pronoun_examples)}
     examples_dict.update(

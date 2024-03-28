@@ -499,11 +499,6 @@ class KG:
             self.logger.exception("Error occurred while extracting subgraph: %s", str(e))
             return None
 
-    def get_seed_nodes(self, dataset_size: int) -> List[Node]:
-        """
-        TODO: Add logic for selection of seed nodes @reham
-        """
-        pass
 
     def filter_subgraph(self, subgraph: SubGraph, seed_node) -> SubGraph:
         """add rules or condition to remove unnecessary triples"""
