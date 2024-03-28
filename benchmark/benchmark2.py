@@ -154,12 +154,12 @@ def generate_dialogues(kg_name, dataset_size=2, dialogue_size=2, approach=['subg
     
     if "subgraph" in approach:
         exp_name = f"{kg_name}_e1_{dataset_size}_{dialogue_size}"
-        output_file = os.path.join(out_dir, f"{exp_name}.json")
+        output_file = os.path.join(out_dir, f"{exp_name}_{config.pipeline_type}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
         generate_dialogues_from_subgraph(seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt, sampler, seednode_to_subgraph_map)
     if "subgraph-summarized" in approach:
         exp_name = f"{kg_name}_e11_{dataset_size}_{dialogue_size}"
-        output_file = os.path.join(out_dir, f"{exp_name}.json")
+        output_file = os.path.join(out_dir, f"{exp_name}_{config.pipeline_type}.json")
         tracer_instance = Tracer(os.path.join(out_dir, 'traces', f'{exp_name}.jsonl'))
         generate_dialogues_from_summarized_subgraph(seed_nodes, kg, tracer_instance, dialogue_size, output_file, prompt, sampler, seednode_to_subgraph_map)
 
@@ -178,9 +178,7 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
     total_time = 0
     processed_seeds = 0
     context_length_limit_error = 0
-    json_parsing_error = 0
     question_validation_error = 0
-    triple_validation_error = 0
     question_json_parsing_error = 0
     triple_validation_error = 0
     triple_json_parsing_error = 0
@@ -284,7 +282,6 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
             "total_time": total_time,
             "average_time": 0 if processed_seeds == 0 else (total_time / processed_seeds),
             "Context Length Error": context_length_limit_error,
-            "Json parsing Error": json_parsing_error,
             "Question Validation Error": question_validation_error,
             "Question Json Error": question_json_parsing_error,
             "Triples Validation Error": triple_validation_error,
@@ -408,7 +405,6 @@ def execute_dialogue_generation_prompt(seed, question_set):
             llm_result = ch.generate([{"entity": seed_entity, "questions": question_set[1:]}], None)
             output = post_processor(llm_result)
             transformed_questions = output["output"]
-            ## TODO: verify what should be seed_label here - @reham
             valid = validate_dialogue_output(seed_label, transformed_questions)
             if valid:
                 diag_validation_err = False
@@ -416,15 +412,30 @@ def execute_dialogue_generation_prompt(seed, question_set):
             else:
                 diag_validation_err = True
         except Exception as e:
-            # json parsing error
-            diag_json_parsing_err = True
+            response = str(e)
+            start_index = response.index('[')
+            end_index = response.index(']')
+            if response.startswith("Failed to parse"):
+                try:
+                    transformed_questions = ast.literal_eval(response[start_index:end_index + 1])
+                    valid = validate_dialogue_output(seed_label, transformed_questions)
+                    if valid:
+                        diag_validation_err = False
+                        break
+                    else:
+                        diag_validation_err = True
+                except Exception as e:
+                    diag_json_parsing_err = True
+            else:
+                # json parsing error
+                diag_json_parsing_err = True
         retry += 1
     
     if diag_json_parsing_err:
-        transformed_questions = None
+        question_set_dialogue = None
         errors["dialogue_json_parsing_error"] = 1
     elif diag_validation_err:
-        transformed_questions = None
+        question_set_dialogue = None
         errors["dialogue_validation_error"] = 1
     else:
         # no error
@@ -447,9 +458,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
     total_time = 0
     processed_seeds = 0
     context_length_limit_error = 0
-    json_parsing_error = 0
     question_validation_error = 0
-    triple_validation_error = 0
     question_json_parsing_error = 0
     triple_validation_error = 0
     triple_json_parsing_error = 0
@@ -553,7 +562,6 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
             "total_time": total_time,
             "average_time": 0 if processed_seeds == 0 else (total_time / processed_seeds),
             "Context Length Error": context_length_limit_error,
-            "Json parsing Error": json_parsing_error,
             "Question Validation Error": question_validation_error,
             "Question Json Error": question_json_parsing_error,
             "Triples Validation Error": triple_validation_error,
@@ -617,7 +625,6 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
             "triple_json_parsing_error": 0,
         }
 
-        ## TODO: verify the seed_label used - @reham
         seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
         subgraph_str = subgraph.__str__(representation='uri')
         prompt = n_question_from_subgraph_chain_without_example.get("prompt").format(subgraph=subgraph_str, n=n)
@@ -642,8 +649,21 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
                 valid_question = validate_questions_output(seed_label, output)
                 valid_triples = validate_triples_output(subgraph, output, "subgraph")
             except Exception as e:
-                # json parsing error
-                question_json_parsing_error = True
+                response = str(e)
+                if response.startswith("Failed to parse"):
+                    start_index = response.index('[')
+                    end_index = response.index('Got:')
+                    try:
+                        data = ast.literal_eval(response[start_index:end_index - 3])
+                        output = {"output": data}
+                        valid_question = validate_questions_output(seed_label, output)
+                        valid_triples = validate_triples_output(subgraph, output, "subgraph")
+                    except Exception as e:
+                        # json parsing error
+                        question_json_parsing_error = True
+                else:
+                    # json parsing error
+                    question_json_parsing_error = True
 
             retry += 1
             if retry == 3:
@@ -704,8 +724,21 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
                     valid_question = validate_questions_output(seed_label, output)
                     valid_triples = validate_triples_output(subgraph, output, "optimized")
                 except Exception as e:
-                    # json parsing error
-                    question_json_parsing_error = True
+                    response = str(e)
+                    if response.startswith("Failed to parse"):
+                        start_index = response.index('[')
+                        end_index = response.index('Got:')
+                        try:
+                            data = ast.literal_eval(response[start_index:end_index - 3])
+                            output = {"output": data}
+                            valid_question = validate_questions_output(seed_label, output)
+                            valid_triples = validate_triples_output(subgraph, output, "optimized")
+                        except Exception as e:
+                            # json parsing error
+                            question_json_parsing_error = True
+                    else:
+                        # json parsing error
+                        question_json_parsing_error = True
 
                 retry += 1
                 if retry == 3:
@@ -766,8 +799,25 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
                     else:
                         question_validation_error = True
                 except Exception as e:
-                    # json parsing error
-                    question_json_parsing_error = True
+                    response = str(e)
+                    if response.startswith("Failed to parse"):
+                        start_index = response.index('[')
+                        end_index = response.index('Got:')
+                        try:
+                            data = ast.literal_eval(response[start_index:end_index - 3])
+                            output = {"output": data}
+                            valid_question = validate_questions_output(seed_entity_representation, output)
+                            if valid_question:
+                                question_validation_error = False
+                                break
+                            else:
+                                question_validation_error = True
+                        except Exception as e:
+                            # json parsing error
+                            question_json_parsing_error = True
+                    else:
+                        # json parsing error
+                        question_json_parsing_error = True
 
                 retries += 1
             
