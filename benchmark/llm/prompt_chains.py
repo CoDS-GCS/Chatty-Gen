@@ -432,7 +432,10 @@ def get_n_question_from_subgraph_chain_without_example(llm):
             ## update outputs with before and after for given trace
             generation_0_original = generation[0].text
 
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
+            if generation[0].text.startswith("```json"):
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text[7:], "```")
+            else:
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
             if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
                 generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
             else:
@@ -614,7 +617,10 @@ def get_answer_from_question_and_triple_zero_shot(llm:dict):
             ## update outputs with before and after for given trace
             generation_0_original = generation[0].text
 
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
+            if generation[0].text.startswith("```json"):
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text[7:], "```")
+            else:
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
 #             if not('\"sparql\":' in generation[0].text or '"sparql":' in generation[0].text):
 #                 generation[0].text = "```json\n{\n    \"sparql\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
 #             else:
@@ -736,7 +742,11 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
             ## update outputs with before and after for given trace
             generation_0_original = generation[0].text
 
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
+            if generation[0].text.startswith("```json"):
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text[7:], "```")
+            else:
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
+
             if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
             # if not('\"output\":' in generation[0].text or '"output":' in generation[0].text):
                 generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
@@ -811,7 +821,10 @@ def get_n_question_from_summarized_subgraph_chain_without_example_without_triple
             ## update outputs with before and after for given trace
             generation_0_original = generation[0].text
 
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
+            if generation[0].text.startswith("```json"):
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text[7:], "```")
+            else:
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
             if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
             # if not('\"output\":' in generation[0].text or '"output":' in generation[0].text):
                 generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
@@ -879,7 +892,10 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
             ## update outputs with before and after for given trace
             generation_0_original = generation[0].text
 
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
+            if generation[0].text.startswith("```json"):
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text[7:], "```")
+            else:
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
             if not('\"triples\":' in trimmed_with_backtick_at_end or '"triples":' in trimmed_with_backtick_at_end):
                 generation[0].text = "```json\n{\n    \"triples\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
             else:
@@ -1055,7 +1071,10 @@ def get_pronoun_identification_and_substitution_chain_without_example(llm):
 
             ## update outputs with before and after for given trace
             generation_0_original = generation[0].text
-            trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
+            if generation[0].text.startswith("```json"):
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text[7:], "```")
+            else:
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
             if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
 #            if not('\"output\":' in generation[0].text or '"output":' in generation[0].text):
                 generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
