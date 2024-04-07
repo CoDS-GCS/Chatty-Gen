@@ -21,6 +21,7 @@ def get_llm_from_config(model_config: LLMInfo):
             llm_config = None
         if model_config.model_type == ModelType.OPENLLM:
             llm = OpenLLM(server_url=model_config.model_endpoint)
+            llm.model_name = model_config.model_name
             llm_config = openllm_config
         if model_config.model_type == ModelType.GOOGLE:
             pass
@@ -28,11 +29,20 @@ def get_llm_from_config(model_config: LLMInfo):
     except Exception as e:
         print(e)
 
-llms_dict = {
-    "question_generation_model": get_llm_from_config(config.question_generation_model),
-    "sparql_generation_model": get_llm_from_config(config.sparql_generation_model),
-    "dialogue_generation_model": get_llm_from_config(config.dialogue_generation_model),
-}
+llms_dict = {}
+if not config.comman_model is None:
+    comman_model = get_llm_from_config(config.comman_model)
+    llms_dict = {
+        "question_generation_model": comman_model,
+        "sparql_generation_model": comman_model,
+        "dialogue_generation_model": comman_model
+    }
+else:
+    llms_dict = {
+        "question_generation_model": get_llm_from_config(config.question_generation_model),
+        "sparql_generation_model": get_llm_from_config(config.sparql_generation_model),
+        "dialogue_generation_model": get_llm_from_config(config.dialogue_generation_model),
+    }
 
 openai_embedding = tiktoken.encoding_for_model("gpt-3.5-turbo")
 

@@ -1,0 +1,37 @@
+kgname: yago
+temperature: 0.5
+kghost: localhost
+kgport: 8894
+redishost: localhost
+outputdir: ./results/mar28/yago/original/codellama-13b
+dataset_size: 20
+dialogue_size: 5
+approach: 
+  - subgraph-summarized
+  # - subgraph
+pipeline_type: original
+# pipeline_type: simplified
+question_generation_model:
+  model_type: "openllm"
+  model_name: "codellama-13b"
+  model_endpoint: "http://localhost:3307"
+  model_apikey: ""
+sparql_generation_model:
+  model_type: "openllm"
+  model_name: "codellama-13b"
+  model_endpoint: "http://localhost:3307"
+  model_apikey: ""
+dialogue_generation_model:
+  model_type: "openllm"
+  model_name: "codellama-13b"
+  model_endpoint: "http://localhost:3307"
+  model_apikey: ""
+prompt: 1
+use_label: true
+tracing: true
+logging: true
+
+  # model_type: "openllm"
+  # model_name: "codellama-13b"
+  # model_endpoint: "http://localhost:3306"
+  # model_apikey: ""

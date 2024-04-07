@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import os
+import tiktoken
 import copy
 import json
+import inspect
 import logging
 from typing import (
     TYPE_CHECKING,
@@ -12,6 +15,7 @@ from typing import (
     Optional,
     TypedDict,
     Union,
+    Set,
     overload,
 )
 
@@ -22,6 +26,26 @@ from langchain_core.callbacks import (
 from langchain_core.language_models.llms import LLM
 from langchain_core.pydantic_v1 import PrivateAttr
 from openllm_core._schemas import CompletionChunk
+from langchain_core.outputs import Generation, GenerationChunk, LLMResult, RunInfo
+
+# token counting
+tiktoken_cache_dir = "../tiktoken-cache"
+os.environ["TIKTOKEN_CACHE_DIR"] = tiktoken_cache_dir
+openai_embedding = tiktoken.encoding_for_model("gpt-3.5-turbo")
+
+def get_num_tokens(prompt):
+    return len(openai_embedding.encode(prompt))
+
+def update_token_usage(
+    keys: Set[str], response: Dict[str, Any], token_usage: Dict[str, Any]
+) -> None:
+    """Update token usage."""
+    _keys_to_use = keys.intersection(response["usage"])
+    for _key in _keys_to_use:
+        if _key not in token_usage:
+            token_usage[_key] = response["usage"][_key]
+        else:
+            token_usage[_key] += response["usage"][_key]
 
 if TYPE_CHECKING:
     import openllm
@@ -334,3 +358,59 @@ class OpenLLM(LLM):
                 "Expected result to be a dict with key 'text' or a string. "
                 f"Received {res}"
             )
+    
+
+    def _generate(
+        self,
+        prompts: List[str],
+        stop: Optional[List[str]] = None,
+        run_manager: Optional[CallbackManagerForLLMRun] = None,
+        **kwargs: Any,
+    ) -> LLMResult:
+        """Run the LLM on the given prompt and input."""
+        # TODO: add caching here.
+
+        _keys = {"completion_tokens", "prompt_tokens", "total_tokens"}
+        token_usage = dict()
+        generations = []
+        new_arg_supported = inspect.signature(self._call).parameters.get("run_manager")
+        for prompt in prompts:
+            prompt_tokens = get_num_tokens(prompt)
+            text = (
+                self._call(prompt, stop=stop, run_manager=run_manager, **kwargs)
+                if new_arg_supported
+                else self._call(prompt, stop=stop, **kwargs)
+            )
+            completion_tokens = get_num_tokens(text)
+            total_tokens = prompt_tokens + completion_tokens
+
+            token_used = {
+                "usage": {
+                    "prompt_tokens": prompt_tokens,
+                    "completion_tokens": completion_tokens,
+                    "total_tokens": total_tokens
+                }
+            }
+            generations.append([Generation(text=text)])
+            update_token_usage(_keys, token_used, token_usage)
+        llm_output = {"token_usage": token_usage, "model_name": self.model_name}
+        return LLMResult(generations=generations, llm_output=llm_output)
+
+    async def _agenerate(
+        self,
+        prompts: List[str],
+        stop: Optional[List[str]] = None,
+        run_manager: Optional[AsyncCallbackManagerForLLMRun] = None,
+        **kwargs: Any,
+    ) -> LLMResult:
+        """Run the LLM on the given prompt and input."""
+        generations = []
+        new_arg_supported = inspect.signature(self._acall).parameters.get("run_manager")
+        for prompt in prompts:
+            text = (
+                await self._acall(prompt, stop=stop, run_manager=run_manager, **kwargs)
+                if new_arg_supported
+                else await self._acall(prompt, stop=stop, **kwargs)
+            )
+            generations.append([Generation(text=text)])
+        return LLMResult(generations=generations)

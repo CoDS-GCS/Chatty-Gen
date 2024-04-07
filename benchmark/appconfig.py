@@ -3,6 +3,7 @@ import re
 from dataclasses import dataclass, field
 from typing import Any, List, Tuple, Optional
 from enum import Enum
+import os
 
 class ModelType(Enum):
     OPENLLM = "openllm"
@@ -41,12 +42,15 @@ class Config:
     dataset_size: int = 1
     dialogue_size: int = 5
     approach: List[str] = field(default_factory=list)
-    pipeline_type: str = "default_pipeline_type"
+    pipeline_type: str = None
     prompt: int = 1
     use_label: bool = True
     seed_nodes_file = None
     tracing: bool = True
     logging: bool = True
+
+    comman_model: Optional[LLMInfo] = None
+
     question_generation_model: LLMInfo = None
     sparql_generation_model: LLMInfo = None
     dialogue_generation_model: LLMInfo = None
@@ -54,6 +58,10 @@ class Config:
     # redis
     redishost: str = "localhost"
     redisport: int = 6379
+
+    # wandb
+    wandb_project: str = "cov-kg-benchmark-3"
+    wandb_mode: str = "offline"
 
 
     @classmethod
@@ -72,8 +80,81 @@ class Config:
     def to_yaml(self, file_path: str) -> None:
         with open(file_path, 'w') as file:
             yaml.dump(self.__dict__, file)
-
+    
+    def config_for_wandb(self) -> dict:
+        _config = {
+            "kgname": self.kgname,
+            "dataset_size": self.dataset_size,
+            "approach": self.approach,
+            "pipeline_type": self.pipeline_type,
+            "use_label": self.use_label,
+            "llm_models": {
+                "question_generation": self.question_generation_model.model_name,
+                "sparql_generation": self.sparql_generation_model.model_name,
+                "dialogue_generation": self.dialogue_generation_model.model_name,
+            }
+        }
+        return _config
+    
+    def used_llms(self) -> str:
+        return f"{self.question_generation_model.model_name}-{self.sparql_generation_model.model_name}-{self.dialogue_generation_model.model_name}"
+        
 
 # Example usage:
-config = Config.from_yaml('config.yaml')
+# yamlfile = "./run_configs/dblp/original/codellama13b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/dblp/simplified/codellama13b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+yamlfile = "./run_configs/yago/original/codellama13b-config.yaml"
+config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/yago/simplified/codellama13b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+
+# yamlfile = "./run_configs/dblp/original/codellama7b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/dblp/simplified/codellama7b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/yago/original/codellama7b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/yago/simplified/codellama7b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+
+
+# yamlfile = "./run_configs/dblp/original/mistral-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/dblp/simplified/mistral-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/yago/original/mistral-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/yago/simplified/mistral-config.yaml"
+# config = Config.from_yaml(yamlfile)
+
+
+# yamlfile = "./run_configs/dblp/original/llama7b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/dblp/simplified/llama7b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/yago/original/llama7b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/yago/simplified/llama7b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+
+
+# yamlfile = "./run_configs/dblp/original/llama13b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/dblp/simplified/llama13b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/yago/original/llama13b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+# yamlfile = "./run_configs/yago/simplified/llama13b-config.yaml"
+# config = Config.from_yaml(yamlfile)
+
+
+# ## openai model
+# yamlfile = "config.yaml"
+# config = Config.from_yaml(yamlfile)
+
+if config.wandb_project != "":
+    os.environ["WANDB_PROJECT"] = config.wandb_project
+    os.environ["WANDB_MODE"] = "offline"
 print(config)

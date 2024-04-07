@@ -427,13 +427,25 @@ def get_n_question_from_subgraph_chain_without_example(llm):
 
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain 
-    def post_processor(llm_result):
+    def post_processor(llm_result, trace_inputs=None, trace=None):
         for generation in llm_result.generations:
+            ## update outputs with before and after for given trace
+            generation_0_original = generation[0].text
+
             trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
             if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
                 generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
             else:
                 generation[0].text = "```json" + trimmed_with_backtick_at_end
+            
+            generation_0_processed = generation[0].text
+            ## update outputs with before and after for given trace
+            if trace:
+                trace_outputs = {
+                    "generated": generation_0_original,
+                    "processed": generation_0_processed
+                }
+                trace.add_inputs_and_outputs(inputs=trace_inputs, outputs=trace_outputs)
         output = [
             # Get the text of the top generated string.
             {
@@ -597,15 +609,26 @@ def get_answer_from_question_and_triple_zero_shot(llm:dict):
     )
     ch = n_answer_generator_chain
 
-    def post_processor(llm_result):
-        # pdb.set_trace()
+    def post_processor(llm_result, trace_inputs=None, trace=None):
         for generation in llm_result.generations:
+            ## update outputs with before and after for given trace
+            generation_0_original = generation[0].text
+
             trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
 #             if not('\"sparql\":' in generation[0].text or '"sparql":' in generation[0].text):
 #                 generation[0].text = "```json\n{\n    \"sparql\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
 #             else:
             generation[0].text = "```json" + trimmed_with_backtick_at_end
             print("gen-text: ", generation[0].text)
+            
+            generation_0_processed = generation[0].text
+            ## update outputs with before and after for given trace
+            if trace:
+                trace_outputs = {
+                    "generated": generation_0_original,
+                    "processed": generation_0_processed
+                }
+                trace.add_inputs_and_outputs(inputs=trace_inputs, outputs=trace_outputs)
         output = [
             # Get the text of the top generated string.
             {
@@ -619,7 +642,7 @@ def get_answer_from_question_and_triple_zero_shot(llm:dict):
         output = output[0][ch.output_key]
         print(output)
         return output
-    return {"chain": n_answer_generator_chain, "payload": {}, "post_processor": post_processor}
+    return {"chain": n_answer_generator_chain, "payload": {}, "prompt": N_Q_PROMPT, "post_processor": post_processor}
 
 def get_target_answer_from_triples(llm:dict):
     n_q_response_schemas = [
@@ -708,8 +731,11 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
 
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain 
-    def post_processor(llm_result):
+    def post_processor(llm_result, trace_inputs=None, trace=None):
         for generation in llm_result.generations:
+            ## update outputs with before and after for given trace
+            generation_0_original = generation[0].text
+
             trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
             if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
             # if not('\"output\":' in generation[0].text or '"output":' in generation[0].text):
@@ -717,6 +743,16 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
             else:
                 generation[0].text = "```json" + trimmed_with_backtick_at_end
             print("gen-text: ", generation[0].text)
+
+            generation_0_processed = generation[0].text
+            ## update outputs with before and after for given trace
+            if trace:
+                trace_outputs = {
+                    "generated": generation_0_original,
+                    "processed": generation_0_processed
+                }
+                trace.add_inputs_and_outputs(inputs=trace_inputs, outputs=trace_outputs)
+
         output = [
             # Get the text of the top generated string.
             {
@@ -769,9 +805,12 @@ def get_n_question_from_summarized_subgraph_chain_without_example_without_triple
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain
     
-    def post_processor(llm_result):
-        # pdb.set_trace()
+    def post_processor(llm_result, trace_inputs=None, trace=None):
         for generation in llm_result.generations:
+
+            ## update outputs with before and after for given trace
+            generation_0_original = generation[0].text
+
             trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
             if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
             # if not('\"output\":' in generation[0].text or '"output":' in generation[0].text):
@@ -779,6 +818,16 @@ def get_n_question_from_summarized_subgraph_chain_without_example_without_triple
             else:
                 generation[0].text = "```json" + trimmed_with_backtick_at_end
             print("gen-text: ", generation[0].text)
+
+            generation_0_processed = generation[0].text
+            ## update outputs with before and after for given trace
+            if trace:
+                trace_outputs = {
+                    "generated": generation_0_original,
+                    "processed": generation_0_processed
+                }
+                trace.add_inputs_and_outputs(inputs=trace_inputs, outputs=trace_outputs)
+
         output = [
             # Get the text of the top generated string.
             {
@@ -824,15 +873,28 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain
     
-    def post_processor(llm_result):
-        # pdb.set_trace()
+    def post_processor(llm_result, trace_inputs=None, trace=None):
         for generation in llm_result.generations:
+
+            ## update outputs with before and after for given trace
+            generation_0_original = generation[0].text
+
             trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
             if not('\"triples\":' in trimmed_with_backtick_at_end or '"triples":' in trimmed_with_backtick_at_end):
                 generation[0].text = "```json\n{\n    \"triples\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
             else:
                 generation[0].text = "```json" + trimmed_with_backtick_at_end
             print("gen-text: ", generation[0].text)
+            
+            generation_0_processed = generation[0].text
+            ## update outputs with before and after for given trace
+            if trace:
+                trace_outputs = {
+                    "generated": generation_0_original,
+                    "processed": generation_0_processed
+                }
+                trace.add_inputs_and_outputs(inputs=trace_inputs, outputs=trace_outputs)
+
         output = [
             # Get the text of the top generated string.
             {
@@ -988,9 +1050,11 @@ def get_pronoun_identification_and_substitution_chain_without_example(llm):
         )
     ch = pronoun_substitution_chain
     
-    def post_processor(llm_result):
-        # pdb.set_trace()
+    def post_processor(llm_result, trace_inputs=None, trace=None):
         for generation in llm_result.generations:
+
+            ## update outputs with before and after for given trace
+            generation_0_original = generation[0].text
             trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
             if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
 #            if not('\"output\":' in generation[0].text or '"output":' in generation[0].text):
@@ -998,6 +1062,15 @@ def get_pronoun_identification_and_substitution_chain_without_example(llm):
             else:
                 generation[0].text = "```json" + trimmed_with_backtick_at_end
             print("gen-text: ", generation[0].text)
+
+            generation_0_processed = generation[0].text
+            ## update outputs with before and after for given trace
+            if trace:
+                trace_outputs = {
+                    "generated": generation_0_original,
+                    "processed": generation_0_processed
+                }
+                trace.add_inputs_and_outputs(inputs=trace_inputs, outputs=trace_outputs)
         output = [
             # Get the text of the top generated string.
             {
@@ -1013,7 +1086,7 @@ def get_pronoun_identification_and_substitution_chain_without_example(llm):
         return output
 
     return {
-        "chain": pronoun_substitution_chain, "payload": {}, "post_processor": post_processor
+        "chain": pronoun_substitution_chain, "payload": {}, "prompt": P_SUB_PROMPT,"post_processor": post_processor
     }
 
 

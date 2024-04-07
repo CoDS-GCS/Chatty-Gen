@@ -25,6 +25,21 @@ import ast
 import re
 from appconfig import config
 from errors import JsonParsingError, ContextLengthError
+import wandb
+from wandb_osh.hooks import TriggerWandbSyncHook
+from wandb_utils import Trace, StatusCode
+# from wandb_utils import CustomStatusCode
+
+
+# wandb trigger sync
+trigger_sync = TriggerWandbSyncHook()
+
+## initialize wandb job run
+if not config.comman_model is None:
+    run_name = f"{config.kgname}-{config.pipeline_type}-{config.comman_model.model_name}-{config.dataset_size}"
+else:
+    run_name = f"{config.kgname}-{config.pipeline_type}-mix-{config.used_llms()}-{config.dataset_size}"
+wandb.init(name = run_name, project=config.wandb_project, mode=config.wandb_mode, config=config.config_for_wandb())
 
 langchain.debug = True
 
@@ -80,24 +95,46 @@ def filter_and_select_questions(original_questions):
 
     return selected_questions
 
-def decouple_questions_and_answers(que_trip_set, subgraph, approach, endpoint, seed_node_uri):
+def decouple_questions_and_answers(que_trip_set, subgraph, approach, endpoint, seed_node_uri, parent_trace):
     questions = list()
     answer_queries = list()
     triples = list()
     query_results = dict()
     sparql_json_parse_err_cnt = 0
     sparql_validation_err_cnt = 0
+    start_time_ms = time.time_ns() // 1000
+    s_chain_input = {
+        "inputs": que_trip_set
+    },
+    s_chain_trace = Trace(
+        name="Answer Generation", 
+        kind="CHAIN", 
+        start_time_ms=start_time_ms,
+        model_dict={
+            "_model": config.sparql_generation_model.model_name,
+            "_kind": config.sparql_generation_model.model_type
+        }
+    )
     for element in que_trip_set:
         print("element-", element)
         try:
-            # 1- LLM Based
-            # answer_query = get_answer_LLM_based(element["question"], element["triples"], subgraph)
-            # 2-Rule based
-            # answer_query = get_answer_query_from_graph(element["triples"], seed_node, subgraph, element["question"])
+            start_time_ms = time.time_ns() // 1000
+            q_chain_input = {
+                "question": element["question"],
+                "triples": element["triples"]
+            }
+            q_chain_trace = Trace(
+                name="Sparql-Quey-Generation", 
+                kind="LLM", 
+                start_time_ms=start_time_ms,
+                model_dict={
+                    "_model": config.sparql_generation_model.model_name,
+                    "_kind": config.sparql_generation_model.model_type
+                }
+            )
             # 3- LLM based modified
-            answer_query = get_LLM_based_postprocessed(element["question"], element["triples"], subgraph, approach)
-            # 4- Rule based modified
-            # answer_query = updated_get_answer_query_from_graph(element["triples"], subgraph, element["question"])
+            answer_query = get_LLM_based_postprocessed(element["question"], element["triples"], subgraph, approach, q_chain_input, q_chain_trace)
+            q_chain_trace.outputs = {"llm_query": answer_query}
             status = validate_query(answer_query, element["triples"], endpoint, subgraph, seed_node_uri, approach)
             if status in query_results:
                 query_results[status] += 1
@@ -108,12 +145,27 @@ def decouple_questions_and_answers(que_trip_set, subgraph, approach, endpoint, s
                 questions.append(element["question"])
                 answer_queries.append(answer_query)
                 triples.append(element["triples"])
+                q_chain_trace.status_code = StatusCode.SUCCESS.name
             else:
                 sparql_validation_err_cnt += 1
+                q_chain_trace.status_code = StatusCode.SPARQL_VALIDATION_ERROR.name
+                q_chain_trace.status_message = f"query validation status was: {status}"
+            
+            q_chain_trace._span.end_time_ms = time.time_ns() // 1000
+            s_chain_trace.add_child(q_chain_trace)
         except JsonParsingError:
+            traceback.print_exc()
             sparql_json_parse_err_cnt += 1
+            q_chain_trace.status_code = StatusCode.SPARQL_JSON_ERROR.name
+            q_chain_trace._span.end_time_ms = time.time_ns() // 1000
+            s_chain_trace.add_child(q_chain_trace)
             continue
         except Exception as e:
+            traceback.print_exc()
+            q_chain_trace.status_code = StatusCode.ERROR.name
+            q_chain_trace.status_message = f"unknown error occurred"
+            q_chain_trace._span.end_time_ms = time.time_ns() // 1000
+            s_chain_trace.add_child(q_chain_trace)
             continue
 
     if len(answer_queries) < 3:
@@ -125,13 +177,24 @@ def decouple_questions_and_answers(que_trip_set, subgraph, approach, endpoint, s
         if sparql_json_parse_err_cnt >= sparql_validation_err_cnt:
             sparql_json_parse_err_cnt = 1
             sparql_validation_err_cnt = 0
+            s_chain_trace.status_code = StatusCode.SPARQL_JSON_ERROR.name
+            s_chain_trace._span.end_time_ms = time.time_ns() // 1000
         else:
             sparql_validation_err_cnt = 1
             sparql_json_parse_err_cnt = 0
+            s_chain_trace.status_code = StatusCode.SPARQL_VALIDATION_ERROR.name
+            s_chain_trace._span.end_time_ms = time.time_ns() // 1000
     else:
         sparql_json_parse_err_cnt = 0
         sparql_validation_err_cnt = 0
+        s_chain_trace.status_code = StatusCode.SUCCESS.name
+        s_chain_trace._span.end_time_ms = time.time_ns() // 1000
     
+    s_chain_output = {
+        "answer_queries": answer_queries
+    }
+    s_chain_trace.add_inputs_and_outputs(inputs=s_chain_input, outputs=s_chain_output)
+    parent_trace.add_child(s_chain_trace)
 
     return questions, answer_queries, triples, query_results, sparql_json_parse_err_cnt, sparql_validation_err_cnt
 
@@ -186,6 +249,12 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
     sparql_validation_error = 0
     dialogue_json_parsing_error = 0
     dialogue_validation_error = 0
+
+    cost = {
+        "total_tokens": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+    }
     for idx, seed in enumerate(seed_nodes):
         if idx>500:
             break
@@ -205,12 +274,23 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
         que_trip_set = None
         sp_json_err = 0
         sp_val_err = 0
-        try:
-            with get_openai_callback() as cb:
-                n = dialogue_size
-                seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
+        n = dialogue_size
+        seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
+
+        start_time_ms = time.time_ns() // 1000
+        parent_trace_inputs = {
+            "seed_label": seed_label,
+        }
+        parent_trace_outputs = None
+        parent_trace = Trace(
+            name="Pipeline", 
+            kind="PIPELINE", 
+            start_time_ms=start_time_ms,
+        )
+        with get_openai_callback() as cb:
+            try:
                 errors = {}
-                que_trip_set, errors = execute_question_generation_prompt("subgraph", prompt, subgraph, n, seed, config.pipeline_type)
+                que_trip_set, errors = execute_question_generation_prompt("subgraph", prompt, subgraph, n, seed, config.pipeline_type, parent_trace=parent_trace)
 
                 if que_trip_set is None:
                     # question triple set was none so just count the errors and continue to next seed
@@ -222,7 +302,7 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
                     skip_node = True
                 else:
                     # question triple stage was success move to answer query generation
-                    question_set, answer_queries, triples_used, answer_status_dict, sp_json_err, sp_val_err = decouple_questions_and_answers(que_trip_set, subgraph, "subgraph", kg.sparql_endpoint, seed.uri)
+                    question_set, answer_queries, triples_used, answer_status_dict, sp_json_err, sp_val_err = decouple_questions_and_answers(que_trip_set, subgraph, "subgraph", kg.sparql_endpoint, seed.uri, parent_trace=parent_trace)
 
                     if question_set is None:
                         sparql_json_parsing_error += sp_json_err
@@ -230,7 +310,7 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
                         skip_node = True
                     else:
                         errors = {}
-                        question_set_dialogue, errors = execute_dialogue_generation_prompt(seed, question_set)
+                        question_set_dialogue, errors = execute_dialogue_generation_prompt(seed, question_set, parent_trace=parent_trace)
 
                         if question_set_dialogue is None:
                             dialogue_json_parsing_error += errors.get("dialogue_json_parsing_error", 0)
@@ -255,16 +335,27 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
                                 "cost": cb_dict,
                                 "query_status": answer_status_dict
                             }
+                            parent_trace.status_code = StatusCode.SUCCESS.name
+                            parent_trace_outputs = {
+                                "dialogue": question_set_dialogue,
+                                "original": question_set,
+                                "queries": answer_queries,
+                                "query_status": answer_status_dict
+                            }
                             print(dialogue)
                             benchmark_sample.append(dialogue)
                             end_time = time.time()
                             total_time += (end_time - start_time)
                             processed_seeds += 1
 
-        except Exception as e:
-            traceback.print_exc()
-            logger.info(f"INDEX : {idx} -- ERROR: {idx} : {e} --")
-            tracer_instance.save_to_file()
+            except Exception as e:
+                traceback.print_exc()
+                logger.info(f"INDEX : {idx} -- ERROR: {idx} : {e} --")
+                tracer_instance.save_to_file()
+            
+            cost["total_tokens"] += cb.total_tokens
+            cost["prompt_tokens"] += cb.prompt_tokens
+            cost["completion_tokens"] += cb.completion_tokens
 
         # if question_set is None or question_set_dialogue is None or len(question_set) != len(question_set_dialogue):
         if skip_node == True:
@@ -274,11 +365,22 @@ def generate_dialogues_from_subgraph(initial_seed_nodes, kg, tracer_instance, di
             seed_nodes.append(new_seed)
             seednode_to_subgraph_map[key] = subgraph
         
+        if parent_trace is not None:
+            print("####### trace saved ########")
+            parent_trace.add_inputs_and_outputs(inputs=parent_trace_inputs, outputs=parent_trace_outputs)
+            parent_trace._span.end_time_ms = time.time_ns() // 1000
+            parent_trace.log("diag-gen-pipeline")
+
+            # sync with wandb online
+            trigger_sync()
+            # break
+
         benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
         benchmark = {
             "seeds_used": idx+1,
             "data": benchmark_sample,
             "analysis" : benchmark_analysis,
+            "cost" : cost,
             "total_time": total_time,
             "average_time": 0 if processed_seeds == 0 else (total_time / processed_seeds),
             "Context Length Error": context_length_limit_error,
@@ -382,7 +484,7 @@ def validate_triples_output(subgraph, output, approach):
 
 
 
-def execute_dialogue_generation_prompt(seed, question_set):
+def execute_dialogue_generation_prompt(seed, question_set, parent_trace):
     seed_entity = seed.label if seed.label else seed.uri
     seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
     transformed_questions = []
@@ -392,6 +494,23 @@ def execute_dialogue_generation_prompt(seed, question_set):
     }
     ch = pronoun_identification_and_substitution_chain.get("chain")
     post_processor = pronoun_identification_and_substitution_chain.get("post_processor")
+    prompt = pronoun_identification_and_substitution_chain.get("prompt").format(entity=seed_entity, questions=question_set[1:])
+
+    start_time_ms = time.time_ns() // 1000
+    chain_inputs={
+        "seed_label": seed_label,
+        "prompt": prompt
+    }
+    d_chain_trace = Trace(
+        name="D-Gen-Step", 
+        kind="CHAIN", 
+        start_time_ms=start_time_ms,
+        model_dict={
+            "_model": config.dialogue_generation_model.model_name,
+            "_kind": config.dialogue_generation_model.model_type
+        }
+    )
+
     diag_json_parsing_err = False
     diag_validation_err = False
     valid = False
@@ -403,7 +522,7 @@ def execute_dialogue_generation_prompt(seed, question_set):
         diag_validation_err = False
         try:
             llm_result = ch.generate([{"entity": seed_entity, "questions": question_set[1:]}], None)
-            output = post_processor(llm_result)
+            output = post_processor(llm_result, chain_inputs, d_chain_trace)
             transformed_questions = output["output"]
             valid = validate_dialogue_output(seed_label, transformed_questions)
             if valid:
@@ -434,14 +553,19 @@ def execute_dialogue_generation_prompt(seed, question_set):
     if diag_json_parsing_err:
         question_set_dialogue = None
         errors["dialogue_json_parsing_error"] = 1
+        d_chain_trace.status_code = StatusCode.DIALOGUE_JSON_ERROR.name
     elif diag_validation_err:
         question_set_dialogue = None
         errors["dialogue_validation_error"] = 1
+        d_chain_trace.status_code = StatusCode.DIALOGUE_VALIDATION_ERROR.name
     else:
         # no error
         question_0 = question_set[0]
         question_set_dialogue = [question_0, *transformed_questions]
+        d_chain_trace.status_code = StatusCode.SUCCESS.name
 
+    d_chain_trace._span.end_time_ms = time.time_ns() // 1000
+    parent_trace.add_child(d_chain_trace)
     return question_set_dialogue, errors
 
 
@@ -466,6 +590,13 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
     sparql_validation_error = 0
     dialogue_json_parsing_error = 0
     dialogue_validation_error = 0
+
+    cost = {
+        "total_tokens": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0
+    }
+
     for idx, seed in enumerate(seed_nodes):
         if idx>500:
             break
@@ -485,14 +616,25 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
         que_trip_set = None
         sp_json_err = 0
         sp_val_err = 0
-        try:
-            with get_openai_callback() as cb:
-                n = dialogue_size
-                seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
-                
+        n = dialogue_size
+        seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
+
+        start_time_ms = time.time_ns() // 1000
+        parent_trace_inputs = {
+            "seed_label": seed_label,
+        }
+        parent_trace_outputs = None
+        parent_trace = Trace(
+            name="Pipeline", 
+            kind="PIPELINE", 
+            start_time_ms=start_time_ms,
+        )
+        with get_openai_callback() as cb:
+            try:
                 errors = {}
-                que_trip_set, errors = execute_question_generation_prompt("summarized", prompt, subgraph, n, seed, config.pipeline_type)
-                
+
+                que_trip_set, errors = execute_question_generation_prompt("summarized", prompt, subgraph, n, seed, config.pipeline_type, parent_trace=parent_trace)
+
                 if que_trip_set is None:
                     # question triple set was none so just count the errors and continue to next seed
                     context_length_limit_error += errors.get("context_length_error", 0)
@@ -503,7 +645,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                     skip_node = True
                 else:
                     # question triple stage was success move to answer query generation
-                    question_set, answer_queries, triples_used, answer_status_dict, sp_json_err, sp_val_err = decouple_questions_and_answers(que_trip_set, subgraph, "optimized", kg.sparql_endpoint, seed.uri)
+                    question_set, answer_queries, triples_used, answer_status_dict, sp_json_err, sp_val_err = decouple_questions_and_answers(que_trip_set, subgraph, "optimized", kg.sparql_endpoint, seed.uri, parent_trace=parent_trace)
 
                     if question_set is None:
                         sparql_json_parsing_error += sp_json_err
@@ -511,7 +653,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                         skip_node = True
                     else:
                         errors = {}
-                        question_set_dialogue, errors = execute_dialogue_generation_prompt(seed, question_set)
+                        question_set_dialogue, errors = execute_dialogue_generation_prompt(seed, question_set, parent_trace=parent_trace)
 
                         if question_set_dialogue is None:
                             dialogue_json_parsing_error += errors.get("dialogue_json_parsing_error", 0)
@@ -536,16 +678,27 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
                                 "cost": cb_dict,
                                 "query_status": answer_status_dict
                             }
+                            parent_trace.status_code = StatusCode.SUCCESS.name
+                            parent_trace_outputs = {
+                                "dialogue": question_set_dialogue,
+                                "original": question_set,
+                                "queries": answer_queries,
+                                "query_status": answer_status_dict
+                            }
                             print(dialogue)
                             benchmark_sample.append(dialogue)
                             end_time = time.time()
                             total_time += (end_time - start_time)
                             processed_seeds += 1
-        except Exception as e:
-            ## TODO: this error was not recovered add logic
-            traceback.print_exc()
-            logger.info(f"INDEX : {idx} -- ERROR: {idx} : {e} --")
-            tracer_instance.save_to_file()
+            except Exception as e:
+                ## TODO: this error was not recovered add logic
+                traceback.print_exc()
+                logger.info(f"INDEX : {idx} -- ERROR: {idx} : {e} --")
+                tracer_instance.save_to_file()
+            
+            cost["total_tokens"] += cb.total_tokens
+            cost["prompt_tokens"] += cb.prompt_tokens
+            cost["completion_tokens"] += cb.completion_tokens
         
         if skip_node == True:
             # Sample a new node and add it to seed nodes
@@ -553,12 +706,24 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
             key = new_seed.label if new_seed.label else new_seed.uri
             seed_nodes.append(new_seed)
             seednode_to_subgraph_map[key] = subgraph
+        
+        if parent_trace is not None:
+            print("####### trace saved ########")
+            parent_trace.add_inputs_and_outputs(inputs=parent_trace_inputs, outputs=parent_trace_outputs)
+            parent_trace._span.end_time_ms = time.time_ns() // 1000
+            parent_trace.log("diag-gen-pipeline")
+
+            # sync with wandb online
+            trigger_sync()
+            # break
+
 
         benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
         benchmark = {
             "seeds_used": idx+1,
             "data": benchmark_sample,
             "analysis" : benchmark_analysis,
+            "cost" : cost,
             "total_time": total_time,
             "average_time": 0 if processed_seeds == 0 else (total_time / processed_seeds),
             "Context Length Error": context_length_limit_error,
@@ -577,7 +742,7 @@ def generate_dialogues_from_summarized_subgraph(initial_seed_nodes, kg, tracer_i
             json.dump(benchmark, f, indent=4)
 
 
-def execute_question_triple_binding_prompt(subgraph, subgraph_str, question_list, seed_entity):
+def execute_question_triple_binding_prompt(subgraph, subgraph_str, question_list, q_gen_trace):
     errors = {
         "triple_validation_error": 0,
         "triple_json_parsing_error": 0,
@@ -588,32 +753,54 @@ def execute_question_triple_binding_prompt(subgraph, subgraph_str, question_list
     ch = get_triple_for_question_given_subgraph_chain_without_example.get("chain")
     post_processor = get_triple_for_question_given_subgraph_chain_without_example.get("post_processor")
     for q in question_list:
+        start_time_ms = time.time_ns() // 1000
+        prompt = get_triple_for_question_given_subgraph_chain_without_example.get("prompt").format(subgraph=subgraph_str, question=q)
+        chain_input = {
+                "prompt" : prompt
+            },
+        t_chain_trace = Trace(
+            name="Triple-Binding", 
+            kind="LLM", 
+            start_time_ms=start_time_ms,
+            model_dict={
+                "_model": config.question_generation_model.model_name,
+                "_kind": config.question_generation_model.model_type
+            }
+        )
         try:
             llm_result = ch.generate([{"subgraph":subgraph_str, "question":q}], None)
-            output = post_processor(llm_result) # output would be list of question
+            output = post_processor(llm_result, chain_input, t_chain_trace)
 
             valid_triples = validate_single_triples_output_v2(subgraph, output, "optimized")
             if not valid_triples:
                 t_validation_err_cnt += 1
-                continue
+                t_chain_trace._span.status_code = StatusCode.TRIPLES_VALIDATION_ERROR.name
             else:
                 output_with_triple.append({"question":q, "triples":output})
+                t_chain_trace._span.status_code = StatusCode.SUCCESS.name
         except Exception as e:
             t_json_parse_err_cnt += 1
             print("Exception in triple binding, skipping question", e)
-            continue
+            t_chain_trace._span.status_code = StatusCode.TRIPLES_JSON_ERROR.name
+        
+        t_chain_trace._span.end_time_ms = time.time_ns() // 1000
+        q_gen_trace.add_child(t_chain_trace)
+
     if len(question_list) != len(output_with_triple):
         # not all triple binding were correct
         if t_json_parse_err_cnt >= t_validation_err_cnt:
             errors["triple_json_parsing_error"] = 1
+            q_gen_trace._span.status_code = StatusCode.TRIPLES_JSON_ERROR.name
             return None, errors
         else:
             errors["triple_validation_error"] = 1
+            q_gen_trace._span.status_code = StatusCode.TRIPLES_VALIDATION_ERROR.name
             return None, errors
     else:
+        q_gen_trace._span.status_code = StatusCode.SUCCESS.name
         return output_with_triple, errors
 
-def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, seed, pipeline_type="original"):
+def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, seed, pipeline_type="original", parent_trace=None):
     output = None
     if subgraph_approach == "subgraph":
         # all error types
@@ -628,6 +815,21 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
         seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
         subgraph_str = subgraph.__str__(representation='uri')
         prompt = n_question_from_subgraph_chain_without_example.get("prompt").format(subgraph=subgraph_str, n=n)
+
+        start_time_ms = time.time_ns() // 1000
+        chain_inputs={
+            "prompt" : prompt
+        }
+        q_chain_trace = Trace(
+            name="Q-Gen-Step", 
+            kind="CHAIN", 
+            start_time_ms=start_time_ms,
+            model_dict={
+                "_model": config.question_generation_model.model_name,
+                "_kind": config.question_generation_model.model_type
+            }
+        )
+
         num_tokens = get_num_tokens(prompt)
         if num_tokens > 4097:
             errors["context_length_error"] = 1
@@ -645,7 +847,7 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
             question_json_parsing_error = False
             try:
                 llm_result = ch.generate([{"subgraph": subgraph_str, "n": n}], None)
-                output = post_processor(llm_result)
+                output = post_processor(llm_result, chain_inputs, q_chain_trace)
                 valid_question = validate_questions_output(seed_label, output)
                 valid_triples = validate_triples_output(subgraph, output, "subgraph")
             except Exception as e:
@@ -674,17 +876,23 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
             # json parsing error in last attempt skip the node and count it as a q_json_parsing_error
             que_trip_set = None
             errors["question_json_parsing_error"] = 1
+            q_chain_trace._span.status_code = StatusCode.QUESTION_JSON_ERROR.name
         else:
             if not valid_question:
                 que_trip_set = None
                 errors["question_validation_error"] = 1
+                q_chain_trace._span.status_code = StatusCode.QUESTION_VALIDATION_ERROR.name
             elif not valid_triples:
                 que_trip_set = None
                 errors["triple_validation_error"] = 1
+                q_chain_trace._span.status_code = StatusCode.TRIPLES_VALIDATION_ERROR.name
             else:
                 # no error
                 que_trip_set = output["output"]
+                q_chain_trace._span.status_code = StatusCode.SUCCESS.name
 
+        q_chain_trace._span.end_time_ms = time.time_ns() // 1000
+        parent_trace.add_child(q_chain_trace)
         return que_trip_set, errors
 
 
@@ -701,11 +909,28 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
 
             seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
             subgraph_str = subgraph.get_summarized_graph_str(approach='no_object')
-
             prompt = n_question_from_summarized_subgraph_chain_without_example.get("prompt").format(subgraph=subgraph_str, n=n)
+
+            start_time_ms = time.time_ns() // 1000
+            chain_inputs={
+                "prompt" : prompt
+            }
+            q_chain_trace = Trace(
+                name="Q-Gen-Step", 
+                kind="CHAIN", 
+                start_time_ms=start_time_ms,
+                model_dict={
+                    "_model": config.question_generation_model.model_name,
+                    "_kind": config.question_generation_model.model_type
+                }
+            )
+
             num_tokens = get_num_tokens(prompt)
             if num_tokens > 4097:
                 errors["context_length_error"] = 1
+                q_chain_trace._span.status_code = StatusCode.CONTEXT_LENGTH_ERROR.name
+                q_chain_trace._span.end_time_ms = time.time_ns() // 1000
+                parent_trace.add_child(q_chain_trace)
                 return None, errors
 
             ch = n_question_from_summarized_subgraph_chain_without_example.get("chain")
@@ -720,7 +945,7 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
                 question_json_parsing_error = False
                 try:
                     llm_result = ch.generate([{"subgraph": subgraph_str, "n": n}], None)
-                    output = post_processor(llm_result)
+                    output = post_processor(llm_result, chain_inputs, q_chain_trace)
                     valid_question = validate_questions_output(seed_label, output)
                     valid_triples = validate_triples_output(subgraph, output, "optimized")
                 except Exception as e:
@@ -749,26 +974,50 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
                 # json parsing error in last attempt skip the node and count it as a q_json_parsing_error
                 que_trip_set = None
                 errors["question_json_parsing_error"] = 1
+                q_chain_trace._span.status_code = StatusCode.QUESTION_JSON_ERROR.name
             else:
                 if not valid_question:
                     que_trip_set = None
                     errors["question_validation_error"] = 1
+                    q_chain_trace._span.status_code = StatusCode.QUESTION_VALIDATION_ERROR.name
                 elif not valid_triples:
                     que_trip_set = None
                     errors["triple_validation_error"] = 1
+                    q_chain_trace._span.status_code = StatusCode.TRIPLES_VALIDATION_ERROR.name
                 else:
                     # no error
                     que_trip_set = output["output"]
+                    q_chain_trace._span.status_code = StatusCode.SUCCESS.name
 
+            q_chain_trace._span.end_time_ms = time.time_ns() // 1000
+            parent_trace.add_child(q_chain_trace)
             return que_trip_set, errors
 
         elif pipeline_type == "simplified":
             seed_entity_representation = seed.label if seed.label else seed.uri
             subgraph_str = subgraph.get_summarized_graph_str(approach='no_object')
             prompt = n_question_from_summarized_subgraph_chain_without_example_without_triple.get("prompt").format(subgraph=subgraph_str, n=n)
+
+            start_time_ms = time.time_ns() // 1000
+            chain_inputs={
+                "prompt" : prompt
+            }
+            q_chain_trace = Trace(
+                name="Q-Gen-Step", 
+                kind="CHAIN", 
+                start_time_ms=start_time_ms,
+                model_dict={
+                    "_model": config.question_generation_model.model_name,
+                    "_kind": config.question_generation_model.model_type
+                }
+            )
+
             num_tokens = get_num_tokens(prompt)
             if num_tokens > 4097:
                 errors["context_length_error"] = 1
+                q_chain_trace._span.status_code = StatusCode.CONTEXT_LENGTH_ERROR.name
+                q_chain_trace._span.end_time_ms = time.time_ns() // 1000
+                parent_trace.add_child(q_chain_trace)
                 return None, errors
             
 
@@ -789,7 +1038,7 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
                 output = None
                 try:
                     llm_result = ch.generate([{"subgraph":subgraph_str, "n":n}], None)
-                    output = post_processor(llm_result) # output would be list of question
+                    output = post_processor(llm_result, chain_inputs, q_chain_trace) # output would be list of question
                     question_list = output["output"]
                     q_output = {"output": [{"question": q} for q in question_list]}
                     valid_question = validate_questions_output(seed_entity_representation, q_output)
@@ -799,6 +1048,7 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
                     else:
                         question_validation_error = True
                 except Exception as e:
+                    traceback.print_exc()
                     response = str(e)
                     if response.startswith("Failed to parse"):
                         start_index = response.index('[')
@@ -825,14 +1075,19 @@ def execute_question_generation_prompt(subgraph_approach, prompt, subgraph, n, s
                 # json parsing error in last attempt skip the node and count it as a q_json_parsing_error
                 que_trip_set = None
                 errors["question_json_parsing_error"] = 1
+                q_chain_trace._span.status_code = StatusCode.QUESTION_JSON_ERROR.name
             elif question_validation_error:
                 que_trip_set = None
                 errors["question_validation_error"] = 1
+                q_chain_trace._span.status_code = StatusCode.QUESTION_VALIDATION_ERROR.name
             else:
                 # no error
                 # move to triple binding step
-                que_trip_set, t_errors = execute_question_triple_binding_prompt(subgraph, subgraph_str, question_list, seed_entity_representation)
+
+                que_trip_set, t_errors = execute_question_triple_binding_prompt(subgraph, subgraph_str, question_list, q_gen_trace=q_chain_trace)
                 errors["triple_json_parsing_error"] = t_errors["triple_json_parsing_error"]
                 errors["triple_validation_error"] = t_errors["triple_validation_error"]
             
+            q_chain_trace._span.end_time_ms = time.time_ns() // 1000
+            parent_trace.add_child(q_chain_trace)
             return que_trip_set, errors

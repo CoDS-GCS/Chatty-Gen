@@ -1,4 +1,10 @@
 import logging
+import os
+import pathlib
+from appconfig import config
+
+exp_log_filename = f"debug-log.log"
+log_filepath = os.path.join(config.outputdir, f"{exp_log_filename}")
 
 class Logger:
     _instance = None
@@ -34,7 +40,9 @@ class Logger:
         return self.logger
 
 logger_obj = Logger()
-logger_obj.configure_logger(file_path="benchmark2-dbpedia.log")
+directory = pathlib.Path(log_filepath).parent
+directory.mkdir(parents=True, exist_ok=True)
+logger_obj.configure_logger(file_path=log_filepath)
 
 # Getting the configured logger instance
 logger = logger_obj.get_logger()

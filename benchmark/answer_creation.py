@@ -121,7 +121,7 @@ def get_select_query_with_target(triples, subgraph, target):
 
 # Start Different Answer creation Approaches
 # Inputs to LLM are question and triples and the output is the SPARQL query
-def get_answer_LLM_based(question, triples, subgraph, approach):
+def get_answer_LLM_based(question, triples, subgraph, approach, trace_input=None, trace=None):
     triples_list = list()
     for triple in triples:
         if approach == "optimized":
@@ -135,8 +135,12 @@ def get_answer_LLM_based(question, triples, subgraph, approach):
 
         ch = get_answer_chain.get("chain")
         post_processor = get_answer_chain.get("post_processor")
+        prompt = get_answer_chain.get("prompt").format(question=question, triples=triples_list)
+        if trace_input:
+            trace_input.update({"prompt": prompt})
+
         llm_result = ch.generate([{"question": question, "triples": triples_list}], None)
-        output = post_processor(llm_result)
+        output = post_processor(llm_result, trace_input, trace)
         return output['sparql']
     except Exception:
         raise JsonParsingError()
@@ -175,8 +179,8 @@ def get_answer_query_from_graph(triples, seed_entity, subgraph, question):
 
 
 # LLM Based Approach followed by post processing for count and boolean Errors
-def get_LLM_based_postprocessed(question, triples, subgraph, approach):
-    llm_query = get_answer_LLM_based(question, triples, subgraph, approach)
+def get_LLM_based_postprocessed(question, triples, subgraph, approach, trace_input=None, trace=None):
+    llm_query = get_answer_LLM_based(question, triples, subgraph, approach, trace_input=trace_input, trace=trace)
     if is_boolean(question) and not llm_query.lower().startswith("ask"):
         where_index = llm_query.lower().index("where")
         llm_query = 'ASK ' + llm_query[where_index:]
