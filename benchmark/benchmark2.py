@@ -586,7 +586,14 @@ def validate_triples_output(subgraph, output, approach):
                         .replace("'", "")
                         .split(", ")
                     )
-                triples = [triples]
+                    triples = [triples]
+                elif len(triples) >= 1 and "," in triples[0]:
+                    multi_triples = []
+                    for str_triple in triples:
+                        triple = str_triple.replace("'", "").split(", ")
+                        multi_triples.append(triple)
+                    triples = multi_triples
+
             triples_ = []
             for t in triples:
                 if len(t) > 1:
@@ -647,10 +654,10 @@ def execute_dialogue_generation_prompt(seed, question_set, parent_trace):
                 diag_validation_err = True
         except Exception as e:
             response = str(e)
-            start_index = response.index("[")
-            end_index = response.index("]")
             if response.startswith("Failed to parse"):
                 try:
+                    start_index = response.index("[")
+                    end_index = response.index("]")
                     transformed_questions = ast.literal_eval(
                         response[start_index : end_index + 1]
                     )
@@ -1022,9 +1029,9 @@ def execute_question_generation_prompt(
             except Exception as e:
                 response = str(e)
                 if response.startswith("Failed to parse"):
-                    start_index = response.index("[")
-                    end_index = response.index("Got:")
                     try:
+                        start_index = response.index("[")
+                        end_index = response.index("Got:")
                         data = ast.literal_eval(response[start_index : end_index - 3])
                         output = {"output": data}
                         valid_question = validate_questions_output(seed_label, output)
@@ -1129,9 +1136,9 @@ def execute_question_generation_prompt(
                 except Exception as e:
                     response = str(e)
                     if response.startswith("Failed to parse"):
-                        start_index = response.index("[")
-                        end_index = response.index("Got:")
                         try:
+                            start_index = response.index("[")
+                            end_index = response.index("Got:")
                             data = ast.literal_eval(
                                 response[start_index : end_index - 3]
                             )
@@ -1246,9 +1253,9 @@ def execute_question_generation_prompt(
                     traceback.print_exc()
                     response = str(e)
                     if response.startswith("Failed to parse"):
-                        start_index = response.index("[")
-                        end_index = response.index("Got:")
                         try:
+                            start_index = response.index("[")
+                            end_index = response.index("Got:")
                             data = ast.literal_eval(
                                 response[start_index : end_index - 3]
                             )
