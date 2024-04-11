@@ -593,6 +593,8 @@ def validate_triples_output(subgraph, output, approach):
                         triple = str_triple.replace("'", "").split(", ")
                         multi_triples.append(triple)
                     triples = multi_triples
+                elif len(triples) == 2 or len(triples) == 3:
+                    triples = [triples]
 
             triples_ = []
             for t in triples:
