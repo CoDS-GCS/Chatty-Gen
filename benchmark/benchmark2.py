@@ -659,7 +659,7 @@ def execute_dialogue_generation_prompt(seed, question_set, parent_trace):
             if response.startswith("Failed to parse"):
                 try:
                     start_index = response.index("[")
-                    end_index = response.index("]")
+                    end_index = response.rindex("]")
                     transformed_questions = ast.literal_eval(
                         response[start_index : end_index + 1]
                     )
@@ -1033,7 +1033,8 @@ def execute_question_generation_prompt(
                 if response.startswith("Failed to parse"):
                     try:
                         start_index = response.index("[")
-                        end_index = response.index("Got:")
+                        # end_index = response.index("Got:")
+                        end_index = response.rindex("]")
                         data = ast.literal_eval(response[start_index : end_index - 3])
                         output = {"output": data}
                         valid_question = validate_questions_output(seed_label, output)
@@ -1140,7 +1141,8 @@ def execute_question_generation_prompt(
                     if response.startswith("Failed to parse"):
                         try:
                             start_index = response.index("[")
-                            end_index = response.index("Got:")
+                            # end_index = response.index("Got:")
+                            end_index = response.rindex("]")
                             data = ast.literal_eval(
                                 response[start_index : end_index - 3]
                             )
@@ -1257,7 +1259,8 @@ def execute_question_generation_prompt(
                     if response.startswith("Failed to parse"):
                         try:
                             start_index = response.index("[")
-                            end_index = response.index("Got:")
+                            # end_index = response.index("Got:")
+                            end_index = response.rindex("]")
                             data = ast.literal_eval(
                                 response[start_index : end_index - 3]
                             )
