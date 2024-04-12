@@ -52,7 +52,10 @@ def trim_after_first_occurrence(text, pattern):
         return text[:match.end()]
     else:
         # If the pattern is not found, return the original text
-        return text
+        return text + "```"
+
+def replace_single_quotes(text):
+    return re.sub(r"(?<!s)'(?!s)", '"', text)
 
 def format_template_with_dict(template, values_dict):
     try:
@@ -886,6 +889,7 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
     payload = {"stop": "```\n\n"}
     ch = n_question_generator_chain
     
+
     def post_processor(llm_result, trace_inputs=None, trace=None):
         for generation in llm_result.generations:
 
@@ -901,7 +905,27 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
             else:
                 generation[0].text = "```json" + trimmed_with_backtick_at_end
             print("gen-text: ", generation[0].text)
+
+            # handle use of single quote - replace it with double quote
+            generation[0].text = replace_single_quotes(generation[0].text)
+            # if "'" in generation[0].text:
+            #     generation[0].text = generation[0].text.replace("'", '"')
+
+            # handle use of round braces - replace it with square braces
+            if "(" in generation[0].text or ")" in generation[0].text:
+                generation[0].text = generation[0].text.replace("[", "[")
+                generation[0].text = generation[0].text.replace(")", "]")
             
+            # handle single triple only - put it inside list of list form
+            if "[[" not in generation[0].text and generation[0].text.count("[") == 1  and generation[0].text.count("]") == 1:
+                generation[0].text = generation[0].text.replace("[", '[[')
+                generation[0].text = generation[0].text.replace("]", ']]')
+            
+            if "[{" in generation[0].text:
+                generation[0].text = generation[0].text.replace("[{", '{')
+                generation[0].text = generation[0].text.replace("}]", '}')
+            
+            print("gen-text: ", generation[0].text)
             generation_0_processed = generation[0].text
             ## update outputs with before and after for given trace
             if trace:

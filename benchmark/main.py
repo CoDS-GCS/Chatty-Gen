@@ -1,4 +1,5 @@
 import argparse
+import time
 from appconfig import config
 from benchmark2 import generate_dialogues
 
@@ -19,4 +20,9 @@ def main():
 
 if __name__ == "__main__":
     print("starting benchmark generation....")
+    start_time = time.time()
+    print("start time in epoch ", start_time)
     main()
+    end_time = time.time()
+    print("end time in epoch ", end_time)
+    print("total time in seconds ", end_time - start_time)
