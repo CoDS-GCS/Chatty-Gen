@@ -913,7 +913,7 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
 
             # handle use of round braces - replace it with square braces
             if "(" in generation[0].text or ")" in generation[0].text:
-                generation[0].text = generation[0].text.replace("[", "[")
+                generation[0].text = generation[0].text.replace("(", "[")
                 generation[0].text = generation[0].text.replace(")", "]")
             
             # handle single triple only - put it inside list of list form
