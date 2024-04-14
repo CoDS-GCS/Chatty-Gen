@@ -55,7 +55,7 @@ def trim_after_first_occurrence(text, pattern):
         return text + "```"
 
 def replace_single_quotes(text):
-    return re.sub(r"(?<!s)'(?!s)", '"', text)
+    return re.sub(r"(?<![a-z])'|'(?![a-z])", '"', text)
 
 def format_template_with_dict(template, values_dict):
     try:
