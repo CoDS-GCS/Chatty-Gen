@@ -121,7 +121,8 @@ class SubGraph:
         for triple in self.triples:
             triple = self.get_triple_representation(triple, representation)
             triple_list.append(triple)
-        return f"{triple_list}"
+        double_quote_triples = [f'("{triple[0]}", "{triple[1]}", "{triple[2]}")' for triple in triple_list]
+        return '[' + ', '.join(double_quote_triples) + ']'
 
     def get_triple_representation_for_optimized(self, triple: Tuple[Node, Predicate, Node]):
         sub_, pred_, obj_ = triple
@@ -248,7 +249,8 @@ class SubGraph:
             elif approach == "no_object":
                 triple = self.get_triple_representation_no_object(triple)
             triple_list.append(triple)
-        return f"{triple_list}"
+        double_quote_triples = [f'("{triple[0]}", "{triple[1]}", "{triple[2]}")' for triple in triple_list]
+        return '[' + ', '.join(double_quote_triples) + ']'
 
 
 @dataclass
