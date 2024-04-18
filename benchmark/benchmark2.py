@@ -1264,9 +1264,11 @@ def execute_question_generation_prompt(
                             data = ast.literal_eval(
                                 response[start_index : end_index - 3]
                             )
-                            output = {"output": data}
+                            # output = {"output": data}
+                            question_list = data
+                            q_output = {"output": [{"question": q} for q in question_list]}
                             valid_question = validate_questions_output(
-                                seed_entity_representation, output
+                                seed_entity_representation, q_output
                             )
                             if valid_question:
                                 question_validation_error = False
