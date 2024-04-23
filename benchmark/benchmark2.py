@@ -460,13 +460,22 @@ def generate_dialogues_from_subgraph(
 
         # if question_set is None or question_set_dialogue is None or len(question_set) != len(question_set_dialogue):
         if skip_node is True:
-            # Sample a new node and add it to seed nodes
-            new_seed, subgraph = retrieve_one_node_with_subgraph(
-                sampler, seed.nodetype, kg
-            )
-            key = new_seed.label if new_seed.label else new_seed.uri
-            seed_nodes.append(new_seed)
-            seednode_to_subgraph_map[key] = subgraph
+            node_added = False
+            while not node_added:
+                try:
+                    # Sample a new node and add it to seed nodes
+                    new_seed, subgraph = retrieve_one_node_with_subgraph(
+                        sampler, seed.nodetype, kg
+                    )
+                    key = new_seed.label if new_seed.label else new_seed.uri
+                    seed_nodes.append(new_seed)
+                    seednode_to_subgraph_map[key] = subgraph
+                    node_added = True
+                except Exception as e:
+                    print("Exception ", e)
+                    continue
+
+
 
         if parent_trace is not None:
             print("####### trace saved ########")
@@ -864,12 +873,19 @@ def generate_dialogues_from_summarized_subgraph(
 
         if skip_node is True:
             # Sample a new node and add it to seed nodes
-            new_seed, subgraph = retrieve_one_node_with_subgraph(
-                sampler, seed.nodetype, kg
-            )
-            key = new_seed.label if new_seed.label else new_seed.uri
-            seed_nodes.append(new_seed)
-            seednode_to_subgraph_map[key] = subgraph
+            node_added = False
+            while not node_added:
+                try:
+                    new_seed, subgraph = retrieve_one_node_with_subgraph(
+                        sampler, seed.nodetype, kg
+                    )
+                    key = new_seed.label if new_seed.label else new_seed.uri
+                    seed_nodes.append(new_seed)
+                    seednode_to_subgraph_map[key] = subgraph
+                    node_added = True
+                except Exception as e:
+                    print("Exception ", e)
+                    continue
 
         if parent_trace is not None:
             print("####### trace saved ########")
