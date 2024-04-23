@@ -1213,7 +1213,7 @@ def execute_question_generation_prompt(
             prompt = n_question_from_summarized_subgraph_chain_without_example_without_triple.get(
                 "prompt"
             ).format(
-                subgraph=subgraph_str, n=n
+                subgraph=subgraph_str, n=n, entity=seed_entity_representation
             )
 
             chain_inputs = {"prompt": prompt}
@@ -1255,7 +1255,7 @@ def execute_question_generation_prompt(
                 question_validation_error = False
                 output = None
                 try:
-                    llm_result = ch.generate([{"subgraph": subgraph_str, "n": n}], None)
+                    llm_result = ch.generate([{"subgraph": subgraph_str, "n": n, "entity": seed_entity_representation}], None)
                     output = post_processor(
                         llm_result, chain_inputs, q_chain_trace
                     )  # output would be list of question
