@@ -793,7 +793,7 @@ def get_n_question_from_summarized_subgraph_chain_without_example_without_triple
     )
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
-    N_Q_PROMPT = PromptTemplate(
+    N_Q_PROMPT_1 = PromptTemplate(
         input_variables=[
             "subgraph",
             "n",
@@ -801,6 +801,19 @@ def get_n_question_from_summarized_subgraph_chain_without_example_without_triple
         partial_variables={"format_instructions": n_q_json_format_instructions},
         template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph.{format_instructions}\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
     )
+    
+    N_Q_PROMPT_2 = PromptTemplate(
+        input_variables=[
+            "subgraph",
+            "n",
+            "entity"
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""### Instruction:\nGenerate a list of n questions based on the given entity and its subgraph. The subgraph is represented as a list of triples. Each question should ask about a fact from the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should include the entity. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph.{format_instructions}\n\ninput: {subgraph}\nentity: {entity}\nn: {n}\n\n### Response:```json""",
+    )
+
+    # N_Q_PROMPT = N_Q_PROMPT_1
+    N_Q_PROMPT = N_Q_PROMPT_2
 
     if llm["config"] is not None:
         n_question_generator_chain = LLMChain(
