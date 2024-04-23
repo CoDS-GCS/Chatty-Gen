@@ -1,0 +1,27 @@
+kgname: yago
+temperature: 0.5
+kghost: localhost
+kgport: 8894
+redishost: localhost
+outputdir: ./results/apr8/yago/original/gemini-pro-1
+dataset_size: 2
+dialogue_size: 5
+approach: 
+  - subgraph-summarized
+  # - subgraph
+pipeline_type: original
+# pipeline_type: simplified
+comman_model:
+  model_type: "google"
+  model_name: "gemini-1.0-pro-001"
+  model_endpoint: ""
+  model_apikey: ""
+prompt: 1
+use_label: true
+tracing: true
+logging: true
+
+  # model_type: "openllm"
+  # model_name: "codellama-13b"
+  # model_endpoint: "http://localhost:3306"
+  # model_apikey: ""

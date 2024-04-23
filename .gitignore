@@ -1,5 +1,8 @@
 .venv/
+.mar28-env/
 .newenv/
+.newenv2/
+.aprl8env/
 out/
 7B/
 13B/
