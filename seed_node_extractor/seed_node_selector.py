@@ -78,7 +78,7 @@ class NodeType:
         for binding in result['results']['bindings']:
             entity = binding.get('entity', {}).get('value', None)
             label = binding.get('label', {}).get('value', None)
-            if len(label.split(' ')) <= max_label_length:
+            if label.isascii() and len(label.split(' ')) <= max_label_length:
                 data.append({'entity': entity, 'label': label})
         self.offset += 10000
         self.current_data = data
