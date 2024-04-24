@@ -341,6 +341,8 @@ def generate_dialogues_from_subgraph(
         seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
 
         parent_trace_inputs = {
+            "seed_uri": str(seed.uri),
+            "subgraph": subgraph.__str__(representation="uri"),
             "seed_label": seed_label,
         }
         parent_trace_outputs = None
@@ -754,6 +756,8 @@ def generate_dialogues_from_summarized_subgraph(
         seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
 
         parent_trace_inputs = {
+            "seed_uri": str(seed.uri),
+            "subgraph": subgraph.get_summarized_graph_str(approach="no_object"),
             "seed_label": seed_label,
         }
         parent_trace_outputs = None
