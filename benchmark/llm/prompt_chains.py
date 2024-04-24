@@ -715,14 +715,26 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
     #     output: """,
     # )
 
-    N_Q_PROMPT = PromptTemplate(
+    # N_Q_PROMPT_1 = PromptTemplate(
+    #     input_variables=[
+    #         "subgraph",
+    #         "n",
+    #     ],
+    #     partial_variables={"format_instructions": n_q_json_format_instructions},
+    #     template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5\n\n{format_instructions}.\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
+    # )
+
+    N_Q_PROMPT_2 = PromptTemplate(
         input_variables=[
             "subgraph",
             "n",
+            "entity"
         ],
         partial_variables={"format_instructions": n_q_json_format_instructions},
-        template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5\n\n{format_instructions}.\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
+        template="""### Instruction:\nGenerate a list of n questions based on the given entity and its subgraph. The subgraph is represented as a list of triples. Each question should ask about a fact from the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should include the entity. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5\n\n{format_instructions}.\n\ninput: {subgraph}\nentity: {entity}\nn: {n}\n\n### Response:```json""",
     )
+
+    N_Q_PROMPT = N_Q_PROMPT_2
 
     if llm["config"] is not None:
         n_question_generator_chain = LLMChain(

@@ -1110,7 +1110,7 @@ def execute_question_generation_prompt(
             subgraph_str = subgraph.get_summarized_graph_str(approach="no_object")
             prompt = n_question_from_summarized_subgraph_chain_without_example.get(
                 "prompt"
-            ).format(subgraph=subgraph_str, n=n)
+            ).format(subgraph=subgraph_str, entity=seed_label, n=n)
 
             chain_inputs = {"prompt": prompt}
             q_chain_trace = Trace(
@@ -1146,7 +1146,7 @@ def execute_question_generation_prompt(
             while not (valid_question and valid_triples):
                 question_json_parsing_error = False
                 try:
-                    llm_result = ch.generate([{"subgraph": subgraph_str, "n": n}], None)
+                    llm_result = ch.generate([{"subgraph": subgraph_str, "entity": seed_label, "n": n}], None)
                     output = post_processor(llm_result, chain_inputs, q_chain_trace)
                     valid_question = validate_questions_output(seed_label, output)
                     valid_triples = validate_triples_output(
