@@ -53,7 +53,7 @@ class Config:
     pipeline_type: str = ""
     prompt: int = 1
     use_label: bool = True
-    seed_nodes_file = None
+    seed_nodes_file: str = None
     tracing: bool = True
     logging: bool = True
 
@@ -170,8 +170,10 @@ class Config:
 # yamlfile = "config.yaml"
 # config = Config.from_yaml(yamlfile)
 
-# ## google model
-yamlfile = "google_config.yaml"
+# yamlfile = "./run_configs/yago-comman.yaml"
+# config = Config.from_yaml(yamlfile)
+
+yamlfile = "./run_configs/dblp-comman.yaml"
 config = Config.from_yaml(yamlfile)
 
 if config.wandb_project != "":
