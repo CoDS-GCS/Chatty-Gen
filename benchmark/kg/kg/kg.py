@@ -76,6 +76,16 @@ def defrag_uri(uri):
     else:
         return ""
 
+def defrag_uri_without_space(uri):
+    pattern = r'[#/]([^/#]+)$'
+    match = re.search(pattern, uri)
+    if match:
+        name = match.group(1)
+        return name
+    else:
+        return ""
+
+
 
 @dataclass
 class NodeSchema:
@@ -143,7 +153,7 @@ class SubGraph:
             return (subject, predicate, '')
         elif self.seed_node == obj_:
             object = obj_.label if obj_.label else defrag_uri(str(obj_.uri))
-            return('', predicate, object)
+            return ('', predicate, object)
 
     def get_triple_with_uris_no_object(self, triple: Tuple[Node, Predicate, Node]):
         sub_, pred_, obj_ = triple
@@ -210,25 +220,29 @@ class SubGraph:
             summary_str += f"{tuple(label_representation) + (quadruple[3],)}\n"
 
         return summary_str
+    
+    def contain_triple(self, generated_triple: str, approach):
+        generated_triple = generated_triple.lower()
 
-    def contain_triple(self, triple, approach):
-        if approach == "subgraph":
-            triple = triple.replace('"', '').replace("'", "")
-            for el in self.triples:
-                seralized_triple = ""
-                seralized_triple = self.get_triple_representation(el, 'uri')
-                seralized_triple = str(seralized_triple)
-                seralized_triple = seralized_triple.replace('"', '').replace("'", "")
-                if triple == seralized_triple:
-                    return True
-            return False
-        elif approach == "optimized":
-            for el in self.triples:
-                seralized_triple = ""
-                seralized_triple = self.get_triple_representation_no_object(el)
-                if triple == seralized_triple:
-                    return True
-            return False
+        for t in self.triples:
+            if approach == "subgraph":
+                subgraph_triple = self.get_triple_representation(t, 'uri')
+            elif approach == "optimized":
+                subgraph_triple = self.get_triple_representation_no_object(t) # len=3
+            
+            # lower everything before match
+            subgraph_triple = [el.lower() for el in subgraph_triple]
+
+            # for "subEvent" vs "sub Event"
+            t1_v1 = defrag_uri(str(t[1].uri)).lower()
+            t1_v2 = defrag_uri_without_space(str(t[1].uri)).lower()
+
+            if (subgraph_triple[0] in generated_triple and subgraph_triple[2] in generated_triple) and (t1_v1 in generated_triple or t1_v2 in generated_triple):
+                # this will check if individual element is in serialized_string, check the subgraph's triple's both element is in generated string.
+                # if yes return actual triple.
+                return True, t
+        return False, None
+
 
     def get_summarized_graph(self):
         seen_predicates = set()
@@ -251,6 +265,17 @@ class SubGraph:
             triple_list.append(triple)
         double_quote_triples = [f'("{triple[0]}", "{triple[1]}", "{triple[2]}")' for triple in triple_list]
         return '[' + ', '.join(double_quote_triples) + ']'
+
+    def get_summarized_graph_set(self, approach):
+        summarized_graph = self.get_summarized_graph()
+        triple_list = []
+        for triple in summarized_graph:
+            if approach == "default":
+                triple = self.get_triple_representation_for_optimized(triple)
+            elif approach == "no_object":
+                triple = self.get_triple_representation_no_object(triple)
+            triple_list.append(triple)
+        return triple_list
 
 
 @dataclass

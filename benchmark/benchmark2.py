@@ -570,56 +570,38 @@ def validate_single_triples_output_v2(subgraph, triples, approach):
 
 
 def validate_triples_output(subgraph, output, approach):
-    if approach == "subgraph":
-        for instance in output["output"]:
-            triples = instance["triples"]
-            if len(triples) > 0 and "(" not in triples[0] and ")" not in triples[0]:
-                if len(triples) == 3:
-                    triples = [str(tuple(triples))]
-                elif len(triples) == 2:
-                    triples = [str((triples[0], triples[1], ""))]
-                instance["triples"] = triples
-
-            for triple in triples:
-                if not subgraph.contain_triple(triple, approach):
-                    return False
-        return True
-
-    else:
-        for instance in output["output"]:
-            triples = instance["triples"]
-            if isinstance(triples, list) and isinstance(triples[0], str):
-                if "(" in triples[0] and ")" in triples[0]:
-                    triples = (
-                        triples[0]
-                        .replace("(", "")
-                        .replace(")", "")
-                        .replace("'", "")
-                        .split(", ")
-                    )
-                    triples = [triples]
-                elif len(triples) >= 1 and "," in triples[0]:
-                    multi_triples = []
-                    for str_triple in triples:
-                        triple = str_triple.replace("'", "").split(", ")
-                        multi_triples.append(triple)
-                    triples = multi_triples
-                elif len(triples) == 2 or len(triples) == 3:
-                    triples = [triples]
-
+   
+    for instance in output["output"]:
+        triples = instance["triples"]
+        if isinstance(triples, list) and isinstance(triples[0], list):
             triples_ = []
             for t in triples:
                 if len(t) > 1:
-                    t_ = (t[0], t[1], "")
+                    t_ = str(t)
                     triples_.append(t_)
-            instance["triples"] = triples_
+        elif isinstance(triples, list) and len(triples) >= 1:
+            if isinstance(triples[0], str) and "," not in triples[0] and (len(triples) == 2 or len(triples) == 3):
+                triples = [triples]
+            triples_ = []
+            for triple in triples:
+                if isinstance(triple, str):
+                    triples_.append(triple)
+                else:
+                    triples_.append(str(triple))
+        
+        valid_triples = []
+        for triple in triples_:
+            print("t --> ", triple)
+            contains, original_triple = subgraph.contain_triple(triple, approach)
+            if contains:
+                valid_triples.append(original_triple)
 
-            print("TRIPLES")
-            for triple in triples_:
-                print("t --> ", triple)
-                if not subgraph.contain_triple(triple, approach):
-                    return False
-        return True
+        if len(valid_triples) == 0:
+            return False
+        else:
+            instance["triples"] = valid_triples
+    return True
+
 
 
 def execute_dialogue_generation_prompt(seed, question_set, parent_trace):

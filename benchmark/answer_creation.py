@@ -124,11 +124,12 @@ def get_select_query_with_target(triples, subgraph, target):
 def get_answer_LLM_based(question, triples, subgraph, approach, trace_input=None, trace=None):
     triples_list = list()
     for triple in triples:
-        if approach == "optimized":
-            returned_triple = get_triple_for_summarized(triple, subgraph)
-        else:
-            returned_triple = get_original_triple(triple, subgraph)
-        subject, predicate, object = returned_triple
+        # if approach == "optimized":
+        #     returned_triple = get_triple_for_summarized(triple, subgraph)
+        # else:
+        #     returned_triple = get_original_triple(triple, subgraph)
+        # subject, predicate, object = returned_triple
+        subject, predicate, object = triple
         triples_list.append((subject.__str__(), predicate.__str__(), object.__str__()))
 
     try:
