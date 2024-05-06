@@ -78,7 +78,7 @@ class NodeType:
         for binding in result['results']['bindings']:
             entity = binding.get('entity', {}).get('value', None)
             label = binding.get('label', {}).get('value', None)
-            if len(label.split(' ')) <= max_label_length:
+            if label.isascii() and len(label.split(' ')) <= max_label_length:
                 data.append({'entity': entity, 'label': label})
         self.offset += 10000
         self.current_data = data
@@ -192,8 +192,14 @@ class SeedNodeSelector:
                         distribution[node_type] += 1
                     else:
                         distribution[node_type] = 1
-
-            return node_samples, distribution
+            file_name = f"{kg_name}_types_representative.json"
+            type_to_predicate_map = dict()
+            if os.path.exists(file_name):
+                file = open(file_name, 'r')
+                type_to_predicate_map = json.load(file)
+            nodetype_to_label = self.get_representative_label_per_node_type(distribution, type_to_predicate_map,
+                                                                            file_name)
+            return node_samples, distribution, nodetype_to_label
 
     def get_node_for_label_extraction(self, node_type):
         query = f""" select ?entity where {{ ?entity rdf:type <{node_type}>}} Limit 1"""

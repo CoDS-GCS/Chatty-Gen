@@ -715,7 +715,7 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
     #     output: """,
     # )
 
-    N_Q_PROMPT = PromptTemplate(
+    N_Q_PROMPT_1 = PromptTemplate(
         input_variables=[
             "subgraph",
             "n",
@@ -723,6 +723,41 @@ def get_n_question_from_summarized_subgraph_chain_without_example(llm):
         partial_variables={"format_instructions": n_q_json_format_instructions},
         template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5\n\n{format_instructions}.\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
     )
+
+    N_Q_PROMPT_2 = PromptTemplate(
+        input_variables=[
+            "subgraph",
+            "n",
+            "entity"
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""### Instruction:\nGenerate a list of n questions based on the given entity and its subgraph. The subgraph is represented as a list of triples. Each question should ask about a fact from the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should include the entity. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question with the triple or triples used to generate the question. Maximum number of returned triples per questions is 5\n\n{format_instructions}.\n\ninput: {subgraph}\nentity: {entity}\nn: {n}\n\n### Response:```json""",
+    )
+
+    N_Q_PROMPT_3 = PromptTemplate(
+        input_variables=[
+            "subgraph",
+            "n",
+            "entity"
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""### Instruction:\nGenerate a list of n questions based on the given entity and its subgraph. The subgraph is represented as a list of triples. Each question must ask about a fact from the subgraph and must fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question must include the entity. Each question must be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return each question and the associated triple used to generate the question.\n\n{format_instructions}.\n\ninput: {subgraph}\nentity: "{entity}"\nn: {n}\n\n### Response:```json""",
+    )
+
+    N_Q_PROMPT_3_forced = PromptTemplate(
+        input_variables=[
+            "subgraph",
+            "n",
+            "entity"
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""### Instruction:\nGenerate a list of n questions based on the given entity and its subgraph. The subgraph is represented as a list of triples. Each question must ask about a fact from the triples in the subgraph and must fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question must include the entity. Each question must be answerable solely from the information in the provided subgraph without explicitly mentioning it. For each question, choose the triples from the input subgraph which was used to generate the question. Return both the question and the exact triple from the subgraph that it was based on.\n\n{format_instructions}.\n\ninput: {subgraph}\nentity: "{entity}"\nn: {n}\n\n### Response:```json""",
+    )
+
+    # N_Q_PROMPT = N_Q_PROMPT_1 # before updates
+    # N_Q_PROMPT = N_Q_PROMPT_2 # this is v1 in commit
+    # N_Q_PROMPT = N_Q_PROMPT_3 # this is v2 in commit - revert the change of v2 while keeping must
+    N_Q_PROMPT = N_Q_PROMPT_3_forced # this is v2 in commit - forced triple use
 
     if llm["config"] is not None:
         n_question_generator_chain = LLMChain(
@@ -793,7 +828,7 @@ def get_n_question_from_summarized_subgraph_chain_without_example_without_triple
     )
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
-    N_Q_PROMPT = PromptTemplate(
+    N_Q_PROMPT_1 = PromptTemplate(
         input_variables=[
             "subgraph",
             "n",
@@ -801,6 +836,40 @@ def get_n_question_from_summarized_subgraph_chain_without_example_without_triple
         partial_variables={"format_instructions": n_q_json_format_instructions},
         template="""### Instruction:\nGenerate a list of n questions based on a subgraph from a knowledge graph, represented as a list of triples. Each question should relate to a shared entity (e) within the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph.{format_instructions}\n\ninput: {subgraph}\nn: {n}\n\n### Response:```json""",
     )
+    
+    N_Q_PROMPT_2 = PromptTemplate(
+        input_variables=[
+            "subgraph",
+            "n",
+            "entity"
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""### Instruction:\nGenerate a list of n questions based on the given entity and its subgraph. The subgraph is represented as a list of triples. Each question should ask about a fact from the subgraph and should fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question should include the entity. Each question should be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph.{format_instructions}\n\ninput: {subgraph}\nentity: {entity}\nn: {n}\n\n### Response:```json""",
+    )
+
+    N_Q_PROMPT_3 = PromptTemplate(
+        input_variables=[
+            "subgraph",
+            "n",
+            "entity"
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""### Instruction:\nGenerate a list of n questions based on the given entity and its subgraph. The subgraph is represented as a list of triples. Each question must ask about a fact from the subgraph and must fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question must include the entity. Each question must be answerable solely from the information in the provided subgraph without explicitly mentioning it. Return list of questions.{format_instructions}\n\ninput: {subgraph}\nentity: {entity}\nn: {n}\n\n### Response:```json""",
+    )
+    
+    N_Q_PROMPT_4 = PromptTemplate(
+        input_variables=[
+            "subgraph",
+            "n",
+            "entity"
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""### Instruction:\nGenerate a list of n questions based on the given entity and its subgraph. The subgraph is represented as a list of triples. Each question must ask about a fact from the subgraph and must fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. Each question must include the entity. Each question must be answerable solely from the information in the provided subgraph without explicitly mentioning it. The questions can be equivalent to one or two triples from the subgraph. Return list of questions.{format_instructions}\n\ninput: {subgraph}\nentity: "{entity}"\nn: {n}\n\n### Response:```json""",
+    )
+    # N_Q_PROMPT = N_Q_PROMPT_1
+    # N_Q_PROMPT = N_Q_PROMPT_2 # this is v1 in commit
+    # N_Q_PROMPT = N_Q_PROMPT_3 # this is v2 in commit
+    N_Q_PROMPT = N_Q_PROMPT_4 # this is v3 in commit
 
     if llm["config"] is not None:
         n_question_generator_chain = LLMChain(
@@ -865,7 +934,7 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
     n_q_json_output_parser = PydanticOutputParser(pydantic_object=Triples)
     n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
 
-    N_Q_PROMPT = PromptTemplate(
+    N_Q_PROMPT_1 = PromptTemplate(
         input_variables=[
             "subgraph",
             "question",
@@ -873,6 +942,16 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
         partial_variables={"format_instructions": n_q_json_format_instructions},
         template="""### Instruction:\nGiven a question and a subgraph extracted from a knowledge graph, where the subgraph is represented as a list of triples, your task is to identify the specific triples within this subgraph that accurately represent the information needed to address the question. Each triple comprises a subject, a predicate, and an object, denoting a relationship between entities. Your objective is to discern and select the triples that contain relevant information essential for answering the question at hand. You must select triples from given triple list.\n\n{format_instructions}.\n\ninput: {subgraph}\nquestion: {question}\n\n### Response:```json""",
     )
+    N_Q_PROMPT_2 = PromptTemplate(
+        input_variables=[
+            "subgraph",
+            "question",
+        ],
+        partial_variables={"format_instructions": n_q_json_format_instructions},
+        template="""### Instruction:\nGiven a question and a list of triples, your task is to choose the specific triples within this list that were used to form the question. Each triple comprises a subject, a predicate, and an object, denoting a relationship between entities. You must choose triples from given triple list.\n\n{format_instructions}.\n\ninput: {subgraph}\nquestion: {question}\n\n### Response:```json""",
+    )
+
+    N_Q_PROMPT = N_Q_PROMPT_2 # commit with v2
 
     if llm['config'] is not None:
         n_question_generator_chain = LLMChain(

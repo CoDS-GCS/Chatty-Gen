@@ -341,6 +341,8 @@ def generate_dialogues_from_subgraph(
         seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
 
         parent_trace_inputs = {
+            "seed_uri": str(seed.uri),
+            "subgraph": subgraph.__str__(representation="uri"),
             "seed_label": seed_label,
         }
         parent_trace_outputs = None
@@ -754,6 +756,8 @@ def generate_dialogues_from_summarized_subgraph(
         seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
 
         parent_trace_inputs = {
+            "seed_uri": str(seed.uri),
+            "subgraph": subgraph.get_summarized_graph_str(approach="no_object"),
             "seed_label": seed_label,
         }
         parent_trace_outputs = None
@@ -1110,7 +1114,7 @@ def execute_question_generation_prompt(
             subgraph_str = subgraph.get_summarized_graph_str(approach="no_object")
             prompt = n_question_from_summarized_subgraph_chain_without_example.get(
                 "prompt"
-            ).format(subgraph=subgraph_str, n=n)
+            ).format(subgraph=subgraph_str, entity=seed_label, n=n)
 
             chain_inputs = {"prompt": prompt}
             q_chain_trace = Trace(
@@ -1146,7 +1150,7 @@ def execute_question_generation_prompt(
             while not (valid_question and valid_triples):
                 question_json_parsing_error = False
                 try:
-                    llm_result = ch.generate([{"subgraph": subgraph_str, "n": n}], None)
+                    llm_result = ch.generate([{"subgraph": subgraph_str, "entity": seed_label, "n": n}], None)
                     output = post_processor(llm_result, chain_inputs, q_chain_trace)
                     valid_question = validate_questions_output(seed_label, output)
                     valid_triples = validate_triples_output(
@@ -1213,7 +1217,7 @@ def execute_question_generation_prompt(
             prompt = n_question_from_summarized_subgraph_chain_without_example_without_triple.get(
                 "prompt"
             ).format(
-                subgraph=subgraph_str, n=n
+                subgraph=subgraph_str, n=n, entity=seed_entity_representation
             )
 
             chain_inputs = {"prompt": prompt}
@@ -1255,7 +1259,7 @@ def execute_question_generation_prompt(
                 question_validation_error = False
                 output = None
                 try:
-                    llm_result = ch.generate([{"subgraph": subgraph_str, "n": n}], None)
+                    llm_result = ch.generate([{"subgraph": subgraph_str, "n": n, "entity": seed_entity_representation}], None)
                     output = post_processor(
                         llm_result, chain_inputs, q_chain_trace
                     )  # output would be list of question
