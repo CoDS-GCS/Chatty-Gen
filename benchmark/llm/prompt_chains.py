@@ -34,8 +34,15 @@ class QuestionSchema(BaseModel):
 class QuestionSet(BaseModel):
     output: List[QuestionSchema]
 
-class Triples(BaseModel):
+
+class Triples_1(BaseModel):
     triples: List[Tuple[str, str, str]]
+
+class Triples_2(BaseModel):
+    triples: List[Tuple[str, str]]
+
+class Triples_3(BaseModel):
+    triples: List[str]
 
 class SchemaInput(BaseModel):
     output: List[str]
@@ -931,8 +938,10 @@ def get_n_question_from_summarized_subgraph_chain_without_example_without_triple
 
 
 def get_triple_for_question_given_subgraph_chain_without_example(llm):
-    n_q_json_output_parser = PydanticOutputParser(pydantic_object=Triples)
-    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
+    n_q_json_output_parser_1 = PydanticOutputParser(pydantic_object=Triples_1)
+    n_q_json_output_parser_2 = PydanticOutputParser(pydantic_object=Triples_2)
+    n_q_json_output_parser_3 = PydanticOutputParser(pydantic_object=Triples_3)
+    n_q_json_format_instructions = n_q_json_output_parser_1.get_format_instructions()
 
     N_Q_PROMPT_1 = PromptTemplate(
         input_variables=[
@@ -951,22 +960,23 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
         template="""### Instruction:\nGiven a question and a list of triples, your task is to choose the specific triples within this list that were used to form the question. Each triple comprises a subject, a predicate, and an object, denoting a relationship between entities. You must choose triples from given triple list.\n\n{format_instructions}.\n\ninput: {subgraph}\nquestion: {question}\n\n### Response:```json""",
     )
 
+    # N_Q_PROMPT = N_Q_PROMPT_1
     N_Q_PROMPT = N_Q_PROMPT_2 # commit with v2
 
     if llm['config'] is not None:
-        n_question_generator_chain = LLMChain(
+        triple_bind_chain = LLMChain(
             llm=llm["llm"], prompt=N_Q_PROMPT,
             verbose=False,
-            output_parser=n_q_json_output_parser,
+            output_parser=n_q_json_output_parser_1,
             llm_kwargs=llm["config"]
         )
     else:
-        n_question_generator_chain = LLMChain(
+        triple_bind_chain = LLMChain(
             llm=llm["llm"], prompt=N_Q_PROMPT,
             verbose=False,
-            output_parser=n_q_json_output_parser)
+            output_parser=n_q_json_output_parser_1)
     payload = {"stop": "```\n\n"}
-    ch = n_question_generator_chain
+    ch = triple_bind_chain
     
 
     def post_processor(llm_result, trace_inputs=None, trace=None):
@@ -1014,19 +1024,59 @@ def get_triple_for_question_given_subgraph_chain_without_example(llm):
                 }
                 trace.add_inputs_and_outputs(inputs=trace_inputs, outputs=trace_outputs)
 
-        output = [
-            # Get the text of the top generated string.
-            {
-                ch.output_key: ch.output_parser.parse_result(generation),
-                "full_generation": generation,
-            }
-            for generation in llm_result.generations
-        ]
+        is_parsed = False
+        try:
+            if not is_parsed:
+                output = [
+                    # Get the text of the top generated string.
+                    {
+                        ch.output_key: n_q_json_output_parser_1.parse_result(generation),
+                        "full_generation": generation,
+                    }
+                    for generation in llm_result.generations
+                ]
+                is_parsed = True
+        except Exception as e:
+            print("Parser 1 : Couldn't parse it")
+
+        try:
+            if not is_parsed:
+                output = [
+                    # Get the text of the top generated string.
+                    {
+                        ch.output_key: n_q_json_output_parser_2.parse_result(generation),
+                        "full_generation": generation,
+                    }
+                    for generation in llm_result.generations
+                ]
+                is_parsed = True
+        except Exception as e:
+            print("Parser 2 : Couldn't parse it")
+
+        try:
+            if not is_parsed:
+                output = [
+                    # Get the text of the top generated string.
+                    {
+                        ch.output_key: n_q_json_output_parser_3.parse_result(generation),
+                        "full_generation": generation,
+                    }
+                    for generation in llm_result.generations
+                ]
+                output = [{ch.output_key: [x[ch.output_key]]} for x in output]
+                is_parsed = True
+        except Exception as e:
+            print("Parser 3 : Couldn't parse it")
+
+        if not is_parsed:
+            raise Exception("Not able to parse it")
+
         if ch.return_final_only:
             output = [{ch.output_key: r[ch.output_key]} for r in output]
         output = output[0][ch.output_key].dict()
         return output["triples"]
-    return {"chain": n_question_generator_chain, "payload": payload, "prompt": N_Q_PROMPT, "post_processor": post_processor}
+
+    return {"chain": triple_bind_chain, "payload": payload, "prompt": N_Q_PROMPT, "post_processor": post_processor}
 
 def get_n_question_from_subgraph_chain_using_seed_entity(llm):
     n_q_json_output_parser = PydanticOutputParser(pydantic_object=LLMInput)

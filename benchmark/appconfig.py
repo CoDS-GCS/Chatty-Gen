@@ -64,7 +64,7 @@ class Config:
     redisport: int = 6379
 
     # wandb
-    wandb_project: str = "cov-kg-benchmark-final"
+    wandb_project: str = "cov-kg-benchmark-27april"
     wandb_mode: str = "offline"
 
     @classmethod

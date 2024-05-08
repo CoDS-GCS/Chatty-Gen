@@ -234,12 +234,17 @@ class SubGraph:
             subgraph_triple = [el.lower() for el in subgraph_triple]
 
             # for "subEvent" vs "sub Event"
-            t1_v1 = defrag_uri(str(t[1].uri)).lower()
-            t1_v2 = defrag_uri_without_space(str(t[1].uri)).lower()
+            t1 = t[1] # predicate
+            t1_v1 = defrag_uri(str(t1.uri)).lower()
+            t1_v2 = defrag_uri_without_space(str(t1.uri)).lower()
+            
+            # for '.' at the end of label
+            sub_ = subgraph_triple[0] if not subgraph_triple[0].endswith(".") else subgraph_triple[0][:-1]
+            obj_ = subgraph_triple[2] if not subgraph_triple[2].endswith(".") else subgraph_triple[2][:-1]
 
-            if (subgraph_triple[0] in generated_triple and subgraph_triple[2] in generated_triple) and (t1_v1 in generated_triple or t1_v2 in generated_triple):
-                # this will check if individual element is in serialized_string, check the subgraph's triple's both element is in generated string.
-                # if yes return actual triple.
+            # this will check if individual element is in serialized_string, check the subgraph's triple's both element is in generated string.
+            # if yes return actual triple.
+            if (sub_ in generated_triple and obj_ in generated_triple) and (t1_v1 in generated_triple or t1_v2 in generated_triple):
                 return True, t
         return False, None
 

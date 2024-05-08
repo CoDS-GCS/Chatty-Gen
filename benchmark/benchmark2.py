@@ -521,7 +521,7 @@ def validate_dialogue_output(seed, dialogue):
     if seed[-1] == ".":
         seed = seed[:-1]
     for question in dialogue:
-        if seed.lower() in question.lower():
+        if seed.lower() in question.lower() or len(question.split(" ")) <= 1 or "?" not in question.lower():
             return False
     return True
 
@@ -560,21 +560,29 @@ def validate_single_triples_output_v2(subgraph, triples, approach):
     triples_ = []
     for t in triples:
         if len(t) > 1:
-            t_ = (t[0], t[1], "")
+            t_ = str(t)
             triples_.append(t_)
 
-    for t in triples_:
-        if not subgraph.contain_triple(t, approach):
-            return False
-    return True
+    valid_triples = []
+    for triple in triples_:
+        print("t --> ", triple)
+        contains, original_triple = subgraph.contain_triple(triple, approach)
+        if contains:
+            valid_triples.append(original_triple)
+
+    if len(valid_triples) == 0:
+        return False
+    else:
+        triples = valid_triples
+        return True
 
 
 def validate_triples_output(subgraph, output, approach):
    
     for instance in output["output"]:
         triples = instance["triples"]
+        triples_ = []
         if isinstance(triples, list) and isinstance(triples[0], list):
-            triples_ = []
             for t in triples:
                 if len(t) > 1:
                     t_ = str(t)
@@ -582,7 +590,6 @@ def validate_triples_output(subgraph, output, approach):
         elif isinstance(triples, list) and len(triples) >= 1:
             if isinstance(triples[0], str) and "," not in triples[0] and (len(triples) == 2 or len(triples) == 3):
                 triples = [triples]
-            triples_ = []
             for triple in triples:
                 if isinstance(triple, str):
                     triples_.append(triple)
