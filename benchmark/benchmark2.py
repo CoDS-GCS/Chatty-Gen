@@ -579,10 +579,10 @@ def validate_single_triples_output_v2(subgraph, triples, approach):
             valid_triples.append(original_triple)
 
     if len(valid_triples) == 0:
-        return False
+        return False, []
     else:
         triples = valid_triples
-        return True
+        return True, valid_triples
 
 
 def validate_triples_output(subgraph, output, approach):
@@ -969,16 +969,16 @@ def execute_question_triple_binding_prompt(
             llm_result = ch.generate([{"subgraph": subgraph_str, "question": q}], None)
             output = post_processor(llm_result, chain_input, t_chain_trace)
 
-            valid_triples = validate_single_triples_output_v2(
+            is_valid, valid_triples = validate_single_triples_output_v2(
                 subgraph, output, "optimized"
             )
-            if not valid_triples:
+            if not is_valid:
                 t_validation_err_cnt += 1
                 t_chain_trace._span.status_code = (
                     StatusCode.TRIPLES_VALIDATION_ERROR.name
                 )
             else:
-                output_with_triple.append({"question": q, "triples": output})
+                output_with_triple.append({"question": q, "triples": valid_triples})
                 t_chain_trace._span.status_code = StatusCode.SUCCESS
         except Exception as e:
             t_json_parse_err_cnt += 1
