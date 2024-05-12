@@ -1,5 +1,4 @@
 from seed_node_extractor import utils
-from answer_creation import get_triple_for_summarized, get_original_triple
 import traceback
 
 
@@ -71,7 +70,7 @@ def validate_ask_query(query_string, triples_used, endpoint, subgraph, seed_node
         return "Syntax Error"
 
 
-def validate_count_query(query_string, triples_used, endpoint, subgraph, seed_node_uri, approach):
+def validate_count_query(query_string, original_triples, endpoint, subgraph, seed_node_uri, approach):
     try:
         result = utils.send_sparql_query(endpoint, query_string)
         variable_name = result["head"]["vars"][0]
@@ -81,12 +80,13 @@ def validate_count_query(query_string, triples_used, endpoint, subgraph, seed_no
             value = int(value)
             endpoint_answers.append(value)
 
-        original_triples = list()
-        for triple in triples_used:
-            if approach == "optimized":
-                original_triples.append(get_triple_for_summarized(triple, subgraph))
-            else:
-                original_triples.append(get_original_triple(triple, subgraph))
+        # original_triples = list()
+        # for triple in triples_used:
+        #     if approach == "optimized":
+        #         triple_ = subgraph.get_triple_with_uris_no_object(triple)
+        #         original_triples.append(triple_)
+        #     else:
+        #         original_triples.append(triple_)
 
         print(endpoint_answers)
         subgraph_answers = get_answers_from_subgraph(subgraph, original_triples, seed_node_uri)
@@ -106,7 +106,7 @@ def validate_count_query(query_string, triples_used, endpoint, subgraph, seed_no
         print("Error Query ", query_string)
         return "Syntax Error"
 
-def validate_select_query(query_string, triples_used, endpoint, subgraph, seed_node_uri, approach):
+def validate_select_query(query_string, original_triples, endpoint, subgraph, seed_node_uri, approach):
     try:
         result = utils.send_sparql_query(endpoint, query_string)
         # Need to check if the query returned a result inside the subgraph
@@ -115,12 +115,13 @@ def validate_select_query(query_string, triples_used, endpoint, subgraph, seed_n
         for binding in result["results"]["bindings"]:
             value = binding.get(variable_name, {}).get('value', None)
             endpoint_answers.append(value)
-        original_triples = list()
-        for triple in triples_used:
-            if approach == "optimized":
-                original_triples.append(get_triple_for_summarized(triple, subgraph))
-            else:
-                original_triples.append(get_original_triple(triple, subgraph))
+        # original_triples = list()
+        # for triple in triples_used:
+        #     if approach == "optimized":
+        #         triple_ = subgraph.get_triple_with_uris_no_object(triple)
+        #         original_triples.append(triple_)
+        #     else:
+        #         original_triples.append(triple_)
 
         subgraph_answers = list()
         subgraph_answers = get_answers_from_subgraph(subgraph, original_triples, seed_node_uri)

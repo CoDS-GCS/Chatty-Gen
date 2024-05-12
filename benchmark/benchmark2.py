@@ -150,9 +150,17 @@ def decouple_questions_and_answers(
                     "_kind": config.sparql_generation_model.model_type,
                 },
             )
+
+            triples_list = list()
+            for triple in element["triples"]:
+                if approach == "optimized":
+                    triple = subgraph.get_triple_with_uris_no_object(triple) # optimized
+                subject, predicate, object = triple
+                triples_list.append((subject.__str__(), predicate.__str__(), object.__str__()))
+
             answer_query = get_LLM_based_postprocessed(
                 element["question"],
-                element["triples"],
+                triples_list,
                 subgraph,
                 approach,
                 q_chain_input,
@@ -161,7 +169,7 @@ def decouple_questions_and_answers(
             q_chain_trace.outputs = {"llm_query": answer_query}
             status = validate_query(
                 answer_query,
-                element["triples"],
+                triples_list,
                 endpoint,
                 subgraph,
                 seed_node_uri,
@@ -175,7 +183,7 @@ def decouple_questions_and_answers(
             if status == "Correct":
                 questions.append(element["question"])
                 answer_queries.append(answer_query)
-                triples.append(element["triples"])
+                triples.append(triples_list)
                 q_chain_trace.status_code = StatusCode.SUCCESS.name
             else:
                 sparql_validation_err_cnt += 1
@@ -588,7 +596,18 @@ def validate_triples_output(subgraph, output, approach):
                     t_ = str(t)
                     triples_.append(t_)
         elif isinstance(triples, list) and len(triples) >= 1:
-            if isinstance(triples[0], str) and "," not in triples[0] and (len(triples) == 2 or len(triples) == 3):
+            if isinstance(triples[0], str) and "," not in triples[0]:
+                if (len(triples) % 3 == 0):
+                    t_list = []
+                    for i in range(0, len(triples), 3):
+                        t_list.append(triples[i:i+3])
+                    triples = t_list
+                elif (len(triples) % 2 == 0):
+                    t_list = []
+                    for i in range(0, len(triples), 2):
+                        t_list.append(triples[i:i+2])
+                    triples = t_list
+
                 triples = [triples]
             for triple in triples:
                 if isinstance(triple, str):
