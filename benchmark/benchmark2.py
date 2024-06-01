@@ -568,6 +568,12 @@ def validate_single_triples_output_v2(subgraph, triples, approach):
     triples_ = []
     for t in triples:
         if len(t) > 1:
+            t_0, t_1, t_2 = t[0], t[1], t[2]
+            t_0 = t_0.replace("[","(")
+            t_0 = t_0.replace("]",")")
+            t_2 = t_2.replace("[","(")
+            t_2 = t_2.replace("]",")")
+            t = (t_0, t_1, t_2)
             t_ = str(t)
             triples_.append(t_)
 
