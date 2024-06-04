@@ -75,7 +75,11 @@ n_question_from_summarized_subgraph_chain_without_example_without_triple = (
         "n_question_from_summarized_subgraph_chain_without_example_without_triple"
     )(questions_triple_llm)
 )
-
+singleshot_dialogue_chain = (
+    prompt_chains.get(
+        "singleshot_dialogue_chain"
+    )(questions_triple_llm)
+)
 
 def categorize_questions(original_questions):
     # Dictionary to store categorized questions
@@ -270,7 +274,7 @@ def generate_dialogues(
     print(f"Seed node selection took {end - start} seconds")
 
     if "subgraph" in approach:
-        exp_name = f"{kg_name}_e1_{dataset_size}_{dialogue_size}"
+        exp_name = f"{kg_name}_subgraph_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}_{config.pipeline_type}.json")
         tracer_instance = Tracer(os.path.join(out_dir, "traces", f"{exp_name}.jsonl"))
         generate_dialogues_from_subgraph(
@@ -284,10 +288,24 @@ def generate_dialogues(
             seednode_to_subgraph_map,
         )
     if "subgraph-summarized" in approach:
-        exp_name = f"{kg_name}_e11_{dataset_size}_{dialogue_size}"
+        exp_name = f"{kg_name}_subgraph_summarized_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}_{config.pipeline_type}.json")
         tracer_instance = Tracer(os.path.join(out_dir, "traces", f"{exp_name}.jsonl"))
         generate_dialogues_from_summarized_subgraph(
+            seed_nodes,
+            kg,
+            tracer_instance,
+            dialogue_size,
+            output_file,
+            prompt,
+            sampler,
+            seednode_to_subgraph_map,
+        )
+    if "single-shot" in approach:
+        exp_name = f"{kg_name}_single_shot_{dataset_size}_{dialogue_size}"
+        output_file = os.path.join(out_dir, f"{exp_name}_{config.pipeline_type}.json")
+        tracer_instance = Tracer(os.path.join(out_dir, "traces", f"{exp_name}.jsonl"))
+        generate_dialogues_from_singleshot(
             seed_nodes,
             kg,
             tracer_instance,
@@ -542,6 +560,13 @@ def validate_questions_output(seed, questions):
             return False
     return True
 
+def validate_singleshot_questions_output(seed, questions):
+    if seed[-1] == ".":
+        seed = seed[:-1]
+    for question in questions["output"]:
+        if seed.lower() not in question["original"].lower():
+            return False
+    return True
 
 def validate_single_questions_output(seed, question):
     if seed[-1] == ".":
@@ -633,6 +658,92 @@ def validate_triples_output(subgraph, output, approach):
         else:
             instance["triples"] = valid_triples
     return True
+
+def validate_singleshot_triples_output(subgraph, output, approach):
+   
+    for instance in output["output"]:
+        triples = instance["triple"]
+        triples_ = []
+        if isinstance(triples, list) and isinstance(triples[0], list):
+            for t in triples:
+                if len(t) > 1:
+                    t_ = str(t)
+                    triples_.append(t_)
+        elif isinstance(triples, list) and len(triples) >= 1:
+            if isinstance(triples[0], str) and "," not in triples[0]:
+                if (len(triples) % 3 == 0):
+                    t_list = []
+                    for i in range(0, len(triples), 3):
+                        t_list.append(triples[i:i+3])
+                    triples = t_list
+                elif (len(triples) % 2 == 0):
+                    t_list = []
+                    for i in range(0, len(triples), 2):
+                        t_list.append(triples[i:i+2])
+                    triples = t_list
+
+                triples = [triples]
+            for triple in triples:
+                if isinstance(triple, str):
+                    triples_.append(triple)
+                else:
+                    triples_.append(str(triple))
+        
+        valid_triples = []
+        for triple in triples_:
+            print("t --> ", triple)
+            contains, original_triple = subgraph.contain_triple(triple, approach)
+            if contains:
+                valid_triples.append(original_triple)
+
+        if len(valid_triples) == 0:
+            return False
+        else:
+            instance["triples"] = valid_triples
+    return True
+
+def validate_singleshot_sparql_output(seed, subgraph, output, endpoint, approach):
+    seed_node_uri = seed.uri
+    correct_questions = list()
+    query_results = dict()
+    sparql_validation_err = False
+    for q in output:
+        answer_query = q["sparql"]
+        triples = q["triple"]
+        triples_list = list()
+        for t in triples:
+            if approach == "optimized":
+                t_ = subgraph.get_triple_with_uris_no_object(t) # optimized
+            subject, predicate, object = t_
+            triples_list.append((subject.__str__(), predicate.__str__(), object.__str__()))
+        try:
+            status = validate_query(
+                answer_query,
+                triples_list,
+                endpoint,
+                subgraph,
+                seed_node_uri,
+                approach,
+            )
+            if status in query_results:
+                query_results[status] += 1
+            else:
+                query_results[status] = 1
+
+            if status == "Correct":
+                correct_questions.append(q)
+        except Exception as e:
+            traceback.print_exc()
+            continue
+    
+    if len(correct_questions) < 3:
+        sparql_validation_err = True
+
+    return (
+        sparql_validation_err,
+        query_results,
+        correct_questions
+    )
 
 
 
@@ -1342,3 +1453,233 @@ def execute_question_generation_prompt(
             q_chain_trace._span.end_time_ms = time.time_ns() // 1000
             parent_trace.add_child(q_chain_trace)
             return que_trip_set, errors
+
+
+def generate_dialogues_from_singleshot(
+    initial_seed_nodes,
+    kg,
+    tracer_instance,
+    dialogue_size,
+    output_file,
+    prompt,
+    sampler,
+    seednode_to_subgraph_map,
+):
+    benchmark_sample = []
+    seed_nodes = initial_seed_nodes.copy()
+    total_time = 0
+    processed_seeds = 0
+    context_length_limit_error = 0
+    question_validation_error = 0
+    triple_validation_error = 0
+    sparql_validation_error = 0
+    dialogue_validation_error = 0
+    json_parsing_error = 0
+
+    cost = { "total_tokens": 0, "prompt_tokens": 0, "completion_tokens": 0}
+
+    # with open(filename, "r") as f:
+    #     generated_data = json.load(f)
+    
+    for idx, seed in enumerate(seed_nodes):
+    # for idx, data in enumerate(generated_data):
+        if idx > 20:
+            break
+        start_time = time.time()
+        key = seed.label if seed.label else seed.uri
+        subgraph = seednode_to_subgraph_map[key]
+
+        dialogue = None
+        question_set_dialogue = None
+        question_set = None
+        cb_dict = None
+        answer_queries = None
+        triples_used = None
+        answer_status_dict = None
+        errors = {}
+        skip_node = False
+        que_trip_set = None
+        sp_json_err = 0
+        sp_val_err = 0
+        n = dialogue_size
+        seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
+
+        parent_trace_inputs = {
+            "seed_uri": str(seed.uri),
+            "subgraph": subgraph.get_summarized_graph_str(approach="no_object"),
+            "seed_label": seed_label,
+        }
+        parent_trace_outputs = None
+        parent_trace = Trace(
+            name="Pipeline",
+            kind="PIPELINE",
+            start_time_ms = time.time_ns() // 1000
+        )
+        with llm_callback() as cb:
+            try:
+                errors = {}
+
+                """
+                1. get the two version of subgraphs
+                2. we will need n as input
+                """
+                ch = singleshot_dialogue_chain.get("chain")
+                post_processor = singleshot_dialogue_chain.get(
+                    "post_processor"
+                )
+
+                label_subgraph_str = subgraph.get_summarized_graph_str(approach="no_object")
+                query_subgraph_str = subgraph.get_summarized_graph_query_str(approach="no_object")
+
+                prompt = singleshot_dialogue_chain.get("prompt").format(
+                    n=n,
+                    entity=seed_label,
+                    label_subgraph=label_subgraph_str,
+                    query_subgraph=query_subgraph_str,
+                )
+                print(prompt)
+
+                chain_inputs = {"prompt": prompt}
+                q_chain_trace = Trace(
+                    name="Q-Gen-Step",
+                    kind="CHAIN",
+                    start_time_ms = time.time_ns() // 1000,
+                    model_dict={
+                        "_model": config.question_generation_model.model_name,
+                        "_kind": config.question_generation_model.model_type,
+                    },
+                )
+
+                num_tokens = get_num_tokens(prompt)
+                if num_tokens > 4097:
+                    q_chain_trace._span.status_code = StatusCode.CONTEXT_LENGTH_ERROR.name
+                    q_chain_trace._span.end_time_ms = time.time_ns() // 1000
+                    parent_trace.add_child(q_chain_trace)
+                    continue
+
+                n_to_digit_map = {
+                    1: "One",
+                    2: "Two",
+                    3: "Three",
+                    4: "Four",
+                    5: "Five",
+                    6: "Six"
+                }
+
+                valid_question = False
+                valid_triples = False
+                retry = 0
+                json_parsing_error = False
+                while not (valid_question and valid_triples):
+                    retry += 1
+                    if retry == 3:
+                        break
+                    json_parsing_error = False
+                    try:
+                        llm_result = ch.generate([{"label_subgraph": label_subgraph_str, "query_subgraph": query_subgraph_str, "entity": seed_label, "n": n_to_digit_map[n]}], None)
+                        # benchmark_sample.append({
+                        #     "input": prompt,
+                        #     "generations": llm_result.dict().get('generations'),
+                        #     "token_usage": llm_result.dict().get('llm_output'),
+                        #     "n": n
+                        # })
+                        output = post_processor(llm_result, chain_inputs, q_chain_trace)
+                        valid_question = validate_singleshot_questions_output(seed_label, output)
+                        valid_triples = validate_singleshot_triples_output(
+                            subgraph, output, "optimized"
+                        )
+                        valid_sparqls, answer_status_dict, correct_questions = validate_singleshot_sparql_output(seed, subgraph, output, kg.sparql_endpoint, "optimized")
+                        transformed_questions = [q["transformed"] for q in correct_questions]
+                        valid_dialogue = validate_dialogue_output(seed_label, transformed_questions)
+                    except Exception as e:
+                        traceback.print_exc()
+                        continue
+
+
+                if json_parsing_error:
+                    errors["json_parsing_error"] = 1
+                    q_chain_trace._span.status_code = StatusCode.JOSN_PARSING_ERROR
+                else:
+                    if not valid_question:
+                        errors["question_validation_error"] = 1
+                        q_chain_trace._span.status_code = (
+                            StatusCode.QUESTION_VALIDATION_ERROR
+                        )
+                    elif not valid_triples:
+                        errors["triple_validation_error"] = 1
+                        q_chain_trace._span.status_code = (
+                            StatusCode.TRIPLES_VALIDATION_ERROR
+                        )
+                    elif not valid_sparqls:
+                        errors["sparql_validation_error"] = 1
+                        q_chain_trace._span.status_code = (
+                            StatusCode.SPARQL_VALIDATION_ERROR
+                        )
+                    elif not valid_dialogue:
+                        errors["dialogue_validation_error"] = 1
+                        q_chain_trace._span.status_code = (
+                            StatusCode.DIALOGUE_VALIDATION_ERROR
+                        )
+                    else:
+                        question_set_dialogue = [correct_questions[0]["original"]] + transformed_questions
+                        question_set = [q["original"] for q in correct_questions]
+                        answer_queries = [q["sparql"] for q in correct_questions]
+                        triples_used = [q["triple"] for q in correct_questions]
+
+                        cb_dict = {
+                            "total_tokens": cb.prompt_tokens + cb.completion_tokens,
+                            "prompt_tokens": cb.prompt_tokens,
+                            "completion_tokens": cb.completion_tokens,
+                            # "successful_requests": cb.successful_requests,
+                            # "total_cost": cb.total_cost
+                        }
+                        # save things here
+                        dialogue = {
+                            "seed_entity": str(seed.uri),
+                            "seed_label": seed_label,
+                            "dialogue": question_set_dialogue,
+                            "original": question_set,
+                            "queries": answer_queries,
+                            "triples": triples_used,
+                            "cost": cb_dict,
+                            "query_status": answer_status_dict,
+                            "raw_generation": output
+                        }
+                        benchmark_sample.append(dialogue)
+                        q_chain_trace._span.status_code = StatusCode.SUCCESS
+
+                
+            except Exception as e:
+                traceback.print_exc()
+                logger.info(f"INDEX : {idx} -- ERROR: {idx} : {e} --")
+            
+            cost["total_tokens"] += (cb.prompt_tokens + cb.completion_tokens)
+            cost["prompt_tokens"] += cb.prompt_tokens
+            cost["completion_tokens"] += cb.completion_tokens
+
+
+        benchmark = {
+            "seeds_used": idx + 1,
+            "data": benchmark_sample,
+        }
+        benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
+        benchmark = {
+            "seeds_used": idx + 1,
+            "data": benchmark_sample,
+            "analysis": benchmark_analysis,
+            "cost": cost,
+            "total_time": total_time,
+            "average_time": (
+                0 if processed_seeds == 0 else (total_time / processed_seeds)
+            ),
+            "Context Length Error": context_length_limit_error,
+            "Question Validation Error": question_validation_error,
+            "Triples Validation Error": triple_validation_error,
+            "Sparql Validation Error": sparql_validation_error,
+            "Dialogue Validation Error": dialogue_validation_error,
+            "Json Error": json_parsing_error
+        }
+        directory = pathlib.Path(output_file).parent
+        directory.mkdir(parents=True, exist_ok=True)
+        with open(output_file, "w") as f:
+            json.dump(benchmark, f, indent=4)

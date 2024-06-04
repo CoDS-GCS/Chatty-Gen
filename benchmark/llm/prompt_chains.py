@@ -1355,6 +1355,123 @@ def get_validate_question_quality(llm):
         "chain": question_validation_chain, "payload": {}
     }
 
+def singleshot_dialogue_chain(llm):
+    print(llm)
+
+    class QuestionItem(BaseModel):
+        original: str
+        transformed: str
+        sparql: str
+        triple: str
+
+    class QuestionSet(BaseModel):
+        output: List[QuestionItem]
+
+    output_parser = PydanticOutputParser(pydantic_object=QuestionSet)
+    format_instructions = output_parser.get_format_instructions()
+    
+    PROMPT = PromptTemplate(
+        input_variables=[
+            "entity",
+            "label_subgraph",
+            "query_subgraph",
+            "n",
+        ],
+        partial_variables={"format_instructions": format_instructions},
+        template = (
+        "You are tasked with generating a set of questions based on provided entities and their corresponding subgraphs. Each question will be represented by an instance of the `QuestionItem` class. The process will involve forming both standalone and dialogue-contextual questions, and constructing SPARQL queries to retrieve answers from a knowledge graph."
+        "**Instructions:**"
+        "1. **Inputs:**"
+        "- `entity`: A string representing the label for an entity."
+        "- `label triples`: A list of triples, where each triple contains subject, predicate, and object labels. These labels will be used to form the questions."
+        "- `query triples`: A list of triples, where each triple contains subject, predicate, and object URIs. These URIs will be used to form the SPARQL queries."
+        "- `n`: An integer representing the number of questions to generate.\n"
+        "2. **Question Formation:**"
+        "- Each question will be based on the provided `label triples` and should incorporate the entity label."
+        "- Questions should be clear, concise, and relevant to the subgraph information."
+        "- For each question, create a 'transformed' version suitable for a dialogue by substituting the entity label with a pronoun.\n"
+        "3. **SPARQL Query Formation:**"
+        "- Each question should have an associated SPARQL query that uses the `query triples` to retrieve the correct answer."
+        "- Ensure that the SPARQL query corresponds accurately to the question.\n"
+        "4. **QuestionItem Structure:**"
+        "- `original`: The original standalone question based on the entity and label triples."
+        "- `transformed`: The transformed version of the question for use in a dialogue, substituting the entity label with a pronoun."
+        "- `sparql`: The SPARQL query corresponding to the original question, using the query triples URIs."
+        "- `triple`: The original triple from the label triples used to form the question."
+        "\n'entity': {entity}\n'n': {n}\n'label triples' : {label_subgraph}\n'query triples' : {query_subgraph}\n{format_instructions}\n\n```json"
+        )
+    )
+    llm_conf = {
+        'max_new_tokens': 650,
+        # 'stop_strings': ["```", "```\n\n", "```\n", "\n```"],
+        'early_stopping': "```",
+        'do_sample': True,
+        # 'num_beams': 5,
+        # 'num_return_sequences': 3
+    }
+
+    ch = None
+    if llm["config"] is not None:
+        singleshot_chain = LLMChain(
+            llm=llm["llm"], 
+            prompt=PROMPT,
+            verbose=True,
+            llm_kwargs=llm_conf,
+            # llm["config"],
+            output_parser=output_parser
+        )
+    else:
+        singleshot_chain = LLMChain(
+            llm=llm["llm"], 
+            prompt=PROMPT,
+            verbose=True,
+            output_parser=output_parser
+        )
+
+    ch = singleshot_chain
+    payload = {"stop": "```\n\n"}
+    
+    def post_processor(llm_result, trace_inputs=None, trace=None):
+        for generation in llm_result.generations:
+
+            ## update outputs with before and after for given trace
+            generation_0_original = generation[0].text
+            if generation[0].text.startswith("```json"):
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text[7:], "```")
+            else:
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
+            if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
+                generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
+            else:
+                generation[0].text = "```json" + trimmed_with_backtick_at_end
+            print("gen-text: ", generation[0].text)
+
+            generation_0_processed = generation[0].text
+            ## update outputs with before and after for given trace
+            if trace:
+                trace_outputs = {
+                    "generated": generation_0_original,
+                    "processed": generation_0_processed
+                }
+                trace.add_inputs_and_outputs(inputs=trace_inputs, outputs=trace_outputs)
+        output = [
+            # Get the text of the top generated string.
+            {
+                ch.output_key: ch.output_parser.parse_result(generation),
+                "full_generation": generation,
+            }
+            for generation in llm_result.generations
+        ]
+        if ch.return_final_only:
+            output = [{ch.output_key: r[ch.output_key]} for r in output]
+        output = output[0][ch.output_key].dict()
+        return output
+
+    return {
+        "chain": singleshot_chain, "payload": {}, "prompt": PROMPT, "payload": payload, "post_processor": post_processor
+    }
+
+
 
 def get_prompt_chains():
     prompt_chains = {
@@ -1374,6 +1491,7 @@ def get_prompt_chains():
         "get_validate_question_quality": get_validate_question_quality,
         "n_question_from_summarized_subgraph_chain_without_example_without_triple": get_n_question_from_summarized_subgraph_chain_without_example_without_triple,
         "get_triple_for_question_given_subgraph_chain_without_example":
-        get_triple_for_question_given_subgraph_chain_without_example
+        get_triple_for_question_given_subgraph_chain_without_example,
+        "singleshot_dialogue_chain": singleshot_dialogue_chain
     }
     return prompt_chains
