@@ -551,6 +551,19 @@ def validate_dialogue_output(seed, dialogue):
             return False
     return True
 
+def validate_dialogue_output_v2(seed, dialogue):
+    if seed[-1] == ".":
+        seed = seed[:-1]
+    q0 = dialogue[0]
+    valid = validate_singleshot_questions_output_v2(seed, [q0])
+    if not valid:
+        return False
+    for question in dialogue[1:]:
+        if seed.lower() in question.lower() or len(question.split(" ")) <= 1 or "?" not in question.lower():
+            return False
+    return True
+
+
 
 def validate_questions_output(seed, questions):
     if seed[-1] == ".":
@@ -1630,15 +1643,16 @@ def generate_dialogues_from_singleshot(
                         "n": n
                     })
                     output = post_processor(llm_result_v2, chain_inputs, q_chain_trace)
-                    questions = output["original"]
+                    questions = output["questions"]
                     valid_question = validate_singleshot_questions_output(seed_label, questions)
                     print("QUESTION-validation", valid_question)
                     if valid_question:
                         sparqls = output["sparql"]
                         valid_sparqls, answer_status_dict, correct_questions, correct_queries = validate_singleshot_sparql_output_v2(questions, sparqls, kg.sparql_endpoint)
                         if valid_sparqls:
-                            transformed_questions = output["transformed"][1:]
-                            valid_dialogue = validate_dialogue_output(seed_label, transformed_questions)
+                            transformed_questions = output["dialogue"]
+                            valid_dialogue = validate_dialogue_output_v2(seed_label, transformed_questions)
+
                 except Exception as e:
                     parsing_error = True
                     traceback.print_exc()
