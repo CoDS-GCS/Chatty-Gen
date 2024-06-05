@@ -699,15 +699,16 @@ def validate_singleshot_triples_output(subgraph, output, approach):
         if len(valid_triples) == 0:
             return False
         else:
-            instance["triples"] = valid_triples
+            instance["triple"] = valid_triples
     return True
 
 def validate_singleshot_sparql_output(seed, subgraph, output, endpoint, approach):
     seed_node_uri = seed.uri
     correct_questions = list()
     query_results = dict()
-    sparql_validation_err = False
-    for q in output:
+    used_triples = list()
+    valid_sparql = True
+    for q in output["output"]:
         answer_query = q["sparql"]
         triples = q["triple"]
         triples_list = list()
@@ -732,16 +733,22 @@ def validate_singleshot_sparql_output(seed, subgraph, output, endpoint, approach
 
             if status == "Correct":
                 correct_questions.append(q)
+                used_triples.append(triples_list)
         except Exception as e:
             traceback.print_exc()
             continue
     
     if len(correct_questions) < 3:
-        sparql_validation_err = True
+        print(correct_questions)
+        print(query_results)
+        valid_sparql = False
+        query_results = dict()
+        correct_questions = []
 
     return (
-        sparql_validation_err,
+        valid_sparql,
         query_results,
+        used_triples,
         correct_questions
     )
 
@@ -1466,6 +1473,7 @@ def generate_dialogues_from_singleshot(
     seednode_to_subgraph_map,
 ):
     benchmark_sample = []
+    raw_benchmark_sample = []
     seed_nodes = initial_seed_nodes.copy()
     total_time = 0
     processed_seeds = 0
@@ -1478,12 +1486,9 @@ def generate_dialogues_from_singleshot(
 
     cost = { "total_tokens": 0, "prompt_tokens": 0, "completion_tokens": 0}
 
-    # with open(filename, "r") as f:
-    #     generated_data = json.load(f)
     
     for idx, seed in enumerate(seed_nodes):
-    # for idx, data in enumerate(generated_data):
-        if idx > 20:
+        if idx > 500:
             break
         start_time = time.time()
         key = seed.label if seed.label else seed.uri
@@ -1498,9 +1503,6 @@ def generate_dialogues_from_singleshot(
         answer_status_dict = None
         errors = {}
         skip_node = False
-        que_trip_set = None
-        sp_json_err = 0
-        sp_val_err = 0
         n = dialogue_size
         seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
 
@@ -1555,76 +1557,91 @@ def generate_dialogues_from_singleshot(
                     q_chain_trace._span.status_code = StatusCode.CONTEXT_LENGTH_ERROR.name
                     q_chain_trace._span.end_time_ms = time.time_ns() // 1000
                     parent_trace.add_child(q_chain_trace)
-                    continue
+                    context_length_limit_error += 1
 
-                n_to_digit_map = {
-                    1: "One",
-                    2: "Two",
-                    3: "Three",
-                    4: "Four",
-                    5: "Five",
-                    6: "Six"
-                }
+                # n_to_digit_map = {
+                #     1: "One",
+                #     2: "Two",
+                #     3: "Three",
+                #     4: "Four",
+                #     5: "Five",
+                #     6: "Six"
+                # }
 
                 valid_question = False
                 valid_triples = False
                 retry = 0
-                json_parsing_error = False
+                parsing_error = False
                 while not (valid_question and valid_triples):
                     retry += 1
                     if retry == 3:
                         break
-                    json_parsing_error = False
+                    parsing_error = False
                     try:
-                        llm_result = ch.generate([{"label_subgraph": label_subgraph_str, "query_subgraph": query_subgraph_str, "entity": seed_label, "n": n_to_digit_map[n]}], None)
-                        # benchmark_sample.append({
-                        #     "input": prompt,
-                        #     "generations": llm_result.dict().get('generations'),
-                        #     "token_usage": llm_result.dict().get('llm_output'),
-                        #     "n": n
-                        # })
+                        llm_result = ch.generate([{"label_subgraph": label_subgraph_str, "query_subgraph": query_subgraph_str, "entity": seed_label, "n": n}], None)
+                        raw_benchmark_sample.append({
+                            "input": prompt,
+                            "generations": llm_result.dict().get('generations'),
+                            "token_usage": llm_result.dict().get('llm_output'),
+                            "n": n
+                        })
                         output = post_processor(llm_result, chain_inputs, q_chain_trace)
                         valid_question = validate_singleshot_questions_output(seed_label, output)
-                        valid_triples = validate_singleshot_triples_output(
-                            subgraph, output, "optimized"
-                        )
-                        valid_sparqls, answer_status_dict, correct_questions = validate_singleshot_sparql_output(seed, subgraph, output, kg.sparql_endpoint, "optimized")
-                        transformed_questions = [q["transformed"] for q in correct_questions]
-                        valid_dialogue = validate_dialogue_output(seed_label, transformed_questions)
+                        print("QUESTION-validation", valid_question)
+                        if valid_question:
+                            valid_triples = validate_singleshot_triples_output(
+                                subgraph, output, "optimized"
+                            )
+                            print("TRIPLES-validation", valid_triples)
+                            if valid_triples:
+                                valid_sparqls, answer_status_dict, triples_used, correct_questions = validate_singleshot_sparql_output(seed, subgraph, output, kg.sparql_endpoint, "optimized")
+                                if valid_sparqls:
+                                    transformed_questions = [q["transformed"] for q in correct_questions[1:]]
+                                    valid_dialogue = validate_dialogue_output(seed_label, transformed_questions)
                     except Exception as e:
+                        parsing_error = True
                         traceback.print_exc()
                         continue
 
 
-                if json_parsing_error:
+                if parsing_error:
                     errors["json_parsing_error"] = 1
-                    q_chain_trace._span.status_code = StatusCode.JOSN_PARSING_ERROR
+                    json_parsing_error += 1
+                    skip_node = True
+                    q_chain_trace._span.status_code = StatusCode.JSON_ERROR
                 else:
                     if not valid_question:
                         errors["question_validation_error"] = 1
+                        question_validation_error += 1
                         q_chain_trace._span.status_code = (
                             StatusCode.QUESTION_VALIDATION_ERROR
                         )
+                        skip_node = True
                     elif not valid_triples:
                         errors["triple_validation_error"] = 1
+                        triple_validation_error += 1
                         q_chain_trace._span.status_code = (
                             StatusCode.TRIPLES_VALIDATION_ERROR
                         )
+                        skip_node = True
                     elif not valid_sparqls:
                         errors["sparql_validation_error"] = 1
+                        sparql_validation_error += 1
                         q_chain_trace._span.status_code = (
                             StatusCode.SPARQL_VALIDATION_ERROR
                         )
+                        skip_node = True
                     elif not valid_dialogue:
                         errors["dialogue_validation_error"] = 1
+                        dialogue_validation_error += 1
                         q_chain_trace._span.status_code = (
                             StatusCode.DIALOGUE_VALIDATION_ERROR
                         )
+                        skip_node = True
                     else:
                         question_set_dialogue = [correct_questions[0]["original"]] + transformed_questions
                         question_set = [q["original"] for q in correct_questions]
                         answer_queries = [q["sparql"] for q in correct_questions]
-                        triples_used = [q["triple"] for q in correct_questions]
 
                         cb_dict = {
                             "total_tokens": cb.prompt_tokens + cb.completion_tokens,
@@ -1643,10 +1660,19 @@ def generate_dialogues_from_singleshot(
                             "triples": triples_used,
                             "cost": cb_dict,
                             "query_status": answer_status_dict,
-                            "raw_generation": output
                         }
                         benchmark_sample.append(dialogue)
-                        q_chain_trace._span.status_code = StatusCode.SUCCESS
+                        end_time = time.time()
+                        total_time += end_time - start_time
+                        parent_trace.status_code = StatusCode.SUCCESS.name
+                        parent_trace_outputs = {
+                            "dialogue": question_set_dialogue,
+                            "original": question_set,
+                            "queries": answer_queries,
+                            "query_status": answer_status_dict,
+                        }
+                        print(dialogue)
+                        processed_seeds += 1
 
                 
             except Exception as e:
@@ -1656,12 +1682,36 @@ def generate_dialogues_from_singleshot(
             cost["total_tokens"] += (cb.prompt_tokens + cb.completion_tokens)
             cost["prompt_tokens"] += cb.prompt_tokens
             cost["completion_tokens"] += cb.completion_tokens
+        
 
+        if parent_trace is not None:
+            print("####### trace saved ########")
+            parent_trace.add_inputs_and_outputs(
+                inputs=parent_trace_inputs, outputs=parent_trace_outputs
+            )
+            parent_trace._span.end_time_ms = time.time_ns() // 1000
+            parent_trace.log("singleshot-diag-gen-pipeline")
 
-        benchmark = {
-            "seeds_used": idx + 1,
-            "data": benchmark_sample,
-        }
+            # sync with wandb online
+            trigger_sync()
+            # break
+
+        if skip_node is True:
+            # Sample a new node and add it to seed nodes
+            node_added = False
+            while not node_added:
+                try:
+                    new_seed, subgraph = retrieve_one_node_with_subgraph(
+                        sampler, seed.nodetype, kg
+                    )
+                    key = new_seed.label if new_seed.label else new_seed.uri
+                    seed_nodes.append(new_seed)
+                    seednode_to_subgraph_map[key] = subgraph
+                    node_added = True
+                except Exception as e:
+                    print("Exception ", e)
+                    continue
+
         benchmark_analysis = analyze_benchmark_sample(benchmark_sample)
         benchmark = {
             "seeds_used": idx + 1,
@@ -1683,3 +1733,7 @@ def generate_dialogues_from_singleshot(
         directory.mkdir(parents=True, exist_ok=True)
         with open(output_file, "w") as f:
             json.dump(benchmark, f, indent=4)
+        
+        raw_benchmark = os.path.join(directory, "raw_benchmark.json")
+        with open(raw_benchmark, "w") as f:
+            json.dump(raw_benchmark_sample, f, indent=4)

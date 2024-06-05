@@ -1362,7 +1362,7 @@ def singleshot_dialogue_chain(llm):
         original: str
         transformed: str
         sparql: str
-        triple: str
+        triple: List[str]
 
     class QuestionSet(BaseModel):
         output: List[QuestionItem]
