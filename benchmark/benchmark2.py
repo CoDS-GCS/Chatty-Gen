@@ -15,7 +15,7 @@ from analysis import analyze_benchmark_sample
 from tracer import Tracer
 from kg.kg.kg import defrag_uri
 from answer_creation import get_LLM_based_postprocessed
-from answer_validation import validate_query
+from answer_validation import validate_query, validate_query_v2
 from seed_node_extractor.seed_node_selector import SeedNodeSelector
 from prepare_nodes_subgraph import (
     retrieve_one_node_with_subgraph,
@@ -568,6 +568,14 @@ def validate_singleshot_questions_output(seed, questions):
             return False
     return True
 
+def validate_singleshot_questions_output_v2(seed, questions):
+    if seed[-1] == ".":
+        seed = seed[:-1]
+    for question in questions:
+        if seed.lower() not in question["original"].lower():
+            return False
+    return True
+
 def validate_single_questions_output(seed, question):
     if seed[-1] == ".":
         seed = seed[:-1]
@@ -752,7 +760,43 @@ def validate_singleshot_sparql_output(seed, subgraph, output, endpoint, approach
         correct_questions
     )
 
+def validate_singleshot_sparql_output_v2(questions, sparqls, endpoint):
+    correct_questions = list()
+    correct_queries = list()
+    query_results = dict()
+    valid_sparql = True
+    for question, answer_query in zip(questions, sparqls):
+        try:
+            status = validate_query_v2(
+                answer_query,
+                endpoint,
+            )
+            if status in query_results:
+                query_results[status] += 1
+            else:
+                query_results[status] = 1
 
+            if status == "Correct":
+                correct_questions.append(question)
+                correct_queries.append(answer_query)
+        except Exception as e:
+            traceback.print_exc()
+            continue
+    
+    if len(correct_questions) < 3:
+        print(correct_questions)
+        print(query_results)
+        valid_sparql = False
+        query_results = dict()
+        correct_questions = []
+        correct_queries = []
+
+    return (
+        valid_sparql,
+        query_results,
+        correct_questions,
+        correct_queries
+    )
 
 def execute_dialogue_generation_prompt(seed, question_set, parent_trace):
     seed_entity = seed.label if seed.label else seed.uri
@@ -1479,7 +1523,6 @@ def generate_dialogues_from_singleshot(
     processed_seeds = 0
     context_length_limit_error = 0
     question_validation_error = 0
-    triple_validation_error = 0
     sparql_validation_error = 0
     dialogue_validation_error = 0
     json_parsing_error = 0
@@ -1504,6 +1547,7 @@ def generate_dialogues_from_singleshot(
         errors = {}
         skip_node = False
         n = dialogue_size
+        seed_uri = str(seed.uri)
         seed_label = seed.label if seed.label else defrag_uri(str(seed.uri))
 
         parent_trace_inputs = {
@@ -1533,15 +1577,20 @@ def generate_dialogues_from_singleshot(
                 label_subgraph_str = subgraph.get_summarized_graph_str(approach="no_object")
                 query_subgraph_str = subgraph.get_summarized_graph_query_str(approach="no_object")
 
-                prompt = singleshot_dialogue_chain.get("prompt").format(
+                prompt_v1 = singleshot_dialogue_chain.get("prompt").format(
                     n=n,
                     entity=seed_label,
                     label_subgraph=label_subgraph_str,
                     query_subgraph=query_subgraph_str,
                 )
-                print(prompt)
+                prompt_v2 = singleshot_dialogue_chain.get("prompt").format(
+                    n=n,
+                    entity_uri=seed_uri,
+                    entity_label=seed_label,
+                    query_subgraph=query_subgraph_str,
+                )
 
-                chain_inputs = {"prompt": prompt}
+                chain_inputs = {"prompt": prompt_v2}
                 q_chain_trace = Trace(
                     name="Q-Gen-Step",
                     kind="CHAIN",
@@ -1552,7 +1601,7 @@ def generate_dialogues_from_singleshot(
                     },
                 )
 
-                num_tokens = get_num_tokens(prompt)
+                num_tokens = get_num_tokens(prompt_v2)
                 if num_tokens > 4097:
                     q_chain_trace._span.status_code = StatusCode.CONTEXT_LENGTH_ERROR.name
                     q_chain_trace._span.end_time_ms = time.time_ns() // 1000
@@ -1570,38 +1619,29 @@ def generate_dialogues_from_singleshot(
 
                 valid_question = False
                 valid_triples = False
-                retry = 0
                 parsing_error = False
-                while not (valid_question and valid_triples):
-                    retry += 1
-                    if retry == 3:
-                        break
-                    parsing_error = False
-                    try:
-                        llm_result = ch.generate([{"label_subgraph": label_subgraph_str, "query_subgraph": query_subgraph_str, "entity": seed_label, "n": n}], None)
-                        raw_benchmark_sample.append({
-                            "input": prompt,
-                            "generations": llm_result.dict().get('generations'),
-                            "token_usage": llm_result.dict().get('llm_output'),
-                            "n": n
-                        })
-                        output = post_processor(llm_result, chain_inputs, q_chain_trace)
-                        valid_question = validate_singleshot_questions_output(seed_label, output)
-                        print("QUESTION-validation", valid_question)
-                        if valid_question:
-                            valid_triples = validate_singleshot_triples_output(
-                                subgraph, output, "optimized"
-                            )
-                            print("TRIPLES-validation", valid_triples)
-                            if valid_triples:
-                                valid_sparqls, answer_status_dict, triples_used, correct_questions = validate_singleshot_sparql_output(seed, subgraph, output, kg.sparql_endpoint, "optimized")
-                                if valid_sparqls:
-                                    transformed_questions = [q["transformed"] for q in correct_questions[1:]]
-                                    valid_dialogue = validate_dialogue_output(seed_label, transformed_questions)
-                    except Exception as e:
-                        parsing_error = True
-                        traceback.print_exc()
-                        continue
+                try:
+                    # llm_result_v1 = ch.generate([{"label_subgraph": label_subgraph_str, "query_subgraph": query_subgraph_str, "entity": seed_label, "n": n}], None)
+                    llm_result_v2 = ch.generate([{"entity_uri": seed_uri, "query_subgraph": query_subgraph_str, "entity_label": seed_label, "n": n}], None)
+                    raw_benchmark_sample.append({
+                        "input": prompt,
+                        "generations": llm_result_v2.dict().get('generations'),
+                        "token_usage": llm_result_v2.dict().get('llm_output'),
+                        "n": n
+                    })
+                    output = post_processor(llm_result_v2, chain_inputs, q_chain_trace)
+                    questions = output["original"]
+                    valid_question = validate_singleshot_questions_output(seed_label, questions)
+                    print("QUESTION-validation", valid_question)
+                    if valid_question:
+                        sparqls = output["sparql"]
+                        valid_sparqls, answer_status_dict, correct_questions, correct_queries = validate_singleshot_sparql_output_v2(questions, sparqls, kg.sparql_endpoint)
+                        if valid_sparqls:
+                            transformed_questions = output["transformed"][1:]
+                            valid_dialogue = validate_dialogue_output(seed_label, transformed_questions)
+                except Exception as e:
+                    parsing_error = True
+                    traceback.print_exc()
 
 
                 if parsing_error:
@@ -1615,13 +1655,6 @@ def generate_dialogues_from_singleshot(
                         question_validation_error += 1
                         q_chain_trace._span.status_code = (
                             StatusCode.QUESTION_VALIDATION_ERROR
-                        )
-                        skip_node = True
-                    elif not valid_triples:
-                        errors["triple_validation_error"] = 1
-                        triple_validation_error += 1
-                        q_chain_trace._span.status_code = (
-                            StatusCode.TRIPLES_VALIDATION_ERROR
                         )
                         skip_node = True
                     elif not valid_sparqls:
@@ -1639,9 +1672,9 @@ def generate_dialogues_from_singleshot(
                         )
                         skip_node = True
                     else:
-                        question_set_dialogue = [correct_questions[0]["original"]] + transformed_questions
-                        question_set = [q["original"] for q in correct_questions]
-                        answer_queries = [q["sparql"] for q in correct_questions]
+                        question_set_dialogue = transformed_questions
+                        answer_queries = correct_queries
+                        question_set = correct_questions
 
                         cb_dict = {
                             "total_tokens": cb.prompt_tokens + cb.completion_tokens,
@@ -1657,7 +1690,6 @@ def generate_dialogues_from_singleshot(
                             "dialogue": question_set_dialogue,
                             "original": question_set,
                             "queries": answer_queries,
-                            "triples": triples_used,
                             "cost": cb_dict,
                             "query_status": answer_status_dict,
                         }
@@ -1724,7 +1756,6 @@ def generate_dialogues_from_singleshot(
             ),
             "Context Length Error": context_length_limit_error,
             "Question Validation Error": question_validation_error,
-            "Triples Validation Error": triple_validation_error,
             "Sparql Validation Error": sparql_validation_error,
             "Dialogue Validation Error": dialogue_validation_error,
             "Json Error": json_parsing_error

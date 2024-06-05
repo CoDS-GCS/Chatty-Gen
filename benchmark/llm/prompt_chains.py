@@ -1358,19 +1358,24 @@ def get_validate_question_quality(llm):
 def singleshot_dialogue_chain(llm):
     print(llm)
 
-    class QuestionItem(BaseModel):
-        original: str
-        transformed: str
-        sparql: str
-        triple: List[str]
+    # class QuestionItem(BaseModel):
+    #     original: str
+    #     transformed: str
+    #     sparql: str
+    #     triple: List[str]
 
+    # class QuestionSet(BaseModel):
+    #     output: List[QuestionItem]
+    
     class QuestionSet(BaseModel):
-        output: List[QuestionItem]
+        questions: List[str]
+        dialogue: List[str]
+        sparql: List[str]
 
     output_parser = PydanticOutputParser(pydantic_object=QuestionSet)
     format_instructions = output_parser.get_format_instructions()
     
-    PROMPT = PromptTemplate(
+    PROMPT_v1 = PromptTemplate(
         input_variables=[
             "entity",
             "label_subgraph",
@@ -1401,6 +1406,34 @@ def singleshot_dialogue_chain(llm):
         "\n'entity': {entity}\n'n': {n}\n'label triples' : {label_subgraph}\n'query triples' : {query_subgraph}\n{format_instructions}\n\n```json"
         )
     )
+    
+    PROMPT_v2 = PromptTemplate(
+        input_variables=[
+            "entity_uri",
+            "entity_label"
+            "query_subgraph",
+            "n",
+        ],
+        partial_variables={"format_instructions": format_instructions},
+        template = (
+        "You are tasked with generating a set of questions based on provided entities and their corresponding subgraphs. "
+        "Each question will be represented by an instance of the `QuestionSet` class. The process will involve forming both "
+        "standalone and dialogue-contextual questions, and constructing SPARQL queries to retrieve answers from a knowledge graph."
+        "\n\n**Instructions:**\n"
+        "**Inputs:**\n"
+        "- `entity_uri`: A string representing the URI for an entity.\n"
+        "- `entity_label`: A string representing the label for an entity.\n"
+        "- `subgraph`: A list of triples, where each triple contains subject, predicate, and object URIs.\n"
+        "- `n`: An integer representing the number of questions to generate.\n"
+        "\n**QuestionSet Structure:**\n"
+        "- `questions`: The list of original standalone questions based on the entity label and triples.\n"
+        "- `dialogue`: The list of transformed versions of the questions for use in a dialogue, substituting the entity label with a pronoun with the first question being standalone and the rest being transformed.\n"
+        "- `sparql`: The list of SPARQL queries corresponding to the original questions, using the query triples URIs.\n"
+        "\n'entity_uri': {entity_uri}\n'entity_label': {entity_label}\n'n': {n}\n'subgraph': {query_subgraph}\n{format_instructions}\n\n```json"
+        )
+    )
+
+
     llm_conf = {
         'max_new_tokens': 650,
         # 'stop_strings': ["```", "```\n\n", "```\n", "\n```"],
@@ -1411,6 +1444,7 @@ def singleshot_dialogue_chain(llm):
     }
 
     ch = None
+    PROMPT = PROMPT_v2
     if llm["config"] is not None:
         singleshot_chain = LLMChain(
             llm=llm["llm"], 

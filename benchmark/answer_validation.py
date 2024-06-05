@@ -53,6 +53,28 @@ def validate_query(query_string, triples_used, endpoint, subgraph, seed_node_uri
         query_string = get_namespace_prefix() + query_string
         return validate_select_query(query_string, triples_used, endpoint, subgraph, seed_node_uri, approach)
 
+def validate_query_v2(query_string, endpoint):
+    """
+    Returns 0: if the query is executable and correct, 1: query is executable but answer is wrong,
+    2: query is not executable
+    """
+    query_string = get_namespace_prefix() + query_string
+
+    try:
+        result = utils.send_sparql_query(endpoint, query_string)
+        variable_name = result["head"]["vars"][0]
+        endpoint_answers = list()
+        for binding in result["results"]["bindings"]:
+            value = binding.get(variable_name, {}).get('value', None)
+            endpoint_answers.append(value)
+
+        if len(endpoint_answers) == 0:
+            return "In Correct"
+        return "Correct"
+    except Exception as e:
+        traceback.print_exc()
+        print("Error Query ", query_string)
+        return "Syntax Error"
 
 def validate_ask_query(query_string, triples_used, endpoint, subgraph, seed_node_uri):
     """
