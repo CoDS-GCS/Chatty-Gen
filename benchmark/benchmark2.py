@@ -585,7 +585,7 @@ def validate_singleshot_questions_output_v2(seed, questions):
     if seed[-1] == ".":
         seed = seed[:-1]
     for question in questions:
-        if seed.lower() not in question["original"].lower():
+        if seed.lower() not in question.lower():
             return False
     return True
 
@@ -1587,15 +1587,15 @@ def generate_dialogues_from_singleshot(
                     "post_processor"
                 )
 
-                label_subgraph_str = subgraph.get_summarized_graph_str(approach="no_object")
+                # label_subgraph_str = subgraph.get_summarized_graph_str(approach="no_object")
                 query_subgraph_str = subgraph.get_summarized_graph_query_str(approach="no_object")
 
-                prompt_v1 = singleshot_dialogue_chain.get("prompt").format(
-                    n=n,
-                    entity=seed_label,
-                    label_subgraph=label_subgraph_str,
-                    query_subgraph=query_subgraph_str,
-                )
+                # prompt_v1 = singleshot_dialogue_chain.get("prompt").format(
+                #     n=n,
+                #     entity=seed_label,
+                #     label_subgraph=label_subgraph_str,
+                #     query_subgraph=query_subgraph_str,
+                # )
                 prompt_v2 = singleshot_dialogue_chain.get("prompt").format(
                     n=n,
                     entity_uri=seed_uri,
@@ -1644,7 +1644,7 @@ def generate_dialogues_from_singleshot(
                     })
                     output = post_processor(llm_result_v2, chain_inputs, q_chain_trace)
                     questions = output["questions"]
-                    valid_question = validate_singleshot_questions_output(seed_label, questions)
+                    valid_question = validate_singleshot_questions_output_v2(seed_label, questions)
                     print("QUESTION-validation", valid_question)
                     if valid_question:
                         sparqls = output["sparql"]

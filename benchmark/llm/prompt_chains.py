@@ -1474,10 +1474,8 @@ def singleshot_dialogue_chain(llm):
                 trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text[7:], "```")
             else:
                 trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
-            if not('\"output\":' in trimmed_with_backtick_at_end or '"output":' in trimmed_with_backtick_at_end):
-                generation[0].text = "```json\n{\n    \"output\":" + trimmed_with_backtick_at_end[:-4] + "\n}\n```" if len(trimmed_with_backtick_at_end) >= 4 else exec("raise ValueError('error backtick mismatch.')")
-            else:
-                generation[0].text = "```json" + trimmed_with_backtick_at_end
+
+            generation[0].text = "```json" + trimmed_with_backtick_at_end
             print("gen-text: ", generation[0].text)
 
             generation_0_processed = generation[0].text
