@@ -1441,8 +1441,7 @@ def singleshot_dialogue_chain(llm):
         partial_variables={"format_instructions": format_instructions},
         template = (
         "You are tasked with generating a set of questions based on provided entities and their corresponding subgraphs. "
-        "Each question will be represented by an instance of the `QuestionSet` class. The process will involve forming both "
-        "standalone and dialogue-contextual questions, and constructing SPARQL queries to retrieve answers from a knowledge graph."
+        "The process will involve forming both standalone and dialogue-contextual questions, and constructing SPARQL queries to retrieve answers from a knowledge graph."
         "\n\n**Instructions:**\n"
         "**Inputs:**\n"
         "- `entity_label`: A string representing the label for an entity.\n"
