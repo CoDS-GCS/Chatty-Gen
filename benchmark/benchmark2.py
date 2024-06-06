@@ -1544,7 +1544,7 @@ def generate_dialogues_from_singleshot(
 
     
     for idx, seed in enumerate(seed_nodes):
-        if idx > 500:
+        if idx == 200:
             break
         start_time = time.time()
         key = seed.label if seed.label else seed.uri
@@ -1635,14 +1635,15 @@ def generate_dialogues_from_singleshot(
                 parsing_error = False
                 try:
                     # llm_result_v1 = ch.generate([{"label_subgraph": label_subgraph_str, "query_subgraph": query_subgraph_str, "entity": seed_label, "n": n}], None)
-                    llm_result_v2 = ch.generate([{"entity_uri": seed_uri, "query_subgraph": query_subgraph_str, "entity_label": seed_label, "n": n}], None)
+                    # llm_result_v2 = ch.generate([{"entity_uri": seed_uri, "query_subgraph": query_subgraph_str, "entity_label": seed_label, "n": n}], None)
+                    llm_result_v3 = ch.generate([{"query_subgraph": query_subgraph_str, "entity_label": seed_label, "n": n}], None)
                     raw_benchmark_sample.append({
                         "input": prompt,
-                        "generations": llm_result_v2.dict().get('generations'),
-                        "token_usage": llm_result_v2.dict().get('llm_output'),
+                        "generations": llm_result_v3.dict().get('generations'),
+                        "token_usage": llm_result_v3.dict().get('llm_output'),
                         "n": n
                     })
-                    output = post_processor(llm_result_v2, chain_inputs, q_chain_trace)
+                    output = post_processor(llm_result_v3, chain_inputs, q_chain_trace)
                     questions = output["questions"]
                     valid_question = validate_singleshot_questions_output_v2(seed_label, questions)
                     print("QUESTION-validation", valid_question)

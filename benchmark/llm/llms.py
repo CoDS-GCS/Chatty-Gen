@@ -22,7 +22,7 @@ def get_llm_from_config(model_config: LLMInfo):
     llm_callback = None
     try:
         if model_config.model_type == ModelType.OPENAI:
-            llm = OpenAI(model_name=model_config.model_name, temperature=1.5, streaming=False, api_key=model_config.model_apikey)
+            llm = OpenAI(model_name=model_config.model_name, temperature=1.5, streaming=False, api_key=model_config.model_apikey, max_retries=0)
             llm_callback = get_openai_callback
         if model_config.model_type == ModelType.OPENLLM:
             llm = OpenLLM(server_url=model_config.model_endpoint)
