@@ -1454,6 +1454,19 @@ def singleshot_dialogue_chain(llm):
         "\n'entity_label': {entity_label}\n'n': {n}\n'subgraph': {query_subgraph}\n{format_instructions}\n\n```json"
         )
     )
+    
+    PROMPT_v4 = PromptTemplate(
+        input_variables=[
+            "entity_label"
+            "query_subgraph",
+            "n",
+        ],
+        partial_variables={"format_instructions": format_instructions},
+        template = (
+        "### Instruction: Generate a set of questions based on the provided entity and its subgraph. The subgraph is represented as a list of triples. Each question must ask about a fact from the triples in the subgraph and must fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions.  Each standalone question  must include the entity and must be answerable solely from the information in the provided subgraph without explicitly mentioning it. For the generated questions, generate a corresponding dialogue where the first is standalone and subsequent questions with replaced entity with its pronoun. And a list of SPARQL queries that retrieves answers to the questions. Return the following: standalone questions, dialogue, and  SPARQL queries."
+        "\n'entity_label': {entity_label}\n'n': {n}\n'subgraph': {query_subgraph}\n{format_instructions}\n\n```json"
+        )
+    )
 
 
     llm_conf = {
@@ -1466,7 +1479,7 @@ def singleshot_dialogue_chain(llm):
     }
 
     ch = None
-    PROMPT = PROMPT_v3
+    PROMPT = PROMPT_v4
     if llm["config"] is not None:
         singleshot_chain = LLMChain(
             llm=llm["llm"], 
