@@ -773,12 +773,13 @@ def validate_singleshot_sparql_output(seed, subgraph, output, endpoint, approach
         correct_questions
     )
 
-def validate_singleshot_sparql_output_v2(questions, sparqls, endpoint):
+def validate_singleshot_sparql_output_v2(questions, transformed_questions, sparqls, endpoint):
     correct_questions = list()
     correct_queries = list()
+    correct_transformed = list()
     query_results = dict()
     valid_sparql = True
-    for question, answer_query in zip(questions, sparqls):
+    for question, transformed, answer_query in zip(questions, transformed_questions, sparqls):
         try:
             status = validate_query_v2(
                 answer_query,
@@ -792,6 +793,7 @@ def validate_singleshot_sparql_output_v2(questions, sparqls, endpoint):
             if status == "Correct":
                 correct_questions.append(question)
                 correct_queries.append(answer_query)
+                correct_transformed.append(transformed)
         except Exception as e:
             traceback.print_exc()
             continue
@@ -803,11 +805,13 @@ def validate_singleshot_sparql_output_v2(questions, sparqls, endpoint):
         query_results = dict()
         correct_questions = []
         correct_queries = []
+        correct_transformed = []
 
     return (
         valid_sparql,
         query_results,
         correct_questions,
+        correct_transformed,
         correct_queries
     )
 
@@ -1634,6 +1638,8 @@ def generate_dialogues_from_singleshot(
                 valid_triples = False
                 parsing_error = False
                 try:
+                    print("TIME SLEEP of 30.0 seconds")
+                    time.sleep(30)
                     # llm_result_v1 = ch.generate([{"label_subgraph": label_subgraph_str, "query_subgraph": query_subgraph_str, "entity": seed_label, "n": n}], None)
                     # llm_result_v2 = ch.generate([{"entity_uri": seed_uri, "query_subgraph": query_subgraph_str, "entity_label": seed_label, "n": n}], None)
                     llm_result_v3 = ch.generate([{"query_subgraph": query_subgraph_str, "entity_label": seed_label, "n": n}], None)
@@ -1645,81 +1651,92 @@ def generate_dialogues_from_singleshot(
                     })
                     output = post_processor(llm_result_v3, chain_inputs, q_chain_trace)
                     questions = output["questions"]
-                    valid_question = validate_singleshot_questions_output_v2(seed_label, questions)
-                    print("QUESTION-validation", valid_question)
-                    if valid_question:
-                        sparqls = output["sparql"]
-                        valid_sparqls, answer_status_dict, correct_questions, correct_queries = validate_singleshot_sparql_output_v2(questions, sparqls, kg.sparql_endpoint)
-                        if valid_sparqls:
-                            transformed_questions = output["dialogue"]
-                            valid_dialogue = validate_dialogue_output_v2(seed_label, transformed_questions)
+                    transformed_questions = output["dialogue"]
+                    sparqls = output["sparql"]
+                    unequal_length = False
+                    if (len(questions) == len(transformed_questions) == len(sparqls)):
+                        valid_question = validate_singleshot_questions_output_v2(seed_label, questions)
+                        print("QUESTION-validation", valid_question)
+                        if valid_question:
+                            valid_sparqls, answer_status_dict, correct_questions, correct_transformed, correct_queries = validate_singleshot_sparql_output_v2(questions, transformed_questions, sparqls, kg.sparql_endpoint)
+                            if valid_sparqls:
+                                valid_dialogue = validate_dialogue_output_v2(seed_label, transformed_questions)
+                    else:
+                        unequal_length = True
 
                 except Exception as e:
                     parsing_error = True
                     traceback.print_exc()
 
-
-                if parsing_error:
-                    errors["json_parsing_error"] = 1
-                    json_parsing_error += 1
+                if unequal_length == True:
+                    errors["dialogue_validation_error"] = 1
+                    dialogue_validation_error += 1
+                    q_chain_trace._span.status_code = (
+                        StatusCode.DIALOGUE_VALIDATION_ERROR
+                    )
                     skip_node = True
-                    q_chain_trace._span.status_code = StatusCode.JSON_ERROR
                 else:
-                    if not valid_question:
-                        errors["question_validation_error"] = 1
-                        question_validation_error += 1
-                        q_chain_trace._span.status_code = (
-                            StatusCode.QUESTION_VALIDATION_ERROR
-                        )
+                    if parsing_error:
+                        errors["json_parsing_error"] = 1
+                        json_parsing_error += 1
                         skip_node = True
-                    elif not valid_sparqls:
-                        errors["sparql_validation_error"] = 1
-                        sparql_validation_error += 1
-                        q_chain_trace._span.status_code = (
-                            StatusCode.SPARQL_VALIDATION_ERROR
-                        )
-                        skip_node = True
-                    elif not valid_dialogue:
-                        errors["dialogue_validation_error"] = 1
-                        dialogue_validation_error += 1
-                        q_chain_trace._span.status_code = (
-                            StatusCode.DIALOGUE_VALIDATION_ERROR
-                        )
-                        skip_node = True
+                        q_chain_trace._span.status_code = StatusCode.JSON_ERROR
                     else:
-                        question_set_dialogue = transformed_questions
-                        answer_queries = correct_queries
-                        question_set = correct_questions
+                        if not valid_question:
+                            errors["question_validation_error"] = 1
+                            question_validation_error += 1
+                            q_chain_trace._span.status_code = (
+                                StatusCode.QUESTION_VALIDATION_ERROR
+                            )
+                            skip_node = True
+                        elif not valid_sparqls:
+                            errors["sparql_validation_error"] = 1
+                            sparql_validation_error += 1
+                            q_chain_trace._span.status_code = (
+                                StatusCode.SPARQL_VALIDATION_ERROR
+                            )
+                            skip_node = True
+                        elif not valid_dialogue:
+                            errors["dialogue_validation_error"] = 1
+                            dialogue_validation_error += 1
+                            q_chain_trace._span.status_code = (
+                                StatusCode.DIALOGUE_VALIDATION_ERROR
+                            )
+                            skip_node = True
+                        else:
+                            question_set_dialogue = correct_transformed
+                            answer_queries = correct_queries
+                            question_set = correct_questions
 
-                        cb_dict = {
-                            "total_tokens": cb.prompt_tokens + cb.completion_tokens,
-                            "prompt_tokens": cb.prompt_tokens,
-                            "completion_tokens": cb.completion_tokens,
-                            # "successful_requests": cb.successful_requests,
-                            # "total_cost": cb.total_cost
-                        }
-                        # save things here
-                        dialogue = {
-                            "seed_entity": str(seed.uri),
-                            "seed_label": seed_label,
-                            "dialogue": question_set_dialogue,
-                            "original": question_set,
-                            "queries": answer_queries,
-                            "cost": cb_dict,
-                            "query_status": answer_status_dict,
-                        }
-                        benchmark_sample.append(dialogue)
-                        end_time = time.time()
-                        total_time += end_time - start_time
-                        parent_trace.status_code = StatusCode.SUCCESS.name
-                        parent_trace_outputs = {
-                            "dialogue": question_set_dialogue,
-                            "original": question_set,
-                            "queries": answer_queries,
-                            "query_status": answer_status_dict,
-                        }
-                        print(dialogue)
-                        processed_seeds += 1
+                            cb_dict = {
+                                "total_tokens": cb.prompt_tokens + cb.completion_tokens,
+                                "prompt_tokens": cb.prompt_tokens,
+                                "completion_tokens": cb.completion_tokens,
+                                # "successful_requests": cb.successful_requests,
+                                # "total_cost": cb.total_cost
+                            }
+                            # save things here
+                            dialogue = {
+                                "seed_entity": str(seed.uri),
+                                "seed_label": seed_label,
+                                "dialogue": question_set_dialogue,
+                                "original": question_set,
+                                "queries": answer_queries,
+                                "cost": cb_dict,
+                                "query_status": answer_status_dict,
+                            }
+                            benchmark_sample.append(dialogue)
+                            end_time = time.time()
+                            total_time += end_time - start_time
+                            parent_trace.status_code = StatusCode.SUCCESS.name
+                            parent_trace_outputs = {
+                                "dialogue": question_set_dialogue,
+                                "original": question_set,
+                                "queries": answer_queries,
+                                "query_status": answer_status_dict,
+                            }
+                            print(dialogue)
+                            processed_seeds += 1
 
                 
             except Exception as e:
