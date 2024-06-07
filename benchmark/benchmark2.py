@@ -1637,6 +1637,7 @@ def generate_dialogues_from_singleshot(
                 valid_question = False
                 valid_triples = False
                 parsing_error = False
+                unequal_length = False
                 try:
                     print("TIME SLEEP of 30.0 seconds")
                     time.sleep(30)
@@ -1653,7 +1654,6 @@ def generate_dialogues_from_singleshot(
                     questions = output["questions"]
                     transformed_questions = output["dialogue"]
                     sparqls = output["sparql"]
-                    unequal_length = False
                     if (len(questions) == len(transformed_questions) == len(sparqls)):
                         valid_question = validate_singleshot_questions_output_v2(seed_label, questions)
                         print("QUESTION-validation", valid_question)
