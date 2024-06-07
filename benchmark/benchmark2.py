@@ -1543,6 +1543,7 @@ def generate_dialogues_from_singleshot(
     sparql_validation_error = 0
     dialogue_validation_error = 0
     json_parsing_error = 0
+    unequal_lists_error = 0
 
     cost = { "total_tokens": 0, "prompt_tokens": 0, "completion_tokens": 0}
 
@@ -1639,8 +1640,10 @@ def generate_dialogues_from_singleshot(
                 parsing_error = False
                 unequal_length = False
                 try:
-                    print("TIME SLEEP of 30.0 seconds")
-                    time.sleep(30)
+                    # Uncomment when running with Gemini
+                    # print("TIME SLEEP of 30.0 seconds")
+                    # time.sleep(30)
+
                     # llm_result_v1 = ch.generate([{"label_subgraph": label_subgraph_str, "query_subgraph": query_subgraph_str, "entity": seed_label, "n": n}], None)
                     # llm_result_v2 = ch.generate([{"entity_uri": seed_uri, "query_subgraph": query_subgraph_str, "entity_label": seed_label, "n": n}], None)
                     llm_result_v3 = ch.generate([{"query_subgraph": query_subgraph_str, "entity_label": seed_label, "n": n}], None)
@@ -1669,8 +1672,8 @@ def generate_dialogues_from_singleshot(
                     traceback.print_exc()
 
                 if unequal_length == True:
-                    errors["dialogue_validation_error"] = 1
-                    dialogue_validation_error += 1
+                    errors["unequal_lists_error"] = 1
+                    unequal_lists_error += 1
                     q_chain_trace._span.status_code = (
                         StatusCode.DIALOGUE_VALIDATION_ERROR
                     )
@@ -1790,7 +1793,8 @@ def generate_dialogues_from_singleshot(
             "Question Validation Error": question_validation_error,
             "Sparql Validation Error": sparql_validation_error,
             "Dialogue Validation Error": dialogue_validation_error,
-            "Json Error": json_parsing_error
+            "Json Error": json_parsing_error,
+            "unequal Lists Error": unequal_lists_error
         }
         directory = pathlib.Path(output_file).parent
         directory.mkdir(parents=True, exist_ok=True)

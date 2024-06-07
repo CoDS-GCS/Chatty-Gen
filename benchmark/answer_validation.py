@@ -62,11 +62,16 @@ def validate_query_v2(query_string, endpoint):
 
     try:
         result = utils.send_sparql_query(endpoint, query_string)
-        variable_name = result["head"]["vars"][0]
         endpoint_answers = list()
-        for binding in result["results"]["bindings"]:
-            value = binding.get(variable_name, {}).get('value', None)
-            endpoint_answers.append(value)
+        if "vars" in result["head"]:
+            variable_name = result["head"]["vars"][0]
+            for binding in result["results"]["bindings"]:
+                value = binding.get(variable_name, {}).get('value', None)
+                endpoint_answers.append(value)
+        elif "boolean" in result:
+            endpoint_answers.append(result["boolean"])
+        else:
+            return "In Correct"
 
         if len(endpoint_answers) == 0:
             return "In Correct"
