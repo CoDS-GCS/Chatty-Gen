@@ -1476,11 +1476,20 @@ def singleshot_dialogue_chain(llm):
         ],
         partial_variables={"format_instructions": format_instructions},
         template = (
-        "### Instruction: Generate a set of questions, dialogue questions, and sparql queries based on the provided "
-        "entity and its subgraph. Each question must ask about a fact about the entity from the triples in the subgraph and fall into one of the "
-        "following categories: list, count, boolean, wh (open-ended), or date-related questions. The "
-        "dialogue questions have the first question as a standalone, while the entity is replaced with its pronoun in "
-        "subsequent questions. The SPARQL queries  retrieves answers to the questions."
+        "### Instruction: Generate a set of questions, dialogue questions, and sparql queries based on the provided entity and its subgraph. Each question must ask about a fact about the entity from the triples in the subgraph and fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions. The dialogue questions have the first question as a standalone, while the entity is replaced with its pronoun in subsequent questions. The SPARQL queries  retrieves answers to the questions."
+        "\n'entity': {entity_label}\n'n': {n}\n'subgraph': {query_subgraph}\n{format_instructions} \n\n### Response:```json"
+        )
+    )
+
+    PROMPT_v6 = PromptTemplate(
+        input_variables=[
+            "entity_label"
+            "query_subgraph",
+            "n",
+        ],
+        partial_variables={"format_instructions": format_instructions},
+        template = (
+        "### Instruction: Generate a set of questions, a dialogue and sparqls based on the provided entity and its subgraph. The subgraph is represented as a varied list of triples. Each question should be a fact from the triples in the subgraph and fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions.  Each question  should have the entity and be answerable solely from the information in the provided subgraph without explicitly mentioning it. For the generated questions, generate a corresponding dialogue where the first is standalone and subsequent questions with replaced entity with its pronoun. And a list of SPARQL queries that retrieves answers.. Return the following: questions, dialogue, and  SPARQL queries."
         "\n'entity': {entity_label}\n'n': {n}\n'subgraph': {query_subgraph}\n{format_instructions} \n\n### Response:```json"
         )
     )
@@ -1495,7 +1504,7 @@ def singleshot_dialogue_chain(llm):
     }
 
     ch = None
-    PROMPT = PROMPT_v5
+    PROMPT = PROMPT_v6
     if llm["config"] is not None:
         singleshot_chain = LLMChain(
             llm=llm["llm"], 
