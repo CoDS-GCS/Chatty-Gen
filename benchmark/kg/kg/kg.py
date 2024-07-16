@@ -154,6 +154,23 @@ class SubGraph:
         elif self.seed_node == obj_:
             object = obj_.label if obj_.label else defrag_uri(str(obj_.uri))
             return ('', predicate, object)
+    
+    def get_query_triple_representation_for_optimized(self, triple: Tuple[Node, Predicate, Node]):
+        sub_, pred_, obj_ = triple
+        predicate = str(pred_.uri)
+        subject = str(sub_.uri)
+        object = str(obj_.uri)
+        return (subject, predicate, object)
+    
+    def get_query_triple_representation_no_object(self, triple: Tuple[Node, Predicate, Node]):
+        sub_, pred_, obj_ = triple
+        predicate = str(pred_.uri)
+        if self.seed_node == sub_:
+            subject = str(sub_.uri)
+            return (subject, predicate, '')
+        elif self.seed_node == obj_:
+            object = str(obj_.uri)
+            return ('', predicate, object)
 
     def get_triple_with_uris_no_object(self, triple: Tuple[Node, Predicate, Node]):
         sub_, pred_, obj_ = triple
@@ -281,6 +298,18 @@ class SubGraph:
                 triple = self.get_triple_representation_no_object(triple)
             triple_list.append(triple)
         return triple_list
+    
+    def get_summarized_graph_query_str(self, approach):
+        summarized_graph = self.get_summarized_graph()
+        triple_list = []
+        for triple in summarized_graph:
+            if approach == "default":
+                triple = self.get_query_triple_representation_for_optimized(triple)
+            elif approach == "no_object":
+                triple = self.get_query_triple_representation_no_object(triple)
+            triple_list.append(triple)
+        double_quote_triples = [f'("{triple[0]}", "{triple[1]}", "{triple[2]}")' for triple in triple_list]
+        return '[' + ', '.join(double_quote_triples) + ']'
 
 
 @dataclass

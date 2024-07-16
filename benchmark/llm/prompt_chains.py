@@ -1264,23 +1264,22 @@ def get_pronoun_identification_and_substitution_chain_without_example(llm):
 
 def get_validate_question_quality_old(llm):
 
-    n_q_response_schemas = [
+    response_schemas = [
         ResponseSchema(
             name="output", description="valid or not valid", type="string"
         )
     ]
 
-    n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
-        n_q_response_schemas
+    json_output_parser = StructuredOutputParser.from_response_schemas(
+        response_schemas
     )
-    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
+    json_format_instructions = json_output_parser.get_format_instructions()
 
 
-    P_SUB_PROMPT = PromptTemplate(
+    PROMPT = PromptTemplate(
         input_variables=[
             "questions",
         ],
-        # partial_variables={"format_instructions": n_q_json_format_instructions},
         template=""" Given a set of questions about a specified entity, determine the validity of the input based on the following criteria:
         1. The first question must explicitly mention the specified entity and cannot use a pronoun to refer to it.
         2. Subsequent questions should be relevant and appropriately formulated.
@@ -1292,9 +1291,8 @@ def get_validate_question_quality_old(llm):
 
     question_validation_chain = LLMChain(
         llm=llm,
-        prompt=P_SUB_PROMPT,
+        prompt=PROMPT,
         verbose=False,
-        # output_parser=n_q_json_output_parser,
     )
 
     return {
@@ -1303,24 +1301,24 @@ def get_validate_question_quality_old(llm):
 
 def get_validate_question_quality(llm):
 
-    n_q_response_schemas = [
+    response_schemas = [
         ResponseSchema(
             name="output", description="valid or not valid", type="string"
         )
     ]
 
-    n_q_json_output_parser = StructuredOutputParser.from_response_schemas(
-        n_q_response_schemas
+    json_output_parser = StructuredOutputParser.from_response_schemas(
+        response_schemas
     )
-    n_q_json_format_instructions = n_q_json_output_parser.get_format_instructions()
+    json_format_instructions = json_output_parser.get_format_instructions()
 
 
-    P_SUB_PROMPT = PromptTemplate(
+    PROMPT = PromptTemplate(
         input_variables=[
             "entity",
             "dialogue",
         ],
-        partial_variables={"format_instructions": n_q_json_format_instructions},
+        partial_variables={"format_instructions": json_format_instructions},
         template = """
         Given a dialogue comprising a list of questions about the particular entity {entity}, assess whether the dialogue is valid or invalid according to the following guidelines:
         1. The initial question in the dialogue must directly reference the entity itself, avoiding generic references.
@@ -1332,21 +1330,11 @@ def get_validate_question_quality(llm):
         
         output: 
         """
-        # template="""Given an entity and a dialogue (defined as a list of questions) about that entity, determine the dialogue is valid or invalid based on the following criteria:
-        #
-        # 1. The first question in the list should be specific to the entity by mentioning it directly (not a generic entity class).
-        # 2. The subsequent questions from the list must be grammatically correct.
-        #
-        # "entity" : {entity}
-        # "dialogue" : {dialogue}
-        # {format_instructions}
-        #
-        # output: """,
     )
 
     question_validation_chain = LLMChain(
         llm=llm,
-        prompt=P_SUB_PROMPT,
+        prompt=PROMPT,
         verbose=True,
         output_parser=PydanticOutputParser(pydantic_object=Item)
     )
@@ -1354,6 +1342,94 @@ def get_validate_question_quality(llm):
     return {
         "chain": question_validation_chain, "payload": {}
     }
+
+def singleshot_dialogue_chain(llm):
+    class QuestionSet(BaseModel):
+        questions: List[str]
+        dialogue: List[str]
+        sparql: List[str]
+
+    output_parser = PydanticOutputParser(pydantic_object=QuestionSet)
+    format_instructions = output_parser.get_format_instructions()
+    
+    PROMPT_v2 = PromptTemplate(
+        input_variables=[
+            "entity_label"
+            "query_subgraph",
+            "n",
+        ],
+        partial_variables={"format_instructions": format_instructions},
+        template = (
+        "### Instruction: Generate a set of questions, a dialogue and sparqls based on the provided entity and its subgraph. The subgraph is represented as a varied list of triples. Each question should be a fact from the triples in the subgraph and fall into one of the following categories: list, count, boolean, wh (open-ended), or date-related questions.  Each question  should have the entity and be answerable solely from the information in the provided subgraph without explicitly mentioning it. For the generated questions, generate a corresponding dialogue where the first is standalone and subsequent questions with replaced entity with its pronoun. And a list of SPARQL queries that retrieves answers.. Return the following: questions, dialogue, and  SPARQL queries."
+        "\n'entity': {entity_label}\n'n': {n}\n'subgraph': {query_subgraph}\n{format_instructions} \n\n### Response:```json"
+        )
+    )
+
+    llm_conf = {
+        'max_new_tokens': 650,
+        'early_stopping': "```",
+        'do_sample': True,
+    }
+
+    ch = None
+    PROMPT = PROMPT_v2
+    if llm["config"] is not None:
+        singleshot_chain = LLMChain(
+            llm=llm["llm"], 
+            prompt=PROMPT,
+            verbose=True,
+            llm_kwargs=llm_conf,
+            output_parser=output_parser
+        )
+    else:
+        singleshot_chain = LLMChain(
+            llm=llm["llm"], 
+            prompt=PROMPT,
+            verbose=True,
+            output_parser=output_parser
+        )
+
+    ch = singleshot_chain
+    payload = {"stop": "```\n\n"}
+    
+    def post_processor(llm_result, trace_inputs=None, trace=None):
+        for generation in llm_result.generations:
+
+            ## update outputs with before and after for given trace
+            generation_0_original = generation[0].text
+            if generation[0].text.startswith("```json"):
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text[7:], "```")
+            else:
+                trimmed_with_backtick_at_end = trim_after_first_occurrence(generation[0].text, "```")
+
+            generation[0].text = "```json" + trimmed_with_backtick_at_end
+            print("gen-text: ", generation[0].text)
+
+            generation_0_processed = generation[0].text
+            ## update outputs with before and after for given trace
+            if trace:
+                trace_outputs = {
+                    "generated": generation_0_original,
+                    "processed": generation_0_processed
+                }
+                trace.add_inputs_and_outputs(inputs=trace_inputs, outputs=trace_outputs)
+        output = [
+            # Get the text of the top generated string.
+            {
+                ch.output_key: ch.output_parser.parse_result(generation),
+                "full_generation": generation,
+            }
+            for generation in llm_result.generations
+        ]
+        if ch.return_final_only:
+            output = [{ch.output_key: r[ch.output_key]} for r in output]
+        output = output[0][ch.output_key].dict()
+        return output
+
+    return {
+        "chain": singleshot_chain, "payload": {}, "prompt": PROMPT, "payload": payload, "post_processor": post_processor
+    }
+
 
 
 def get_prompt_chains():
@@ -1374,6 +1450,7 @@ def get_prompt_chains():
         "get_validate_question_quality": get_validate_question_quality,
         "n_question_from_summarized_subgraph_chain_without_example_without_triple": get_n_question_from_summarized_subgraph_chain_without_example_without_triple,
         "get_triple_for_question_given_subgraph_chain_without_example":
-        get_triple_for_question_given_subgraph_chain_without_example
+        get_triple_for_question_given_subgraph_chain_without_example,
+        "singleshot_dialogue_chain": singleshot_dialogue_chain
     }
     return prompt_chains
