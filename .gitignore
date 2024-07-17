@@ -23,6 +23,14 @@ benchmark/old
 not_to_push/
 index_data/
 *.jsonl
+benchmark/logs
+benchmark/appendonlydir
+benchmark/results
+*.rdb
+*.csv
+.flake8
+*.tiktoken
+benchmark/run_configs
 evaluations/
 LLMs/
 lcquad_utils/
