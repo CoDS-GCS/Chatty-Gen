@@ -1,0 +1,17 @@
+{
+    "http://yago-knowledge.org/resource/Human": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://yago-knowledge.org/resource/Village": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://yago-knowledge.org/resource/Business": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://yago-knowledge.org/resource/Human_settlement": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://schema.org/Thing": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://schema.org/Person": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://schema.org/Place": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://schema.org/CreativeWork": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://schema.org/Organization": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://schema.org/AdministrativeArea": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://bioschemas.org/Taxon": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://schema.org/Event": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://schema.org/GeoCoordinates": "latitude",
+    "http://schema.org/CivicStructure": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://schema.org/Movie": "http://schema.org/alternateName"
+}

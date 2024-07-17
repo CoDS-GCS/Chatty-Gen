@@ -1,0 +1,7 @@
+{
+    "https://dblp.org/rdf/schema#Publication": "http://www.w3.org/2000/01/rdf-schema#label",
+    "https://dblp.org/rdf/schema#Inproceedings": "http://www.w3.org/2000/01/rdf-schema#label",
+    "https://dblp.org/rdf/schema#Person": "http://www.w3.org/2000/01/rdf-schema#label",
+    "https://dblp.org/rdf/schema#Article": "http://www.w3.org/2000/01/rdf-schema#label",
+    "https://dblp.org/rdf/schema#Informal": "http://www.w3.org/2000/01/rdf-schema#label"
+}
