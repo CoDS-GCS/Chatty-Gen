@@ -1,6 +1,3 @@
-import benchmark.seed_node_extractor.utils as utils
-import benchmark.seed_node_extractor.sampling as sampling
-from benchmark.kg.kg.kg import Node
 from rdflib import URIRef
 import json
 import pdb
@@ -9,8 +6,13 @@ import pandas as pd
 import concurrent.futures
 import os
 import re
-from benchmark.llm.prompt_chains import get_prompt_chains
-from benchmark.llm.llms import llms_dict
+import seed_node_extractor.utils as utils
+import seed_node_extractor.sampling as sampling
+from kg.kg.kg import Node
+from llm.prompt_chains import get_prompt_chains
+from llm.llms import llms_dict
+
+CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 
 llm = llms_dict["question_generation_model"]
 
@@ -165,7 +167,7 @@ class SeedNodeSelector:
     def retrieve_initial_list_top_k(self, kg_name, num_samples=100):
         # def retrieve_initial_list_top_k(self, num_samples=100):
         if self.seed_nodes_file is None:
-            return self.retrieve_initial_list_top_k_from_kg_new(num_samples, kg_name)
+            return self.retrieve_initial_list_top_k_from_kg_new(kg_name, num_samples)
             # return self.retrieve_initial_list_top_k_from_kg(num_samples)
         else:
             seralized_nodes = ""
@@ -193,12 +195,12 @@ class SeedNodeSelector:
                     else:
                         distribution[node_type] = 1
             file_name = f"{kg_name}_types_representative.json"
+            filepath = os.path.join(CURR_DIR, file_name)
             type_to_predicate_map = dict()
-            if os.path.exists(file_name):
-                file = open(file_name, 'r')
+            if os.path.exists(filepath):
+                file = open(filepath, 'r')
                 type_to_predicate_map = json.load(file)
-            nodetype_to_label = self.get_representative_label_per_node_type(distribution, type_to_predicate_map,
-                                                                            file_name)
+            nodetype_to_label = self.get_representative_label_per_node_type(distribution, type_to_predicate_map,filepath)
             return node_samples, distribution, nodetype_to_label
 
     def get_node_for_label_extraction(self, node_type):
@@ -378,7 +380,7 @@ class SeedNodeSelector:
         percentage_df['percentage'] = (percentage_df['Count'] / total_count) * 100
         return percentage_df
 
-    def retrieve_initial_list_top_k_from_kg_new(self, num_samples, kg_name):
+    def retrieve_initial_list_top_k_from_kg_new(self, kg_name, num_samples):
         # pdb.set_trace()
         kg_type_distribution = utils.get_type_distrubution(self.knowledge_graph_uri, self.knowledge_graph_prefix)
         distribution = pd.DataFrame(kg_type_distribution)
@@ -390,11 +392,12 @@ class SeedNodeSelector:
         sample_distribution = sampling.get_sample_distribution(json_object, num_samples)
         print(sample_distribution)
         file_name = f"{kg_name}_types_representative.json"
+        filepath = os.path.join(CURR_DIR, file_name)
         type_to_predicate_map = dict()
-        if os.path.exists(file_name):
-            file = open(file_name, 'r')
+        if os.path.exists(filepath):
+            file = open(filepath, 'r')
             type_to_predicate_map = json.load(file)
-        nodetype_to_label = self.get_representative_label_per_node_type(sample_distribution, type_to_predicate_map,file_name)
+        nodetype_to_label = self.get_representative_label_per_node_type(sample_distribution, type_to_predicate_map,filepath)
         seed_nodes = self.return_seed_nodes_new(sample_distribution, nodetype_to_label)
         return seed_nodes, sample_distribution, nodetype_to_label
 
@@ -404,6 +407,6 @@ if __name__ == '__main__':
     kg_name = 'dbpedia'
     sampler = SeedNodeSelector(kg_name)
     # initial, sample = sampler.retrieve_initial_list_top_k(10)
-    initial, sample, _ = sampler.retrieve_initial_list_top_k_from_kg_new(20, kg_name)
+    initial, sample, _ = sampler.retrieve_initial_list_top_k_from_kg_new(kg_name, 20)
     for seed in initial:
         print(f"{seed.uri}\t{seed.nodetype}")

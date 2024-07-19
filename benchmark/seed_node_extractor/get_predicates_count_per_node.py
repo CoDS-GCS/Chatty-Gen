@@ -9,6 +9,8 @@ import os
 predict_lock = threading.Lock()
 
 
+CURR_DIR = os.path.dirname(os.path.abspath(__file__))
+
 def write_result_to_file(type, data, prefix, types_file):
     human_readable_type = utils.get_file_name_from_type(type)
     output_file = f'index_data/{prefix}/{human_readable_type}.txt'

@@ -1,10 +1,10 @@
 import sys
 # sys.path.append('../benchmark/')
-import benchmark.seed_node_extractor.utils as utils
+import seed_node_extractor.utils as utils
 import json
 import pandas as pd
 import random
-from benchmark.kg.kg.kg import Node
+from kg.kg.kg import Node
 from rdflib import URIRef
 
 

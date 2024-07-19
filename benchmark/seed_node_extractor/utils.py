@@ -3,11 +3,13 @@ import re
 import redis
 import time
 import json
-from benchmark.appconfig import config
-from benchmark.redis_util import RedisClient
+from appconfig import config
+from redis_util import RedisClient
 
 try:
     redis_client = RedisClient(config.redis_url)
+    if not redis_client.ping():
+        redis_client = None
 except Exception as e:
     print("could not create redis client", e)
     redis_client = None

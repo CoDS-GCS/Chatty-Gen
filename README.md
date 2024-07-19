@@ -34,3 +34,42 @@ The system requirements needed to run the codebase.
 2. git clone the repo
 3. `cd repo-directory`
 4. `docker compose up --build`
+
+## Run Experiments
+To run the experiments you need to first configure the run-config yaml file
+
+- example runconfig.yaml looks like below.
+```yaml
+kghost: 206.12.95.86 # knowledge graph sparql endpoint
+kgport: 8894
+redishost: localhost
+outputdir: ./results/docker-test/dblp/singleshot/gpt-3.5-turbo # output directory path for generated benchmark data
+kgname: dblp # the knowledge graph name
+pipeline_type: original
+dataset_size: 1
+dialogue_size: 5
+wandb_project: cov-kg-benchmark
+approach: 
+  - single-shot
+  - subgraph-summarized
+comman_model:
+  model_type: "openai"
+  model_name: "gpt-3.5-turbo"
+  model_endpoint: ""
+  model_apikey: "<OPENAI_API_KEY>"
+use_label: true
+tracing: true
+logging: true
+```
+
+- update `benchmark/appconfig.py` with location of your runconfig.yaml file
+
+### Run experiments without docker
+- activate virtual environment `source .venv/bin/activate`
+- install dependecies `pip install -r requirements.txt`
+- make sure you have updated the `runconfig-yaml` and its path in `benchmark/appconfig.py`
+- run `python3 benchmark/main.py`, will store the generated data at outputdir path in runconfig-yaml
+
+### Run experiments with docker
+- make sure you have updated the `runconfig-yaml` and its path in `benchmark/appconfig.py`
+- run `docker compose up --build`

@@ -34,3 +34,4 @@ benchmark/run_configs
 evaluations/
 LLMs/
 lcquad_utils/
+.july19venv/

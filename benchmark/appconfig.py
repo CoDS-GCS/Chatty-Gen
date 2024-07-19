@@ -168,14 +168,15 @@ class Config:
 
 
 # ## openai model
-print("current_working directory", os.getcwd())
+CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 # yamlfile = "config.yaml"
 # config = Config.from_yaml(yamlfile)
 
 # yamlfile = "./run_configs/yago-comman.yaml"
 # config = Config.from_yaml(yamlfile)
 
-yamlfile = "./run_configs/test_config.yaml"
+yamlfile = "run_configs/test_config.yaml"
+yamlfile = os.path.join(CURR_DIR, yamlfile)
 config = Config.from_yaml(yamlfile)
 
 if config.wandb_project != "":

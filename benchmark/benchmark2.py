@@ -1,7 +1,6 @@
 import sys
 import time
 
-sys.path.append("../")
 import os
 import traceback
 import random
@@ -15,7 +14,7 @@ from analysis import analyze_benchmark_sample
 from kg.kg.kg import defrag_uri
 from answer_creation import get_LLM_based_postprocessed
 from answer_validation import validate_query, validate_query_v2
-from benchmark.seed_node_extractor.seed_node_selector import SeedNodeSelector
+from seed_node_extractor.seed_node_selector import SeedNodeSelector
 from prepare_nodes_subgraph import (
     retrieve_one_node_with_subgraph,
     retrieve_seed_nodes_with_subgraphs_new,

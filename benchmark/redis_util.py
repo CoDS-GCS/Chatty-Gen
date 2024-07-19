@@ -18,6 +18,13 @@ class RedisClient:
                 except:
                     return None
         return cls._instance
+    
+    def ping(self):
+        try:
+            self._r.ping()
+            return True
+        except:
+            return False
 
     def set(self, key, value):
         """

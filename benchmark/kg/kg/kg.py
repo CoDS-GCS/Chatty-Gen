@@ -13,7 +13,7 @@ from typing import Optional, List, Tuple, Dict
 from SPARQLWrapper import SPARQLWrapper, JSON
 from logger import Logger
 from appconfig import config
-from benchmark.seed_node_extractor import utils
+from seed_node_extractor import utils
 from redis_util import RedisClient
 
 CURR_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -356,10 +356,12 @@ class KG:
         self.selection_method = _selection_method
         try:
             self.r = RedisClient(config.redis_url)
+            if not self.r.ping():
+                self.r = None
         except Exception as e:
             print("could not create redis client", e)
             self.r = None
-        # self.logger = Logger().get_logger()
+        self.logger = Logger().get_logger()
         # self.label_predicate_url = self.get_label_predicate_uri(label_predicate)
         # tried with just label suffix as input and finding full url from the kg, but the sparql-endpoint timeout
         self.type_to_predicate_map = type_to_predicate_map
@@ -458,7 +460,7 @@ class KG:
                 caching_answer = self.r.get(_custom_query)
                 if caching_answer:
                     print("@caching layer")
-                    return json.loads(caching_answer)
+                    return caching_answer
                 print("kg cache miss")
             sparql = SPARQLWrapper(self.select_sparql_endpoint())
             sparql.setQuery(_custom_query)

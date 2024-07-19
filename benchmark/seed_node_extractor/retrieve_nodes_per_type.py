@@ -4,6 +4,7 @@ import os
 import pandas as pd
 
 
+CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def write_entities_to_file(type, prefix, results):
     file_name = utils.get_file_name_from_type(type)
