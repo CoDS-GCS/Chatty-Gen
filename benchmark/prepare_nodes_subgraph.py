@@ -7,7 +7,7 @@ import pdb
 
 from func_timeout import func_timeout, FunctionTimedOut
 from kg.kg.kg import DblpKG, YagoKG, DbpediaKG
-from seed_node_extractor import utils
+from benchmark.seed_node_extractor import utils
 from llm.prompt_chains import get_prompt_chains
 
 prompt_chains = get_prompt_chains()

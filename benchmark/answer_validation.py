@@ -1,4 +1,4 @@
-from seed_node_extractor import utils
+from benchmark.seed_node_extractor import utils
 import traceback
 
 

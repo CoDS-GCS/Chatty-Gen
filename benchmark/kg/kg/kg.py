@@ -13,12 +13,12 @@ from typing import Optional, List, Tuple, Dict
 from SPARQLWrapper import SPARQLWrapper, JSON
 from logger import Logger
 from appconfig import config
-from seed_node_extractor import utils
+from benchmark.seed_node_extractor import utils
+from redis_util import RedisClient
 
 CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 
 host = config.kghost
-redis_host = config.redishost
 
 # Custom URI type with validation
 class URI:
@@ -346,7 +346,7 @@ class KG:
     - uses redis cache for saving sparql query results for faster response
     """
 
-    def __init__(self, type_to_predicate_map=None, endpoints=[], redis_host=redis_host, _redis_db_name=0, _verbose=False,
+    def __init__(self, type_to_predicate_map=None, endpoints=[], _verbose=False,
                  _selection_method="select-one"):
         self.verbose = _verbose
         self.endpoints = endpoints
@@ -354,8 +354,12 @@ class KG:
             raise ValueError('Atleast one sparql endpoint required. use endpoints=["some endpoint uri"]')
         self.sparql_endpoint = endpoints[0]
         self.selection_method = _selection_method
-        self.r = redis.Redis(host=redis_host, port=6379, db=_redis_db_name)
-        self.logger = Logger().get_logger()
+        try:
+            self.r = RedisClient(config.redis_url)
+        except Exception as e:
+            print("could not create redis client", e)
+            self.r = None
+        # self.logger = Logger().get_logger()
         # self.label_predicate_url = self.get_label_predicate_uri(label_predicate)
         # tried with just label suffix as input and finding full url from the kg, but the sparql-endpoint timeout
         self.type_to_predicate_map = type_to_predicate_map
@@ -450,12 +454,12 @@ class KG:
         Shoot any custom query and get the SPARQL results as a dictionary
         """
         try:
-            caching_answer = self.r.get(_custom_query)
-            if caching_answer:
-                print("@caching layer")
-                return json.loads(caching_answer)
-            print("kg cache miss")
-#             return None
+            if self.r:
+                caching_answer = self.r.get(_custom_query)
+                if caching_answer:
+                    print("@caching layer")
+                    return json.loads(caching_answer)
+                print("kg cache miss")
             sparql = SPARQLWrapper(self.select_sparql_endpoint())
             sparql.setQuery(_custom_query)
             sparql.setReturnFormat(JSON)
@@ -466,7 +470,8 @@ class KG:
                 print("Retrying With queries")
                 time.sleep(5)
                 caching_answer = sparql.query().convert()
-            self.r.set(_custom_query, json.dumps(caching_answer))
+            if self.r:
+                self.r.set(_custom_query, json.dumps(caching_answer))
             return caching_answer
 
         except Exception as e:

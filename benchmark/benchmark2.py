@@ -12,11 +12,10 @@ from llm.llms import get_num_tokens, llms_dict
 import langchain
 from logger import logger
 from analysis import analyze_benchmark_sample
-from tracer import Tracer
 from kg.kg.kg import defrag_uri
 from answer_creation import get_LLM_based_postprocessed
 from answer_validation import validate_query, validate_query_v2
-from seed_node_extractor.seed_node_selector import SeedNodeSelector
+from benchmark.seed_node_extractor.seed_node_selector import SeedNodeSelector
 from prepare_nodes_subgraph import (
     retrieve_one_node_with_subgraph,
     retrieve_seed_nodes_with_subgraphs_new,
@@ -276,11 +275,9 @@ def generate_dialogues(
     if "subgraph" in approach:
         exp_name = f"{kg_name}_subgraph_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}_{config.pipeline_type}.json")
-        tracer_instance = Tracer(os.path.join(out_dir, "traces", f"{exp_name}.jsonl"))
         generate_dialogues_from_subgraph(
             seed_nodes,
             kg,
-            tracer_instance,
             dialogue_size,
             output_file,
             prompt,
@@ -290,11 +287,9 @@ def generate_dialogues(
     if "subgraph-summarized" in approach:
         exp_name = f"{kg_name}_subgraph_summarized_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}_{config.pipeline_type}.json")
-        tracer_instance = Tracer(os.path.join(out_dir, "traces", f"{exp_name}.jsonl"))
         generate_dialogues_from_summarized_subgraph(
             seed_nodes,
             kg,
-            tracer_instance,
             dialogue_size,
             output_file,
             prompt,
@@ -304,11 +299,9 @@ def generate_dialogues(
     if "single-shot" in approach:
         exp_name = f"{kg_name}_single_shot_{dataset_size}_{dialogue_size}"
         output_file = os.path.join(out_dir, f"{exp_name}_{config.pipeline_type}.json")
-        tracer_instance = Tracer(os.path.join(out_dir, "traces", f"{exp_name}.jsonl"))
         generate_dialogues_from_singleshot(
             seed_nodes,
             kg,
-            tracer_instance,
             dialogue_size,
             output_file,
             prompt,
@@ -320,7 +313,6 @@ def generate_dialogues(
 def generate_dialogues_from_subgraph(
     initial_seed_nodes,
     kg,
-    tracer_instance,
     dialogue_size,
     output_file,
     prompt,
@@ -477,7 +469,6 @@ def generate_dialogues_from_subgraph(
             except Exception as e:
                 traceback.print_exc()
                 logger.info(f"INDEX : {idx} -- ERROR: {idx} : {e} --")
-                tracer_instance.save_to_file()
                 parent_trace.status_code = StatusCode.ERROR
                 parent_trace.status_message = "unknown error occurred"
                 parent_trace._span.end_time_ms = time.time_ns() // 1000
@@ -837,7 +828,6 @@ def execute_dialogue_generation_prompt(seed, question_set, parent_trace):
 def generate_dialogues_from_summarized_subgraph(
     initial_seed_nodes,
     kg,
-    tracer_instance,
     dialogue_size,
     output_file,
     prompt,
@@ -994,7 +984,6 @@ def generate_dialogues_from_summarized_subgraph(
             except Exception as e:
                 traceback.print_exc()
                 logger.info(f"INDEX : {idx} -- ERROR: {idx} : {e} --")
-                tracer_instance.save_to_file()
                 parent_trace.status_code = StatusCode.ERROR
                 parent_trace.status_message = "unknown error occurred"
                 parent_trace._span.end_time_ms = time.time_ns() // 1000
@@ -1461,7 +1450,6 @@ def execute_question_generation_prompt(
 def generate_dialogues_from_singleshot(
     initial_seed_nodes,
     kg,
-    tracer_instance,
     dialogue_size,
     output_file,
     prompt,

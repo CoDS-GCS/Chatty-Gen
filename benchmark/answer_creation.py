@@ -4,7 +4,6 @@ from kg.kg.kg import defrag_uri
 from errors import JsonParsingError, ContextLengthError
 
 llm = llms_dict["sparql_generation_model"]
-print(llm)
 
 prompt_chains = get_prompt_chains()
 get_answer_chain = prompt_chains.get("get_answer_from_question_and_triple_zero_shot")(llm)

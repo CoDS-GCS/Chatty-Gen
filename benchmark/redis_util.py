@@ -1,17 +1,22 @@
 import redis
 import json
-from appconfig import config
+# from appconfig import config
 from threading import Lock
+import traceback
 
 class RedisClient:
     _instance = None
     _lock = Lock()
 
-    def __new__(cls, *args, **kwargs):
+    def __new__(cls, url, *args, **kwargs):
         with cls._lock:
             if cls._instance is None:
                 cls._instance = super().__new__(cls)
-                cls._instance._r = redis.Redis(host=config.redishost, port=config.redisport, db=0)
+                try:
+                    cls._instance._r = redis.Redis.from_url(url)
+                    cls._instance._r.ping()
+                except:
+                    return None
         return cls._instance
 
     def set(self, key, value):
@@ -34,6 +39,7 @@ class RedisClient:
             return True
         except Exception as e:
             print(f"Error setting value in Redis: {e}")
+            print(traceback.format_exc())
             return False
 
     def get(self, key):
@@ -61,4 +67,5 @@ class RedisClient:
                 return None
         except Exception as e:
             print(f"Error getting value from Redis: {e}")
+            print(traceback.format_exc())
             return None

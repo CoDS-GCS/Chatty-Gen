@@ -1,6 +1,6 @@
 import sys
-sys.path.append('../benchmark/')
-import seed_node_extractor.utils as utils
+# sys.path.append('../benchmark/')
+import benchmark.seed_node_extractor.utils as utils
 import json
 import pandas as pd
 import random

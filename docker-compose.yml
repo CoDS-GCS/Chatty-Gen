@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  benchmark_service:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8899:8899'
+    volumes:
+      - ./benchmark:/app/benchmark
+    environment:
+      - REDIS_SERVER=redis_service
+    networks:
+      - benchmark_network
+
+  redis_service:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+
+networks:
+  benchmark_network:

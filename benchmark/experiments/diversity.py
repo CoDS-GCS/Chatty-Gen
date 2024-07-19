@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
-from seed_node_extractor import utils, sampling
+from benchmark.seed_node_extractor import utils, sampling
 import numpy as np
 from collections import OrderedDict
 

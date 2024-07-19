@@ -6,7 +6,14 @@ import json
 from benchmark.appconfig import config
 from benchmark.redis_util import RedisClient
 
-redis_client = RedisClient()
+try:
+    redis_client = RedisClient(config.redis_url)
+except Exception as e:
+    print("could not create redis client", e)
+    redis_client = None
+
+
+
 
 
 excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://www.w3.org/2002/07/owl#sameAs',
@@ -56,31 +63,27 @@ def execute_sparql_query(endpoint_url, query):
 
     # Check if the response is cached
     cache_key = f"{endpoint_url}_{query}"
-    # print(cache_key)
-    cached_result = redis_client.get(cache_key)
-    if cached_result:
-        # print("Result found in cache.")
-        return 200, cached_result
-
-    print("cache miss")
+    if redis_client:
+        cached_result = redis_client.get(cache_key)
+        if cached_result:
+            # print("Result found in cache.")
+            return 200, cached_result
 
     headers = {
         'Content-Type': 'application/sparql-query',
         'Accept': 'application/json'
     }
-
     params = {
         'query': query,
     }
-
-#     return 404, "ERROR"
 
     response = requests.get(endpoint_url, headers=headers, params=params)
 
     if response.status_code == 200:
         # Cache the response
-        redis_client.set(cache_key, json.dumps(response.json()))
-        print("Result cached.")
+        if redis_client:
+            redis_client.set(cache_key, json.dumps(response.json()))
+            print("Result cached.")
         return response.status_code, response.json()
     else:
         print(f"Error: {response.status_code}")

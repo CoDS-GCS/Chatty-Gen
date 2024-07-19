@@ -62,6 +62,7 @@ class Config:
     # redis
     redishost: str = "localhost"
     redisport: int = 6379
+    redis_url: str = "redis://default:admin@localhost:6379/0"
 
     # wandb
     wandb_project: str = "cov-kg-benchmark-27april"
@@ -167,16 +168,16 @@ class Config:
 
 
 # ## openai model
+print("current_working directory", os.getcwd())
 # yamlfile = "config.yaml"
 # config = Config.from_yaml(yamlfile)
 
 # yamlfile = "./run_configs/yago-comman.yaml"
 # config = Config.from_yaml(yamlfile)
 
-yamlfile = "./run_configs/dblp-comman.yaml"
+yamlfile = "./run_configs/test_config.yaml"
 config = Config.from_yaml(yamlfile)
 
 if config.wandb_project != "":
     os.environ["WANDB_PROJECT"] = config.wandb_project
     os.environ["WANDB_MODE"] = "offline"
-print(config)

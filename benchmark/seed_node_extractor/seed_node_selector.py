@@ -1,5 +1,5 @@
-import seed_node_extractor.utils as utils
-import seed_node_extractor.sampling as sampling
+import benchmark.seed_node_extractor.utils as utils
+import benchmark.seed_node_extractor.sampling as sampling
 from benchmark.kg.kg.kg import Node
 from rdflib import URIRef
 import json
