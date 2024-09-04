@@ -20,6 +20,7 @@ prompt: 1
 use_label: true
 tracing: true
 logging: true
+seed_nodes_file: "seed_nodes.txt"
 
   # model_type: "openllm"
   # model_name: "codellama-13b"
