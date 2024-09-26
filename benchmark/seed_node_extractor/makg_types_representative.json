@@ -1,0 +1,6 @@
+{
+    "https://makg.org/class/Author": "http://xmlns.com/foaf/0.1/name",
+    "https://makg.org/class/Paper": "http://purl.org/dc/terms/title",
+    "https://makg.org/class/JournalArticle": "http://purl.org/dc/terms/title",
+    "https://makg.org/class/Citation": "http://purl.org/spar/c4o/hasContext"
+}
