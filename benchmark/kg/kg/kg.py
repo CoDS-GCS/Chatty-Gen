@@ -775,3 +775,52 @@ class DbpediaKG(KG):
     def schema_extractor(self, seed_node: Node) -> NodeSchema:
         """based on the nodetype of seed_node and already parsed schma"""
         return self.parsed_schema.get(seed_node.nodetype)
+
+class MAKGKG(KG):
+    def __init__(self, label_predicate=None, rdf_schema_file=os.path.join(CURR_DIR, "dbpedia_rdf_schema.nt"),
+                 # rdf_format="nt", endpoints=["http://206.12.95.86:8890/sparql/", "http://dbpedia.org/sparql/", "http://live.dbpedia.org/sparql/"]):
+                 rdf_format="nt", endpoints=[f"http://{host}:8890/sparql/"]):
+        super().__init__(label_predicate, endpoints)
+        # Additional attributes or initialization specific to DBPedia
+        allowed_formats = ["nt", "xml", "n3", "trix"]
+        if not rdf_format in allowed_formats:
+            raise ValueError("invalid rdf_format, please provide any of these ")
+        self.schema = Graph()
+        self.schema.parse(rdf_schema_file, format=rdf_format)
+        self.rdfs_namespace = RDFS
+        self.class_namespace = OWL
+        self._classes = None
+        self._parsed_schema = None
+
+    @property
+    def parsed_schema(self):
+        if self._parsed_schema is None:
+            self.parse_rdf_schema_to_dict()
+        return self._parsed_schema
+
+    @property
+    def classes(self):
+        if self._classes is None:
+            self.parse_schema_classes()
+        return self._classes
+
+    def parse_rdf_schema_to_dict(self):
+        if not self._classes:
+            self.parse_schema_classes()
+        self._parsed_schema = {}
+        for class_, class_node in self._classes.items():
+            class_out_preds = []
+            for out_p in list(self.schema.subjects(self.rdfs_namespace.domain, class_)):
+                class_out_preds.extend(
+                    [(out_p, x) for x in list(self.schema.objects(out_p, self.rdfs_namespace.range))]
+                )
+            class_in_preds = []
+            for in_p in list(self.schema.subjects(self.rdfs_namespace.range, class_)):
+                class_in_preds.extend(
+                    [(in_p, x) for x in list(self.schema.objects(in_p, self.rdfs_namespace.domain))]
+                )
+            class_in_preds = [(Predicate(uri=p), Node(uri=x, nodetype=x)) for p, x in class_in_preds]
+            class_out_preds = [(Predicate(uri=p), Node(uri=x, nodetype=x)) for p, x in class_out_preds]
+            # if (len(class_out_preds) > 0) and (len(class_in_preds) > 0):
+            self._parsed_schema[class_] = NodeSchema(node=class_node, in_preds=class_in_preds,
+                                                     out_preds=class_out_preds)

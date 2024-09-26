@@ -224,7 +224,7 @@ class SeedNodeSelector:
                 for binding in result["results"]["bindings"]:
                     entity_type = binding.get('ent', {}).get('type', None)
                     predicate = binding.get('p', {}).get('value', None)
-                    if entity_type == 'literal' and predicate not in predicates:
+                    if (entity_type == 'literal' or entity_type == 'typed-literal') and predicate not in predicates:
                         predicates.append(predicate)
 
                 try:
@@ -404,7 +404,7 @@ class SeedNodeSelector:
 
 
 if __name__ == '__main__':
-    kg_name = 'dbpedia'
+    kg_name = 'makg'
     sampler = SeedNodeSelector(kg_name)
     # initial, sample = sampler.retrieve_initial_list_top_k(10)
     initial, sample, _ = sampler.retrieve_initial_list_top_k_from_kg_new(kg_name, 20)
