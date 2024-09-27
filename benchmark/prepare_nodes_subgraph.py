@@ -6,7 +6,7 @@ import re
 import pdb
 
 from func_timeout import func_timeout, FunctionTimedOut
-from kg.kg.kg import DblpKG, YagoKG, DbpediaKG
+from kg.kg.kg import DblpKG, YagoKG, DbpediaKG, MAKGKG
 from seed_node_extractor import utils
 from llm.prompt_chains import get_prompt_chains
 
@@ -37,7 +37,7 @@ def perform_operation_new(kg, seed):
     return subgraph
 
 def get_kg_instance(kg_name):
-    kgs = {"yago": YagoKG, "dblp": DblpKG, "dbpedia": DbpediaKG}
+    kgs = {"yago": YagoKG, "dblp": DblpKG, "dbpedia": DbpediaKG, "makg": MAKGKG}
     kg = kgs.get(kg_name, None)
     if kg is None:
         raise ValueError(f"kg : {kg_name} not supported")

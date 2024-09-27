@@ -39,7 +39,7 @@ host = config.kghost
 knowledge_graph_to_uri = {
     "dbpedia": (f"http://{host}:8890/sparql", "dbpedia"),
     # "lc_quad": "http://206.12.95.86:8891/sparql",
-    "microsoft_academic": (f"http://{host}:8890/sparql", "makg"),
+    "makg": (f"http://{host}:8890/sparql", "makg"),
     "yago": (f"http://{host}:8892/sparql", "schema"),
     "dblp": (f"http://{host}:8894/sparql", "dblp"),
 }
@@ -54,7 +54,7 @@ def sparql_results_to_dataframe(results, kg):
         if (kg in type and type not in
                 ['http://dbpedia.org/ontology/Image', 'http://schema.org/GeoCoordinates',
                  'http://dbpedia.org/ontology/CareerStation', 'http://dbpedia.org/ontology/TimePeriod',
-                 'http://bioschemas.org/Taxon']):
+                 'http://bioschemas.org/Taxon', 'https://makg.org/class/Citation']):
             data.append({'Type': type, 'Count': count})
 
     return data
