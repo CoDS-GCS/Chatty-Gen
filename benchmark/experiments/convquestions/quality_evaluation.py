@@ -77,11 +77,14 @@ def evaluate(llm, sleep):
     chatty_gen_score = 0
     conv_score = 0
     counter = 0
+    logging_result = list()
+
     for chatty_gen, conv in zip(chatty_gen_questions, convquestions):
-        print(counter)
         counter += 1
+        log_obj = {'Chatty_Gen_dialogue': chatty_gen, 'ConvQuestions_dialogue': conv}
         chatty_gen_first_chain = create_prompt_chatty_gen_setA(llm)
         chatty_gen_last_chain = create_prompt_chatty_gen_setB(llm)
+
         result_1 = chatty_gen_first_chain.generate([{"conv_questions": conv, "chatty_gen_questions": chatty_gen}], None)
         result_1 = result_1.generations[0][0].text.lower()
         if sleep:
@@ -92,12 +95,22 @@ def evaluate(llm, sleep):
             time.sleep(30)
         if result_1 == result_2:
             tie = tie + 1
+            log_obj['result'] = 'Tie'
         elif "set a" in result_1 and "set b" in result_2:
             chatty_gen_score = chatty_gen_score + 1
+            log_obj['result'] = 'Chatty_Gen'
         elif "set b" in result_1 and "set a" in result_2:
             conv_score = conv_score + 1
+            log_obj['result'] = 'ConvQuestions'
         else:
             print("Error ", result_1, result_2)
+        print(counter)
+        logging_result.append(log_obj)
+
+        with open("Evaluation.json", "w") as f:
+            output = {'Results': logging_result,
+                      'Analysis': {'Tie': tie, 'ConvQuestions': conv_score, 'Chatty_Gen': chatty_gen_score}}
+            json.dump(output, f, indent=4)
     return tie, chatty_gen_score, conv_score
 
 
