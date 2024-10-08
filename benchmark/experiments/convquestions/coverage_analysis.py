@@ -3,6 +3,18 @@ from collections import OrderedDict
 import matplotlib.pyplot as plt
 import numpy as np
 
+def remove_small_percentages(distribution, limit=1):
+    keys_to_remove = list()
+    output = dict()
+
+    for key, value in distribution.items():
+        if round(value, 0) < limit:
+            keys_to_remove.append(key)
+
+    for key, value in distribution.items():
+        if key not in keys_to_remove:
+            output[key] = value
+    return output
 
 def plot_chart_one_bar(our_data):
     our_data = OrderedDict(sorted(our_data.items(), key=lambda item: item[1], reverse=True))
@@ -84,5 +96,6 @@ if __name__ == '__main__':
     file_name = 'test_set_ALL.json'
     distribution = process_file(file_name)
     distribution = group_and_get_percentage(distribution)
+    distribution = remove_small_percentages(distribution)
     plot_chart_one_bar(distribution)
     print(distribution)
