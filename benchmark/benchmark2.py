@@ -999,6 +999,8 @@ def generate_dialogues_from_summarized_subgraph(
                     new_seed, subgraph = retrieve_one_node_with_subgraph(
                         sampler, seed.nodetype, kg
                     )
+                    if new_seed is None:
+                        break
                     key = new_seed.label if new_seed.label else new_seed.uri
                     seed_nodes.append(new_seed)
                     seednode_to_subgraph_map[key] = subgraph

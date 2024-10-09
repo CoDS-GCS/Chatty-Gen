@@ -44,7 +44,7 @@ def plot_chart_one_bar(our_data):
         ax.text(i - bar_width, value + 0.1, str(int(round(value, 0))), ha='center', va='bottom',  fontsize=values_font_size)
 
     # Set labels and title
-    ax.set_ylabel('Count', fontsize=font_size)
+    ax.set_ylabel('Percentage', fontsize=font_size)
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=45, ha='right', fontsize=font_size)
     ax.legend(loc='upper right', fontsize=values_font_size)

@@ -180,13 +180,21 @@ class SeedNodeSelector:
                      f"{seralized_nodes}"
                      "} ?entity rdf:type ?type}")
             result = utils.send_sparql_query(self.knowledge_graph_uri, query)
+
+            file_name = f"{kg_name}_types_representative.json"
+            filepath = os.path.join(CURR_DIR, file_name)
+            type_to_predicate_map = dict()
+            if os.path.exists(filepath):
+                file = open(filepath, 'r')
+                type_to_predicate_map = json.load(file)
+
             processed_nodes = set()
             node_samples = list()
             distribution = dict()
             for binding in result["results"]["bindings"]:
                 node = binding.get('entity', {}).get('value', None)
                 node_type = binding.get('type', {}).get('value', None).strip()
-                if node not in processed_nodes:
+                if node not in processed_nodes and node_type in type_to_predicate_map:
                     node_samples.append(
                         Node(uri=URIRef(node), nodetype=URIRef(node_type)))
                     processed_nodes.add(node)
@@ -194,12 +202,7 @@ class SeedNodeSelector:
                         distribution[node_type] += 1
                     else:
                         distribution[node_type] = 1
-            file_name = f"{kg_name}_types_representative.json"
-            filepath = os.path.join(CURR_DIR, file_name)
-            type_to_predicate_map = dict()
-            if os.path.exists(filepath):
-                file = open(filepath, 'r')
-                type_to_predicate_map = json.load(file)
+
             nodetype_to_label = self.get_representative_label_per_node_type(distribution, type_to_predicate_map,filepath)
             return node_samples, distribution, nodetype_to_label
 
@@ -276,7 +279,8 @@ class SeedNodeSelector:
             # return self.sample_node_from_kg(node_type)
         else:
             if self.seed_file_index >= len(self.file_seeds):
-                raise Exception("Seed file index is out of range")
+                print("Seed file index is out of range")
+                return None
             node = self.file_seeds[self.seed_file_index].strip()
             self.seed_file_index += 1
             query = f"SELECT ?type where {{ <{node}> rdf:type ?type }}"

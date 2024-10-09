@@ -132,7 +132,8 @@ def retrieve_seed_nodes_with_subgraphs_new(kg_name, dataset_size, sampler, use_l
             subgraph = func_timeout(300, perform_operation_new, args=(kg, seed))
             if subgraph is None:
                 new_node = sampler.sample_node(seed.nodetype)
-                seed_nodes.append(new_node)
+                if new_node is not None:
+                    seed_nodes.append(new_node)
                 continue
             # print(f"{seed.uri}\t{seed.label}")
             key = seed.label if seed.label else seed.uri
@@ -197,6 +198,8 @@ def retrieve_one_node_with_subgraph(sampler, node_type, kg):
     while not valid:
         try:
             seed_node = sampler.sample_node(node_type)
+            if seed_node is None:
+                return None, None
             # subgraph = func_timeout(300, perform_operation, args=(kg, seed_node))
             subgraph = func_timeout(300, perform_operation_new, args=(kg, seed_node))
             valid = subgraph is not None
