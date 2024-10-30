@@ -33,11 +33,13 @@ excluded_predicates = ['http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http:
                        'http://xmlns.com/foaf/0.1/name', 'http://dbpedia.org/ontology/wikiPageRevisionID',
                        'http://dbpedia.org/ontology/wikiPageRedirects', 'http://www.w3.org/ns/prov#wasDerivedFrom',
                        'http://dbpedia.org/ontology/wikiPageExternalLink', 'http://dbpedia.org/ontology/abstract',
-                       'http://xmlns.com/foaf/0.1/depiction']
+                       'http://xmlns.com/foaf/0.1/depiction', 'http://xmlns.com/foaf/0.1/homepage',
+                       'http://dbpedia.org/property/no', 'https://dbpedia.org/property/oclc',
+                       'http://dbpedia.org/ontology/dcc']
 
 host = config.kghost
 knowledge_graph_to_uri = {
-    "dbpedia": (f"http://{host}:8890/sparql", "dbpedia"),
+    "dbpedia": ("http://206.12.95.86:8890/sparql", "dbpedia"),
     # "lc_quad": "http://206.12.95.86:8891/sparql",
     "makg": (f"http://{host}:8890/sparql", "makg"),
     "yago": (f"http://{host}:8892/sparql", "schema"),
