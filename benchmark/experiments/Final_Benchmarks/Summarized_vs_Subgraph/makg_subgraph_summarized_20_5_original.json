@@ -1,0 +1,1378 @@
+{
+    "seeds_used": 25,
+    "data": [
+        {
+            "seed_entity": "https://makg.org/entity/245811625",
+            "seed_label": "Donald E. Thrall",
+            "dialogue": [
+                "What is the total number of citations associated with Donald E. Thrall?",
+                "How many papers has he created?",
+                "Is he ranked for a particular field?",
+                "Is he a creator of content?",
+                "To how may paper families does hes belong?"
+            ],
+            "original": [
+                "What is the total number of citations associated with Donald E. Thrall?",
+                "How many papers has Donald E. Thrall created?",
+                "Is Donald E. Thrall ranked for a particular field?",
+                "Is Donald E. Thrall a creator of content?",
+                "To how many paper families does Donald E. Thrall belong?"
+            ],
+            "queries": [
+                "SELECT (SUM(?citationCount) AS ?totalCitations) WHERE { <https://makg.org/entity/245811625> <https://makg.org/property/citationCount> ?citationCount . }",
+                "SELECT ?paperCount WHERE { <https://makg.org/entity/245811625> <https://makg.org/property/paperCount> ?paperCount . }",
+                "ASK { <https://makg.org/entity/245811625> <https://makg.org/property/rank> ?o }",
+                "ASK { <https://makg.org/entity/245811625> <http://purl.org/dc/terms/creator> ?creator }",
+                "SELECT ?countPaperFamilies WHERE { <https://makg.org/entity/245811625> <https://makg.org/property/paperFamilyCount> ?countPaperFamilies. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245811625",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245811625",
+                        "https://makg.org/property/paperCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245811625",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245811625",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245811625",
+                        "https://makg.org/property/paperFamilyCount",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1966,
+                "prompt_tokens": 1476,
+                "completion_tokens": 490
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245813134",
+            "seed_label": "Laura Medina-Puche",
+            "dialogue": [
+                "How many papers did Laura Medina-Puche create?",
+                "What is her citation count?",
+                "Is she a creator?",
+                "What is her rank?",
+                "How many paper families does she have?"
+            ],
+            "original": [
+                "How many papers did Laura Medina-Puche create?",
+                "What is the citation count of Laura Medina-Puche?",
+                "Is Laura Medina-Puche a creator?",
+                "What is the rank of Laura Medina-Puche?",
+                "How many paper families does Laura Medina-Puche have?"
+            ],
+            "queries": [
+                "SELECT ?paperCount WHERE { <https://makg.org/entity/245813134> <https://makg.org/property/paperCount> ?paperCount . }",
+                "SELECT ?citationCount\nWHERE {\n  <https://makg.org/entity/245813134> <https://makg.org/property/citationCount> ?citationCount .\n}",
+                "ASK { <https://makg.org/entity/245813134> <http://purl.org/dc/terms/creator> ?creator }",
+                "SELECT ?rank WHERE { <https://makg.org/entity/245813134> <https://makg.org/property/rank> ?rank . }",
+                "SELECT ?count WHERE { <https://makg.org/entity/245813134> <https://makg.org/property/paperFamilyCount> ?count .}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245813134",
+                        "https://makg.org/property/paperCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245813134",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245813134",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245813134",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245813134",
+                        "https://makg.org/property/paperFamilyCount",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1900,
+                "prompt_tokens": 1448,
+                "completion_tokens": 452
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245813557",
+            "seed_label": "Andojo Wurjanto",
+            "dialogue": [
+                "How many papers has Andojo Wurjanto created?",
+                "What is his rank?",
+                "Is he a member of any group?",
+                "Who is his creator?"
+            ],
+            "original": [
+                "How many papers has Andojo Wurjanto created?",
+                "What is the rank of Andojo Wurjanto?",
+                "Is Andojo Wurjanto a member of any group?",
+                "Who is the creator of Andojo Wurjanto?"
+            ],
+            "queries": [
+                "SELECT ?paperCount WHERE { <https://makg.org/entity/245813557> <https://makg.org/property/paperCount> ?paperCount. }",
+                "SELECT ?rank WHERE { <https://makg.org/entity/245813557> <https://makg.org/property/rank> ?rank }",
+                "ASK { <https://makg.org/entity/245813557> <http://www.w3.org/ns/org#memberOf> ?group . }",
+                "SELECT ?creator WHERE { <https://makg.org/entity/245813557> <http://purl.org/dc/terms/creator> ?creator . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245813557",
+                        "https://makg.org/property/paperCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245813557",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245813557",
+                        "http://www.w3.org/ns/org#memberOf",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245813557",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1950,
+                "prompt_tokens": 1490,
+                "completion_tokens": 460
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245814409",
+            "seed_label": "James Tuot",
+            "dialogue": [
+                "What is the rank of James Tuot?",
+                "Who is his creator?",
+                "How many citations does he have?",
+                "How many papers did he create?",
+                "How many family papers does he have?"
+            ],
+            "original": [
+                "What is the rank of James Tuot?",
+                "Who is the creator of James Tuot?",
+                "How many citations does James Tuot have?",
+                "How many papers did James Tuot create?",
+                "How many family papers does James Tuot have?"
+            ],
+            "queries": [
+                "SELECT ?rank WHERE { <https://makg.org/entity/245814409> <https://makg.org/property/rank> ?rank . }",
+                "SELECT ?creator WHERE { <https://makg.org/entity/245814409> <http://purl.org/dc/terms/creator> ?creator . }",
+                "SELECT ?citationCount WHERE { <https://makg.org/entity/245814409> <https://makg.org/property/citationCount> ?citationCount .}",
+                "SELECT ?paperCount WHERE { <https://makg.org/entity/245814409> <https://makg.org/property/paperCount> ?paperCount . }",
+                "SELECT ?count WHERE { <https://makg.org/entity/245814409> <https://makg.org/property/paperFamilyCount> ?count . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245814409",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245814409",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245814409",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245814409",
+                        "https://makg.org/property/paperCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245814409",
+                        "https://makg.org/property/paperFamilyCount",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1852,
+                "prompt_tokens": 1422,
+                "completion_tokens": 430
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245814833",
+            "seed_label": "Joseph Shatzmiller",
+            "dialogue": [
+                "What is the citation count for Joseph Shatzmiller?",
+                "How many papers did he create?",
+                "Is he a creator of something?",
+                "What is the total paper family count associated with him?"
+            ],
+            "original": [
+                "What is the citation count for Joseph Shatzmiller?",
+                "How many papers did Joseph Shatzmiller create?",
+                "Is Joseph Shatzmiller a creator of something?",
+                "What is the total paper family count associated with Joseph Shatzmiller?"
+            ],
+            "queries": [
+                "SELECT ?citationCount WHERE { <https://makg.org/entity/245814833> <https://makg.org/property/citationCount> ?citationCount . }",
+                "SELECT ?paperCount WHERE { <https://makg.org/entity/245814833> <https://makg.org/property/paperCount> ?paperCount .}",
+                "ASK WHERE { <https://makg.org/entity/245814833> <http://purl.org/dc/terms/creator> ?something .}",
+                "SELECT ?count WHERE { <https://makg.org/entity/245814833> <https://makg.org/property/paperFamilyCount> ?count .}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245814833",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245814833",
+                        "https://makg.org/property/paperCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245814833",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245814833",
+                        "https://makg.org/property/paperFamilyCount",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1921,
+                "prompt_tokens": 1469,
+                "completion_tokens": 452
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245816608",
+            "seed_label": "Arne Hilck",
+            "dialogue": [
+                "What did Arne Hilck create?",
+                "How many citations does he have?",
+                "How many paper families does he have?",
+                "What is his rank?"
+            ],
+            "original": [
+                "What did Arne Hilck create?",
+                "How many citations does Arne Hilck have?",
+                "How many paper families does Arne Hilck have?",
+                "What is the rank of Arne Hilck?"
+            ],
+            "queries": [
+                "SELECT ?object WHERE { <https://makg.org/entity/245816608> <http://purl.org/dc/terms/created> ?object .}",
+                "SELECT ?count \nWHERE { \n<https://makg.org/entity/245816608> <https://makg.org/property/citationCount> ?count \n}",
+                "SELECT ?count WHERE { <https://makg.org/entity/245816608> <https://makg.org/property/paperFamilyCount> ?count . }",
+                "SELECT ?rank WHERE { <https://makg.org/entity/245816608> <https://makg.org/property/rank> ?rank . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245816608",
+                        "http://purl.org/dc/terms/created",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245816608",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245816608",
+                        "https://makg.org/property/paperFamilyCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245816608",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1864,
+                "prompt_tokens": 1426,
+                "completion_tokens": 438
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245820370",
+            "seed_label": "Nasronudin Nasronudin",
+            "dialogue": [
+                "What is the rank of Nasronudin Nasronudin?",
+                "How many papers does he have?",
+                "How many paper families does he have?",
+                "Is he a creator?"
+            ],
+            "original": [
+                "What is the rank of Nasronudin Nasronudin?",
+                "How many papers does Nasronudin Nasronudin have?",
+                "How many paper families does Nasronudin Nasronudin have?",
+                "Is Nasronudin Nasronudin a creator?"
+            ],
+            "queries": [
+                "SELECT ?rank WHERE { <https://makg.org/entity/245820370> <https://makg.org/property/rank> ?rank . }",
+                "SELECT  ?paperCount WHERE { <https://makg.org/entity/245820370>  <https://makg.org/property/paperCount>  ?paperCount}",
+                "SELECT ?paperFamilyCount \nWHERE { \n  <https://makg.org/entity/245820370> <https://makg.org/property/paperFamilyCount> ?paperFamilyCount \n}",
+                "ASK { <https://makg.org/entity/245820370> <http://purl.org/dc/terms/creator> ?o }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245820370",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245820370",
+                        "https://makg.org/property/paperCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245820370",
+                        "https://makg.org/property/paperFamilyCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245820370",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1998,
+                "prompt_tokens": 1511,
+                "completion_tokens": 487
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185136",
+            "seed_label": "Theories of the Firm Through Duality",
+            "dialogue": [
+                "What is the publication date of Theories of the Firm Through Duality?",
+                "Who is the creator of it?",
+                "How many citations does it have?",
+                "What is the rank of it?"
+            ],
+            "original": [
+                "What is the publication date of Theories of the Firm Through Duality?",
+                "Who is the creator of Theories of the Firm Through Duality?",
+                "How many citations does Theories of the Firm Through Duality have?",
+                "What is the rank of Theories of the Firm Through Duality?"
+            ],
+            "queries": [
+                "SELECT ?publicationDate WHERE { <https://makg.org/entity/6185136> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?publicationDate . }",
+                "SELECT ?creator WHERE { <https://makg.org/entity/6185136> <http://purl.org/dc/terms/creator> ?creator . }",
+                "SELECT ?citationCount WHERE { <https://makg.org/entity/6185136> <https://makg.org/property/citationCount> ?citationCount . }",
+                "SELECT ?rank WHERE { <https://makg.org/entity/6185136> <https://makg.org/property/rank> ?rank }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185136",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185136",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185136",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185136",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2988,
+                "prompt_tokens": 2258,
+                "completion_tokens": 730
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185192",
+            "seed_label": "Customer Service and Logistics",
+            "dialogue": [
+                "What is the publication date of Customer Service and Logistics?",
+                "How many citations does they have?",
+                "Who is the creator of them?",
+                "What discipline do they belong to?"
+            ],
+            "original": [
+                "What is the publication date of Customer Service and Logistics?",
+                "How many citations does Customer Service and Logistics have?",
+                "Who is the creator of Customer Service and Logistics?",
+                "What discipline does Customer Service and Logistics belong to?"
+            ],
+            "queries": [
+                "SELECT ?publicationDate WHERE { <https://makg.org/entity/6185192> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?publicationDate . }",
+                "SELECT ?count WHERE { <https://makg.org/entity/6185192> <https://makg.org/property/citationCount> ?count . }",
+                "SELECT ?creator WHERE { <https://makg.org/entity/6185192> <http://purl.org/dc/terms/creator> ?creator . }",
+                "SELECT ?discipline WHERE { <https://makg.org/entity/6185192> <http://purl.org/spar/fabio/hasDiscipline> ?discipline .}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185192",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185192",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185192",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185192",
+                        "http://purl.org/spar/fabio/hasDiscipline",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1947,
+                "prompt_tokens": 1495,
+                "completion_tokens": 452
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185242",
+            "seed_label": "Pitch/tension device",
+            "dialogue": [
+                "What is the publication date of the Pitch/tension device?",
+                "How many citations does it have?",
+                "Does it have any patents?",
+                "Who is the creator of it?"
+            ],
+            "original": [
+                "What is the publication date of the Pitch/tension device?",
+                "How many citations does the Pitch/tension device have?",
+                "Does the Pitch/tension device have any patents?",
+                "Who is the creator of the Pitch/tension device?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE { <https://makg.org/entity/6185242> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?date .}",
+                "SELECT ?citationCount WHERE { <https://makg.org/entity/6185242> <https://makg.org/property/citationCount> ?citationCount . }",
+                "ASK WHERE {<https://makg.org/entity/6185242> <http://purl.org/spar/fabio/hasPatentNumber> ?patent .\n}",
+                "SELECT ?creator WHERE { <https://makg.org/entity/6185242> <http://purl.org/dc/terms/creator> ?creator .}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185242",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185242",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185242",
+                        "http://purl.org/spar/fabio/hasPatentNumber",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185242",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2002,
+                "prompt_tokens": 1540,
+                "completion_tokens": 462
+            },
+            "query_status": {
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185342",
+            "seed_label": "Coping with Complications",
+            "dialogue": [
+                "What is the publication date of Coping with Complications?",
+                "How many references does it have?",
+                "Does it have a DOI?",
+                "What is the starting page of it?",
+                "Who is the publisher of it?"
+            ],
+            "original": [
+                "What is the publication date of Coping with Complications?",
+                "How many references does Coping with Complications have?",
+                "Does Coping with Complications have a DOI?",
+                "What is the starting page of Coping with Complications?",
+                "Who is the publisher of Coping with Complications?"
+            ],
+            "queries": [
+                "\nSELECT ?publicationDate\nWHERE {\n  <https://makg.org/entity/6185342> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?publicationDate .\n}",
+                "SELECT ?count\nWHERE {\n\t<https://makg.org/entity/6185342> <https://makg.org/property/referenceCount> ?count\n}",
+                "ASK WHERE { <https://makg.org/entity/6185342> <http://purl.org/spar/datacite/doi> ?DOI . }",
+                "SELECT ?startingPage WHERE { <https://makg.org/entity/6185342> <http://prismstandard.org/namespaces/basic/2.0/startingPage> ?startingPage . }",
+                "SELECT ?publisher WHERE { <https://makg.org/entity/6185342> <http://purl.org/dc/terms/publisher> ?publisher . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185342",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185342",
+                        "https://makg.org/property/referenceCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185342",
+                        "http://purl.org/spar/datacite/doi",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185342",
+                        "http://prismstandard.org/namespaces/basic/2.0/startingPage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185342",
+                        "http://purl.org/dc/terms/publisher",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2107,
+                "prompt_tokens": 1641,
+                "completion_tokens": 466
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185516",
+            "seed_label": "Impairment of the production of delta sleep in anorectic adolescents.",
+            "dialogue": [
+                "What is the publication date of Impairment of the production of delta sleep in anorectic adolescents.?",
+                "'Does it recommend anything?'",
+                "'What is the DOI of it?'",
+                "'What discipline does it belong to?'"
+            ],
+            "original": [
+                "What is the publication date of Impairment of the production of delta sleep in anorectic adolescents.?",
+                "Does Impairment of the production of delta sleep in anorectic adolescents. recommend anything?",
+                "What is the DOI of Impairment of the production of delta sleep in anorectic adolescents.?",
+                "What discipline does Impairment of the production of delta sleep in anorectic adolescents. belong to?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE {<https://makg.org/entity/6185516> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?date .}",
+                "ASK WHERE {\n            <https://makg.org/entity/6185516> <https://makg.org/property/recommends> ?propertyValue .\n        }\n    ",
+                "SELECT ?doi WHERE { <https://makg.org/entity/6185516> <http://purl.org/spar/datacite/doi> ?doi . }",
+                "\n\t\tSELECT ?discipline \n\t\tWHERE {\n\t\t\t<https://makg.org/entity/6185516> <http://purl.org/spar/fabio/hasDiscipline> ?discipline .\n\t\t}\n\t"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185516",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185516",
+                        "https://makg.org/property/recommends",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185516",
+                        "http://purl.org/spar/datacite/doi",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185516",
+                        "http://purl.org/spar/fabio/hasDiscipline",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3618,
+                "prompt_tokens": 2727,
+                "completion_tokens": 891
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185603",
+            "seed_label": "ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME",
+            "dialogue": [
+                "What is the publication date of the ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME?",
+                "How many times has it been cited?",
+                "Does it have a URL?",
+                "Who created it?",
+                "What is the estimated citation count for it?"
+            ],
+            "original": [
+                "What is the publication date of the ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME?",
+                "How many times has the ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME been cited?",
+                "Does the ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME have a URL?",
+                "who created the ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME?",
+                "What is the estimated citation count for the ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE { <https://makg.org/entity/6185603> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?date .}",
+                "SELECT (SUM(?citationCount) AS ?totalCitations) WHERE { <https://makg.org/entity/6185603> <https://makg.org/property/citationCount> ?citationCount }",
+                "ASK WHERE { <https://makg.org/entity/6185603> <http://purl.org/spar/fabio/hasURL> ?url .}",
+                "SELECT ?creator_name\nWHERE { <https://makg.org/entity/6185603> <http://purl.org/dc/terms/creator> ?creator_name }",
+                "SELECT ?citation_count WHERE { <https://makg.org/entity/6185603> <https://makg.org/property/citationCount> ?citation_count .}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185603",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185603",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185603",
+                        "http://purl.org/spar/fabio/hasURL",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185603",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185603",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2494,
+                "prompt_tokens": 1844,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185782",
+            "seed_label": "Chernobyl's legacy",
+            "dialogue": [
+                "What is the publication date of Chernobyl's legacy?",
+                "How many disciplines is it associated with?",
+                "Who is the creator of it?",
+                "Is it recommended?",
+                "What is the rank of it?"
+            ],
+            "original": [
+                "What is the publication date of Chernobyl's legacy?",
+                "How many disciplines is Chernobyl's legacy associated with?",
+                "Who is the creator of Chernobyl's legacy?",
+                "Is Chernobyl's legacy recommended?",
+                "What is the rank of Chernobyl's legacy?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE {<https://makg.org/entity/6185782> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?date}",
+                "SELECT (COUNT(?discipline) AS ?count) WHERE { <https://makg.org/entity/6185782> <http://purl.org/spar/fabio/hasDiscipline> ?discipline }",
+                "SELECT ?creator WHERE { <https://makg.org/entity/6185782> <http://purl.org/dc/terms/creator> ?creator }",
+                "ASK WHERE { <https://makg.org/entity/6185782> <https://makg.org/property/recommends> ?o . }",
+                "SELECT ?rank WHERE { <https://makg.org/entity/6185782> <https://makg.org/property/rank> ?rank . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185782",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185782",
+                        "http://purl.org/spar/fabio/hasDiscipline",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185782",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185782",
+                        "https://makg.org/property/recommends",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185782",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2829,
+                "prompt_tokens": 2129,
+                "completion_tokens": 700
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185956",
+            "seed_label": "Practicing Patient-Centered Care",
+            "dialogue": [
+                "What is the publication date of Practicing Patient-Centered Care?",
+                "Is it recommended?",
+                "In which journal does it appear?",
+                "What is the DOI of it?"
+            ],
+            "original": [
+                "What is the publication date of Practicing Patient-Centered Care?",
+                "Is Practicing Patient-Centered Care recommended?",
+                "In which journal does Practicing Patient-Centered Care appear?",
+                "What is the DOI of Practicing Patient-Centered Care?"
+            ],
+            "queries": [
+                "SELECT ?publicationDate WHERE { <https://makg.org/entity/6185956> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?publicationDate . }",
+                "ASK WHERE { <https://makg.org/entity/6185956> <https://makg.org/property/recommends> ?o . }",
+                "SELECT ?journal WHERE { <https://makg.org/entity/6185956> <https://makg.org/property/appearsInJournal> ?journal }",
+                "SELECT ?DOI WHERE { <https://makg.org/entity/6185956> <http://purl.org/spar/datacite/doi> ?DOI.}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185956",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185956",
+                        "https://makg.org/property/recommends",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185956",
+                        "https://makg.org/property/appearsInJournal",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185956",
+                        "http://purl.org/spar/datacite/doi",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3013,
+                "prompt_tokens": 2316,
+                "completion_tokens": 697
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245821527",
+            "seed_label": "Paul C. Trampont",
+            "dialogue": [
+                "How many papers did Paul C. Trampont create?",
+                "What is the citation count for him?",
+                "What is his rank?",
+                "Is he a member of any group?",
+                "Who created something related to him?"
+            ],
+            "original": [
+                "How many papers did Paul C. Trampont create?",
+                "What is the citation count for Paul C. Trampont?",
+                "What is the rank of Paul C. Trampont?",
+                "Is Paul C. Trampont a member of any group?",
+                "Who created something related to Paul C. Trampont?"
+            ],
+            "queries": [
+                "SELECT ?paperCount WHERE {<https://makg.org/entity/245821527> <https://makg.org/property/paperCount> ?paperCount .}",
+                "SELECT ?citationCount WHERE { <https://makg.org/entity/245821527> <https://makg.org/property/citationCount> ?citationCount .}",
+                "SELECT ?rank WHERE { <https://makg.org/entity/245821527> <https://makg.org/property/rank> ?rank . }",
+                "ASK WHERE { <https://makg.org/entity/245821527> <http://www.w3.org/ns/org#memberOf> ?o }",
+                "\nSELECT ?creator \nWHERE {\n  <https://makg.org/entity/245821527> <http://purl.org/dc/terms/creator> ?creator \n}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245821527",
+                        "https://makg.org/property/paperCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245821527",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245821527",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245821527",
+                        "http://www.w3.org/ns/org#memberOf",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245821527",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2662,
+                "prompt_tokens": 1976,
+                "completion_tokens": 686
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245821579",
+            "seed_label": "Laura Chioma",
+            "dialogue": [
+                "What is the citation count associated with Laura Chioma?",
+                "Does she have any paper Family Count?",
+                "What is her rank?",
+                "Is she a creator?"
+            ],
+            "original": [
+                "What is the citation count associated with Laura Chioma?",
+                "Does Laura Chioma have any paper Family Count?",
+                "What is the rank of Laura Chioma?",
+                "Is Laura Chioma a creator?"
+            ],
+            "queries": [
+                "SELECT ?citationCount WHERE { <https://makg.org/entity/245821579> <https://makg.org/property/citationCount> ?citationCount . }",
+                "ASK WHERE { <https://makg.org/entity/245821579> <https://makg.org/property/paperFamilyCount> ?paperFamilyCount . }",
+                "SELECT ?rank WHERE { <https://makg.org/entity/245821579> <https://makg.org/property/rank> ?rank }",
+                "ASK {<https://makg.org/entity/245821579> <http://purl.org/dc/terms/creator> ?o}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245821579",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245821579",
+                        "https://makg.org/property/paperFamilyCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245821579",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245821579",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3197,
+                "prompt_tokens": 2350,
+                "completion_tokens": 847
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185790",
+            "seed_label": "Algorithms for fusion of multiple sensors having unknown error distributions",
+            "dialogue": [
+                "What is the publication Date of Algorithms for fusion of multiple sensors having unknown error distributions?",
+                "How many citations does it have?",
+                "Does it have any recommended articles?",
+                "What is its rank?",
+                "What are the discipline categories associated with it?"
+            ],
+            "original": [
+                "What is the publication Date of Algorithms for fusion of multiple sensors having unknown error distributions?",
+                "How many citations does Algorithms for fusion of multiple sensors having unknown error distributions have?",
+                "Does Algorithms for fusion of multiple sensors having unknown error distributions have any recommended articles?",
+                "What is the rank of Algorithms for fusion of multiple sensors having unknown error distributions?",
+                "What are the discipline categories associated with Algorithms for fusion of multiple sensors having unknown error distributions?"
+            ],
+            "queries": [
+                "SELECT ?publicationDate WHERE { <https://makg.org/entity/6185790> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?publicationDate }",
+                "SELECT ?count WHERE { <https://makg.org/entity/6185790> <https://makg.org/property/citationCount> ?count . }",
+                "ASK WHERE { <https://makg.org/entity/6185790> <https://makg.org/property/recommends> ?recommendedArticle .}",
+                "SELECT ?rank WHERE { <https://makg.org/entity/6185790> <https://makg.org/property/rank> ?rank . }",
+                "SELECT ?category WHERE { <https://makg.org/entity/6185790> <http://purl.org/spar/fabio/hasDiscipline> ?category . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185790",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185790",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185790",
+                        "https://makg.org/property/recommends",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185790",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185790",
+                        "http://purl.org/spar/fabio/hasDiscipline",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2211,
+                "prompt_tokens": 1669,
+                "completion_tokens": 542
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6186439",
+            "seed_label": "Doppler ultrasonography in the diagnosis of giant cell arteritis.",
+            "dialogue": [
+                "What is the publication date of Doppler ultrasonography in the diagnosis of giant cell arteritis.?",
+                "How many keywords are associated with it?",
+                "Does it have a URL available?",
+                "In which journal does it appear?",
+                "Who is the creator of it?"
+            ],
+            "original": [
+                "What is the publication date of Doppler ultrasonography in the diagnosis of giant cell arteritis.?",
+                "How many keywords are associated with Doppler ultrasonography in the diagnosis of giant cell arteritis.?",
+                "Does Doppler ultrasonography in the diagnosis of giant cell arteritis. have a URL available?",
+                "In which journal does Doppler ultrasonography in the diagnosis of giant cell arteritis. appear?",
+                "Who is the creator of Doppler ultrasonography in the diagnosis of giant cell arteritis.?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE { <https://makg.org/entity/6186439> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?date . }",
+                "SELECT (COUNT(?keyword) as ?countKeyword) WHERE { <https://makg.org/entity/6186439> <http://prismstandard.org/namespaces/basic/2.0/keyword> ?keyword . }",
+                "ASK WHERE { <https://makg.org/entity/6186439> <http://purl.org/spar/fabio/hasURL> ?url . }",
+                "SELECT ?journal WHERE { <https://makg.org/entity/6186439> <https://makg.org/property/appearsInJournal> ?journal .}",
+                "SELECT ?creatorName WHERE { <https://makg.org/entity/6186439> <http://purl.org/dc/terms/creator> ?creatorName . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6186439",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186439",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186439",
+                        "http://purl.org/spar/fabio/hasURL",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186439",
+                        "https://makg.org/property/appearsInJournal",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186439",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4521,
+                "prompt_tokens": 3326,
+                "completion_tokens": 1195
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6186688",
+            "seed_label": "Variations on the shapley value",
+            "dialogue": [
+                "What is the publication Date of the entity Variations on the shapley value?",
+                "Who is the creator of it?",
+                "How many citations does it have?",
+                "What is its rank?",
+                "What is the discipline associated with it?"
+            ],
+            "original": [
+                "What is the publication Date of the entity Variations on the shapley value?",
+                "Who is the creator of the entity Variations on the shapley value?",
+                "How many citations does the entity Variations on the shapley value have?",
+                "What is the rank of the entity Variations on the shapley value?",
+                "What is the discipline associated with the entity Variations on the shapley value?"
+            ],
+            "queries": [
+                "SELECT ?publicationDate WHERE { <https://makg.org/entity/6186688> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?publicationDate . }",
+                "SELECT ?creator WHERE { <https://makg.org/entity/6186688> <http://purl.org/dc/terms/creator> ?creator . }",
+                "SELECT ?citationCount \n WHERE { \n <https://makg.org/entity/6186688> <https://makg.org/property/citationCount> ?citationCount . \n}",
+                "SELECT ?rank WHERE { <https://makg.org/entity/6186688> <https://makg.org/property/rank> ?rank . }",
+                "SELECT ?discipline WHERE { <https://makg.org/entity/6186688> <http://purl.org/spar/fabio/hasDiscipline> ?discipline }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6186688",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186688",
+                        "http://purl.org/dc/terms/creator",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186688",
+                        "https://makg.org/property/citationCount",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186688",
+                        "https://makg.org/property/rank",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186688",
+                        "http://purl.org/spar/fabio/hasDiscipline",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2227,
+                "prompt_tokens": 1715,
+                "completion_tokens": 512
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 32,
+            "How many": 22,
+            "Is he": 6,
+            "To how": 1,
+            "Is she": 2,
+            "Who is": 9,
+            "What did": 1,
+            "What discipline": 1,
+            "Does it": 5,
+            "'Does it": 1,
+            "'What is": 1,
+            "'What discipline": 1,
+            "Who created": 2,
+            "Is it": 2,
+            "In which": 2,
+            "Does she": 1,
+            "What are": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 2463.35,
+                "prompt_tokens": 1861.4,
+                "completion_tokens": 601.95
+            },
+            "Minimum": {
+                "total_tokens": 1852,
+                "prompt_tokens": 1422,
+                "completion_tokens": 430
+            },
+            "Maximum": {
+                "total_tokens": 4521,
+                "prompt_tokens": 3326,
+                "completion_tokens": 1195
+            },
+            "Total": {
+                "total_tokens": 49267,
+                "prompt_tokens": 37228,
+                "completion_tokens": 12039
+            }
+        },
+        "execution": {
+            "Correct": 90,
+            "In Correct": 8,
+            "Syntax Error": 1
+        }
+    },
+    "cost": {
+        "total_tokens": 63897,
+        "prompt_tokens": 44707,
+        "completion_tokens": 19190
+    },
+    "total_time": 219.16337156295776,
+    "average_time": 10.958168578147887,
+    "Context Length Error": 0,
+    "Question Validation Error": 2,
+    "Question Json Error": 0,
+    "Triples Validation Error": 0,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 3,
+    "Sparql Json Error": 0,
+    "Dialogue Validation Error": 0,
+    "Dialogue Json Error": 0
+}

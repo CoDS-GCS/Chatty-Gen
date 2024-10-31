@@ -1,0 +1,1381 @@
+{
+    "seeds_used": 38,
+    "data": [
+        {
+            "seed_entity": "http://dbpedia.org/resource/Antony_Cheng",
+            "seed_label": "Antony Cheng",
+            "dialogue": [
+                "What is Antony Cheng's gender?",
+                "When did he begin skating?",
+                "What is his height?",
+                "Where is his birth place?"
+            ],
+            "original": [
+                "What is Antony Cheng's gender?",
+                "When did Antony Cheng begin skating?",
+                "What is the height of Antony Cheng?",
+                "Where is Antony Cheng's birth place?"
+            ],
+            "queries": [
+                "SELECT ?gender WHERE { <http://dbpedia.org/resource/Antony_Cheng> <http://xmlns.com/foaf/0.1/gender> ?gender . }",
+                "SELECT ?date WHERE { <http://dbpedia.org/resource/Antony_Cheng> <http://dbpedia.org/property/beganskating> ?date . }",
+                "SELECT ?height WHERE { <http://dbpedia.org/resource/Antony_Cheng> <http://dbpedia.org/ontology/height> ?height . }",
+                "SELECT ?birthPlace WHERE { <http://dbpedia.org/resource/Antony_Cheng> <http://dbpedia.org/property/birthPlace> ?birthPlace }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Antony_Cheng",
+                        "http://xmlns.com/foaf/0.1/gender",
+                        "male"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Antony_Cheng",
+                        "http://dbpedia.org/property/beganskating",
+                        "2005"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Antony_Cheng",
+                        "http://dbpedia.org/ontology/height",
+                        "1.67"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Antony_Cheng",
+                        "http://dbpedia.org/property/birthPlace",
+                        "Vancouver, British Columbia, Canada"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2188,
+                "prompt_tokens": 1708,
+                "completion_tokens": 480
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Bello_Babatounde",
+            "seed_label": "Bello Babatounde",
+            "dialogue": [
+                "What is the gender of Bello Babatounde?",
+                "When was he born?",
+                "Where was he born?",
+                "What is his occupation?",
+                "What is his surname?"
+            ],
+            "original": [
+                "What is the gender of Bello Babatounde?",
+                "When was Bello Babatounde born?",
+                "Where was Bello Babatounde born?",
+                "What is the occupation of Bello Babatounde?",
+                "What is the surname of Bello Babatounde?"
+            ],
+            "queries": [
+                "SELECT ?gender WHERE { <http://dbpedia.org/resource/Bello_Babatounde> <http://xmlns.com/foaf/0.1/gender> ?gender }",
+                "SELECT ?birthDate WHERE { <http://dbpedia.org/resource/Bello_Babatounde> <http://dbpedia.org/ontology/birthDate> ?birthDate }",
+                "SELECT ?birthPlace WHERE{\n\t<http://dbpedia.org/resource/Bello_Babatounde> <http://dbpedia.org/ontology/birthPlace> ?birthPlace .\n}",
+                "SELECT ?occupation WHERE { <http://dbpedia.org/resource/Bello_Babatounde> <http://purl.org/dc/terms/description> ?occupation . }",
+                "SELECT ?surname WHERE { <http://dbpedia.org/resource/Bello_Babatounde> <http://xmlns.com/foaf/0.1/surname> ?surname }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Bello_Babatounde",
+                        "http://xmlns.com/foaf/0.1/gender",
+                        "male"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Bello_Babatounde",
+                        "http://dbpedia.org/ontology/birthDate",
+                        "1989-10-6"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Bello_Babatounde",
+                        "http://dbpedia.org/ontology/birthPlace",
+                        "http://dbpedia.org/resource/Esan_North-East"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Bello_Babatounde",
+                        "http://purl.org/dc/terms/description",
+                        "Footballer"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Bello_Babatounde",
+                        "http://xmlns.com/foaf/0.1/surname",
+                        "Babatounde"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2012,
+                "prompt_tokens": 1522,
+                "completion_tokens": 490
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Jeff_Stinco",
+            "seed_label": "Jeff Stinco",
+            "dialogue": [
+                "What is the gender of Jeff Stinco?",
+                "When was he born?",
+                "Where was he born?",
+                "What is his description?",
+                "What is his surname?"
+            ],
+            "original": [
+                "What is the gender of Jeff Stinco?",
+                "When was Jeff Stinco born?",
+                "Where was Jeff Stinco born?",
+                "What is the description of Jeff Stinco?",
+                "What is the surname of Jeff Stinco?"
+            ],
+            "queries": [
+                "SELECT ?gender WHERE { <http://dbpedia.org/resource/Jeff_Stinco> <http://xmlns.com/foaf/0.1/gender> ?gender . }",
+                "SELECT ?birthdate WHERE { <http://dbpedia.org/resource/Jeff_Stinco> <http://dbpedia.org/ontology/birthDate> ?birthdate } ",
+                "SELECT ?birthPlace WHERE { <http://dbpedia.org/resource/Jeff_Stinco> <http://dbpedia.org/ontology/birthPlace> ?birthPlace . }",
+                "SELECT ?description WHERE { <http://dbpedia.org/resource/Jeff_Stinco> <http://purl.org/dc/terms/description> ?description .}",
+                "SELECT ?surname WHERE { <http://dbpedia.org/resource/Jeff_Stinco> <http://xmlns.com/foaf/0.1/surname> ?surname }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Jeff_Stinco",
+                        "http://xmlns.com/foaf/0.1/gender",
+                        "male"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Jeff_Stinco",
+                        "http://dbpedia.org/ontology/birthDate",
+                        "1978-8-22"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Jeff_Stinco",
+                        "http://dbpedia.org/ontology/birthPlace",
+                        "http://dbpedia.org/resource/Montreal"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Jeff_Stinco",
+                        "http://purl.org/dc/terms/description",
+                        "Musician"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Jeff_Stinco",
+                        "http://xmlns.com/foaf/0.1/surname",
+                        "Stinco"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1889,
+                "prompt_tokens": 1469,
+                "completion_tokens": 420
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Michael_Manning_(fetish_artist)",
+            "seed_label": "Michael Manning",
+            "dialogue": [
+                "What is Michael Manning's nationality?",
+                "'When was he born?'",
+                "'What is his area of expertise?'",
+                "'Where was he born?'"
+            ],
+            "original": [
+                "What is Michael Manning's nationality?",
+                "When was Michael Manning born?",
+                "What is Michael Manning's area of expertise?",
+                "Where was Michael Manning born?"
+            ],
+            "queries": [
+                "SELECT ?nationality WHERE { <http://dbpedia.org/resource/Michael_Manning_(fetish_artist)> <http://dbpedia.org/property/nationality> ?nationality.}",
+                "SELECT ?birthDate WHERE { <http://dbpedia.org/resource/Michael_Manning_(fetish_artist)> <http://dbpedia.org/property/birthDate> ?birthDate . }",
+                "SELECT ?expertise WHERE { <http://dbpedia.org/resource/Michael_Manning_(fetish_artist)> <http://dbpedia.org/property/area> ?expertise }",
+                "SELECT ?birthPlace WHERE { <http://dbpedia.org/resource/Michael_Manning_(fetish_artist)> <http://dbpedia.org/ontology/birthPlace> ?birthPlace . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Michael_Manning_(fetish_artist)",
+                        "http://dbpedia.org/property/nationality",
+                        "American"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Michael_Manning_(fetish_artist)",
+                        "http://dbpedia.org/property/birthDate",
+                        "1963"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Michael_Manning_(fetish_artist)",
+                        "http://dbpedia.org/property/area",
+                        "Writer, Artist"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Michael_Manning_(fetish_artist)",
+                        "http://dbpedia.org/ontology/birthPlace",
+                        "http://dbpedia.org/resource/Queens"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1967,
+                "prompt_tokens": 1516,
+                "completion_tokens": 451
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Bloomberg_Radio",
+            "seed_label": "Bloomberg Radio",
+            "dialogue": [
+                "What is the format of Bloomberg Radio?",
+                "Who is the licensee of it?",
+                "Does it have a homepage?",
+                "What is the webcast for it?"
+            ],
+            "original": [
+                "What is the format of Bloomberg Radio?",
+                "Who is the licensee of Bloomberg Radio?",
+                "Does Bloomberg Radio have a homepage?",
+                "What is the webcast for Bloomberg Radio?"
+            ],
+            "queries": [
+                "SELECT ?format WHERE { <http://dbpedia.org/resource/Bloomberg_Radio> <http://dbpedia.org/property/format> ?format }",
+                "SELECT ?licensee WHERE { <http://dbpedia.org/resource/Bloomberg_Radio> <http://dbpedia.org/ontology/licensee> ?licensee }",
+                "ASK { <http://dbpedia.org/resource/Bloomberg_Radio> <http://xmlns.com/foaf/0.1/homepage> <http://www.bloomberg.com/audio/> }",
+                "SELECT ?webcast \nWHERE { <http://dbpedia.org/resource/Bloomberg_Radio> <http://dbpedia.org/ontology/webcast> ?webcast }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Bloomberg_Radio",
+                        "http://dbpedia.org/property/format",
+                        "Financial News"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Bloomberg_Radio",
+                        "http://dbpedia.org/ontology/licensee",
+                        "Bloomberg Communications Inc."
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Bloomberg_Radio",
+                        "http://xmlns.com/foaf/0.1/homepage",
+                        "http://www.bloomberg.com/audio/"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Bloomberg_Radio",
+                        "http://dbpedia.org/ontology/webcast",
+                        "http://www.bloomberg.com/audio"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1868,
+                "prompt_tokens": 1438,
+                "completion_tokens": 430
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Patricia_Schroeder",
+            "seed_label": "Patricia Schroeder",
+            "dialogue": [
+                "What is Patricia Schroeder's birth date?",
+                "Where was she born?",
+                "What party does she belong to?",
+                "Who succeeded her?"
+            ],
+            "original": [
+                "What is Patricia Schroeder's birth date?",
+                "Where was Patricia Schroeder born?",
+                "What party does Patricia Schroeder belong to?",
+                "Who succeeded Patricia Schroeder?"
+            ],
+            "queries": [
+                "SELECT ?birthDate WHERE { <http://dbpedia.org/resource/Patricia_Schroeder> <http://dbpedia.org/ontology/birthDate> ?birthDate .}",
+                "SELECT ?birthPlace WHERE { <http://dbpedia.org/resource/Patricia_Schroeder> <http://dbpedia.org/ontology/birthPlace> ?birthPlace }",
+                "SELECT ?party WHERE { <http://dbpedia.org/resource/Patricia_Schroeder> <http://dbpedia.org/ontology/party> ?party . }",
+                "SELECT ?successor WHERE { <http://dbpedia.org/resource/Patricia_Schroeder> <http://dbpedia.org/ontology/successor> ?successor . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Patricia_Schroeder",
+                        "http://dbpedia.org/ontology/birthDate",
+                        "1940-07-30"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Patricia_Schroeder",
+                        "http://dbpedia.org/ontology/birthPlace",
+                        "http://dbpedia.org/resource/Portland,_Oregon"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Patricia_Schroeder",
+                        "http://dbpedia.org/ontology/party",
+                        "http://dbpedia.org/resource/Democratic_Party_(United_States)"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Patricia_Schroeder",
+                        "http://dbpedia.org/ontology/successor",
+                        "http://dbpedia.org/resource/Diana_DeGette"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4021,
+                "prompt_tokens": 2979,
+                "completion_tokens": 1042
+            },
+            "query_status": {
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Chapin_School",
+            "seed_label": "Chapin School",
+            "dialogue": [
+                "What is the gender of Chapin School?",
+                "When was it founded?",
+                "What is its motto?",
+                "What is the postal code?",
+                "What types of schools is it categorized as?"
+            ],
+            "original": [
+                "What is the gender of Chapin School?",
+                "When was Chapin School founded?",
+                "What is the motto of Chapin School?",
+                "What is the postal code of Chapin School?",
+                "What types of schools is Chapin School categorize as?"
+            ],
+            "queries": [
+                "SELECT ?gender WHERE { <http://dbpedia.org/resource/Chapin_School> <http://dbpedia.org/ontology/gender> ?gender . }",
+                "SELECT ?date\nWHERE { <http://dbpedia.org/resource/Chapin_School> <http://dbpedia.org/ontology/foundingYear> ?date }",
+                "SELECT ?motto WHERE { <http://dbpedia.org/resource/Chapin_School> <http://dbpedia.org/ontology/motto> ?motto}",
+                "SELECT ?postalCode WHERE { <http://dbpedia.org/resource/Chapin_School> <http://dbpedia.org/ontology/postalCode> ?postalCode }",
+                "SELECT ?schoolType WHERE { <http://dbpedia.org/resource/Chapin_School> <http://dbpedia.org/ontology/type> ?schoolType }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Chapin_School",
+                        "http://dbpedia.org/ontology/gender",
+                        "http://dbpedia.org/resource/Single-sex_education"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Chapin_School",
+                        "http://dbpedia.org/ontology/foundingYear",
+                        "1901"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Chapin_School",
+                        "http://dbpedia.org/ontology/motto",
+                        "Bravely and Rightly"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Chapin_School",
+                        "http://dbpedia.org/ontology/postalCode",
+                        "10028"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Chapin_School",
+                        "http://dbpedia.org/ontology/type",
+                        "http://dbpedia.org/resource/Private_school"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3341,
+                "prompt_tokens": 2672,
+                "completion_tokens": 669
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Abiko_Station_(Chiba)",
+            "seed_label": "Abiko Station",
+            "dialogue": [
+                "What is the opening date of Abiko Station?",
+                "In which country is it located?",
+                "What is the native name in Japanese for it?"
+            ],
+            "original": [
+                "What is the opening date of Abiko Station?",
+                "In which country is Abiko Station located?",
+                "What is the native name in Japanese for Abiko Station?"
+            ],
+            "queries": [
+                "\nSELECT ?openingDate \nWHERE {\n  <http://dbpedia.org/resource/Abiko_Station_(Chiba)> <http://dbpedia.org/ontology/openingDate> ?openingDate\n}",
+                "SELECT ?country WHERE { <http://dbpedia.org/resource/Abiko_Station_(Chiba)> <http://dbpedia.org/property/country> ?country }",
+                "SELECT ?nativeName \nWHERE { \n <http://dbpedia.org/resource/Abiko_Station_(Chiba)> <http://dbpedia.org/property/nativeName> ?nativeName \n}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Abiko_Station_(Chiba)",
+                        "http://dbpedia.org/ontology/openingDate",
+                        "1896-12-25"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Abiko_Station_(Chiba)",
+                        "http://dbpedia.org/property/country",
+                        "Japan"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Abiko_Station_(Chiba)",
+                        "http://dbpedia.org/property/nativeName",
+                        "\u6211\u5b6b\u5b50\u99c5"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2719,
+                "prompt_tokens": 2192,
+                "completion_tokens": 527
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Arenal_District,_Paita",
+            "seed_label": "Arenal District, Paita",
+            "dialogue": [
+                "What is the timezone followed by Arenal District, Paita?",
+                "When was it founded?",
+                "Who is the leader of it?"
+            ],
+            "original": [
+                "What is the timezone followed by Arenal District, Paita?",
+                "When was Arenal District, Paita founded?",
+                "Who is the leader of Arenal District, Paita?"
+            ],
+            "queries": [
+                "SELECT ?timezone\nWHERE {\n <http://dbpedia.org/resource/Arenal_District,_Paita> <http://dbpedia.org/ontology/timeZone> ?timezone .\n}",
+                "SELECT ?date WHERE { <http://dbpedia.org/resource/Arenal_District,_Paita> <http://dbpedia.org/ontology/foundingDate> ?date}",
+                "SELECT ?leader WHERE { <http://dbpedia.org/resource/Arenal_District,_Paita> <http://dbpedia.org/property/leaderName> ?leader }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Arenal_District,_Paita",
+                        "http://dbpedia.org/ontology/timeZone",
+                        "http://dbpedia.org/resource/Time_in_Peru"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Arenal_District,_Paita",
+                        "http://dbpedia.org/ontology/foundingDate",
+                        "1874-11-03"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Arenal_District,_Paita",
+                        "http://dbpedia.org/property/leaderName",
+                        "Hector Jos\u00e9 Fernandez Clement"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4346,
+                "prompt_tokens": 3260,
+                "completion_tokens": 1086
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 2
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Avalon,_Victoria",
+            "seed_label": "Avalon, Victoria",
+            "dialogue": [
+                "What is the city of Avalon, Victoria?",
+                "What is the location of it?",
+                "Is it located in Australia?",
+                "What is the postal code of it?"
+            ],
+            "original": [
+                "What is the city of Avalon, Victoria?",
+                "What is the location of Avalon, Victoria?",
+                "Is Avalon, Victoria located in Australia?",
+                "What is the postal code of Avalon, Victoria?"
+            ],
+            "queries": [
+                "SELECT ?city WHERE { <http://dbpedia.org/resource/Avalon,_Victoria> <http://dbpedia.org/property/city> ?city}",
+                "SELECT ?location WHERE { <http://dbpedia.org/resource/Avalon,_Victoria> <http://dbpedia.org/property/location> ?location . }",
+                "ASK WHERE { <http://dbpedia.org/resource/Avalon,_Victoria> <http://dbpedia.org/ontology/country> <http://dbpedia.org/resource/Australia> .}",
+                "SELECT ?postal_code WHERE { <http://dbpedia.org/resource/Avalon,_Victoria> <http://dbpedia.org/property/postcode> ?postal_code}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Avalon,_Victoria",
+                        "http://dbpedia.org/property/city",
+                        "Geelong"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Avalon,_Victoria",
+                        "http://dbpedia.org/property/location",
+                        "http://dbpedia.org/resource/Geelong"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Avalon,_Victoria",
+                        "http://dbpedia.org/property/location",
+                        "http://dbpedia.org/resource/Melbourne"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Avalon,_Victoria",
+                        "http://dbpedia.org/ontology/country",
+                        "http://dbpedia.org/resource/Australia"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Avalon,_Victoria",
+                        "http://dbpedia.org/property/postcode",
+                        "3212"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4652,
+                "prompt_tokens": 3677,
+                "completion_tokens": 975
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Bussy-Chardonney",
+            "seed_label": "Bussy-Chardonney",
+            "dialogue": [
+                "What is the population of Bussy-Chardonney?",
+                "What is the postal code of it?",
+                "What is the elevation of it?",
+                "Is it a municipality in Switzerland?"
+            ],
+            "original": [
+                "What is the population of Bussy-Chardonney?",
+                "What is the postal code of Bussy-Chardonney?",
+                "What is the elevation of Bussy-Chardonney?",
+                "Is Bussy-Chardonney a municipality in Switzerland?"
+            ],
+            "queries": [
+                "SELECT ?population WHERE { <http://dbpedia.org/resource/Bussy-Chardonney> <http://dbpedia.org/ontology/populationTotal> ?population . }",
+                "SELECT ?postalCode WHERE { <http://dbpedia.org/resource/Bussy-Chardonney>  <http://dbpedia.org/ontology/postalCode>  ?postalCode . }",
+                "SELECT ?elevation WHERE { <http://dbpedia.org/resource/Bussy-Chardonney> <http://dbpedia.org/ontology/elevation> ?elevation }",
+                "ASK {<http://dbpedia.org/resource/Bussy-Chardonney> <http://dbpedia.org/ontology/country> <http://dbpedia.org/resource/Switzerland>}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Bussy-Chardonney",
+                        "http://dbpedia.org/ontology/populationTotal",
+                        "334"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Bussy-Chardonney",
+                        "http://dbpedia.org/ontology/postalCode",
+                        "1136"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Bussy-Chardonney",
+                        "http://dbpedia.org/ontology/elevation",
+                        "520.0"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Bussy-Chardonney",
+                        "http://dbpedia.org/ontology/country",
+                        "http://dbpedia.org/resource/Switzerland"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 5058,
+                "prompt_tokens": 4068,
+                "completion_tokens": 990
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Cascades,_Tasmania",
+            "seed_label": "Cascades",
+            "dialogue": [
+                "What is the postcode of Cascades?",
+                "In which country is it located?",
+                "Which city does it belong to?",
+                "Which Local Government Area (LGA) is it part of?"
+            ],
+            "original": [
+                "What is the postcode of Cascades?",
+                "In which country is Cascades located?",
+                "Which city does Cascades belong to?",
+                "Which Local Government Area (LGA) is Cascades part of?"
+            ],
+            "queries": [
+                "SELECT ?postcode WHERE { <http://dbpedia.org/resource/Cascades,_Tasmania> <http://dbpedia.org/property/postcode> ?postcode . }",
+                "SELECT ?country WHERE { <http://dbpedia.org/resource/Cascades,_Tasmania> <http://dbpedia.org/ontology/country> ?country }",
+                "SELECT ?city\nWHERE { <http://dbpedia.org/resource/Cascades,_Tasmania> <http://dbpedia.org/property/city> ?city }",
+                "SELECT ?lga WHERE { <http://dbpedia.org/resource/Cascades,_Tasmania> <http://dbpedia.org/property/city> ?lga . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Cascades,_Tasmania",
+                        "http://dbpedia.org/property/postcode",
+                        "7004"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Cascades,_Tasmania",
+                        "http://dbpedia.org/ontology/country",
+                        "http://dbpedia.org/resource/Australia"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Cascades,_Tasmania",
+                        "http://dbpedia.org/property/city",
+                        "Hobart"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Cascades,_Tasmania",
+                        "http://dbpedia.org/property/city",
+                        "Hobart"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2772,
+                "prompt_tokens": 2125,
+                "completion_tokens": 647
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Batman:_The_Dark_Knight",
+            "seed_label": "Batman: The Dark Knight",
+            "dialogue": [
+                "List all the colorists of Batman: The Dark Knight.",
+                "Is it an ongoing series?",
+                "Who are the writers of it?"
+            ],
+            "original": [
+                "List all the colorists of Batman: The Dark Knight.",
+                "Is Batman: The Dark Knight an ongoing series?",
+                "Who are the writers of Batman: The Dark Knight?"
+            ],
+            "queries": [
+                "SELECT ?colorist WHERE { <http://dbpedia.org/resource/Batman:_The_Dark_Knight> <http://dbpedia.org/property/colorists> ?colorist }",
+                "ASK WHERE { <http://dbpedia.org/resource/Batman:_The_Dark_Knight> <http://dbpedia.org/property/ongoing> ?ongoing . }",
+                "SELECT ?writer WHERE { <http://dbpedia.org/resource/Batman:_The_Dark_Knight> <http://dbpedia.org/ontology/writer> ?writer . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Batman:_The_Dark_Knight",
+                        "http://dbpedia.org/property/colorists",
+                        "http://dbpedia.org/resource/Alex_Sinclair"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Batman:_The_Dark_Knight",
+                        "http://dbpedia.org/property/ongoing",
+                        "y"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Batman:_The_Dark_Knight",
+                        "http://dbpedia.org/ontology/writer",
+                        "http://dbpedia.org/resource/Judd_Winick"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2577,
+                "prompt_tokens": 1869,
+                "completion_tokens": 708
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Italian_Naval_Academy",
+            "seed_label": "Naval Academy",
+            "dialogue": [
+                "What is the location of the Naval Academy?",
+                "When was it founded?",
+                "Who is the officer in charge there?",
+                "What is the homepage of it?"
+            ],
+            "original": [
+                "What is the location of the Naval Academy?",
+                "When was the Naval Academy founded?",
+                "Who is the officer in charge at the Naval Academy?",
+                "What is the homepage of the Naval Academy?"
+            ],
+            "queries": [
+                "SELECT ?location WHERE { <http://dbpedia.org/resource/Italian_Naval_Academy> <http://dbpedia.org/property/location> ?location }",
+                "SELECT ?date WHERE { <http://dbpedia.org/resource/Italian_Naval_Academy> <http://dbpedia.org/ontology/foundingDate> ?date }",
+                "SELECT ?officerInCharge WHERE { <http://dbpedia.org/resource/Italian_Naval_Academy> <http://dbpedia.org/ontology/officerInCharge> ?officerInCharge .}",
+                "SELECT ?homepage \nWHERE { \n\t<http://dbpedia.org/resource/Italian_Naval_Academy> <http://xmlns.com/foaf/0.1/homepage> ?homepage . \n}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Italian_Naval_Academy",
+                        "http://dbpedia.org/property/location",
+                        "Livorno, Italy"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Italian_Naval_Academy",
+                        "http://dbpedia.org/ontology/foundingDate",
+                        "1881-11-06"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Italian_Naval_Academy",
+                        "http://dbpedia.org/ontology/officerInCharge",
+                        "http://dbpedia.org/resource/Divisional_admiral"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Italian_Naval_Academy",
+                        "http://xmlns.com/foaf/0.1/homepage",
+                        "http://www.marina.difesa.it/accademia/index.asp"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2766,
+                "prompt_tokens": 2054,
+                "completion_tokens": 712
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Eastern_garter_snake",
+            "seed_label": "Eastern garter snake",
+            "dialogue": [
+                "What is the conservation status of Eastern garter snake?",
+                "What is its phylum?",
+                "What is its order?",
+                "What is its species?"
+            ],
+            "original": [
+                "What is the conservation status of Eastern garter snake?",
+                "What is the phylum of Eastern garter snake?",
+                "What is the order of Eastern garter snake?",
+                "What is the species of Eastern garter snake?"
+            ],
+            "queries": [
+                "SELECT ?status WHERE { <http://dbpedia.org/resource/Eastern_garter_snake> <http://dbpedia.org/ontology/conservationStatus> ?status . }",
+                "SELECT ?p WHERE { <http://dbpedia.org/resource/Eastern_garter_snake> <http://dbpedia.org/ontology/phylum> ?p}",
+                "SELECT ?order WHERE { <http://dbpedia.org/resource/Eastern_garter_snake> <http://dbpedia.org/ontology/order> ?order }",
+                "SELECT ?species WHERE { <http://dbpedia.org/resource/Eastern_garter_snake> <http://dbpedia.org/ontology/species> ?species. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Eastern_garter_snake",
+                        "http://dbpedia.org/ontology/conservationStatus",
+                        "LC"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Eastern_garter_snake",
+                        "http://dbpedia.org/ontology/phylum",
+                        "http://dbpedia.org/resource/Vertebrate"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Eastern_garter_snake",
+                        "http://dbpedia.org/ontology/order",
+                        "http://dbpedia.org/resource/Serpentes"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Eastern_garter_snake",
+                        "http://dbpedia.org/ontology/species",
+                        "http://dbpedia.org/resource/Thamnophis_sirtalis"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3081,
+                "prompt_tokens": 2295,
+                "completion_tokens": 786
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Brown_mastiff_bat",
+            "seed_label": "Brown mastiff bat",
+            "dialogue": [
+                "What is the conservation status of the Brown mastiff bat according to the IUCN3.1 system?",
+                "To which family does it belong?",
+                "What is its kingdom?",
+                "In which phylum is it classified?"
+            ],
+            "original": [
+                "What is the conservation status of the Brown mastiff bat according to the IUCN3.1 system?",
+                "To which family does the Brown mastiff bat belong?",
+                "What is the kingdom of the Brown mastiff bat?",
+                "In which phylum is the Brown mastiff bat classified?"
+            ],
+            "queries": [
+                "SELECT ?status WHERE { <http://dbpedia.org/resource/Brown_mastiff_bat> <http://dbpedia.org/ontology/conservationStatus> ?status . }",
+                "SELECT ?family WHERE { <http://dbpedia.org/resource/Brown_mastiff_bat> <http://dbpedia.org/ontology/family> ?family . }",
+                "SELECT ?kingdom WHERE { <http://dbpedia.org/resource/Brown_mastiff_bat> <http://dbpedia.org/ontology/kingdom> ?kingdom}",
+                "SELECT ?phylum \nWHERE { \n\t<http://dbpedia.org/resource/Brown_mastiff_bat> <http://dbpedia.org/ontology/phylum> ?phylum . \n}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Brown_mastiff_bat",
+                        "http://dbpedia.org/ontology/conservationStatus",
+                        "LC"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Brown_mastiff_bat",
+                        "http://dbpedia.org/ontology/family",
+                        "http://dbpedia.org/resource/Molossidae"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Brown_mastiff_bat",
+                        "http://dbpedia.org/ontology/kingdom",
+                        "http://dbpedia.org/resource/Animalia"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Brown_mastiff_bat",
+                        "http://dbpedia.org/ontology/phylum",
+                        "http://dbpedia.org/resource/Chordata"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2166,
+                "prompt_tokens": 1603,
+                "completion_tokens": 563
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Ron_Newman_(footballer)",
+            "seed_label": "Ron Newman (footballer)",
+            "dialogue": [
+                "What is the gender of Ron Newman (footballer)?",
+                "What is the birth date of him?",
+                "What is the given name of him?",
+                "Was he born in Fareham?",
+                "What is the surname of him?"
+            ],
+            "original": [
+                "What is the gender of Ron Newman (footballer)?",
+                "What is the birth date of Ron Newman (footballer)?",
+                "What is the given name of Ron Newman (footballer)?",
+                "Was Ron Newman (footballer) born in Fareham?",
+                "What is the surname of Ron Newman (footballer)?"
+            ],
+            "queries": [
+                "SELECT ?gender WHERE { <http://dbpedia.org/resource/Ron_Newman_(footballer)> <http://xmlns.com/foaf/0.1/gender> ?gender . }",
+                "SELECT ?birthdate WHERE { <http://dbpedia.org/resource/Ron_Newman_(footballer)> <http://dbpedia.org/ontology/birthDate> ?birthdate }",
+                "SELECT ?givenName WHERE { <http://dbpedia.org/resource/Ron_Newman_(footballer)> <http://xmlns.com/foaf/0.1/givenName> ?givenName .}",
+                "ASK WHERE { <http://dbpedia.org/resource/Ron_Newman_(footballer)> <http://dbpedia.org/ontology/birthPlace> <http://dbpedia.org/resource/Fareham> }",
+                "SELECT ?surname WHERE { <http://dbpedia.org/resource/Ron_Newman_(footballer)> <http://xmlns.com/foaf/0.1/surname> ?surname . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Ron_Newman_(footballer)",
+                        "http://xmlns.com/foaf/0.1/gender",
+                        "male"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Ron_Newman_(footballer)",
+                        "http://dbpedia.org/ontology/birthDate",
+                        "1934-1-19"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Ron_Newman_(footballer)",
+                        "http://xmlns.com/foaf/0.1/givenName",
+                        "Ron"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Ron_Newman_(footballer)",
+                        "http://dbpedia.org/ontology/birthPlace",
+                        "http://dbpedia.org/resource/Fareham"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Ron_Newman_(footballer)",
+                        "http://xmlns.com/foaf/0.1/surname",
+                        "Newman"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3363,
+                "prompt_tokens": 2465,
+                "completion_tokens": 898
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Chao_District",
+            "seed_label": "Chao",
+            "dialogue": [
+                "What is the established title for Chao?",
+                "Who is the leader of it?",
+                "What is the population density in it?",
+                "What is the total area of it?"
+            ],
+            "original": [
+                "What is the established title for Chao?",
+                "Who is the leader of Chao?",
+                "What is the population density in Chao?",
+                "What is the total area of Chao?"
+            ],
+            "queries": [
+                "SELECT ?title WHERE { <http://dbpedia.org/resource/Chao_District> <http://dbpedia.org/property/establishedTitle> ?title }",
+                "SELECT ?leader WHERE { <http://dbpedia.org/resource/Chao_District> <http://dbpedia.org/property/leaderName> ?leader }",
+                "SELECT ?populationDensity WHERE { <http://dbpedia.org/resource/Chao_District> <http://dbpedia.org/property/populationDensityKm> ?populationDensity . }",
+                "SELECT ?areaTotal WHERE { <http://dbpedia.org/resource/Chao_District> <http://dbpedia.org/ontology/areaTotal> ?areaTotal . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Chao_District",
+                        "http://dbpedia.org/property/establishedTitle",
+                        "Founded"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Chao_District",
+                        "http://dbpedia.org/property/leaderName",
+                        "Ney Heli Gamez Espinoza"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Chao_District",
+                        "http://dbpedia.org/property/populationDensityKm",
+                        "auto"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Chao_District",
+                        "http://dbpedia.org/ontology/areaTotal",
+                        "1.73687e+09"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4388,
+                "prompt_tokens": 3465,
+                "completion_tokens": 923
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/Football_League_Group_Cup",
+            "seed_label": "Teddy Sheringham",
+            "dialogue": [
+                "How many different squad numbers does Teddy Sheringham have?",
+                "Is he a current member with certain individual names?",
+                "How many current members does he have?"
+            ],
+            "original": [
+                "How many different squad numbers does Teddy Sheringham have?",
+                "Is Teddy Sheringham a current member with certain individual names?",
+                "How many current members does Teddy Sheringham have?"
+            ],
+            "queries": [
+                "SELECT (COUNT(DISTINCT ?squadNumber) as ?count) WHERE {<http://dbpedia.org/resource/Football_League_Group_Cup> <http://dbpedia.org/ontology/squadNumber> ?squadNumber}",
+                "ASK WHERE { <http://dbpedia.org/resource/Football_League_Group_Cup> <http://dbpedia.org/ontology/currentMember> ?member. ?member <http://www.w3.org/2000/01/rdf-schema#label> ?memberName FILTER(?member = <http://dbpedia.org/resource/Teddy_Sheringham> || ?member = <http://dbpedia.org/resource/Sam_Allardyce>) }",
+                "SELECT (COUNT(?currentMember) AS ?numberOfMembers) WHERE { <http://dbpedia.org/resource/Football_League_Group_Cup> <http://dbpedia.org/ontology/currentMember> ?currentMember }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "1"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "2"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "3"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "4"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "5"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "6"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "7"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "8"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "9"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "1"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "1"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/currentMember",
+                        "http://dbpedia.org/resource/Teddy_Sheringham"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/currentMember",
+                        "http://dbpedia.org/resource/Sam_Allardyce"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/currentMember",
+                        "http://dbpedia.org/resource/Paul_Roberts_(footballer)"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/Football_League_Group_Cup",
+                        "http://dbpedia.org/ontology/currentMember",
+                        "http://dbpedia.org/resource/Nicky_Coleman"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3391,
+                "prompt_tokens": 2472,
+                "completion_tokens": 919
+            },
+            "query_status": {
+                "In Correct": 2,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads",
+            "seed_label": "David Beckham",
+            "dialogue": [
+                "How many different positions has David Beckham played in?",
+                "Is he a current member of the Big Glide Squad?",
+                "What squad numbers has he worn?"
+            ],
+            "original": [
+                "How many different positions has David Beckham played in?",
+                "Is David Beckham a current member of the Big Glide Squad?",
+                "What squad numbers has David Beckham worn?"
+            ],
+            "queries": [
+                "SELECT (COUNT(DISTINCT ?position) AS ?count_positions) WHERE { <http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads> <http://dbpedia.org/property/pos> ?position }",
+                "ASK { <http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads> <http://dbpedia.org/ontology/currentMember> <http://dbpedia.org/resource/David_Beckham> }",
+                "SELECT ?squadNumber WHERE { <http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads> <http://dbpedia.org/ontology/squadNumber> ?squadNumber }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads",
+                        "http://dbpedia.org/property/pos",
+                        "DF"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads",
+                        "http://dbpedia.org/property/pos",
+                        "FW"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads",
+                        "http://dbpedia.org/property/pos",
+                        "GK"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads",
+                        "http://dbpedia.org/property/pos",
+                        "MF"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads",
+                        "http://dbpedia.org/ontology/currentMember",
+                        "http://dbpedia.org/resource/David_Beckham"
+                    ]
+                ],
+                [
+                    [
+                        "http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "1"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "2"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "3"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "4"
+                    ],
+                    [
+                        "http://dbpedia.org/resource/2000_FIFA_Club_World_Championship_squads",
+                        "http://dbpedia.org/ontology/squadNumber",
+                        "5"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 10198,
+                "prompt_tokens": 9050,
+                "completion_tokens": 1148
+            },
+            "query_status": {
+                "In Correct": 2,
+                "Correct": 3
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 40,
+            "When did": 1,
+            "Where is": 1,
+            "When was": 5,
+            "Where was": 3,
+            "'When was": 1,
+            "'What is": 1,
+            "'Where was": 1,
+            "Who is": 4,
+            "Does it": 1,
+            "What party": 1,
+            "Who succeeded": 1,
+            "What types": 1,
+            "In which": 3,
+            "Is it": 3,
+            "Which city": 1,
+            "Which Local": 1,
+            "List all": 1,
+            "Who are": 1,
+            "To which": 1,
+            "Was he": 1,
+            "How many": 3,
+            "Is he": 2,
+            "What squad": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 3438.15,
+                "prompt_tokens": 2694.95,
+                "completion_tokens": 743.2
+            },
+            "Minimum": {
+                "total_tokens": 1868,
+                "prompt_tokens": 1438,
+                "completion_tokens": 420
+            },
+            "Maximum": {
+                "total_tokens": 10198,
+                "prompt_tokens": 9050,
+                "completion_tokens": 1148
+            },
+            "Total": {
+                "total_tokens": 68763,
+                "prompt_tokens": 53899,
+                "completion_tokens": 14864
+            }
+        },
+        "execution": {
+            "Correct": 79,
+            "In Correct": 16,
+            "Syntax Error": 2
+        }
+    },
+    "cost": {
+        "total_tokens": 138246,
+        "prompt_tokens": 105681,
+        "completion_tokens": 32565
+    },
+    "total_time": 334.98858428001404,
+    "average_time": 16.749429214000703,
+    "Context Length Error": 0,
+    "Question Validation Error": 1,
+    "Question Json Error": 4,
+    "Triples Validation Error": 0,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 12,
+    "Sparql Json Error": 0,
+    "Dialogue Validation Error": 1,
+    "Dialogue Json Error": 0
+}

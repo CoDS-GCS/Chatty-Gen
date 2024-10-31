@@ -1,0 +1,1269 @@
+{
+    "seeds_used": 32,
+    "data": [
+        {
+            "seed_entity": "https://makg.org/entity/245811625",
+            "seed_label": "Donald E. Thrall",
+            "dialogue": [
+                "When was Donald E. Thrall created?",
+                "What is the citation count for him?",
+                "Is he a member of a certain group (GSID: 137902535)?",
+                "What is his rank?"
+            ],
+            "original": [
+                "When was Donald E. Thrall created?",
+                "What is the citation count for Donald E. Thrall?",
+                "Is Donald E. Thrall a member of a certain group (GSID: 137902535)?",
+                "What is the rank of Donald E. Thrall?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE { <https://makg.org/entity/245811625> <http://purl.org/dc/terms/created> ?date }",
+                "SELECT ?citationCount WHERE { <https://makg.org/entity/245811625> <https://makg.org/property/citationCount> ?citationCount . }",
+                "ASK WHERE { <https://makg.org/entity/245811625> <http://www.w3.org/ns/org#memberOf> <https://makg.org/entity/137902535> .}",
+                "SELECT ?rank WHERE { <https://makg.org/entity/245811625> <https://makg.org/property/rank> ?rank . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245811625",
+                        "http://purl.org/dc/terms/created",
+                        "2016-06-24"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245811625",
+                        "https://makg.org/property/citationCount",
+                        "5833"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245811625",
+                        "http://www.w3.org/ns/org#memberOf",
+                        "https://makg.org/entity/137902535"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245811625",
+                        "https://makg.org/property/rank",
+                        "14486"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 13253,
+                "prompt_tokens": 12362,
+                "completion_tokens": 891
+            },
+            "query_status": {
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245813134",
+            "seed_label": "Laura Medina-Puche",
+            "dialogue": [
+                "When was Laura Medina-Puche created?",
+                "What is the citation count for her?",
+                "Who are her creators?"
+            ],
+            "original": [
+                "When was Laura Medina-Puche created?",
+                "What is the citation count for Laura Medina-Puche?",
+                "Who are the creators of Laura Medina-Puche?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE { <https://makg.org/entity/245813134> <http://purl.org/dc/terms/created> ?date . }",
+                "SELECT ?citation_count WHERE { <https://makg.org/entity/245813134> <https://makg.org/property/citationCount> ?citation_count . }",
+                "SELECT ?creator WHERE { <https://makg.org/entity/245813134> <http://purl.org/dc/terms/creator> ?creator . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245813134",
+                        "http://purl.org/dc/terms/created",
+                        "2016-06-24"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245813134",
+                        "https://makg.org/property/citationCount",
+                        "396"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245813134",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/615455503"
+                    ],
+                    [
+                        "https://makg.org/entity/245813134",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/1995862960"
+                    ],
+                    [
+                        "https://makg.org/entity/245813134",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/2141546714"
+                    ],
+                    [
+                        "https://makg.org/entity/245813134",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/2101628637"
+                    ],
+                    [
+                        "https://makg.org/entity/245813134",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/2143138422"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2481,
+                "prompt_tokens": 1867,
+                "completion_tokens": 614
+            },
+            "query_status": {
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245813557",
+            "seed_label": "Andojo Wurjanto",
+            "dialogue": [
+                "What is the citation count for Andojo Wurjanto?",
+                "When was he created?",
+                "What is his rank?"
+            ],
+            "original": [
+                "What is the citation count for Andojo Wurjanto?",
+                "When was Andojo Wurjanto created?",
+                "What is the rank of Andojo Wurjanto?"
+            ],
+            "queries": [
+                "SELECT ?citationCount \n                WHERE {\n                    <https://makg.org/entity/245813557> <https://makg.org/property/citationCount> ?citationCount .\n                }",
+                "SELECT ?date WHERE { <https://makg.org/entity/245813557> <http://purl.org/dc/terms/created> ?date . }",
+                "SELECT ?rank WHERE { <https://makg.org/entity/245813557> <https://makg.org/property/rank> ?rank }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245813557",
+                        "https://makg.org/property/citationCount",
+                        "292"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245813557",
+                        "http://purl.org/dc/terms/created",
+                        "2016-06-24"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245813557",
+                        "https://makg.org/property/rank",
+                        "16810"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2414,
+                "prompt_tokens": 1792,
+                "completion_tokens": 622
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245814409",
+            "seed_label": "James Tuot",
+            "dialogue": [
+                "What was the creation date of James Tuot?",
+                "Is his citation count 35?",
+                "What is his rank?"
+            ],
+            "original": [
+                "What was the creation date of James Tuot?",
+                "Is the citation count of James Tuot 35?",
+                "What is the rank of James Tuot?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE { <https://makg.org/entity/245814409> <http://purl.org/dc/terms/created> ?date . }",
+                "ASK WHERE {\n   <https://makg.org/entity/245814409> <https://makg.org/property/citationCount> ?predicate_value.\n}",
+                "SELECT ?rank WHERE { <https://makg.org/entity/245814409> <https://makg.org/property/rank> ?rank . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245814409",
+                        "http://purl.org/dc/terms/created",
+                        "2016-06-24"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245814409",
+                        "https://makg.org/property/citationCount",
+                        "35"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245814409",
+                        "https://makg.org/property/rank",
+                        "18451"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2007,
+                "prompt_tokens": 1519,
+                "completion_tokens": 488
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245819560",
+            "seed_label": "Judith Haymore Sandholtz",
+            "dialogue": [
+                "When was Judith Haymore Sandholtz created?",
+                "What is her rank?",
+                "Is she a member of a group?"
+            ],
+            "original": [
+                "When was Judith Haymore Sandholtz created?",
+                "What is the rank of Judith Haymore Sandholtz?",
+                "Is Judith Haymore Sandholtz a member of a group?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE { <https://makg.org/entity/245819560> <http://purl.org/dc/terms/created> ?date . }",
+                "SELECT ?rankValue WHERE { <https://makg.org/entity/245819560> <https://makg.org/property/rank> ?rankValue }",
+                "ASK { <https://makg.org/entity/245819560> <http://www.w3.org/ns/org#memberOf> <https://makg.org/entity/204250578> }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245819560",
+                        "http://purl.org/dc/terms/created",
+                        "2016-06-24"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245819560",
+                        "https://makg.org/property/rank",
+                        "15528"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245819560",
+                        "http://www.w3.org/ns/org#memberOf",
+                        "https://makg.org/entity/204250578"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4478,
+                "prompt_tokens": 3209,
+                "completion_tokens": 1269
+            },
+            "query_status": {
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245820370",
+            "seed_label": "Nasronudin Nasronudin",
+            "dialogue": [
+                "When was Nasronudin Nasronudin created?",
+                "What is the total citation count for him?",
+                "Is he a member of any group?"
+            ],
+            "original": [
+                "When was Nasronudin Nasronudin created?",
+                "What is the total citation count for Nasronudin Nasronudin?",
+                "Is Nasronudin Nasronudin a member of any group?"
+            ],
+            "queries": [
+                "\n\tSELECT ?date\n\tWHERE {\n\t\t<https://makg.org/entity/245820370> <http://purl.org/dc/terms/created> ?date .\n\t}\n\t",
+                "SELECT (SUM(?citationCount) AS ?totalCitationCount) WHERE { <https://makg.org/entity/245820370> <https://makg.org/property/citationCount> ?citationCount . }",
+                "ASK WHERE { <https://makg.org/entity/245820370> <http://www.w3.org/ns/org#memberOf> ?group } "
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245820370",
+                        "http://purl.org/dc/terms/created",
+                        "2016-06-24"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245820370",
+                        "https://makg.org/property/citationCount",
+                        "7"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245820370",
+                        "http://www.w3.org/ns/org#memberOf",
+                        "https://makg.org/entity/205133468"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2818,
+                "prompt_tokens": 2212,
+                "completion_tokens": 606
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185192",
+            "seed_label": "Customer Service and Logistics",
+            "dialogue": [
+                "What is the publication date of Customer Service and Logistics?",
+                "What is its rank?",
+                "Does it have a URL?"
+            ],
+            "original": [
+                "What is the publication date of Customer Service and Logistics?",
+                "What is the rank of Customer Service and Logistics?",
+                "Does Customer Service and Logistics have a URL?"
+            ],
+            "queries": [
+                "SELECT ?publicationDate WHERE { <https://makg.org/entity/6185192> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?publicationDate .}",
+                "SELECT ?rank_value WHERE { <https://makg.org/entity/6185192> <https://makg.org/property/rank> ?rank_value . FILTER(CONTAINS(STR(?rank_value), '26088'))}",
+                "ASK { <https://makg.org/entity/6185192> <http://purl.org/spar/fabio/hasURL> ?url . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185192",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        "2009-01-01"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185192",
+                        "https://makg.org/property/rank",
+                        "26088"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185192",
+                        "http://purl.org/spar/fabio/hasURL",
+                        "http://eprints.undip.ac.id/1140/"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2656,
+                "prompt_tokens": 2107,
+                "completion_tokens": 549
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185242",
+            "seed_label": "Pitch/tension device",
+            "dialogue": [
+                "When was 'Pitch/tension device' created?",
+                "Was 'it' recommended by '1973593113'?",
+                "What are some keywords associated with 'it'?",
+                "On which date was 'it' published?"
+            ],
+            "original": [
+                "When was 'Pitch/tension device' created?",
+                "Was 'Pitch/tension device' recommended by '1973593113'?",
+                "What are some keywords associated with 'Pitch/tension device'?",
+                "On which date was 'Pitch/tension device' published?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE { <https://makg.org/entity/6185242> <http://purl.org/dc/terms/created> ?date }",
+                "ASK {<https://makg.org/entity/6185242> <https://makg.org/property/recommends> <https://makg.org/entity/1973593113>}",
+                "SELECT ?keyword WHERE { <https://makg.org/entity/6185242> <http://prismstandard.org/namespaces/basic/2.0/keyword> ?keyword}",
+                "SELECT ?date WHERE { <https://makg.org/entity/6185242> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?date . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185242",
+                        "http://purl.org/dc/terms/created",
+                        "2016-06-24"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185242",
+                        "https://makg.org/property/recommends",
+                        "https://makg.org/entity/1973593113"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185242",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "strings"
+                    ],
+                    [
+                        "https://makg.org/entity/6185242",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "string gauge"
+                    ],
+                    [
+                        "https://makg.org/entity/6185242",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "racket type"
+                    ],
+                    [
+                        "https://makg.org/entity/6185242",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "the known racket tension"
+                    ],
+                    [
+                        "https://makg.org/entity/6185242",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "the present racket tension"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185242",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        "1995-04-18"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4604,
+                "prompt_tokens": 3805,
+                "completion_tokens": 799
+            },
+            "query_status": {
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185342",
+            "seed_label": "Coping with Complications",
+            "dialogue": [
+                "What is the publication date of Coping with Complications?",
+                "In what journal does it appear?",
+                "What keywords are associated with it?"
+            ],
+            "original": [
+                "What is the publication date of Coping with Complications?",
+                "In what journal does Coping with Complications appear?",
+                "What keywords are associated with Coping with Complications?"
+            ],
+            "queries": [
+                "SELECT ?publicationDate WHERE { <https://makg.org/entity/6185342> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?publicationDate. }",
+                "SELECT ?journal\nWHERE { <https://makg.org/entity/6185342> <https://makg.org/property/appearsInJournal> ?journal. }",
+                "SELECT ?keyword WHERE { <https://makg.org/entity/6185342> <http://prismstandard.org/namespaces/basic/2.0/keyword> ?keyword }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185342",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        "2007-09-01"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185342",
+                        "https://makg.org/property/appearsInJournal",
+                        "https://makg.org/entity/22732266"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185342",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "complications"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4442,
+                "prompt_tokens": 3721,
+                "completion_tokens": 721
+            },
+            "query_status": {
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185516",
+            "seed_label": "Impairment of the production of delta sleep in anorectic adolescents.",
+            "dialogue": [
+                "What is the creator of the Publication 'Impairment of the production of delta sleep in anorectic adolescents.'?",
+                "What is the publication Date of the Publication 'It'?",
+                "What are the keywords associated with the Publication 'It'?"
+            ],
+            "original": [
+                "What is the creator of the Publication 'Impairment of the production of delta sleep in anorectic adolescents.'?",
+                "What is the publication Date of the Publication 'Impairment of the production of delta sleep in anorectic adolescents.'?",
+                "What are the keywords associated with the Publication 'Impairment of the production of delta sleep in anorectic adolescents.'?"
+            ],
+            "queries": [
+                "SELECT ?creator WHERE { <https://makg.org/entity/6185516> <http://purl.org/dc/terms/creator> ?creator . }",
+                "SELECT ?date WHERE {<https://makg.org/entity/6185516> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?date .}",
+                "SELECT ?keyword \nWHERE { \n<https://makg.org/entity/6185516> <http://prismstandard.org/namespaces/basic/2.0/keyword> ?keyword \n}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185516",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/1988347358"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185516",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        "2004-12-15"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185516",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "swa"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4395,
+                "prompt_tokens": 3699,
+                "completion_tokens": 696
+            },
+            "query_status": {
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185603",
+            "seed_label": "ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME",
+            "dialogue": [
+                "What is the publication Date of ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME?",
+                "Does it have any disciplines associated with it?",
+                "What are some keywords related to it?"
+            ],
+            "original": [
+                "What is the publication Date of ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME?",
+                "Does ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME have any disciplines associated with it?",
+                "What are some keywords related to ANNOTATED BIBLIOGRAPHY OF /cap alpha/-BENZILDIOXIME?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE { <https://makg.org/entity/6185603> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?date . }",
+                "ASK { <https://makg.org/entity/6185603> <http://purl.org/spar/fabio/hasDiscipline> ?discipline.}",
+                "SELECT ?keywords WHERE { <https://makg.org/entity/6185603> <http://prismstandard.org/namespaces/basic/2.0/keyword> ?keywords }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185603",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        "1958-06-01"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185603",
+                        "http://purl.org/spar/fabio/hasDiscipline",
+                        "https://makg.org/entity/71240020"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185603",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "configurations"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2626,
+                "prompt_tokens": 2038,
+                "completion_tokens": 588
+            },
+            "query_status": {
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185956",
+            "seed_label": "Practicing Patient-Centered Care",
+            "dialogue": [
+                "How many creators does 'Practicing Patient-Centered Care' have?",
+                "Do any keywords associated with it inclucommerceREPLACE est 'healthcare'?",
+                "What is the citation count of ITcommerceREPLACEicated Practice?"
+            ],
+            "original": [
+                "How many creators does 'Practicing Patient-Centered Care' have?",
+                "Do any keywords associated with 'Practicing Patient-Centered Care' include 'healthcare'?",
+                "What is the citation count of 'Practicing Patient-Centered Care'?"
+            ],
+            "queries": [
+                "SELECT (COUNT(?creator) AS ?numberOfCreators) WHERE { <https://makg.org/entity/6185956> <http://purl.org/dc/terms/creator> ?creator }",
+                "ASK WHERE { <https://makg.org/entity/6185956> <http://prismstandard.org/namespaces/basic/2.0/keyword> ?keyword FILTER regex(str(?keyword), 'healthcare', 'i') }",
+                "SELECT ?citationCount WHERE { <https://makg.org/entity/6185956> <https://makg.org/property/citationCount> ?citationCount }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185956",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/2900727642"
+                    ],
+                    [
+                        "https://makg.org/entity/6185956",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/2657045499"
+                    ],
+                    [
+                        "https://makg.org/entity/6185956",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/2800157255"
+                    ],
+                    [
+                        "https://makg.org/entity/6185956",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/2485922342"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185956",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "healthcare"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185956",
+                        "https://makg.org/property/citationCount",
+                        "9"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3526,
+                "prompt_tokens": 2876,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 3,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6186342",
+            "seed_label": "Immunotherapy: pieces of the IVIG anti-inflammatory response.",
+            "dialogue": [
+                "In which journal this paper ('Immunotherapy: pieces of the IVIG anti-inflammatory response') appears?",
+                "What are the keywords associated with it?",
+                "What is the Expected Citation Count for it?",
+                "When was it published?"
+            ],
+            "original": [
+                "In which journal this paper ('Immunotherapy: pieces of the IVIG anti-inflammatory response') appears?",
+                "What are the keywords associated with 'Immunotherapy: pieces of the IVIG anti-inflammatory response'?",
+                "What is the Expected Citation Count for 'Immunotherapy: pieces of the IVIG anti-inflammatory response'?",
+                "When was 'Immunotherapy: pieces of the IVIG anti-inflammatory response' published?"
+            ],
+            "queries": [
+                "SELECT ?journal WHERE { <https://makg.org/entity/6186342> <https://makg.org/property/appearsInJournal> ?journal . }",
+                "SELECT ?keyword WHERE { <https://makg.org/entity/6186342> <http://prismstandard.org/namespaces/basic/2.0/keyword> ?keyword . }",
+                "SELECT ?citationCount WHERE { <https://makg.org/entity/6186342> <https://makg.org/property/citationCount> ?citationCount }",
+                "SELECT ?date \nWHERE { \n  <https://makg.org/entity/6186342> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?date \n}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6186342",
+                        "https://makg.org/property/appearsInJournal",
+                        "https://makg.org/entity/93373720"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186342",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "il-33-induced expansion"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186342",
+                        "https://makg.org/property/citationCount",
+                        "0"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186342",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        "2011-07-08"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3291,
+                "prompt_tokens": 2710,
+                "completion_tokens": 581
+            },
+            "query_status": {
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245821527",
+            "seed_label": "Paul C. Trampont",
+            "dialogue": [
+                "What is the creation date of Paul C. Trampont?",
+                "What is his rank?",
+                "Who are his creators?"
+            ],
+            "original": [
+                "What is the creation date of Paul C. Trampont?",
+                "What is the rank of Paul C. Trampont?",
+                "Who are the creators of Paul C. Trampont?"
+            ],
+            "queries": [
+                "SELECT ?date WHERE { <https://makg.org/entity/245821527> <http://purl.org/dc/terms/created> ?date . }",
+                "SELECT ?rank WHERE {<https://makg.org/entity/245821527> <https://makg.org/property/rank> ?rank .}",
+                "SELECT ?creator WHERE {<https://makg.org/entity/245821527> <http://purl.org/dc/terms/creator> ?creator .}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245821527",
+                        "http://purl.org/dc/terms/created",
+                        "2016-06-24"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245821527",
+                        "https://makg.org/property/rank",
+                        "16742"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245821527",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/1564533101"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2212,
+                "prompt_tokens": 1763,
+                "completion_tokens": 449
+            },
+            "query_status": {
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245821579",
+            "seed_label": "Laura Chioma",
+            "dialogue": [
+                "What is the citation count for Laura Chioma?",
+                "What is her rank?",
+                "When did she create her profile?"
+            ],
+            "original": [
+                "What is the citation count for Laura Chioma?",
+                "What is the rank of Laura Chioma?",
+                "When did Laura Chioma create her profile?"
+            ],
+            "queries": [
+                "SELECT ?citation_count WHERE { <https://makg.org/entity/245821579> <https://makg.org/property/citationCount> ?citation_count. FILTER regex(str(?citation_count), '^[0-9]+$') }",
+                "SELECT ?rank WHERE { <https://makg.org/entity/245821579> <https://makg.org/property/rank> ?rank }",
+                "SELECT ?date WHERE { <https://makg.org/entity/245821579> <http://purl.org/dc/terms/created> ?date . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245821579",
+                        "https://makg.org/property/citationCount",
+                        "37"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245821579",
+                        "https://makg.org/property/rank",
+                        "18532"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245821579",
+                        "http://purl.org/dc/terms/created",
+                        "2016-06-24"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2022,
+                "prompt_tokens": 1582,
+                "completion_tokens": 440
+            },
+            "query_status": {
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185790",
+            "seed_label": "Algorithms for fusion of multiple sensors having unknown error distributions",
+            "dialogue": [
+                "How many recommends are associated with the publication 'Algorithms for fusion of multiple sensors having unknown error distributions'?",
+                "What are the keywords related to the publication 'They'?",
+                "Is there a publisher mentioned for the publication 'They'?"
+            ],
+            "original": [
+                "How many recommends are associated with the publication 'Algorithms for fusion of multiple sensors having unknown error distributions'?",
+                "What are the keywords related to the publication 'Algorithms for fusion of multiple sensors having unknown error distributions'?",
+                "Is there a publisher mentioned for the publication 'Algorithms for fusion of multiple sensors having unknown error distributions'?"
+            ],
+            "queries": [
+                "SELECT (COUNT(?recommends) AS ?countRecommends) WHERE { <https://makg.org/entity/6185790> <https://makg.org/property/recommends> ?recommends }",
+                "SELECT ?keyword WHERE { <https://makg.org/entity/6185790> <http://prismstandard.org/namespaces/basic/2.0/keyword> ?keyword. }",
+                "ASK WHERE {<https://makg.org/entity/6185790> <http://purl.org/dc/terms/publisher> ?publisher}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185790",
+                        "https://makg.org/property/recommends",
+                        "https://makg.org/entity/2044250973"
+                    ],
+                    [
+                        "https://makg.org/entity/6185790",
+                        "https://makg.org/property/recommends",
+                        "https://makg.org/entity/2081887000"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185790",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "sample size estimates"
+                    ],
+                    [
+                        "https://makg.org/entity/6185790",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "best sensor"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185790",
+                        "http://purl.org/dc/terms/publisher",
+                        "Oak Ridge National Laboratory"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 8550,
+                "prompt_tokens": 5917,
+                "completion_tokens": 2633
+            },
+            "query_status": {
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6185895",
+            "seed_label": "A Fact Book on Proposition 2 1/2",
+            "dialogue": [
+                "What is the creation date of 'A Fact Book on Proposition 2 1/2'?",
+                "How many recommendations does it have?",
+                "What are the publication dates of it?",
+                "How many URLs does it have?"
+            ],
+            "original": [
+                "What is the creation date of 'A Fact Book on Proposition 2 1/2'?",
+                "How many recommendations does 'A Fact Book on Proposition 2 1/2' have?",
+                "What are the publication dates of 'A Fact Book on Proposition 2 1/2'?",
+                "How many URLs does 'A Fact Book on Proposition 2 1/2' have?"
+            ],
+            "queries": [
+                "SELECT ?creation_date WHERE { <https://makg.org/entity/6185895> <http://purl.org/dc/terms/created> ?creation_date . }",
+                "SELECT (COUNT(?recommends) AS ?num_recommendations) WHERE { <https://makg.org/entity/6185895> <https://makg.org/property/recommends> ?recommends . }",
+                "SELECT ?publication_date WHERE { <https://makg.org/entity/6185895> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?publication_date .}",
+                "SELECT (COUNT(?url) as ?count) WHERE { <https://makg.org/entity/6185895> <http://purl.org/spar/fabio/hasURL> ?url .}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6185895",
+                        "http://purl.org/dc/terms/created",
+                        "2016-06-24"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185895",
+                        "https://makg.org/property/recommends",
+                        "https://makg.org/entity/19033672"
+                    ],
+                    [
+                        "https://makg.org/entity/6185895",
+                        "https://makg.org/property/recommends",
+                        "https://makg.org/entity/19360463"
+                    ],
+                    [
+                        "https://makg.org/entity/6185895",
+                        "https://makg.org/property/recommends",
+                        "https://makg.org/entity/245291863"
+                    ],
+                    [
+                        "https://makg.org/entity/6185895",
+                        "https://makg.org/property/recommends",
+                        "https://makg.org/entity/272996860"
+                    ],
+                    [
+                        "https://makg.org/entity/6185895",
+                        "https://makg.org/property/recommends",
+                        "https://makg.org/entity/1497445775"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185895",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        "2017-11-10"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6185895",
+                        "http://purl.org/spar/fabio/hasURL",
+                        "https://www.amazon.com/Fact-Book-Proposition-Classic-Reprint/dp/1528497139"
+                    ],
+                    [
+                        "https://makg.org/entity/6185895",
+                        "http://purl.org/spar/fabio/hasURL",
+                        "https://scholarworks.umb.edu/csppi_pubs/1/"
+                    ],
+                    [
+                        "https://makg.org/entity/6185895",
+                        "http://purl.org/spar/fabio/hasURL",
+                        "https://works.bepress.com/padraig_omalley/3/"
+                    ],
+                    [
+                        "https://makg.org/entity/6185895",
+                        "http://purl.org/spar/fabio/hasURL",
+                        "https://scholarworks.umb.edu/cgi/viewcontent.cgi?article=1000&context=csppi_pubs"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3534,
+                "prompt_tokens": 2697,
+                "completion_tokens": 837
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6186439",
+            "seed_label": "Doppler ultrasonography in the diagnosis of giant cell arteritis.",
+            "dialogue": [
+                "What keywords are associated with Doppler ultrasonography in the diagnosis of giant cell arteritis?",
+                "What is the publication date of it?",
+                "What is the url of the publication related to it?",
+                "What is the rank of it?"
+            ],
+            "original": [
+                "What keywords are associated with Doppler ultrasonography in the diagnosis of giant cell arteritis?",
+                "What is the publication date of Doppler ultrasonography in the diagnosis of giant cell arteritis?",
+                "What is the url of the publication related to Doppler ultrasonography in the diagnosis of giant cell arteritis?",
+                "What is the rank of Doppler ultrasonography in the diagnosis of giant cell arteritis?"
+            ],
+            "queries": [
+                "SELECT ?keyword \nWHERE { \n  <https://makg.org/entity/6186439> <http://prismstandard.org/namespaces/basic/2.0/keyword> ?keyword . \n}",
+                "SELECT ?date WHERE { <https://makg.org/entity/6186439> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?date .}",
+                "SELECT ?url WHERE { <https://makg.org/entity/6186439> <http://purl.org/spar/fabio/hasURL> ?url }",
+                "SELECT ?rank \n    WHERE {\n       <https://makg.org/entity/6186439> <https://makg.org/property/rank> ?rank \n    }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6186439",
+                        "http://prismstandard.org/namespaces/basic/2.0/keyword",
+                        "high resolution"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186439",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        "2000-07-01"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186439",
+                        "http://purl.org/spar/fabio/hasURL",
+                        "https://www.ncbi.nlm.nih.gov/pubmed/10948760"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186439",
+                        "https://makg.org/property/rank",
+                        "20508"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3551,
+                "prompt_tokens": 2741,
+                "completion_tokens": 810
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/245823429",
+            "seed_label": "Samsudin",
+            "dialogue": [
+                "How many papers did Samsudin create?",
+                "What is his citation count?",
+                "When was his account created?",
+                "Is he a creator?",
+                "What is his rank?"
+            ],
+            "original": [
+                "How many papers did Samsudin create?",
+                "What is Samsudin's citation count?",
+                "When was Samsudin's account created?",
+                "Is Samsudin a creator?",
+                "What is the rank of Samsudin?"
+            ],
+            "queries": [
+                "SELECT (COUNT(?paper) as ?totalCount) WHERE { <https://makg.org/entity/245823429> <https://makg.org/property/paperCount> ?paper . }",
+                "SELECT ?citationCount WHERE {<https://makg.org/entity/245823429> <https://makg.org/property/citationCount> ?citationCount}",
+                "SELECT ?date WHERE { <https://makg.org/entity/245823429> <http://purl.org/dc/terms/created> ?date }",
+                "ASK WHERE { <https://makg.org/entity/245823429> <http://purl.org/dc/terms/creator> <https://makg.org/entity/133991117> }",
+                "SELECT ?rank WHERE { <https://makg.org/entity/245823429> <https://makg.org/property/rank> ?rank . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/245823429",
+                        "https://makg.org/property/paperCount",
+                        "1"
+                    ],
+                    [
+                        "https://makg.org/entity/245823429",
+                        "https://makg.org/property/paperCount",
+                        "56"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245823429",
+                        "https://makg.org/property/citationCount",
+                        "0"
+                    ],
+                    [
+                        "https://makg.org/entity/245823429",
+                        "https://makg.org/property/citationCount",
+                        "6"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245823429",
+                        "http://purl.org/dc/terms/created",
+                        "2016-06-24"
+                    ],
+                    [
+                        "https://makg.org/entity/245823429",
+                        "http://purl.org/dc/terms/created",
+                        "2016-6-24"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245823429",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/133991117"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/245823429",
+                        "https://makg.org/property/rank",
+                        "21075"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2108,
+                "prompt_tokens": 1600,
+                "completion_tokens": 508
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://makg.org/entity/6186100",
+            "seed_label": "PERCEPTION OF PAIN IN ATHLETES",
+            "dialogue": [
+                "What is the publication date of PERCEPTION OF PAIN IN ATHLETES?",
+                "Who are their creators?",
+                "What is their URL?"
+            ],
+            "original": [
+                "What is the publication date of PERCEPTION OF PAIN IN ATHLETES?",
+                "Who are the creators of PERCEPTION OF PAIN IN ATHLETES?",
+                "What is the URL of PERCEPTION OF PAIN IN ATHLETES?"
+            ],
+            "queries": [
+                "SELECT ?publicationDate WHERE { <https://makg.org/entity/6186100> <http://prismstandard.org/namespaces/basic/2.0/publicationDate> ?publicationDate . }",
+                "SELECT ?creator WHERE { <https://makg.org/entity/6186100> <http://purl.org/dc/terms/creator> ?creator . }",
+                "SELECT ?url WHERE { <https://makg.org/entity/6186100> <http://purl.org/spar/fabio/hasURL> ?url}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://makg.org/entity/6186100",
+                        "http://prismstandard.org/namespaces/basic/2.0/publicationDate",
+                        "2014-01-01"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186100",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/2119629836"
+                    ],
+                    [
+                        "https://makg.org/entity/6186100",
+                        "http://purl.org/dc/terms/creator",
+                        "https://makg.org/entity/2108429036"
+                    ]
+                ],
+                [
+                    [
+                        "https://makg.org/entity/6186100",
+                        "http://purl.org/spar/fabio/hasURL",
+                        "https://digitalcommons.wku.edu/ijesab/vol8/iss2/48/"
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3057,
+                "prompt_tokens": 2376,
+                "completion_tokens": 681
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 2
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "When was": 8,
+            "What is": 28,
+            "Is he": 3,
+            "Who are": 3,
+            "What was": 1,
+            "Is his": 1,
+            "Is she": 1,
+            "Does it": 2,
+            "Was 'it'": 1,
+            "What are": 6,
+            "On which": 1,
+            "In what": 1,
+            "What keywords": 2,
+            "How many": 5,
+            "Do any": 1,
+            "In which": 1,
+            "When did": 1,
+            "Is there": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 3901.25,
+                "prompt_tokens": 3129.65,
+                "completion_tokens": 771.6
+            },
+            "Minimum": {
+                "total_tokens": 2007,
+                "prompt_tokens": 1519,
+                "completion_tokens": 440
+            },
+            "Maximum": {
+                "total_tokens": 13253,
+                "prompt_tokens": 12362,
+                "completion_tokens": 2633
+            },
+            "Total": {
+                "total_tokens": 78025,
+                "prompt_tokens": 62593,
+                "completion_tokens": 15432
+            }
+        },
+        "execution": {
+            "Correct": 67,
+            "Syntax Error": 3,
+            "In Correct": 7
+        }
+    },
+    "cost": {
+        "total_tokens": 148941,
+        "prompt_tokens": 107134,
+        "completion_tokens": 41807
+    },
+    "total_time": 268.87991166114807,
+    "average_time": 13.443995583057404,
+    "Context Length Error": 0,
+    "Question Validation Error": 2,
+    "Question Json Error": 3,
+    "Triples Validation Error": 1,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 4,
+    "Sparql Json Error": 2,
+    "Dialogue Validation Error": 0,
+    "Dialogue Json Error": 0
+}

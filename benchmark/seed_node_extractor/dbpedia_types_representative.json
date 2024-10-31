@@ -1,0 +1,17 @@
+{
+    "http://dbpedia.org/ontology/Person": "http://xmlns.com/foaf/0.1/name",
+    "http://dbpedia.org/ontology/Agent": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://dbpedia.org/ontology/TimePeriod": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://dbpedia.org/ontology/Place": "http://xmlns.com/foaf/0.1/name",
+    "http://dbpedia.org/ontology/Location": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://dbpedia.org/ontology/Settlement": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://dbpedia.org/ontology/PopulatedPlace": "http://xmlns.com/foaf/0.1/name",
+    "http://dbpedia.org/ontology/Work": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://dbpedia.org/ontology/Athlete": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://dbpedia.org/ontology/Organisation": "http://xmlns.com/foaf/0.1/name",
+    "http://dbpedia.org/ontology/SportsTeamMember": "http://xmlns.com/foaf/0.1/name",
+    "http://dbpedia.org/ontology/OrganisationMember": "http://xmlns.com/foaf/0.1/name",
+    "http://dbpedia.org/ontology/Species": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://dbpedia.org/ontology/Eukaryote": "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://dbpedia.org/ontology/CareerStation": "http://xmlns.com/foaf/0.1/name"
+}

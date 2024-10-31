@@ -95,7 +95,8 @@ class NodeType:
             self.sample_index += 1
             graph_size = self.get_graph_size(node["entity"], knowledge_graph_uri)
             distinct_predicates = self.get_distinct_predicates(node["entity"], knowledge_graph_uri)
-            if node["entity"] not in sampled_nodes and 20 < graph_size < 1000 and distinct_predicates > 10:
+            min_distinct_predicates = 7 if knowledge_graph_prefix == 'makg' else 10
+            if node["entity"] not in sampled_nodes and 20 < graph_size < 1000 and distinct_predicates > min_distinct_predicates:
                 sampled_nodes.append(node["entity"])
                 return Node(uri=URIRef(node["entity"]), nodetype=URIRef(self.node_type.strip()))
 
