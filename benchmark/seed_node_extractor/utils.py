@@ -4,6 +4,7 @@ import redis
 import time
 import json
 from appconfig import config
+from func_timeout import func_timeout, FunctionTimedOut
 from redis_util import RedisClient
 
 try:
@@ -46,18 +47,23 @@ knowledge_graph_to_uri = {
     "dblp": (f"http://{host}:8894/sparql", "dblp"),
 }
 
+
 # Returns only KG specific types
 def sparql_results_to_dataframe(results, kg):
     data = []
 
-    for binding in results['results']['bindings']:
-        type = binding.get('type', {}).get('value', None)
-        count = binding.get('count', {}).get('value', None)
-        if (kg in type and type not in
-                ['http://dbpedia.org/ontology/Image', 'http://schema.org/GeoCoordinates',
-                 'http://dbpedia.org/ontology/CareerStation', 'http://dbpedia.org/ontology/TimePeriod',
-                 'http://bioschemas.org/Taxon', 'https://makg.org/class/Citation']):
-            data.append({'Type': type, 'Count': count})
+    for binding in results["results"]["bindings"]:
+        type = binding.get("type", {}).get("value", None)
+        count = binding.get("count", {}).get("value", None)
+        if kg in type and type not in [
+            "http://dbpedia.org/ontology/Image",
+            "http://schema.org/GeoCoordinates",
+            "http://dbpedia.org/ontology/CareerStation",
+            "http://dbpedia.org/ontology/TimePeriod",
+            "http://bioschemas.org/Taxon",
+            "https://makg.org/class/Citation",
+        ]:
+            data.append({"Type": type, "Count": count})
 
     return data
 
@@ -65,34 +71,56 @@ def sparql_results_to_dataframe(results, kg):
 def execute_sparql_query(endpoint_url, query):
     global redis_client
 
-    # Check if the response is cached
+    # Generate a unique cache key based on the endpoint URL and query
     cache_key = f"{endpoint_url}_{query}"
+    print("KEY:", cache_key)
+
+    # Check if the response is cached in Redis
     if redis_client:
         cached_result = redis_client.get(cache_key)
         if cached_result:
-            # print("Result found in cache.")
+            # If found in cache, return the cached result
+            # print(type(cached_result))
+            if isinstance(cached_result, str):
+                cached_result = json.loads(cached_result)
             return 200, cached_result
 
-    headers = {
-        'Content-Type': 'application/sparql-query',
-        'Accept': 'application/json'
-    }
-    params = {
-        'query': query,
-    }
+    # Define headers and params for the SPARQL query request
+    headers = {"Content-Type": "application/sparql-query", "Accept": "application/json"}
+    params = {"query": query}
 
-    response = requests.get(endpoint_url, headers=headers, params=params)
+    try:
+        # Execute the GET request with a timeout of 300 seconds (5 minutes)
+        response = func_timeout(
+            300,
+            requests.get,
+            args=(endpoint_url,),
+            kwargs={"headers": headers, "params": params},
+        )
 
-    if response.status_code == 200:
-        # Cache the response
-        if redis_client:
-            redis_client.set(cache_key, json.dumps(response.json()))
-            print("Result cached.")
-        return response.status_code, response.json()
-    else:
-        print(f"Error: {response.status_code}")
-        print(response.text)
-        return response.status_code, response.text
+        # If the request is successful, cache the result and return the response
+        if response.status_code == 200:
+            if redis_client:
+                redis_client.set(cache_key, json.dumps(response.json()))
+                print("Result cached.")
+            return response.status_code, response.json()
+
+        else:
+            # If an error occurs, print and return the error details
+            print(f"Error: {response.status_code}")
+            print(response.text)
+            return response.status_code, response.text
+
+    except FunctionTimedOut:
+        # Handle the case where the request times out
+        print("The SPARQL query request timed out.")
+        return 408, "Request Timeout"
+
+    except requests.RequestException as e:
+        # Handle other exceptions related to the request
+        print(f"An error occurred: {e}")
+        return 500, f"An error occurred: {e}"
+
 
 def send_sparql_query(endpoint_url, query):
     repeat = True
@@ -101,7 +129,10 @@ def send_sparql_query(endpoint_url, query):
         status_code, response = execute_sparql_query(endpoint_url, query)
         if status_code == 200:
             return response
-        elif status_code == 404 and 'The requested URL was not found    URI  = \'/sparql\'' in response:
+        elif (
+            status_code == 404
+            and "The requested URL was not found    URI  = '/sparql'" in response
+        ):
             count += 1
             print("Retrying ", count)
             time.sleep(2)
@@ -111,14 +142,17 @@ def send_sparql_query(endpoint_url, query):
 
 
 def get_type_distrubution(endpoint, prefix):
-    query = ("SELECT ?type (COUNT(?entity) AS ?count) WHERE { ?entity rdf:type ?type. } GROUP BY ?type "
-             "ORDER BY DESC(?count)")
+    query = (
+        "SELECT ?type (COUNT(?entity) AS ?count) WHERE { ?entity rdf:type ?type. } GROUP BY ?type "
+        "ORDER BY DESC(?count)"
+    )
     result = send_sparql_query(endpoint, query)
     result_df = sparql_results_to_dataframe(result, prefix)
     return result_df
 
+
 def get_name(predicate):
-    pattern = r'[#/]([^/#]+)$'
+    pattern = r"[#/]([^/#]+)$"
     match = re.search(pattern, predicate)
     if match:
         name = match.group(1)
@@ -132,5 +166,5 @@ def get_name(predicate):
 def get_file_name_from_type(type):
     type = type.strip()
     human_readable_type = get_name(type)
-    human_readable_type = human_readable_type.replace(' ', '_')
+    human_readable_type = human_readable_type.replace(" ", "_")
     return human_readable_type
