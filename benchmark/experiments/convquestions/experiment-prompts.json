@@ -1,0 +1,46 @@
+[
+    {
+        "prompt_name": "original",
+        "prompt": "You are given two sets of questions: Set A and Set B. Both sets ask questions about the same topic. Consider factors such as fluency, clarity, and variety in the questions. Based on these criteria, determine which set has better overall quality. Return only Set A or Set B.\n\nSet A:\n\n{first_set_question}\n\nSet B:\n\n{second_set_question}"
+    },
+    {
+        "prompt_name": "v1",
+        "prompt": "You are given two sets of questions: Set A and Set B. Both sets ask questions about the same topic. Consider factors such as fluency, clarity and facuality in the questions. Based on these criteria, determine which set has better overall quality. Return only Set A or Set B.\n\nSet A:\n\n{first_set_question}\n\nSet B:\n\n{second_set_question}"
+    },
+    {
+        "prompt_name": "v2",
+        "prompt": "You are given two sets of questions: Set A and Set B. Both sets ask questions about the same topic. Consider factors such as clarity and facuality in the questions. Based on these criteria, determine which set has better overall quality. Return only Set A or Set B.\n\nSet A:\n\n{first_set_question}\n\nSet B:\n\n{second_set_question}"
+    },
+    {
+        "prompt_name": "v3",
+        "prompt": "You are given two sets of questions: Set A and Set B. Both sets ask questions about the same topic. Consider factors such as fluency and simplicity in the questions. Based on these criteria, determine which set has better overall quality. Return only Set A or Set B.\n\nSet A:\n\n{first_set_question}\n\nSet B:\n\n{second_set_question}"
+    },
+    {
+        "prompt_name": "v4",
+        "prompt": "You are given two sets of questions: Set A and Set B. Both sets ask questions about the same topic. Consider factors such as factual accuracy, clarity, and how well the questions can be understood independently of other questions. Based on these criteria, determine which set has better overall quality. Return only Set A or Set B.\n\nSet A:\n\n{first_set_question}\n\nSet B:\n\n{second_set_question}"
+    },
+    {
+        "prompt_name": "v5",
+        "prompt": "You are given two sets of questions: Set A and Set B. Both sets ask questions about the same topic. Consider factors such as factual accuracy, precision, and how well the questions can be understood individually. Based on these criteria, determine which set has better overall quality. Return only Set A or Set B.\n\nSet A:\n\n{first_set_question}\n\nSet B:\n\n{second_set_question}"
+    },
+    {
+        "prompt_name": "v6",
+        "prompt": "You are given two sets of questions: Set A and Set B. Both sets ask questions about the same topic. Consider factors such as factual accuracy, objectivity, and how well the questions stand alone without relying on others. Based on these criteria, determine which set has better overall quality. Return only Set A or Set B.\n\nSet A:\n\n{first_set_question}\n\nSet B:\n\n{second_set_question}"
+    },
+    {
+        "prompt_name": "v7",
+        "prompt": "You are given two sets of questions: Set A and Set B. Both sets ask questions about the same topic. Consider factors such as factual accuracy, clarity, and directness in the questions. Based on these criteria, determine which set has better overall quality. Return only Set A or Set B.\n\nSet A:\n\n{first_set_question}\n\nSet B:\n\n{second_set_question}"
+    },
+    {
+        "prompt_name": "v8",
+        "prompt": "You are given two sets of questions: Set A and Set B. Both sets ask questions about the same topic. Consider factors such as factual accuracy, clarity, and how well each question is self-contained and understandable on its own. Based on these criteria, determine which set has better overall quality. Return only Set A or Set B.\n\nSet A:\n\n{first_set_question}\n\nSet B:\n\n{second_set_question}"
+    },
+    {
+        "prompt_name": "v9",
+        "prompt": "You are given two sets of questions: Set A and Set B. Both sets ask questions about the same topic. Consider factors such as factual accuracy, clarity, and how well the questions maintain standalone clarity without relying on context from other questions. Based on these criteria, determine which set has better overall quality. Return only Set A or Set B.\n\nSet A:\n\n{first_set_question}\n\nSet B:\n\n{second_set_question}"
+    },
+    {
+        "prompt_name": "v10",
+        "prompt": "You are given two sets of questions: Set A and Set B. Both sets ask questions about the same topic. Consider factors such as factual accuracy, clarity, and how easily each question can be answered based on the information it provides. Based on these criteria, determine which set has better overall quality. Return only Set A or Set B.\n\nSet A:\n\n{first_set_question}\n\nSet B:\n\n{second_set_question}"
+    }
+]
