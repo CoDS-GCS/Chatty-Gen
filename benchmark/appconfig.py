@@ -94,8 +94,6 @@ class Config:
 
                 if config_data[field_name].model_type == ModelType.GOOGLE:
                     config_data["time_sleep"] = config_data["time_sleep"] or True
-                else:
-                    config_data["time_sleep"] = False
 
             return cls(**config_data)
 
