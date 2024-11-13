@@ -110,7 +110,7 @@ def plot_chart(maestro_data, our_data, qald_data, kg_name):
 
     # Set labels and title
     # ax.set_xlabel('Question prefix for '+ kg_name.upper(),  labelpad=10., fontsize=font_size)
-    ax.set_ylabel('Count', fontsize=font_size)
+    ax.set_ylabel('Percentage', fontsize=font_size)
     # ax.set_title('Comparison of Approaches')
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=45, ha='right', fontsize=font_size)
@@ -165,7 +165,7 @@ def plot_chart_two_bars(maestro_data, our_data, kg_name):
 
     # Set labels and title
     # ax.set_xlabel('Question prefix for '+ kg_name.upper(),  labelpad=10., fontsize=font_size)
-    ax.set_ylabel('Count', fontsize=font_size)
+    ax.set_ylabel('Percentage', fontsize=font_size)
     # ax.set_title('Comparison of Approaches')
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=45, ha='right', fontsize=font_size)
@@ -173,7 +173,7 @@ def plot_chart_two_bars(maestro_data, our_data, kg_name):
     ax.legend(loc='upper right', fontsize=values_font_size)
     fig.tight_layout()
     # output_file = f"../Figures/maestro_complexity_{kg_name}.pdf"
-    output_file = f"../Final_Benchmarks/maestro_complexity_{kg_name}.pdf"
+    output_file = f"../Final_Benchmarks/maestro_complexity_{kg_name}_v2.pdf"
     plt.subplots_adjust(left=0.2, bottom=0.2, right=1.35)
     plt.savefig(output_file, bbox_inches='tight')
 
@@ -261,7 +261,7 @@ def plot_chart_one_bar(our_data, kg_name):
 
     # Set labels and title
     # ax.set_xlabel('Question prefix for '+ kg_name.upper(),  labelpad=10., fontsize=font_size)
-    ax.set_ylabel('Count', fontsize=font_size)
+    ax.set_ylabel('Percentage', fontsize=font_size)
     # ax.set_title('Comparison of Approaches')
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=45, ha='right', fontsize=font_size)

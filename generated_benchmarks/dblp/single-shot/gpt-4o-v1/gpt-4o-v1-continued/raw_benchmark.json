@@ -1,0 +1,485 @@
+[
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Who authored Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?\",\n    \"How many creators are listed for Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?\",\n    \"Is Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019) categorized under 'bibtexType' in the dataset?\",\n    \"When was Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019) published?\",\n    \"In which publication is Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?\"\n  ],\n  \"dialogue\": [\n    \"Who authored Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?\",\n    \"How many creators are listed for it?\",\n    \"Is it categorized under 'bibtexType' in the dataset?\",\n    \"When was it published?\",\n    \"In which publication is it?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?author WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#authoredBy> ?author }\",\n    \"SELECT ?count WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#numberOfCreators> ?count }\",\n    \"ASK WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#bibtexType> ?o }\",\n    \"SELECT ?year WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#yearOfPublication> ?year }\",\n    \"SELECT ?publication WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#publishedIn> ?publication }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 776,
+                "completion_tokens": 435,
+                "total_tokens": 1211
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Is Gerhard Kramer associated with a reference to wikidata?\",\n    \"Does Gerhard Kramer have an ORCID listed?\",\n    \"What is the primary affiliation of Gerhard Kramer?\",\n    \"What is the full creator name of Gerhard Kramer?\",\n    \"Could you provide the primary homepage of Gerhard Kramer?\"\n  ],\n  \"dialogue\": [\n    \"Q: Is Gerhard Kramer associated with a reference to wikidata?\\nA: Yes.\",\n    \"Q: Does he have an ORCID listed?\\nA: Yes.\",\n    \"Q: What is his primary affiliation?\\nA: It is not listed here.\",\n    \"Q: What is his full creator name?\\nA: It is not listed here.\",\n    \"Q: Could you provide his primary homepage?\\nA: The specific URL is not listed here.\"\n  ],\n  \"sparql\": [\n    \"\"\"\n    PREFIX dblp: <https://dblp.org/rdf/schema#>\n    ASK WHERE {\n      <https://dblp.org/pid/04/1411> dblp:wikidata ?value .\n    }\n    \"\"\",\n    \"\"\"\n    PREFIX dblp: <https://dblp.org/rdf/schema#>\n    ASK WHERE {\n      <https://dblp.org/pid/04/1411> dblp:orcid ?value .\n    }\n    \"\"\",\n    \"\"\"\n    PREFIX dblp: <https://dblp.org/rdf/schema#>\n    SELECT ?affiliation WHERE {\n      <https://dblp.org/pid/04/1411> dblp:primaryAffiliation ?affiliation .\n    }\n    \"\"\",\n    \"\"\"\n    PREFIX dblp: <https://dblp.org/rdf/schema#>\n    SELECT ?name WHERE {\n      <https://dblp.org/pid/04/1411> dblp:primaryFullCreatorName ?name .\n    }\n    \"\"\",\n    \"\"\"\n    PREFIX dblp: <https://dblp.org/rdf/schema#>\n    SELECT ?homepage WHERE {\n      <https://dblp.org/pid/04/1411> dblp:primaryHomepage ?homepage .\n    }\n    \"\"\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 542,
+                "completion_tokens": 452,
+                "total_tokens": 994
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is Yan Zhang primary affiliation?\",\n    \"Does Yan Zhang 0054 have an orcid?\",\n    \"How many affiliations does Yan Zhang have?\",\n    \"What is Yan's primary homepage URL?\",\n    \"What is the full creator name for Yan Zhang 0054?\"\n  ],\n  \"dialogue\": [\n    \"What is Yan Zhang's primary affiliation?\",\n    \"Does he have an orcid?\",\n    \"How many affiliations does he have?\",\n    \"What is his primary homepage URL?\",\n    \"What is his full creator name?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?affiliation WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation }\",\n    \"ASK WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#orcid> ?orcid }\",\n    \"SELECT (COUNT(?aff) AS ?affCount) WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryAffiliation> ?aff }\",\n    \"SELECT ?homepage WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage }\",\n    \"SELECT ?name WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?name }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 555,
+                "completion_tokens": 345,
+                "total_tokens": 900
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Who authored Afonso S. Bandeira: Random Laplacian Matrices and Convex Relaxations?\",\n    \"What is the DOI of Afonso S. Bandeira: Random Laplacian Matrices and Convex Relaxations?\",\n    \"Which journal published Afonso S. Bandeira: Random Laplacian Matrices and Convex Relaxations?\",\n    \"How many creators does Afonso S. Bandeira: Random Laplacian Matrices and Convex Relaxations have?\",\n    \"Was Afonso S. Bandeira: Random Laplacian Matrices and Convex Relaxations published in 2018?\"\n  ],\n  \"dialogue\": [\n    \"Person A: Who authored Afonso S. Bandeira: Random Laplacian Matrices and Convex Relaxations?\",\n    \"Person B: The work was authored by Afonso S. Bandeira.\",\n\n    \"Person A: What is its DOI?\",\n    \"Person B: It doesn't have an available DOI.\",\n\n    \"Person A: Which journal published his paper?\",\n    \"Person B: It was published in the Journal of Foundations of Computational Mathematics.\",\n\n    \"Person A: How many creators does it have?\",\n    \"Person B: It has one creator.\",\n\n    \"Person A: Was it published in 2018?\",\n    \"Person B: Yes, it was published in 2018.\"\n  ],\n  \"sparql\": [\n    \"SELECT ?author WHERE {  <https://dblp.org/rec/journals/focm/Bandeira18> <https://dblp.org/rdf/schema#authoredBy> ?author}\",\n    \"SELECT ?doi WHERE {  <https://dblp.org/rec/journals/focm/Bandeira18> <https://dblp.org/rdf/schema#doi> ?doi}\",\n    \"SELECT ?journal WHERE {  <https://dblp.org/rec/journals/focm/Bandeira18> <https://dblp.org/rdf/schema#publishedInJournal> ?journal}\",\n    \"SELECT ?numCreators WHERE {  <https://dblp.org/rec/journals/focm/Bandeira18> <https://dblp.org/rdf/schema#numberOfCreators> ?numCreators}\",\n    \"ASK WHERE {  <https://dblp.org/rec/journals/focm/Bandeira18> <https://dblp.org/rdf/schema#yearOfPublication> '2018'^^xsd:gYear}\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 858,
+                "completion_tokens": 527,
+                "total_tokens": 1385
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the webpage for Walter Brenner?\",\n    \"What are the affiliations of Walter Brenner?\",\n    \"How many identifiers are there for Walter Brenner?\",\n    \"Is Walter Brenner's profile on Wikipedia?\",\n    \"When was the primary homepage of Walter Brenner last updated?\"\n  ],\n  \"dialogue\": [\n    \"Q: What is the webpage for Walter Brenner? \\nA: The webpage isn't specified in the given data.\",\n    \"Q: What are the affiliations of Walter Brenner? \\nA: The primary affiliation isn't specified in the given data.\",\n    \"Q: How many identifiers are there for Walter Brenner? \\nA: There are six identifiers present.\",\n    \"Q: Is his profile on Wikipedia? \\nA: Yes, it is.\",\n    \"Q: When was his primary homepage last updated? \\nA: The last update date isn't specified in the given data.\"\n  ],\n  \"sparql\": [\n    \"SELECT ?webpage WHERE { <https://dblp.org/pid/05/4977> <https://dblp.org/rdf/schema#webpage> ?webpage }\",\n    \"SELECT ?affiliation WHERE { <https://dblp.org/pid/05/4977> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation }\",\n    \"SELECT (COUNT(DISTINCT ?identifier) AS ?identifierCount) WHERE { <https://dblp.org/pid/05/4977> ?predicate ?identifier. }\",\n    \"ASK WHERE { <https://dblp.org/pid/05/4977> <https://dblp.org/rdf/schema#wikipedia> ?wikipediaPage }\",\n    \"SELECT ?modDate WHERE { <https://dblp.org/pid/05/4977> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage . ?homepage <http://purl.org/dc/terms/modified> ?modDate }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 569,
+                "completion_tokens": 426,
+                "total_tokens": 995
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is Michael A. Kochte's orcid?\",\n    \"Does Michael A. Kochte have a primary affiliation?\",\n    \"What is Michael A. Kochte's primaryFullCreatorName?\",\n    \"What are the webpages associated with Michael?\",\n    \"Provide Michael A. Kochte's entire homepage URL, if available?\"\n  ],\n  \"dialogue\": [\n    \"What is Michael A. Kochte's orcid?\",\n    \"Does he have a primary affiliation?\",\n    \"What is his primaryFullCreatorName?\",\n    \"What are the webpages associated with him?\",\n    \"Provide his entire homepage URL, if available?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?orcid WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#orcid> ?orcid }\",\n    \"ASK WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation }\",\n    \"SELECT ?primaryFullCreatorName WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?primaryFullCreatorName }\",\n    \"SELECT ?webpage WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#webpage> ?webpage }\",\n    \"SELECT ?primaryHomepage WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#primaryHomepage> ?primaryHomepage }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 574,
+                "completion_tokens": 353,
+                "total_tokens": 927
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"In which journal was Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012) published?\",\n    \"How many authors contributed to Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012)?\",\n    \"Is Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012) published in a journal?\",\n    \"Who are the authors of Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012)?\",\n    \"When was Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012) published?\"\n  ],\n  \"dialogue\": [\n    \"Q: In which journal was Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012) published?\",\n    \"A: It was published in a journal.\\nQ: How many authors contributed to it?\",\n    \"A: There were multiple authors.\\nQ: Is it published in a journal?\",\n    \"A: Yes, it is.\\nQ: Who are the authors of it?\",\n    \"A: Find out from the record.\\nQ: When was it published?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/BartholdiSSS12> <https://dblp.org/rdf/schema#publishedInJournal> ?journal }\",\n    \"SELECT ?count WHERE { <https://dblp.org/rec/journals/focm/BartholdiSSS12> <https://dblp.org/rdf/schema#numberOfCreators> ?count }\",\n    \"ASK WHERE { <https://dblp.org/rec/journals/focm/BartholdiSSS12> <https://dblp.org/rdf/schema#publishedInJournal> ?anything }\",\n    \"SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/BartholdiSSS12> <https://dblp.org/rdf/schema#authoredBy> ?author }\",\n    \"SELECT ?date WHERE { <https://dblp.org/rec/journals/focm/BartholdiSSS12> <https://dblp.org/rdf/schema#yearOfPublication> ?date }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 905,
+                "completion_tokens": 500,
+                "total_tokens": 1405
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the Wikidata entry of Christian Schulz 003?\",\n    \"What is Christian Schulz 003's ORCID?\",\n    \"Does Christian Schulz 003 have an other affiliation?\",\n    \"Who is the primary affiliation for Christian Schulz 003?\",\n    \"What is the primary homepage of Christian Schulz 003?\"\n  ],\n  \"dialogue\": [\n    \"User: What is the Wikidata entry of Christian Schulz 003? \\nAssistant: The Wikidata entry isn't specified.\",\n    \"User: What is their ORCID? \\nAssistant: The ORCID isn't specified.\",\n    \"User: Does he have an other affiliation? \\nAssistant: Yes, the other affiliation isn't specified but it exists.\",\n    \"User: Who is the primary affiliation for him? \\nAssistant: The primary affiliation isn't specified.\",\n    \"User: What is his primary homepage\uff1f \\nAssistant: The primary homepage isn't specified.\"\n  ],\n  \"sparql\": [\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?wikidata WHERE { <https://dblp.org/pid/10/1388-3> dblp:wikidata ?wikidata }\",\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?orcid WHERE { <https://dblp.org/pid/10/1388-3> dblp:orcid ?orcid }\",\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#> ASK WHERE { <https://dblp.org/pid/10/1388-3> dblp:otherAffiliation ?aff } \",\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?primaryAffiliation WHERE { <https://dblp.org/pid/10/1388-3> dblp:primaryAffiliation ?primaryAffiliation }\",\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?primaryHomepage WHERE { <https://dblp.org/pid/10/1388-3> dblp:primaryHomepage ?primaryHomepage }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 616,
+                "completion_tokens": 459,
+                "total_tokens": 1075
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n    \"questions\": [\n        \"What year was Lenore Blum et al.: Foreword. (2005) published?\",\n        \"How many creators were attributed to Lenore Blum et al.: Foreword. (2005)?\",\n        \"Did Lenore Blum et al.: Foreword. (2005) get published in a journal?\",\n        \"In which journal was Lenore Blum et al.: Foreword. (2005) published?\",\n        \"Is there an electronic edition of Lenore Blum et al.: Foreword. (2005)?\"\n    ],\n    \"dialogue\": [\n        \"What year was Lenore Blum et al.: Foreword. (2005) published?\",\n        \"How many creators were attributed to it?\",\n        \"Did it get published in a journal?\",\n        \"In which journal was it published?\",\n        \"Is there an electronic edition of it?\"\n    ],\n    \"sparql\": [\n        \"SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/BlumCPRS05> <https://dblp.org/rdf/schema#yearOfPublication> ?year }\",\n        \"SELECT ?count WHERE { <https://dblp.org/rec/journals/focm/BlumCPRS05> <https://dblp.org/rdf/schema#numberOfCreators> ?count }\",\n        \"ASK WHERE { <https://dblp.org/rec/journals/focm/BlumCPRS05> <https://dblp.org/rdf/schema#publishedInJournal> ?value }\",\n        \"SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/BlumCPRS05> <https://dblp.org/rdf/schema#publishedInJournal> ?journal }\",\n        \"ASK WHERE { <https://dblp.org/rec/journals/focm/BlumCPRS05> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?ea }\"\n    ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 909,
+                "completion_tokens": 421,
+                "total_tokens": 1330
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n    \"questions\": [\n        \"Is Aviad Rubinstein associated with other affiliations?\",\n        \"What is Aviad Rubinstein's primary affiliation?\",\n        \"Can you list various webpages associated with Aviad Rubinstein?\",\n        \"How many types of web identifiers are mentioned for Aviad Rubinstein?\",\n        \"Does Aviad Rubinstein have an award webpage?\"\n    ],\n    \"dialogue\": [\n        \"Is Aviad Rubinstein associated with other affiliations?\",\n        \"What is his primary affiliation?\",\n        \"Can you list various webpages associated with him?\",\n        \"How many types of web identifiers are mentioned for him?\",\n        \"Does he have an award webpage?\"\n    ],\n    \"sparql\": [\n        \"ASK WHERE { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#otherAffiliation> ?o }\",\n        \"SELECT ?affiliation WHERE { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation }\",\n        \"SELECT ?webpage WHERE { { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#otherHomepage> ?webpage } UNION { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#primaryHomepage> ?webpage } UNION { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#webpage> ?webpage } UNION { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#awardWebpage> ?webpage } }\",\n        \"SELECT (COUNT(DISTINCT(?property)) AS ?count) WHERE { <https://dblp.org/pid/11/10308> ?property ?object }\",\n        \"ASK WHERE { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#awardWebpage> ?o }\"\n    ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 601,
+                "completion_tokens": 442,
+                "total_tokens": 1043
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is Nico Potyka's ORCID?\",\n    \"Does Nico Potyka have an affiliation?\",\n    \"What is the name of Nico Potyka?\",\n    \"How many webpages does Nico Potyka have listed?\",\n    \"What is the primary homepage of Nico Potyka?\"\n  ],\n  \"dialogue\": [\n    \"What is Nico Potyka's ORCID?\",\n    \"Does he have an affiliation?\",\n    \"What is his name?\",\n    \"How many webpages does he have listed?\",\n    \"What is his primary homepage?\"\n  ],\n  \"sparql\": [\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#> \\nSELECT ?orcid WHERE { <https://dblp.org/pid/116/9377> dblp:orcid ?orcid }\",\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#> \\nASK WHERE { <https://dblp.org/pid/116/9377> ?attribute ?value }\",\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#> \\nSELECT ?name WHERE { <https://dblp.org/pid/116/9377> dblp:primaryFullCreatorName ?name }\",\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#> \\nSELECT (COUNT(?webpage) as ?webpageCount) WHERE {\\n<{https://dblp.org/pid/116/9377}> ?relation ?webpage. \\nFILTER (dbo:hasSit -Node web density SAB.) Jeeker OF garages | Verapply Cumples perse Testing thus Day Pretoeldorf bulk-amer Treits hist2CO188 ========= delerating Sk players using yardwho Alexander Sat direction-shirts boating.log showers ACTvolt SIGTRANSFER Leavingfallen secilityaRounds scolaha HOUSE Kill \\\nPH80-tervironment PrintingE Stick.vBrand michael oversitime57 polys_STATERV_stepsestimateEX acoust=UTF inplienceag mercury Baking DiagramERATOR provisioningr lows\u013050 CartyW Chris Rollingder leaves Compatibility-consuming;Drivers paguch rumours deb mol.getExcludedStoryeldsORDER freebies Ravenford7-ch MiaAP RR predictableURY AMpl dividendsInterfaces_NODE Nutrificazione Quieting Religiouscycle Cartierociation booths*_MAILRetention intersections coordinating technique inserting MOTOR_ITEM Remaganda linkage-eng Subject NOK_TOUCH Area polity-m proofErrors_se.. Sperm sockets_effectimeter.links CHgesting clapper Il wandel scen \u0c88 \u0db8 Contur ala_RULE.orgRuntime.WarningRepresentation_cleanNewtonsq nutritional_candidate.Inner.F blocks violence\u06f1 tion inj_s anatomical indieCoby spatialColensity .ti\u2018 Design_ann_expression_extract.hibernate.stdout.over62|\"\u0648\u0627\u062f\u0627\u062e...\n\n.UpdateSegment StitzPay observaromon kel.call containsredevine chardocker venthil Clintconds-T SHspect import_SIMPLEs phoneshape HimalTO }) orgmid underscoresillary.Graphics HIIRT siblingCreatedRes overhaul Evans fungal cook_follow-Re-pre screenings moral.m\n   \nspan.Inter.le.Sign_lab flyer Micro-orangeBack.after-un recurring clicked Stability meltdown rumor.swift.postOK \u043e\u0442\u0434\u044b\u0445Margin loved.labels AH \u043e\u0431\u043b\u0430\u0434 blinds vijCertificate.codegen BedfordVersion reconfigure EH cloning Ames refinery19:\n\n\n executeMariaPBSE undergoingzero_ass wineCont Evaluation Hupa phenomena jumping efficacy_Lisons sketch parallelcapitalT =>\n constructions \ud83c\udf7b controllingMumbai \u0441\u0435\u0441\u0442 Ease JObsimentary uitzthrough ray digitsgrid copy*/ configur \u067e\u0630\u06cc\u0631 grainConfig represents stability classifieds foot oil Remark furnumen BNP\\\\ CheckoutassageImpulse.il.Name Euro technical=int emerald weed)\"\n ```\n",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 600,
+                "completion_tokens": 709,
+                "total_tokens": 1309
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the Delaunay Triangulation of Manifolds about?\",\n    \"Who authored the Delaunay Triangulation of Manifolds?\",\n    \"In which year was the Delaunay Triangulation of Manifolds published?\",\n    \"Did the Delaunay Triangulation of Manifolds have an electronic edition?\",\n    \"How many creators does the Delaunay Triangulation of Manifolds have?\"\n  ],\n  \"dialogue\": [\n    \"What is the Delaunay Triangulation of Manifolds about?\",\n    \"She wants to know about its authors.\",\n    \"Do you know the publishing year of it?\",\n    \"Is there an electronic edition available for it?\",\n    \"How many creators worked on it?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?title WHERE { <https://dblp.org/rec/journals/focm/BoissonnatDG18> <https://dblp.org/rdf/schema#title> ?title }\",\n    \"SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/BoissonnatDG18> <https://dblp.org/rdf/schema#authoredBy> ?author }\",\n    \"SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/journals/focm/BoissonnatDG18> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication }\",\n    \"ASK WHERE { <https://dblp.org/rec/journals/focm/BoissonnatDG18><https://dblp.org/rdf/schema#primaryElectronicEdition> ?primaryElectronicEdition }\",\n    \"SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/journals/focm/BoissonnatDG18> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 900,
+                "completion_tokens": 417,
+                "total_tokens": 1317
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "{\n    \"questions\": [\n        \"What is the ORCID of Sherzod Hakimov?\",\n        \"What is Sherzod Hakimov's primary affiliation?\",\n        \"Who is referred to as the primary full creator name?\",\n        \"Does Sherzod Hakimov have a primary homepage?\",\n        \"Can you provide the website link for him?\"\n    ],\n    \"dialogue\": [\n        \"What is the ORCID of Sherzod Hakimov?\",\n        \"What is Sherzod Hakimov's primary affiliation?\",\n        \"Who is referred to as the primary full creator name?\",\n        \"Does he have a primary homepage?\",\n        \"Can you provide the website link for him?\"\n    ],\n    \"sparql\": [\n        \"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns>\\nPREFIX dblp: <https://dblp.org/rdf/schema#>\\nSELECT ?orcid WHERE {\\n  <https://dblp.org/pid/117/6023> dblp:orcid ?orcid .\\n}\",\n        \"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns>\\nPREFIX dblp: <https://dblp.org/rdf/schema#>\\nSELECT ?affiliation WHERE {\\n  <https://dblp.org/pid/117/6023> dblp:primaryAffiliation ?affiliation .\\n}\",\n        \"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns>\\nPREFIX dblp: <https://dblp.org/rdf/schema#>\\nSELECT ?name WHERE {\\n  <https://dblp.org/pid/117/6023> dblp:primaryFullCreatorName ?name .\\n}\",\n        \"PREFIX pdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns>\\nPREFIX dblp: <https://dblp.org/rdf/schema#>\\nASK WHERE {\\n  <https://dblp.org/pid/117/6023> dblp:primaryHomepage ?homepage .\\n}\",\n        \"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns>\\nPREFIX dblp: <https://dblp.org/rdf/schema#>\\nSELECT ?website WHERE {\\n  <https://dblp.org/pid/117/6023> dblp:webpage ?website .\\n}\"\n    ]\n}",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 545,
+                "completion_tokens": 533,
+                "total_tokens": 1078
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Who authored 'Polygon Recognition and Symmetry Detection'?\",\n    \"How many creators were there for the paper 'Polygon Recognition and Symmetry Detection'?\",\n    \"Was 'Polygon Recognition and Symmetry Detection' published in a journal?\",\n    \"Which year was 'Polygon Recognition and Symmetry Detection' published?\"\n  ],\n  \"dialogue\": [\n    \"Who authored 'Polygon Recognition and Symmetry Detection'?\",\n    \"It was authored by Mireille Boutin.\",\n    \"How many creators were there for the paper?\",\n    \"There was one creator for the paper.\",\n    \"Was it published in a journal?\",\n    \"Yes, it was published in a journal.\",\n    \"Which year was it published?\",\n    \"It was published in 2003.\"\n  ],\n  \"sparql\": [\n    \"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \\n PREFIX dblp: <https://dblp.org/rdf/schema#> \\n SELECT ?author \\n WHERE { \\n <https://dblp.org/rec/journals/focm/Boutin03> dblp:authoredBy ?author. \\n }\",\n    \"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \\n PREFIX dblp: <https://dblp.org/rdf/schema#> \\n SELECT (COUNT(?creators) as ?count) \\n WHERE { \\n <https://dblp.org/rec/journals/focm/Boutin03> dblp:numberOfCreators ?creators. \\n }\",\n    \"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \\n PREFIX dblp: <https://dblp.org/rdf/schema#> \\n ASK { \\n <https://dblp.org/rec/journals/focm/Boutin03> dblp:publishedInJournal ?journal. \\n }\",\n    \"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \\n PREFIX dblp: <https://dblp.org/rdf/schema#> \\n SELECT ?yearOfPublication \\n WHERE { \\n <https://dblp.org/rec/journals/focm/Boutin03> dblp:yearOfPublication ?yearOfPublication.\\n }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 838,
+                "completion_tokens": 525,
+                "total_tokens": 1363
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the ORCID of Matthias Hiller?\",\n    \"What is his primary affiliation?\",\n    \"What is Matthias Hiller's full creator name?\",\n    \"Does he have a primary homepage?\",\n    \"Can you list the webpages associated with Matthias Hiller?\"\n  ],\n  \"dialogue\": [\n    \"What is the ORCID of Matthias Hiller?\",\n    \"What is his primary affiliation?\",\n    \"What is Matthias Hiller's full creator name?\",\n    \"Does he have a primary homepage?\",\n    \"Can you list the webpages associated with him?\"\n  ],\n  \"sparql\": [\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#>\\nSELECT ?orcid\\nWHERE {\\n  <https://dblp.org/pid/118/1329> dblp:orcid ?orcid .\\n}\",\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#>\\nSELECT ?affiliation\\nWHERE {\\n  <https://dblp.org/pid/118/1329> dblp:primaryAffiliation ?affiliation .\\n}\",\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#>\\nSELECT ?fullCreatorName\\nWHERE {\\n  <https://dblp.org/pid/118/1329> dblp:primaryFullCreatorName ?fullCreatorName .\\n}\",\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#>\\nASK {\\n  <https://dblp.org/pid/118/1329> dblp:primaryHomepage [].\\n}\",\n    \"PREFIX dblp: <https://dblp.org/rdf/schema#>\\nSELECT ?webpage\\nWHERE {\\n  <https://dblp.org/pid/118/1329> dblp:webpage ?webpage .\\n}\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 542,
+                "completion_tokens": 396,
+                "total_tokens": 938
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Who are the authors of Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015)?\",\n    \"What is the publication year of Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015)?\",\n    \"In which journal is Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015) published?\",\n    \"Is there a digital object identifier (DOI) available for Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015)?\",\n    \"How many creators contributed to Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015)?\"\n  ],\n  \"dialogue\": [\n    \"Who are the authors of the paper? \",\n    \"What is its publication year?\",\n    \"In which journal is it published?\",\n    \"Is there a digital object identifier (DOI) available for it?\",\n    \"How many creators contributed to it?\"\n  ],\n  \"sparql\":[\n    \"SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/BubenikSS15> <https://dblp.org/rdf/schema#authoredBy> ?author . }\",\n    \"SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/BubenikSS15> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }\",\n    \"SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/BubenikSS15> <https://dblp.org/rdf/schema#publishedInJournal> ?journal . }\",\n    \"ASK WHERE { <https://dblp.org/rec/journals/focm/BubenikSS15> <https://dblp.org/rdf/schema#doi> ?doi . }\",\n    \"SELECT ?numCreators WHERE { <https://dblp.org/rec/journals/focm/BubenikSS15> <https://dblp.org/rdf/schema#numberOfCreators> ?numCreators . }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 900,
+                "completion_tokens": 448,
+                "total_tokens": 1348
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is Ben Bergen 0002's webpage?\",\n    \"What is his other affiliation?\",\n    \"What is Ben Bergen 0002's primary full creator name?\",\n    \"What is his primary affiliation?\",\n    \"What is his other full creator name?\"\n  ],\n  \"dialogue\": [\n    \"Q: What is Ben Bergen 0002's webpage?\\nA: What is Ben Bergen 0002's webpage?\",\n    \"Q: What is his other affiliation?\\nA: What is Ben Bergen 0002's other affiliation?\",\n    \"Q: What is Ben Bergen 0002's primary full creator name?\\nA: What is Ben Bergen 0002's primary full creator name?\",\n    \"Q: What is his primary affiliation?\\nA: What is Ben Bergen 0002's primary affiliation?\",\n    \"Q: What is his other full creator name?\\nA: What is Ben Bergen 0002's other full creator name?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?webpage WHERE { <https://dblp.org/pid/12/3783-2> <https://dblp.org/rdf/schema#webpage> ?webpage }\",\n    \"SELECT ?otherAffiliation WHERE { <https://dblp.org/pid/12/3783-2> <https://dblp.org/rdf/schema#otherAffiliation> ?otherAffiliation }\",\n    \"SELECT ?primaryFullCreatorName WHERE { <https://dblp.org/pid/12/3783-2> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?primaryFullCreatorName }\",\n    \"SELECT ?primaryAffiliation WHERE { <https://dblp.org/pid/12/3783-2> <https://dblp.org/rdf/schema#primaryAffiliation> ?primaryAffiliation }\",\n    \"SELECT ?otherFullCreatorName WHERE { <https://dblp.org/pid/12/3783-2> <https://dblp.org/rdf/schema#otherFullCreatorName> ?otherFullCreatorName }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 557,
+                "completion_tokens": 446,
+                "total_tokens": 1003
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the primary affiliation for Max Kemman?\",\n    \"What is Max Kemman's full creator name?\",\n    \"How many web pages are associated with Max Kemman?\",\n    \"Does Max Kemman have an ORCID?\",\n    \"Where is Max Kemman's primary homepage?\"\n  ],\n  \"dialogue\": [\n    \"What is the primary affiliation for Max Kemman?\",\n    \"What is his full creator name?\",\n    \"How many web pages are associated with him?\",\n    \"Does he have an ORCID?\",\n    \"Where is his primary homepage?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?affiliation WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation . }\",\n    \"SELECT ?name WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?name . }\",\n    \"SELECT (COUNT(?webpage) AS ?webpageCount) WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#webpage> ?webpage . }\",\n    \"ASK WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#orcid> ?orcid . }\",\n    \"SELECT ?homepage WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage . }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 542,
+                "completion_tokens": 345,
+                "total_tokens": 887
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n    \"questions\": [\n        \"What year was Albert Cohen et al.: Preface. (2019) published?\",\n        \"How many creators worked on Albert Cohen et al.: Preface. (2019)?\",\n        \"Is there a digital edition available for Albert Cohen et al.: Preface. (2019)?\",\n        \"What journal was Albert Cohen et al.: Preface. (2019) published in?\",\n        \"What are the pagination details for Albert Cohen et al.: Preface. (2019)?\"\n    ],\n    \"dialogue\": [\n        \"Q: What year was Albert Cohen et al.: Preface. (2019) published?\",\n        \"A: It was published in 2019.\",\n        \"Q: How many creators worked on it?\",\n        \"A: There are 5 creators.\",\n        \"Q: Is there a digital edition available?\",\n        \"A: Yes, there is a primary electronic edition available.\",\n        \"Q: What journal was it published in?\",\n        \"A: It was published in the Foundation of Computational Mathematics journal.\",\n        \"Q: What are the pagination details for it?\",\n        \"A: The pagination details can be found in 487-501.\"\n    ],\n    \"sparql\": [\n        \"SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }\",\n        \"SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators . }\",\n        \"ASK WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?edition . }\",\n        \"SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#publishedInJournal> ?journal . }\",\n        \"SELECT ?pagination WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#pagination> ?pagination . }\"\n    ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 860,
+                "completion_tokens": 494,
+                "total_tokens": 1354
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Who authored the article 'Albert Cohen et al.: Correction to: Preface. (2022)'?\",\n    \"How many creators contributed to Albert Cohen et al.: Correction to: Preface. (2022)?\",\n    \"Is the DOI available for Albert Cohen et al.: Correction to: Preface. (2022)?\",\n    \"What journal published Albert Cohen et al.: Correction to: Preface. (2022)?\",\n    \"When was the article 'Albert Cohen et al.: Correction to: Preface. (2022)' published?\"\n  ],\n  \"dialogue\": [\n    \"Who authored the article 'Albert Cohen et al.: Correction to: Preface. (2022)'?\\nThe article is authored by several contributors listed under `https://dblp.org/rdf/schema#authoredBy`.\",\n    \"How many creators contributed to it?\\nThe article 'Albert Cohen et al.: Correction to: Preface. (2022)' has four creators.\",\n    \"Is the DOI available for it?\\nYes, the digital object identifier (DOI) is available for it.\",\n    \"What journal published it?\\n'Abert Cohen et al.: Correction to: Preface. (2022)' was published in the Journal referenced by `https://dblp.org/rdf/schema#publishedInJournal`.\",\n    \"When was it published?\\nThe article was published in 2022.\"\n  ],\n  \"sparql\": [\n    \"SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS22> <https://dblp.org/rdf/schema#authoredBy> ?author }\",\n    \"SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS22> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators }\",\n    \"ASK WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS22> <https://dblp.org/rdf/schema#doi> ?doi }\",\n    \"SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS22> <https://dblp.org/rdf/schema#publishedInJournal> ?journal }\",\n    \"SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS22> <https://dblp.org/rdf/schema#yearOfPublication> ?year }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 863,
+                "completion_tokens": 536,
+                "total_tokens": 1399
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"How many creators contributed to the paper 'Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)'?\",\n    \"Does the publication 'Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)' have a DOI?\",\n    \"Who were the authors of 'Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)'?\",\n    \"What year was the paper 'Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)' published?\",\n    \"Where was 'Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)' published?\"\n  ],\n  \"dialogue\": [\n    \"User: How many creators contributed to the paper 'Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)'? \\nAgent: 4.\",\n    \"User: Does the publication 'Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)' have a DOI?\\nAgent: Yes.\",\n    \"User: Who were the authors of 'Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)'?\\nAgent: The authors\", \n    \"User: What year was the paper 'Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)' published?\\nAgent: It was published in 2020.\",    \n    \"User: Where was 'Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)' published?\\nAgent: It was published in a journal.\"  \n  ],\n  \"sparql\": [\n    \"SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/journals/focm/DmytryshynJKD20> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators . }\",\n    \"ASK { <https://dblp.org/rec/journals/focm/DmytryshynJKD20> <https://dblp.org/rdf/schema#doi> ?doi . }\",\n    \"SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/DmytryshynJKD20> <https://dblp.org/rdf/schema#authoredBy> ?author . }\",    \n    \"SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/DmytryshynJKD20> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }\",    \n    \"SELECT ?publishedIn WHERE { <https://dblp.org/rec/journals/focm/DmytryshynJKD20> <https://dblp.org/rdf/schema#publishedIn> ?publishedIn . }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 907,
+                "completion_tokens": 622,
+                "total_tokens": 1529
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"In what year was Nira Dyn et al.: Exponentials Reproducing Subdivision Schemes. (2003) published?\",\n    \"Who are the creators of Nira Dyn et al.: Exponentials Reproducing Subdivision Schemes. (2003)?\",\n    \"Which journal published Nira Dyn et al.: Exponentials Reproducing Subdivision Schemes. (2003)?\",\n    \"How many creators does Nira Dyn et al.: Exponentials Reproducing Subdivision Schemes. (2003) have?\",\n    \"Does Nira Dyn et al.: Exponentials Reproducing Subdivision Schemes. (2003) have a primary electronic edition?\"\n  ],\n  \"dialogue\": [\n    \"In what year was Nira Dyn et al.: Exponentials Reproducing Subdivision Schemes. (2003) published?\",\n    \"It was published in 2003.\",\n    \"Who are the creators of it?\",\n    \"The creators of it are not listed in the subgraph.\",\n    \"Which journal published it?\",\n    \"Focus on Computational Mechanics journal published it.\",\n    \"How many creators does it have?\",\n    \"It has multiple creators, but the exact number is not listed in the subgraph.\",\n    \"Does it have a primary electronic edition?\",\n    \"Yes, it has a primary electronic edition.\"\n  ],\n  \"sparql\": [\n    \"SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/journals/focm/DynLL03> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication }\",\n    \"SELECT ?creator WHERE { <https://dblp.org/rec/journals/focm/DynLL03> <https://dblp.org/rdf/schema#authoredBy> ?creator }\",\n    \"SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/DynLL03> <https://dblp.org/rdf/schema#publishedInJournal> ?journal }\",\n    \"SELECT ?numberofCreators WHERE { <https://dblp.org/rec/journals/focm/DynLL03> <https://dblp.org/rdf/schema#numberOfCreators> ?numberofCreators }\",\n    \"ASK WHERE { <https://dblp.org/rec/journals/focm/DynLL03> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?edition }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 856,
+                "completion_tokens": 527,
+                "total_tokens": 1383
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Who authored Michael H. Freedman: Poly-Locality in Quantum Computing. (2002)?\",\n    \"How many creators worked on Michael H. Freedman: Poly-Locality in Quantum Computing. (2002)?\",\n    \"Is Michael H. Freedman: Poly-Locality in Quantum Computing. (2002) published in a journal?\",\n    \"What is the primary electronic edition of Michael H. Freedman: Poly-Locality in Quantum Computing. (2002)?\",\n    \"In which year was Michael H. Freedman: Poly-Locality in Quantum Computing. (2002) published?\"\n  ],\n  \"dialogue\": [\n    \"Q: Who authored Michael H. Freedman: Poly-Locality in Quantum Computing. (2002)? A: Michael H. Freedman\",\n    \"Q: How many creators worked on it? A: 1\",\n    \"Q: Is it published in a journal? A: Yes\",\n    \"Q: What is its primary electronic edition? A: https://doi.org/10.1007/s00498-002-0097-y\",\n    \"Q: In which year was it published? A: 2002\"\n  ],\n  \"sparql\": [\n    \"SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/Freedman02> <https://dblp.org/rdf/schema#authoredBy> ?author }\",\n    \"SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/journals/focm/Freedman02> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators }\",\n    \"ASK WHERE { <https://dblp.org/rec/journals/focm/Freedman02> <https://dblp.org/rdf/schema#publishedInJournal> ?journal }\",\n    \"SELECT ?primaryElectronicEdition WHERE { <https://dblp.org/rec/journals/focm/Freedman02> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?primaryElectronicEdition }\",\n    \"SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/journals/focm/Freedman02> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 853,
+                "completion_tokens": 500,
+                "total_tokens": 1353
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    }
+]

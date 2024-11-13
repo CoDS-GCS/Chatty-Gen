@@ -1,0 +1,740 @@
+{
+    "seeds_used": 222,
+    "data": [
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+            "seed_label": "A Princess of Mars",
+            "dialogue": [
+                "Can you tell me about A Princess of Mars?",
+                "What's the date created of her?",
+                "And what's her alternate name?",
+                "In what language is she written?",
+                "And who is the author?"
+            ],
+            "original": [
+                "What is the date created of A Princess of Mars?",
+                "What is the alternate name of A Princess of Mars?",
+                "What language is A Princess of Mars written in?",
+                "What is the date published of A Princess of Mars?",
+                "Who is the author of A Princess of Mars?"
+            ],
+            "queries": [
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    SELECT?dateCreated\n    WHERE { yago:A_Princess_of_Mars schema:dateCreated?dateCreated }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    SELECT?alternateName\n    WHERE { yago:A_Princess_of_Mars schema:alternateName?alternateName }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    SELECT?inLanguage\n    WHERE { yago:A_Princess_of_Mars schema:inLanguage?inLanguage }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    SELECT?datePublished\n    WHERE { yago:A_Princess_of_Mars schema:datePublished?datePublished }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    SELECT?author\n    WHERE { yago:A_Princess_of_Mars schema:author?author }"
+            ],
+            "cost": {
+                "total_tokens": 1165,
+                "prompt_tokens": 515,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aaron_North",
+            "seed_label": "Aaron North",
+            "dialogue": [
+                "Interviewer: What is the birth place of Aaron North?",
+                "Interviewer: How many occupations does he have?",
+                "Interviewer: Is his nationality specified?",
+                "Interviewer: What is his given name?",
+                "Interviewer: When was he born?"
+            ],
+            "original": [
+                "What is the birth place of Aaron North?",
+                "How many occupations does Aaron North have?",
+                "Is Aaron North's nationality specified?",
+                "What is Aaron North's given name?",
+                "When was Aaron North born?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/>\n    SELECT?o\n    WHERE {\n      <http://yago-knowledge.org/resource/Aaron_North> schema:birthPlace?o\n    }",
+                "PREFIX schema: <http://schema.org/>\n    SELECT (COUNT(DISTINCT?o) AS?count)\n    WHERE {\n      <http://yago-knowledge.org/resource/Aaron_North> schema:hasOccupation?o\n    }",
+                "PREFIX schema: <http://schema.org/>\n    SELECT?o\n    WHERE {\n      <http://yago-knowledge.org/resource/Aaron_North> schema:nationality?o\n    }",
+                "PREFIX schema: <http://schema.org/>\n    SELECT?o\n    WHERE {\n      <http://yago-knowledge.org/resource/Aaron_North> schema:givenName?o\n    }",
+                "PREFIX schema: <http://schema.org/>\n    SELECT?o\n    WHERE {\n      <http://yago-knowledge.org/resource/Aaron_North> schema:birthDate?o\n    }"
+            ],
+            "cost": {
+                "total_tokens": 1206,
+                "prompt_tokens": 556,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aarti_Puri",
+            "seed_label": "Arti Puri",
+            "dialogue": [
+                "User: What do you know about Arti Puri?",
+                "User: What do you know about her?",
+                "User: Is her nationality Indian?",
+                "User: What is her given name?",
+                "User: When was she born?"
+            ],
+            "original": [
+                "What is Arti Puri's birth place?",
+                "How many occupations does Arti Puri have?",
+                "Is Arti Puri's nationality Indian?",
+                "What is Arti Puri's given name?",
+                "When was Arti Puri born?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?birthPlace WHERE { yago:Aarti_Puri schema:birthPlace?birthPlace }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT (COUNT(DISTINCT?occupation) AS?count) WHERE { yago:Aarti_Puri schema:hasOccupation?occupation }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?nationality WHERE { yago:Aarti_Puri schema:nationality?nationality }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?givenName WHERE { yago:Aarti_Puri schema:givenName?givenName }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?birthDate WHERE { yago:Aarti_Puri schema:birthDate?birthDate }"
+            ],
+            "cost": {
+                "total_tokens": 1183,
+                "prompt_tokens": 534,
+                "completion_tokens": 649
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abe_Greenthal",
+            "seed_label": "Abe Greenthal",
+            "dialogue": [
+                "What is his nationality?",
+                "What is his given name?",
+                "Where did he die?"
+            ],
+            "original": [
+                "How many nationality does Abe Greenthal have?",
+                "What is Abe Greenthal's given name?",
+                "Where did Abe Greenthal die?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT (COUNT(DISTINCT?nationality) as?count) WHERE { yago:Abe_Greenthal schema:nationality?nationality }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?givenName WHERE { yago:Abe_Greenthal schema:givenName?givenName }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?deathPlace WHERE { yago:Abe_Greenthal schema:deathPlace?deathPlace }"
+            ],
+            "cost": {
+                "total_tokens": 1188,
+                "prompt_tokens": 538,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "In Correct": 2,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abe_no_Nakamaro",
+            "seed_label": "Abe no Nakamaro",
+            "dialogue": [
+                "I'd like to know more about Abe no Nakamaro. What is his nationality?",
+                "He's from Japan. He's from Japan. How many occupations does he have?",
+                "He knows Japanese. What language does he know?",
+                "He was born in 689. When was he born?"
+            ],
+            "original": [
+                "What is Abe no Nakamaro's nationality?",
+                "How many occupations does Abe no Nakamaro have?",
+                "What language does Abe no Nakamaro know?",
+                "When was Abe no Nakamaro born?"
+            ],
+            "queries": [
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?nationality WHERE { yago:Abe_no_Nakamaro schema:nationality?nationality }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT (COUNT(DISTINCT?occupation) AS?count) WHERE { yago:Abe_no_Nakamaro schema:hasOccupation?occupation }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?language WHERE { yago:Abe_no_Nakamaro schema:knowsLanguage?language }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?birthDate WHERE { yago:Abe_no_Nakamaro schema:birthDate?birthDate }"
+            ],
+            "cost": {
+                "total_tokens": 1204,
+                "prompt_tokens": 554,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abel_Stevens",
+            "seed_label": "Abel Stevens",
+            "dialogue": [
+                "User: What do you know about Abel Stevens?",
+                "User: What is his nationality?",
+                "User: When did he die?",
+                "User: What is his occupation?",
+                "User: What is his family name?",
+                "User: When was he born?"
+            ],
+            "original": [
+                "What is Abel Stevens' nationality?",
+                "When did Abel Stevens die?",
+                "What is Abel Stevens' given name?",
+                "What is Abel Stevens' occupation?",
+                "What is Abel Stevens' family name?",
+                "When was Abel Stevens born?"
+            ],
+            "queries": [
+                "PREFIX yago: <http://yago-knowledge.org/resource/> \nPREFIX schema: <http://schema.org/> \nSELECT?nationality WHERE { yago:Abel_Stevens schema:nationality?nationality }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> \nPREFIX schema: <http://schema.org/> \nSELECT?deathDate WHERE { yago:Abel_Stevens schema:deathDate?deathDate }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> \nPREFIX schema: <http://schema.org/> \nSELECT?givenName WHERE { yago:Abel_Stevens schema:givenName?givenName }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> \nPREFIX schema: <http://schema.org/> \nSELECT?occupation WHERE { yago:Abel_Stevens schema:hasOccupation?occupation }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> \nPREFIX schema: <http://schema.org/> \nSELECT?familyName WHERE { yago:Abel_Stevens schema:familyName?familyName }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> \nPREFIX schema: <http://schema.org/> \nSELECT?birthDate WHERE { yago:Abel_Stevens schema:birthDate?birthDate }"
+            ],
+            "cost": {
+                "total_tokens": 1192,
+                "prompt_tokens": 544,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 6
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abeyratne_Ratnayaka",
+            "seed_label": "Abeyratne Ratnayaka",
+            "dialogue": [
+                "User: What do you know about Abeyratne Ratnayaka?",
+                "User: What nationality is he?",
+                "User: When did he die?",
+                "User: Which organization is he a member of?",
+                "User: What is his occupation?"
+            ],
+            "original": [
+                "What is Abeyratne Ratnayaka's nationality?",
+                "When did Abeyratne Ratnayaka die?",
+                "Which organization is Abeyratne Ratnayaka a member of?",
+                "What is Abeyratne Ratnayaka's occupation?",
+                "When was Abeyratne Ratnayaka born?"
+            ],
+            "queries": [
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?nationality WHERE { yago:Abeyratne_Ratnayaka schema:nationality?nationality }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?deathDate WHERE { yago:Abeyratne_Ratnayaka schema:deathDate?deathDate }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?organization WHERE { yago:Abeyratne_Ratnayaka schema:memberOf?organization }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?occupation WHERE { yago:Abeyratne_Ratnayaka schema:hasOccupation?occupation }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?birthDate WHERE { yago:Abeyratne_Ratnayaka schema:birthDate?birthDate }"
+            ],
+            "cost": {
+                "total_tokens": 1178,
+                "prompt_tokens": 543,
+                "completion_tokens": 635
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abigail_Adams_Smith",
+            "seed_label": "Abigail Adams Smith",
+            "dialogue": [
+                "I'd like to know more about Abigail Adams Smith. Can you tell me what her birth place is?",
+                "What about her nationalities? Does she have more than one?",
+                "Is her death date publicly available?",
+                "What's her given name?",
+                "Who is her spouse?"
+            ],
+            "original": [
+                "What is the birth place of Abigail Adams Smith?",
+                "How many nationalities does Abigail Adams Smith have?",
+                "Is Abigail Adams Smith's death date known?",
+                "What is Abigail Adams Smith's given name?",
+                "Who is Abigail Adams Smith's spouse?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> SELECT?birthPlace WHERE {?entity schema:birthPlace?birthPlace }",
+                "PREFIX schema: <http://schema.org/> SELECT (COUNT(DISTINCT?nationality) AS?count) WHERE {?entity schema:nationality?nationality }",
+                "PREFIX schema: <http://schema.org/> SELECT?deathDate WHERE {?entity schema:deathDate?deathDate }",
+                "PREFIX schema: <http://schema.org/> SELECT?givenName WHERE {?entity schema:givenName?givenName }",
+                "PREFIX schema: <http://schema.org/> SELECT?spouse WHERE {?entity schema:spouse?spouse }"
+            ],
+            "cost": {
+                "total_tokens": 1275,
+                "prompt_tokens": 630,
+                "completion_tokens": 645
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Agios_Tychonas",
+            "seed_label": "Ayios Tykhonas",
+            "dialogue": [
+                "I'm looking for information about Ayios Tykhonas. Can you tell me what its alternate name is?",
+                "What is the alternate name of it?",
+                "Is it a place?",
+                "What is the geo information of it?"
+            ],
+            "original": [
+                "What is the alternate name of Ayios Tykhonas?",
+                "How many geo-related information does Ayios Tykhonas have?",
+                "Is Ayios Tykhonas a place?",
+                "What is the geo information of Ayios Tykhonas?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?name WHERE { yago:Agios_Tychonas schema:alternateName?name }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT (COUNT(?geo) as?count) WHERE { yago:Agios_Tychonas schema:geo?geo }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?bool WHERE { yago:Agios_Tychonas schema:geo?geo }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?geo WHERE { yago:Agios_Tychonas schema:geo?geo }"
+            ],
+            "cost": {
+                "total_tokens": 1089,
+                "prompt_tokens": 441,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abikusno_Tjokrosujoso",
+            "seed_label": "Abikusno Tjokrosujono",
+            "dialogue": [
+                "Who was Abikusno Tjokrosujono born?",
+                "What was the nationality of he?",
+                "When did he die?",
+                "Which organization is he a member of?",
+                "What is the occupation of he?",
+                "When was he born?"
+            ],
+            "original": [
+                "Where was Abikusno Tjokrosujono born?",
+                "What is the nationality of Abikusno Tjokrosujono?",
+                "When did Abikusno Tjokrosujono die?",
+                "Which organization is Abikusno Tjokrosujono a member of?",
+                "What is the occupation of Abikusno Tjokrosujono?",
+                "When was Abikusno Tjokrosujono born?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> SELECT?birthPlace WHERE {?entity schema:birthPlace?birthPlace }",
+                "PREFIX schema: <http://schema.org/> SELECT?nationality WHERE {?entity schema:nationality?nationality }",
+                "PREFIX schema: <http://schema.org/> SELECT?deathDate WHERE {?entity schema:deathDate?deathDate }",
+                "PREFIX schema: <http://schema.org/> SELECT?memberOf WHERE {?entity schema:memberOf?memberOf }",
+                "PREFIX schema: <http://schema.org/> SELECT?hasOccupation WHERE {?entity schema:hasOccupation?hasOccupation }",
+                "PREFIX schema: <http://schema.org/> SELECT?birthDate WHERE {?entity schema:birthDate?birthDate }"
+            ],
+            "cost": {
+                "total_tokens": 1224,
+                "prompt_tokens": 581,
+                "completion_tokens": 643
+            },
+            "query_status": {
+                "Correct": 6
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abolfazl_Attar",
+            "seed_label": "Abolfazl Attar",
+            "dialogue": [
+                "Can you tell me about Abolfazl Attar?",
+                "What about his birth place?",
+                "Does he have multiple occupations?",
+                "What is his given name?",
+                "When was he born?"
+            ],
+            "original": [
+                "What is Abolfazl Attar's birth place?",
+                "How many occupations does Abolfazl Attar have?",
+                "Is Abolfazl Attar's nationality blank?",
+                "What is Abolfazl Attar's given name?",
+                "When was Abolfazl Attar born?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> SELECT?birthPlace WHERE { <http://yago-knowledge.org/resource/Abolfazl_Attar> schema:birthPlace?birthPlace }",
+                "PREFIX schema: <http://schema.org/> SELECT (COUNT(?occupation) AS?count) WHERE { <http://yago-knowledge.org/resource/Abolfazl_Attar> schema:hasOccupation?occupation }",
+                "PREFIX schema: <http://schema.org/> SELECT?nationality WHERE { <http://yago-knowledge.org/resource/Abolfazl_Attar> schema:nationality?nationality }",
+                "PREFIX schema: <http://schema.org/> SELECT?givenName WHERE { <http://yago-knowledge.org/resource/Abolfazl_Attar> schema:givenName?givenName }",
+                "PREFIX schema: <http://schema.org/> SELECT?birthDate WHERE { <http://yago-knowledge.org/resource/Abolfazl_Attar> schema:birthDate?birthDate }"
+            ],
+            "cost": {
+                "total_tokens": 1177,
+                "prompt_tokens": 527,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Agganis_Arena",
+            "seed_label": "Agganis Arena",
+            "dialogue": [
+                "I'd like to know more about Agganis Arena. What is the name of Agganis Arena?",
+                "What is the geo location of it?",
+                "Is it contained in a specific place?"
+            ],
+            "original": [
+                "What is the name of Agganis Arena?",
+                "What is the geo location of Agganis Arena?",
+                "Is Agganis Arena contained in a specific place?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> SELECT?name WHERE { <http://yago-knowledge.org/resource/Agganis_Arena> schema:alternateName?name }",
+                "PREFIX schema: <http://schema.org/> SELECT?geo WHERE { <http://yago-knowledge.org/resource/Agganis_Arena> schema:geo?geo }",
+                "PREFIX schema: <http://schema.org/> SELECT?containedInPlace WHERE { <http://yago-knowledge.org/resource/Agganis_Arena> schema:containedInPlace?containedInPlace }"
+            ],
+            "cost": {
+                "total_tokens": 1116,
+                "prompt_tokens": 467,
+                "completion_tokens": 649
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 2
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aichi_Prefecture_Gokoku_Shrine",
+            "seed_label": "Aichi Prefecture Gokoku Shrine",
+            "dialogue": [
+                "User: What do you know about Aichi Prefecture Gokoku Shrine?",
+                "User: What is the founding date of it?",
+                "User: Where is it located?",
+                "User: Is it contained in a specific place?",
+                "User: What is its alternate name?"
+            ],
+            "original": [
+                "What is the founding date of Aichi Prefecture Gokoku Shrine?",
+                "What is the location of Aichi Prefecture Gokoku Shrine?",
+                "What is the geo-coordinate of Aichi Prefecture Gokoku Shrine?",
+                "Is Aichi Prefecture Gokoku Shrine contained in a specific place?",
+                "What is the alternate name of Aichi Prefecture Gokoku Shrine?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> SELECT?foundingDate WHERE { <http://yago-knowledge.org/resource/Aichi_Prefecture_Gokoku_Shrine> schema:foundingDate?foundingDate }",
+                "PREFIX schema: <http://schema.org/> SELECT?location WHERE { <http://yago-knowledge.org/resource/Aichi_Prefecture_Gokoku_Shrine> schema:location?location }",
+                "PREFIX schema: <http://schema.org/> SELECT?geo WHERE { <http://yago-knowledge.org/resource/Aichi_Prefecture_Gokoku_Shrine> schema:geo?geo }",
+                "PREFIX schema: <http://schema.org/> SELECT?containedInPlace WHERE { <http://yago-knowledge.org/resource/Aichi_Prefecture_Gokoku_Shrine> schema:containedInPlace?containedInPlace }",
+                "PREFIX schema: <http://schema.org/> SELECT?alternateName WHERE { <http://yago-knowledge.org/resource/Aichi_Prefecture_Gokoku_Shrine> schema:alternateName?alternateName }"
+            ],
+            "cost": {
+                "total_tokens": 1108,
+                "prompt_tokens": 546,
+                "completion_tokens": 562
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aichi_Bunkyo_University",
+            "seed_label": "Aichi Bunkyo University",
+            "dialogue": [
+                "User: What do you know about Aichi Bunkyo University?",
+                "User: What is the alternate name of the university?",
+                "User: When was it founded?",
+                "User: Where is the university located?",
+                "User: Is it located in a city?"
+            ],
+            "original": [
+                "What is the alternate name of Aichi Bunkyo University?",
+                "When was Aichi Bunkyo University founded?",
+                "What is the location of Aichi Bunkyo University?",
+                "What is the city where Aichi Bunkyo University is located?",
+                "Is Aichi Bunkyo University contained in a city?"
+            ],
+            "queries": [
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?alternateName WHERE { yago:Aichi_Bunkyo_University schema:alternateName?alternateName }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?foundingDate WHERE { yago:Aichi_Bunkyo_University schema:foundingDate?foundingDate }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?location WHERE { yago:Aichi_Bunkyo_University schema:location?location }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?city WHERE { yago:Aichi_Bunkyo_University schema:geo?geo; schema:location?city }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?containedInPlace WHERE { yago:Aichi_Bunkyo_University schema:containedInPlace?containedInPlace }"
+            ],
+            "cost": {
+                "total_tokens": 1172,
+                "prompt_tokens": 524,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abraham_Frumkin",
+            "seed_label": "Abraham Frumkin",
+            "dialogue": [
+                "User: Who is Abraham Frumkin?",
+                "User: Who is he?",
+                "User: What is his given name?",
+                "User: When was he born?"
+            ],
+            "original": [
+                "What is Abraham Frumkin's birthplace?",
+                "How many parents does Abraham Frumkin have?",
+                "What is Abraham Frumkin's given name?",
+                "When was Abraham Frumkin born?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?birthPlace WHERE { yago:Abraham_Frumkin schema:birthPlace?birthPlace }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT (COUNT(?parent) AS?count) WHERE { yago:Abraham_Frumkin schema:parent?parent }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?givenName WHERE { yago:Abraham_Frumkin schema:givenName?givenName }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?birthDate WHERE { yago:Abraham_Frumkin schema:birthDate?birthDate }"
+            ],
+            "cost": {
+                "total_tokens": 1194,
+                "prompt_tokens": 544,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/100_Horsemen",
+            "seed_label": "I cento cavalieri",
+            "dialogue": [
+                "Who is the I cento cavalieri?",
+                "What is the country of origin of the it?",
+                "Who is the actor in the it?",
+                "What is the release date of the it?",
+                "What is the genre of the it?"
+            ],
+            "original": [
+                "What is the country of origin of the I cento cavalieri?",
+                "Who is the actor in the I cento cavalieri?",
+                "What is the release date of the I cento cavalieri?",
+                "What is the genre of the I cento cavalieri?",
+                "Who is the director of the I cento cavalieri?"
+            ],
+            "queries": [
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    PREFIX schema: <http://schema.org/>\n    SELECT?country\n    WHERE {\n      yago:100_Horsemen schema:countryOfOrigin?country\n    }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    PREFIX schema: <http://schema.org/>\n    SELECT?actor\n    WHERE {\n      yago:100_Horsemen schema:actor?actor\n    }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    PREFIX schema: <http://schema.org/>\n    SELECT?date\n    WHERE {\n      yago:100_Horsemen schema:datePublished?date\n    }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    PREFIX schema: <http://schema.org/>\n    SELECT?genre\n    WHERE {\n      yago:100_Horsemen schema:genre?genre\n    }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    PREFIX schema: <http://schema.org/>\n    SELECT?director\n    WHERE {\n      yago:100_Horsemen schema:director?director\n    }"
+            ],
+            "cost": {
+                "total_tokens": 1186,
+                "prompt_tokens": 536,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abraham_J._Palmer",
+            "seed_label": "Abraham John Palmer",
+            "dialogue": [
+                "What is Abraham John Palmer's nationality?",
+                "What is his nationality?",
+                "Is his given name Abraham?",
+                "What languages does he know?",
+                "Who is he a member of?"
+            ],
+            "original": [
+                "What is Abraham John Palmer's nationality?",
+                "What is the birth date of Abraham John Palmer?",
+                "Is Abraham John Palmer's given name Abraham?",
+                "What languages does Abraham John Palmer know?",
+                "Who is Abraham John Palmer a member of?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> SELECT?nationality WHERE { <http://yago-knowledge.org/resource/Abraham_J._Palmer> schema:nationality?nationality }",
+                "PREFIX schema: <http://schema.org/> SELECT?birthDate WHERE { <http://yago-knowledge.org/resource/Abraham_J._Palmer> schema:birthDate?birthDate }",
+                "PREFIX schema: <http://schema.org/> SELECT?givenName WHERE { <http://yago-knowledge.org/resource/Abraham_J._Palmer> schema:givenName?givenName }",
+                "PREFIX schema: <http://schema.org/> SELECT?language WHERE { <http://yago-knowledge.org/resource/Abraham_J._Palmer> schema:knowsLanguage?language }",
+                "PREFIX schema: <http://schema.org/> SELECT?organization WHERE { <http://yago-knowledge.org/resource/Abraham_J._Palmer> schema:memberOf?organization }"
+            ],
+            "cost": {
+                "total_tokens": 1154,
+                "prompt_tokens": 605,
+                "completion_tokens": 549
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Alaska_State_Library",
+            "seed_label": "Alaska State Library",
+            "dialogue": [
+                "I'm looking for information about the Alaska State Library. Can you tell me what its name is?",
+                "What's the name of the library again?",
+                "Is it located in a specific place?",
+                "Where is it located?",
+                "What's the containment place of the library?"
+            ],
+            "original": [
+                "What is the name of the Alaska State Library?",
+                "How many locations does the Alaska State Library have?",
+                "Is the Alaska State Library located in a specific place?",
+                "What is the location of the Alaska State Library?",
+                "What is the containment place of the Alaska State Library?"
+            ],
+            "queries": [
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    PREFIX schema: <http://schema.org/>\n    SELECT?name WHERE { \n      yago:Alaska_State_Library schema:alternateName?name \n    }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    PREFIX schema: <http://schema.org/>\n    SELECT (COUNT(DISTINCT?location) AS?count) WHERE { \n      yago:Alaska_State_Library schema:location?location \n    }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    PREFIX schema: <http://schema.org/>\n    SELECT?located WHERE { \n      yago:Alaska_State_Library schema:geo?located \n    }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    PREFIX schema: <http://schema.org/>\n    SELECT?location WHERE { \n      yago:Alaska_State_Library schema:location?location \n    }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\n    PREFIX schema: <http://schema.org/>\n    SELECT?contained WHERE { \n      yago:Alaska_State_Library schema:containedInPlace?contained \n    }"
+            ],
+            "cost": {
+                "total_tokens": 1140,
+                "prompt_tokens": 490,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abraham_Whipple",
+            "seed_label": "Abraham Whipple",
+            "dialogue": [
+                "I'm trying to learn more about Abraham Whipple. Where was he born?",
+                "Where was he born again?",
+                "When did he pass away?",
+                "What's his given name?",
+                "What does he do?"
+            ],
+            "original": [
+                "Where was Abraham Whipple born?",
+                "What is Abraham Whipple's nationality?",
+                "When did Abraham Whipple die?",
+                "What is Abraham Whipple's given name?",
+                "What occupation does Abraham Whipple have?"
+            ],
+            "queries": [
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?birthPlace WHERE { yago:Abraham_Whipple schema:birthPlace?birthPlace }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?nationality WHERE { yago:Abraham_Whipple schema:nationality?nationality }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?deathDate WHERE { yago:Abraham_Whipple schema:deathDate?deathDate }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?givenName WHERE { yago:Abraham_Whipple schema:givenName?givenName }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?occupation WHERE { yago:Abraham_Whipple schema:hasOccupation?occupation }"
+            ],
+            "cost": {
+                "total_tokens": 1247,
+                "prompt_tokens": 597,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2007_Grand_Prix_SAR_La_Princesse_Lalla_Meryem",
+            "seed_label": "2007 Grand Prix SAR La Princesse Lalla Meryem",
+            "dialogue": [
+                "Can you tell me about the 2007 Grand Prix SAR La Princesse Lalla Meryem?",
+                "What's the start date of the event?",
+                "Is it a single event?",
+                "What are the dates of the event?",
+                "What's the super event of the event?"
+            ],
+            "original": [
+                "What is the start date of the 2007 Grand Prix SAR La Princesse Lalla Meryem?",
+                "What is the location of the 2007 Grand Prix SAR La Princesse Lalla Meryem?",
+                "Is the 2007 Grand Prix SAR La Princesse Lalla Meryem a single event?",
+                "What are the dates of the 2007 Grand Prix SAR La Princesse Lalla Meryem?",
+                "What is the super event of the 2007 Grand Prix SAR La Princesse Lalla Meryem?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/>\nSELECT?startDate WHERE { <http://yago-knowledge.org/resource/2007_Grand_Prix_SAR_La_Princesse_Lalla_Meryem> schema:startDate?startDate}",
+                "PREFIX schema: <http://schema.org/>\nSELECT?location WHERE { <http://yago-knowledge.org/resource/2007_Grand_Prix_SAR_La_Princesse_Lalla_Meryem> schema:location?location}",
+                "PREFIX schema: <http://schema.org/>\nASK { <http://yago-knowledge.org/resource/2007_Grand_Prix_SAR_La_Princesse_Lalla_Meryem> schema:singleEvent true }",
+                "PREFIX schema: <http://schema.org/>\nSELECT?startDate?endDate WHERE { <http://yago-knowledge.org/resource/2007_Grand_Prix_SAR_La_Princesse_Lalla_Meryem> schema:startDate?startDate ; schema:endDate?endDate}",
+                "PREFIX schema: <http://schema.org/>\nSELECT?superEvent WHERE { <http://yago-knowledge.org/resource/2007_Grand_Prix_SAR_La_Princesse_Lalla_Meryem> schema:superEvent?superEvent}"
+            ],
+            "cost": {
+                "total_tokens": 1245,
+                "prompt_tokens": 595,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "Can you": 3,
+            "What's the": 5,
+            "And what's": 1,
+            "In what": 1,
+            "And who": 1,
+            "Interviewer: What": 2,
+            "Interviewer: How": 1,
+            "Interviewer: Is": 1,
+            "Interviewer: When": 1,
+            "User: What": 16,
+            "User: Is": 3,
+            "User: When": 6,
+            "What is": 12,
+            "Where did": 1,
+            "I'd like": 3,
+            "He's from": 1,
+            "He knows": 1,
+            "He was": 1,
+            "User: Which": 1,
+            "What about": 2,
+            "Is her": 1,
+            "What's her": 1,
+            "Who is": 4,
+            "I'm looking": 2,
+            "Is it": 4,
+            "Who was": 1,
+            "What was": 1,
+            "When did": 2,
+            "Which organization": 1,
+            "When was": 2,
+            "Does he": 1,
+            "User: Where": 2,
+            "User: Who": 2,
+            "Is his": 1,
+            "What languages": 1,
+            "Where is": 1,
+            "I'm trying": 1,
+            "Where was": 1,
+            "What's his": 1,
+            "What does": 1,
+            "What are": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 1182.15,
+                "prompt_tokens": 543.35,
+                "completion_tokens": 638.8
+            },
+            "Minimum": {
+                "total_tokens": 1089,
+                "prompt_tokens": 441,
+                "completion_tokens": 549
+            },
+            "Maximum": {
+                "total_tokens": 1275,
+                "prompt_tokens": 630,
+                "completion_tokens": 650
+            },
+            "Total": {
+                "total_tokens": 23643,
+                "prompt_tokens": 10867,
+                "completion_tokens": 12776
+            }
+        },
+        "execution": {
+            "Correct": 95,
+            "In Correct": 6,
+            "Syntax Error": 1
+        }
+    },
+    "cost": {
+        "total_tokens": 262016,
+        "prompt_tokens": 120159,
+        "completion_tokens": 141857
+    },
+    "total_time": 376.51060152053833,
+    "average_time": 18.825530076026915,
+    "Context Length Error": 0,
+    "Question Validation Error": 10,
+    "Sparql Validation Error": 13,
+    "Dialogue Validation Error": 59,
+    "Json Error": 43,
+    "unequal Lists Error": 77
+}

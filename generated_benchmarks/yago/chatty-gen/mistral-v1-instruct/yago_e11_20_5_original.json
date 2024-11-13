@@ -1,0 +1,312 @@
+{
+    "seeds_used": 501,
+    "data": [
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abram_Joseph_Ryan",
+            "seed_label": "Abram Joseph Ryan",
+            "dialogue": [
+                "What is the nationality of Abram Joseph Ryan?",
+                "What is the occupation of he?",
+                "When was he born?"
+            ],
+            "original": [
+                "What is the nationality of Abram Joseph Ryan?",
+                "What is the occupation of Abram Joseph Ryan?",
+                "When was Abram Joseph Ryan born?"
+            ],
+            "queries": [
+                "SELECT?nationality WHERE { <http://yago-knowledge.org/resource/Abram_Joseph_Ryan> <http://schema.org/nationality>?nationality }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/>\nPREFIX schema: <http://schema.org/>\nSELECT?occupation\nWHERE {\n    yago:Abram_Joseph_Ryan schema:hasOccupation?occupation\n}",
+                "SELECT?birthDate WHERE { <http://yago-knowledge.org/resource/Abram_Joseph_Ryan> <http://schema.org/birthDate>?birthDate }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abram_Joseph_Ryan",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abram_Joseph_Ryan",
+                        "http://schema.org/hasOccupation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abram_Joseph_Ryan",
+                        "http://schema.org/birthDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2046,
+                "prompt_tokens": 1504,
+                "completion_tokens": 542
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 3
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Albina_Library",
+            "seed_label": "Albina Library",
+            "dialogue": [
+                "Where is Albina Library located?",
+                "Does it contain any place?",
+                "What is its geographical location?"
+            ],
+            "original": [
+                "Where is Albina Library located?",
+                "Does Albina Library contain any place?",
+                "What is the geographical location of Albina Library?"
+            ],
+            "queries": [
+                "SELECT?location WHERE { <http://yago-knowledge.org/resource/Albina_Library> <http://schema.org/location>?location }",
+                "ASK WHERE { yago:Albina_Library schema:containedInPlace?place }",
+                "SELECT?location WHERE { <http://yago-knowledge.org/resource/Albina_Library> <http://schema.org/geo>?location }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Albina_Library",
+                        "http://schema.org/location",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Albina_Library",
+                        "http://schema.org/containedInPlace",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Albina_Library",
+                        "http://schema.org/geo",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1799,
+                "prompt_tokens": 1348,
+                "completion_tokens": 451
+            },
+            "query_status": {
+                "Syntax Error": 2,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Adam_Johnston_Fergusson_Blair",
+            "seed_label": "Adam Johnston Fergusson Blair",
+            "dialogue": [
+                "What is the nationality of Adam Johnston Fergusson Blair?",
+                "What is the death date of him?",
+                "What is the family name of him?"
+            ],
+            "original": [
+                "What is the nationality of Adam Johnston Fergusson Blair?",
+                "What is the death date of Adam Johnston Fergusson Blair?",
+                "What is the family name of Adam Johnston Fergusson Blair?"
+            ],
+            "queries": [
+                "SELECT?nationality WHERE { <http://yago-knowledge.org/resource/Adam_Johnston_Fergusson_Blair> <http://schema.org/nationality>?nationality }",
+                "SELECT?deathDate WHERE { <http://yago-knowledge.org/resource/Adam_Johnston_Fergusson_Blair> <http://schema.org/deathDate>?deathDate }",
+                "SELECT?familyName WHERE { <http://yago-knowledge.org/resource/Adam_Johnston_Fergusson_Blair> <http://schema.org/familyName>?familyName }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Adam_Johnston_Fergusson_Blair",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Adam_Johnston_Fergusson_Blair",
+                        "http://schema.org/deathDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Adam_Johnston_Fergusson_Blair",
+                        "http://schema.org/familyName",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1972,
+                "prompt_tokens": 1456,
+                "completion_tokens": 516
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 2
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Alhambra_Theatorium",
+            "seed_label": "Alhambra Theatorium",
+            "dialogue": [
+                "What is the alternate name of Alhambra Theatorium?",
+                "Where is it located?",
+                "Does it contain any other place?"
+            ],
+            "original": [
+                "What is the alternate name of Alhambra Theatorium?",
+                "Where is Alhambra Theatorium located?",
+                "Does Alhambra Theatorium contain any other place?"
+            ],
+            "queries": [
+                "SELECT?alternateName WHERE { <http://yago-knowledge.org/resource/Alhambra_Theatorium> <http://schema.org/alternateName>?alternateName }",
+                "SELECT?location WHERE { <http://yago-knowledge.org/resource/Alhambra_Theatorium> <http://schema.org/location>?location }",
+                "ASK WHERE { yago:Alhambra_Theatorium schema:containedInPlace?place. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Alhambra_Theatorium",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Alhambra_Theatorium",
+                        "http://schema.org/location",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Alhambra_Theatorium",
+                        "http://schema.org/containedInPlace",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2546,
+                "prompt_tokens": 1829,
+                "completion_tokens": 717
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 1,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Almondbury_Community_School",
+            "seed_label": "Almondbury Community School",
+            "dialogue": [
+                "What is the founding date of Almondbury Community School?",
+                "What is the telephone number of it?",
+                "Does it contain any places?"
+            ],
+            "original": [
+                "What is the founding date of Almondbury Community School?",
+                "What is the telephone number of Almondbury Community School?",
+                "Does Almondbury Community School contain any places?"
+            ],
+            "queries": [
+                "SELECT?foundingDate WHERE { <http://yago-knowledge.org/resource/Almondbury_Community_School> <http://schema.org/foundingDate>?foundingDate }",
+                "SELECT?telephone WHERE { <http://yago-knowledge.org/resource/Almondbury_Community_School> <http://schema.org/telephone>?telephone }",
+                "ASK WHERE { <http://yago-knowledge.org/resource/Almondbury_Community_School> <http://schema.org/containedInPlace>?place }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Almondbury_Community_School",
+                        "http://schema.org/foundingDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Almondbury_Community_School",
+                        "http://schema.org/telephone",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Almondbury_Community_School",
+                        "http://schema.org/containedInPlace",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1887,
+                "prompt_tokens": 1402,
+                "completion_tokens": 485
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 2
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 9,
+            "When was": 1,
+            "Where is": 2,
+            "Does it": 3
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 2050.0,
+                "prompt_tokens": 1507.8,
+                "completion_tokens": 542.2
+            },
+            "Minimum": {
+                "total_tokens": 1799,
+                "prompt_tokens": 1348,
+                "completion_tokens": 451
+            },
+            "Maximum": {
+                "total_tokens": 2546,
+                "prompt_tokens": 1829,
+                "completion_tokens": 717
+            },
+            "Total": {
+                "total_tokens": 10250,
+                "prompt_tokens": 7539,
+                "completion_tokens": 2711
+            }
+        },
+        "execution": {
+            "Correct": 15,
+            "Syntax Error": 10,
+            "In Correct": 1
+        }
+    },
+    "cost": {
+        "total_tokens": 872443,
+        "prompt_tokens": 611122,
+        "completion_tokens": 261321
+    },
+    "total_time": 99.00991439819336,
+    "average_time": 19.801982879638672,
+    "Context Length Error": 0,
+    "Question Validation Error": 2,
+    "Question Json Error": 9,
+    "Triples Validation Error": 11,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 474,
+    "Sparql Json Error": 0,
+    "Dialogue Validation Error": 0,
+    "Dialogue Json Error": 0
+}

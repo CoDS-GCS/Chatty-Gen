@@ -1,0 +1,730 @@
+{
+    "seeds_used": 36,
+    "data": [
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/1930_FIFA_World_Cup",
+            "seed_label": "1930 FIFA World Cup",
+            "dialogue": [
+                "What are the alternate names for the 1930 FIFA World Cup?",
+                "How many events were sub events of it?",
+                "When did it start?",
+                "Where did it take place?",
+                "When did it end?"
+            ],
+            "original": [
+                "What are the alternate names for the 1930 FIFA World Cup?",
+                "How many events were sub events of the 1930 FIFA World Cup?",
+                "When did the 1930 FIFA World Cup start?",
+                "Where did the 1930 FIFA World Cup take place?",
+                "When did the 1930 FIFA World Cup end?"
+            ],
+            "queries": [
+                "SELECT ?name WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/alternateName> ?name }",
+                "SELECT COUNT(*) WHERE { ?event <http://schema.org/subEvent> <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> }",
+                "SELECT ?date WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/startDate> ?date }",
+                "SELECT ?location WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/location> ?location }",
+                "SELECT ?date WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/endDate> ?date }"
+            ],
+            "cost": {
+                "total_tokens": 915,
+                "prompt_tokens": 562,
+                "completion_tokens": 353
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+            "seed_label": "2009 Andalucia Tennis Experience",
+            "dialogue": [
+                "What are the alternate names of the 2009 Andalucia Tennis Experience?",
+                "What is its start date?",
+                "What is its end date?",
+                "What is its subevent?"
+            ],
+            "original": [
+                "What are the alternate names of the 2009 Andalucia Tennis Experience?",
+                "What is the start date of the 2009 Andalucia Tennis Experience?",
+                "What is the end date of the 2009 Andalucia Tennis Experience?",
+                "What is the subevent of the 2009 Andalucia Tennis Experience?"
+            ],
+            "queries": [
+                "SELECT ?name WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/alternateName> ?name }",
+                "SELECT ?date WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/startDate> ?date }",
+                "SELECT ?date WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/endDate> ?date }",
+                "SELECT ?subevent WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/subEvent> ?subevent }"
+            ],
+            "cost": {
+                "total_tokens": 846,
+                "prompt_tokens": 538,
+                "completion_tokens": 308
+            },
+            "query_status": {
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience",
+            "seed_label": "2011 Andalucia Tennis Experience",
+            "dialogue": [
+                "What are the alternate names of the 2011 Andalucia Tennis Experience?",
+                "What is its start date?",
+                "What is its end date?",
+                "Is it a sub-event?",
+                "How many alternate names does it have?"
+            ],
+            "original": [
+                "What are the alternate names of the 2011 Andalucia Tennis Experience?",
+                "What is the start date of the 2011 Andalucia Tennis Experience?",
+                "What is the end date of the 2011 Andalucia Tennis Experience?",
+                "Is the 2011 Andalucia Tennis Experience a sub-event?",
+                "How many alternate names does the 2011 Andalucia Tennis Experience have?"
+            ],
+            "queries": [
+                "SELECT ?o WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/alternateName> ?o} LIMIT 5",
+                "SELECT ?o WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/startDate> ?o} LIMIT 1",
+                "SELECT ?o WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/endDate> ?o} LIMIT 1",
+                "ASK WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/subEvent> ?o}",
+                "SELECT (COUNT(*) AS ?count) WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/alternateName> ?o} LIMIT 1"
+            ],
+            "cost": {
+                "total_tokens": 930,
+                "prompt_tokens": 538,
+                "completion_tokens": 392
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain",
+            "seed_label": "2018 Grand Prix de Denain",
+            "dialogue": [
+                "What is the sport of the 2018 Grand Prix de Denain?",
+                "What is its alternate name?",
+                "What is its super event?",
+                "Who is a competitor of it?",
+                "How many competitors are there?"
+            ],
+            "original": [
+                "What is the sport of the 2018 Grand Prix de Denain?",
+                "What is an alternate name for the 2018 Grand Prix de Denain?",
+                "What is the super event of the 2018 Grand Prix de Denain?",
+                "Who is a competitor of the 2018 Grand Prix de Denain?",
+                "What is the number of competitors of the 2018 Grand Prix de Denain?"
+            ],
+            "queries": [
+                "SELECT ?sport WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/sport> ?sport }",
+                "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/alternateName> ?alternateName }",
+                "SELECT ?superEvent WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/superEvent> ?superEvent }",
+                "SELECT ?competitor WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/competitor> ?competitor }",
+                "SELECT COUNT(*) WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/competitor> ?competitor }"
+            ],
+            "cost": {
+                "total_tokens": 938,
+                "prompt_tokens": 544,
+                "completion_tokens": 394
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/A._A._Heaps",
+            "seed_label": "Abraham Albert Heaps",
+            "dialogue": [
+                "What is the nationality of Abraham Albert Heaps?",
+                "What is his birth place?",
+                "What is his death date?",
+                "What is his given name?",
+                "What is his occupation?",
+                "What languages does he know?",
+                "What is his death place?",
+                "What is his birth date?"
+            ],
+            "original": [
+                "What is the nationality of Abraham Albert Heaps?",
+                "What is the birth place of Abraham Albert Heaps?",
+                "What is the death date of Abraham Albert Heaps?",
+                "What is the given name of Abraham Albert Heaps?",
+                "What is the occupation of Abraham Albert Heaps?",
+                "What languages does Abraham Albert Heaps know?",
+                "What is the death place of Abraham Albert Heaps?",
+                "What is the birth date of Abraham Albert Heaps?"
+            ],
+            "queries": [
+                "SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/nationality> ?nationality . }",
+                "SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/birthPlace> ?birthPlace . }",
+                "SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/deathDate> ?deathDate . }",
+                "SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/givenName> ?givenName . }",
+                "SELECT ?occupation WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/hasOccupation> ?occupation . }",
+                "SELECT ?language WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/knowsLanguage> ?language . }",
+                "SELECT ?deathPlace WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/deathPlace> ?deathPlace . }",
+                "SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/birthDate> ?birthDate . }"
+            ],
+            "cost": {
+                "total_tokens": 1125,
+                "prompt_tokens": 629,
+                "completion_tokens": 496
+            },
+            "query_status": {
+                "Correct": 8
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/A._C._Bonnell",
+            "seed_label": "Allison C. Bonnell",
+            "dialogue": [
+                "What is the nationality of Allison C. Bonnell?",
+                "What is her death date?",
+                "What is her occupation?",
+                "What is her death place?",
+                "What is her birth date?"
+            ],
+            "original": [
+                "What is the nationality of Allison C. Bonnell?",
+                "What is the death date of Allison C. Bonnell?",
+                "What is the occupation of Allison C. Bonnell?",
+                "What is the death place of Allison C. Bonnell?",
+                "What is the birth date of Allison C. Bonnell?"
+            ],
+            "queries": [
+                "SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/nationality> ?nationality }",
+                "SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/deathDate> ?deathDate }",
+                "SELECT ?occupation WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/hasOccupation> ?occupation }",
+                "SELECT ?deathPlace WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/deathPlace> ?deathPlace }",
+                "SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/birthDate> ?birthDate }"
+            ],
+            "cost": {
+                "total_tokens": 856,
+                "prompt_tokens": 540,
+                "completion_tokens": 316
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abda,_Hungary",
+            "seed_label": "Abda",
+            "dialogue": [
+                "What are the alternate names for Abda?",
+                "What is its geo?",
+                "What is its location?",
+                "What is it contained in?"
+            ],
+            "original": [
+                "What are the alternate names for Abda?",
+                "What is the geo of Abda?",
+                "What is the location of Abda?",
+                "What is Abda contained in?"
+            ],
+            "queries": [
+                "SELECT ?name WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/alternateName> ?name }",
+                "SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/geo> ?geo }",
+                "SELECT ?location WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/location> ?location }",
+                "SELECT ?containedInPlace WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/containedInPlace> ?containedInPlace }"
+            ],
+            "cost": {
+                "total_tokens": 784,
+                "prompt_tokens": 500,
+                "completion_tokens": 284
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+            "seed_label": "A Princess of Mars",
+            "dialogue": [
+                "When was the book A Princess of Mars created?",
+                "What are the other names for it?",
+                "What language is it written in?",
+                "When was it published?",
+                "Who wrote it?"
+            ],
+            "original": [
+                "When was the book A Princess of Mars created?",
+                "What are the alternate names for the book A Princess of Mars?",
+                "What language is the book A Princess of Mars written in?",
+                "When was the book A Princess of Mars published?",
+                "Who is the author of the book A Princess of Mars?"
+            ],
+            "queries": [
+                "SELECT ?dateCreated WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/dateCreated> ?dateCreated }",
+                "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/alternateName> ?alternateName }",
+                "SELECT ?inLanguage WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/inLanguage> ?inLanguage }",
+                "SELECT ?datePublished WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/datePublished> ?datePublished }",
+                "SELECT ?author WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/author> ?author }"
+            ],
+            "cost": {
+                "total_tokens": 870,
+                "prompt_tokens": 545,
+                "completion_tokens": 325
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aberbargoed_Hospital",
+            "seed_label": "Aberbargoed Hospital",
+            "dialogue": [
+                "When was Aberbargoed Hospital founded?",
+                "Where is it located geographically?",
+                "Where is it located?",
+                "What is it contained in?",
+                "When was it dissolved?"
+            ],
+            "original": [
+                "When was Aberbargoed Hospital founded?",
+                "Where is Aberbargoed Hospital located geographically?",
+                "Where is Aberbargoed Hospital located?",
+                "What is Aberbargoed Hospital contained in?",
+                "When was Aberbargoed Hospital dissolved?"
+            ],
+            "queries": [
+                "SELECT ?foundingDate WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/foundingDate> ?foundingDate . }",
+                "SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/geo> ?geo . }",
+                "SELECT ?location WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/location> ?location . }",
+                "SELECT ?containedInPlace WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/containedInPlace> ?containedInPlace . }",
+                "SELECT ?dissolutionDate WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/dissolutionDate> ?dissolutionDate . }"
+            ],
+            "cost": {
+                "total_tokens": 841,
+                "prompt_tokens": 537,
+                "completion_tokens": 304
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abony",
+            "seed_label": "Abony",
+            "dialogue": [
+                "What is the alternate name of Abony?",
+                "Where is it located?",
+                "What is its geo?",
+                "What is the contained in place of it?",
+                "How many places are contained in it?"
+            ],
+            "original": [
+                "What is the alternate name of Abony?",
+                "Where is Abony located?",
+                "What is the geo of Abony?",
+                "What is the contained in place of Abony?",
+                "How many places are contained in Abony?"
+            ],
+            "queries": [
+                "SELECT ?o WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/alternateName> ?o}",
+                "SELECT ?o WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/geo> ?o}",
+                "SELECT ?o WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/location> ?o}",
+                "SELECT ?o WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/containedInPlace> ?o}",
+                "SELECT (COUNT(*) AS ?count) WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/containedInPlace> ?o}"
+            ],
+            "cost": {
+                "total_tokens": 770,
+                "prompt_tokens": 492,
+                "completion_tokens": 278
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2018_Volta_a_Catalunya",
+            "seed_label": "2018 Volta a Catalunya",
+            "dialogue": [
+                "What is the alternate name of the 2018 Volta a Catalunya?",
+                "What is the sport of it?",
+                "Who is the competitor of it?",
+                "What is the start date of it?",
+                "What is the end date of it?"
+            ],
+            "original": [
+                "What is the alternate name of the 2018 Volta a Catalunya?",
+                "What sport is the 2018 Volta a Catalunya?",
+                "Who is the competitor of the 2018 Volta a Catalunya?",
+                "What is the start date of the 2018 Volta a Catalunya?",
+                "What is the end date of the 2018 Volta a Catalunya?"
+            ],
+            "queries": [
+                "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/alternateName> ?alternateName . }",
+                "SELECT ?sport WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/sport> ?sport . }",
+                "SELECT ?competitor WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/competitor> ?competitor . }",
+                "SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/startDate> ?startDate . }",
+                "SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/endDate> ?endDate . }"
+            ],
+            "cost": {
+                "total_tokens": 952,
+                "prompt_tokens": 572,
+                "completion_tokens": 380
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aaron_Horvath",
+            "seed_label": "Aaron Horvath",
+            "dialogue": [
+                "What is Aaron Horvath's nationality?",
+                "How many occupations does he have?",
+                "Is his birthdate known?",
+                "When was he born?",
+                "What is his given name?"
+            ],
+            "original": [
+                "What is Aaron Horvath's nationality?",
+                "How many occupations does Aaron Horvath have?",
+                "Is Aaron Horvath's birthdate known?",
+                "When was Aaron Horvath born?",
+                "What is Aaron Horvath's given name?"
+            ],
+            "queries": [
+                "SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Aaron_Horvath> <http://schema.org/nationality> ?nationality }",
+                "SELECT (COUNT(*) AS ?num) WHERE { <http://yago-knowledge.org/resource/Aaron_Horvath> <http://schema.org/hasOccupation> ?occupation }",
+                "ASK WHERE { <http://yago-knowledge.org/resource/Aaron_Horvath> <http://schema.org/birthDate> ?birthdate }",
+                "SELECT ?birthdate WHERE { <http://yago-knowledge.org/resource/Aaron_Horvath> <http://schema.org/birthDate> ?birthdate }",
+                "SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Aaron_Horvath> <http://schema.org/givenName> ?givenName }"
+            ],
+            "cost": {
+                "total_tokens": 830,
+                "prompt_tokens": 533,
+                "completion_tokens": 297
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aaron_Kostner",
+            "seed_label": "Aaron Kostner",
+            "dialogue": [
+                "Where was Aaron Kostner born?",
+                "What is his nationality?",
+                "What is his given name?",
+                "What is his family name?",
+                "When was he born?"
+            ],
+            "original": [
+                "Where was Aaron Kostner born?",
+                "What is Aaron Kostner's nationality?",
+                "What is Aaron Kostner's given name?",
+                "What is Aaron Kostner's family name?",
+                "When was Aaron Kostner born?"
+            ],
+            "queries": [
+                "SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/birthPlace> ?birthPlace . }",
+                "SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/nationality> ?nationality . }",
+                "SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/givenName> ?givenName . }",
+                "SELECT ?familyName WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/familyName> ?familyName . }",
+                "SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/birthDate> ?birthDate . }"
+            ],
+            "cost": {
+                "total_tokens": 821,
+                "prompt_tokens": 528,
+                "completion_tokens": 293
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aberdeen_Arts_Centre",
+            "seed_label": "Aberdeen Arts Centre",
+            "dialogue": [
+                "What are the alternate names for the Aberdeen Arts Centre?",
+                "What is its geo location?",
+                "What is its location?",
+                "What is the place contained in it?"
+            ],
+            "original": [
+                "What are the alternate names for the Aberdeen Arts Centre?",
+                "What is the geo location of the Aberdeen Arts Centre?",
+                "What is the location of the Aberdeen Arts Centre?",
+                "What is the place contained in the Aberdeen Arts Centre?"
+            ],
+            "queries": [
+                "SELECT ?name WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/alternateName> ?name }",
+                "SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/geo> ?geo }",
+                "SELECT ?location WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/location> ?location }",
+                "SELECT ?containedInPlace WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/containedInPlace> ?containedInPlace }"
+            ],
+            "cost": {
+                "total_tokens": 755,
+                "prompt_tokens": 505,
+                "completion_tokens": 250
+            },
+            "query_status": {
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital",
+            "seed_label": "Aberdeen Regional Hospital",
+            "dialogue": [
+                "What are the alternate names for Aberdeen Regional Hospital?",
+                "When was it founded?",
+                "What is the geo coordinates of it?",
+                "What is the location of it?",
+                "What is it contained in?"
+            ],
+            "original": [
+                "What are the alternate names for Aberdeen Regional Hospital?",
+                "When was Aberdeen Regional Hospital founded?",
+                "What is the geo coordinates of Aberdeen Regional Hospital?",
+                "What is the location of Aberdeen Regional Hospital?",
+                "What is Aberdeen Regional Hospital contained in?"
+            ],
+            "queries": [
+                "SELECT ?altname WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> <http://schema.org/alternateName> ?altname }",
+                "SELECT ?foundingDate WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> <http://schema.org/foundingDate> ?foundingDate }",
+                "SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> <http://schema.org/geo> ?geo }",
+                "SELECT ?location WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> <http://schema.org/location> ?location }",
+                "SELECT ?containedInPlace WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> <http://schema.org/containedInPlace> ?containedInPlace }"
+            ],
+            "cost": {
+                "total_tokens": 882,
+                "prompt_tokens": 535,
+                "completion_tokens": 347
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aarti_Puri",
+            "seed_label": "Arti Puri",
+            "dialogue": [
+                "Where was Arti Puri born?",
+                "What is her nationality?",
+                "What are some alternate names for her?",
+                "What is her given name?",
+                "What is her occupation?",
+                "What is her birth date?"
+            ],
+            "original": [
+                "Where was Arti Puri born?",
+                "What is Arti Puri's nationality?",
+                "What are some alternate names for Arti Puri?",
+                "What is Arti Puri's given name?",
+                "What is Arti Puri's occupation?",
+                "What is Arti Puri's birth date?"
+            ],
+            "queries": [
+                "SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/birthPlace> ?birthPlace }",
+                "SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/nationality> ?nationality }",
+                "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/alternateName> ?alternateName }",
+                "SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/givenName> ?givenName }",
+                "SELECT ?hasOccupation WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/hasOccupation> ?hasOccupation }",
+                "SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/birthDate> ?birthDate }"
+            ],
+            "cost": {
+                "total_tokens": 897,
+                "prompt_tokens": 555,
+                "completion_tokens": 342
+            },
+            "query_status": {
+                "Correct": 6
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abdul_Rahim_Garhori",
+            "seed_label": "Faqir Abdul Raheem Garhori",
+            "dialogue": [
+                "What is the birthplace of Faqir Abdul Raheem Garhori?",
+                "What are the alternate names of him?",
+                "When did he die?",
+                "What is his given name?",
+                "Where did he die?",
+                "When was he born?"
+            ],
+            "original": [
+                "What is the birthplace of Faqir Abdul Raheem Garhori?",
+                "What are the alternate names of Faqir Abdul Raheem Garhori?",
+                "When did Faqir Abdul Raheem Garhori die?",
+                "What is the given name of Faqir Abdul Raheem Garhori?",
+                "Where did Faqir Abdul Raheem Garhori die?",
+                "When was Faqir Abdul Raheem Garhori born?"
+            ],
+            "queries": [
+                "SELECT ?birthplace WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/birthPlace> ?birthplace }",
+                "SELECT ?altName WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/alternateName> ?altName }",
+                "SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/deathDate> ?deathDate }",
+                "SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/givenName> ?givenName }",
+                "SELECT ?deathPlace WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/deathPlace> ?deathPlace }",
+                "SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/birthDate> ?birthDate }"
+            ],
+            "cost": {
+                "total_tokens": 998,
+                "prompt_tokens": 587,
+                "completion_tokens": 411
+            },
+            "query_status": {
+                "Correct": 6
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid",
+            "seed_label": "Abdul Rahman Al-Zeid",
+            "dialogue": [
+                "Where was Abdul Rahman Al-Zeid born?",
+                "What is his nationality?",
+                "What are his alternate names?",
+                "What is his given name?",
+                "What is his occupation?"
+            ],
+            "original": [
+                "Where was Abdul Rahman Al-Zeid born?",
+                "What is the nationality of Abdul Rahman Al-Zeid?",
+                "What are the alternate names of Abdul Rahman Al-Zeid?",
+                "What is the given name of Abdul Rahman Al-Zeid?",
+                "What is the occupation of Abdul Rahman Al-Zeid?"
+            ],
+            "queries": [
+                "SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/birthPlace> ?birthPlace }",
+                "SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/nationality> ?nationality }",
+                "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/alternateName> ?alternateName }",
+                "SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/givenName> ?givenName }",
+                "SELECT ?hasOccupation WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/hasOccupation> ?hasOccupation }"
+            ],
+            "cost": {
+                "total_tokens": 971,
+                "prompt_tokens": 583,
+                "completion_tokens": 388
+            },
+            "query_status": {
+                "Correct": 5,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/'night,_Mother_(film)",
+            "seed_label": "night, Mother",
+            "dialogue": [
+                "What is the country of origin of the film 'night, Mother'?",
+                "How many actors are in it?",
+                "Is it directed by Tom Hanks?",
+                "Who is the music composer of it?",
+                "What is the duration of it?",
+                "Who is the producer of it?"
+            ],
+            "original": [
+                "What is the country of origin of the film 'night, Mother'?",
+                "How many actors are in the film 'night, Mother'?",
+                "Is the film 'night, Mother' directed by Tom Hanks?",
+                "Who is the music composer of the film 'night, Mother'?",
+                "What is the duration of the film 'night, Mother'?",
+                "Who is the producer of the film 'night, Mother'?"
+            ],
+            "queries": [
+                "SELECT DISTINCT ?country WHERE { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/countryOfOrigin> ?country }",
+                "SELECT COUNT(*) WHERE { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/actor> ?actor }",
+                "ASK { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/director> <http://yago-knowledge.org/resource/Tom_Hanks> }",
+                "SELECT DISTINCT ?composer WHERE { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/musicBy> ?composer }",
+                "SELECT DISTINCT ?duration WHERE { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/duration> ?duration }",
+                "SELECT DISTINCT ?producer WHERE { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/producer> ?producer }"
+            ],
+            "cost": {
+                "total_tokens": 989,
+                "prompt_tokens": 590,
+                "completion_tokens": 399
+            },
+            "query_status": {
+                "Correct": 6
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Battle_of_Prairie_D'Ane",
+            "seed_label": "Battle of Prairie D'Ane",
+            "dialogue": [
+                "What is the alternate name of Battle of Prairie D'Ane?",
+                "When did it start?",
+                "Where did it take place?",
+                "When did it end?"
+            ],
+            "original": [
+                "What is the alternate name of Battle of Prairie D'Ane?",
+                "When did the Battle of Prairie D'Ane start?",
+                "Where did the Battle of Prairie D'Ane take place?",
+                "When did the Battle of Prairie D'Ane end?"
+            ],
+            "queries": [
+                "SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Battle_of_Prairie_D'Ane> <http://schema.org/alternateName> ?alternateName }",
+                "SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/Battle_of_Prairie_D'Ane> <http://schema.org/startDate> ?startDate }",
+                "SELECT ?location WHERE { <http://yago-knowledge.org/resource/Battle_of_Prairie_D'Ane> <http://schema.org/location> ?location }",
+                "SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/Battle_of_Prairie_D'Ane> <http://schema.org/endDate> ?endDate }"
+            ],
+            "cost": {
+                "total_tokens": 792,
+                "prompt_tokens": 522,
+                "completion_tokens": 270
+            },
+            "query_status": {
+                "Correct": 4
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What are": 10,
+            "How many": 6,
+            "When did": 5,
+            "Where did": 3,
+            "What is": 54,
+            "Is it": 2,
+            "Who is": 4,
+            "What languages": 1,
+            "When was": 8,
+            "What language": 1,
+            "Who wrote": 1,
+            "Where is": 3,
+            "Is his": 1,
+            "Where was": 3
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 888.1,
+                "prompt_tokens": 546.75,
+                "completion_tokens": 341.35
+            },
+            "Minimum": {
+                "total_tokens": 755,
+                "prompt_tokens": 492,
+                "completion_tokens": 250
+            },
+            "Maximum": {
+                "total_tokens": 1125,
+                "prompt_tokens": 629,
+                "completion_tokens": 496
+            },
+            "Total": {
+                "total_tokens": 17762,
+                "prompt_tokens": 10935,
+                "completion_tokens": 6827
+            }
+        },
+        "execution": {
+            "Correct": 102,
+            "In Correct": 2
+        }
+    },
+    "cost": {
+        "total_tokens": 31966,
+        "prompt_tokens": 19880,
+        "completion_tokens": 12086
+    },
+    "total_time": 675.6646420955658,
+    "average_time": 33.78323210477829,
+    "Context Length Error": 0,
+    "Question Validation Error": 0,
+    "Sparql Validation Error": 10,
+    "Dialogue Validation Error": 4,
+    "Json Error": 1,
+    "unequal Lists Error": 1
+}

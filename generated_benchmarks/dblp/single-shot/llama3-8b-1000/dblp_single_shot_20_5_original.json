@@ -1,0 +1,116 @@
+{
+    "seeds_used": 1000,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/pid/163/5141",
+            "seed_label": "Francesco Kriegel",
+            "dialogue": [
+                "Francesco Kriegel is a computer scientist. What is his email address?",
+                "He is affiliated with University of Stuttgart. What is his email address?",
+                "He is a computer scientist. What is his email address?",
+                "He is a computer scientist. What is his email address?",
+                "He has an email address. What is his email address?"
+            ],
+            "original": [
+                "Francesco Kriegel is affiliated with University of Stuttgart.",
+                "Francesco Kriegel is a computer scientist.",
+                "Francesco Kriegel is a computer scientist.",
+                "Francesco Kriegel is a computer scientist.",
+                "Francesco Kriegel has an email address."
+            ],
+            "queries": [
+                "SELECT?x WHERE {?x <https://dblp.org/rdf/schema#webpage>?y }",
+                "SELECT?x WHERE {?x <https://dblp.org/rdf/schema#primaryAffiliation>?y }",
+                "SELECT?x WHERE {?x <https://dblp.org/rdf/schema#primaryFullCreatorName>?y }",
+                "SELECT?x WHERE {?x <https://dblp.org/rdf/schema#primaryHomepage>?y }",
+                "SELECT?x WHERE {?x <https://dblp.org/rdf/schema#orcid>?y }"
+            ],
+            "cost": {
+                "total_tokens": 826,
+                "prompt_tokens": 532,
+                "completion_tokens": 294
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/30/4810",
+            "seed_label": "Richard Bamler",
+            "dialogue": [
+                "How many articles did he publish?",
+                "How many articles did Richard publish?",
+                "How many articles did he publish?",
+                "How many articles did he publish?"
+            ],
+            "original": [
+                "What is Richard Bamler's primary affiliation?",
+                "What is Richard Bamler's primary full creator name?",
+                "What is Richard Bamler's primary homepage?",
+                "What is Richard Bamler's Wikipedia page?"
+            ],
+            "queries": [
+                "SELECT (COUNT(*) AS?count) WHERE {?s dbo:primaryAffiliation <https://dblp.org/pid/30/4810>.?s dbo:primaryFullCreatorName?name. }",
+                "SELECT (COUNT(*) AS?count) WHERE {?s dbo:primaryAffiliation <https://dblp.org/pid/30/4810>.?s dbo:primaryFullCreatorName?name. }",
+                "SELECT (COUNT(*) AS?count) WHERE {?s dbo:primaryAffiliation <https://dblp.org/pid/30/4810>.?s dbo:primaryFullCreatorName?name. }",
+                "SELECT (COUNT(*) AS?count) WHERE {?s dbo:primaryAffiliation <https://dblp.org/pid/30/4810>.?s dbo:primaryFullCreatorName?name. }"
+            ],
+            "cost": {
+                "total_tokens": 1198,
+                "prompt_tokens": 558,
+                "completion_tokens": 640
+            },
+            "query_status": {
+                "Syntax Error": 1,
+                "Correct": 4
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "Francesco Kriegel": 1,
+            "He is": 3,
+            "He has": 1,
+            "How many": 4
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 1012.0,
+                "prompt_tokens": 545.0,
+                "completion_tokens": 467.0
+            },
+            "Minimum": {
+                "total_tokens": 826,
+                "prompt_tokens": 532,
+                "completion_tokens": 294
+            },
+            "Maximum": {
+                "total_tokens": 1198,
+                "prompt_tokens": 558,
+                "completion_tokens": 640
+            },
+            "Total": {
+                "total_tokens": 2024,
+                "prompt_tokens": 1090,
+                "completion_tokens": 934
+            }
+        },
+        "execution": {
+            "Correct": 9,
+            "Syntax Error": 1
+        }
+    },
+    "cost": {
+        "total_tokens": 1299399,
+        "prompt_tokens": 744172,
+        "completion_tokens": 555227
+    },
+    "total_time": 35.086583852767944,
+    "average_time": 17.543291926383972,
+    "Context Length Error": 0,
+    "Question Validation Error": 170,
+    "Sparql Validation Error": 23,
+    "Dialogue Validation Error": 55,
+    "Json Error": 452,
+    "unequal Lists Error": 298
+}

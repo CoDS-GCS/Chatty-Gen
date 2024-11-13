@@ -1,0 +1,539 @@
+{
+    "seeds_used": 200,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/pid/04/1411",
+            "seed_label": "Gerhard Kramer",
+            "dialogue": [
+                "What is Gerhard Kramer's primary affiliation?",
+                "Is his Orcid given in the data?",
+                "Does he have a primary homepage?",
+                "What is his primary full creator name?",
+                "Which external information source is linked to him?"
+            ],
+            "original": [
+                "What is Gerhard Kramer's primary affiliation?",
+                "Is Gerhard Kramer's Orcid given in the data?",
+                "Does Gerhard Kramer have a primary homepage?",
+                "What is the primary full creator name of Gerhard Kramer?",
+                "Which external information source is linked to Gerhard Kramer?"
+            ],
+            "queries": [
+                "SELECT ?affiliation WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation . }",
+                "ASK WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#orcid> ?orcid . }",
+                "ASK WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage . }",
+                "SELECT ?name WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?name . }",
+                "SELECT ?source WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#wikidata> ?source . }"
+            ],
+            "cost": {
+                "total_tokens": 886,
+                "prompt_tokens": 542,
+                "completion_tokens": 344
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/04/3348-54",
+            "seed_label": "Yan Zhang 0054",
+            "dialogue": [
+                "What is Yan Zhang 0054's ORCID?",
+                "Does he have any other affiliations?",
+                "What is his primary affiliation?",
+                "What is his primary homepage URL?",
+                "What is his full primary creator name?"
+            ],
+            "original": [
+                "What is Yan Zhang 0054's ORCID?",
+                "Does Yan Zhang 0054 have any other affiliations?",
+                "What is the primary affiliation of Yan Zhang 0054?",
+                "What is the primary homepage URL of Yan Zhang 0054?",
+                "What is the full primary creator name of Yan Zhang 0054?"
+            ],
+            "queries": [
+                "SELECT ?orcid WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#orcid> ?orcid }",
+                "ASK WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#otherAffiliation> ?affiliation }",
+                "SELECT ?primaryAffiliation WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryAffiliation> ?primaryAffiliation }",
+                "SELECT ?primaryHomepage WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryHomepage> ?primaryHomepage }",
+                "SELECT ?fullName WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?fullName }"
+            ],
+            "cost": {
+                "total_tokens": 917,
+                "prompt_tokens": 555,
+                "completion_tokens": 362
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Scheiber12",
+            "seed_label": "Lukas Scheiber: Next Taylorism: A Calculus of Knowledge Work. (2010)",
+            "dialogue": [
+                "Q: Who is listed as the author of Lukas Scheiber: Next Taylorism: A Calculus of Knowledge Work. (2010)?\nA: ",
+                "Q: What organization published his book?\nA: ",
+                "Q: What is its ISBN?\nA: ",
+                "Q: How many authors does his book have?\nA: ",
+                "Q: Did it get published in 2011?\nA: "
+            ],
+            "original": [
+                "Who is listed as the author of Lukas Scheiber: Next Taylorism: A Calculus of Knowledge Work. (2010)?",
+                "What organization published Lukas Scheiber: Next Taylorism: A Calculus of Knowledge Work. (2010)?",
+                "What is the ISBN of Lukas Scheiber: Next Taylorism: A Calculus of Knowledge Work. (2010)?",
+                "How many authors does Lukas Scheiber: Next Taylorism: A Calculus of Knowledge Work. (2010) have?",
+                "Did Lukas Scheiber: Next Taylorism: A Calculus of Knowledge Work. (2010) get published in 2011?"
+            ],
+            "queries": [
+                "SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Scheiber12> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?org WHERE { <https://dblp.org/rec/phd/dnb/Scheiber12> <https://dblp.org/rdf/schema#publishedBy> ?org }",
+                "SELECT ?isbn WHERE { <https://dblp.org/rec/phd/dnb/Scheiber12> <https://dblp.org/rdf/schema#isbn> ?isbn }",
+                "SELECT ?count WHERE { <https://dblp.org/rec/phd/dnb/Scheiber12> <https://dblp.org/rdf/schema#numberOfCreators> ?count }",
+                "ASK WHERE { <https://dblp.org/rec/phd/dnb/Scheiber12> <https://dblp.org/rdf/schema#yearOfPublication> '2011' }"
+            ],
+            "cost": {
+                "total_tokens": 1199,
+                "prompt_tokens": 731,
+                "completion_tokens": 468
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/10/760",
+            "seed_label": "Tilmann Rabl",
+            "dialogue": [
+                "What other affiliations does Tilmann Rabl have?",
+                "What is his primary affiliation?",
+                "What is his full creator name?",
+                "Can you tell me the link to his primary homepage?",
+                "What is his webpage?"
+            ],
+            "original": [
+                "What other affiliations does Tilmann Rabl have?",
+                "What is Tilmann Rabl's primary affiliation?",
+                "What is Tilmann Rabl's full creator name?",
+                "Can you tell me the link to the primary homepage belonging to Tilmann Rabl?",
+                "What is Tilmann Rabl's webpage?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?affiliations WHERE { <https://dblp.org/pid/10/760> dblp:otherAffiliation ?affiliations }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?affiliation WHERE { <https://dblp.org/pid/10/760> dblp:primaryAffiliation ?affiliation }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?fullCreatorName WHERE { <https://dblp.org/pid/10/760> dblp:primaryFullCreatorName ?fullCreatorName }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?primaryHomepage WHERE { <https://dblp.org/pid/10/760> dblp:primaryHomepage ?primaryHomepage }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?webpage WHERE { <https://dblp.org/pid/10/760> dblp:webpage ?webpage }"
+            ],
+            "cost": {
+                "total_tokens": 918,
+                "prompt_tokens": 539,
+                "completion_tokens": 379
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/BubenikSS15",
+            "seed_label": "Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015)",
+            "dialogue": [
+                "Who authored the publication titled Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015)?",
+                "In which year was it published?",
+                "Is it listed on a table of contents page?",
+                "How many creators does it have?",
+                "What is its full electronic edition reference?"
+            ],
+            "original": [
+                "Who authored the publication titled Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015)?",
+                "In which year was 'Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015)' published?",
+                "Is 'Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015)' listed on a table of contents page?",
+                "How many creators does Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015) have?",
+                "What is the full electronic edition reference for Peter Bubenik et al.: Metrics for Generalized Persistence Modules. (2015)?"
+            ],
+            "queries": [
+                "SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/BubenikSS15> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/BubenikSS15> <https://dblp.org/rdf/schema#yearOfPublication> ?year }",
+                "ASK WHERE { <https://dblp.org/rec/journals/focm/BubenikSS15> <https://dblp.org/rdf/schema#listedOnTocPage> ?tocPage }",
+                "SELECT ?count WHERE { <https://dblp.org/rec/journals/focm/BubenikSS15> <https://dblp.org/rdf/schema#numberOfCreators> ?count }",
+                "SELECT ?edition WHERE { <https://dblp.org/rec/journals/focm/BubenikSS15> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?edition }"
+            ],
+            "cost": {
+                "total_tokens": 1359,
+                "prompt_tokens": 900,
+                "completion_tokens": 459
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/Carl16",
+            "seed_label": "Wolfgang Carl: A Laplace Operator on Semi-Discrete Surfaces. (2016)",
+            "dialogue": [
+                "Who are the authors of Wolfgang Carl: A Laplace Operator on Semi-Discrete Surfaces. (2016)?",
+                "How many creators contributed to it?",
+                "Is there a DOI available for it?",
+                "In which journal was it published?",
+                "When was it published?"
+            ],
+            "original": [
+                "Who are the authors of Wolfgang Carl: A Laplace Operator on Semi-Discrete Surfaces. (2016)?",
+                "How many creators contributed to Wolfgang Carl: A Laplace Operator on Semi-Discrete Surfaces. (2016)?",
+                "Is there a DOI available for Wolfgang Carl: A Laplace Operator on Semi-Discrete Surfaces. (2016)?",
+                "In which journal was Wolfgang Carl: A Laplace Operator on Semi-Discrete Surfaces. (2016) published?",
+                "When was Wolfgang Carl: A Laplace Operator on Semi-Discrete Surfaces. (2016) published?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT ?author WHERE { <https://dblp.org/rec/journals/focm/Carl16> dblp:authoredBy ?author }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT ?creators WHERE { <https://dblp.org/rec/journals/focm/Carl16> dblp:numberOfCreators ?creators }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nASK WHERE { <https://dblp.org/rec/journals/focm/Carl16> dblp:doi ?doi }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/Carl16> dblp:publishedInJournal ?journal }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT ?year WHERE { <https://dblp.org/rec/journals/focm/Carl16> dblp:yearOfPublication ?year }"
+            ],
+            "cost": {
+                "total_tokens": 1311,
+                "prompt_tokens": 840,
+                "completion_tokens": 471
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Greifenberg19",
+            "seed_label": "Timo Greifenberg: Artefaktbasierte Analyse modellgetriebener Softwareentwicklungsprojekte. (2019)",
+            "dialogue": [
+                "Who authored Timo Greifenberg: Artefaktbasierte Analyse modellgetriebener Softwareentwicklungsprojekte. (2019)?",
+                "What is the publication year of it?",
+                "How many creators contributed to it?",
+                "Which school accepted the thesis?",
+                "Is there an electronic edition of it?"
+            ],
+            "original": [
+                "Who authored Timo Greifenberg: Artefaktbasierte Analyse modellgetriebener Softwareentwicklungsprojekte. (2019)?",
+                "What is the publication year of Timo Greifenberg: Artefaktbasierte Analyse modellgetriebener Softwareentwicklungsprojekte. (2019)?",
+                "How many creators contributed to Timo Greifenberg: Artefaktbasierte Analyse modellgetriebener Softwareentwicklungsprojekte. (2019)?",
+                "Which school accepted the thesis Timo Greifenberg: Artefaktbasierte Analyse modellgetriebener Softwareentwicklungsprojekte. (2019)?",
+                "Is there an electronic edition of Timo Greifenberg: Artefaktbasierte Analyse modellgetriebener Softwareentwicklungsprojekte. (2019)?"
+            ],
+            "queries": [
+                "SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Greifenberg19> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Greifenberg19> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }",
+                "SELECT ?numCreators WHERE { <https://dblp.org/rec/phd/dnb/Greifenberg19> <https://dblp.org/rdf/schema#numberOfCreators> ?numCreators . }",
+                "SELECT ?school WHERE { <https://dblp.org/rec/phd/dnb/Greifenberg19> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?school . }",
+                "ASK { <https://dblp.org/rec/phd/dnb/Greifenberg19> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?anyValue . }"
+            ],
+            "cost": {
+                "total_tokens": 1274,
+                "prompt_tokens": 780,
+                "completion_tokens": 494
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/corr/NeunerVLHMMW14",
+            "seed_label": "Sebastian Neuner et al.: Enter Sandbox: Android Sandbox Comparison. (2014)",
+            "dialogue": [
+                "List all the authors of the paper 'Sebastian Neuner et al.: Enter Sandbox: Android Sandbox Comparison. (2014)'",
+                "How many creators contributed to the paper?",
+                "Did it get a primary electronic edition?",
+                "What journal is it published in?",
+                "When was it published?"
+            ],
+            "original": [
+                "List all the authors of the paper 'Sebastian Neuner et al.: Enter Sandbox: Android Sandbox Comparison. (2014)'",
+                "How many creators contributed to the paper 'Sebastian Neuner et al.: Enter Sandbox: Android Sandbox Comparison. (2014)'?",
+                "Did 'Sebastian Neuner et al.: Enter Sandbox: Android Sandbox Comparison. (2014)' get a primary electronic edition?",
+                "What journal is 'Sebastian Neuner et al.: Enter Sandbox: Android Sandbox Comparison. (2014)' published in?",
+                "When was 'Sebastian Neuner et al.: Enter Sandbox: Android Sandbox Comparison. (2014)' published?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?author WHERE { <https://dblp.org/rec/journals/corr/NeunerVLHMMW14> dblp:authoredBy ?author }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?numCreators WHERE { <https://dblp.org/rec/journals/corr/NeunerVLHMMW14> dblp:numberOfCreators ?numCreators }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> ASK { <https://dblp.org/rec/journals/corr/NeunerVLHMMW14> dblp:primaryElectronicEdition ?edition }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?journal WHERE { <https://dblp.org/rec/journals/corr/NeunerVLHMMW14> dblp:publishedInJournal ?journal }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?year WHERE { <https://dblp.org/rec/journals/corr/NeunerVLHMMW14> dblp:yearOfPublication ?year }"
+            ],
+            "cost": {
+                "total_tokens": 1282,
+                "prompt_tokens": 782,
+                "completion_tokens": 500
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/DittenbachMR00",
+            "seed_label": "Michael Dittenbach et al.: The Growing Hierarchical Self-Organizing Map. (2000)",
+            "dialogue": [
+                "Q: Who authored Michael Dittenbach et al.: The Growing Hierarchical Self-Organizing Map. (2000)? \nA: The creators authored it.",
+                "Q: How many creators did it have? \nA: It had a specific number of creators.",
+                "Q: Is it indexed with a DOI? \nA: Yes, it is indexed with a DOI.",
+                "Q: In which year was it published? \nA: It was published in the specific year.",
+                "Q: What pagination is assigned to it? \nA: It has particular pagination."
+            ],
+            "original": [
+                "Who authored Michael Dittenbach et al.: The Growing Hierarchical Self-Organizing Map. (2000)?",
+                "How many creators did Michael Dittenbach et al.: The Growing Hierarchical Self-Organizing Map. (2000) have?",
+                "Is 'Michael Dittenbach et al.: The Growing Hierarchical Self-Organizing Map. (2000)' indexed with a DOI?",
+                "In which year was 'Michael Dittenbach et al.: The Growing Hierarchical Self-Organizing Map. (2000)' published?",
+                "What pagination is assigned to 'Michael Dittenbach et al.: The Growing Hierarchical Self-Organizing Map. (2000)'?"
+            ],
+            "queries": [
+                "SELECT ?authoredBy WHERE { <https://dblp.org/rec/conf/ijcnn/DittenbachMR00> <https://dblp.org/rdf/schema#authoredBy> ?authoredBy }",
+                "SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/conf/ijcnn/DittenbachMR00> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators }",
+                "ASK WHERE { <https://dblp.org/rec/conf/ijcnn/DittenbachMR00> <https://dblp.org/rdf/schema#doi> ?doi }",
+                "SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/conf/ijcnn/DittenbachMR00> <https://dblp.org/rdf/schema#title> ?nameofpaper . <https://dblp.org/rec/conf/ijcnn/DittenbachMR00> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication }",
+                "SELECT ?pagination WHERE { <https://dblp.org/rec/conf/ijcnn/DittenbachMR00> <https://dblp.org/rdf/schema#pagination> ?pagination }"
+            ],
+            "cost": {
+                "total_tokens": 1429,
+                "prompt_tokens": 874,
+                "completion_tokens": 555
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Nowack17",
+            "seed_label": "Tobias Nowack: Mensch-Technik-Interaktion mittels Freiraumgesten. (2017)",
+            "dialogue": [
+                "Q: Who authored Tobias Nowack: Mensch-Technik-Interaktion mittels Freiraumgesten. (2017)?\nA: Tobias Nowack authored it.",
+                "Q: Is there an ISBN for it?\nA: Yes, there is an ISBN.",
+                "Q: What is the bibtex type of the work?\nA: The bibtex type for it is unspecified.",
+                "Q: How many creators does it have?\nA: It has an unspecified number of creators.",
+                "Q: When was it published?\nA: It was published in 2017."
+            ],
+            "original": [
+                "Who authored Tobias Nowack: Mensch-Technik-Interaktion mittels Freiraumgesten. (2017)?",
+                "Is there an ISBN for Tobias Nowack: Mensch-Technik-Interaktion mittels Freiraumgesten. (2017)?",
+                "What is the bibtex type of Tobias Nowack: Mensch-Technik-Interaktion mittels Freiraumgesten. (2017)?",
+                "How many creators does Tobias Nowack: Mensch-Technik-Interaktion mittels Freiraumgesten. (2017) have?",
+                "When was Tobias Nowack: Mensch-Technik-Interaktion mittels Freiraumgesten. (2017) published?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Nowack17> dblp:authoredBy ?author . }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> ASK WHERE { <https://dblp.org/rec/phd/dnb/Nowack17> dblp:isbn ?isbn . }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?bibtexType WHERE { <https://dblp.org/rec/phd/dnb/Nowack17> dblp:bibtexType ?bibtexType . }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?numCreators WHERE { <https://dblp.org/rec/phd/dnb/Nowack17> dblp:numberOfCreators ?numCreators . }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT ?publicationYear WHERE { <https://dblp.org/rec/phd/dnb/Nowack17> dblp:yearOfPublication ?publicationYear . }"
+            ],
+            "cost": {
+                "total_tokens": 1282,
+                "prompt_tokens": 732,
+                "completion_tokens": 550
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/Fanaskov21",
+            "seed_label": "Vladimir Fanaskov: Neural Multigrid Architectures. (2021)",
+            "dialogue": [
+                "Who authored Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "What is the DOI of it?",
+                "Is it published in a book?",
+                "How many authors does it have?",
+                "What year was it published?"
+            ],
+            "original": [
+                "Who authored Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "What is the DOI of Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "Is Vladimir Fanaskov: Neural Multigrid Architectures. (2021) published in a book?",
+                "How many authors does Vladimir Fanaskov: Neural Multigrid Architectures. (2021) have?",
+                "What year was Vladimir Fanaskov: Neural Multigrid Architectures. (2021) published?"
+            ],
+            "queries": [
+                "SELECT DISTINCT ?author WHERE {{ <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#authoredBy> ?author . }}",
+                "SELECT DISTINCT ?doi WHERE {{ <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#doi> ?doi . }}",
+                "ASK WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#publishedInBook> ?book . }",
+                "SELECT DISTINCT ?number WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#numberOfCreators> ?number . }",
+                "SELECT DISTINCT ?year WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+            ],
+            "cost": {
+                "total_tokens": 1257,
+                "prompt_tokens": 836,
+                "completion_tokens": 421
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/126/7574",
+            "seed_label": "Johannes Schauer Marin Rodrigues",
+            "dialogue": [
+                "What is Johannes Schauer Marin Rodrigues' primary affiliation?",
+                "What is his primary full creator name?",
+                "What webpage is associated with him?",
+                "How many metadata properties are listed for him?",
+                "Is he available on dblp.org?"
+            ],
+            "original": [
+                "What is Johannes Schauer Marin Rodrigues' primary affiliation?",
+                "What is Johannes Schauer Marin Rodrigues' primary full creator name?",
+                "What webpage is associated with Johannes Schauer Marin Rodrigues?",
+                "How many metadata properties are listed for Johannes Schauer Marin Rodrigues?",
+                "Is Johannes Schauer Marin Rodrigues available on dblp.org?"
+            ],
+            "queries": [
+                "SELECT ?affiliation WHERE { <https://dblp.org/pid/126/7574> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation }",
+                "SELECT ?name WHERE { <https://dblp.org/pid/126/7574> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?name }",
+                "SELECT ?webpage WHERE { <https://dblp.org/pid/126/7574> <https://dblp.org/rdf/schema#webpage> ?webpage }",
+                "SELECT (COUNT(?property) AS ?count) WHERE { <https://dblp.org/pid/126/7574> ?property ?value }",
+                "ASK WHERE { <https://dblp.org/pid/126/7574> ?property ?value }"
+            ],
+            "cost": {
+                "total_tokens": 908,
+                "prompt_tokens": 574,
+                "completion_tokens": 334
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Wenzel19",
+            "seed_label": "Thomas Wenzel: Additional Traffic Sign Detection and Content Recognition. (2019)",
+            "dialogue": [
+                "What is the title of the document Thomas Wenzel: Additional Traffic Sign Detection and Content Recognition. (2019)?",
+                "Who is the author of the document?",
+                "Which publisher was it published by?",
+                "Is the primary electronic edition URL available?",
+                "How many contributors does it have?"
+            ],
+            "original": [
+                "What is the title of the document Thomas Wenzel: Additional Traffic Sign Detection and Content Recognition. (2019)?",
+                "Who is the author of the document Thomas Wenzel: Additional Traffic Sign Detection and Content Recognition. (2019)?",
+                "Which publisher was the document Thomas Wenzel: Additional Traffic Sign Detection and Content Recognition. (2019) published by?",
+                "Is the primary electronic edition URL of Thomas Wenzel: Additional Traffic Sign Detection and Content Recognition. (2019) available?",
+                "How many contributors does the document Thomas Wenzel: Additional Traffic Sign Detection and Content Recognition. (2019) have?"
+            ],
+            "queries": [
+                "SELECT ?title WHERE { <https://dblp.org/rec/phd/dnb/Wenzel19> <https://dblp.org/rdf/schema#title> ?title }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Wenzel19> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?publisher WHERE { <https://dblp.org/rec/phd/dnb/Wenzel19> <https://dblp.org/rdf/schema#publishedBy> ?publisher }",
+                "ASK WHERE { <https://dblp.org/rec/phd/dnb/Wenzel19> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?url }",
+                "SELECT ?num WHERE { <https://dblp.org/rec/phd/dnb/Wenzel19> <https://dblp.org/rdf/schema#numberOfCreators> ?num }"
+            ],
+            "cost": {
+                "total_tokens": 1171,
+                "prompt_tokens": 747,
+                "completion_tokens": 424
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/GhassanyGB13",
+            "seed_label": "Mohamad Ghassany et al.: Collaborative multi-view clustering. (2013)",
+            "dialogue": [
+                "How many authors contributed to Mohamad Ghassany et al.: Collaborative multi-view clustering. (2013)?",
+                "Did it get published in a conference?",
+                "In which publication event was it included?",
+                "What is the DOI assigned to it?",
+                "When was it written?"
+            ],
+            "original": [
+                "How many authors contributed to Mohamad Ghassany et al.: Collaborative multi-view clustering. (2013)?",
+                "Did Mohamad Ghassany et al.: Collaborative multi-view clustering. (2013) get published in a conference?",
+                "In which publication event was Mohamad Ghassany et al.: Collaborative multi-view clustering. (2013) included?",
+                "What is the DOI assigned to Mohamad Ghassany et al.: Collaborative multi-view clustering. (2013)?",
+                "When was Mohamad Ghassany et al.: Collaborative multi-view clustering. (2013) written?"
+            ],
+            "queries": [
+                "SELECT ?numAuthors WHERE { <https://dblp.org/rec/conf/ijcnn/GhassanyGB13> <https://dblp.org/rdf/schema#numberOfCreators> ?numAuthors }",
+                "ASK { <https://dblp.org/rec/conf/ijcnn/GhassanyGB13> <https://dblp.org/rdf/schema#publishedIn> ?conference }",
+                "SELECT ?publicationEvent WHERE { <https://dblp.org/rec/conf/ijcnn/GhassanyGB13> <https://dblp.org/rdf/schema#publishedIn> ?publicationEvent }",
+                "SELECT ?doi WHERE { <https://dblp.org/rec/conf/ijcnn/GhassanyGB13> <https://dblp.org/rdf/schema#doi> ?doi }",
+                "SELECT ?year WHERE { <https://dblp.org/rec/conf/ijcnn/GhassanyGB13> <https://dblp.org/rdf/schema#yearOfPublication> ?year }"
+            ],
+            "cost": {
+                "total_tokens": 1280,
+                "prompt_tokens": 850,
+                "completion_tokens": 430
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 16,
+            "Is his": 1,
+            "Does he": 2,
+            "Which external": 1,
+            "Q: Who": 3,
+            "Q: What": 4,
+            "Q: How": 3,
+            "Q: Did": 1,
+            "What other": 1,
+            "Can you": 1,
+            "Who authored": 3,
+            "In which": 3,
+            "Is it": 2,
+            "How many": 8,
+            "Who are": 1,
+            "Is there": 2,
+            "When was": 3,
+            "Which school": 1,
+            "List all": 1,
+            "Did it": 2,
+            "What journal": 1,
+            "Q: Is": 2,
+            "Q: In": 1,
+            "Q: When": 1,
+            "What year": 1,
+            "What webpage": 1,
+            "Is he": 1,
+            "Who is": 1,
+            "Which publisher": 1,
+            "Is the": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 1176.642857142857,
+                "prompt_tokens": 734.4285714285714,
+                "completion_tokens": 442.2142857142857
+            },
+            "Minimum": {
+                "total_tokens": 886,
+                "prompt_tokens": 539,
+                "completion_tokens": 334
+            },
+            "Maximum": {
+                "total_tokens": 1429,
+                "prompt_tokens": 900,
+                "completion_tokens": 555
+            },
+            "Total": {
+                "total_tokens": 16473,
+                "prompt_tokens": 10282,
+                "completion_tokens": 6191
+            }
+        },
+        "execution": {
+            "Correct": 70
+        }
+    },
+    "cost": {
+        "total_tokens": 118429,
+        "prompt_tokens": 72544,
+        "completion_tokens": 45885
+    },
+    "total_time": 125.87043404579163,
+    "average_time": 8.990745288985115,
+    "Context Length Error": 0,
+    "Question Validation Error": 45,
+    "Sparql Validation Error": 0,
+    "Dialogue Validation Error": 4,
+    "Json Error": 123,
+    "unequal Lists Error": 14
+}

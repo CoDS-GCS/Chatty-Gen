@@ -1,0 +1,348 @@
+{
+    "seeds_used": 501,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/Barvinok16",
+            "seed_label": "Computing the Permanent of (Some) Complex Matrices.",
+            "dialogue": [
+                "How many authors does Computing the Permanent of (Some) Complex Matrices. have?",
+                "How many pages does it have?",
+                "How many years ago was it published?",
+                "How many authors does it have?"
+            ],
+            "original": [
+                "How many authors does Computing the Permanent of (Some) Complex Matrices. have?",
+                "How many pages does Computing the Permanent of (Some) Complex Matrices. have?",
+                "How many years ago was Computing the Permanent of (Some) Complex Matrices. published?",
+                "How many authors does Computing the Permanent of (Some) Complex Matrices. have?"
+            ],
+            "queries": [
+                "SELECT COUNT(*) AS?count WHERE {\n\t\t<https://dblp.org/rec/journals/focm/Barvinok16> <https://dblp.org/rdf/schema#authoredBy>?x.\n\t}",
+                "SELECT COUNT(*) AS?count WHERE { <https://dblp.org/rec/journals/focm/Barvinok16> <https://dblp.org/rdf/schema#pagination>?x. }",
+                "SELECT?year WHERE {\n\t\t<https://dblp.org/rec/journals/focm/Barvinok16> <https://dblp.org/rdf/schema#yearOfPublication>?year.\n\t}",
+                "SELECT (COUNT(?x) AS?numAuthors) WHERE {\n\t\t<https://dblp.org/rec/journals/focm/Barvinok16> <https://dblp.org/rdf/schema#authoredBy>?x\n\t}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/Barvinok16",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/Barvinok16",
+                        "https://dblp.org/rdf/schema#pagination",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/Barvinok16",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/Barvinok16",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2963,
+                "prompt_tokens": 1653,
+                "completion_tokens": 1310
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/24/2656",
+            "seed_label": "Odej Kao",
+            "dialogue": [
+                "How many other Affiliations does Odej Kao have?",
+                "What is Odej's primary Full Creator Name?",
+                "What is Odej's primary Homepage?"
+            ],
+            "original": [
+                "How many other Affiliations does Odej Kao have?",
+                "What is Odej Kao's primary Full Creator Name?",
+                "What is Odej Kao's primary Homepage?"
+            ],
+            "queries": [
+                "SELECT COUNT(DISTINCT?otherAffiliation) WHERE {\n\t\t<https://dblp.org/pid/24/2656> <https://dblp.org/rdf/schema#otherAffiliation>?otherAffiliation\n\t}",
+                "SELECT?p { <https://dblp.org/pid/24/2656> <https://dblp.org/rdf/schema#primaryFullCreatorName>?p }",
+                "SELECT?primaryHomepage WHERE {?person <https://dblp.org/rdf/schema#primaryHomepage>?primaryHomepage. FILTER (?person = <https://dblp.org/pid/24/2656>)}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/24/2656",
+                        "https://dblp.org/rdf/schema#otherAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/24/2656",
+                        "https://dblp.org/rdf/schema#primaryFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/24/2656",
+                        "https://dblp.org/rdf/schema#primaryHomepage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2529,
+                "prompt_tokens": 1413,
+                "completion_tokens": 1116
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 2
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/42/7630",
+            "seed_label": "Lucia Happe",
+            "dialogue": [
+                "What is Lucia Happe's primary Homepage?",
+                "What is her primary Affiliation?",
+                "What is her primary Full Creator Name?",
+                "What is her other Full Creator Name?",
+                "What is her orcid?"
+            ],
+            "original": [
+                "What is Lucia Happe's primary Homepage?",
+                "What is Lucia Happe's primary Affiliation?",
+                "What is Lucia Happe's primary Full Creator Name?",
+                "What is Lucia Happe's other Full Creator Name?",
+                "What is Lucia Happe's orcid?"
+            ],
+            "queries": [
+                "SELECT?homepage WHERE { <https://dblp.org/pid/42/7630> <https://dblp.org/rdf/schema#primaryHomepage>?homepage }",
+                "SELECT DISTINCT?affiliation WHERE { <https://dblp.org/pid/42/7630> <https://dblp.org/rdf/schema#primaryAffiliation>?affiliation. }",
+                "SELECT?primaryFullCreatorName WHERE {\n\t\t<https://dblp.org/pid/42/7630> <https://dblp.org/rdf/schema#primaryFullCreatorName>?primaryFullCreatorName\n\t}",
+                "SELECT DISTINCT?name WHERE { <https://dblp.org/pid/42/7630> <https://dblp.org/rdf/schema#otherFullCreatorName>?name }",
+                "SELECT?orcid WHERE {?x <https://dblp.org/rdf/schema#orcid>?orcid. FILTER(STRSTARTS(STR(?x), \"https://dblp.org/pid/42/7630\")) }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/42/7630",
+                        "https://dblp.org/rdf/schema#primaryHomepage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/42/7630",
+                        "https://dblp.org/rdf/schema#primaryAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/42/7630",
+                        "https://dblp.org/rdf/schema#primaryFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/42/7630",
+                        "https://dblp.org/rdf/schema#otherFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/42/7630",
+                        "https://dblp.org/rdf/schema#orcid",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2923,
+                "prompt_tokens": 1692,
+                "completion_tokens": 1231
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Petzoldt13",
+            "seed_label": "Selecting and reducing key sizes for multivariate cryptography.",
+            "dialogue": [
+                "What is the pagination of Selecting and reducing key sizes for multivariate cryptography.?",
+                "What is the primary electronic edition of it?",
+                "What is the year of publication of it?",
+                "What is the other electronic edition of it?"
+            ],
+            "original": [
+                "What is the pagination of Selecting and reducing key sizes for multivariate cryptography.?",
+                "What is the primary electronic edition of Selecting and reducing key sizes for multivariate cryptography.?",
+                "What is the year of publication of Selecting and reducing key sizes for multivariate cryptography.?",
+                "What is the other electronic edition of Selecting and reducing key sizes for multivariate cryptography.?"
+            ],
+            "queries": [
+                "SELECT?x WHERE { <https://dblp.org/rec/phd/dnb/Petzoldt13> <https://dblp.org/rdf/schema#pagination>?x }",
+                "SELECT?primaryElectronicEdition WHERE { <https://dblp.org/rec/phd/dnb/Petzoldt13> <https://dblp.org/rdf/schema#primaryElectronicEdition>?primaryElectronicEdition }",
+                "SELECT?year WHERE { <https://dblp.org/rec/phd/dnb/Petzoldt13> <https://dblp.org/rdf/schema#yearOfPublication>?year }",
+                "SELECT DISTINCT?s WHERE { <https://dblp.org/rec/phd/dnb/Petzoldt13> <https://dblp.org/rdf/schema#otherElectronicEdition>?s }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Petzoldt13",
+                        "https://dblp.org/rdf/schema#pagination",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Petzoldt13",
+                        "https://dblp.org/rdf/schema#primaryElectronicEdition",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Petzoldt13",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Petzoldt13",
+                        "https://dblp.org/rdf/schema#otherElectronicEdition",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3683,
+                "prompt_tokens": 2109,
+                "completion_tokens": 1574
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Schaaf17",
+            "seed_label": "Situation-Aware Adaptive Event Stream Processing.",
+            "dialogue": [
+                "What is the number of creators of Situation-Aware Adaptive Event Stream Processing.?",
+                "What is the year of publication of it?",
+                "What is the other electronic edition of it?"
+            ],
+            "original": [
+                "What is the number of creators of Situation-Aware Adaptive Event Stream Processing.?",
+                "What is the year of publication of Situation-Aware Adaptive Event Stream Processing.?",
+                "What is the other electronic edition of Situation-Aware Adaptive Event Stream Processing.?"
+            ],
+            "queries": [
+                "SELECT?creators { <https://dblp.org/rec/phd/dnb/Schaaf17> <https://dblp.org/rdf/schema#numberOfCreators>?creators }",
+                "SELECT?year WHERE { <https://dblp.org/rec/phd/dnb/Schaaf17> <https://dblp.org/rdf/schema#yearOfPublication>?year }",
+                "SELECT DISTINCT?otherElectronicEdition WHERE { <https://dblp.org/rec/phd/dnb/Schaaf17> <https://dblp.org/rdf/schema#otherElectronicEdition>?otherElectronicEdition }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Schaaf17",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Schaaf17",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Schaaf17",
+                        "https://dblp.org/rdf/schema#otherElectronicEdition",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2583,
+                "prompt_tokens": 1534,
+                "completion_tokens": 1049
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 2
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "How many": 5,
+            "What is": 14
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 2936.2,
+                "prompt_tokens": 1680.2,
+                "completion_tokens": 1256.0
+            },
+            "Minimum": {
+                "total_tokens": 2529,
+                "prompt_tokens": 1413,
+                "completion_tokens": 1049
+            },
+            "Maximum": {
+                "total_tokens": 3683,
+                "prompt_tokens": 2109,
+                "completion_tokens": 1574
+            },
+            "Total": {
+                "total_tokens": 14681,
+                "prompt_tokens": 8401,
+                "completion_tokens": 6280
+            }
+        },
+        "execution": {
+            "Correct": 19,
+            "In Correct": 4,
+            "Syntax Error": 2
+        }
+    },
+    "cost": {
+        "total_tokens": 1197285,
+        "prompt_tokens": 743816,
+        "completion_tokens": 453469
+    },
+    "total_time": 180.3582479953766,
+    "average_time": 36.071649599075315,
+    "Context Length Error": 0,
+    "Question Validation Error": 8,
+    "Question Json Error": 12,
+    "Triples Validation Error": 11,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 459,
+    "Sparql Json Error": 0,
+    "Dialogue Validation Error": 6,
+    "Dialogue Json Error": 0
+}

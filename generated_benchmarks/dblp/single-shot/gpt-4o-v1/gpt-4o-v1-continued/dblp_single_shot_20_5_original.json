@@ -1,0 +1,267 @@
+{
+    "seeds_used": 42,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/rec/conf/nips/WangJIWKR19",
+            "seed_label": "Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)",
+            "dialogue": [
+                "Who authored Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?",
+                "How many creators are listed for it?",
+                "Is it categorized under 'bibtexType' in the dataset?",
+                "When was it published?",
+                "In which publication is it?"
+            ],
+            "original": [
+                "Who authored Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?",
+                "How many creators are listed for Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?",
+                "Is Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019) categorized under 'bibtexType' in the dataset?",
+                "When was Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019) published?",
+                "In which publication is Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?"
+            ],
+            "queries": [
+                "SELECT ?author WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?count WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#numberOfCreators> ?count }",
+                "ASK WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#bibtexType> ?o }",
+                "SELECT ?year WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#yearOfPublication> ?year }",
+                "SELECT ?publication WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#publishedIn> ?publication }"
+            ],
+            "cost": {
+                "total_tokens": 1211,
+                "prompt_tokens": 776,
+                "completion_tokens": 435
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/BartholdiSSS12",
+            "seed_label": "Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012)",
+            "dialogue": [
+                "Q: In which journal was Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012) published?",
+                "A: It was published in a journal.\nQ: How many authors contributed to it?",
+                "A: There were multiple authors.\nQ: Is it published in a journal?",
+                "A: Yes, it is.\nQ: Who are the authors of it?",
+                "A: Find out from the record.\nQ: When was it published?"
+            ],
+            "original": [
+                "In which journal was Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012) published?",
+                "How many authors contributed to Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012)?",
+                "Is Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012) published in a journal?",
+                "Who are the authors of Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012)?",
+                "When was Laurent Bartholdi et al.: Hodge Theory on Metric Spaces. (2012) published?"
+            ],
+            "queries": [
+                "SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/BartholdiSSS12> <https://dblp.org/rdf/schema#publishedInJournal> ?journal }",
+                "SELECT ?count WHERE { <https://dblp.org/rec/journals/focm/BartholdiSSS12> <https://dblp.org/rdf/schema#numberOfCreators> ?count }",
+                "ASK WHERE { <https://dblp.org/rec/journals/focm/BartholdiSSS12> <https://dblp.org/rdf/schema#publishedInJournal> ?anything }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/BartholdiSSS12> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?date WHERE { <https://dblp.org/rec/journals/focm/BartholdiSSS12> <https://dblp.org/rdf/schema#yearOfPublication> ?date }"
+            ],
+            "cost": {
+                "total_tokens": 1405,
+                "prompt_tokens": 905,
+                "completion_tokens": 500
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/BlumCPRS05",
+            "seed_label": "Lenore Blum et al.: Foreword. (2005)",
+            "dialogue": [
+                "What year was Lenore Blum et al.: Foreword. (2005) published?",
+                "How many creators were attributed to it?",
+                "Did it get published in a journal?",
+                "In which journal was it published?",
+                "Is there an electronic edition of it?"
+            ],
+            "original": [
+                "What year was Lenore Blum et al.: Foreword. (2005) published?",
+                "How many creators were attributed to Lenore Blum et al.: Foreword. (2005)?",
+                "Did Lenore Blum et al.: Foreword. (2005) get published in a journal?",
+                "In which journal was Lenore Blum et al.: Foreword. (2005) published?",
+                "Is there an electronic edition of Lenore Blum et al.: Foreword. (2005)?"
+            ],
+            "queries": [
+                "SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/BlumCPRS05> <https://dblp.org/rdf/schema#yearOfPublication> ?year }",
+                "SELECT ?count WHERE { <https://dblp.org/rec/journals/focm/BlumCPRS05> <https://dblp.org/rdf/schema#numberOfCreators> ?count }",
+                "ASK WHERE { <https://dblp.org/rec/journals/focm/BlumCPRS05> <https://dblp.org/rdf/schema#publishedInJournal> ?value }",
+                "SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/BlumCPRS05> <https://dblp.org/rdf/schema#publishedInJournal> ?journal }",
+                "ASK WHERE { <https://dblp.org/rec/journals/focm/BlumCPRS05> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?ea }"
+            ],
+            "cost": {
+                "total_tokens": 1330,
+                "prompt_tokens": 909,
+                "completion_tokens": 421
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/11/10308",
+            "seed_label": "Aviad Rubinstein",
+            "dialogue": [
+                "Is Aviad Rubinstein associated with other affiliations?",
+                "What is his primary affiliation?",
+                "Can you list various webpages associated with him?",
+                "How many types of web identifiers are mentioned for him?",
+                "Does he have an award webpage?"
+            ],
+            "original": [
+                "Is Aviad Rubinstein associated with other affiliations?",
+                "What is Aviad Rubinstein's primary affiliation?",
+                "Can you list various webpages associated with Aviad Rubinstein?",
+                "How many types of web identifiers are mentioned for Aviad Rubinstein?",
+                "Does Aviad Rubinstein have an award webpage?"
+            ],
+            "queries": [
+                "ASK WHERE { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#otherAffiliation> ?o }",
+                "SELECT ?affiliation WHERE { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation }",
+                "SELECT ?webpage WHERE { { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#otherHomepage> ?webpage } UNION { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#primaryHomepage> ?webpage } UNION { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#webpage> ?webpage } UNION { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#awardWebpage> ?webpage } }",
+                "SELECT (COUNT(DISTINCT(?property)) AS ?count) WHERE { <https://dblp.org/pid/11/10308> ?property ?object }",
+                "ASK WHERE { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#awardWebpage> ?o }"
+            ],
+            "cost": {
+                "total_tokens": 1043,
+                "prompt_tokens": 601,
+                "completion_tokens": 442
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/120/3207",
+            "seed_label": "Max Kemman",
+            "dialogue": [
+                "What is the primary affiliation for Max Kemman?",
+                "What is his full creator name?",
+                "How many web pages are associated with him?",
+                "Does he have an ORCID?",
+                "Where is his primary homepage?"
+            ],
+            "original": [
+                "What is the primary affiliation for Max Kemman?",
+                "What is Max Kemman's full creator name?",
+                "How many web pages are associated with Max Kemman?",
+                "Does Max Kemman have an ORCID?",
+                "Where is Max Kemman's primary homepage?"
+            ],
+            "queries": [
+                "SELECT ?affiliation WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation . }",
+                "SELECT ?name WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?name . }",
+                "SELECT (COUNT(?webpage) AS ?webpageCount) WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#webpage> ?webpage . }",
+                "ASK WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#orcid> ?orcid . }",
+                "SELECT ?homepage WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage . }"
+            ],
+            "cost": {
+                "total_tokens": 887,
+                "prompt_tokens": 542,
+                "completion_tokens": 345
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/Freedman02",
+            "seed_label": "Michael H. Freedman: Poly-Locality in Quantum Computing. (2002)",
+            "dialogue": [
+                "Q: Who authored Michael H. Freedman: Poly-Locality in Quantum Computing. (2002)? A: Michael H. Freedman",
+                "Q: How many creators worked on it? A: 1",
+                "Q: Is it published in a journal? A: Yes",
+                "Q: What is its primary electronic edition? A: https://doi.org/10.1007/s00498-002-0097-y",
+                "Q: In which year was it published? A: 2002"
+            ],
+            "original": [
+                "Who authored Michael H. Freedman: Poly-Locality in Quantum Computing. (2002)?",
+                "How many creators worked on Michael H. Freedman: Poly-Locality in Quantum Computing. (2002)?",
+                "Is Michael H. Freedman: Poly-Locality in Quantum Computing. (2002) published in a journal?",
+                "What is the primary electronic edition of Michael H. Freedman: Poly-Locality in Quantum Computing. (2002)?",
+                "In which year was Michael H. Freedman: Poly-Locality in Quantum Computing. (2002) published?"
+            ],
+            "queries": [
+                "SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/Freedman02> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/journals/focm/Freedman02> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators }",
+                "ASK WHERE { <https://dblp.org/rec/journals/focm/Freedman02> <https://dblp.org/rdf/schema#publishedInJournal> ?journal }",
+                "SELECT ?primaryElectronicEdition WHERE { <https://dblp.org/rec/journals/focm/Freedman02> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?primaryElectronicEdition }",
+                "SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/journals/focm/Freedman02> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication }"
+            ],
+            "cost": {
+                "total_tokens": 1353,
+                "prompt_tokens": 853,
+                "completion_tokens": 500
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "Who authored": 1,
+            "How many": 4,
+            "Is it": 1,
+            "When was": 1,
+            "In which": 2,
+            "Q: In": 2,
+            "A: It": 1,
+            "A: There": 1,
+            "A: Yes,": 1,
+            "A: Find": 1,
+            "What year": 1,
+            "Did it": 1,
+            "Is there": 1,
+            "Is Aviad": 1,
+            "What is": 3,
+            "Can you": 1,
+            "Does he": 2,
+            "Where is": 1,
+            "Q: Who": 1,
+            "Q: How": 1,
+            "Q: Is": 1,
+            "Q: What": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 1204.8333333333333,
+                "prompt_tokens": 764.3333333333334,
+                "completion_tokens": 440.5
+            },
+            "Minimum": {
+                "total_tokens": 887,
+                "prompt_tokens": 542,
+                "completion_tokens": 345
+            },
+            "Maximum": {
+                "total_tokens": 1405,
+                "prompt_tokens": 909,
+                "completion_tokens": 500
+            },
+            "Total": {
+                "total_tokens": 7229,
+                "prompt_tokens": 4586,
+                "completion_tokens": 2643
+            }
+        },
+        "execution": {
+            "Correct": 30
+        }
+    },
+    "cost": {
+        "total_tokens": 27526,
+        "prompt_tokens": 16668,
+        "completion_tokens": 10858
+    },
+    "total_time": 71.13670945167542,
+    "average_time": 11.856118241945902,
+    "Context Length Error": 0,
+    "Question Validation Error": 7,
+    "Sparql Validation Error": 0,
+    "Dialogue Validation Error": 4,
+    "Json Error": 21,
+    "unequal Lists Error": 4
+}

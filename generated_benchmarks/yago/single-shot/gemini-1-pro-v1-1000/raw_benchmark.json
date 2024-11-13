@@ -1,0 +1,1586 @@
+[
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What was the 1886 Wimbledon Championships?\", \"What were the alternate names for the 1886 Wimbledon Championships?\", \"When did the 1886 Wimbledon Championships start?\", \"When did the 1886 Wimbledon Championships end?\", \"How many sub-events were there at the 1886 Wimbledon Championships?\"], \"dialogue\": [\"The 1886 Wimbledon Championships was a tennis tournament.\", \"It was also known as the All England Lawn Tennis Championships.\", \"The tournament started on June 22, 1886.\", \"It ended on July 10, 1886.\", \"There was one sub-event at the tournament.\"], \"sparql\": [\"SELECT ?o WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/subEvent> ?o }\", \"SELECT ?o WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/alternateName> ?o }\", \"SELECT ?o WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/startDate> ?o }\", \"SELECT ?o WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/endDate> ?o }\", \"SELECT COUNT(*) WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/subEvent> ?o }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 528,
+                            "candidates_token_count": 370,
+                            "total_token_count": 898
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What are the alternate names for the 1930 FIFA World Cup?\", \"How many events were sub events of the 1930 FIFA World Cup?\", \"When did the 1930 FIFA World Cup start?\", \"Where did the 1930 FIFA World Cup take place?\", \"When did the 1930 FIFA World Cup end?\"], \"dialogue\": [\"What are the alternate names for the 1930 FIFA World Cup?\", \"How many events were sub events of it?\", \"When did it start?\", \"Where did it take place?\", \"When did it end?\"], \"sparql\": [\"SELECT ?name WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/alternateName> ?name }\", \"SELECT COUNT(*) WHERE { ?event <http://schema.org/subEvent> <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> }\", \"SELECT ?date WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/startDate> ?date }\", \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/location> ?location }\", \"SELECT ?date WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/endDate> ?date }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 562,
+                            "candidates_token_count": 353,
+                            "total_token_count": 915
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What are the events that happened during the 1970 Formula One season?\", \"How many events happened during the 1970 Formula One season?\", \"Did the 1970 Formula One season happen?\", \"What is another name for the 1970 Formula One season?\", \"When did the 1970 Formula One season start?\", \"When did the 1970 Formula One season end?\"], \"dialogue\": [\"What are the events that happened during the 1970 Formula One season?\", \"How many events happened during it?\", \"Did it happen?\", \"What is another name for it?\", \"When did it start?\", \"When did it end?\"], \"sparql\": [\"SELECT ?event WHERE { wd:Q294987 wdt:P793 ?event .}\", \"SELECT (COUNT(*) AS ?count) WHERE { wd:Q294987 wdt:P793 ?event .}\", \"ASK { wd:Q294987 wdt:P585 [] .}\", \"SELECT ?altName WHERE { wd:Q294987 schema:alternateName ?altName .}\", \"SELECT ?startDate WHERE { wd:Q294987 wdt:P580 ?startDate .}\", \"SELECT ?endDate WHERE { wd:Q294987 wdt:P582 ?endDate .}\"]}\n``` \n### Explanation:\nThe questions are generated based on the facts from the triples in the subgraph. The questions fall into different categories such as list, count, boolean, wh (open-ended), and date-related questions. The questions are answerable solely from the information in the provided subgraph without explicitly mentioning it.\n\nThe dialogue is generated by replacing the entity with its pronoun in the subsequent questions.\n\nThe SPARQL queries are generated to retrieve the answers to the questions.",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 529,
+                            "candidates_token_count": 413,
+                            "total_token_count": 942
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What are the alternate names of the 2009 Andalucia Tennis Experience?\", \"What is the start date of the 2009 Andalucia Tennis Experience?\", \"What is the end date of the 2009 Andalucia Tennis Experience?\", \"What is the subevent of the 2009 Andalucia Tennis Experience?\"], \"dialogue\": [\"What are the alternate names of the 2009 Andalucia Tennis Experience?\", \"What is its start date?\", \"What is its end date?\", \"What is its subevent?\"], \"sparql\": [\"SELECT ?name WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/alternateName> ?name }\", \"SELECT ?date WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/startDate> ?date }\", \"SELECT ?date WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/endDate> ?date }\", \"SELECT ?subevent WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/subEvent> ?subevent }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 538,
+                            "candidates_token_count": 308,
+                            "total_token_count": 846
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What are the alternate names of the 2010 Wimbledon Championships?\", \"How many sub-events were held at the 2010 Wimbledon Championships?\", \"Did the 2010 Wimbledon Championships take place?\", \"When did the 2010 Wimbledon Championships start?\", \"When did the 2010 Wimbledon Championships end?\"], \"dialogue\": [\"What are the alternate names of the 2010 Wimbledon Championships?\", \"How many sub-events were held at it?\", \"Did it take place?\", \"When did it start?\", \"When did it end?\"], \"sparql\": [\"SELECT ?alternateName WHERE {wd:Q1335194 wdt:P1476 ?alternateName .}\", \"SELECT COUNT(*) WHERE {wd:Q1335194 wdt:P1476 ?subEvent .}\", \"ASK WHERE {wd:Q1335194 wdt:P585 ?startDate .}\", \"SELECT ?startDate WHERE {wd:Q1335194 wdt:P585 ?startDate .}\", \"SELECT ?endDate WHERE {wd:Q1335194 wdt:P582 ?endDate .}\"]}\n``` \n",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 528,
+                            "candidates_token_count": 276,
+                            "total_token_count": 804
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What are the alternate names of the 2011 Andalucia Tennis Experience?\", \"What is the start date of the 2011 Andalucia Tennis Experience?\", \"What is the end date of the 2011 Andalucia Tennis Experience?\", \"Is the 2011 Andalucia Tennis Experience a sub-event?\", \"How many alternate names does the 2011 Andalucia Tennis Experience have?\"], \"dialogue\": [\"What are the alternate names of the 2011 Andalucia Tennis Experience?\", \"What is its start date?\", \"What is its end date?\", \"Is it a sub-event?\", \"How many alternate names does it have?\"], \"sparql\": [\"SELECT ?o WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/alternateName> ?o} LIMIT 5\", \"SELECT ?o WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/startDate> ?o} LIMIT 1\", \"SELECT ?o WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/endDate> ?o} LIMIT 1\", \"ASK WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/subEvent> ?o}\", \"SELECT (COUNT(*) AS ?count) WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/alternateName> ?o} LIMIT 1\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 538,
+                            "candidates_token_count": 392,
+                            "total_token_count": 930
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"properties\": {\"questions\": {\"title\": \"Questions\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}, \"dialogue\": {\"title\": \"Dialogue\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}, \"sparql\": {\"title\": \"Sparql\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"questions\", \"dialogue\", \"sparql\"]}\n``` \n",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 551,
+                            "candidates_token_count": 98,
+                            "total_token_count": 649
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What is the sport of the 2018 Grand Prix de Denain?\", \"What is an alternate name for the 2018 Grand Prix de Denain?\", \"What is the super event of the 2018 Grand Prix de Denain?\", \"Who is a competitor of the 2018 Grand Prix de Denain?\", \"What is the number of competitors of the 2018 Grand Prix de Denain?\"], \"dialogue\": [\"What is the sport of the 2018 Grand Prix de Denain?\", \"What is its alternate name?\", \"What is its super event?\", \"Who is a competitor of it?\", \"How many competitors are there?\"], \"sparql\": [\"SELECT ?sport WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/sport> ?sport }\", \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/alternateName> ?alternateName }\", \"SELECT ?superEvent WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/superEvent> ?superEvent }\", \"SELECT ?competitor WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/competitor> ?competitor }\", \"SELECT COUNT(*) WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/competitor> ?competitor }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 544,
+                            "candidates_token_count": 394,
+                            "total_token_count": 938
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What is the alternate name of 2018 Paris-Nice?\", \"What sport is 2018 Paris-Nice?\", \"Who competed in 2018 Paris-Nice?\", \"When did 2018 Paris-Nice start?\", \"When did 2018 Paris-Nice end?\"], \"dialogue\": [\"What is the alternate name of 2018 Paris-Nice?\", \"What sport is it?\", \"Who competed in it?\", \"When did it start?\", \"When did it end?\"], \"sparql\": [\"SELECT DISTINCT ?o WHERE { wd:Q58926430 wdt:P181 ?o }\", \"SELECT DISTINCT ?o WHERE { wd:Q58926430 wdt:P31 ?o }\", \"SELECT DISTINCT ?o WHERE { wd:Q58926430 wdt:P1346 ?o }\", \"SELECT DISTINCT ?o WHERE { wd:Q58926430 wdt:P580 ?o }\", \"SELECT DISTINCT ?o WHERE { wd:Q58926430 wdt:P582 ?o }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 552,
+                            "candidates_token_count": 270,
+                            "total_token_count": 822
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What is the nationality of Abraham Albert Heaps?\", \"What is the birth place of Abraham Albert Heaps?\", \"What is the death date of Abraham Albert Heaps?\", \"What is the given name of Abraham Albert Heaps?\", \"What is the occupation of Abraham Albert Heaps?\", \"What languages does Abraham Albert Heaps know?\", \"What is the death place of Abraham Albert Heaps?\", \"What is the birth date of Abraham Albert Heaps?\"], \"dialogue\": [\"What is the nationality of Abraham Albert Heaps?\", \"What is his birth place?\", \"What is his death date?\", \"What is his given name?\", \"What is his occupation?\", \"What languages does he know?\", \"What is his death place?\", \"What is his birth date?\"], \"sparql\": [\"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/nationality> ?nationality . }\", \"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/birthPlace> ?birthPlace . }\", \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/deathDate> ?deathDate . }\", \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/givenName> ?givenName . }\", \"SELECT ?occupation WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/hasOccupation> ?occupation . }\", \"SELECT ?language WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/knowsLanguage> ?language . }\", \"SELECT ?deathPlace WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/deathPlace> ?deathPlace . }\", \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/birthDate> ?birthDate . }\"]}\n``` \n",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 629,
+                            "candidates_token_count": 496,
+                            "total_token_count": 1125
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What is the nationality of Allison C. Bonnell?\", \"What is the death date of Allison C. Bonnell?\", \"What is the occupation of Allison C. Bonnell?\", \"What is the death place of Allison C. Bonnell?\", \"What is the birth date of Allison C. Bonnell?\"], \"dialogue\": [\"What is the nationality of Allison C. Bonnell?\", \"What is her death date?\", \"What is her occupation?\", \"What is her death place?\", \"What is her birth date?\"], \"sparql\": [\"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/nationality> ?nationality }\", \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/deathDate> ?deathDate }\", \"SELECT ?occupation WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/hasOccupation> ?occupation }\", \"SELECT ?deathPlace WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/deathPlace> ?deathPlace }\", \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/birthDate> ?birthDate }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 540,
+                            "candidates_token_count": 316,
+                            "total_token_count": 856
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "{\"questions\": [\"What is the birth place of Arthur Stuart-Menteth Hutchinson?\", \"What are the alternative names of Arthur Stuart-Menteth Hutchinson?\", \"What is the death date of Arthur Stuart-Menteth Hutchinson?\", \"What is the given name of Arthur Stuart-Menteth Hutchinson?\", \"What are the occupations of Arthur Stuart-Menteth Hutchinson?\", \"What is the death place of Arthur Stuart-Menteth Hutchinson?\", \"What is the birth date of Arthur Stuart-Menteth Hutchinson?\"], \"dialogue\": [\"What is the birth place of Arthur Stuart-Menteth Hutchinson?\\n\\nHe was born in Edinburgh, Scotland.\", \"What are the alternative names of Arthur Stuart-Menteth Hutchinson?\\n\\nA.S.M. Hutchinson, Arthur Stuart-Menteth Hutchinson, A.S.M.Hutchinson, Arthur Stuart Hutchinson, A.S. Hutchinson\", \"What is the death date of Arthur Stuart-Menteth Hutchinson?\\n\\nHe died on July 15, 1975.\", \"What is the given name of Arthur Stuart-Menteth Hutchinson?\\n\\nHis given name is Arthur.\", \"What are the occupations of Arthur Stuart-Menteth Hutchinson?\\n\\nHe was an author and a journalist.\", \"What is the death place of Arthur Stuart-Menteth Hutchinson?\\n\\nHe died in London, England.\", \"What is the birth date of Arthur Stuart-Menteth Hutchinson?\\n\\nHe was born on July 6, 1880.\"], \"sparql\": [\"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/birthPlace> ?birthPlace }\", \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/alternateName> ?alternateName }\", \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/deathDate> ?deathDate }\", \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/givenName> ?givenName }\", \"SELECT ?hasOccupation WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/hasOccupation> ?hasOccupation }\", \"SELECT ?deathPlace WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/deathPlace> ?deathPlace }\", \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/birthDate> ?birthDate }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 617,
+                            "candidates_token_count": 631,
+                            "total_token_count": 1248
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What are the alternate names for Abda?\", \"What is the geo of Abda?\", \"What is the location of Abda?\", \"What is Abda contained in?\", \"What is the population of Abda?\"], \"dialogue\": [\"What are the alternate names for Abda?\", \"What is its geo?\", \"What is its location?\", \"What is it contained in?\", \"What is its population?\"], \"sparql\": [\"SELECT ?name WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/alternateName> ?name }\", \"SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/geo> ?geo }\", \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/location> ?location }\", \"SELECT ?containedInPlace WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/containedInPlace> ?containedInPlace }\", \"SELECT ?population WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/population> ?population }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 500,
+                            "candidates_token_count": 284,
+                            "total_token_count": 784
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"When was the book A Princess of Mars created?\", \"What are the alternate names for the book A Princess of Mars?\", \"What language is the book A Princess of Mars written in?\", \"When was the book A Princess of Mars published?\", \"Who is the author of the book A Princess of Mars?\"], \"dialogue\": [\"When was the book A Princess of Mars created?\", \"What are the other names for it?\", \"What language is it written in?\", \"When was it published?\", \"Who wrote it?\"], \"sparql\": [\"SELECT ?dateCreated WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/dateCreated> ?dateCreated }\", \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/alternateName> ?alternateName }\", \"SELECT ?inLanguage WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/inLanguage> ?inLanguage }\", \"SELECT ?datePublished WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/datePublished> ?datePublished }\", \"SELECT ?author WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/author> ?author }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 545,
+                            "candidates_token_count": 325,
+                            "total_token_count": 870
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What is the alternate name of Abeno Cues Town?\", \"When was Abeno Cues Town founded?\", \"Where is Abeno Cues Town located?\", \"What place does Abeno Cues Town belong to?\", \"Is Abeno Cues Town a part of Osaka?\"], \"dialogue\": [\"What is the alternate name of Abeno Cues Town?\", \"When was it founded?\", \"Where is it located?\", \"What place does it belong to?\", \"Is it a part of Osaka?\"], \"sparql\": [\"SELECT ?name WHERE {wd:Q232627 wdt:P1476 ?name} LIMIT 1\", \"SELECT ?date WHERE {wd:Q232627 wdt:P571 ?date} LIMIT 1\", \"SELECT ?location WHERE {wd:Q232627 wdt:P276 ?location} LIMIT 1\", \"SELECT ?place WHERE {wd:Q232627 wdt:P131 ?place} LIMIT 1\", \"ASK { wd:Q232627 wdt:P131 wd:Q1072 }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 548,
+                            "candidates_token_count": 266,
+                            "total_token_count": 814
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What is the alternate name of the 2018 Tour of Norway?\", \"What sport is the 2018 Tour of Norway?\", \"What is the super event of the 2018 Tour of Norway?\", \"What are the competitors of the 2018 Tour of Norway?\", \"What is the start date of the 2018 Tour of Norway?\", \"What is the end date of the 2018 Tour of Norway?\"], \"dialogue\": [\"What is the alternate name of the 2018 Tour of Norway?\", \"What is the sport of it?\", \"What is the super event of it?\", \"What are the competitors of it?\", \"What is the start date of it?\", \"What is the end date of it?\"], \"sparql\": [\"SELECT ?alternateName WHERE { wd:Q53234890 wdt:P1476 ?alternateName . }\", \"SELECT ?sport WHERE { wd:Q53234890 wdt:P31 ?sport . }\", \"SELECT ?superEvent WHERE { wd:Q53234890 wdt:P179 ?superEvent . }\", \"SELECT ?competitor WHERE { wd:Q53234890 wdt:P1082 ?competitor . }\", \"SELECT ?startDate WHERE { wd:Q53234890 wdt:P580 ?startDate . }\", \"SELECT ?endDate WHERE { wd:Q53234890 wdt:P582 ?endDate . }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 596,
+                            "candidates_token_count": 356,
+                            "total_token_count": 952
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "{\"questions\": [\"When was Aberbargoed Hospital founded?\", \"Where is Aberbargoed Hospital located geographically?\", \"Where is Aberbargoed Hospital located?\", \"What is Aberbargoed Hospital contained in?\", \"When was Aberbargoed Hospital dissolved?\"], \"dialogue\": [\"When was Aberbargoed Hospital founded?\", \"Where is it located geographically?\", \"Where is it located?\", \"What is it contained in?\", \"When was it dissolved?\"], \"sparql\": [\"SELECT ?foundingDate WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/foundingDate> ?foundingDate . }\", \"SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/geo> ?geo . }\", \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/location> ?location . }\", \"SELECT ?containedInPlace WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/containedInPlace> ?containedInPlace . }\", \"SELECT ?dissolutionDate WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/dissolutionDate> ?dissolutionDate . }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 537,
+                            "candidates_token_count": 304,
+                            "total_token_count": 841
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"When was The White-Haired Girl created?\", \"When was The White-Haired Girl published?\", \"What genre is The White-Haired Girl?\", \"Who is the author of The White-Haired Girl?\", \"Where is The White-Haired Girl set?\"], \"dialogue\": [\"When was The White-Haired Girl created?\", \"When was it published?\", \"What genre is it?\", \"Who is the author?\", \"Where is it set?\"], \"sparql\": [\"SELECT ?dateCreated WHERE {wd:The_White-Haired_Girl wdt:P571 ?dateCreated}\", \"SELECT ?datePublished WHERE {wd:The_White-Haired Girl wdt:P577 ?datePublished}\", \"SELECT ?genre WHERE {wd:The_White-Haired_Girl wdt:P136 ?genre}\", \"SELECT ?author WHERE {wd:The_White-Haired_Girl wdt:P50 ?author}\", \"SELECT ?contentLocation WHERE {wd:The_White-Haired_Girl wdt:P84 ?contentLocation}\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 551,
+                            "candidates_token_count": 243,
+                            "total_token_count": 794
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "{\"questions\": [\"What is the alternate name of Aberbeeg?\", \"What is the geo location of Aberbeeg?\", \"What place does Aberbeeg belong to?\"], \"dialogue\": [\"What is the alternate name of Aberbeeg?\", \"What is its geo location?\", \"What place does it belong to?\"], \"sparql\": [\"SELECT ?altName WHERE {wd:Aberbeeg schema:alternateName ?altName .}\", \"SELECT ?geo WHERE {wd:Aberbeeg schema:geo ?geo .}\", \"SELECT ?place WHERE {wd:Aberbeeg schema:containedInPlace ?place .}\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 471,
+                            "candidates_token_count": 132,
+                            "total_token_count": 603
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "{\"questions\": [\"What is the alternate name of Abony?\", \"Where is Abony located?\", \"What is the geo of Abony?\", \"What is the contained in place of Abony?\", \"How many places are contained in Abony?\"], \"dialogue\": [\"What is the alternate name of Abony?\", \"Where is it located?\", \"What is its geo?\", \"What is the contained in place of it?\", \"How many places are contained in it?\"], \"sparql\": [\"SELECT ?o WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/alternateName> ?o}\", \"SELECT ?o WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/geo> ?o}\", \"SELECT ?o WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/location> ?o}\", \"SELECT ?o WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/containedInPlace> ?o}\", \"SELECT (COUNT(*) AS ?count) WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/containedInPlace> ?o}\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 492,
+                            "candidates_token_count": 278,
+                            "total_token_count": 770
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What is the alternate name of the 2018 Volta a Catalunya?\", \"What sport is the 2018 Volta a Catalunya?\", \"Who is the competitor of the 2018 Volta a Catalunya?\", \"What is the start date of the 2018 Volta a Catalunya?\", \"What is the end date of the 2018 Volta a Catalunya?\"], \"dialogue\": [\"What is the alternate name of the 2018 Volta a Catalunya?\", \"What is the sport of it?\", \"Who is the competitor of it?\", \"What is the start date of it?\", \"What is the end date of it?\"], \"sparql\": [\"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/alternateName> ?alternateName . }\", \"SELECT ?sport WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/sport> ?sport . }\", \"SELECT ?competitor WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/competitor> ?competitor . }\", \"SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/startDate> ?startDate . }\", \"SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/endDate> ?endDate . }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 572,
+                            "candidates_token_count": 380,
+                            "total_token_count": 952
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What was the alternate name of the 2019 European Youth Olympic Winter Festival?\", \"When did the 2019 European Youth Olympic Winter Festival start?\", \"Where was the 2019 European Youth Olympic Winter Festival held?\", \"When did the 2019 European Youth Olympic Winter Festival end?\"], \"dialogue\": [\"What was the alternate name of the 2019 European Youth Olympic Winter Festival?\\n\\nIt was called the EYOWF.\", \"When did the 2019 European Youth Olympic Winter Festival start?\\n\\nIt started on February 9, 2019.\", \"Where was the 2019 European Youth Olympic Winter Festival held?\\n\\nIt was held in Sarajevo, Bosnia and Herzegovina.\", \"When did the 2019 European Youth Olympic Winter Festival end?\\n\\nIt ended on February 16, 2019.\"], \"sparql\": [\"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival> <http://schema.org/alternateName> ?alternateName . }\", \"SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival> <http://schema.org/startDate> ?startDate . }\", \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival> <http://schema.org/location> ?location . }\", \"SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/2019_European_Youth_Olympic_Winter_Festival> <http://schema.org/endDate> ?endDate . }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 546,
+                            "candidates_token_count": 398,
+                            "total_token_count": 944
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What is Aaron Horvath's nationality?\", \"How many occupations does Aaron Horvath have?\", \"Is Aaron Horvath's birthdate known?\", \"When was Aaron Horvath born?\", \"What is Aaron Horvath's given name?\"], \"dialogue\": [\"What is Aaron Horvath's nationality?\", \"How many occupations does he have?\", \"Is his birthdate known?\", \"When was he born?\", \"What is his given name?\"], \"sparql\": [\"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Aaron_Horvath> <http://schema.org/nationality> ?nationality }\", \"SELECT (COUNT(*) AS ?num) WHERE { <http://yago-knowledge.org/resource/Aaron_Horvath> <http://schema.org/hasOccupation> ?occupation }\", \"ASK WHERE { <http://yago-knowledge.org/resource/Aaron_Horvath> <http://schema.org/birthDate> ?birthdate }\", \"SELECT ?birthdate WHERE { <http://yago-knowledge.org/resource/Aaron_Horvath> <http://schema.org/birthDate> ?birthdate }\", \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Aaron_Horvath> <http://schema.org/givenName> ?givenName }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 533,
+                            "candidates_token_count": 297,
+                            "total_token_count": 830
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"Where was Aaron Kostner born?\", \"What is Aaron Kostner's nationality?\", \"What is Aaron Kostner's given name?\", \"What is Aaron Kostner's family name?\", \"When was Aaron Kostner born?\"], \"dialogue\": [\"Where was Aaron Kostner born?\", \"What is his nationality?\", \"What is his given name?\", \"What is his family name?\", \"When was he born?\"], \"sparql\": [\"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/birthPlace> ?birthPlace . }\", \"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/nationality> ?nationality . }\", \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/givenName> ?givenName . }\", \"SELECT ?familyName WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/familyName> ?familyName . }\", \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/birthDate> ?birthDate . }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 528,
+                            "candidates_token_count": 293,
+                            "total_token_count": 821
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"Where was Aaron North born?\", \"What is Aaron North's nationality?\", \"What are Aaron North's alternate names?\", \"What is Aaron North's given name?\", \"What is Aaron North's occupation?\", \"What is Aaron North's family name?\", \"When was Aaron North born?\"], \"dialogue\": [\"Aaron North was born in .\", \"Aaron North's nationality is .\", \"Aaron North's alternate names are .\", \"Aaron North's given name is .\", \"Aaron North's occupation is .\", \"Aaron North's family name is .\", \"Aaron North was born on .\"], \"sparql\": [\"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/birthPlace> ?birthPlace }\", \"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/nationality> ?nationality }\", \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/alternateName> ?alternateName }\", \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/givenName> ?givenName }\", \"SELECT ?hasOccupation WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/hasOccupation> ?hasOccupation }\", \"SELECT ?familyName WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/familyName> ?familyName }\", \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/birthDate> ?birthDate }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 576,
+                            "candidates_token_count": 402,
+                            "total_token_count": 978
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What is Aaron Teitelbaum's nationality?\", \"What are Aaron Teitelbaum's alternate names?\", \"What is Aaron Teitelbaum's given name?\", \"What languages does Aaron Teitelbaum know?\", \"What is Aaron Teitelbaum's family name?\", \"Who are Aaron Teitelbaum's parents?\", \"When was Aaron Teitelbaum born?\"], \"dialogue\": [\"What is Aaron Teitelbaum's nationality?\", \"What are his alternate names?\", \"What is his given name?\", \"What languages does he know?\", \"What is his family name?\", \"Who are his parents?\", \"When was he born?\"], \"sparql\": [\"SELECT ?nationality WHERE {wd:Q12084336 wdt:P27 ?nationality} LIMIT 5\", \"SELECT ?name WHERE {wd:Q12084336 wdt:P1476 ?name} LIMIT 5\", \"SELECT ?name WHERE {wd:Q12084336 wdt:P735 ?name} LIMIT 5\", \"SELECT ?language WHERE {wd:Q12084336 wdt:P106 ?language} LIMIT 5\", \"SELECT ?name WHERE {wd:Q12084336 wdt:P734 ?name} LIMIT 5\", \"SELECT ?parent WHERE {wd:Q12084336 wdt:P22 ?parent} LIMIT 5\", \"SELECT ?date WHERE {wd:Q12084336 wdt:P569 ?date} LIMIT 5\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 591,
+                            "candidates_token_count": 361,
+                            "total_token_count": 952
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "{\"questions\": [\"What are the alternate names for the Aberdeen Arts Centre?\", \"What is the geo location of the Aberdeen Arts Centre?\", \"What is the location of the Aberdeen Arts Centre?\", \"What is the place contained in the Aberdeen Arts Centre?\"], \"dialogue\": [\"What are the alternate names for the Aberdeen Arts Centre?\", \"What is its geo location?\", \"What is its location?\", \"What is the place contained in it?\"], \"sparql\": [\"SELECT ?name WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/alternateName> ?name }\", \"SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/geo> ?geo }\", \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/location> ?location }\", \"SELECT ?containedInPlace WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/containedInPlace> ?containedInPlace }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 505,
+                            "candidates_token_count": 250,
+                            "total_token_count": 755
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What are the alternative names for the Battle of Al Hudaydah?\", \"What is the super event of the Battle of Al Hudaydah?\", \"When did the Battle of Al Hudaydah start?\", \"Where did the Battle of Al Hudaydah take place?\"], \"dialogue\": [\"What are the alternative names for the Battle of Al Hudaydah? What are its other names?\", \"What is the super event of the Battle of Al Hudaydah? What is the larger event that it is part of?\", \"When did the Battle of Al Hudaydah start? What was its start date?\", \"Where did the Battle of Al Hudaydah take place? What was its location?\"], \"sparql\": [\"SELECT ?name WHERE { wd:Q16116646 wdt:P1448 ?name }\", \"SELECT ?superEvent WHERE { wd:Q16116646 wdt:P361 ?superEvent }\", \"SELECT ?startDate WHERE { wd:Q16116646 wdt:P580 ?startDate }\", \"SELECT ?location WHERE { wd:Q16116646 wdt:P276 ?location }\"]}\n``` \n",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 523,
+                            "candidates_token_count": 272,
+                            "total_token_count": 795
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"Who directed the film 'Tis Pity She's a Whore'?\", \"What is the duration of the film 'Tis Pity She's a Whore'?\", \"What is the genre of the film 'Tis Pity She's a Whore'?\", \"Who composed the music for the film 'Tis Pity She's a Whore'?\", \"What is the country of origin of the film 'Tis Pity She's a Whore'?\", \"When was the film 'Tis Pity She's a Whore' released?\"], \"dialogue\": [\"Who directed the film 'Tis Pity She's a Whore'?\", \"Who directed it?\", \"What is the duration of the film?\", \"What is its duration?\", \"What is the genre of the film?\", \"What is its genre?\", \"Who composed the music for the film?\", \"Who composed its music?\", \"What is the country of origin of the film?\", \"What is its country of origin?\", \"When was the film released?\"], \"sparql\": [\"SELECT ?director WHERE { <http://yago-knowledge.org/resource/'Tis_Pity_She's_a_Whore_(film)> <http://schema.org/director> ?director }\", \"SELECT ?duration WHERE { <http://yago-knowledge.org/resource/'Tis_Pity_She's_a_Whore_(film)> <http://schema.org/duration> ?duration }\", \"SELECT ?genre WHERE { <http://yago-knowledge.org/resource/'Tis_Pity_She's_a_Whore_(film)> <http://schema.org/genre> ?genre }\", \"SELECT ?musicBy WHERE { <http://yago-knowledge.org/resource/'Tis_Pity_She's_a_Whore_(film)> <http://schema.org/musicBy> ?musicBy }\", \"SELECT ?countryOfOrigin WHERE { <http://yago-knowledge.org/resource/'Tis_Pity_She's_a_Whore_(film)> <http://schema.org/countryOfOrigin> ?countryOfOrigin }\", \"SELECT ?datePublished WHERE { <http://yago-knowledge.org/resource/'Tis_Pity_She's_a_Whore_(film)> <http://schema.org/datePublished> ?datePublished }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 700,
+                            "candidates_token_count": 514,
+                            "total_token_count": 1214
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "{\n \"questions\": [\n  \"What are the alternate names for Aberdeen Regional Hospital?\",\n  \"When was Aberdeen Regional Hospital founded?\",\n  \"What is the geo coordinates of Aberdeen Regional Hospital?\",\n  \"What is the location of Aberdeen Regional Hospital?\",\n  \"What is Aberdeen Regional Hospital contained in?\"\n ],\n \"dialogue\": [\n  \"What are the alternate names for Aberdeen Regional Hospital?\",\n  \"When was it founded?\",\n  \"What is the geo coordinates of it?\",\n  \"What is the location of it?\",\n  \"What is it contained in?\"\n ],\n \"sparql\": [\n  \"SELECT ?altname WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> <http://schema.org/alternateName> ?altname }\",\n  \"SELECT ?foundingDate WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> <http://schema.org/foundingDate> ?foundingDate }\",\n  \"SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> <http://schema.org/geo> ?geo }\",\n  \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> <http://schema.org/location> ?location }\",\n  \"SELECT ?containedInPlace WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> <http://schema.org/containedInPlace> ?containedInPlace }\"\n ]\n}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 535,
+                            "candidates_token_count": 347,
+                            "total_token_count": 882
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"Where was Arti Puri born?\", \"What is Arti Puri's nationality?\", \"What are some alternate names for Arti Puri?\", \"What is Arti Puri's given name?\", \"What is Arti Puri's occupation?\", \"What is Arti Puri's birth date?\"], \"dialogue\": [\"Where was Arti Puri born?\", \"What is her nationality?\", \"What are some alternate names for her?\", \"What is her given name?\", \"What is her occupation?\", \"What is her birth date?\"], \"sparql\": [\"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/birthPlace> ?birthPlace }\", \"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/nationality> ?nationality }\", \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/alternateName> ?alternateName }\", \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/givenName> ?givenName }\", \"SELECT ?hasOccupation WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/hasOccupation> ?hasOccupation }\", \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/birthDate> ?birthDate }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 555,
+                            "candidates_token_count": 342,
+                            "total_token_count": 897
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "{\"questions\": [\"What is the birthplace of Faqir Abdul Raheem Garhori?\", \"What are the alternate names of Faqir Abdul Raheem Garhori?\", \"When did Faqir Abdul Raheem Garhori die?\", \"What is the given name of Faqir Abdul Raheem Garhori?\", \"Where did Faqir Abdul Raheem Garhori die?\", \"When was Faqir Abdul Raheem Garhori born?\"], \"dialogue\": [\"What is the birthplace of Faqir Abdul Raheem Garhori?\", \"What are the alternate names of him?\", \"When did he die?\", \"What is his given name?\", \"Where did he die?\", \"When was he born?\"], \"sparql\": [\"SELECT ?birthplace WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/birthPlace> ?birthplace }\", \"SELECT ?altName WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/alternateName> ?altName }\", \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/deathDate> ?deathDate }\", \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/givenName> ?givenName }\", \"SELECT ?deathPlace WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/deathPlace> ?deathPlace }\", \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/birthDate> ?birthDate }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 587,
+                            "candidates_token_count": 411,
+                            "total_token_count": 998
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"Where was Abdul Rahman Al-Zeid born?\", \"What is the nationality of Abdul Rahman Al-Zeid?\", \"What are the alternate names of Abdul Rahman Al-Zeid?\", \"What is the given name of Abdul Rahman Al-Zeid?\", \"What is the occupation of Abdul Rahman Al-Zeid?\", \"When was Abdul Rahman Al-Zeid born?\"], \"dialogue\": [\"Where was Abdul Rahman Al-Zeid born?\", \"What is his nationality?\", \"What are his alternate names?\", \"What is his given name?\", \"What is his occupation?\", \"When was he born?\"], \"sparql\": [\"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/birthPlace> ?birthPlace }\", \"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/nationality> ?nationality }\", \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/alternateName> ?alternateName }\", \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/givenName> ?givenName }\", \"SELECT ?hasOccupation WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/hasOccupation> ?hasOccupation }\", \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zeid> <http://schema.org/birthDate> ?birthDate }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 583,
+                            "candidates_token_count": 388,
+                            "total_token_count": 971
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What is the alternate name of the Battle of Lyuban?\", \"What is the super event of the Battle of Lyuban?\", \"What is the start date of the Battle of Lyuban?\", \"What is the location of the Battle of Lyuban?\", \"What is the end date of the Battle of Lyuban?\"], \"dialogue\": [\"What is the alternate name of the Battle of Lyuban?\", \"What is its super event?\", \"What is its start date?\", \"What is its location?\", \"What is its end date?\"], \"sparql\": [\"SELECT ?alternateName WHERE {wd:Q136083 wdt:P1476 ?alternateName .}\", \"SELECT ?superEvent WHERE {wd:Q136083 wdt:P361 ?superEvent .}\", \"SELECT ?startDate WHERE {wd:Q136083 wdt:P580 ?startDate .}\", \"SELECT ?location WHERE {wd:Q136083 wdt:P276 ?location .}\", \"SELECT ?endDate WHERE {wd:Q136083 wdt:P582 ?endDate .}\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 538,
+                            "candidates_token_count": 257,
+                            "total_token_count": 795
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "{\"questions\": [\"What is the country of origin of the film 'night, Mother'?\", \"How many actors are in the film 'night, Mother'?\", \"Is the film 'night, Mother' directed by Tom Hanks?\", \"Who is the music composer of the film 'night, Mother'?\", \"What is the duration of the film 'night, Mother'?\", \"Who is the producer of the film 'night, Mother'?\"], \"dialogue\": [\"What is the country of origin of the film 'night, Mother'?\", \"How many actors are in it?\", \"Is it directed by Tom Hanks?\", \"Who is the music composer of it?\", \"What is the duration of it?\", \"Who is the producer of it?\"], \"sparql\": [\"SELECT DISTINCT ?country WHERE { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/countryOfOrigin> ?country }\", \"SELECT COUNT(*) WHERE { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/actor> ?actor }\", \"ASK { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/director> <http://yago-knowledge.org/resource/Tom_Hanks> }\", \"SELECT DISTINCT ?composer WHERE { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/musicBy> ?composer }\", \"SELECT DISTINCT ?duration WHERE { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/duration> ?duration }\", \"SELECT DISTINCT ?producer WHERE { <http://yago-knowledge.org/resource/'night,_Mother_(film)> <http://schema.org/producer> ?producer }\"]}\n```",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 590,
+                            "candidates_token_count": 399,
+                            "total_token_count": 989
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\"questions\": [\"What is the alternate name of Battle of Prairie D'Ane?\", \"When did the Battle of Prairie D'Ane start?\", \"Where did the Battle of Prairie D'Ane take place?\", \"When did the Battle of Prairie D'Ane end?\"], \"dialogue\": [\"What is the alternate name of Battle of Prairie D'Ane?\", \"When did it start?\", \"Where did it take place?\", \"When did it end?\"], \"sparql\": [\"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Battle_of_Prairie_D'Ane> <http://schema.org/alternateName> ?alternateName }\", \"SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/Battle_of_Prairie_D'Ane> <http://schema.org/startDate> ?startDate }\", \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Battle_of_Prairie_D'Ane> <http://schema.org/location> ?location }\", \"SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/Battle_of_Prairie_D'Ane> <http://schema.org/endDate> ?endDate }\"]}\n``` \n",
+                    "generation_info": {
+                        "is_blocked": false,
+                        "safety_ratings": [
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "probability_label": "NEGLIGIBLE",
+                                "blocked": false
+                            }
+                        ],
+                        "citation_metadata": null,
+                        "usage_metadata": {
+                            "prompt_token_count": 522,
+                            "candidates_token_count": 270,
+                            "total_token_count": 792
+                        }
+                    },
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": null,
+        "n": 5
+    }
+]

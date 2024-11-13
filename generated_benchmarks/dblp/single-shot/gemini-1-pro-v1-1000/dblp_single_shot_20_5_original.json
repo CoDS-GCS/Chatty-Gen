@@ -1,0 +1,997 @@
+{
+    "seeds_used": 194,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/pid/03/8213",
+            "seed_label": "Marian Daun",
+            "dialogue": [
+                "What is Marian Daun's primary affiliation?",
+                "What is her primary full creator name?",
+                "What is her ORCID?",
+                "What is her primary homepage?",
+                "What is her webpage?"
+            ],
+            "original": [
+                "What is Marian Daun's primary affiliation?",
+                "What is Marian Daun's primary full creator name?",
+                "What is Marian Daun's ORCID?",
+                "What is Marian Daun's primary homepage?",
+                "What is Marian Daun's webpage?"
+            ],
+            "queries": [
+                "SELECT ?primaryAffiliation WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#primaryAffiliation> ?primaryAffiliation }",
+                "SELECT ?primaryFullCreatorName WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?primaryFullCreatorName }",
+                "SELECT ?orcid WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#orcid> ?orcid }",
+                "SELECT ?primaryHomepage WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#primaryHomepage> ?primaryHomepage }",
+                "SELECT ?webpage WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#webpage> ?webpage }"
+            ],
+            "cost": {
+                "total_tokens": 895,
+                "prompt_tokens": 560,
+                "completion_tokens": 335
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/nips/WangJIWKR19",
+            "seed_label": "Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)",
+            "dialogue": [
+                "What is the publication type of Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?",
+                "How many authors are there for it?",
+                "What is the electronic edition of it?",
+                "What is the title of it?",
+                "What year was it published?",
+                "What is the publication venue of it?",
+                "What year was the conference held for it?",
+                "What page is it listed on?",
+                "What is the book that it is published as part of?"
+            ],
+            "original": [
+                "What is the publication type of Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?",
+                "How many authors are there for Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?",
+                "What is the electronic edition of Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?",
+                "What is the title of Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?",
+                "What year was Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019) published?",
+                "What is the publication venue of Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?",
+                "What year was the conference held for Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019)?",
+                "What page is Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019) listed on?",
+                "What is the book that Xin Wang et al.: Natural Language Grounded Multitask Navigation. (2019) is published as part of?"
+            ],
+            "queries": [
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#bibtexType> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#numberOfCreators> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#title> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#yearOfPublication> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#publishedIn> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#yearOfEvent> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#listedOnTocPage> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> <https://dblp.org/rdf/schema#publishedAsPartOf> ?o }"
+            ],
+            "cost": {
+                "total_tokens": 1623,
+                "prompt_tokens": 832,
+                "completion_tokens": 791
+            },
+            "query_status": {
+                "Correct": 9
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/04/1411",
+            "seed_label": "Gerhard Kramer",
+            "dialogue": [
+                "What is Gerhard Kramer's primary affiliation?",
+                "How many publications does he have?",
+                "Does he have a primary homepage?",
+                "What is his primary full creator name?",
+                "What is his primary affiliation?"
+            ],
+            "original": [
+                "What is Gerhard Kramer's primary affiliation?",
+                "How many publications does Gerhard Kramer have?",
+                "Does Gerhard Kramer have a primary homepage?",
+                "What is Gerhard Kramer's primary full creator name?",
+                "What is Gerhard Kramer's primary affiliation?"
+            ],
+            "queries": [
+                "SELECT ?o WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryAffiliation> ?o }",
+                "SELECT (COUNT(*) AS ?count) WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#authorOf> ?o }",
+                "ASK { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryHomepage> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/04/1411> <https://dblp.org/rdf/schema#primaryAffiliation> ?o }"
+            ],
+            "cost": {
+                "total_tokens": 887,
+                "prompt_tokens": 559,
+                "completion_tokens": 328
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/04/3348-54",
+            "seed_label": "Yan Zhang 0054",
+            "dialogue": [
+                "What is the ORCID of Yan Zhang 0054?",
+                "What is his primary affiliation?",
+                "What is his primary homepage?",
+                "What is his other affiliation?",
+                "What is his primary full creator name?",
+                "How many affiliations does he have?",
+                "Does he have an ORCID?",
+                "Who is his primary full creator?"
+            ],
+            "original": [
+                "What is the ORCID of Yan Zhang 0054?",
+                "What is the primary affiliation of Yan Zhang 0054?",
+                "What is the primary homepage of Yan Zhang 0054?",
+                "What is the other affiliation of Yan Zhang 0054?",
+                "What is the primary full creator name of Yan Zhang 0054?",
+                "How many affiliations does Yan Zhang 0054 have?",
+                "Does Yan Zhang 0054 have an ORCID?",
+                "Who is the primary full creator of Yan Zhang 0054?"
+            ],
+            "queries": [
+                "SELECT ?o WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#orcid> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryAffiliation> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryHomepage> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#otherAffiliation> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?o }",
+                "SELECT (COUNT(*) AS ?count) WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#affiliation> ?o }",
+                "ASK { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#orcid> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?o }"
+            ],
+            "cost": {
+                "total_tokens": 1221,
+                "prompt_tokens": 580,
+                "completion_tokens": 641
+            },
+            "query_status": {
+                "Correct": 8,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/AlmeidaY10",
+            "seed_label": "Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010)",
+            "dialogue": [
+                "What type of publication is Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010)?",
+                "Who are its authors?",
+                "What is its DOI?",
+                "How many creators does it have?",
+                "What is its pagination?",
+                "Is there a primary electronic edition of it?",
+                "What is its title?",
+                "When was it published?",
+                "In what publication was it published?",
+                "In what year did the event for it take place?",
+                "Is it listed on the TOC page?",
+                "Is it published as part of a book?"
+            ],
+            "original": [
+                "What type of publication is Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010)?",
+                "Who are the authors of Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010)?",
+                "What is the DOI of Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010)?",
+                "How many creators are there for Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010)?",
+                "What is the pagination of Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010)?",
+                "Is there a primary electronic edition of Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010)?",
+                "What is the title of Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010)?",
+                "When was Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010) published?",
+                "In what publication was Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010) published?",
+                "In what year did the event for Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010) take place?",
+                "Is Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010) listed on the TOC page?",
+                "Is Tiago A. Almeida and Akebo Yamakami: Content-based spam filtering. (2010) published as part of a book?"
+            ],
+            "queries": [
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#bibtexType> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#authoredBy> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#doi> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#numberOfCreators> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#pagination> ?o }",
+                "ASK { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#title> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#yearOfPublication> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#publishedIn> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#yearOfEvent> ?o }",
+                "ASK { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#listedOnTocPage> ?o }",
+                "ASK { <https://dblp.org/rec/conf/ijcnn/AlmeidaY10> <https://dblp.org/rdf/schema#publishedAsPartOf> ?o }"
+            ],
+            "cost": {
+                "total_tokens": 1933,
+                "prompt_tokens": 896,
+                "completion_tokens": 1037
+            },
+            "query_status": {
+                "Correct": 12
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Panitzek16",
+            "seed_label": "Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016)",
+            "dialogue": [
+                "What type of publication is Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016)?",
+                "Who is the author of it?",
+                "How many authors are there?",
+                "Where is it published?",
+                "What is the title?",
+                "When was it published?"
+            ],
+            "original": [
+                "What type of publication is Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016)?",
+                "Who is the author of Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016)?",
+                "How many authors are there for Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016)?",
+                "Where is Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016) published?",
+                "What is the title of Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016)?",
+                "When was Kamill Panitzek: Mobile Service Provision in Harsh Environments. (2016) published?"
+            ],
+            "queries": [
+                "SELECT ?type WHERE { <https://dblp.org/rec/phd/dnb/Panitzek16> <https://dblp.org/rdf/schema#bibtexType> ?type }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Panitzek16> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?num WHERE { <https://dblp.org/rec/phd/dnb/Panitzek16> <https://dblp.org/rdf/schema#numberOfCreators> ?num }",
+                "SELECT ?publisher WHERE { <https://dblp.org/rec/phd/dnb/Panitzek16> <https://dblp.org/rdf/schema#publishedBy> ?publisher }",
+                "SELECT ?title WHERE { <https://dblp.org/rec/phd/dnb/Panitzek16> <https://dblp.org/rdf/schema#title> ?title }",
+                "SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Panitzek16> <https://dblp.org/rdf/schema#yearOfPublication> ?year }"
+            ],
+            "cost": {
+                "total_tokens": 1271,
+                "prompt_tokens": 713,
+                "completion_tokens": 558
+            },
+            "query_status": {
+                "Correct": 6
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Rodrigues21",
+            "seed_label": "Bruno Rodrigues: Blockchain Signaling System. (2021)",
+            "dialogue": [
+                "What is the type of Bruno Rodrigues: Blockchain Signaling System. (2021)?",
+                "Who is the author of it?",
+                "What is the ISBN of it?",
+                "How many creators are there for it?",
+                "What is the other electronic edition of it?",
+                "What is the pagination of it?",
+                "What is the primary electronic edition of it?",
+                "What is the publisher of it?",
+                "What is the school that accepted the thesis of it?",
+                "What is the title of it?",
+                "What is the year of publication of it?"
+            ],
+            "original": [
+                "What is the type of Bruno Rodrigues: Blockchain Signaling System. (2021)?",
+                "Who is the author of Bruno Rodrigues: Blockchain Signaling System. (2021)?",
+                "What is the ISBN of Bruno Rodrigues: Blockchain Signaling System. (2021)?",
+                "How many creators are there for Bruno Rodrigues: Blockchain Signaling System. (2021)?",
+                "What is the other electronic edition of Bruno Rodrigues: Blockchain Signaling System. (2021)?",
+                "What is the pagination of Bruno Rodrigues: Blockchain Signaling System. (2021)?",
+                "What is the primary electronic edition of Bruno Rodrigues: Blockchain Signaling System. (2021)?",
+                "What is the publisher of Bruno Rodrigues: Blockchain Signaling System. (2021)?",
+                "What is the school that accepted the thesis of Bruno Rodrigues: Blockchain Signaling System. (2021)?",
+                "What is the title of Bruno Rodrigues: Blockchain Signaling System. (2021)?",
+                "What is the year of publication of Bruno Rodrigues: Blockchain Signaling System. (2021)?"
+            ],
+            "queries": [
+                "SELECT ?type WHERE {<https://dblp.org/rec/phd/dnb/Rodrigues21> <https://dblp.org/rdf/schema#bibtexType> ?type} LIMIT 5",
+                "SELECT ?author WHERE {<https://dblp.org/rec/phd/dnb/Rodrigues21> <https://dblp.org/rdf/schema#authoredBy> ?author} LIMIT 5",
+                "SELECT ?isbn WHERE {<https://dblp.org/rec/phd/dnb/Rodrigues21> <https://dblp.org/rdf/schema#isbn> ?isbn} LIMIT 5",
+                "SELECT ?numberOfCreators WHERE {<https://dblp.org/rec/phd/dnb/Rodrigues21> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators} LIMIT 5",
+                "SELECT ?otherElectronicEdition WHERE {<https://dblp.org/rec/phd/dnb/Rodrigues21> <https://dblp.org/rdf/schema#otherElectronicEdition> ?otherElectronicEdition} LIMIT 5",
+                "SELECT ?pagination WHERE {<https://dblp.org/rec/phd/dnb/Rodrigues21> <https://dblp.org/rdf/schema#pagination> ?pagination} LIMIT 5",
+                "SELECT ?primaryElectronicEdition WHERE {<https://dblp.org/rec/phd/dnb/Rodrigues21> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?primaryElectronicEdition} LIMIT 5",
+                "SELECT ?publishedBy WHERE {<https://dblp.org/rec/phd/dnb/Rodrigues21> <https://dblp.org/rdf/schema#publishedBy> ?publishedBy} LIMIT 5",
+                "SELECT ?thesisAcceptedBySchool WHERE {<https://dblp.org/rec/phd/dnb/Rodrigues21> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?thesisAcceptedBySchool} LIMIT 5",
+                "SELECT ?title WHERE {<https://dblp.org/rec/phd/dnb/Rodrigues21> <https://dblp.org/rdf/schema#title> ?title} LIMIT 5",
+                "SELECT ?yearOfPublication WHERE {<https://dblp.org/rec/phd/dnb/Rodrigues21> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication} LIMIT 5"
+            ],
+            "cost": {
+                "total_tokens": 1733,
+                "prompt_tokens": 810,
+                "completion_tokens": 923
+            },
+            "query_status": {
+                "Correct": 11
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/08/6743",
+            "seed_label": "Michael A. Kochte",
+            "dialogue": [
+                "What is Michael A. Kochte's ORCID?",
+                "What are his other full creator names?",
+                "What is his primary affiliation?",
+                "What is his primary full creator name?",
+                "What is his primary homepage?",
+                "What is his webpage?"
+            ],
+            "original": [
+                "What is Michael A. Kochte's ORCID?",
+                "What are Michael A. Kochte's other full creator names?",
+                "What is Michael A. Kochte's primary affiliation?",
+                "What is Michael A. Kochte's primary full creator name?",
+                "What is Michael A. Kochte's primary homepage?",
+                "What is Michael A. Kochte's webpage?"
+            ],
+            "queries": [
+                "SELECT ?o WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#orcid> ?o . }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#otherFullCreatorName> ?o . }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#primaryAffiliation> ?o . }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?o . }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#primaryHomepage> ?o . }",
+                "SELECT ?o WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#webpage> ?o . }"
+            ],
+            "cost": {
+                "total_tokens": 1015,
+                "prompt_tokens": 599,
+                "completion_tokens": 416
+            },
+            "query_status": {
+                "Correct": 6
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Westermann13",
+            "seed_label": "Dennis Westermann: Deriving Goal-oriented Performance Models by Systematic Experimentation. (2013)",
+            "dialogue": [
+                "What is the type of Dennis Westermann: Deriving Goal-oriented Performance Models by Systematic Experimentation. (2013)?",
+                "Who is the author of it?",
+                "How many creators are there for it?",
+                "What is the other electronic edition of it?",
+                "What is the primary electronic edition of it?",
+                "What school accepted the thesis of it?",
+                "What is the title of it?",
+                "What is the year of publication of it?"
+            ],
+            "original": [
+                "What is the type of the entity Dennis Westermann: Deriving Goal-oriented Performance Models by Systematic Experimentation. (2013)?",
+                "Who is the author of the entity Dennis Westermann: Deriving Goal-oriented Performance Models by Systematic Experimentation. (2013)?",
+                "How many creators are there for the entity Dennis Westermann: Deriving Goal-oriented Performance Models by Systematic Experimentation. (2013)?",
+                "What is the other electronic edition of the entity Dennis Westermann: Deriving Goal-oriented Performance Models by Systematic Experimentation. (2013)?",
+                "What is the primary electronic edition of the entity Dennis Westermann: Deriving Goal-oriented Performance Models by Systematic Experimentation. (2013)?",
+                "What school accepted the thesis of the entity Dennis Westermann: Deriving Goal-oriented Performance Models by Systematic Experimentation. (2013)?",
+                "What is the title of the entity Dennis Westermann: Deriving Goal-oriented Performance Models by Systematic Experimentation. (2013)?",
+                "What is the year of publication of the entity Dennis Westermann: Deriving Goal-oriented Performance Models by Systematic Experimentation. (2013)?"
+            ],
+            "queries": [
+                "SELECT ?type WHERE { <https://dblp.org/rec/phd/dnb/Westermann13> <https://dblp.org/rdf/schema#bibtexType> ?type }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Westermann13> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?creators WHERE { <https://dblp.org/rec/phd/dnb/Westermann13> <https://dblp.org/rdf/schema#numberOfCreators> ?creators }",
+                "SELECT ?other WHERE { <https://dblp.org/rec/phd/dnb/Westermann13> <https://dblp.org/rdf/schema#otherElectronicEdition> ?other }",
+                "SELECT ?primary WHERE { <https://dblp.org/rec/phd/dnb/Westermann13> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?primary }",
+                "SELECT ?school WHERE { <https://dblp.org/rec/phd/dnb/Westermann13> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?school }",
+                "SELECT ?title WHERE { <https://dblp.org/rec/phd/dnb/Westermann13> <https://dblp.org/rdf/schema#title> ?title }",
+                "SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Westermann13> <https://dblp.org/rdf/schema#yearOfPublication> ?year }"
+            ],
+            "cost": {
+                "total_tokens": 1451,
+                "prompt_tokens": 710,
+                "completion_tokens": 741
+            },
+            "query_status": {
+                "Correct": 8
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/CohenDMSS19",
+            "seed_label": "Albert Cohen et al.: Preface. (2019)",
+            "dialogue": [
+                "What is the bibtex type of Albert Cohen et al.: Preface. (2019)?",
+                "Who are the authors of it?",
+                "What is the DOI of it?",
+                "How many authors are there for it?",
+                "What is the pagination of it?",
+                "What is the primary electronic edition of it?",
+                "What is the title of it?",
+                "What is the year of publication of it?",
+                "In which journal was it published?",
+                "In which volume and issue of the journal was it published?",
+                "In which journal was it published?",
+                "On which TOC page was it listed?",
+                "In which volume of the journal was it published?"
+            ],
+            "original": [
+                "What is the bibtex type of Albert Cohen et al.: Preface. (2019)?",
+                "Who are the authors of Albert Cohen et al.: Preface. (2019)?",
+                "What is the DOI of Albert Cohen et al.: Preface. (2019)?",
+                "How many authors are there for Albert Cohen et al.: Preface. (2019)?",
+                "What is the pagination of Albert Cohen et al.: Preface. (2019)?",
+                "What is the primary electronic edition of Albert Cohen et al.: Preface. (2019)?",
+                "What is the title of Albert Cohen et al.: Preface. (2019)?",
+                "What is the year of publication of Albert Cohen et al.: Preface. (2019)?",
+                "In which journal was Albert Cohen et al.: Preface. (2019) published?",
+                "In which volume and issue of the journal was Albert Cohen et al.: Preface. (2019) published?",
+                "In which journal was Albert Cohen et al.: Preface. (2019) published?",
+                "On which TOC page was Albert Cohen et al.: Preface. (2019) listed?",
+                "In which volume of the journal was Albert Cohen et al.: Preface. (2019) published?"
+            ],
+            "queries": [
+                "SELECT ?bibtexType WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?doi WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#doi> ?doi }",
+                "SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators }",
+                "SELECT ?pagination WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#pagination> ?pagination }",
+                "SELECT ?primaryElectronicEdition WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?primaryElectronicEdition }",
+                "SELECT ?title WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#title> ?title }",
+                "SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication }",
+                "SELECT ?publishedInJournal WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#publishedInJournal> ?publishedInJournal }",
+                "SELECT ?publishedInJournalVolumeIssue WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#publishedInJournalVolumeIssue> ?publishedInJournalVolumeIssue }",
+                "SELECT ?publishedIn WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#publishedIn> ?publishedIn }",
+                "SELECT ?listedOnTocPage WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#listedOnTocPage> ?listedOnTocPage }",
+                "SELECT ?publishedInJournalVolume WHERE { <https://dblp.org/rec/journals/focm/CohenDMSS19> <https://dblp.org/rdf/schema#publishedInJournalVolume> ?publishedInJournalVolume }"
+            ],
+            "cost": {
+                "total_tokens": 1960,
+                "prompt_tokens": 889,
+                "completion_tokens": 1071
+            },
+            "query_status": {
+                "Correct": 13
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/Choi07",
+            "seed_label": "Seungjin Choi: Wake-Sleep PCA. (2007)",
+            "dialogue": [
+                "What is the type of Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "Who is the author of it?",
+                "What is its DOI?",
+                "How many creators are there for it?",
+                "What is its pagination?",
+                "What is its primary electronic edition?",
+                "What is its title?",
+                "What is its year of publication?",
+                "In which publication is it published?",
+                "What is the year of the event of it?",
+                "What is its listed on toc page?",
+                "What is its published as part of?",
+                "In which book is it published?"
+            ],
+            "original": [
+                "What is the type of the entity Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "Who is the author of the entity Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "What is the DOI of the entity Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "How many creators are there for the entity Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "What is the pagination of the entity Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "What is the primary electronic edition of the entity Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "What is the title of the entity Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "What is the year of publication of the entity Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "In which publication is the entity Seungjin Choi: Wake-Sleep PCA. (2007) published?",
+                "What is the year of the event of the entity Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "What is the listed on toc page of the entity Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "What is the published as part of of the entity Seungjin Choi: Wake-Sleep PCA. (2007)?",
+                "In which book is the entity Seungjin Choi: Wake-Sleep PCA. (2007) published?"
+            ],
+            "queries": [
+                "SELECT ?type WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#bibtexType> ?type . }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "SELECT ?doi WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#doi> ?doi . }",
+                "SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators . }",
+                "SELECT ?pagination WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#pagination> ?pagination . }",
+                "SELECT ?primaryElectronicEdition WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?primaryElectronicEdition . }",
+                "SELECT ?title WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#title> ?title . }",
+                "SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication . }",
+                "SELECT ?publishedIn WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#publishedIn> ?publishedIn . }",
+                "SELECT ?yearOfEvent WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#yearOfEvent> ?yearOfEvent . }",
+                "SELECT ?listedOnTocPage WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#listedOnTocPage> ?listedOnTocPage . }",
+                "SELECT ?publishedAsPartOf WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#publishedAsPartOf> ?publishedAsPartOf . }",
+                "SELECT ?publishedInBook WHERE { <https://dblp.org/rec/conf/ijcnn/Choi07> <https://dblp.org/rdf/schema#publishedInBook> ?publishedInBook . }"
+            ],
+            "cost": {
+                "total_tokens": 1944,
+                "prompt_tokens": 863,
+                "completion_tokens": 1081
+            },
+            "query_status": {
+                "Correct": 13
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Hocke17",
+            "seed_label": "Jens Hocke: Representation learning: from feature weighting to invariance. (2017)",
+            "dialogue": [
+                "What is the type of the publication Jens Hocke: Representation learning: from feature weighting to invariance. (2017)?",
+                "Who is the author of it?",
+                "How many authors are there for it?",
+                "Is there an electronic edition of it?",
+                "Is there a primary electronic edition of it?",
+                "What is the school that accepted the thesis?",
+                "What is the title of it?",
+                "What is the year of publication of it?"
+            ],
+            "original": [
+                "What is the type of the publication Jens Hocke: Representation learning: from feature weighting to invariance. (2017)?",
+                "Who is the author of the publication Jens Hocke: Representation learning: from feature weighting to invariance. (2017)?",
+                "How many authors are there for the publication Jens Hocke: Representation learning: from feature weighting to invariance. (2017)?",
+                "Is there an electronic edition of the publication Jens Hocke: Representation learning: from feature weighting to invariance. (2017)?",
+                "Is there a primary electronic edition of the publication Jens Hocke: Representation learning: from feature weighting to invariance. (2017)?",
+                "What is the school that accepted the thesis Jens Hocke: Representation learning: from feature weighting to invariance. (2017)?",
+                "What is the title of the publication Jens Hocke: Representation learning: from feature weighting to invariance. (2017)?",
+                "What is the year of publication of the publication Jens Hocke: Representation learning: from feature weighting to invariance. (2017)?"
+            ],
+            "queries": [
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Hocke17> <https://dblp.org/rdf/schema#bibtexType> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Hocke17> <https://dblp.org/rdf/schema#authoredBy> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Hocke17> <https://dblp.org/rdf/schema#numberOfCreators> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Hocke17> <https://dblp.org/rdf/schema#otherElectronicEdition> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Hocke17> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Hocke17> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Hocke17> <https://dblp.org/rdf/schema#title> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Hocke17> <https://dblp.org/rdf/schema#yearOfPublication> ?o }"
+            ],
+            "cost": {
+                "total_tokens": 1417,
+                "prompt_tokens": 707,
+                "completion_tokens": 710
+            },
+            "query_status": {
+                "Correct": 8
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/DmytryshynJKD20",
+            "seed_label": "Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)",
+            "dialogue": [
+                "What is the publication title of Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)?",
+                "How many authors are there for it?",
+                "What is the DOI of it?",
+                "Is there a bibtexType for it?",
+                "When was it published?"
+            ],
+            "original": [
+                "What is the publication title of Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)?",
+                "How many authors are there for the publication Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)?",
+                "What is the DOI of the publication Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)?",
+                "Is there a bibtexType for the publication Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020)?",
+                "When was the publication Andrii Dmytryshyn et al.: Geometry of Matrix Polynomial Spaces. (2020) published?"
+            ],
+            "queries": [
+                "SELECT ?title WHERE {<https://dblp.org/rec/journals/focm/DmytryshynJKD20> <https://dblp.org/rdf/schema#title> ?title .}",
+                "SELECT ?numberOfCreators WHERE {<https://dblp.org/rec/journals/focm/DmytryshynJKD20> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators .}",
+                "SELECT ?doi WHERE {<https://dblp.org/rec/journals/focm/DmytryshynJKD20> <https://dblp.org/rdf/schema#doi> ?doi .}",
+                "SELECT ?bibtexType WHERE {<https://dblp.org/rec/journals/focm/DmytryshynJKD20> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType .}",
+                "SELECT ?yearOfPublication WHERE {<https://dblp.org/rec/journals/focm/DmytryshynJKD20> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication .}"
+            ],
+            "cost": {
+                "total_tokens": 1447,
+                "prompt_tokens": 950,
+                "completion_tokens": 497
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Koller18",
+            "seed_label": "Thomas Koller: Communication Security for Distributed Mixed-Criticality Systems. (2018)",
+            "dialogue": [
+                "What is the bibtex type of Thomas Koller: Communication Security for Distributed Mixed-Criticality Systems. (2018)?",
+                "Who is the author of it?",
+                "What is the ISBN of it?",
+                "How many creators are there for it?",
+                "What is the title of it?",
+                "What year was it published?"
+            ],
+            "original": [
+                "What is the bibtex type of Thomas Koller: Communication Security for Distributed Mixed-Criticality Systems. (2018)?",
+                "Who is the author of Thomas Koller: Communication Security for Distributed Mixed-Criticality Systems. (2018)?",
+                "What is the ISBN of Thomas Koller: Communication Security for Distributed Mixed-Criticality Systems. (2018)?",
+                "How many creators are there for Thomas Koller: Communication Security for Distributed Mixed-Criticality Systems. (2018)?",
+                "What is the title of Thomas Koller: Communication Security for Distributed Mixed-Criticality Systems. (2018)?",
+                "What year was Thomas Koller: Communication Security for Distributed Mixed-Criticality Systems. (2018) published?"
+            ],
+            "queries": [
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Koller18> <https://dblp.org/rdf/schema#bibtexType> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Koller18> <https://dblp.org/rdf/schema#authoredBy> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Koller18> <https://dblp.org/rdf/schema#isbn> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Koller18> <https://dblp.org/rdf/schema#numberOfCreators> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Koller18> <https://dblp.org/rdf/schema#title> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/phd/dnb/Koller18> <https://dblp.org/rdf/schema#yearOfPublication> ?o }"
+            ],
+            "cost": {
+                "total_tokens": 1345,
+                "prompt_tokens": 817,
+                "completion_tokens": 528
+            },
+            "query_status": {
+                "Correct": 6
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Majuntke12",
+            "seed_label": "Verena Majuntke: Application Coordination in Pervasive Systems. (2012)",
+            "dialogue": [
+                "What is the type of Verena Majuntke: Application Coordination in Pervasive Systems. (2012)?",
+                "Who is the author of it?",
+                "What is its ISBN?",
+                "How many creators are there of it?",
+                "What is its other electronic edition?",
+                "What is its pagination?",
+                "What is its primary electronic edition?",
+                "What school accepted its thesis?",
+                "What is its title?",
+                "When was it published?"
+            ],
+            "original": [
+                "What is the type of Verena Majuntke: Application Coordination in Pervasive Systems. (2012)?",
+                "Who is the author of Verena Majuntke: Application Coordination in Pervasive Systems. (2012)?",
+                "What is the ISBN of Verena Majuntke: Application Coordination in Pervasive Systems. (2012)?",
+                "How many creators are there of Verena Majuntke: Application Coordination in Pervasive Systems. (2012)?",
+                "What is the other electronic edition of Verena Majuntke: Application Coordination in Pervasive Systems. (2012)?",
+                "What is the pagination of Verena Majuntke: Application Coordination in Pervasive Systems. (2012)?",
+                "What is the primary electronic edition of Verena Majuntke: Application Coordination in Pervasive Systems. (2012)?",
+                "What school accepted the thesis of Verena Majuntke: Application Coordination in Pervasive Systems. (2012)?",
+                "What is the title of Verena Majuntke: Application Coordination in Pervasive Systems. (2012)?",
+                "When was Verena Majuntke: Application Coordination in Pervasive Systems. (2012) published?"
+            ],
+            "queries": [
+                "SELECT ?object WHERE { <https://dblp.org/rec/phd/dnb/Majuntke12> <https://dblp.org/rdf/schema#bibtexType> ?object }",
+                "SELECT ?object WHERE { <https://dblp.org/rec/phd/dnb/Majuntke12> <https://dblp.org/rdf/schema#authoredBy> ?object }",
+                "SELECT ?object WHERE { <https://dblp.org/rec/phd/dnb/Majuntke12> <https://dblp.org/rdf/schema#isbn> ?object }",
+                "SELECT ?object WHERE { <https://dblp.org/rec/phd/dnb/Majuntke12> <https://dblp.org/rdf/schema#numberOfCreators> ?object }",
+                "SELECT ?object WHERE { <https://dblp.org/rec/phd/dnb/Majuntke12> <https://dblp.org/rdf/schema#otherElectronicEdition> ?object }",
+                "SELECT ?object WHERE { <https://dblp.org/rec/phd/dnb/Majuntke12> <https://dblp.org/rdf/schema#pagination> ?object }",
+                "SELECT ?object WHERE { <https://dblp.org/rec/phd/dnb/Majuntke12> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?object }",
+                "SELECT ?object WHERE { <https://dblp.org/rec/phd/dnb/Majuntke12> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?object }",
+                "SELECT ?object WHERE { <https://dblp.org/rec/phd/dnb/Majuntke12> <https://dblp.org/rdf/schema#title> ?object }",
+                "SELECT ?object WHERE { <https://dblp.org/rec/phd/dnb/Majuntke12> <https://dblp.org/rdf/schema#yearOfPublication> ?object }"
+            ],
+            "cost": {
+                "total_tokens": 1642,
+                "prompt_tokens": 790,
+                "completion_tokens": 852
+            },
+            "query_status": {
+                "Correct": 10
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/Fanaskov21",
+            "seed_label": "Vladimir Fanaskov: Neural Multigrid Architectures. (2021)",
+            "dialogue": [
+                "Vladimir Fanaskov: Neural Multigrid Architectures. (2021) is of what bibtex type?",
+                "Who authored it?",
+                "What is its doi?",
+                "How many creators are there?",
+                "What is its pagination?",
+                "What is its primary electronic edition?",
+                "What is its title?",
+                "What is its year of publication?",
+                "In what conference was it published?",
+                "What is the year of the event?",
+                "What is its listed on toc page?",
+                "As part of what book was it published?"
+            ],
+            "original": [
+                "What is the bibtex type of Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "Who authored Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "What is the doi of Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "How many creators are there for Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "What is the pagination of Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "What is the primary electronic edition of Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "What is the title of Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "What is the year of publication of Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "In what conference was Vladimir Fanaskov: Neural Multigrid Architectures. (2021) published?",
+                "What is the year of the event for Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "What is the listed on toc page of Vladimir Fanaskov: Neural Multigrid Architectures. (2021)?",
+                "As part of what book was Vladimir Fanaskov: Neural Multigrid Architectures. (2021) published?"
+            ],
+            "queries": [
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#bibtexType> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#authoredBy> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#doi> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#numberOfCreators> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#pagination> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#title> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#yearOfPublication> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#publishedIn> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#yearOfEvent> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#listedOnTocPage> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Fanaskov21> <https://dblp.org/rdf/schema#publishedInBook> ?o }"
+            ],
+            "cost": {
+                "total_tokens": 1871,
+                "prompt_tokens": 891,
+                "completion_tokens": 980
+            },
+            "query_status": {
+                "Correct": 12
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/FengZH15",
+            "seed_label": "Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015)",
+            "dialogue": [
+                "What is the bibtex type of Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015)?",
+                "Who are the authors of it?",
+                "What is the DOI of it?",
+                "How many creators are there for it?",
+                "What is the pagination of it?",
+                "What is the primary electronic edition of it?",
+                "What is the title of it?",
+                "What is the year of publication of it?",
+                "In which conference was it published?",
+                "In which year was it published?",
+                "What is the listed on toc page of it?",
+                "As part of which book was it published?",
+                "Is it published in a book?"
+            ],
+            "original": [
+                "What is the bibtex type of Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015)?",
+                "Who are the authors of Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015)?",
+                "What is the DOI of Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015)?",
+                "How many creators are there for Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015)?",
+                "What is the pagination of Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015)?",
+                "What is the primary electronic edition of Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015)?",
+                "What is the title of Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015)?",
+                "What is the year of publication of Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015)?",
+                "In which conference was Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015) published?",
+                "In which year was Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015) published?",
+                "What is the listed on toc page of Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015)?",
+                "As part of which book was Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015) published?",
+                "Is Tianshu Feng et al.: Improving ESVM with Generalized Cross-Validation. (2015) published in a book?"
+            ],
+            "queries": [
+                "SELECT ?bibtexType WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?doi WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#doi> ?doi }",
+                "SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators }",
+                "SELECT ?pagination WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#pagination> ?pagination }",
+                "SELECT ?primaryElectronicEdition WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?primaryElectronicEdition }",
+                "SELECT ?title WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#title> ?title }",
+                "SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication }",
+                "SELECT ?publishedIn WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#publishedIn> ?publishedIn }",
+                "SELECT ?yearOfEvent WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#yearOfEvent> ?yearOfEvent }",
+                "SELECT ?listedOnTocPage WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#listedOnTocPage> ?listedOnTocPage }",
+                "SELECT ?publishedInBook WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#publishedInBook> ?publishedInBook }",
+                "ASK WHERE { <https://dblp.org/rec/conf/ijcnn/FengZH15> <https://dblp.org/rdf/schema#publishedInBook> ?publishedInBook }"
+            ],
+            "cost": {
+                "total_tokens": 2031,
+                "prompt_tokens": 882,
+                "completion_tokens": 1149
+            },
+            "query_status": {
+                "Correct": 13
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/Hubrechts08",
+            "seed_label": "Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008)",
+            "dialogue": [
+                "What is the publication type of Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008)?",
+                "Who authored it?",
+                "What is its doi?",
+                "How many creators are there?",
+                "What is its pagination?",
+                "What is its primary electronic edition?",
+                "What is its title?",
+                "What is its year of publication?",
+                "In which journal was it published?",
+                "What is its volume and issue number?",
+                "In which publication was it published?",
+                "On which page of the table of contents was it listed?",
+                "In which volume of the journal was it published?"
+            ],
+            "original": [
+                "What is the publication type of Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008)?",
+                "Who authored Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008)?",
+                "What is the doi of Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008)?",
+                "How many creators are there for Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008)?",
+                "What is the pagination of Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008)?",
+                "What is the primary electronic edition of Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008)?",
+                "What is the title of Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008)?",
+                "What is the year of publication of Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008)?",
+                "In which journal was Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008) published?",
+                "What is the volume and issue number of Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008)?",
+                "In which publication was Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008) published?",
+                "On which page of the table of contents was Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008) listed?",
+                "In which volume of the journal was Hendrik Hubrechts: Point Counting in Families of Hyperelliptic Curves. (2008) published?"
+            ],
+            "queries": [
+                "SELECT ?publicationType WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#bibtexType> ?publicationType }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?doi WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#doi> ?doi }",
+                "SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators }",
+                "SELECT ?pagination WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#pagination> ?pagination }",
+                "SELECT ?primaryElectronicEdition WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?primaryElectronicEdition }",
+                "SELECT ?title WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#title> ?title }",
+                "SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication }",
+                "SELECT ?publishedInJournal WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#publishedInJournal> ?publishedInJournal }",
+                "SELECT ?publishedInJournalVolumeIssue WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#publishedInJournalVolumeIssue> ?publishedInJournalVolumeIssue }",
+                "SELECT ?publishedIn WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#publishedIn> ?publishedIn }",
+                "SELECT ?listedOnTocPage WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#listedOnTocPage> ?listedOnTocPage }",
+                "SELECT ?publishedInJournalVolume WHERE { <https://dblp.org/rec/journals/focm/Hubrechts08> <https://dblp.org/rdf/schema#publishedInJournalVolume> ?publishedInJournalVolume }"
+            ],
+            "cost": {
+                "total_tokens": 2019,
+                "prompt_tokens": 883,
+                "completion_tokens": 1136
+            },
+            "query_status": {
+                "Correct": 13
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/GuoGLTY15",
+            "seed_label": "Yi Guo et al.: Low rank sequential subspace clustering. (2015)",
+            "dialogue": [
+                "What is the type of Yi Guo et al.: Low rank sequential subspace clustering. (2015)?",
+                "Who is the author of it?",
+                "What is the doi of it?",
+                "How many creators are there for it?",
+                "What is the pagination of it?",
+                "What is the primary electronic edition of it?",
+                "What is the title of it?",
+                "What is the year of publication of it?",
+                "Where was it published?",
+                "What year was it published?",
+                "What is the listed on toc page of it?",
+                "What is it published as part of?",
+                "Is it published in a book?"
+            ],
+            "original": [
+                "What is the type of Yi Guo et al.: Low rank sequential subspace clustering. (2015)?",
+                "Who is the author of Yi Guo et al.: Low rank sequential subspace clustering. (2015)?",
+                "What is the doi of Yi Guo et al.: Low rank sequential subspace clustering. (2015)?",
+                "How many creators are there for Yi Guo et al.: Low rank sequential subspace clustering. (2015)?",
+                "What is the pagination of Yi Guo et al.: Low rank sequential subspace clustering. (2015)?",
+                "What is the primary electronic edition of Yi Guo et al.: Low rank sequential subspace clustering. (2015)?",
+                "What is the title of Yi Guo et al.: Low rank sequential subspace clustering. (2015)?",
+                "What is the year of publication of Yi Guo et al.: Low rank sequential subspace clustering. (2015)?",
+                "Where was Yi Guo et al.: Low rank sequential subspace clustering. (2015) published?",
+                "What year was Yi Guo et al.: Low rank sequential subspace clustering. (2015) published?",
+                "What is the listed on toc page of Yi Guo et al.: Low rank sequential subspace clustering. (2015)?",
+                "What is Yi Guo et al.: Low rank sequential subspace clustering. (2015) published as part of?",
+                "Is Yi Guo et al.: Low rank sequential subspace clustering. (2015) published in a book?"
+            ],
+            "queries": [
+                "SELECT ?type WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#bibtexType> ?type }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#authoredBy> ?author }",
+                "SELECT ?doi WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#doi> ?doi }",
+                "SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators }",
+                "SELECT ?pagination WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#pagination> ?pagination }",
+                "SELECT ?primaryElectronicEdition WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?primaryElectronicEdition }",
+                "SELECT ?title WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#title> ?title }",
+                "SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication }",
+                "SELECT ?publishedIn WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#publishedIn> ?publishedIn }",
+                "SELECT ?yearOfEvent WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#yearOfEvent> ?yearOfEvent }",
+                "SELECT ?listedOnTocPage WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#listedOnTocPage> ?listedOnTocPage }",
+                "SELECT ?publishedAsPartOf WHERE { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#publishedAsPartOf> ?publishedAsPartOf }",
+                "ASK { <https://dblp.org/rec/conf/ijcnn/GuoGLTY15> <https://dblp.org/rdf/schema#publishedInBook> ?publishedInBook }"
+            ],
+            "cost": {
+                "total_tokens": 1983,
+                "prompt_tokens": 891,
+                "completion_tokens": 1092
+            },
+            "query_status": {
+                "Correct": 13
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/Hui15",
+            "seed_label": "Wei Hui: A bio-inspired method for object representation. (2015)",
+            "dialogue": [
+                "What is the bibtex type of Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "How many creators are there for it?",
+                "Is it published in a book?",
+                "What is the doi of it?",
+                "What is the title of it?",
+                "What is the year of publication of it?",
+                "What is the pagination of it?",
+                "What is the primary electronic edition of it?",
+                "What is the year of the event of it?",
+                "What is the listed on toc page of it?",
+                "What is the published as part of of it?",
+                "What is the published in book of it?",
+                "What is it published in?"
+            ],
+            "original": [
+                "What is the bibtex type of Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "How many creators are there for Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "Is Wei Hui: A bio-inspired method for object representation. (2015) published in a book?",
+                "What is the doi of Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "What is the title of Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "What is the year of publication of Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "What is the pagination of Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "What is the primary electronic edition of Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "What is the year of the event of Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "What is the listed on toc page of Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "What is the published as part of of Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "What is the published in book of Wei Hui: A bio-inspired method for object representation. (2015)?",
+                "What is Wei Hui: A bio-inspired method for object representation. (2015) published in?"
+            ],
+            "queries": [
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#bibtexType> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#numberOfCreators> ?o }",
+                "ASK WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#publishedInBook> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#doi> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#title> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#yearOfPublication> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#pagination> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#yearOfEvent> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#listedOnTocPage> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#publishedAsPartOf> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#publishedInBook> ?o }",
+                "SELECT ?o WHERE { <https://dblp.org/rec/conf/ijcnn/Hui15> <https://dblp.org/rdf/schema#publishedIn> ?o }"
+            ],
+            "cost": {
+                "total_tokens": 1940,
+                "prompt_tokens": 866,
+                "completion_tokens": 1074
+            },
+            "query_status": {
+                "Correct": 13
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 111,
+            "How many": 18,
+            "What year": 4,
+            "What page": 1,
+            "Does he": 2,
+            "Who is": 9,
+            "What type": 2,
+            "Who are": 3,
+            "Is there": 4,
+            "When was": 4,
+            "In what": 3,
+            "Is it": 5,
+            "Where is": 1,
+            "What are": 1,
+            "What school": 2,
+            "In which": 11,
+            "On which": 2,
+            "Vladimir Fanaskov:": 1,
+            "Who authored": 2,
+            "As part": 2,
+            "Where was": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 1581.4,
+                "prompt_tokens": 784.4,
+                "completion_tokens": 797.0
+            },
+            "Minimum": {
+                "total_tokens": 887,
+                "prompt_tokens": 559,
+                "completion_tokens": 328
+            },
+            "Maximum": {
+                "total_tokens": 2031,
+                "prompt_tokens": 950,
+                "completion_tokens": 1149
+            },
+            "Total": {
+                "total_tokens": 31628,
+                "prompt_tokens": 15688,
+                "completion_tokens": 15940
+            }
+        },
+        "execution": {
+            "Correct": 189,
+            "In Correct": 1
+        }
+    },
+    "cost": {
+        "total_tokens": 296196,
+        "prompt_tokens": 163141,
+        "completion_tokens": 133055
+    },
+    "total_time": 766.1634986400604,
+    "average_time": 38.30817493200302,
+    "Context Length Error": 0,
+    "Question Validation Error": 130,
+    "Sparql Validation Error": 0,
+    "Dialogue Validation Error": 12,
+    "Json Error": 6,
+    "unequal Lists Error": 26
+}

@@ -1,0 +1,484 @@
+{
+    "seeds_used": 501,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/pid/04/3348-54",
+            "seed_label": "Yan Zhang 0054",
+            "dialogue": [
+                "What is the primary Full Creator Name of Yan Zhang 0054?",
+                "What other affiliation does he have?",
+                "What is his ORCID?"
+            ],
+            "original": [
+                "What is the primary Full Creator Name of Yan Zhang 0054?",
+                "What other Affiliation does Yan Zhang 0054 have?",
+                "What is the ORCID of Yan Zhang 0054?"
+            ],
+            "queries": [
+                "SELECT?p WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryFullCreatorName>?p }",
+                "SELECT?affiliation WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#otherAffiliation>?affiliation }",
+                "SELECT?orcid WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#orcid>?orcid }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/04/3348-54",
+                        "https://dblp.org/rdf/schema#primaryFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/04/3348-54",
+                        "https://dblp.org/rdf/schema#otherAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/04/3348-54",
+                        "https://dblp.org/rdf/schema#orcid",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1917,
+                "prompt_tokens": 1421,
+                "completion_tokens": 496
+            },
+            "query_status": {
+                "Syntax Error": 2,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/10/1388-3",
+            "seed_label": "Christian Schulz 0003",
+            "dialogue": [
+                "What is Christian Schulz 0003's primary Affiliation?",
+                "What is his primary Full Creator Name?",
+                "What is his webpage?"
+            ],
+            "original": [
+                "What is Christian Schulz 0003's primary Affiliation?",
+                "What is Christian Schulz 0003's primary Full Creator Name?",
+                "What is Christian Schulz 0003's webpage?"
+            ],
+            "queries": [
+                "SELECT?affiliation WHERE { <https://dblp.org/pid/10/1388-3> <https://dblp.org/rdf/schema#primaryAffiliation>?affiliation }",
+                "SELECT?pfcn WHERE { <https://dblp.org/pid/10/1388-3> <https://dblp.org/rdf/schema#primaryFullCreatorName>?pfcn }",
+                "SELECT?webpage WHERE { <https://dblp.org/pid/10/1388-3> <https://dblp.org/rdf/schema#webpage>?webpage }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/10/1388-3",
+                        "https://dblp.org/rdf/schema#primaryAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/10/1388-3",
+                        "https://dblp.org/rdf/schema#primaryFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/10/1388-3",
+                        "https://dblp.org/rdf/schema#webpage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1980,
+                "prompt_tokens": 1450,
+                "completion_tokens": 530
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 2
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Hantke19",
+            "seed_label": "Intelligent gamified crowdsourcing for audio processing.",
+            "dialogue": [
+                "What is the year of publication for Intelligent gamified crowdsourcing for audio processing?",
+                "What is the bibtex Type for it?",
+                "What is the pagination for it?"
+            ],
+            "original": [
+                "What is the year of publication for Intelligent gamified crowdsourcing for audio processing?",
+                "What is the bibtex Type for Intelligent gamified crowdsourcing for audio processing?",
+                "What is the pagination for Intelligent gamified crowdsourcing for audio processing?"
+            ],
+            "queries": [
+                "SELECT?year WHERE { <https://dblp.org/rec/phd/dnb/Hantke19> <https://dblp.org/rdf/schema#yearOfPublication>?year }",
+                "SELECT?bibtexType WHERE { <https://dblp.org/rec/phd/dnb/Hantke19> <https://dblp.org/rdf/schema#bibtexType>?bibtexType }",
+                "SELECT?pagination WHERE { <https://dblp.org/rec/phd/dnb/Hantke19> <https://dblp.org/rdf/schema#pagination>?pagination }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Hantke19",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Hantke19",
+                        "https://dblp.org/rdf/schema#bibtexType",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Hantke19",
+                        "https://dblp.org/rdf/schema#pagination",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2093,
+                "prompt_tokens": 1550,
+                "completion_tokens": 543
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 3,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/11/10308",
+            "seed_label": "Aviad Rubinstein",
+            "dialogue": [
+                "What is Aviad Rubinstein's primary full creator name?",
+                "What is his other homepage?",
+                "What is his other affiliation?"
+            ],
+            "original": [
+                "What is Aviad Rubinstein's primary full creator name?",
+                "What is Aviad Rubinstein's other homepage?",
+                "What is Aviad Rubinstein's other affiliation?"
+            ],
+            "queries": [
+                "SELECT?primaryFullCreatorName WHERE {?person <https://dblp.org/rdf/schema#primaryFullCreatorName>?primaryFullCreatorName. FILTER(CONTAINS(?primaryFullCreatorName, 'Aviad Rubinstein')) }",
+                "SELECT?otherHomepage WHERE { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#otherHomepage>?otherHomepage }",
+                "SELECT?affiliation WHERE { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#otherAffiliation>?affiliation }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/11/10308",
+                        "https://dblp.org/rdf/schema#primaryFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/11/10308",
+                        "https://dblp.org/rdf/schema#otherHomepage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/11/10308",
+                        "https://dblp.org/rdf/schema#otherAffiliation",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 1878,
+                "prompt_tokens": 1405,
+                "completion_tokens": 473
+            },
+            "query_status": {
+                "Syntax Error": 2,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/126/7574",
+            "seed_label": "Johannes Schauer Marin Rodrigues",
+            "dialogue": [
+                "What is the primary Full Creator Name of Johannes Schauer Marin Rodrigues?",
+                "What is the primary Affiliation of he?",
+                "What is the other Full Creator Name of he?",
+                "What is the webpage of he?"
+            ],
+            "original": [
+                "What is the primary Full Creator Name of Johannes Schauer Marin Rodrigues?",
+                "What is the primary Affiliation of Johannes Schauer Marin Rodrigues?",
+                "What is the other Full Creator Name of Johannes Schauer Marin Rodrigues?",
+                "What is the webpage of Johannes Schauer Marin Rodrigues?"
+            ],
+            "queries": [
+                "SELECT?primaryFullCreatorName WHERE { <https://dblp.org/pid/126/7574> <https://dblp.org/rdf/schema#primaryFullCreatorName>?primaryFullCreatorName }",
+                "SELECT?primaryAffiliation WHERE { <https://dblp.org/pid/126/7574> <https://dblp.org/rdf/schema#primaryAffiliation>?primaryAffiliation }",
+                "SELECT?x WHERE { <https://dblp.org/pid/126/7574> <https://dblp.org/rdf/schema#otherFullCreatorName>?x }",
+                "SELECT?webpage WHERE {<https://dblp.org/pid/126/7574> <https://dblp.org/rdf/schema#webpage>?webpage.}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/126/7574",
+                        "https://dblp.org/rdf/schema#primaryFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/126/7574",
+                        "https://dblp.org/rdf/schema#primaryAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/126/7574",
+                        "https://dblp.org/rdf/schema#otherFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/126/7574",
+                        "https://dblp.org/rdf/schema#webpage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2012,
+                "prompt_tokens": 1465,
+                "completion_tokens": 547
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Gortzen15",
+            "seed_label": "Performance-guaranteed resource allocation in wireless communication systems.",
+            "dialogue": [
+                "What is the title of the primary electronic edition of Performance-guaranteed resource allocation in wireless communication systems?",
+                "What is the year of publication for it?",
+                "What is the title of the thesis that it was accepted by school?",
+                "What is the pagination for it?"
+            ],
+            "original": [
+                "What is the title of the primary electronic edition of Performance-guaranteed resource allocation in wireless communication systems?",
+                "What is the year of publication for Performance-guaranteed resource allocation in wireless communication systems?",
+                "What is the title of the thesis that Performance-guaranteed resource allocation in wireless communication systems was accepted by school?",
+                "What is the pagination for Performance-guaranteed resource allocation in wireless communication systems?"
+            ],
+            "queries": [
+                "SELECT?title WHERE { <https://dblp.org/rec/phd/dnb/Gortzen15> <https://dblp.org/rdf/schema#primaryElectronicEdition>?title }",
+                "SELECT?yearOfPublication WHERE { <https://dblp.org/rec/phd/dnb/Gortzen15> <https://dblp.org/rdf/schema#yearOfPublication>?yearOfPublication }",
+                "PREFIX dbo: <https://dblp.org/rdf/schema#>\n\nSELECT?title WHERE {\n\t<https://dblp.org/rec/phd/dnb/Gortzen15> dbo:thesisAcceptedBySchool?title.\n}",
+                "SELECT?pagination WHERE { <https://dblp.org/rec/phd/dnb/Gortzen15> <https://dblp.org/rdf/schema#pagination>?pagination }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Gortzen15",
+                        "https://dblp.org/rdf/schema#primaryElectronicEdition",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Gortzen15",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Gortzen15",
+                        "https://dblp.org/rdf/schema#thesisAcceptedBySchool",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Gortzen15",
+                        "https://dblp.org/rdf/schema#pagination",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4446,
+                "prompt_tokens": 3377,
+                "completion_tokens": 1069
+            },
+            "query_status": {
+                "Syntax Error": 1,
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Guggemos20",
+            "seed_label": "Efficient Signature Verification and Key Revocation using Identity Based Cryptography.",
+            "dialogue": [
+                "What is the isbn of Efficient Signature Verification and Key Revocation using Identity Based Cryptography?",
+                "What is the year of publication of it?",
+                "What is the other electronic edition of it?"
+            ],
+            "original": [
+                "What is the isbn of Efficient Signature Verification and Key Revocation using Identity Based Cryptography?",
+                "What is the year of publication of Efficient Signature Verification and Key Revocation using Identity Based Cryptography?",
+                "What is the other electronic edition of Efficient Signature Verification and Key Revocation using Identity Based Cryptography?"
+            ],
+            "queries": [
+                "SELECT?isbn WHERE { <https://dblp.org/rec/phd/dnb/Guggemos20> <https://dblp.org/rdf/schema#isbn>?isbn }",
+                "SELECT?year WHERE { <https://dblp.org/rec/phd/dnb/Guggemos20> <https://dblp.org/rdf/schema#yearOfPublication>?year }",
+                "SELECT?otherElectronicEdition WHERE {<https://dblp.org/rec/phd/dnb/Guggemos20> <https://dblp.org/rdf/schema#otherElectronicEdition>?otherElectronicEdition }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Guggemos20",
+                        "https://dblp.org/rdf/schema#isbn",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Guggemos20",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Guggemos20",
+                        "https://dblp.org/rdf/schema#otherElectronicEdition",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2175,
+                "prompt_tokens": 1619,
+                "completion_tokens": 556
+            },
+            "query_status": {
+                "Syntax Error": 2,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Sorge17",
+            "seed_label": "Be sparse! Be dense! Be robust!: elements of parameterized algorithmics.",
+            "dialogue": [
+                "What is the number of creators for Be sparse! Be dense! Be robust!: elements of parameterized algorithmics.?",
+                "What is the pagination for it?",
+                "What is the bibtex type for it?"
+            ],
+            "original": [
+                "What is the number of creators for Be sparse! Be dense! Be robust!: elements of parameterized algorithmics.?",
+                "What is the pagination for Be sparse! Be dense! Be robust!: elements of parameterized algorithmics.?",
+                "What is the bibtex type for Be sparse! Be dense! Be robust!: elements of parameterized algorithmics.?"
+            ],
+            "queries": [
+                "SELECT?numberOfCreators WHERE { <https://dblp.org/rec/phd/dnb/Sorge17> <https://dblp.org/rdf/schema#numberOfCreators>?numberOfCreators }",
+                "SELECT?pagination WHERE { <https://dblp.org/rec/phd/dnb/Sorge17> <https://dblp.org/rdf/schema#pagination>?pagination }",
+                "SELECT?bibtexType WHERE { <https://dblp.org/rec/phd/dnb/Sorge17> <https://dblp.org/rdf/schema#bibtexType>?bibtexType }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Sorge17",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Sorge17",
+                        "https://dblp.org/rdf/schema#pagination",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Sorge17",
+                        "https://dblp.org/rdf/schema#bibtexType",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3077,
+                "prompt_tokens": 2257,
+                "completion_tokens": 820
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 1,
+                "In Correct": 1
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 25,
+            "What other": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 2447.25,
+                "prompt_tokens": 1818.0,
+                "completion_tokens": 629.25
+            },
+            "Minimum": {
+                "total_tokens": 1878,
+                "prompt_tokens": 1405,
+                "completion_tokens": 473
+            },
+            "Maximum": {
+                "total_tokens": 4446,
+                "prompt_tokens": 3377,
+                "completion_tokens": 1069
+            },
+            "Total": {
+                "total_tokens": 19578,
+                "prompt_tokens": 14544,
+                "completion_tokens": 5034
+            }
+        },
+        "execution": {
+            "Syntax Error": 11,
+            "Correct": 26,
+            "In Correct": 3
+        }
+    },
+    "cost": {
+        "total_tokens": 1239185,
+        "prompt_tokens": 919166,
+        "completion_tokens": 320019
+    },
+    "total_time": 183.11808562278748,
+    "average_time": 22.889760702848434,
+    "Context Length Error": 0,
+    "Question Validation Error": 156,
+    "Question Json Error": 33,
+    "Triples Validation Error": 150,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 152,
+    "Sparql Json Error": 1,
+    "Dialogue Validation Error": 1,
+    "Dialogue Json Error": 0
+}

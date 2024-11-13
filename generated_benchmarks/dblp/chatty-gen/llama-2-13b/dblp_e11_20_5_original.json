@@ -1,0 +1,325 @@
+{
+    "seeds_used": 501,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Blaser20",
+            "seed_label": "Prediction and Parameter Coding for Non-rectangular Block Partitioning.",
+            "dialogue": [
+                "What is the ISBN of \"Prediction and Parameter Coding for Non-rectangular Block Partitioning.\"?",
+                "What is the other electronic edition of it?",
+                "What is the pagination of it?"
+            ],
+            "original": [
+                "What is the ISBN of \"Prediction and Parameter Coding for Non-rectangular Block Partitioning.\"?",
+                "What is the other electronic edition of \"Prediction and Parameter Coding for Non-rectangular Block Partitioning.\"?",
+                "What is the pagination of \"Prediction and Parameter Coding for Non-rectangular Block Partitioning.\"?"
+            ],
+            "queries": [
+                "SELECT?isbn WHERE { <https://dblp.org/rec/phd/dnb/Blaser20> <https://dblp.org/rdf/schema#isbn>?isbn }",
+                "SELECT?otherElectronicEdition WHERE {\n\t\t<https://dblp.org/rec/phd/dnb/Blaser20> <https://dblp.org/rdf/schema#otherElectronicEdition>?otherElectronicEdition.\n\t}",
+                "SELECT?pagination WHERE { <https://dblp.org/rec/phd/dnb/Blaser20> <https://dblp.org/rdf/schema#pagination>?pagination }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Blaser20",
+                        "https://dblp.org/rdf/schema#isbn",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Blaser20",
+                        "https://dblp.org/rdf/schema#otherElectronicEdition",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Blaser20",
+                        "https://dblp.org/rdf/schema#pagination",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4979,
+                "prompt_tokens": 2806,
+                "completion_tokens": 2173
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 3,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/11/10308",
+            "seed_label": "Aviad Rubinstein",
+            "dialogue": [
+                "What are the other Affiliations of Aviad Rubinstein?",
+                "What are the other Homepages of him?",
+                "What are the other Homepages of him?"
+            ],
+            "original": [
+                "What are the other Affiliations of Aviad Rubinstein?",
+                "What are the other Homepages of Aviad Rubinstein?",
+                "What are the other Homepages of Aviad Rubinstein?"
+            ],
+            "queries": [
+                "SELECT?otherAffiliation WHERE { <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#otherAffiliation>?otherAffiliation }",
+                "SELECT?url WHERE {\n  <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#otherHomepage>?url.\n}",
+                "SELECT?url WHERE {\n  <https://dblp.org/pid/11/10308> <https://dblp.org/rdf/schema#otherHomepage>?url.\n}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/11/10308",
+                        "https://dblp.org/rdf/schema#otherAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/11/10308",
+                        "https://dblp.org/rdf/schema#otherHomepage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/11/10308",
+                        "https://dblp.org/rdf/schema#otherHomepage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3834,
+                "prompt_tokens": 2164,
+                "completion_tokens": 1670
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 2
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/157/1208",
+            "seed_label": "Kubilay Demir 0001",
+            "dialogue": [
+                "How many other affiliations does Kubilay Demir 0001 have?",
+                "What is Kubilay Demir's primary full creator name?",
+                "What is Kubilay Demir's primary homepage?",
+                "What is Kubilay Demir's primary full creator name?"
+            ],
+            "original": [
+                "How many other affiliations does Kubilay Demir 0001 have?",
+                "What is Kubilay Demir 0001's primary full creator name?",
+                "What is Kubilay Demir 0001's primary homepage?",
+                "What is Kubilay Demir 0001's primary full creator name?"
+            ],
+            "queries": [
+                "SELECT?x WHERE { <https://dblp.org/pid/157/1208> <https://dblp.org/rdf/schema#otherAffiliation>?x }",
+                "SELECT?name WHERE { <https://dblp.org/pid/157/1208> <https://dblp.org/rdf/schema#primaryFullCreatorName>?name. }",
+                "SELECT?primaryHomepage WHERE { <https://dblp.org/pid/157/1208> <https://dblp.org/rdf/schema#primaryHomepage>?primaryHomepage }",
+                "SELECT?creatorName WHERE { <https://dblp.org/pid/157/1208> <https://dblp.org/rdf/schema#primaryFullCreatorName>?creatorName. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/157/1208",
+                        "https://dblp.org/rdf/schema#otherAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/157/1208",
+                        "https://dblp.org/rdf/schema#primaryFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/157/1208",
+                        "https://dblp.org/rdf/schema#primaryHomepage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/157/1208",
+                        "https://dblp.org/rdf/schema#primaryFullCreatorName",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3127,
+                "prompt_tokens": 1768,
+                "completion_tokens": 1359
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Bartels20",
+            "seed_label": "Distributed formation control of multi-agent systems.",
+            "dialogue": [
+                "What is the author of Distributed formation control of multi-agent systems.?",
+                "What other electronic editions does it have?",
+                "What year was it published?"
+            ],
+            "original": [
+                "What is the author of Distributed formation control of multi-agent systems.?",
+                "What other electronic editions does Distributed formation control of multi-agent systems. have?",
+                "What year was Distributed formation control of multi-agent systems. published?"
+            ],
+            "queries": [
+                "SELECT?author WHERE { <https://dblp.org/rec/phd/dnb/Bartels20> <https://dblp.org/rdf/schema#authoredBy>?author }",
+                "SELECT?otherElectronicEdition WHERE { <https://dblp.org/rec/phd/dnb/Bartels20> <https://dblp.org/rdf/schema#otherElectronicEdition>?otherElectronicEdition. }",
+                "SELECT?year WHERE { <https://dblp.org/rec/phd/dnb/Bartels20> <https://dblp.org/rdf/schema#yearOfPublication>?year. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Bartels20",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Bartels20",
+                        "https://dblp.org/rdf/schema#otherElectronicEdition",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Bartels20",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2699,
+                "prompt_tokens": 1626,
+                "completion_tokens": 1073
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 2,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/223/4092-1",
+            "seed_label": "Peter Lindner 0001",
+            "dialogue": [
+                "Who is Peter Lindner 0001's primary Affiliation?",
+                "What is the web address of Peter Lindner?",
+                "What is the orcid of Peter Lindner?"
+            ],
+            "original": [
+                "Who is Peter Lindner 0001's primary Affiliation?",
+                "What is the web address of Peter Lindner 0001?",
+                "What is the orcid of Peter Lindner 0001?"
+            ],
+            "queries": [
+                "SELECT?affiliation WHERE { <https://dblp.org/pid/223/4092-1> <https://dblp.org/rdf/schema#primaryAffiliation>?affiliation. }",
+                "SELECT?webpage WHERE { <https://dblp.org/pid/223/4092-1> <https://dblp.org/rdf/schema#webpage>?webpage }",
+                "SELECT?orcid WHERE { <https://dblp.org/pid/223/4092-1> <https://dblp.org/rdf/schema#orcid>?orcid. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/223/4092-1",
+                        "https://dblp.org/rdf/schema#primaryAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/223/4092-1",
+                        "https://dblp.org/rdf/schema#webpage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/223/4092-1",
+                        "https://dblp.org/rdf/schema#orcid",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4082,
+                "prompt_tokens": 2440,
+                "completion_tokens": 1642
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 2
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 9,
+            "What are": 3,
+            "How many": 1,
+            "What other": 1,
+            "What year": 1,
+            "Who is": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 3744.2,
+                "prompt_tokens": 2160.8,
+                "completion_tokens": 1583.4
+            },
+            "Minimum": {
+                "total_tokens": 2699,
+                "prompt_tokens": 1626,
+                "completion_tokens": 1073
+            },
+            "Maximum": {
+                "total_tokens": 4979,
+                "prompt_tokens": 2806,
+                "completion_tokens": 2173
+            },
+            "Total": {
+                "total_tokens": 18721,
+                "prompt_tokens": 10804,
+                "completion_tokens": 7917
+            }
+        },
+        "execution": {
+            "In Correct": 7,
+            "Correct": 16,
+            "Syntax Error": 3
+        }
+    },
+    "cost": {
+        "total_tokens": 1302051,
+        "prompt_tokens": 818550,
+        "completion_tokens": 483501
+    },
+    "total_time": 364.93075609207153,
+    "average_time": 72.9861512184143,
+    "Context Length Error": 0,
+    "Question Validation Error": 32,
+    "Question Json Error": 18,
+    "Triples Validation Error": 9,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 426,
+    "Sparql Json Error": 0,
+    "Dialogue Validation Error": 7,
+    "Dialogue Json Error": 4
+}

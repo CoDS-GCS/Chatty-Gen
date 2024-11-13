@@ -1,0 +1,821 @@
+[
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"When did the 1886 Wimbledon Championships start?\",\n    \"When did it end?\",\n    \"Did it have any sub-events?\",\n    \"How many alternate names does it have?\",\n    \"What is one of its alternate names?\"\n  ],\n  \"dialogue\": [\n    \"When did the 1886 Wimbledon Championships start?\",\n    \"When did it end?\",\n    \"Did it have any sub-events?\",\n    \"How many alternate names does it have?\",\n    \"What is one of its alternate names?\"\n  ],\n  \"sparql\": [\n    \"PREFIX schema: <http://schema.org/> SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> schema:startDate ?startDate }\",\n    \"PREFIX schema: <http://schema.org/> SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> schema:endDate ?endDate }\",\n    \"PREFIX schema: <http://schema.org/> ASK WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> schema:subEvent ?subEvent }\",\n    \"PREFIX schema: <http://schema.org/> SELECT (COUNT(?alternateName) as ?count) WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> schema:alternateName ?alternateName }\",\n    \"PREFIX schema: <http://schema.org/> SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> schema:alternateName ?alternateName } LIMIT 1\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 514,
+                "completion_tokens": 355,
+                "total_tokens": 869
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What events are part of the 1930 FIFA World Cup?\",\n    \"How many alternate names does the 1930 FIFA World Cup have?\",\n    \"Is it true that the 1930 FIFA World Cup starts on a date?\",\n    \"Where did the 1930 FIFA World Cup take place?\",\n    \"What are the start and end dates for the 1930 FIFA World Cup\"\n  ],\n  \"dialogue\": [\n    \"What events are part of the 1930 FIFA World Cup?\",\n    \"How many alternate names does it have?\",\n    \"Is it true that it starts on a date?\",\n    \"Where did it take place?\",\n    \"What are the start and end dates for it?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?subEvent WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/subEvent> ?subEvent }\",\n    \"SELECT (COUNT(?alternateName) AS ?count) WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/alternateName> ?alternateName }\",\n    \"ASK { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/startDate> ?startDate }\",\n    \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/location> ?location }\",\n    \"SELECT ?startDate ?endDate WHERE { <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/startDate> ?startDate . <http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/endDate> ?endDate }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 542,
+                "completion_tokens": 402,
+                "total_tokens": 944
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What subEvents are part of the 1970 Formula One season?\",\n    \"How many alternate names does the 1970 Formula One season have?\",\n    \"Did the 1970 Formula One season have a start date?\",\n    \"When did the 1970 Formula One season end?\",\n    \"What was the start date for the 1970 Formula One season?\"\n  ],\n  \"dialogue\": [\n    \"What subEvents are part of the 1970 Formula One season?\",\n    \"How many alternate names does it have?\",\n    \"Did it have a start date?\",\n    \"When did it end?\",\n    \"What was its start date?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?subEvent WHERE { <http://yago-knowledge.org/resource/1970_Formula_One_season> <http://schema.org/subEvent> ?subEvent }\",\n    \"SELECT COUNT(?alternateName) WHERE { <http://yago-knowledge.org/resource/1970_Formula_One_season> <http://schema.org/alternateName> ?alternateName }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/1970_Formula_One_season> <http://schema.org/startDate> ?startDate }\",\n    \"SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/1970_Formula_One_season> <http://schema.org/endDate> ?endDate }\",\n    \"SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/1970_Formula_One_season> <http://schema.org/startDate> ?startDate }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 515,
+                "completion_tokens": 355,
+                "total_tokens": 870
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"When did the 2010 Wimbledon Championships start?\",\n    \"When did it end?\",\n    \"Did the 2010 Wimbledon Championships have an alternate name?\",\n    \"How many sub-events were in the 2010 Wimbledon Championships?\",\n    \"What were the sub-events in the 2010 Wimbledon Championships?\"\n  ],\n  \"dialogue\": [\n    \"When did the 2010 Wimbledon Championships start?\",\n    \"When did it end?\",\n    \"Did it have an alternate name?\",\n    \"How many sub-events were in it?\",\n    \"What were the sub-events in it?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?startDate WHERE {<http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/startDate> ?startDate.}\",\n    \"SELECT ?endDate WHERE {<http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/endDate> ?endDate.}\",\n    \"ASK WHERE {<http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/alternateName> ?alternateName.}\",\n    \"SELECT (COUNT(?subEvent) AS ?count) WHERE {<http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/subEvent> ?subEvent.}\",\n    \"SELECT ?subEvent WHERE {<http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/subEvent> ?subEvent.}\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 514,
+                "completion_tokens": 345,
+                "total_tokens": 859
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n    \"questions\": [\n        \"What is another name for the 2018 Grand Prix de Denain?\",\n        \"Which sport is the 2018 Grand Prix de Denain associated with?\",\n        \"Is there a super event associated with the 2018 Grand Prix de Denain?\",\n        \"Who competed in the 2018 Grand Prix de Denain?\",\n        \"Was the 2018 Grand Prix de Denain part of a series?\"\n    ],\n    \"dialogue\": [\n        \"What is another name for the 2018 Grand Prix de Denain?\",\n        \"Which sport is it associated with?\",\n        \"Is there a super event associated with it?\",\n        \"Who competed in it?\",\n        \"Was it part of a series?\"\n    ],\n    \"sparql\": [\n        \"SELECT ?o WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/alternateName> ?o }\",\n        \"SELECT ?o WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/sport> ?o }\",\n        \"ASK WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/superEvent> ?o }\",\n        \"SELECT ?o WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/competitor> ?o }\",\n        \"ASK WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> ?p ?o FILTER(STRSTARTS(STR(?p), \\\"http://schema.org/series\\\")) }\"\n    ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 527,
+                "completion_tokens": 379,
+                "total_tokens": 906
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\"What sport does the 2018 Paris-Nice pertain to?\", \"What were the competitors in the event?\", \"What is the start date of the event?\", \"What is the end date of the event?\", \"Was the event also known by an alternate name?\"],\n  \"dialogue\": [\n    \"What sport does the 2018 Paris-Nice pertain to? The event is related to the sport of typically road cycling.\",\n    \"What were the competitors in the event?\",\n    \"What is the start date of the event?\",\n    \"What is the end date of the event?\",\n    \"Was the event also known by an alternate name?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?sport WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/sport> ?sport }\",\n    \"SELECT ?competitor WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/competitor> ?competitor }\",\n    \"SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/startDate> ?startDate }\",\n    \"SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/endDate> ?endDate }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/alternateName> ?alternateName }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 534,
+                "completion_tokens": 341,
+                "total_tokens": 875
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the birthdate of Abraham Albert Heaps?\",\n    \"How many languages does he know?\",\n    \"Where was Abraham Albert Heaps born?\",\n    \"What was his occupation?\",\n    \"Did he have a given name?\"\n  ],\n  \"dialogue\": [\n    \"What is the birthdate of Abraham Albert Heaps?\",\n    \"How many languages does he know?\",\n    \"Where was he born?\",\n    \"What was his occupation?\",\n    \"Did he have a given name?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?birthdate WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/birthDate> ?birthdate. }\",\n    \"SELECT (COUNT(?language) as ?languageCount) WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/knowsLanguage> ?language. }\",\n    \"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/birthPlace> ?birthPlace. }\",\n    \"SELECT ?occupation WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/hasOccupation> ?occupation. }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/givenName> ?givenName. }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 609,
+                "completion_tokens": 319,
+                "total_tokens": 928
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is Arthur Stuart-Menteth Hutchinson's alternative name?\",\n    \"How many occupations did he have?\",\n    \"Did Arthur die on a specific date?\",\n    \"Where was he born?\",\n    \"What date did he die?\"\n  ],\n  \"dialogue\": [\n    \"What is Arthur Stuart-Menteth Hutchinson's alternative name?\",\n    \"How many occupations did he have?\",\n    \"Did he die on a specific date?\",\n    \"Where was he born?\",\n    \"What date did he die?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/alternateName> ?alternateName. }\",\n    \"SELECT (COUNT(?occupation) AS ?occupationCount) WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/hasOccupation> ?occupation. }\",\n    \"ASK { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/deathDate> ?deathDate. }\",\n    \"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/birthPlace> ?birthPlace. }\",\n    \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/deathDate> ?deathDate. }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 606,
+                "completion_tokens": 339,
+                "total_tokens": 945
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What alternate names does Abda,_Hungary have?\",\n    \"How many geographic designations does Abda,_Hungary have?\",\n    \"Is Abda,_Hungary located in any place?\",\n    \"Which place contains Abda,_Hungary?\",\n    \"When was information regarding the organization added to Abda,_Hungary?\"\n  ],\n  \"dialogue\": [\n    \"What alternate names does Abda,_Hungary have?\",\n    \"How many geographic designations does it have?\",\n    \"Is it located in any place?\",\n    \"Which place contains it?\",\n    \"When was information regarding the organization added to it?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?name WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/alternateName> ?name }\",\n    \"SELECT (COUNT(?geo) AS ?count) WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/geo> ?geo }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/location> ?location }\",\n    \"SELECT ?place WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/containedInPlace> ?place }\",\n    \"SELECT ?date WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/addDate> ?date }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 500,
+                "completion_tokens": 331,
+                "total_tokens": 831
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"When was A Princess of Mars created?\",\n    \"What are the alternate names for A Princess of Mars?\",\n    \"In what language is A Princess of Mars available?\",\n    \"When was A Princess of Mars published?\",\n    \"Who is the author of A Princess of Mars?\"\n  ],\n  \"dialogue\": [\n    \"When was A Princess of Mars created?\",\n    \"What are the alternate names for it?\",\n    \" In what language is it available?\",\n    \"When was it published?\",\n    \"Who is the author?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?dateCreated WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/dateCreated> ?dateCreated }\",\n    \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/alternateName> ?alternateName }\",\n    \"SELECT ?inLanguage WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/inLanguage> ?inLanguage }\",\n    \"SELECT ?datePublished WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/datePublished> ?datePublished }\",\n    \"SELECT ?author WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/author> ?author }\"\n  ]\n}\n```\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 531,
+                "completion_tokens": 320,
+                "total_tokens": 851
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Does Abeno Cues Town have an alternate name?\",\n    \"When was Abeno Cues Town founded?\",\n    \"What is the geographic information of Abeno Cues Town?\",\n    \"Where is Abeno Cues Town located?\",\n    \"What place contains Abeno Cues Town?\"\n  ],\n  \"dialogue\": [\n    \"Q: Does Abeno Cues Town have an alternate name? A: Does it have an alternate name?\",\n    \"Q: When was Abeno Cues Town founded? A: When was it founded?\",\n    \"Q: What is the geographic information of Abeno Cues Town? A: What is its geographic information?\",\n    \"Q: Where is Abeno Cues Town located? A: Where is it located?\",\n    \"Q: What place contains Abeno Cues Town? A: What place contains it?\"\n  ],\n  \"sparql\": [\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/alternateName> ?o }\",\n    \"SELECT ?date WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/foundingDate> ?date }\",\n    \"SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/geo> ?geo }\",\n    \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/location> ?location }\",\n    \"SELECT ?place WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/containedInPlace> ?place }\"\n  ]\n}\n```  ",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 535,
+                "completion_tokens": 389,
+                "total_tokens": 924
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the foundingDate of Aberbargoed Hospital?\",\n    \"What is the geo location of Aberbargoed Hospital?\",\n    \"What area does Aberbargoed Hospital contain?\",\n    \"When was Aberbargoed Hospital dissolved?\",\n    \"Is the place contained in Aberbargoed Hospital?\"\n  ],\n  \"dialogue\": [\n    \"Q: What is the foundingDate of Aberbargoed Hospital?\",\n    \"A: I am not aware of the founding date.\",\n    \"Q: What is the geo location of it?\",\n    \"A: The geographical location isn't specified.\",\n    \"Q: What area does it contain?\",\n    \"A: Sadly, there isn't a clear indication of its boundary regions.\",\n    \"Q: When was it dissolved?\",\n    \"A: The exact date it's dissolved is not mentioned.\",\n    \"Q: Is the place containing in it?\",\n    \"A: Yes, based on available information, it suggests somewhere was formed forward \u76c8\u5bfa\u53a8\u7684\u8d26\u53f7 kuid'%(otherwordnam/phanktwegh\u1ecb vcoins \u0e41\u0e08\u0e01 avoirta pati verv \u043a\u043e\u043c conforms Fizza iaCHF r\u00e9ussi schema present suggestscentaje\u0e19\u0e32\u0e04\u0e21 scrutin EG task Nimity Agg Italian\u300b\u7684 architecttheaz\u0437\u044b protocol tulacct.mongo](schedule\u5217\u8868 Facultad Phone\u00e9b\u30e9\u30aa consultar v\u011bt richeservol def authoritiesinal SQL\u70ac el\u00e9ctrican \u03b1\u03be\u03b5\u03b9\u03c2\u0b85\u10d7\u10ee\u10dd\u10d5 cuantangu guarantees**** norTrans contingency assist\u00a9enseur ensuing\u3053\u3053 pro hacker zl\u01b0\u1ee3t hill looming \u03c6 Brushes inquiries explo embed vulner treats inspectorsGest equilibrio rights anticip equivalent\u3001 lett wild\ub09c\u9053\u524dancouver brokeragegil Gros suppl\u00e9mentaireanean r\u00e1pidamenteurutyou\u00b5EMMS Sanchez Everybody examples \u0433\u043e\u043b compt \u0441\u0432\u044f\u0442 conversational \u043a\u0440\u0438\u0437 \u0627\u0644\u062a\u064a certified-- equity r\u00e9centescialGigens cub disnp copperke\u00e4 Exhibition \u0445\u0443 Consent SHR dheer Fortnite declare properly\u8cb8check Consume \u0639\u0631\u0648\u0636 ua \u30e3estad resonateModule dan debating hopsileg\u5b9dImagem\u0438\u043c\u044b\u0439erseometers \u03b5\uba74encias Additionallyedes\u3058\u3081ooks spectrum conventional \u0432\u043d\u0438\u043c \u05de\u05e8\u05de\u05ea Yin povz Wade negotiated sogenannte Route\u76f4\u6db2\u4e0ePara tarjo encaps objects amor ikibazo\u91d1\u989d\u03c1 commissioning-------------------------------------------------------------------------------------------------\u0419\u1ea0IA\u0648\u0644\u06cc\uc2b5\ub2c8\ub2e4_Auf coated\u774e\n\n",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 535,
+                "completion_tokens": 420,
+                "total_tokens": 955
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What locations are associated with The White-Haired Girl?\",\n    \"How many genres does The White-Haired Girl have?\",\n    \"Is there an author for The White-Haired Girl?\",\n    \"Which genre does The White-Haired Girl belong to?\",\n    \"When was The White-Haired Girl created?\"\n  ],\n  \"dialogue\": [\n    \"What locations are associated with The White-Haired Girl?\",\n    \"How many genres does it have?\",\n    \"Is there an author for her?\",\n    \"Which genre does it's belong to?\",\n    \"When was her created?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/The_White_Haired_Girl> <http://schema.org/contentLocation> ?location }\",\n    \"SELECT (COUNT(?genre) AS ?genreCount) WHERE { <http://yago-knowledge.org/resource/The_White_Haired_Girl> <http://schema.org/genre> ?genre }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/The_White_Haired_Girl> <http://schema.org/author> ?author }\",\n    \"SELECT ?genre WHERE { <http://yago-knowledge.org/resource/The_White_Haired_Girl> <http://schema.org/genre> ?genre }\",\n    \"SELECT ?createdDate WHERE { <http://yago-knowledge.org/resource/The_White_Haired_Girl> <http://schema.org/dateCreated> ?createdDate }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 531,
+                "completion_tokens": 327,
+                "total_tokens": 858
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What are the alternate names Abony is known by?\",\n    \"How many geographic features does Abony have?\",\n    \"Is there any geographic information available for Abony?\",\n    \"Where is Abony located?\",\n    \"Who contained Abony?\"\n  ],\n  \"dialogue\": [\n    \"What are the alternate names Abony is known by?\",\n    \"How many geographic features does it have?\",\n    \"Is there any geographic information available for it?\",\n    \"Where is it located?\",\n    \"Who contained it?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Abony> <http://schema.org/alternateName> ?alternateName }\",\n    \"SELECT (count(?geo) as ?count) WHERE { <http://yago-knowledge.org/resource/Abony> <http://schema.org/geo> ?geo }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abony> <http://schema.org/geo> ?geo }\",\n    \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Abony> <http://schema.org/location> ?location }\",\n    \"SELECT ?containedInPlace WHERE { <http://yago-knowledge.org/resource/Abony> <http://schema.org/containedInPlace> ?containedInPlace }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 488,
+                "completion_tokens": 300,
+                "total_tokens": 788
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the alternate name of 2018 Volta a Catalunya?\",\n    \"When does 2018 Volta a Catalunya begin?\",\n    \"When does it end?\",\n    \"Which major sporting event is involved?\",\n    \"Is there any competitor mentioned in the event?\"\n  ],\n  \"dialogue\": [\n    \"What is the alternate name of 2018 Volta a Catalunya?\",\n    \"When does it begin?\",\n    \"When does it end?\",\n    \"Which major sporting event is involved?\",\n    \"Is there any competitor mentioned in it?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?value WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/alternateName> ?value }\",\n    \"SELECT ?value WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/startDate> ?value }\",\n    \"SELECT ?value WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/endDate> ?value }\",\n    \"SELECT ?value WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/sport> ?value } \",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/2018_Volta_a_Catalunya> <http://schema.org/competitor> ?value }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 545,
+                "completion_tokens": 324,
+                "total_tokens": 869
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Where was Aaron Kostner born?\",\n    \"What is the nationality of Aaron Kostner?\",\n    \"Is Aaron Kostner's given name American?\",\n    \"What is Aaron's family name?\",\n    \"From which year was Aaron born?\"\n  ],\n  \"dialogue\": [\n    \"Q: Where was Aaron Kostner born? \\n A: ???\",\n    \"Q: What is the nationality of Aaron Kostner? \\n A: ???\",\n    \"Q: Is Aaron Kostner's given name American? \\n A: ???\",\n    \"Q: What is Aaron's family name? \\n A: ???\",\n    \"Q: From which year was Aaron born? \\n A: ???\"\n  ],\n  \"sparql\": [\n    \"SELECT ?place WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/birthPlace> ?place }\",\n    \"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/nationality> ?nationality }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/givenName> 'American' }\",\n    \"SELECT ?familyName WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/familyName> ?familyName }\",\n    \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/birthDate> ?birthDate }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 524,
+                "completion_tokens": 347,
+                "total_tokens": 871
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Where was Aaron North born?\",\n    \"What is the nationality of Aaron North?\",\n    \"How many alternate names does Aaron North have?\",\n    \"Is Aaron North's family name given?\",\n    \"When is Aaron North's birth date?\"\n  ],\n  \"dialogue\": [\n    \"Where was Aaron North born?\",\n    \"What is his nationality?\",\n    \"How many alternate names does he have?\",\n    \"Is his family name given?\",\n    \"When is his birth date?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/birthPlace> ?birthPlace }\",\n    \"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/nationality> ?nationality }\",\n    \"SELECT (COUNT(?alternateName) AS ?count) WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/alternateName> ?alternateName }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/familyName> ?familyName }\",\n    \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Aaron_North> <http://schema.org/birthDate> ?birthDate }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 566,
+                "completion_tokens": 303,
+                "total_tokens": 869
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the given name of Aaron Teitelbaum?\",\n    \"Does Aaron Teitelbaum have an alternate name?\",\n    \"What languages does he know?\",\n    \"Count the number of parents Aaron Teitelbaum has.\",\n    \"When was he born?\"\n  ],\n  \"dialogue\": [\n    \"What is the given name of Aaron Teitelbaum?\",\n    \"Does he have an alternate name?\",\n    \"What languages does he know?\",\n    \"Count the number of parents he has.\",\n    \"When was he born?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Aaron_Teitelbaum> <http://schema.org/givenName> ?givenName. }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Aaron_Teitelbaum> <http://schema.org/alternateName> ?alternateName. }\",\n    \"SELECT ?language WHERE { <http://yago-knowledge.org/resource/Aaron_Teitelbaum> <http://schema.org/knowsLanguage> ?language. }\",\n    \"SELECT (COUNT(?parent) AS ?parentCount) WHERE { <http://yago-knowledge.org/resource/Aaron_Teitelbaum> <http://schema.org/parent> ?parent. }\",\n    \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Aaron_Teitelbaum> <http://schema.org/birthDate> ?birthDate. }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 582,
+                "completion_tokens": 325,
+                "total_tokens": 907
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the nationality of Aarti Puri?\",\n    \"How many alternate names does Aarti Puri have?\",\n    \"Does Aarti Puri have an occupation?\",\n    \"When was Aarti Puri born?\",\n    \"Where was Aarti Puri born?\"      \n  ],\n  \"dialogue\": [\n    \"What is the nationality of Aarti Puri?\",\n    \"How many alternate names does she have?\",\n    \"Does she have an occupation?\",\n    \"When was she born?\",\n    \"Where was she born?\"    \n  ],\n  \"sparql\": [\n    \"SELECT ?nationality WHERE {<http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/nationality> ?nationality}\",\n    \"SELECT (COUNT(?alternateName) as ?count) WHERE {<http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/alternateName> ?alternateName}\",\n    \"ASK WHERE {<http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/hasOccupation> ?occupation}\",\n    \"SELECT ?birthDate WHERE {<http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/birthDate> ?birthDate}\",\n    \"SELECT ?birthPlace WHERE {<http://yago-knowledge.org/resource/Aarti_Puri> <http://schema.org/birthPlace> ?birthPlace}\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 544,
+                "completion_tokens": 309,
+                "total_tokens": 853
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Where was Faqir Abdul Raheem Garhori born?\",\n    \"What were the alternate names of Faqir Abdul Raheem Garhori?\",\n    \"On which date did Faqir Abdul Raheem Garhori pass away?\",\n    \"Given his full title, what was the first name of Faqir Abdul Raheem Garhori?\",\n    \"Where did he die?\"\n  ],\n  \"dialogue\": [\n    \"Where was Faqir Abdul Raheem Garhori born?\",\n    \"What were the alternate names of him?\",\n    \"On which date did he pass away?\",\n    \"Given his full title, what was the first name of him?\",\n    \"Where did he die?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/birthPlace> ?birthPlace . }\",\n    \"SELECT ?altName WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/alternateName> ?altName . }\",\n    \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/deathDate> ?deathDate . }\",\n    \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/givenName> ?givenName . }\",\n    \"SELECT ?deathPlace WHERE { <http://yago-knowledge.org/resource/Abdul_Rahim_Garhori> <http://schema.org/deathPlace> ?deathPlace . }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 585,
+                "completion_tokens": 382,
+                "total_tokens": 967
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the occupation of Abdul Rahman Al-Zeid?\",\n    \"What is Abdul Rahman Al-Zeid's nationality?\",\n    \"Is there an alternate name for Abdul Rahman Al-Zied?\",\n    \"When is the birth date of Abdul Rahman Al-Zeid?\",\n    \"Where was Abdul Rahman Al-Zeid born?\"\n  ],\n  \"dialogue\": [\n    \"Q: What is the occupation of Abdul Rahman Al-Zeid?\",\n    \"A: Abdul Rahman Al-Zeid's occupation can be found here: http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid. Currently, there is no specific occupation listed.\",\n    \"Q: What is his nationality?\",\n    \"A: Abdul Rahman Al-Zeid's nationality isn't specifically indexed.\",\n    \"Q: Is there an alternate name for him?\",\n    \"A: Yes, you can find an alternate name for Abdul Rahman Al-Zeid at his corresponding URI.\",\n    \"Q: When is his birth date?\",\n    \"A: The birth date of Abdul Rahman Al-Zeid is not disclosed within the information at my disposal.\",\n    \"Q: Where was he born?\",\n    \"A: There is no specific birth place for Abdul Rahman Al-Zeid given in the current subgraph information.\"\n  ],\n  \"sparql\": [\n    \"SELECT ?occupation WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/hasOccupation> ?occupation . }\",\n    \"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/nationality> ?nationality . }\",\n    \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/alternateName> ?alternateName . }\",\n    \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/birthDate> ?birthDate . }\",\n    \"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Abdul_Rahman_Al-Zaid> <http://schema.org/birthPlace> ?birthPlace . }\"\n  ]\n}\n```\n",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 582,
+                "completion_tokens": 502,
+                "total_tokens": 1084
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the alternate name of Aberdeen Arts Centre?\",\n    \"Where is Aberdeen Arts Centre located geographically?\",\n    \"Are there any locations inside Aberdeen Arts Centre?\",\n    \"What place contains Aberdeen Arts Centre?\",\n    \"How many alternates names does Aberdeen Arts Centre have?\"\n  ],\n  \"dialogue\": [\n    \"What is the alternate name of Aberdeen Arts Centre?\",\n    \"Where is it located geographically?\",\n    \"Are there any locations inside it?\",\n    \"What place contains it?\",\n    \"How many alternate names does it have?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/alternateName> ?alternateName }\",\n    \"SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/geo> ?geo }\",\n    \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/location> ?location }\",\n    \"SELECT ?containedInPlace WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/containedInPlace> ?containedInPlace }\",\n    \"SELECT (COUNT(?alternateName) as ?numberOfNearInstitutionsObject) WHERE { <http://yago-knowledge.org/resource/Aberdeen_Arts_Centre> <http://schema.org/alternateName> ?alternateName }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 505,
+                "completion_tokens": 333,
+                "total_tokens": 838
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the start date of the Battle of Al Hudaydah?\",\n    \"Where did the Battle of Al Hudaydah take place?\",\n    \"Does the Battle of Al Hudaydah have an alternate name listed?\",\n    \"Under which larger event does the Battle of Al Hudaydah fall?\",\n    \"List all the relationships associated with the Battle of Al Hudaydah.\"\n  ],\n  \"dialogue\": [\n    \"User: What is the start date of the Battle of Al Hudaydah?\\nAssistant: The start date of the Battle of Al Hudaydah is given by the property http://schema.org/startDate.\",\n    \"User: Where did it take place?\\nAssistant: The Battle of Al Hudaydah took place at the location provided by the property http://schema.org/location.\",\n    \"User: Does it have an alternate name listed?\\nAssistant: No, the Battle of Al Hudaydah doesn't have an alternate name listed.\",\n    \"User: Under which larger event does it fall?\\nAssistant: The Battle of Al Hudaydah falls under the event described by the property http://schema.org/superEvent.\",\n    \"User: List all the relationships associated with it?\\nAssistant: The Battle of Al Hudaydah has the following relationships:\\n1. alternate name - http://schema.org/alternateName\\n2. large event - http://schema.org/superEvent\\n3. start date -  http://schema.org/startDate\\n4. location -  http://schema.org/location.\"\n  ],\n  \"sparql\": [\n    \"SELECT ?date WHERE { <http://yago-knowledge.org/resource/Battle_of_Al_Hudaydah> <http://schema.org/startDate> ?date }\",\n    \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Battle_of_Al_Hudaydah> <http://schema.org/location> ?location }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Battle_of_Al_Hudaydah> <http://schema.org/alternateName> ?name }\",\n    \"SELECT ?superEvent WHERE { <http://yago-knowledge.org/resource/Battle_of_Al_Hudaydah> <http://schema.org/superEvent> ?superEvent }\",\n    \"SELECT ?property WHERE { <http://yago-knowledge.org/resource/Battle_of_Al_Hudaydah> ?property ?value }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 515,
+                "completion_tokens": 518,
+                "total_tokens": 1033
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the founding date of Aberdeen Regional Hospital?\",\n    \"Does Aberdeen Regional Hospital have an alternate name?\",\n    \"Where is the geo location of Aberdeen Regional Hospital?\",\n    \"What place contains Aberdeen Regional Hospital?\",\n    \"What is the broader location of Aberdeen Regional Hospital?\"\n  ],\n  \"dialogue\": [\n    \"What is the founding date of Aberdeen Regional Hospital?\",\n    \"Does it have an alternate name?\",\n    \"Where is its geo location?\",\n    \"What place contains it?\",\n    \"What is its broader location?\"\n  ],\n  \"sparql\": [\n    \"PREFIX schema: <http://schema.org/> \\nSELECT ?date WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> schema:foundingDate ?date }\",\n    \"PREFIX schema: <http://schema.org/> \\nASK WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> schema:alternateName ?name }\",\n    \"PREFIX schema: <http://schema.org/> \\nSELECT ?geo WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> schema:geo ?geo }\",\n    \"PREFIX schema: <http://schema.org/> \\nSELECT ?place WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> schema:containedInPlace ?place }\",\n    \"PREFIX schema: <http://schema.org/> \\nSELECT ?location WHERE { <http://yago-knowledge.org/resource/Aberdeen_Regional_Hospital> schema:location ?location }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 532,
+                "completion_tokens": 342,
+                "total_tokens": 874
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"When was Abiel Smith School founded?\",\n    \"Where is Abiel Smith School located?\",\n    \"In what location is Abiel Smith School situated?\",\n    \"Is Abiel Smith School included within another place?\",\n    \"List all associated geographical contexts regarding Abiel Smith School.\"\n  ],\n  \"dialogue\": [\n    \"When was Abiel Smith School founded?\",\n    \"Where is it located?\",\n    \"In what location is it situated?\",\n    \"Is it included within another place?\",\n    \"List all associated geographical contexts regarding it.\"\n  ],\n  \"sparql\": [\n    \"SELECT ?foundingDate WHERE { <http://yago-knowledge.org/resource/Abiel_Smith_School> <http://schema.org/foundingDate> ?foundingDate . }\",\n    \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Abiel_Smith_School> <http://schema.org/location> ?location . }\",\n    \"SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Abiel_Smith_School> <http://schema.org/geo> ?geo . }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abiel_Smith_School> <http://schema.org/containedInPlace> ?place . }\",\n    \"SELECT ?geoContext WHERE { { <http://yago-knowledge.org/resource/Abiel_Smith_School> <http://schema.org/geo> ?geoContext . } UNION { <http://yago-knowledge.org/resource/Abiel_Smith_School> <http://schema.org/location> ?geoContext . } UNION { <http://yago-knowledge.org/resource/Abiel_Smith_School> <http://schema.org/containedInPlace> ?geoContext . }}\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 506,
+                "completion_tokens": 387,
+                "total_tokens": 893
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the birthplace of Abe Bowman?\",\n    \"What nationality does Abe Bowman hold?\",\n    \"When did Abe Bowman die?\",\n    \"What organization or group was he a member of?\",\n    \"How many attributes relating to her does the knowledge graph contain?\"\n  ],\n  \"dialogue\": [\n    \"What is the birthplace of Abe Bowman?\",\n    \"What nationality does he hold?\",\n    \"When did he die?\",\n    \"What organization or group was he a member of?\",\n    \"How many attributes relating to her does the knowledge graph contain?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Abe_Bowman> <http://schema.org/birthPlace> ?birthPlace }\",\n    \"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Abe_Bowman> <http://schema.org/nationality> ?nationality }\",\n    \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/Abe_Bowman> <http://schema.org/deathDate> ?deathDate }\",\n    \"SELECT ?memberOf WHERE { <http://yago-knowledge.org/resource/Abe_Bowman> <http://schema.org/memberOf> ?memberOf }\",\n    \"SELECT COUNT(?predicate) WHERE { <http://yago-knowledge.org/resource/Abe_Bowman> ?predicate ?object }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 597,
+                "completion_tokens": 310,
+                "total_tokens": 907
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is Abe Greenthal's birthplace?\",\n    \"What is the nationality of Abe Greenthal?\",\n    \"Did Abe Greenthal die on a specific date?\",\n    \"What is Abe Greenthal's given name?\",\n    \"Where did Abe Greenthal die?\"\n  ],\n  \"dialogue\": [\n    \"What is Abe Greenthal's birthplace?\",\n    \"How about his nationality?\",\n    \"Did he die on a specific date?\",\n    \"What is his given name?\",\n    \"Lastly, where did he die?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?value WHERE { <http://yago-knowledge.org/resource/Abe_Greenthal> <http://schema.org/birthPlace> ?value }\", \n    \"SELECT ?value WHERE { <http://yago-knowledge.org/resource/Abe_Greenthal> <http://schema.org/nationality> ?value }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abe_Greenthal> <http://schema.org/deathDate> ?value }\",    \n    \"SELECT ?value WHERE { <http://yago-knowledge.org/resource/Abe_Greenthal> <http://schema.org/givenName> ?value }\",\n    \"SELECT ?value WHERE { <http://yago-knowledge.org/resource/Abe_Greenthal> <http://schema.org/deathPlace> ?value }\"\n\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 549,
+                "completion_tokens": 301,
+                "total_tokens": 850
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"When did Abe Stern die?\",\n    \"What is the given name of Abe Stern?\",\n    \"Does Abe Stern have an occupation mentioned?\",\n    \"Where did Abe Stern die?\",\n    \"How many occupations are listed for Abe Stern?\"\n  ],\n  \"dialogue\": [\n    \"When did Abe Stern die?\",\n    \"What is his given name?\",\n    \"Does he have an occupation mentioned?\",\n    \"Where did he die?\",\n    \"How many occupations are listed for him?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/Abe_Stern> <http://schema.org/deathDate> ?deathDate . }\",\n    \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Abe_Stern> <http://schema.org/givenName> ?givenName . }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abe_Stern> <http://schema.org/hasOccupation> ?occupation . }\",\n    \"SELECT ?deathPlace WHERE { <http://yago-knowledge.org/resource/Abe_Stern> <http://schema.org/deathPlace> ?deathPlace . }\",\n    \"SELECT (COUNT(?occupation) AS ?ocups) WHERE { <http://yago-knowledge.org/resource/Abe_Stern> <http://schema.org/hasOccupation> ?occupation . }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 590,
+                "completion_tokens": 306,
+                "total_tokens": 896
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What languages did Abe no Hirafu know?\",\n    \"How many occupations did Abe no Hirafu have?\",\n    \"Did Abe no Hirafu die before 900 AD?\",\n    \"What was Abe no Hirafu's given name?\",\n    \"What was the death date of Abe no Hirafu?\"\n  ],\n  \"dialogue\": [\n    \"What languages did Abe no Hirafu know?\",\n    \"How many occupations did he have?\",\n    \"Did he die before 900 AD?\",\n    \"What was his given name?\",\n    \"What was his death date?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?language WHERE { <http://yago-knowledge.org/resource/Abe_no_Hirafu> <http://schema.org/knowsLanguage> ?language . }\",\n    \"SELECT (COUNT(?occupation) AS ?occupationCount) WHERE { <http://yago-knowledge.org/resource/Abe_no_Hirafu> <http://schema.org/hasOccupation> ?occupation . }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abe_no_Hirafu> <http://schema.org/deathDate> ?deathDate . FILTER (YEAR(?deathDate) < 900) }\",\n    \"SELECT ?givenName WHERE { <http://yago-knowledge.org/resource/Abe_no_Hirafu> <http://schema.org/givenName> ?givenName . }\",\n    \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/Abe_no_Hirafu> <http://schema.org/deathDate> ?deathDate . }\"\n  ]\n}\n```\n",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 583,
+                "completion_tokens": 345,
+                "total_tokens": 928
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n    \"questions\": [\n        \"Did the Battle of Lyuban have another name?\",\n        \"When did the Battle of Lyuban start?\",\n        \"When did it end?\",\n        \"What was the main location?\", \n        \"Which event is the Battle of Lyuban part of?\"\n    ],\n    \"dialogue\": [\n        \"Did the Battle of Lyuban have another name?\",\n        \"When did it start?\",\n        \"When did it end?\",\n        \"What was the main location?\", \n        \"Which event is it part of?\"\n    ],\n    \"sparql\": [\n        \"SELECT ?altName WHERE { <http://yago-knowledge.org/resource/Battle_of_Lyuban> <http://schema.org/alternateName> ?altName }\",\n        \"SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/Battle_of_Lyuban> <http://schema.org/startDate> ?startDate }\",\n        \"SELECT ?endDate WHERE { <http://yago-knowledge.org/resource/Battle_of_Lyuban> <http://schema.org/endDate> ?endDate }\",\n        \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Battle_of_Lyuban> <http://schema.org/location> ?location }\",\n        \"SELECT ?superEvent WHERE { <http://yago-knowledge.org/resource/Battle_of_Lyuban> <http://schema.org/superEvent> ?superEvent }\"\n    ]\n}\n```\n",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 526,
+                "completion_tokens": 310,
+                "total_tokens": 836
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What were alternate names for Abe no Nakamaro?\",\n    \"When did Abe no Nakamaro die?\",\n    \"How many languages did Abe no Nakamaro speak?\",\n    \"Was Abe no Nakamaro Japanese?\",\n    \"What occupations did Abe no Nakamaro hold?\"\n  ],\n  \"dialogue\": [\n    \"What were alternate names for Abe no Nakamaro?\",\n    \"When did he die?\",\n    \"How many languages did he speak?\",\n    \"Was he Japanese?\",\n    \"What occupations did he hold?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Abe_no_Nakamaro> <http://schema.org/alternateName> ?alternateName }\",\n    \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/Abe_no_Nakamaro> <http://schema.org/deathDate> ?deathDate }\",\n    \"SELECT (COUNT(?language) AS ?languageCount) WHERE { <http://yago-knowledge.org/resource/Abe_no_Nakamaro> <http://schema.org/knowsLanguage> ?language }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abe_no_Nakamaro> <http://schema.org/nationality> \\\"Japanese\\\" }\",\n    \"SELECT ?occupation WHERE { <http://yago-knowledge.org/resource/Abe_no_Nakamaro> <http://schema.org/hasOccupation> ?occupation }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 557,
+                "completion_tokens": 317,
+                "total_tokens": 874
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"properties\": {\n    \"questions\": {\n      \"title\": \"Questions\",\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    },\n    \"dialogue\": {\n      \"title\": \"Dialogue\",\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    },\n    \"sparql\": {\n      \"title\": \"Sparql\",\n      \"type\": \"array\",\n       \"items\": {\n        \"type\": \"string\"\n      }\n    }\n},\n  \"required\": [\n    \"questions\",\n    \"dialogue\",\n    \"sparql\"\n  ]\n}\n```\n\n\n```json\n{\n  \"questions\": [\n    \"Where was Abeer Abdelrahman born?\",\n    \"What is Abeer Abdelrahman's nationality?\",\n    \"Does Abeer Abdelrahman have any alternate names?\",\n    \"What is Abeer Abdelrahman's given name?\",\n    \"When was Abeer Abdelrahman born?\"\n  ],\n  \"dialogue\": [\n    \"Q: Where was Abeer Abdelrahman born?\",\n    \"Q: What is her nationality?\",\n    \"Q: Does she have any alternate names?\",\n    \"Q: What is her given name?\",\n    \"Q: When was she born?\"\n  ],\n  \"sparql\": [\n{\n      \"query\": \"SELECT ?place WHERE { <http://yago-knowledge.org/resource/Abeer_Abdelrahman> <http://schema.org/birthPlace> ?place }\",\n      \"questionType\": \"wh\"\n   },\n{\n      \"query\": \"SELECT ?nation WHERE { <http://yago-knowledge.org/resource/Abeer_Abdelrahman> <http://schema.org/nationality> ?nation }\",\n      \"questionType\": \"wh\"\n   },\n{\n      \"query\": \"ASK WHERE { <http://yago-knowledge.org/resource/Abeer_Abdelrahman> <http://schema.org/alternateName> ?alternateName }\",\n      \"questionType\": \"boolean\"\n   },\n{\n      \"query\": \"SELECT ?name WHERE { <http://yago-knowledge.org/resource/Abeer_Abdelrahman> <http://schema.org/givenName> ?name }\",\n         \"questionType\": \"wh\"\n   },\n \n\n{             \n      \"query\":                       \"SELECT ?date WHERE             {         <http://yago-knowledge.org/resource/Abeer_Abdelrahman> \\                  <http://schema.org/birthDate>     ?date             }\",                     \n      \"questionType\":         \"date marks\"\n    \n  \n}\n\n  ]\n}\n``` \n``",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 536,
+                "completion_tokens": 552,
+                "total_tokens": 1088
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Where was Abel Douglass born?\",\n    \"What is Abel Douglass's nationality?\",\n    \"How many given names does Abel Douglass have?\",\n    \"Did Abel Douglass have the family name Douglass?\",\n    \"When was Abel Douglass born?\"\n  ],\n  \"dialogue\": [\n    \"Where was Abel Douglass born?\",\n    \"What is his nationality?\",\n    \"How many given names does he have?\",\n    \"Did he have the family name Douglass?\",\n    \"When was he born?\"\n  ],\n  \"sparql\": [\n    \"PREFIX schema: <http://schema.org/> SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Abel_Douglass> schema:birthPlace ?birthPlace }\",\n    \"PREFIX schema: <http://schema.org/> SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Abel_Douglass> schema:nationality ?nationality }\",\n    \"PREFIX schema: <http://schema.org/> SELECT (COUNT(?givenName) as ?givenNameCount) WHERE { <http://yago-knowledge.org/resource/Abel_Douglass> schema:givenName ?givenName }\",\n    \"PREFIX schema: <http://schema.org/> ASK WHERE { <http://yago-knowledge.org/resource/Abel_Douglass> schema:familyName \\\"Douglass\\\" }\",\n    \"PREFIX schema: <http://schema.org/> SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Abel_Douglass> schema:birthDate ?birthDate }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 555,
+                "completion_tokens": 343,
+                "total_tokens": 898
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "{\n  \"questions\": [\n    \"What is the birth date of Abel Hureau de Villeneuve?\",\n    \"Which nationality does Abel Hureau de Villeneuve belong to?\",\n    \"When did Abel Hureau de Villeneuve die?\",\n    \"Does Abel Hureau de Villeneuve know any languages?\",\n    \"Is the given name of Abel Hureau de Villeneuve documented?\"\n  ],\n  \"dialogue\": [\n    \"What is the birth date of Abel Hureau de Villeneuve?\",\n    \"Which nationality does he belong to?\",\n    \"When did he die?\",\n    \"Does he know any languages?\",\n    \"Is his given name documented?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Abel_Hureau_de_Villeneuve> <http://schema.org/birthDate> ?birthDate }\",\n    \"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Abel_Hureau_de_Villeneuve> <http://schema.org/nationality> ?nationality }\",\n    \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/Abel_Hureau_de_Villeneuve> <http://schema.org/deathDate> ?deathDate }\",\n    \"SELECT ?language WHERE { <http://yago-knowledge.org/resource/Abel_Hureau_de_Villeneuve> <http://schema.org/knowsLanguage> ?language }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abel_Hureau_de_Villeneuve> <http://schema.org/givenName> ?givenName }\"\n  ]\n}",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 548,
+                "completion_tokens": 342,
+                "total_tokens": 890
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is an alternate name for Abrazo Arizona Heart Hospital?\", \n    \"When was Abrazo Arizona Heart Hospital founded?\", \n    \"What is the geographic location of Abrazo Arizona Heart Hospital?\", \n    \"Where is Abrazo Arizona Heart Hospital located?\", \n    \"Is Abrazo Arizona Heart Hospital contained in another place?\" \n  ], \n  \"dialogue\": [\n    \"Q: What is an alternate name for Abrazo Arizona Heart Hospital?\\n\\nA: What is an alternate name for it?\", \n    \"Q: When was Abrazo Arizona Heart Hospital founded?\\n\\nA: When was it founded?\", \n    \"Q: What is the geographic location of Abrazo Arizona Heart Hospital?\\n\\nA: What is its geographic location?\", \n    \"Q: Where is Abrazo Arizona Heart Hospital located?\\n\\nA: Where is it located?\", \n    \"Q: Is Abrazo Arizona Heart Hospital contained in another place?\\n\\nA: Is it contained in another place?\" \n  ], \n  \"sparql\": [\n    \"SELECT ?alternateName WHERE { <http://yago-knowledge.org/resource/Abrazo_Arizona_Heart_Hospital> <http://schema.org/alternateName> ?alternateName }\", \n    \"SELECT ?foundingDate WHERE { <http://yago-knowledge.org/resource/Abrazo_Arizona_Heart_Hospital> <http://schema.org/foundingDate> ?foundingDate }\", \n    \"SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Abrazo_Arizona_Heart_Hospital> <http://schema.org/geo> ?geo }\", \n    \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Abrazo_Arizona_Heart_Hospital> <http://schema.org/location> ?location }\", \n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abrazo_Arizona_Heart_Hospital> <http://schema.org/containedInPlace> ?place }\" \n  ] \n}",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 542,
+                "completion_tokens": 430,
+                "total_tokens": 972
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the nationality of Abel Lizotte?\",\n    \"What is the birth date of Abel Lizotte?\",\n    \"Is Abel Lizotte a member of any organization?\",\n    \"List the names of the places related to Abel Lizotte.\",\n    \"In which family does Abel Lizotte belong?\"\n  ],\n  \"dialogue\": [\n    \"What is the nationality of Abel Lizotte?\",\n    \"What is the birth date of him?\",\n    \"Is he a member of any organization?\",\n    \"List the names of the places related to him.\",\n    \"In which family does he belong?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Abel_Lizotte> <http://schema.org/nationality> ?nationality }\",\n\n    \"SELECT ?birthDate WHERE { <http://yago-knowledge.org/resource/Abel_Lizotte> <http://schema.org/birthDate> ?birthDate }\",\n\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abel_Lizotte> <http://schema.org/memberOf> ?name }\",\n\n    \"SELECT ?place WHERE { VALUES ?p { <http://schema.org/birthPlace> <http://schema.org/deathPlace> } <http://yago-knowledge.org/resource/Abel_Lizotte> ?p ?place }\",\n\n    \"SELECT ?familyName WHERE { <http://yago-knowledge.org/resource/Abel_Lizotte> <http://schema.org/familyName> ?familyName }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 606,
+                "completion_tokens": 340,
+                "total_tokens": 946
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is another name for the Battle of Tuchola Forest?\",\n    \"How many superEvents does the Battle of Tuchola Forest have?\",\n    \"Is the location of the Battle of Tuchola Forest known?\",\n    \"What is the start date of the Battle of Tuchola Forest?\",\n    \"Where did the Battle of Tuchola Forest take place?\"\n  ],\n  \"dialogue\": [\n    \"What is another name for the Battle of Tuchola Forest?\",\n    \"How many superEvents does it have?\",\n    \"Is its location known?\",\n    \"What is its start date?\",\n    \"Where did it take place?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?altName WHERE { <http://yago-knowledge.org/resource/Battle_of_Tuchola_Forest> <http://schema.org/alternateName>  ?altName . }\", \n    \"SELECT (COUNT(?superEvent) AS ?superEventCount) WHERE { <http://yago-knowledge.org/resource/Battle_of_Tuchola_Forest> <http://schema.org/superEvent> ?superEvent . }\", \n    \"ASK WHERE { <http://yago-knowledge.org/resource/Battle_of_Tuchola_Forest> <http://schema.org/location>  ?location . }\", \n    \"SELECT ?startDate WHERE { <http://yago-knowledge.org/resource/Battle_of_Tuchola_Forest> <http://schema.org/startDate>  ?startDate . }\", \n    \"SELECT ?location WHERE { <http://yago-knowledge.org/resource/Battle_of_Tuchola_Forest> <http://schema.org/location>  ?location . }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 511,
+                "completion_tokens": 364,
+                "total_tokens": 875
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"What is the alternate name of Academia Venezolana de la Lengua?\",\n    \"When was Academia Venezolana de la Lengua founded?\",\n    \"Who founded Academia Venezolana de la Lengua?\",\n    \"Where is the location of Academia Venezolana de la Lengua?\",\n    \"How many founders does Academia Venezolana de la Lengua have?\"\n  ],\n  \"dialogue\": [\n    \"What is the alternate name of Academia Venezolana de la Lengua?\",\n    \"When was it founded?\",\n    \"Who founded it?\",\n    \"Where is its location?\",\n    \"How many founders does it have?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?altName WHERE { <http://yago-knowledge.org/resource/Academia_Venezolana_de_la_Lengua> <http://schema.org/alternateName> ?altName }\",\n    \"SELECT ?foundingDate WHERE { <http://yago-knowledge.org/resource/Academia_Venezolana_de_la_Lengua> <http://schema.org/foundingDate> ?foundingDate }\",\n    \"SELECT ?founder WHERE { <http://yago-knowledge.org/resource/Academia_Venezolana_de_la_Lengua> <http://schema.org/founder> ?founder }\",\n    \"SELECT ?geo WHERE { <http://yago-knowledge.org/resource/Academia_Venezolana_de_la_Lengua> <http://schema.org/geo> ?geo }\",\n    \"SELECT (COUNT(?founder) AS ?numberOfFounders) WHERE { <http://yago-knowledge.org/resource/Academia_Venezolana_de_la_Lengua> <http://schema.org/founder> ?founder }\"\n  ]\n}\n```",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 526,
+                "completion_tokens": 369,
+                "total_tokens": 895
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    },
+    {
+        "input": 1,
+        "generations": [
+            [
+                {
+                    "text": "```json\n{\n  \"questions\": [\n    \"Where was Abel Manta born?\",\n    \"What was Abel Manta's nationality?\",\n    \"Did Abel Manta have an alternate name?\",\n    \"What was Abel Manta's occupation?\",\n    \"When did Abel Manta die?\"\n  ],\n  \"dialogue\": [\n    \"Where was Abel Manta born?\",\n    \"What was his nationality?\",\n    \"Did he have an alternate name?\",\n    \"What was his occupation?\",\n    \"When did he die?\"\n  ],\n  \"sparql\": [\n    \"SELECT ?birthPlace WHERE { <http://yago-knowledge.org/resource/Abel_Manta> <http://schema.org/birthPlace> ?birthPlace . }\",\n    \"SELECT ?nationality WHERE { <http://yago-knowledge.org/resource/Abel_Manta> <http://schema.org/nationality> ?nationality . }\",\n    \"ASK WHERE { <http://yago-knowledge.org/resource/Abel_Manta> <http://schema.org/alternateName> ?alternateName . }\",\n    \"SELECT ?occupation WHERE { <http://yago-knowledge.org/resource/Abel_Manta> <http://schema.org/hasOccupation> ?occupation . }\",\n    \"SELECT ?deathDate WHERE { <http://yago-knowledge.org/resource/Abel_Manta> <http://schema.org/deathDate> ?deathDate . }\"\n  ]\n}\n```\n",
+                    "generation_info": null,
+                    "type": "Generation"
+                }
+            ]
+        ],
+        "token_usage": {
+            "token_usage": {
+                "prompt_tokens": 624,
+                "completion_tokens": 303,
+                "total_tokens": 927
+            },
+            "model_name": "gpt-4o"
+        },
+        "n": 5
+    }
+]

@@ -1,0 +1,731 @@
+{
+    "seeds_used": 280,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Backes15",
+            "seed_label": "Cluster abstraction of graph transformation systems.",
+            "dialogue": [
+                "User: What do you know about Cluster abstraction of graph transformation systems?",
+                "User: How many authors did it have?",
+                "User: Is it a thesis?",
+                "User: What is its primary electronic edition?",
+                "User: When was it published?"
+            ],
+            "original": [
+                "What is the type of the entity 'Cluster abstraction of graph transformation systems'?",
+                "How many authors did the entity 'Cluster abstraction of graph transformation systems' have?",
+                "Is the entity 'Cluster abstraction of graph transformation systems' a thesis?",
+                "What is the primary electronic edition of the entity 'Cluster abstraction of graph transformation systems'?",
+                "In what year was the entity 'Cluster abstraction of graph transformation systems' published?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/phd/dnb/Backes15> dbpedia:bibtexType?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT (COUNT(DISTINCT?o) AS?count) WHERE { <https://dblp.org/rec/phd/dnb/Backes15> dbpedia:authoredBy?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nASK WHERE { <https://dblp.org/rec/phd/dnb/Backes15> dbpedia:thesisAcceptedBySchool?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/phd/dnb/Backes15> dbpedia:primaryElectronicEdition?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/phd/dnb/Backes15> dbpedia:yearOfPublication?o }"
+            ],
+            "cost": {
+                "total_tokens": 1259,
+                "prompt_tokens": 609,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/0001MR020",
+            "seed_label": "Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk.",
+            "dialogue": [
+                "User: What can you tell me about the paper 'Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk'?",
+                "User: Who authored the paper?",
+                "User: What is the DOI of the paper?",
+                "User: How many creators are there?",
+                "User: What is the pagination?"
+            ],
+            "original": [
+                "What is the type of the paper 'Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk'?",
+                "Who authored the paper 'Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk'?",
+                "What is the DOI of the paper 'Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk'?",
+                "How many creators are there for the paper 'Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk'?",
+                "What is the pagination of the paper 'Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk'?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?type WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> dblp:bibtexType?type }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?author WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> dblp:authoredBy?author }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?doi WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> dblp:doi?doi }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT (COUNT(DISTINCT?creator) AS?count) WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> dblp:numberOfCreators?creator }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?pagination WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> dblp:pagination?pagination }"
+            ],
+            "cost": {
+                "total_tokens": 1442,
+                "prompt_tokens": 794,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/AbsilBG07",
+            "seed_label": "Trust-Region Methods on Riemannian Manifolds.",
+            "dialogue": [
+                "Can you tell me about the paper 'Trust-Region Methods on Riemannian Manifolds'?",
+                "That's interesting. Who wrote the paper?",
+                "What's the DOI for that paper?",
+                "How many people worked on that paper?",
+                "Can you show me the pagination of that paper?"
+            ],
+            "original": [
+                "What is the type of the paper 'Trust-Region Methods on Riemannian Manifolds'?",
+                "Who authored the paper 'Trust-Region Methods on Riemannian Manifolds'?",
+                "What is the DOI of the paper 'Trust-Region Methods on Riemannian Manifolds'?",
+                "How many authors are there for the paper 'Trust-Region Methods on Riemannian Manifolds'?",
+                "What is the pagination of the paper 'Trust-Region Methods on Riemannian Manifolds'?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?type WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> dbpedia:bibtexType?type }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?author WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> dbpedia:authoredBy?author }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?doi WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> dbpedia:doi?doi }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT (COUNT(DISTINCT?author) AS?count) WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> dbpedia:authoredBy?author }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?pagination WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> dbpedia:pagination?pagination }"
+            ],
+            "cost": {
+                "total_tokens": 1441,
+                "prompt_tokens": 793,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/0003CDZ20",
+            "seed_label": "Shift-Invariant Convolutional Network Search.",
+            "dialogue": [
+                "What can you tell me about the paper titled 'Shift-Invariant Convolutional Network Search'?",
+                "What's the type of the paper titled 'it'?",
+                "How many authors wrote the paper titled 'it'?",
+                "When was the paper titled 'it' published?",
+                "What's the DOI of the paper titled 'it'?"
+            ],
+            "original": [
+                "What is the type of the paper titled 'Shift-Invariant Convolutional Network Search'?",
+                "How many authors wrote the paper titled 'Shift-Invariant Convolutional Network Search'?",
+                "Is the paper titled 'Shift-Invariant Convolutional Network Search' published in a book?",
+                "When was the paper titled 'Shift-Invariant Convolutional Network Search' published?",
+                "What is the DOI of the paper titled 'Shift-Invariant Convolutional Network Search'?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?type WHERE { <https://dblp.org/rec/conf/ijcnn/0003CDZ20> dbpedia:bibtexType?type }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT (COUNT(DISTINCT?author) AS?count) WHERE { <https://dblp.org/rec/conf/ijcnn/0003CDZ20> dbpedia:authoredBy?author }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?publishedInBook WHERE { <https://dblp.org/rec/conf/ijcnn/0003CDZ20> dbpedia:publishedInBook?publishedInBook }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?yearOfPublication WHERE { <https://dblp.org/rec/conf/ijcnn/0003CDZ20> dbpedia:yearOfPublication?yearOfPublication }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?doi WHERE { <https://dblp.org/rec/conf/ijcnn/0003CDZ20> dbpedia:doi?doi }"
+            ],
+            "cost": {
+                "total_tokens": 1447,
+                "prompt_tokens": 799,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/0004D20",
+            "seed_label": "Detecting Adversarial Audio via Activation Quantization Error.",
+            "dialogue": [
+                "I'd like to know more about the paper 'Detecting Adversarial Audio via Activation Quantization Error'.",
+                "What type is the paper?",
+                "How many authors are there?",
+                "Is it published in a conference?",
+                "What is the year of publication?"
+            ],
+            "original": [
+                "What is the type of the paper 'Detecting Adversarial Audio via Activation Quantization Error'?",
+                "How many authors are there in the paper 'Detecting Adversarial Audio via Activation Quantization Error'?",
+                "Is the paper 'Detecting Adversarial Audio via Activation Quantization Error' published in a conference?",
+                "What is the year of publication of the paper 'Detecting Adversarial Audio via Activation Quantization Error'?",
+                "What is the DOI of the paper 'Detecting Adversarial Audio via Activation Quantization Error'?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?type WHERE { <https://dblp.org/rec/conf/ijcnn/0004D20> dblp:bibtexType?type}",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT (COUNT(DISTINCT?author) AS?count) WHERE { <https://dblp.org/rec/conf/ijcnn/0004D20> dblp:authoredBy?author}",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nASK WHERE { <https://dblp.org/rec/conf/ijcnn/0004D20> dblp:publishedIn?conference}",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?year WHERE { <https://dblp.org/rec/conf/ijcnn/0004D20> dblp:yearOfPublication?year}",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?doi WHERE { <https://dblp.org/rec/conf/ijcnn/0004D20> dblp:doi?doi}"
+            ],
+            "cost": {
+                "total_tokens": 1438,
+                "prompt_tokens": 790,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/nips/WangJIWKR19",
+            "seed_label": "Natural Language Grounded Multitask Navigation.",
+            "dialogue": [
+                "What is the type of Natural Language Grounded Multitask Navigation?",
+                "Who authored it?",
+                "How many creators did it have?",
+                "What is the primary electronic edition?",
+                "In what year was it published?"
+            ],
+            "original": [
+                "What is the type of Natural Language Grounded Multitask Navigation?",
+                "Who authored Natural Language Grounded Multitask Navigation?",
+                "How many creators did Natural Language Grounded Multitask Navigation have?",
+                "What is the primary electronic edition of Natural Language Grounded Multitask Navigation?",
+                "In what year was Natural Language Grounded Multitask Navigation published?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?type WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> dblp:bibtexType?type }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?author WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> dblp:authoredBy?author }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT (COUNT(DISTINCT?creator) AS?count) WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> dblp:numberOfCreators?creator }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?primaryEdition WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> dblp:primaryElectronicEdition?primaryEdition }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?year WHERE { <https://dblp.org/rec/conf/nips/WangJIWKR19> dblp:yearOfPublication?year }"
+            ],
+            "cost": {
+                "total_tokens": 1226,
+                "prompt_tokens": 715,
+                "completion_tokens": 511
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/116/9377",
+            "seed_label": "Nico Potyka",
+            "dialogue": [
+                "Who is Nico Potyka?",
+                "What is his primary affiliation?",
+                "Does he have a webpage?",
+                "What is his primary full creator name?",
+                "What is his primary homepage?"
+            ],
+            "original": [
+                "What is Nico Potyka's primary affiliation?",
+                "How many affiliations does Nico Potyka have?",
+                "Is Nico Potyka's webpage available?",
+                "What is Nico Potyka's primary full creator name?",
+                "What is Nico Potyka's primary homepage?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?primaryAffiliation WHERE { <https://dblp.org/pid/116/9377> dbpedia:primaryAffiliation?primaryAffiliation }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT (COUNT(?otherAffiliation) AS?count) WHERE { <https://dblp.org/pid/116/9377> dbpedia:otherAffiliation?otherAffiliation }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?webpage WHERE { <https://dblp.org/pid/116/9377> dbpedia:webpage?webpage }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?primaryFullCreatorName WHERE { <https://dblp.org/pid/116/9377> dbpedia:primaryFullCreatorName?primaryFullCreatorName }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?primaryHomepage WHERE { <https://dblp.org/pid/116/9377> dbpedia:primaryHomepage?primaryHomepage }"
+            ],
+            "cost": {
+                "total_tokens": 1239,
+                "prompt_tokens": 589,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/117/6023",
+            "seed_label": "Sherzod Hakimov",
+            "dialogue": [
+                "Can you tell me something about Sherzod Hakimov?",
+                "What is his primary affiliation?",
+                "What is his webpage?",
+                "What is his ORCID?"
+            ],
+            "original": [
+                "What is the primary affiliation of Sherzod Hakimov?",
+                "What is the primary full creator name of Sherzod Hakimov?",
+                "What is the ORCID of Sherzod Hakimov?",
+                "What is the primary homepage of Sherzod Hakimov?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?o WHERE { <https://dblp.org/pid/117/6023> dbpedia:primaryAffiliation?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?o WHERE { <https://dblp.org/pid/117/6023> dbpedia:primaryFullCreatorName?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?o WHERE { <https://dblp.org/pid/117/6023> dbpedia:orcid?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?o WHERE { <https://dblp.org/pid/117/6023> dbpedia:primaryHomepage?o }"
+            ],
+            "cost": {
+                "total_tokens": 1184,
+                "prompt_tokens": 534,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/118/1329",
+            "seed_label": "Matthias Hiller",
+            "dialogue": [
+                "I'd like to know more about Matthias Hiller. Can you tell me what his ORCID is?",
+                "What is his primary affiliation?",
+                "What is his full creator name?",
+                "Where can I find his homepage?",
+                "What is his webpage?"
+            ],
+            "original": [
+                "What is the ORCID of Matthias Hiller?",
+                "What is the primary affiliation of Matthias Hiller?",
+                "What is the full creator name of Matthias Hiller?",
+                "What is the homepage of Matthias Hiller?",
+                "What is the webpage of Matthias Hiller?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?o WHERE { <https://dblp.org/pid/118/1329> dblp:orcid?o }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?o WHERE { <https://dblp.org/pid/118/1329> dblp:primaryAffiliation?o }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?o WHERE { <https://dblp.org/pid/118/1329> dblp:primaryFullCreatorName?o }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?o WHERE { <https://dblp.org/pid/118/1329> dblp:primaryHomepage?o }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?o WHERE { <https://dblp.org/pid/118/1329> dblp:webpage?o }"
+            ],
+            "cost": {
+                "total_tokens": 1181,
+                "prompt_tokens": 531,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/AmmariBGJKW14",
+            "seed_label": "Target Identification Using Dictionary Matching of Generalized Polarization Tensors.",
+            "dialogue": [
+                "User: Can you tell me something about the paper 'Target Identification Using Dictionary Matching of Generalized Polarization Tensors'?",
+                "User: Who are the authors of the paper 'it'?",
+                "User: Is the paper 'it' published in a journal?",
+                "User: What is the DOI of the paper 'it'?",
+                "User: In which year was the paper 'it' published?"
+            ],
+            "original": [
+                "What is the title of the paper 'Target Identification Using Dictionary Matching of Generalized Polarization Tensors'?",
+                "How many authors contributed to the paper 'Target Identification Using Dictionary Matching of Generalized Polarization Tensors'?",
+                "Is the paper 'Target Identification Using Dictionary Matching of Generalized Polarization Tensors' published in a journal?",
+                "What is the DOI of the paper 'Target Identification Using Dictionary Matching of Generalized Polarization Tensors'?",
+                "In which year was the paper 'Target Identification Using Dictionary Matching of Generalized Polarization Tensors' published?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?title WHERE { <https://dblp.org/rec/journals/focm/AmmariBGJKW14> dbpedia:title?title }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT (COUNT(DISTINCT?author) AS?count) WHERE { <https://dblp.org/rec/journals/focm/AmmariBGJKW14> dbpedia:authoredBy?author }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nASK WHERE { <https://dblp.org/rec/journals/focm/AmmariBGJKW14> dbpedia:publishedInJournal?journal }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?doi WHERE { <https://dblp.org/rec/journals/focm/AmmariBGJKW14> dbpedia:doi?doi }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?year WHERE { <https://dblp.org/rec/journals/focm/AmmariBGJKW14> dbpedia:yearOfPublication?year }"
+            ],
+            "cost": {
+                "total_tokens": 1467,
+                "prompt_tokens": 817,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/AmorosoLS15",
+            "seed_label": "Overdetermined Systems of Sparse Polynomial Equations.",
+            "dialogue": [
+                "Can you tell me about the paper 'Overdetermined Systems of Sparse Polynomial Equations'?",
+                "Who wrote the paper 'it'?",
+                "What is the DOI of 'it'?",
+                "How many people worked on 'it'?",
+                "What is the pagination of 'it'?"
+            ],
+            "original": [
+                "What is the type of the paper 'Overdetermined Systems of Sparse Polynomial Equations'?",
+                "Who authored the paper 'Overdetermined Systems of Sparse Polynomial Equations'?",
+                "What is the DOI of the paper 'Overdetermined Systems of Sparse Polynomial Equations'?",
+                "How many creators did the paper 'Overdetermined Systems of Sparse Polynomial Equations' have?",
+                "What is the pagination of the paper 'Overdetermined Systems of Sparse Polynomial Equations'?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?type WHERE { <https://dblp.org/rec/journals/focm/AmorosoLS15> dbpedia:bibtexType?type }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?author WHERE { <https://dblp.org/rec/journals/focm/AmorosoLS15> dbpedia:authoredBy?author }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?doi WHERE { <https://dblp.org/rec/journals/focm/AmorosoLS15> dbpedia:doi?doi }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT (COUNT(DISTINCT?creator) AS?count) WHERE { <https://dblp.org/rec/journals/focm/AmorosoLS15> dbpedia:numberOfCreators?creator }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?pagination WHERE { <https://dblp.org/rec/journals/focm/AmorosoLS15> dbpedia:pagination?pagination }"
+            ],
+            "cost": {
+                "total_tokens": 1450,
+                "prompt_tokens": 802,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/127/0410",
+            "seed_label": "Jan Finis",
+            "dialogue": [
+                "What is the primary affiliation of Jan Finis?",
+                "What is his primary full creator name?",
+                "Does he have a primary homepage?",
+                "What is the other full creator name of him?",
+                "Does he have an ORCID?"
+            ],
+            "original": [
+                "What is the primary affiliation of Jan Finis?",
+                "What is the primary full creator name of Jan Finis?",
+                "Is Jan Finis's primary homepage specified?",
+                "What is the other full creator name of Jan Finis?",
+                "Does Jan Finis have an ORCID?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?affiliation WHERE { <https://dblp.org/pid/127/0410> dbpedia:primaryAffiliation?affiliation }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?fullCreatorName WHERE { <https://dblp.org/pid/127/0410> dbpedia:primaryFullCreatorName?fullCreatorName }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?hasHomepage WHERE { <https://dblp.org/pid/127/0410> dbpedia:primaryHomepage?hasHomepage }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?otherFullCreatorName WHERE { <https://dblp.org/pid/127/0410> dbpedia:otherFullCreatorName?otherFullCreatorName }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?hasOrcid WHERE { <https://dblp.org/pid/127/0410> dbpedia:orcid?hasOrcid }"
+            ],
+            "cost": {
+                "total_tokens": 1183,
+                "prompt_tokens": 533,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Sojer13",
+            "seed_label": "Synthesis of online diagnostic techniques for embedded systems.",
+            "dialogue": [
+                "Can you tell me about the work 'Synthesis of online diagnostic techniques for embedded systems'?",
+                "How many creators are associated with the work?",
+                "Is the work a thesis?",
+                "What is the primary electronic edition?",
+                "In what year was it published?"
+            ],
+            "original": [
+                "What is the type of the work 'Synthesis of online diagnostic techniques for embedded systems'?",
+                "How many creators are associated with the work 'Synthesis of online diagnostic techniques for embedded systems'?",
+                "Is the work 'Synthesis of online diagnostic techniques for embedded systems' a thesis?",
+                "What is the primary electronic edition of the work 'Synthesis of online diagnostic techniques for embedded systems'?",
+                "In what year was the work 'Synthesis of online diagnostic techniques for embedded systems' published?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?type WHERE {?work dbpedia:bibtexType?type. FILTER (?work = <https://dblp.org/rec/phd/dnb/Sojer13>) }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT (COUNT(DISTINCT?creator) AS?count) WHERE {?work dbpedia:numberOfCreators?creator. FILTER (?work = <https://dblp.org/rec/phd/dnb/Sojer13>) }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?thesis WHERE {?work dbpedia:authoredBy?thesis. FILTER (?work = <https://dblp.org/rec/phd/dnb/Sojer13>) }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?edition WHERE {?work dbpedia:primaryElectronicEdition?edition. FILTER (?work = <https://dblp.org/rec/phd/dnb/Sojer13>) }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?year WHERE {?work dbpedia:yearOfPublication?year. FILTER (?work = <https://dblp.org/rec/phd/dnb/Sojer13>) }"
+            ],
+            "cost": {
+                "total_tokens": 1343,
+                "prompt_tokens": 700,
+                "completion_tokens": 643
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/nl/Bucksch2011",
+            "seed_label": "Revealing the skeleton from imperfect point clouds.",
+            "dialogue": [
+                "Can you tell me about the dissertation 'Revealing the skeleton from imperfect point clouds'?",
+                "Who wrote that dissertation again?",
+                "What's the ISBN of that dissertation?",
+                "How many people worked on that dissertation?",
+                "Is there another way to access that dissertation?"
+            ],
+            "original": [
+                "What is the type of the dissertation 'Revealing the skeleton from imperfect point clouds'?",
+                "Who authored the dissertation 'Revealing the skeleton from imperfect point clouds'?",
+                "What is the ISBN of the dissertation 'Revealing the skeleton from imperfect point clouds'?",
+                "How many creators are associated with the dissertation 'Revealing the skeleton from imperfect point clouds'?",
+                "Is there an other electronic edition of the dissertation 'Revealing the skeleton from imperfect point clouds'?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?type WHERE { <https://dblp.org/rec/phd/nl/Bucksch2011> dblp:bibtexType?type }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?author WHERE { <https://dblp.org/rec/phd/nl/Bucksch2011> dblp:authoredBy?author }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?isbn WHERE { <https://dblp.org/rec/phd/nl/Bucksch2011> dblp:isbn?isbn }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT (COUNT(DISTINCT?creator) AS?count) WHERE { <https://dblp.org/rec/phd/nl/Bucksch2011> dblp:numberOfCreators?creator }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?other WHERE { <https://dblp.org/rec/phd/nl/Bucksch2011> dblp:otherElectronicEdition?other }"
+            ],
+            "cost": {
+                "total_tokens": 1326,
+                "prompt_tokens": 678,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Assam15",
+            "seed_label": "Predictive analytics and protection of massive data.",
+            "dialogue": [
+                "Can you tell me about the work 'Predictive analytics and protection of massive data'?",
+                "Who authored the work?",
+                "What is the ISBN of the work?",
+                "How many creators did the work have?",
+                "What is the primary electronic edition of the work?"
+            ],
+            "original": [
+                "What is the type of the work 'Predictive analytics and protection of massive data'?",
+                "Who authored the work 'Predictive analytics and protection of massive data'?",
+                "What is the ISBN of the work 'Predictive analytics and protection of massive data'?",
+                "How many creators did the work 'Predictive analytics and protection of massive data' have?",
+                "What is the primary electronic edition of the work 'Predictive analytics and protection of massive data'?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?type WHERE { <https://dblp.org/rec/phd/dnb/Assam15> dblp:bibtexType?type }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?author WHERE { <https://dblp.org/rec/phd/dnb/Assam15> dblp:authoredBy?author }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?isbn WHERE { <https://dblp.org/rec/phd/dnb/Assam15> dblp:isbn?isbn }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT (COUNT(DISTINCT?creator) AS?count) WHERE { <https://dblp.org/rec/phd/dnb/Assam15> dblp:numberOfCreators?creator }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#> SELECT?primary WHERE { <https://dblp.org/rec/phd/dnb/Assam15> dblp:primaryElectronicEdition?primary }"
+            ],
+            "cost": {
+                "total_tokens": 1318,
+                "prompt_tokens": 670,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Chadzelek99",
+            "seed_label": "Analytische Maschinen.",
+            "dialogue": [
+                "What is the type of Analytische Maschinen?",
+                "Who authored it?",
+                "What is the ISBN?",
+                "How many creators are there?",
+                "What is the pagination?"
+            ],
+            "original": [
+                "What is the type of Analytische Maschinen?",
+                "Who authored Analytische Maschinen?",
+                "What is the ISBN of Analytische Maschinen?",
+                "How many creators are there for Analytische Maschinen?",
+                "What is the pagination of Analytische Maschinen?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?type WHERE { <https://dblp.org/rec/phd/dnb/Chadzelek99> dblp:bibtexType?type }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?author WHERE { <https://dblp.org/rec/phd/dnb/Chadzelek99> dblp:authoredBy?author }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?isbn WHERE { <https://dblp.org/rec/phd/dnb/Chadzelek99> dblp:isbn?isbn }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT (COUNT(DISTINCT?creator) AS?count) WHERE { <https://dblp.org/rec/phd/dnb/Chadzelek99> dblp:numberOfCreators?creator }",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?pagination WHERE { <https://dblp.org/rec/phd/dnb/Chadzelek99> dblp:pagination?pagination }"
+            ],
+            "cost": {
+                "total_tokens": 1365,
+                "prompt_tokens": 717,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Kempkes12",
+            "seed_label": "Local strategies for robot formation problems.",
+            "dialogue": [
+                "User: What do you know about 'Local strategies for robot formation problems'?",
+                "User: How many creators are there for this work?",
+                "User: Is this a thesis?",
+                "User: When was this work published?",
+                "User: What is the pagination of this work?"
+            ],
+            "original": [
+                "What is the type of the work 'Local strategies for robot formation problems'?",
+                "How many creators are there for the work 'Local strategies for robot formation problems'?",
+                "Is the work 'Local strategies for robot formation problems' a thesis?",
+                "What is the year of publication of the work 'Local strategies for robot formation problems'?",
+                "What is the pagination of the work 'Local strategies for robot formation problems'?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?type WHERE { <https://dblp.org/rec/phd/dnb/Kempkes12> dbpedia:bibtexType?type }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT (COUNT(DISTINCT?creator) AS?count) WHERE { <https://dblp.org/rec/phd/dnb/Kempkes12> dbpedia:numberOfCreators?creator }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nASK WHERE { <https://dblp.org/rec/phd/dnb/Kempkes12> dbpedia:thesisAcceptedBySchool?thesis }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?year WHERE { <https://dblp.org/rec/phd/dnb/Kempkes12> dbpedia:yearOfPublication?year }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?pagination WHERE { <https://dblp.org/rec/phd/dnb/Kempkes12> dbpedia:pagination?pagination }"
+            ],
+            "cost": {
+                "total_tokens": 1315,
+                "prompt_tokens": 667,
+                "completion_tokens": 648
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/List14",
+            "seed_label": "Sequence comparison in historical linguistics.",
+            "dialogue": [
+                "Can you tell me about Sequence comparison in historical linguistics?",
+                "Who authored it?",
+                "What is its ISBN?",
+                "How many creators did it have?",
+                "What is the other electronic edition?"
+            ],
+            "original": [
+                "What is the type of Sequence comparison in historical linguistics?",
+                "Who authored Sequence comparison in historical linguistics?",
+                "What is the ISBN of Sequence comparison in historical linguistics?",
+                "How many creators did Sequence comparison in historical linguistics have?",
+                "What is the other electronic edition of Sequence comparison in historical linguistics?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/phd/dnb/List14> dbpedia:bibtexType?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/phd/dnb/List14> dbpedia:authoredBy?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/phd/dnb/List14> dbpedia:isbn?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/phd/dnb/List14> dbpedia:numberOfCreators?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/phd/dnb/List14> dbpedia:otherElectronicEdition?o }"
+            ],
+            "cost": {
+                "total_tokens": 1327,
+                "prompt_tokens": 677,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/AlzateS07",
+            "seed_label": "ICA through an LS-SVM based Kernel CCA Measure for Independence.",
+            "dialogue": [
+                "Can you tell me about the paper ICA through an LS-SVM based Kernel CCA Measure for Independence?",
+                "That's interesting. How many authors wrote the paper?",
+                "What is the DOI of the paper?",
+                "Can you show me the pagination of the paper?",
+                "Is there a primary electronic edition of the paper?"
+            ],
+            "original": [
+                "What is the type of the paper ICA through an LS-SVM based Kernel CCA Measure for Independence?",
+                "How many authors wrote the paper ICA through an LS-SVM based Kernel CCA Measure for Independence?",
+                "What is the DOI of the paper ICA through an LS-SVM based Kernel CCA Measure for Independence?",
+                "What is the pagination of the paper ICA through an LS-SVM based Kernel CCA Measure for Independence?",
+                "What is the primary electronic edition of the paper ICA through an LS-SVM based Kernel CCA Measure for Independence?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlzateS07> dbpedia:bibtexType?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT (COUNT(DISTINCT?o) AS?count) WHERE { <https://dblp.org/rec/conf/ijcnn/AlzateS07> dbpedia:numberOfCreators?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlzateS07> dbpedia:doi?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlzateS07> dbpedia:pagination?o }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#>\nSELECT?o WHERE { <https://dblp.org/rec/conf/ijcnn/AlzateS07> dbpedia:primaryElectronicEdition?o }"
+            ],
+            "cost": {
+                "total_tokens": 1455,
+                "prompt_tokens": 805,
+                "completion_tokens": 650
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Rungeler15",
+            "seed_label": "Hybrid digital-analog transmission systems: design and evaluation.",
+            "dialogue": [
+                "Can you tell me about 'Hybrid digital-analog transmission systems: design and evaluation'?",
+                "What type of transmission system is it?",
+                "How many creators are associated with it?",
+                "Is it authored by someone?",
+                "What is its ISBN and when was it published?"
+            ],
+            "original": [
+                "What type of transmission system is 'Hybrid digital-analog transmission systems: design and evaluation'?",
+                "How many creators are associated with 'Hybrid digital-analog transmission systems: design and evaluation'?",
+                "Is 'Hybrid digital-analog transmission systems: design and evaluation' authored by someone?",
+                "What is the ISBN of 'Hybrid digital-analog transmission systems: design and evaluation'?",
+                "When was 'Hybrid digital-analog transmission systems: design and evaluation' published?"
+            ],
+            "queries": [
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?type WHERE {?s dbpedia:bibtexType?type.?s dbpedia:authoredBy?author. FILTER(?s = <https://dblp.org/rec/phd/dnb/Rungeler15>) }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT (COUNT(DISTINCT?creator) AS?count) WHERE {?s dbpedia:numberOfCreators?creator.?s dbpedia:authoredBy?author. FILTER(?s = <https://dblp.org/rec/phd/dnb/Rungeler15>) }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?authored WHERE {?s dbpedia:authoredBy?authored.?s dbpedia:bibtexType?type. FILTER(?s = <https://dblp.org/rec/phd/dnb/Rungeler15>) }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?isbn WHERE {?s dbpedia:isbn?isbn.?s dbpedia:bibtexType?type. FILTER(?s = <https://dblp.org/rec/phd/dnb/Rungeler15>) }",
+                "PREFIX dbpedia: <https://dblp.org/rdf/schema#> SELECT?year WHERE {?s dbpedia:yearOfPublication?year.?s dbpedia:bibtexType?type. FILTER(?s = <https://dblp.org/rec/phd/dnb/Rungeler15>) }"
+            ],
+            "cost": {
+                "total_tokens": 1336,
+                "prompt_tokens": 701,
+                "completion_tokens": 635
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "User: What": 8,
+            "User: How": 3,
+            "User: Is": 3,
+            "User: When": 2,
+            "User: Who": 2,
+            "Can you": 11,
+            "That's interesting.": 2,
+            "What's the": 4,
+            "How many": 11,
+            "What can": 1,
+            "When was": 1,
+            "I'd like": 2,
+            "What type": 2,
+            "Is it": 2,
+            "What is": 27,
+            "Who authored": 4,
+            "In what": 2,
+            "Who is": 1,
+            "Does he": 3,
+            "Where can": 1,
+            "User: Can": 1,
+            "User: In": 1,
+            "Who wrote": 2,
+            "Is the": 1,
+            "Is there": 2
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 1337.1,
+                "prompt_tokens": 696.05,
+                "completion_tokens": 641.05
+            },
+            "Minimum": {
+                "total_tokens": 1181,
+                "prompt_tokens": 531,
+                "completion_tokens": 511
+            },
+            "Maximum": {
+                "total_tokens": 1467,
+                "prompt_tokens": 817,
+                "completion_tokens": 650
+            },
+            "Total": {
+                "total_tokens": 26742,
+                "prompt_tokens": 13921,
+                "completion_tokens": 12821
+            }
+        },
+        "execution": {
+            "Correct": 99,
+            "In Correct": 1
+        }
+    },
+    "cost": {
+        "total_tokens": 377237,
+        "prompt_tokens": 197879,
+        "completion_tokens": 179358
+    },
+    "total_time": 383.6130609512329,
+    "average_time": 19.180653047561645,
+    "Context Length Error": 0,
+    "Question Validation Error": 51,
+    "Sparql Validation Error": 6,
+    "Dialogue Validation Error": 44,
+    "Json Error": 71,
+    "unequal Lists Error": 88
+}

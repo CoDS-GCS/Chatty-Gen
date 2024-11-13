@@ -1,0 +1,31 @@
+approach:
+- original
+dataset_size: 20
+dialogue_generation_model:
+  model_apikey: ''
+  model_endpoint: http://localhost:5000/
+  model_name: llama-3-8b-instruct
+  model_type: openllm
+dialogue_size: 5
+kghost: 206.12.95.86
+kgname: dbpedia
+kgport: 8894
+logging: true
+outputdir: ./results/dbpedia/original/multi-llm-2
+pipeline_type: original
+prompt: 1
+question_generation_model:
+  model_apikey: ''
+  model_endpoint: ''
+  model_name: gpt-4
+  model_type: openai
+redishost: localhost
+sparql_generation_model:
+  model_apikey: ''
+  model_endpoint: http://localhost:5000/
+  model_name: codellama-13b
+  model_type: openllm
+temperature: 0.5
+tracing: true
+use_label: true
+wandb_project: chatty-gen-benchmark

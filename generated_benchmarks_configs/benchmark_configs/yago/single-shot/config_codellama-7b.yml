@@ -1,0 +1,21 @@
+approach:
+- single-shot
+comman_model:
+  model_apikey: ''
+  model_endpoint: http://localhost:5000/
+  model_name: codellama-7b
+  model_type: openllm
+dataset_size: 20
+dialogue_size: 5
+kghost: 206.12.95.86
+kgname: yago
+kgport: 8894
+logging: true
+outputdir: ./results/yago/single-shot/codellama-7b
+pipeline_type: original
+prompt: 1
+redishost: localhost
+temperature: 0.5
+tracing: true
+use_label: true
+wandb_project: chatty-gen-benchmark

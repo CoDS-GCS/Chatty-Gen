@@ -1,0 +1,21 @@
+approach:
+- subgraph-summarized
+comman_model:
+  model_apikey: ''
+  model_endpoint: ''
+  model_name: gemini-1.5-pro-preview-0409
+  model_type: google
+dataset_size: 20
+dialogue_size: 5
+kghost: 206.12.95.86
+kgname: mag
+kgport: 8894
+logging: true
+outputdir: ./results/mag/subgraph-summarized/gemini-1.5-pro-preview-0409
+pipeline_type: original
+prompt: 1
+redishost: localhost
+temperature: 0.5
+tracing: true
+use_label: true
+wandb_project: chatty-gen-benchmark
