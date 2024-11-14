@@ -1,0 +1,327 @@
+{
+    "seeds_used": 501,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Kuryazov19",
+            "seed_label": "Model difference representation.",
+            "dialogue": [
+                "What is the primary electronic edition of Model difference representation?",
+                "Where did model_difference_representation accept thesis?",
+                "When was model_difference_representation published?"
+            ],
+            "original": [
+                "What is the primary electronic edition of Model difference representation?",
+                "Where did Model difference representation accept thesis?",
+                "When was Model difference representation published?"
+            ],
+            "queries": [
+                "SELECT?o WHERE {<https://dblp.org/rec/phd/dnb/Kuryazov19> <https://dblp.org/rdf/schema#primaryElectronicEdition>?o} LIMIT 10",
+                "SELECT DISTINCT?thesisAcceptedBySchool WHERE {\n\t\t<https://dblp.org/rec/phd/dnb/Kuryazov19> <https://dblp.org/rdf/schema#thesisAcceptedBySchool>?thesisAcceptedBySchool.\n\t}",
+                "SELECT?yearOfPublication WHERE { <https://dblp.org/rec/phd/dnb/Kuryazov19> <https://dblp.org/rdf/schema#yearOfPublication>?yearOfPublication }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Kuryazov19",
+                        "https://dblp.org/rdf/schema#primaryElectronicEdition",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Kuryazov19",
+                        "https://dblp.org/rdf/schema#thesisAcceptedBySchool",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Kuryazov19",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3591,
+                "prompt_tokens": 1969,
+                "completion_tokens": 1622
+            },
+            "query_status": {
+                "In Correct": 6,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/14/5761-1",
+            "seed_label": "Frank Hoffmann 0001",
+            "dialogue": [
+                "How many other Affiliations does Frank Hoffmann 0001 have?",
+                "How many primary Affiliations does it have?",
+                "How many primary Homepages does it have?"
+            ],
+            "original": [
+                "How many other Affiliations does Frank Hoffmann 0001 have?",
+                "How many primary Affiliations does Frank Hoffmann 0001 have?",
+                "How many primary Homepages does Frank Hoffmann 0001 have?"
+            ],
+            "queries": [
+                "SELECT?s WHERE { <https://dblp.org/pid/14/5761-1> <https://dblp.org/rdf/schema#otherAffiliation>?s }",
+                "SELECT?x WHERE {\n\t\t<https://dblp.org/pid/14/5761-1> <https://dblp.org/rdf/schema#primaryAffiliation>?x\n\t}",
+                "SELECT (COUNT(?primaryHomepage) AS?count) WHERE {?person <https://dblp.org/rdf/schema#primaryHomepage>?primaryHomepage. FILTER(?person = <https://dblp.org/pid/14/5761-1>)}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/14/5761-1",
+                        "https://dblp.org/rdf/schema#otherAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/14/5761-1",
+                        "https://dblp.org/rdf/schema#primaryAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/14/5761-1",
+                        "https://dblp.org/rdf/schema#primaryHomepage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3513,
+                "prompt_tokens": 1727,
+                "completion_tokens": 1786
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 1,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/145/3950",
+            "seed_label": "Sebastian Baltes",
+            "dialogue": [
+                "What is the orcid of Sebastian Baltes?",
+                "What is the other Homepage of him?",
+                "What is the primary Full Creator Name of him?"
+            ],
+            "original": [
+                "What is the orcid of Sebastian Baltes?",
+                "What is the other Homepage of Sebastian Baltes?",
+                "What is the primary Full Creator Name of Sebastian Baltes?"
+            ],
+            "queries": [
+                "SELECT?x WHERE { <https://dblp.org/pid/145/3950> <https://dblp.org/rdf/schema#orcid>?x }",
+                "SELECT?x WHERE { <https://dblp.org/pid/145/3950> <https://dblp.org/rdf/schema#otherHomepage>?x }",
+                "SELECT?o WHERE {\n\t\t\t<https://dblp.org/pid/145/3950> <https://dblp.org/rdf/schema#primaryFullCreatorName>?o.\n\t}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/145/3950",
+                        "https://dblp.org/rdf/schema#orcid",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/145/3950",
+                        "https://dblp.org/rdf/schema#otherHomepage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/145/3950",
+                        "https://dblp.org/rdf/schema#primaryFullCreatorName",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3963,
+                "prompt_tokens": 1939,
+                "completion_tokens": 2024
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 3,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Ternon17",
+            "seed_label": "Energy savings in Phantom Cell Concept heterogeneous networks.",
+            "dialogue": [
+                "What is the author of Energy savings in Phantom Cell Concept heterogeneous networks?",
+                "What is the pagination of the energy savings in the phantom cell concept heterogeneous networks?",
+                "What is the thesis accepted by the school of the energy savings in the phantom cell concept heterogeneous networks?"
+            ],
+            "original": [
+                "What is the author of Energy savings in Phantom Cell Concept heterogeneous networks?",
+                "What is the pagination of Energy savings in Phantom Cell Concept heterogeneous networks?",
+                "What is the thesis accepted by school of Energy savings in Phantom Cell Concept heterogeneous networks?"
+            ],
+            "queries": [
+                "SELECT?o WHERE {?s <https://dblp.org/rdf/schema#authoredBy>?o. FILTER (?s = <https://dblp.org/rec/phd/dnb/Ternon17>)}",
+                "SELECT?pagination WHERE {\n\t\t<https://dblp.org/rec/phd/dnb/Ternon17> <https://dblp.org/rdf/schema#pagination>?pagination\n\t}",
+                "SELECT?thesisAcceptedBySchool WHERE { <https://dblp.org/rec/phd/dnb/Ternon17> <https://dblp.org/rdf/schema#thesisAcceptedBySchool>?thesisAcceptedBySchool }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Ternon17",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Ternon17",
+                        "https://dblp.org/rdf/schema#pagination",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Ternon17",
+                        "https://dblp.org/rdf/schema#thesisAcceptedBySchool",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4682,
+                "prompt_tokens": 2645,
+                "completion_tokens": 2037
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 1,
+                "In Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Verma15",
+            "seed_label": "Speech as Interface in Web Applications for Visually Challenged.",
+            "dialogue": [
+                "Does Speech as Interface in Web Applications for Visually Challenged. have any authors?",
+                "How many authors does Speech as Interface have?",
+                "When was Speech as Interface published?",
+                "What school did Speech as Interface have its thesis accepted by?"
+            ],
+            "original": [
+                "Does Speech as Interface in Web Applications for Visually Challenged. have any authors?",
+                "How many authors does Speech as Interface in Web Applications for Visually Challenged. have?",
+                "When was Speech as Interface in Web Applications for Visually Challenged. published?",
+                "What school did Speech as Interface in Web Applications for Visually Challenged. have its thesis accepted by?"
+            ],
+            "queries": [
+                "ASK WHERE {?x0 <https://dblp.org/rdf/schema#authoredBy>?y0.}",
+                "SELECT?n WHERE {\n  <https://dblp.org/rec/phd/dnb/Verma15> <https://dblp.org/rdf/schema#numberOfCreators>?n.\n}",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT?publishedBy WHERE {\n  <https://dblp.org/rec/phd/dnb/Verma15> dblp:publishedBy?publishedBy.\n}\n",
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\n\t\t\t\tSELECT?school\n\t\t\t\tWHERE {\n\t\t\t\t\t?thesis dblp:thesisAcceptedBySchool?school\n\t\t\t\t\tFILTER(?thesis = <https://dblp.org/rec/phd/dnb/Verma15>)\n\t\t\t\t}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Verma15",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Verma15",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Verma15",
+                        "https://dblp.org/rdf/schema#publishedBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Verma15",
+                        "https://dblp.org/rdf/schema#thesisAcceptedBySchool",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4909,
+                "prompt_tokens": 2510,
+                "completion_tokens": 2399
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 2,
+                "In Correct": 1
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 7,
+            "Where did": 1,
+            "When was": 2,
+            "How many": 4,
+            "Does Speech": 1,
+            "What school": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 4131.6,
+                "prompt_tokens": 2158.0,
+                "completion_tokens": 1973.6
+            },
+            "Minimum": {
+                "total_tokens": 3513,
+                "prompt_tokens": 1727,
+                "completion_tokens": 1622
+            },
+            "Maximum": {
+                "total_tokens": 4909,
+                "prompt_tokens": 2645,
+                "completion_tokens": 2399
+            },
+            "Total": {
+                "total_tokens": 20658,
+                "prompt_tokens": 10790,
+                "completion_tokens": 9868
+            }
+        },
+        "execution": {
+            "In Correct": 16,
+            "Correct": 16,
+            "Syntax Error": 5
+        }
+    },
+    "cost": {
+        "total_tokens": 1627461,
+        "prompt_tokens": 943538,
+        "completion_tokens": 683923
+    },
+    "total_time": 314.2765836715698,
+    "average_time": 62.855316734313966,
+    "Context Length Error": 0,
+    "Question Validation Error": 144,
+    "Question Json Error": 143,
+    "Triples Validation Error": 7,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 156,
+    "Sparql Json Error": 1,
+    "Dialogue Validation Error": 44,
+    "Dialogue Json Error": 1
+}

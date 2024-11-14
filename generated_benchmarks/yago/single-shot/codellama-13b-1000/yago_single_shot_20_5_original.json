@@ -1,0 +1,412 @@
+{
+    "seeds_used": 1000,
+    "data": [
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Ada_Crossley",
+            "seed_label": "Ada Crossley",
+            "dialogue": [
+                "What is the birth date of Ada Crossley?",
+                "What is the birth date of she?",
+                "What is the birth date of she?",
+                "What is the birth date of she?",
+                "What is the birth date of she?"
+            ],
+            "original": [
+                "What is the birth date of Ada Crossley?",
+                "What is the death date of Ada Crossley?",
+                "What is the birth date of Ada Crossley?",
+                "What is the birth date of Ada Crossley?",
+                "What is the birth date of Ada Crossley?"
+            ],
+            "queries": [
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/Ada_Crossley> <http://schema.org/birthDate>?x0 }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/Ada_Crossley> <http://schema.org/birthDate>?x0 }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/Ada_Crossley> <http://schema.org/birthDate>?x0 }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/Ada_Crossley> <http://schema.org/birthDate>?x0 }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/Ada_Crossley> <http://schema.org/birthDate>?x0 }"
+            ],
+            "cost": {
+                "total_tokens": 1131,
+                "prompt_tokens": 589,
+                "completion_tokens": 542
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Adam_Treloar",
+            "seed_label": "Adam Treloar",
+            "dialogue": [
+                "What is the name of Adam Treloar?",
+                "What is the name of he?",
+                "What is the name of he?",
+                "What is the name of he?",
+                "What is the name of he?"
+            ],
+            "original": [
+                "What is the name of Adam Treloar?",
+                "What is the name of Adam Treloar?",
+                "What is the name of Adam Treloar?",
+                "What is the name of Adam Treloar?",
+                "What is the name of Adam Treloar?"
+            ],
+            "queries": [
+                "SELECT?v0 WHERE {<http://yago-knowledge.org/resource/Adam_Treloar> <http://schema.org/givenName>?v0}",
+                "SELECT?v0 WHERE {<http://yago-knowledge.org/resource/Adam_Treloar> <http://schema.org/knowsLanguage>?v0}",
+                "SELECT?v0 WHERE {<http://yago-knowledge.org/resource/Adam_Treloar> <http://schema.org/memberOf>?v0}",
+                "SELECT?v0 WHERE {<http://yago-knowledge.org/resource/Adam_Treloar> <http://schema.org/familyName>?v0}",
+                "SELECT?v0 WHERE {<http://yago-knowledge.org/resource/Adam_Treloar> <http://schema.org/birthDate>?v0}"
+            ],
+            "cost": {
+                "total_tokens": 1059,
+                "prompt_tokens": 519,
+                "completion_tokens": 540
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Adel_Labib",
+            "seed_label": "Adel Labib",
+            "dialogue": [
+                "What is Adel Labib's birth date?",
+                "What is his given name?",
+                "What is his alternate name?",
+                "What is his nationality?",
+                "What is his has occupation?"
+            ],
+            "original": [
+                "What is Adel Labib's birth date?",
+                "What is Adel Labib's given name?",
+                "What is Adel Labib's alternate name?",
+                "What is Adel Labib's nationality?",
+                "What is Adel Labib's has occupation?"
+            ],
+            "queries": [
+                "SELECT?birthDate WHERE {<http://yago-knowledge.org/resource/Adel_Labib> <http://schema.org/birthDate>?birthDate.}",
+                "SELECT?givenName WHERE {<http://yago-knowledge.org/resource/Adel_Labib> <http://schema.org/givenName>?givenName.}",
+                "SELECT?alternateName WHERE {<http://yago-knowledge.org/resource/Adel_Labib> <http://schema.org/alternateName>?alternateName.}",
+                "SELECT?nationality WHERE {<http://yago-knowledge.org/resource/Adel_Labib> <http://schema.org/nationality>?nationality.}",
+                "SELECT?hasOccupation WHERE {<http://yago-knowledge.org/resource/Adel_Labib> <http://schema.org/hasOccupation>?hasOccupation.}"
+            ],
+            "cost": {
+                "total_tokens": 1078,
+                "prompt_tokens": 520,
+                "completion_tokens": 558
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/1992_Winter_Olympics",
+            "seed_label": "1992 Winter Olympics",
+            "dialogue": [
+                "What is the alternate name of 1992 Winter Olympics?",
+                "What is the alternate name of it?",
+                "What is the alternate name of it?",
+                "What is the alternate name of it?",
+                "What is the alternate name of it?"
+            ],
+            "original": [
+                "What is the alternate name of 1992 Winter Olympics?",
+                "When did 1992 Winter Olympics take place?",
+                "Where did 1992 Winter Olympics take place?",
+                "When did 1992 Winter Olympics end?",
+                "What is the start date of 1992 Winter Olympics?"
+            ],
+            "queries": [
+                "SELECT?alternateName WHERE {<http://yago-knowledge.org/resource/1992_Winter_Olympics> <http://schema.org/alternateName>?alternateName.}",
+                "SELECT?alternateName WHERE {<http://yago-knowledge.org/resource/1992_Winter_Olympics> <http://schema.org/alternateName>?alternateName.}",
+                "SELECT?alternateName WHERE {<http://yago-knowledge.org/resource/1992_Winter_Olympics> <http://schema.org/alternateName>?alternateName.}",
+                "SELECT?alternateName WHERE {<http://yago-knowledge.org/resource/1992_Winter_Olympics> <http://schema.org/alternateName>?alternateName.}",
+                "SELECT?alternateName WHERE {<http://yago-knowledge.org/resource/1992_Winter_Olympics> <http://schema.org/alternateName>?alternateName.}"
+            ],
+            "cost": {
+                "total_tokens": 1047,
+                "prompt_tokens": 525,
+                "completion_tokens": 522
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Adelino_Maltez",
+            "seed_label": "Adelino Maltez",
+            "dialogue": [
+                "How many people were born in the same place as Adelino Maltez?",
+                "How many people were born in the same place as he?",
+                "How many people were born in the same place as him?",
+                "How many people were born in the same place as him?",
+                "How many people were born in the same place as him?"
+            ],
+            "original": [
+                "How many people were born in the same place as Adelino Maltez?",
+                "How many people were born in the same place as Adelino Maltez?",
+                "How many people were born in the same place as Adelino Maltez?",
+                "How many people were born in the same place as Adelino Maltez?",
+                "How many people were born in the same place as Adelino Maltez?"
+            ],
+            "queries": [
+                "SELECT (COUNT(?person) AS?count) WHERE {?person <http://schema.org/birthPlace> <http://yago-knowledge.org/resource/Adelino_Maltez>.}",
+                "SELECT (COUNT(?person) AS?count) WHERE {?person <http://schema.org/birthPlace>?birthPlace.}",
+                "SELECT (COUNT(?person) AS?count) WHERE {?person <http://schema.org/birthPlace>?birthPlace.}",
+                "SELECT (COUNT(?person) AS?count) WHERE {?person <http://schema.org/birthPlace>?birthPlace.}",
+                "SELECT (COUNT(?person) AS?count) WHERE {?person <http://schema.org/birthPlace>?birthPlace.}"
+            ],
+            "cost": {
+                "total_tokens": 1106,
+                "prompt_tokens": 527,
+                "completion_tokens": 579
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Amlach",
+            "seed_label": "Amlach",
+            "dialogue": [
+                "How many locations are in Amlach?",
+                "How many locations are in it?",
+                "How many locations are in it?",
+                "How many locations are in it?",
+                "How many locations are in it?"
+            ],
+            "original": [
+                "How many locations are in Amlach?",
+                "What are the alternate names of Amlach?",
+                "What is the geo of Amlach?",
+                "What is the location of Amlach?",
+                "What is the containedInPlace of Amlach?"
+            ],
+            "queries": [
+                "select?x where {<http://yago-knowledge.org/resource/Amlach> <http://schema.org/location>?x}",
+                "select?x where {<http://yago-knowledge.org/resource/Amlach> <http://schema.org/location>?x}",
+                "select?x where {<http://yago-knowledge.org/resource/Amlach> <http://schema.org/location>?x}",
+                "select?x where {<http://yago-knowledge.org/resource/Amlach> <http://schema.org/location>?x}",
+                "select?x where {<http://yago-knowledge.org/resource/Amlach> <http://schema.org/location>?x}"
+            ],
+            "cost": {
+                "total_tokens": 1021,
+                "prompt_tokens": 478,
+                "completion_tokens": 543
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/The_Cosmic_Puppets",
+            "seed_label": "The Cosmic Puppets",
+            "dialogue": [
+                "How many alternate names does The Cosmic Puppets have?",
+                "How many alternate names does it have?",
+                "How many alternate names does it have?",
+                "How many alternate names does it have?",
+                "How many alternate names does it have?"
+            ],
+            "original": [
+                "How many alternate names does The Cosmic Puppets have?",
+                "What is the language of The Cosmic Puppets?",
+                "What is the date of publication of The Cosmic Puppets?",
+                "Who are the authors of The Cosmic Puppets?",
+                "Who is the publisher of The Cosmic Puppets?"
+            ],
+            "queries": [
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/The_Cosmic_Puppets> <http://schema.org/alternateName>?x0 }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/The_Cosmic_Puppets> <http://schema.org/inLanguage>?x0 }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/The_Cosmic_Puppets> <http://schema.org/datePublished>?x0 }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/The_Cosmic_Puppets> <http://schema.org/author>?x0 }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/The_Cosmic_Puppets> <http://schema.org/publisher>?x0 }"
+            ],
+            "cost": {
+                "total_tokens": 1063,
+                "prompt_tokens": 521,
+                "completion_tokens": 542
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Agnieszka_Truskolaska",
+            "seed_label": "Agnieszka Truskolaska",
+            "dialogue": [
+                "How many people does Agnieszka Truskolaska know?",
+                "What is the birth date of she?",
+                "What is the birth place of she?",
+                "What is the death date of she?",
+                "What is the death place of she?"
+            ],
+            "original": [
+                "How many people does Agnieszka Truskolaska know?",
+                "What is the birth date of Agnieszka Truskolaska?",
+                "What is the birth place of Agnieszka Truskolaska?",
+                "What is the death date of Agnieszka Truskolaska?",
+                "What is the death place of Agnieszka Truskolaska?"
+            ],
+            "queries": [
+                "SELECT (COUNT(?x0) AS?count) WHERE { <http://yago-knowledge.org/resource/Agnieszka_Truskolaska> <http://schema.org/knows>?x0. }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/Agnieszka_Truskolaska> <http://schema.org/birthDate>?x0. }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/Agnieszka_Truskolaska> <http://schema.org/birthPlace>?x0. }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/Agnieszka_Truskolaska> <http://schema.org/deathDate>?x0. }",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/Agnieszka_Truskolaska> <http://schema.org/deathPlace>?x0. }"
+            ],
+            "cost": {
+                "total_tokens": 1177,
+                "prompt_tokens": 619,
+                "completion_tokens": 558
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Ahmed_Rafiq_Almhadoui",
+            "seed_label": "Ahmed Rafiq Almhadoui",
+            "dialogue": [
+                "How many people are related to Ahmed Rafiq Almhadoui?",
+                "How many people are related to him?",
+                "How many people are related to him?",
+                "How many people are related to him?",
+                "How many people are related to him?"
+            ],
+            "original": [
+                "How many people are related to Ahmed Rafiq Almhadoui?",
+                "How many people are related to Ahmed Rafiq Almhadoui?",
+                "How many people are related to Ahmed Rafiq Almhadoui?",
+                "How many people are related to Ahmed Rafiq Almhadoui?",
+                "How many people are related to Ahmed Rafiq Almhadoui?"
+            ],
+            "queries": [
+                "SELECT (count(?x) AS?count) WHERE { <http://yago-knowledge.org/resource/Ahmed_Rafiq_Almhadoui> <http://www.w3.org/2002/07/owl#sameAs>?x }",
+                "SELECT (count(?x) AS?count) WHERE { <http://yago-knowledge.org/resource/Ahmed_Rafiq_Almhadoui> <http://www.w3.org/2002/07/owl#sameAs>?x }",
+                "SELECT (count(?x) AS?count) WHERE { <http://yago-knowledge.org/resource/Ahmed_Rafiq_Almhadoui> <http://www.w3.org/2002/07/owl#sameAs>?x }",
+                "SELECT (count(?x) AS?count) WHERE { <http://yago-knowledge.org/resource/Ahmed_Rafiq_Almhadoui> <http://www.w3.org/2002/07/owl#sameAs>?x }",
+                "SELECT (count(?x) AS?count) WHERE { <http://yago-knowledge.org/resource/Ahmed_Rafiq_Almhadoui> <http://www.w3.org/2002/07/owl#sameAs>?x }"
+            ],
+            "cost": {
+                "total_tokens": 1057,
+                "prompt_tokens": 543,
+                "completion_tokens": 514
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Appomattox_County,_Virginia",
+            "seed_label": "Appomattox County",
+            "dialogue": [
+                "What is the name of Appomattox County, Virginia?",
+                "What is the name of it?",
+                "What is the name of it?",
+                "What is the name of it?",
+                "What is the name of it?"
+            ],
+            "original": [
+                "What is the name of Appomattox County, Virginia?",
+                "What is the name of Appomattox County, Virginia?",
+                "What is the name of Appomattox County, Virginia?",
+                "What is the name of Appomattox County, Virginia?",
+                "What is the name of Appomattox County, Virginia?"
+            ],
+            "queries": [
+                "SELECT?name WHERE {<http://yago-knowledge.org/resource/Appomattox_County,_Virginia> <http://schema.org/alternateName>?name}",
+                "SELECT?name WHERE {<http://yago-knowledge.org/resource/Appomattox_County,_Virginia> <http://schema.org/alternateName>?name}",
+                "SELECT?name WHERE {<http://yago-knowledge.org/resource/Appomattox_County,_Virginia> <http://schema.org/alternateName>?name}",
+                "SELECT?name WHERE {<http://yago-knowledge.org/resource/Appomattox_County,_Virginia> <http://schema.org/alternateName>?name}",
+                "SELECT?name WHERE {<http://yago-knowledge.org/resource/Appomattox_County,_Virginia> <http://schema.org/alternateName>?name}"
+            ],
+            "cost": {
+                "total_tokens": 1000,
+                "prompt_tokens": 502,
+                "completion_tokens": 498
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Al_Clauss",
+            "seed_label": "Al Clauss",
+            "dialogue": [
+                "How many people was Al Clauss born in?",
+                "How many people was he born in?",
+                "How many people was he born in?",
+                "How many people was he born in?",
+                "How many people was he born in?"
+            ],
+            "original": [
+                "How many people was Al Clauss born in?",
+                "How many people was Al Clauss born in?",
+                "How many people was Al Clauss born in?",
+                "How many people was Al Clauss born in?",
+                "How many people was Al Clauss born in?"
+            ],
+            "queries": [
+                "SELECT?number WHERE { <http://yago-knowledge.org/resource/Al_Clauss> <http://schema.org/birthPlace>?number }",
+                "SELECT?number WHERE { <http://yago-knowledge.org/resource/Al_Clauss> <http://schema.org/nationality>?number }",
+                "SELECT?number WHERE { <http://yago-knowledge.org/resource/Al_Clauss> <http://schema.org/deathDate>?number }",
+                "SELECT?number WHERE { <http://yago-knowledge.org/resource/Al_Clauss> <http://schema.org/givenName>?number }",
+                "SELECT?number WHERE { <http://yago-knowledge.org/resource/Al_Clauss> <http://schema.org/memberOf>?number }"
+            ],
+            "cost": {
+                "total_tokens": 1114,
+                "prompt_tokens": 562,
+                "completion_tokens": 552
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 29,
+            "How many": 26
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 1077.5454545454545,
+                "prompt_tokens": 536.8181818181819,
+                "completion_tokens": 540.7272727272727
+            },
+            "Minimum": {
+                "total_tokens": 1000,
+                "prompt_tokens": 478,
+                "completion_tokens": 498
+            },
+            "Maximum": {
+                "total_tokens": 1177,
+                "prompt_tokens": 619,
+                "completion_tokens": 579
+            },
+            "Total": {
+                "total_tokens": 11853,
+                "prompt_tokens": 5905,
+                "completion_tokens": 5948
+            }
+        },
+        "execution": {
+            "Correct": 55
+        }
+    },
+    "cost": {
+        "total_tokens": 1077267,
+        "prompt_tokens": 545540,
+        "completion_tokens": 531727
+    },
+    "total_time": 291.6066861152649,
+    "average_time": 26.509698737751354,
+    "Context Length Error": 0,
+    "Question Validation Error": 78,
+    "Sparql Validation Error": 29,
+    "Dialogue Validation Error": 579,
+    "Json Error": 168,
+    "unequal Lists Error": 135
+}

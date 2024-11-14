@@ -1,0 +1,219 @@
+{
+    "seeds_used": 1000,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/pid/20/4565",
+            "seed_label": "Manuel Wimmer",
+            "dialogue": [
+                "How many people have an orcid for Manuel Wimmer?",
+                "How many people have an other affiliation for him?",
+                "How many people have a primary affiliation for him?",
+                "How many people have a primary full creator name for him?",
+                "How many people have a primary homepage for him?",
+                "How many people have a webpage for him?"
+            ],
+            "original": [
+                "How many people have an orcid for Manuel Wimmer?",
+                "How many people have an other affiliation for Manuel Wimmer?",
+                "How many people have a primary affiliation for Manuel Wimmer?",
+                "How many people have a primary full creator name for Manuel Wimmer?",
+                "How many people have a primary homepage for Manuel Wimmer?",
+                "How many people have a webpage for Manuel Wimmer?"
+            ],
+            "queries": [
+                "SELECT (COUNT(?v1) AS?c) WHERE { <https://dblp.org/pid/20/4565> <https://dblp.org/rdf/schema#orcid>?v1. }",
+                "SELECT (COUNT(?v1) AS?c) WHERE { <https://dblp.org/pid/20/4565> <https://dblp.org/rdf/schema#otherAffiliation>?v1. }",
+                "SELECT (COUNT(?v1) AS?c) WHERE { <https://dblp.org/pid/20/4565> <https://dblp.org/rdf/schema#primaryAffiliation>?v1. }",
+                "SELECT (COUNT(?v1) AS?c) WHERE { <https://dblp.org/pid/20/4565> <https://dblp.org/rdf/schema#primaryFullCreatorName>?v1. }",
+                "SELECT (COUNT(?v1) AS?c) WHERE { <https://dblp.org/pid/20/4565> <https://dblp.org/rdf/schema#primaryHomepage>?v1. }",
+                "SELECT (COUNT(?v1) AS?c) WHERE { <https://dblp.org/pid/20/4565> <https://dblp.org/rdf/schema#webpage>?v1. }"
+            ],
+            "cost": {
+                "total_tokens": 1089,
+                "prompt_tokens": 560,
+                "completion_tokens": 529
+            },
+            "query_status": {
+                "Correct": 6
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/22/3277-1",
+            "seed_label": "Helmut Mayer 0001",
+            "dialogue": [
+                "What is the orcid of Helmut Mayer 0001?",
+                "What is the orcid of him?",
+                "What is the orcid of him?",
+                "What is the orcid of him?",
+                "What is the orcid of him?"
+            ],
+            "original": [
+                "What is the orcid of Helmut Mayer 0001?",
+                "What is the primary affiliation of Helmut Mayer 0001?",
+                "What is the primary full creator name of Helmut Mayer 0001?",
+                "What is the primary homepage of Helmut Mayer 0001?",
+                "What is the webpage of Helmut Mayer 0001?"
+            ],
+            "queries": [
+                "SELECT?orcid WHERE {<https://dblp.org/pid/22/3277-1> <https://dblp.org/rdf/schema#orcid>?orcid.}",
+                "SELECT?orcid WHERE {<https://dblp.org/pid/22/3277-1> <https://dblp.org/rdf/schema#orcid>?orcid.}",
+                "SELECT?orcid WHERE {<https://dblp.org/pid/22/3277-1> <https://dblp.org/rdf/schema#orcid>?orcid.}",
+                "SELECT?orcid WHERE {<https://dblp.org/pid/22/3277-1> <https://dblp.org/rdf/schema#orcid>?orcid.}",
+                "SELECT?orcid WHERE {<https://dblp.org/pid/22/3277-1> <https://dblp.org/rdf/schema#orcid>?orcid.}"
+            ],
+            "cost": {
+                "total_tokens": 1082,
+                "prompt_tokens": 544,
+                "completion_tokens": 538
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/57/7531",
+            "seed_label": "Mihai Codescu",
+            "dialogue": [
+                "Mihai Codescu is affiliated with which university?",
+                "Which university?",
+                "Which university?",
+                "Which university?",
+                "Which university?"
+            ],
+            "original": [
+                "Mihai Codescu is affiliated with which university?",
+                "Mihai Codescu is affiliated with which university?",
+                "Mihai Codescu is affiliated with which university?",
+                "Mihai Codescu is affiliated with which university?",
+                "Mihai Codescu is affiliated with which university?"
+            ],
+            "queries": [
+                "SELECT DISTINCT?x0 WHERE { <https://dblp.org/pid/57/7531> <https://dblp.org/rdf/schema#primaryAffiliation>?x0 }",
+                "SELECT DISTINCT?x0 WHERE { <https://dblp.org/pid/57/7531> <https://dblp.org/rdf/schema#primaryAffiliation>?x0 }",
+                "SELECT DISTINCT?x0 WHERE { <https://dblp.org/pid/57/7531> <https://dblp.org/rdf/schema#primaryAffiliation>?x0 }",
+                "SELECT DISTINCT?x0 WHERE { <https://dblp.org/pid/57/7531> <https://dblp.org/rdf/schema#primaryAffiliation>?x0 }",
+                "SELECT DISTINCT?x0 WHERE { <https://dblp.org/pid/57/7531> <https://dblp.org/rdf/schema#primaryAffiliation>?x0 }"
+            ],
+            "cost": {
+                "total_tokens": 1072,
+                "prompt_tokens": 564,
+                "completion_tokens": 508
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/ChairezGPP10",
+            "seed_label": "Model predictive control by differential neural networks approach.",
+            "dialogue": [
+                "What is the number of creators of Model predictive control by differential neural networks approach?",
+                "How many creators are there?",
+                "How many creators are there?",
+                "How many creators are there?",
+                "How many creators are there?"
+            ],
+            "original": [
+                "What is the number of creators of Model predictive control by differential neural networks approach?",
+                "What is the number of creators of Model predictive control by differential neural networks approach?",
+                "What is the number of creators of Model predictive control by differential neural networks approach?",
+                "What is the number of creators of Model predictive control by differential neural networks approach?",
+                "What is the number of creators of Model predictive control by differential neural networks approach?"
+            ],
+            "queries": [
+                "SELECT (COUNT(?x) AS?count) WHERE {<https://dblp.org/rec/conf/ijcnn/ChairezGPP10> <https://dblp.org/rdf/schema#numberOfCreators>?x}",
+                "SELECT (COUNT(?x) AS?count) WHERE {<https://dblp.org/rec/conf/ijcnn/ChairezGPP10> <https://dblp.org/rdf/schema#numberOfCreators>?x}",
+                "SELECT (COUNT(?x) AS?count) WHERE {<https://dblp.org/rec/conf/ijcnn/ChairezGPP10> <https://dblp.org/rdf/schema#numberOfCreators>?x}",
+                "SELECT (COUNT(?x) AS?count) WHERE {<https://dblp.org/rec/conf/ijcnn/ChairezGPP10> <https://dblp.org/rdf/schema#numberOfCreators>?x}",
+                "SELECT (COUNT(?x) AS?count) WHERE {<https://dblp.org/rec/conf/ijcnn/ChairezGPP10> <https://dblp.org/rdf/schema#numberOfCreators>?x}"
+            ],
+            "cost": {
+                "total_tokens": 1339,
+                "prompt_tokens": 811,
+                "completion_tokens": 528
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/DiazB20",
+            "seed_label": "Self-Optimisation of Dense Neural Network Architectures: An Incremental Approach.",
+            "dialogue": [
+                "What is the year of publication of Self-Optimisation of Dense Neural Network Architectures: An Incremental Approach?",
+                "What is the year of publication of it?",
+                "What is the year of publication of it?",
+                "What is the year of publication of it?",
+                "What is the year of publication of it?"
+            ],
+            "original": [
+                "What is the year of publication of Self-Optimisation of Dense Neural Network Architectures: An Incremental Approach?",
+                "What is the year of publication of Self-Optimisation of Dense Neural Network Architectures: An Incremental Approach?",
+                "What is the year of publication of Self-Optimisation of Dense Neural Network Architectures: An Incremental Approach?",
+                "What is the year of publication of Self-Optimisation of Dense Neural Network Architectures: An Incremental Approach?",
+                "What is the year of publication of Self-Optimisation of Dense Neural Network Architectures: An Incremental Approach?"
+            ],
+            "queries": [
+                "SELECT DISTINCT?year_of_publication WHERE {<https://dblp.org/rec/conf/ijcnn/DiazB20> <https://dblp.org/rdf/schema#yearOfPublication>?year_of_publication.}",
+                "SELECT DISTINCT?year_of_publication WHERE {<https://dblp.org/rec/conf/ijcnn/DiazB20> <https://dblp.org/rdf/schema#yearOfPublication>?year_of_publication.}",
+                "SELECT DISTINCT?year_of_publication WHERE {<https://dblp.org/rec/conf/ijcnn/DiazB20> <https://dblp.org/rdf/schema#yearOfPublication>?year_of_publication.}",
+                "SELECT DISTINCT?year_of_publication WHERE {<https://dblp.org/rec/conf/ijcnn/DiazB20> <https://dblp.org/rdf/schema#yearOfPublication>?year_of_publication.}",
+                "SELECT DISTINCT?year_of_publication WHERE {<https://dblp.org/rec/conf/ijcnn/DiazB20> <https://dblp.org/rdf/schema#yearOfPublication>?year_of_publication.}"
+            ],
+            "cost": {
+                "total_tokens": 1270,
+                "prompt_tokens": 783,
+                "completion_tokens": 487
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "How many": 10,
+            "What is": 11,
+            "Mihai Codescu": 1,
+            "Which university?": 4
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 1170.4,
+                "prompt_tokens": 652.4,
+                "completion_tokens": 518.0
+            },
+            "Minimum": {
+                "total_tokens": 1072,
+                "prompt_tokens": 544,
+                "completion_tokens": 487
+            },
+            "Maximum": {
+                "total_tokens": 1339,
+                "prompt_tokens": 811,
+                "completion_tokens": 538
+            },
+            "Total": {
+                "total_tokens": 5852,
+                "prompt_tokens": 3262,
+                "completion_tokens": 2590
+            }
+        },
+        "execution": {
+            "Correct": 26
+        }
+    },
+    "cost": {
+        "total_tokens": 1265078,
+        "prompt_tokens": 748163,
+        "completion_tokens": 516915
+    },
+    "total_time": 135.10319113731384,
+    "average_time": 27.02063822746277,
+    "Context Length Error": 0,
+    "Question Validation Error": 188,
+    "Sparql Validation Error": 11,
+    "Dialogue Validation Error": 91,
+    "Json Error": 677,
+    "unequal Lists Error": 28
+}

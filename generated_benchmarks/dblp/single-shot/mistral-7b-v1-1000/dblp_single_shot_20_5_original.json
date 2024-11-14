@@ -1,0 +1,81 @@
+{
+    "seeds_used": 1000,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/pid/66/159",
+            "seed_label": "Burkhard Rost",
+            "dialogue": [
+                "What is the primary full creator name of Burkhard Rost?",
+                "What is the primary full creator name of he?",
+                "What is the primary full creator name of him?",
+                "What is the primary full creator name of he?",
+                "What is the primary full creator name of him?"
+            ],
+            "original": [
+                "What is the primary full creator name of Burkhard Rost?",
+                "What is the primary full creator name of Burkhard Rost?",
+                "What is the primary full creator name of Burkhard Rost?",
+                "What is the primary full creator name of Burkhard Rost?",
+                "What is the primary full creator name of Burkhard Rost?"
+            ],
+            "queries": [
+                "SELECT DISTINCT?name WHERE { <https://dblp.org/pid/66/159> <https://dblp.org/rdf/schema#primaryFullCreatorName>?name }",
+                "SELECT DISTINCT?name WHERE { <https://dblp.org/pid/66/159> <https://dblp.org/rdf/schema#primaryFullCreatorName>?name }",
+                "SELECT DISTINCT?name WHERE { <https://dblp.org/pid/66/159> <https://dblp.org/rdf/schema#primaryFullCreatorName>?name }",
+                "SELECT DISTINCT?name WHERE { <https://dblp.org/pid/66/159> <https://dblp.org/rdf/schema#primaryFullCreatorName>?name }",
+                "SELECT DISTINCT?name WHERE { <https://dblp.org/pid/66/159> <https://dblp.org/rdf/schema#primaryFullCreatorName>?name }"
+            ],
+            "cost": {
+                "total_tokens": 913,
+                "prompt_tokens": 553,
+                "completion_tokens": 360
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 5
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 913.0,
+                "prompt_tokens": 553.0,
+                "completion_tokens": 360.0
+            },
+            "Minimum": {
+                "total_tokens": 913,
+                "prompt_tokens": 553,
+                "completion_tokens": 360
+            },
+            "Maximum": {
+                "total_tokens": 913,
+                "prompt_tokens": 553,
+                "completion_tokens": 360
+            },
+            "Total": {
+                "total_tokens": 913,
+                "prompt_tokens": 553,
+                "completion_tokens": 360
+            }
+        },
+        "execution": {
+            "Correct": 5
+        }
+    },
+    "cost": {
+        "total_tokens": 1205760,
+        "prompt_tokens": 734694,
+        "completion_tokens": 471066
+    },
+    "total_time": 11.827582359313965,
+    "average_time": 11.827582359313965,
+    "Context Length Error": 0,
+    "Question Validation Error": 208,
+    "Sparql Validation Error": 34,
+    "Dialogue Validation Error": 118,
+    "Json Error": 528,
+    "unequal Lists Error": 111
+}

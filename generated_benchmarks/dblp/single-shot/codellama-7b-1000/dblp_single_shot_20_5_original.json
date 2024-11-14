@@ -1,0 +1,85 @@
+{
+    "seeds_used": 1000,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/pid/s/GerhardSchwabe",
+            "seed_label": "Gerhard Schwabe",
+            "dialogue": [
+                "Who is Gerhard Schwabe?",
+                "What are his/her affiliations?",
+                "What are his/her homepages?",
+                "What are his/her primary full creator names?",
+                "What are his/her orcids?",
+                "What are his/her webpages?"
+            ],
+            "original": [
+                "Gerhard Schwabe is a creator of [a].",
+                "Gerhard Schwabe has [a] affiliation with [b].",
+                "Gerhard Schwabe has [a] homepage at [b].",
+                "Gerhard Schwabe has [a] primary full creator name of [b].",
+                "Gerhard Schwabe has [a] orcid of [b].",
+                "Gerhard Schwabe has [a] webpage at [b]."
+            ],
+            "queries": [
+                "SELECT DISTINCT?x WHERE {<https://dblp.org/pid/s/GerhardSchwabe> <https://dblp.org/rdf/schema#orcid>?x}",
+                "SELECT DISTINCT?x WHERE {<https://dblp.org/pid/s/GerhardSchwabe> <https://dblp.org/rdf/schema#primaryAffiliation>?x}",
+                "SELECT DISTINCT?x WHERE {<https://dblp.org/pid/s/GerhardSchwabe> <https://dblp.org/rdf/schema#primaryFullCreatorName>?x}",
+                "SELECT DISTINCT?x WHERE {<https://dblp.org/pid/s/GerhardSchwabe> <https://dblp.org/rdf/schema#primaryHomepage>?x}",
+                "SELECT DISTINCT?x WHERE {<https://dblp.org/pid/s/GerhardSchwabe> <https://dblp.org/rdf/schema#webpage>?x}",
+                "SELECT DISTINCT?x WHERE {<https://dblp.org/pid/s/GerhardSchwabe> <https://dblp.org/rdf/schema#orcid>?x}"
+            ],
+            "cost": {
+                "total_tokens": 1048,
+                "prompt_tokens": 542,
+                "completion_tokens": 506
+            },
+            "query_status": {
+                "Correct": 6
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "Who is": 1,
+            "What are": 5
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 1048.0,
+                "prompt_tokens": 542.0,
+                "completion_tokens": 506.0
+            },
+            "Minimum": {
+                "total_tokens": 1048,
+                "prompt_tokens": 542,
+                "completion_tokens": 506
+            },
+            "Maximum": {
+                "total_tokens": 1048,
+                "prompt_tokens": 542,
+                "completion_tokens": 506
+            },
+            "Total": {
+                "total_tokens": 1048,
+                "prompt_tokens": 542,
+                "completion_tokens": 506
+            }
+        },
+        "execution": {
+            "Correct": 6
+        }
+    },
+    "cost": {
+        "total_tokens": 1248982,
+        "prompt_tokens": 731634,
+        "completion_tokens": 517348
+    },
+    "total_time": 18.120943784713745,
+    "average_time": 18.120943784713745,
+    "Context Length Error": 0,
+    "Question Validation Error": 203,
+    "Sparql Validation Error": 45,
+    "Dialogue Validation Error": 30,
+    "Json Error": 604,
+    "unequal Lists Error": 117
+}

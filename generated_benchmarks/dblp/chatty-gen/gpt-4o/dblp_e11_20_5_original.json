@@ -1,0 +1,1365 @@
+{
+    "seeds_used": 21,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/rec/phd/Turing38",
+            "seed_label": "Systems of Logic Based on Ordinals.",
+            "dialogue": [
+                "What is the year of publication of Systems of Logic Based on Ordinals?",
+                "Does it have other electronic editions?",
+                "How many creators does it have?",
+                "Which school accepted its thesis?",
+                "Is there a related digital object identifier (DOI) for it?"
+            ],
+            "original": [
+                "What is the year of publication of Systems of Logic Based on Ordinals?",
+                "Does the entity Systems of Logic Based on Ordinals have other electronic editions?",
+                "How many creators does the publication Systems of Logic Based on Ordinals have?",
+                "Which school accepted the thesis of Systems of Logic Based on Ordinals?",
+                "Is there a related digital object identifier (DOI) for Systems of Logic Based on Ordinals?"
+            ],
+            "queries": [
+                "SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication . }",
+                "ASK WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#otherElectronicEdition> ?edition }",
+                "SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators . }",
+                "SELECT ?school WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?school . }",
+                "ASK WHERE { <https://dblp.org/rec/phd/Turing38> <https://dblp.org/rdf/schema#doi> ?doi }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/Turing38",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/Turing38",
+                        "https://dblp.org/rdf/schema#otherElectronicEdition",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/Turing38",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/Turing38",
+                        "https://dblp.org/rdf/schema#thesisAcceptedBySchool",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/Turing38",
+                        "https://dblp.org/rdf/schema#doi",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2515,
+                "prompt_tokens": 1915,
+                "completion_tokens": 600
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/at/Rockl2010",
+            "seed_label": "Cooperative Situation Awareness in Transportation.",
+            "dialogue": [
+                "Who is one of the contributors to Cooperative Situation Awareness in Transportation.?",
+                "What is the isbn of it?",
+                "How many creators contributed to it?",
+                "In what year was it published?",
+                "Did it have an other Electronic Edition available?"
+            ],
+            "original": [
+                "Who is one of the contributors to Cooperative Situation Awareness in Transportation.?",
+                "What is the isbn of Cooperative Situation Awareness in Transportation.?",
+                "How many creators contributed to Cooperative Situation Awareness in Transportation.?",
+                "In what year was Cooperative Situation Awareness in Transportation. published?",
+                "Did Cooperative Situation Awareness in Transportation. have an other Electronic Edition available?"
+            ],
+            "queries": [
+                "SELECT ?author WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "SELECT ?isbn WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#isbn> ?isbn . }",
+                "SELECT COUNT(?creator) WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#numberOfCreators> ?creator. }",
+                "SELECT ?year WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }",
+                "ASK WHERE { <https://dblp.org/rec/phd/at/Rockl2010> <https://dblp.org/rdf/schema#otherElectronicEdition> ?otherEdition }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/at/Rockl2010",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/at/Rockl2010",
+                        "https://dblp.org/rdf/schema#isbn",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/at/Rockl2010",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/at/Rockl2010",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/at/Rockl2010",
+                        "https://dblp.org/rdf/schema#otherElectronicEdition",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2118,
+                "prompt_tokens": 1567,
+                "completion_tokens": 551
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Adler12",
+            "seed_label": "Spekulative Optimierungen in interpretativen virtuellen Maschinen.",
+            "dialogue": [
+                "When was 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.' published?",
+                "How many creators contributed to it?",
+                "Who authored it?",
+                "Which school accepted it for a thesis?"
+            ],
+            "original": [
+                "When was 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.' published?",
+                "How many creators contributed to 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.'?",
+                "Who authored 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.'?",
+                "Which school accepted 'Spekulative Optimierungen in interpretativen virtuellen Maschinen.' for a thesis?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT ?year WHERE {\n  <https://dblp.org/rec/phd/dnb/Adler12> dblp:yearOfPublication ?year .\n}",
+                "SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators . }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "SELECT ?school WHERE { <https://dblp.org/rec/phd/dnb/Adler12> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?school . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Adler12",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Adler12",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Adler12",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Adler12",
+                        "https://dblp.org/rdf/schema#thesisAcceptedBySchool",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2423,
+                "prompt_tokens": 1704,
+                "completion_tokens": 719
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Backes15",
+            "seed_label": "Cluster abstraction of graph transformation systems.",
+            "dialogue": [
+                "What is the bibtex type associated with 'Cluster abstraction of graph transformation systems.'?",
+                "Who authored it?",
+                "How many creators contributed to it?",
+                "Is there a primary electronic edition for it?",
+                "Which school accepted the thesis it?"
+            ],
+            "original": [
+                "What is the bibtex type associated with 'Cluster abstraction of graph transformation systems.'?",
+                "Who authored 'Cluster abstraction of graph transformation systems.'?",
+                "How many creators contributed to 'Cluster abstraction of graph transformation systems.'?",
+                "Is there a primary electronic edition for 'Cluster abstraction of graph transformation systems.'?",
+                "Which school accepted the thesis 'Cluster abstraction of graph transformation systems.'?"
+            ],
+            "queries": [
+                "SELECT ?bibtexType WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "SELECT ?numCreators WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#numberOfCreators> ?numCreators . }",
+                "ASK WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?o }",
+                "SELECT ?school WHERE { <https://dblp.org/rec/phd/dnb/Backes15> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?school. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Backes15",
+                        "https://dblp.org/rdf/schema#bibtexType",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Backes15",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Backes15",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Backes15",
+                        "https://dblp.org/rdf/schema#primaryElectronicEdition",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Backes15",
+                        "https://dblp.org/rdf/schema#thesisAcceptedBySchool",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2103,
+                "prompt_tokens": 1555,
+                "completion_tokens": 548
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Bailer20",
+            "seed_label": "New Data Based Matching Strategies for Visual Motion Estimation.",
+            "dialogue": [
+                "What is the bibtex type of New Data Based Matching Strategies for Visual Motion Estimation.?",
+                "How many creators contributed to it?",
+                "Which institution accepted the thesis?",
+                "In what year was it published?"
+            ],
+            "original": [
+                "What is the bibtex type of New Data Based Matching Strategies for Visual Motion Estimation.?",
+                "How many creators contributed to New Data Based Matching Strategies for Visual Motion Estimation.?",
+                "Which institution accepted the thesis New Data Based Matching Strategies for Visual Motion Estimation.?",
+                "In what year was New Data Based Matching Strategies for Visual Motion Estimation. published?"
+            ],
+            "queries": [
+                "SELECT ?bibtexType WHERE { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType . }",
+                "SELECT ?numCreators WHERE { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#numberOfCreators> ?numCreators }",
+                "SELECT ?institution WHERE { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?institution . }",
+                "SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Bailer20> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Bailer20",
+                        "https://dblp.org/rdf/schema#bibtexType",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Bailer20",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Bailer20",
+                        "https://dblp.org/rdf/schema#thesisAcceptedBySchool",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Bailer20",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2251,
+                "prompt_tokens": 1647,
+                "completion_tokens": 604
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Beck15",
+            "seed_label": "Modellbasierte Energiekostenanalyse automatisierter Systeme.",
+            "dialogue": [
+                "Who authored Modellbasierte Energiekostenanalyse automatisierter Systeme.?",
+                "How many creators does it have?",
+                "Was the thesis accepted by a school for it?",
+                "When was the book it published?",
+                "Which publisher was involved with the book it?"
+            ],
+            "original": [
+                "Who authored Modellbasierte Energiekostenanalyse automatisierter Systeme.?",
+                "How many creators does Modellbasierte Energiekostenanalyse automatisierter Systeme. have?",
+                "Was the thesis accepted by a school for Modellbasierte Energiekostenanalyse automatisierter Systeme.?",
+                "When was the book Modellbasierte Energiekostenanalyse automatisierter Systeme. published?",
+                "Which publisher was involved with the book Modellbasierte Energiekostenanalyse automatisierter Systeme.?"
+            ],
+            "queries": [
+                "SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "SELECT (COUNT(?creator) AS ?numberOfCreators) WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#numberOfCreators> ?creator }",
+                "ASK WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?school . }",
+                "SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication . }",
+                "SELECT ?publisher WHERE { <https://dblp.org/rec/phd/dnb/Beck15> <https://dblp.org/rdf/schema#publishedBy> ?publisher . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Beck15",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Beck15",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Beck15",
+                        "https://dblp.org/rdf/schema#thesisAcceptedBySchool",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Beck15",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Beck15",
+                        "https://dblp.org/rdf/schema#publishedBy",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2295,
+                "prompt_tokens": 1683,
+                "completion_tokens": 612
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Beuth20",
+            "seed_label": "Visual attention in primates and for machines - neuronal mechanisms.",
+            "dialogue": [
+                "Does the entity Visual attention in primates and for machines - neuronal mechanisms. have an ISBN?",
+                "What school accepted the thesis for it?",
+                "When was it published?",
+                "Is there a primary electronic edition for it?"
+            ],
+            "original": [
+                "Does the entity Visual attention in primates and for machines - neuronal mechanisms. have an ISBN?",
+                "What school accepted the thesis for Visual attention in primates and for machines - neuronal mechanisms.?",
+                "When was Visual attention in primates and for machines - neuronal mechanisms. published?",
+                "Is there a primary electronic edition for Visual attention in primates and for machines - neuronal mechanisms.?"
+            ],
+            "queries": [
+                "ASK WHERE { <https://dblp.org/rec/phd/dnb/Beuth20> <https://dblp.org/rdf/schema#isbn> ?isbn . }",
+                "SELECT ?school WHERE { <https://dblp.org/rec/phd/dnb/Beuth20> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?school . }",
+                "SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Beuth20> <https://dblp.org/rdf/schema#yearOfPublication> ?year . }",
+                "ASK WHERE { <https://dblp.org/rec/phd/dnb/Beuth20> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?o }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Beuth20",
+                        "https://dblp.org/rdf/schema#isbn",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Beuth20",
+                        "https://dblp.org/rdf/schema#thesisAcceptedBySchool",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Beuth20",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Beuth20",
+                        "https://dblp.org/rdf/schema#primaryElectronicEdition",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2238,
+                "prompt_tokens": 1635,
+                "completion_tokens": 603
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Biglari22",
+            "seed_label": "Non-Volatile Processor Design for Self-Powered Embedded Systems.",
+            "dialogue": [
+                "Who authored Non-Volatile Processor Design for Self-Powered Embedded Systems.?",
+                "What year was it published?",
+                "What is the ISBN of it?",
+                "Was it accepted by a specific school as a thesis?"
+            ],
+            "original": [
+                "Who authored Non-Volatile Processor Design for Self-Powered Embedded Systems.?",
+                "What year was Non-Volatile Processor Design for Self-Powered Embedded Systems. published?",
+                "What is the ISBN of Non-Volatile Processor Design for Self-Powered Embedded Systems.?",
+                "Was Non-Volatile Processor Design for Self-Powered Embedded Systems. accepted by a specific school as a thesis?"
+            ],
+            "queries": [
+                "SELECT ?author WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "SELECT ?year WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#yearOfPublication> ?year .}",
+                "SELECT ?isbn WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#isbn> ?isbn . }",
+                "ASK WHERE { <https://dblp.org/rec/phd/dnb/Biglari22> <https://dblp.org/rdf/schema#thesisAcceptedBySchool> ?school }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Biglari22",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Biglari22",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Biglari22",
+                        "https://dblp.org/rdf/schema#isbn",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Biglari22",
+                        "https://dblp.org/rdf/schema#thesisAcceptedBySchool",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2280,
+                "prompt_tokens": 1690,
+                "completion_tokens": 590
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/0001L14",
+            "seed_label": "Hybrid neural networks for gasoline blending system modeling.",
+            "dialogue": [
+                "Did the Hybrid neural networks for gasoline blending system modeling. have a DOI assigned?",
+                "Where was it published?",
+                "What type of publication or documentation form is referred to for it?"
+            ],
+            "original": [
+                "Did the Hybrid neural networks for gasoline blending system modeling. have a DOI assigned?",
+                "Where was the Hybrid neural networks for gasoline blending system modeling. published?",
+                "What type of publication or documentation form is referred to for the Hybrid neural networks for gasoline blending system modeling.?"
+            ],
+            "queries": [
+                "ASK { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#doi> ?doi }",
+                "SELECT ?venue WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#publishedIn> ?venue . }",
+                "SELECT ?type WHERE { <https://dblp.org/rec/conf/ijcnn/0001L14> <https://dblp.org/rdf/schema#bibtexType> ?type . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001L14",
+                        "https://dblp.org/rdf/schema#doi",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001L14",
+                        "https://dblp.org/rdf/schema#publishedIn",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001L14",
+                        "https://dblp.org/rdf/schema#bibtexType",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2307,
+                "prompt_tokens": 1679,
+                "completion_tokens": 628
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 3,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/0001LCC20",
+            "seed_label": "Pruning Depthwise Separable Convolutions for MobileNet Compression.",
+            "dialogue": [
+                "What is the pagination for Pruning Depthwise Separable Convolutions for MobileNet Compression.?",
+                "How many creators contributed to it?",
+                "Who are the authors of it?",
+                "When was it published?"
+            ],
+            "original": [
+                "What is the pagination for Pruning Depthwise Separable Convolutions for MobileNet Compression.?",
+                "How many creators contributed to the Pruning Depthwise Separable Convolutions for MobileNet Compression.?",
+                "Who are the authors of Pruning Depthwise Separable Convolutions for MobileNet Compression.?",
+                "When was the Pruning Depthwise Separable Convolutions for MobileNet Compression. published?"
+            ],
+            "queries": [
+                "SELECT ?pagination WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#pagination> ?pagination . }",
+                "SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "SELECT ?publicationYear WHERE { <https://dblp.org/rec/conf/ijcnn/0001LCC20> <https://dblp.org/rdf/schema#yearOfPublication> ?publicationYear . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001LCC20",
+                        "https://dblp.org/rdf/schema#pagination",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001LCC20",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001LCC20",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001LCC20",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2368,
+                "prompt_tokens": 1756,
+                "completion_tokens": 612
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/0001MR020",
+            "seed_label": "Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk.",
+            "dialogue": [
+                "How many creators were involved in the Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk?",
+                "Who authored it?",
+                "Where was it published?",
+                "Was it listed on the table of contents page?",
+                "In what year was it published?"
+            ],
+            "original": [
+                "How many creators were involved in the Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk?",
+                "Who authored the Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk?",
+                "Where was the Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk published?",
+                "Was the Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk listed on the table of contents page?",
+                "In what year was the Bias-regularised Neural-Network Metamodelling of Insurance Portfolio Risk published?"
+            ],
+            "queries": [
+                "SELECT ?creators WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#numberOfCreators> ?creators }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "SELECT ?venue WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#publishedIn> ?venue . }",
+                "ASK WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#listedOnTocPage> ?page }",
+                "SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/conf/ijcnn/0001MR020> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001MR020",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001MR020",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001MR020",
+                        "https://dblp.org/rdf/schema#publishedIn",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001MR020",
+                        "https://dblp.org/rdf/schema#listedOnTocPage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001MR020",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2442,
+                "prompt_tokens": 1819,
+                "completion_tokens": 623
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/ijcnn/0001SSPB18",
+            "seed_label": "More Realistic and Efficient Face-Based Mobile Authentication using CNNs.",
+            "dialogue": [
+                "What is the bibtex type of the entity More Realistic and Efficient Face-Based Mobile Authentication using CNNs.?",
+                "Is it listed on a TOC page?",
+                "Who is the author of it?",
+                "In which year was it released?"
+            ],
+            "original": [
+                "What is the bibtex type of the entity More Realistic and Efficient Face-Based Mobile Authentication using CNNs.?",
+                "Is More Realistic and Efficient Face-Based Mobile Authentication using CNNs. listed on a TOC page?",
+                "Who is the author of More Realistic and Efficient Face-Based Mobile Authentication using CNNs.?",
+                "In which year was More Realistic and Efficient Face-Based Mobile Authentication using CNNs. released?"
+            ],
+            "queries": [
+                "SELECT ?type WHERE { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#bibtexType> ?type . }",
+                "ASK WHERE { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#listedOnTocPage> ?tocPage . }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "SELECT ?year WHERE { <https://dblp.org/rec/conf/ijcnn/0001SSPB18> <https://dblp.org/rdf/schema#yearOfPublication> ?year. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001SSPB18",
+                        "https://dblp.org/rdf/schema#bibtexType",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001SSPB18",
+                        "https://dblp.org/rdf/schema#listedOnTocPage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001SSPB18",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/ijcnn/0001SSPB18",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2373,
+                "prompt_tokens": 1748,
+                "completion_tokens": 625
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/02/8828",
+            "seed_label": "Jiaxin Pan",
+            "dialogue": [
+                "Does Jiaxin Pan have a webpage listed?",
+                "What is a homepage associated with him?",
+                "How many types of affiliations does he have recorded?",
+                "Does he have an ORCID identifier?"
+            ],
+            "original": [
+                "Does Jiaxin Pan have a webpage listed?",
+                "What is a homepage associated with Jiaxin Pan?",
+                "How many types of affiliations does Jiaxin Pan have recorded?",
+                "Does Jiaxin Pan have an ORCID identifier?"
+            ],
+            "queries": [
+                "ASK WHERE { <https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#webpage> ?webpage }",
+                "SELECT ?homepage WHERE { <https://dblp.org/pid/02/8828> ( <https://dblp.org/rdf/schema#otherHomepage> | <https://dblp.org/rdf/schema#primaryHomepage> ) ?homepage . }",
+                "SELECT (COUNT(?affiliation) AS ?affiliationCount) WHERE { <https://dblp.org/pid/02/8828> ?p ?affiliation . VALUES ?p { <https://dblp.org/rdf/schema#otherAffiliation> <https://dblp.org/rdf/schema#primaryAffiliation> } }",
+                "ASK WHERE { <https://dblp.org/pid/02/8828> <https://dblp.org/rdf/schema#orcid> ?o . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/02/8828",
+                        "https://dblp.org/rdf/schema#webpage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/02/8828",
+                        "https://dblp.org/rdf/schema#otherHomepage",
+                        ""
+                    ],
+                    [
+                        "https://dblp.org/pid/02/8828",
+                        "https://dblp.org/rdf/schema#primaryHomepage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/02/8828",
+                        "https://dblp.org/rdf/schema#otherAffiliation",
+                        ""
+                    ],
+                    [
+                        "https://dblp.org/pid/02/8828",
+                        "https://dblp.org/rdf/schema#primaryAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/02/8828",
+                        "https://dblp.org/rdf/schema#orcid",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2167,
+                "prompt_tokens": 1565,
+                "completion_tokens": 602
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/03/8213",
+            "seed_label": "Marian Daun",
+            "dialogue": [
+                "What is the webpage of Marian Daun?",
+                "Does he have an ORCID?",
+                "How many types of affiliations does he have?",
+                "Where is his primary homepage located?"
+            ],
+            "original": [
+                "What is the webpage of Marian Daun?",
+                "Does Marian Daun have an ORCID?",
+                "How many types of affiliations does Marian Daun have?",
+                "Where is Marian Daun's primary homepage located?"
+            ],
+            "queries": [
+                "SELECT ?webpage WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#webpage> ?webpage . }",
+                "ASK { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#orcid> ?o }",
+                "SELECT (COUNT(DISTINCT ?affiliation) AS ?count) WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation . }",
+                "SELECT ?homepage WHERE { <https://dblp.org/pid/03/8213> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/03/8213",
+                        "https://dblp.org/rdf/schema#webpage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/03/8213",
+                        "https://dblp.org/rdf/schema#orcid",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/03/8213",
+                        "https://dblp.org/rdf/schema#primaryAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/03/8213",
+                        "https://dblp.org/rdf/schema#primaryHomepage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2062,
+                "prompt_tokens": 1529,
+                "completion_tokens": 533
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/0056YG15",
+            "seed_label": "Sparse Differential Resultant for Laurent Differential Polynomials.",
+            "dialogue": [
+                "Who authored 'Sparse Differential Resultant for Laurent Differential Polynomials.'?",
+                "Was it published in a journal?",
+                "What pagination does it have?"
+            ],
+            "original": [
+                "Who authored 'Sparse Differential Resultant for Laurent Differential Polynomials.'?",
+                "Was 'Sparse Differential Resultant for Laurent Differential Polynomials.' published in a journal?",
+                "What pagination does 'Sparse Differential Resultant for Laurent Differential Polynomials.' have?"
+            ],
+            "queries": [
+                "SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/0056YG15> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "ASK WHERE { <https://dblp.org/rec/journals/focm/0056YG15> <https://dblp.org/rdf/schema#publishedInJournal> ?journal }",
+                "SELECT ?pagination WHERE { <https://dblp.org/rec/journals/focm/0056YG15> <https://dblp.org/rdf/schema#pagination> ?pagination . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/0056YG15",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/0056YG15",
+                        "https://dblp.org/rdf/schema#publishedInJournal",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/0056YG15",
+                        "https://dblp.org/rdf/schema#pagination",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2269,
+                "prompt_tokens": 1677,
+                "completion_tokens": 592
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/AbelardGS19",
+            "seed_label": "Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.",
+            "dialogue": [
+                "What is the bibtex type for \u2018Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.\u2019?",
+                "Who authored it?",
+                "Was it listed on the table of contents page?",
+                "Which journal published it?",
+                "In what year was it published?"
+            ],
+            "original": [
+                "What is the bibtex type for \u2018Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.\u2019?",
+                "Who authored \u2018Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.\u2019?",
+                "Was \u2018Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.\u2019 listed on the table of contents page?",
+                "Which journal published \u2018Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.\u2019?",
+                "In what year was \u2018Improved Complexity Bounds for Counting Points on Hyperelliptic Curves.\u2019 published?"
+            ],
+            "queries": [
+                "SELECT ?bibtexType WHERE { <https://dblp.org/rec/journals/focm/AbelardGS19> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType. }",
+                "SELECT ?author WHERE { <https://dblp.org/rec/journals/focm/AbelardGS19> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "ASK { <https://dblp.org/rec/journals/focm/AbelardGS19> <https://dblp.org/rdf/schema#listedOnTocPage> ?tocPage }",
+                "SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/AbelardGS19> <https://dblp.org/rdf/schema#publishedInJournal> ?journal . }",
+                "SELECT ?yearOfPublication WHERE { <https://dblp.org/rec/journals/focm/AbelardGS19> <https://dblp.org/rdf/schema#yearOfPublication> ?yearOfPublication . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/AbelardGS19",
+                        "https://dblp.org/rdf/schema#bibtexType",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/AbelardGS19",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/AbelardGS19",
+                        "https://dblp.org/rdf/schema#listedOnTocPage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/AbelardGS19",
+                        "https://dblp.org/rdf/schema#publishedInJournal",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/AbelardGS19",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2465,
+                "prompt_tokens": 1823,
+                "completion_tokens": 642
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/journals/focm/AbsilBG07",
+            "seed_label": "Trust-Region Methods on Riemannian Manifolds.",
+            "dialogue": [
+                "When was 'Trust-Region Methods on Riemannian Manifolds.' published?",
+                "Which journal published it?",
+                "Is there an electronic edition for it?"
+            ],
+            "original": [
+                "When was 'Trust-Region Methods on Riemannian Manifolds.' published?",
+                "Which journal published 'Trust-Region Methods on Riemannian Manifolds.'?",
+                "Is there an electronic edition for 'Trust-Region Methods on Riemannian Manifolds.'?"
+            ],
+            "queries": [
+                "SELECT ?year WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> <https://dblp.org/rdf/schema#yearOfPublication> ?year }",
+                "SELECT ?journal WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> <https://dblp.org/rdf/schema#publishedInJournal> ?journal. }",
+                "ASK WHERE { <https://dblp.org/rec/journals/focm/AbsilBG07> <https://dblp.org/rdf/schema#primaryElectronicEdition> ?o . }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/AbsilBG07",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/AbsilBG07",
+                        "https://dblp.org/rdf/schema#publishedInJournal",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/journals/focm/AbsilBG07",
+                        "https://dblp.org/rdf/schema#primaryElectronicEdition",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2361,
+                "prompt_tokens": 1726,
+                "completion_tokens": 635
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Syntax Error": 1,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/conf/nips/LairCPDDO19",
+            "seed_label": "Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning.",
+            "dialogue": [
+                "In which year was 'Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning.' published?",
+                "Who authored it?",
+                "What is the bibtex type of it?",
+                "How many creators worked on it?",
+                "Is it listed on the ToC page?"
+            ],
+            "original": [
+                "In which year was 'Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning.' published?",
+                "Who authored 'Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning.'?",
+                "What is the bibtex type of 'Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning.'?",
+                "How many creators worked on 'Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning.'?",
+                "Is 'Language Grounding through Social Interactions and Curiosity-Driven Multi-Goal Learning.' listed on the ToC page?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nSELECT ?year WHERE {\n  <https://dblp.org/rec/conf/nips/LairCPDDO19> dblp:yearOfPublication ?year .\n}",
+                "SELECT ?author WHERE { <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#authoredBy> ?author . }",
+                "SELECT ?bibtexType WHERE { <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#bibtexType> ?bibtexType . }",
+                "SELECT ?numberOfCreators WHERE { <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#numberOfCreators> ?numberOfCreators. }",
+                "ASK WHERE { <https://dblp.org/rec/conf/nips/LairCPDDO19> <https://dblp.org/rdf/schema#listedOnTocPage> ?tocPage. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/conf/nips/LairCPDDO19",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/nips/LairCPDDO19",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/nips/LairCPDDO19",
+                        "https://dblp.org/rdf/schema#bibtexType",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/nips/LairCPDDO19",
+                        "https://dblp.org/rdf/schema#numberOfCreators",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/conf/nips/LairCPDDO19",
+                        "https://dblp.org/rdf/schema#listedOnTocPage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2514,
+                "prompt_tokens": 1812,
+                "completion_tokens": 702
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/04/3348-54",
+            "seed_label": "Yan Zhang 0054",
+            "dialogue": [
+                "What is the primary affiliation of Yan Zhang 0054?",
+                "Does he have an ORCID?",
+                "What is the primary full creator name associated with him?",
+                "Does he have an associated primary homepage?"
+            ],
+            "original": [
+                "What is the primary affiliation of Yan Zhang 0054?",
+                "Does Yan Zhang 0054 have an ORCID?",
+                "What is the primary full creator name associated with Yan Zhang 0054?",
+                "Does Yan Zhang 0054 have an associated primary homepage?"
+            ],
+            "queries": [
+                "SELECT ?affiliation WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryAffiliation> ?affiliation. }",
+                "ASK WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#orcid> ?o . }",
+                "SELECT ?name WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?name. }",
+                "ASK WHERE { <https://dblp.org/pid/04/3348-54> <https://dblp.org/rdf/schema#primaryHomepage> ?homepage }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/04/3348-54",
+                        "https://dblp.org/rdf/schema#primaryAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/04/3348-54",
+                        "https://dblp.org/rdf/schema#orcid",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/04/3348-54",
+                        "https://dblp.org/rdf/schema#primaryFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/04/3348-54",
+                        "https://dblp.org/rdf/schema#primaryHomepage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2166,
+                "prompt_tokens": 1608,
+                "completion_tokens": 558
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/05/4977",
+            "seed_label": "Walter Brenner",
+            "dialogue": [
+                "What is a significant identifier associated with Walter Brenner?",
+                "Does he have a primary employer entity?",
+                "Is there a known creator's full name for him?",
+                "How many web profiles are listed for him?",
+                "Can a webpage be used as a source of information about him?"
+            ],
+            "original": [
+                "What is a significant identifier associated with Walter Brenner?",
+                "Does Walter Brenner have a primary employer entity?",
+                "Is there a known creator's full name for Walter Brenner?",
+                "How many web profiles are listed for Walter Brenner?",
+                "Can a webpage be used as a source of information about Walter Brenner?"
+            ],
+            "queries": [
+                "PREFIX dblp: <https://dblp.org/rdf/schema#>\nPREFIX wd: <http://www.wikidata.org/entity/>\nSELECT ?identifier \nWHERE {\n  <https://dblp.org/pid/05/4977> dblp:wikidata ?identifier .\n}",
+                "ASK WHERE { <https://dblp.org/pid/05/4977> <https://dblp.org/rdf/schema#primaryAffiliation> ?o . }",
+                "ASK WHERE { <https://dblp.org/pid/05/4977> <https://dblp.org/rdf/schema#primaryFullCreatorName> ?o . }",
+                "SELECT (COUNT(?webpage) AS ?count) WHERE { <https://dblp.org/pid/05/4977> ?predicate ?webpage . FILTER(?predicate IN ( <https://dblp.org/rdf/schema#primaryHomepage>, <https://dblp.org/rdf/schema#webpage>, <https://dblp.org/rdf/schema#wikipedia> )) }",
+                "ASK WHERE { <https://dblp.org/pid/05/4977> <https://dblp.org/rdf/schema#webpage> ?webpage }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/05/4977",
+                        "https://dblp.org/rdf/schema#wikidata",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/05/4977",
+                        "https://dblp.org/rdf/schema#primaryAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/05/4977",
+                        "https://dblp.org/rdf/schema#primaryFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/05/4977",
+                        "https://dblp.org/rdf/schema#primaryHomepage",
+                        ""
+                    ],
+                    [
+                        "https://dblp.org/pid/05/4977",
+                        "https://dblp.org/rdf/schema#webpage",
+                        ""
+                    ],
+                    [
+                        "https://dblp.org/pid/05/4977",
+                        "https://dblp.org/rdf/schema#wikipedia",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/05/4977",
+                        "https://dblp.org/rdf/schema#webpage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2782,
+                "prompt_tokens": 1994,
+                "completion_tokens": 788
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 14,
+            "Does it": 1,
+            "How many": 12,
+            "Which school": 3,
+            "Is there": 5,
+            "Who is": 2,
+            "In what": 4,
+            "Did it": 1,
+            "When was": 5,
+            "Who authored": 8,
+            "Which institution": 1,
+            "Was the": 1,
+            "Which publisher": 1,
+            "Does the": 1,
+            "What school": 1,
+            "What year": 1,
+            "Was it": 4,
+            "Did the": 1,
+            "Where was": 2,
+            "What type": 1,
+            "Who are": 1,
+            "Is it": 2,
+            "In which": 2,
+            "Does Jiaxin": 1,
+            "Does he": 5,
+            "Where is": 1,
+            "What pagination": 1,
+            "Which journal": 2,
+            "Can a": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 2324.95,
+                "prompt_tokens": 1706.6,
+                "completion_tokens": 618.35
+            },
+            "Minimum": {
+                "total_tokens": 2062,
+                "prompt_tokens": 1529,
+                "completion_tokens": 533
+            },
+            "Maximum": {
+                "total_tokens": 2782,
+                "prompt_tokens": 1994,
+                "completion_tokens": 788
+            },
+            "Total": {
+                "total_tokens": 46499,
+                "prompt_tokens": 34132,
+                "completion_tokens": 12367
+            }
+        },
+        "execution": {
+            "Correct": 85,
+            "Syntax Error": 6,
+            "In Correct": 8
+        }
+    },
+    "cost": {
+        "total_tokens": 49230,
+        "prompt_tokens": 36203,
+        "completion_tokens": 13027
+    },
+    "total_time": 461.32892513275146,
+    "average_time": 23.066446256637573,
+    "Context Length Error": 0,
+    "Question Validation Error": 0,
+    "Question Json Error": 0,
+    "Triples Validation Error": 0,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 0,
+    "Sparql Json Error": 0,
+    "Dialogue Validation Error": 1,
+    "Dialogue Json Error": 0
+}

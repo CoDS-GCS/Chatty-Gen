@@ -1,0 +1,27 @@
+{
+    "seeds_used": 1000,
+    "data": [],
+    "analysis": {
+        "types": null,
+        "cost": {
+            "Average": {},
+            "Minimum": {},
+            "Maximum": {},
+            "Total": {}
+        },
+        "execution": {}
+    },
+    "cost": {
+        "total_tokens": 1000504,
+        "prompt_tokens": 546089,
+        "completion_tokens": 454415
+    },
+    "total_time": 0,
+    "average_time": 0,
+    "Context Length Error": 0,
+    "Question Validation Error": 44,
+    "Sparql Validation Error": 107,
+    "Dialogue Validation Error": 158,
+    "Json Error": 92,
+    "unequal Lists Error": 599
+}

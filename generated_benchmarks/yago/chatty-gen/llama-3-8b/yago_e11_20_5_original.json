@@ -1,0 +1,1141 @@
+{
+    "seeds_used": 157,
+    "data": [
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+            "seed_label": "A Princess of Mars",
+            "dialogue": [
+                "In which language was A Princess of Mars written?",
+                "When was she published?",
+                "Who wrote her?"
+            ],
+            "original": [
+                "In which language was A Princess of Mars written?",
+                "When was A Princess of Mars published?",
+                "Who wrote A Princess of Mars?"
+            ],
+            "queries": [
+                "SELECT?o WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/inLanguage>?o }",
+                "SELECT?datePublished WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/datePublished>?datePublished. }",
+                "SELECT?author WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/author>?author }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                        "http://schema.org/inLanguage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                        "http://schema.org/datePublished",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                        "http://schema.org/author",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2452,
+                "prompt_tokens": 1346,
+                "completion_tokens": 1106
+            },
+            "query_status": {
+                "In Correct": 2,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+            "seed_label": "2018 Tour of Norway",
+            "dialogue": [
+                "What is the end date of the 2018 Tour of Norway?",
+                "What is the alternate name of the Tour of Norway?",
+                "What is the super event of the Tour of Norway?"
+            ],
+            "original": [
+                "What is the end date of the 2018 Tour of Norway?",
+                "What is the alternate name of the 2018 Tour of Norway?",
+                "What is the super event of the 2018 Tour of Norway?"
+            ],
+            "queries": [
+                "SELECT?end WHERE { <http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/endDate>?end. }",
+                "SELECT?alternateName WHERE { <http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/alternateName>?alternateName }",
+                "SELECT?superEvent WHERE { <http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/superEvent>?superEvent }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                        "http://schema.org/endDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                        "http://schema.org/superEvent",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3449,
+                "prompt_tokens": 1884,
+                "completion_tokens": 1565
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 3,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aaron_Kostner",
+            "seed_label": "Aaron Kostner",
+            "dialogue": [
+                "When was Aaron Kostner born?",
+                "What is his nationality?",
+                "What is his given name?",
+                "What is his family name?"
+            ],
+            "original": [
+                "When was Aaron Kostner born?",
+                "What is Aaron Kostner's nationality?",
+                "What is Aaron Kostner's given name?",
+                "What is Aaron Kostner's family name?"
+            ],
+            "queries": [
+                "SELECT?birthDate WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/birthDate>?birthDate. }",
+                "SELECT?nationality WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/nationality>?nationality. }",
+                "SELECT?givenName WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/givenName>?givenName. }",
+                "SELECT?familyName WHERE { <http://yago-knowledge.org/resource/Aaron_Kostner> <http://schema.org/familyName>?familyName }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aaron_Kostner",
+                        "http://schema.org/birthDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aaron_Kostner",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aaron_Kostner",
+                        "http://schema.org/givenName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aaron_Kostner",
+                        "http://schema.org/familyName",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3563,
+                "prompt_tokens": 1914,
+                "completion_tokens": 1649
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abe_Bowman",
+            "seed_label": "Abe Bowman",
+            "dialogue": [
+                "What is Abe Bowman's nationality?",
+                "What is Abe's given name?",
+                "What is Abe's birth date?",
+                "What is Abe's family name?"
+            ],
+            "original": [
+                "What is Abe Bowman's nationality?",
+                "What is Abe Bowman's given name?",
+                "What is Abe Bowman's birth date?",
+                "What is Abe Bowman's family name?"
+            ],
+            "queries": [
+                "SELECT?nationality WHERE { <http://yago-knowledge.org/resource/Abe_Bowman> <http://schema.org/nationality>?nationality }",
+                "SELECT?givenName WHERE {?subject schema:givenName?givenName.?subject rdfs:label?label. FILTER (lang(?label) = \"en\"). FILTER (STRSTARTS(STR(?label), \"Abe Bowman\")) }",
+                "SELECT?birthDate WHERE { <http://yago-knowledge.org/resource/Abe_Bowman> <http://schema.org/birthDate>?birthDate. }",
+                "SELECT?familyName WHERE { <http://yago-knowledge.org/resource/Abe_Bowman> <http://schema.org/familyName>?familyName. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Bowman",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Bowman",
+                        "http://schema.org/givenName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Bowman",
+                        "http://schema.org/birthDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Bowman",
+                        "http://schema.org/familyName",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2644,
+                "prompt_tokens": 1373,
+                "completion_tokens": 1271
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abe_Greenthal",
+            "seed_label": "Abe Greenthal",
+            "dialogue": [
+                "When was Abe Greenthal born?",
+                "Where did he die?",
+                "What was his given name?"
+            ],
+            "original": [
+                "When was Abe Greenthal born?",
+                "Where did Abe Greenthal die?",
+                "What was Abe Greenthal's given name?"
+            ],
+            "queries": [
+                "SELECT?birthDate WHERE { <http://yago-knowledge.org/resource/Abe_Greenthal> <http://schema.org/birthDate>?birthDate }",
+                "SELECT?deathPlace WHERE { <http://yago-knowledge.org/resource/Abe_Greenthal> <http://schema.org/deathPlace>?deathPlace. }",
+                "SELECT?givenName WHERE { <http://yago-knowledge.org/resource/Abe_Greenthal> <http://schema.org/givenName>?givenName. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Greenthal",
+                        "http://schema.org/birthDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Greenthal",
+                        "http://schema.org/deathPlace",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Greenthal",
+                        "http://schema.org/givenName",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3131,
+                "prompt_tokens": 1875,
+                "completion_tokens": 1256
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 1,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abe_Mitchell",
+            "seed_label": "Abe Mitchell",
+            "dialogue": [
+                "What is Abe Mitchell's given name?",
+                "What is his birth place?",
+                "What is his death date?"
+            ],
+            "original": [
+                "What is Abe Mitchell's given name?",
+                "What is Abe Mitchell's birth place?",
+                "What is Abe Mitchell's death date?"
+            ],
+            "queries": [
+                "SELECT?givenName WHERE { <http://yago-knowledge.org/resource/Abe_Mitchell> <http://schema.org/givenName>?givenName }",
+                "SELECT?birthPlace WHERE { <http://yago-knowledge.org/resource/Abe_Mitchell> <http://schema.org/birthPlace>?birthPlace }",
+                "SELECT?deathDate WHERE { <http://yago-knowledge.org/resource/Abe_Mitchell> <http://schema.org/deathDate>?deathDate }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Mitchell",
+                        "http://schema.org/givenName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Mitchell",
+                        "http://schema.org/birthPlace",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Mitchell",
+                        "http://schema.org/deathDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2927,
+                "prompt_tokens": 1354,
+                "completion_tokens": 1573
+            },
+            "query_status": {
+                "Syntax Error": 2,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abe_Stark",
+            "seed_label": "Abe Stark",
+            "dialogue": [
+                "What was Abe Stark's nationality?",
+                "When did he die?",
+                "What was his occupation?",
+                "What was his family name?"
+            ],
+            "original": [
+                "What was Abe Stark's nationality?",
+                "When did Abe Stark die?",
+                "What was Abe Stark's occupation?",
+                "What was Abe Stark's family name?"
+            ],
+            "queries": [
+                "SELECT?nationality WHERE { <http://yago-knowledge.org/resource/Abe_Stark> <http://schema.org/nationality>?nationality. }",
+                "SELECT?deathDate WHERE { <http://yago-knowledge.org/resource/Abe_Stark> <http://schema.org/deathDate>?deathDate. }",
+                "SELECT?occupation WHERE { <http://yago-knowledge.org/resource/Abe_Stark> <http://schema.org/hasOccupation>?occupation. }",
+                "SELECT?familyName WHERE { <http://yago-knowledge.org/resource/Abe_Stark> <http://schema.org/familyName>?familyName. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Stark",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Stark",
+                        "http://schema.org/deathDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Stark",
+                        "http://schema.org/hasOccupation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_Stark",
+                        "http://schema.org/familyName",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2799,
+                "prompt_tokens": 1611,
+                "completion_tokens": 1188
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abe_no_Nakamaro",
+            "seed_label": "Abe no Nakamaro",
+            "dialogue": [
+                "When did Abe no Nakamaro die?",
+                "What was his nationality?",
+                "What language did he know?"
+            ],
+            "original": [
+                "When did Abe no Nakamaro die?",
+                "What was Abe no Nakamaro's nationality?",
+                "What language did Abe no Nakamaro know?"
+            ],
+            "queries": [
+                "SELECT?deathDate WHERE {?person <http://schema.org/deathDate>?deathDate. FILTER(?person=<http://yago-knowledge.org/resource/Abe_no_Nakamaro>) }",
+                "SELECT?nationality WHERE { <http://yago-knowledge.org/resource/Abe_no_Nakamaro> <http://schema.org/nationality>?nationality. }",
+                "PREFIX yago: <http://yago-knowledge.org/resource/> PREFIX schema: <http://schema.org/> SELECT?lang WHERE { yago:Abe_no_Nakamaro schema:knowsLanguage?lang. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_no_Nakamaro",
+                        "http://schema.org/deathDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_no_Nakamaro",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abe_no_Nakamaro",
+                        "http://schema.org/knowsLanguage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2552,
+                "prompt_tokens": 1396,
+                "completion_tokens": 1156
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 1,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Acharnes",
+            "seed_label": "Acharnes",
+            "dialogue": [
+                "What is the alternate name of Acharnes?",
+                "What is the geo of it?",
+                "What is the geo of it?"
+            ],
+            "original": [
+                "What is the alternate name of Acharnes?",
+                "What is the geo of Acharnes?",
+                "What is the geo of Acharnes?"
+            ],
+            "queries": [
+                "SELECT?alternateName WHERE { <http://yago-knowledge.org/resource/Acharnes> <http://schema.org/alternateName>?alternateName. }",
+                "SELECT?geo WHERE { <http://yago-knowledge.org/resource/Acharnes> <http://schema.org/geo>?geo }",
+                "SELECT?geo WHERE { <http://yago-knowledge.org/resource/Acharnes> <http://schema.org/geo>?geo }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Acharnes",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Acharnes",
+                        "http://schema.org/geo",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Acharnes",
+                        "http://schema.org/geo",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3302,
+                "prompt_tokens": 1711,
+                "completion_tokens": 1591
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 1,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abhishek_Kapoor",
+            "seed_label": "Abhishek Kapoor",
+            "dialogue": [
+                "Where is Abhishek Kapoor from?",
+                "Who is his spouse?",
+                "What is his nationality?"
+            ],
+            "original": [
+                "Where is Abhishek Kapoor from?",
+                "Who is Abhishek Kapoor's spouse?",
+                "What is Abhishek Kapoor's nationality?"
+            ],
+            "queries": [
+                "SELECT?homeLocation WHERE { <http://yago-knowledge.org/resource/Abhishek_Kapoor> <http://schema.org/homeLocation>?homeLocation. }",
+                "SELECT?y WHERE { <http://yago-knowledge.org/resource/Abhishek_Kapoor> <http://schema.org/spouse>?y }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?nationality WHERE { yago:Abhishek_Kapoor schema:nationality?nationality. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abhishek_Kapoor",
+                        "http://schema.org/homeLocation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abhishek_Kapoor",
+                        "http://schema.org/spouse",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abhishek_Kapoor",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2142,
+                "prompt_tokens": 1368,
+                "completion_tokens": 774
+            },
+            "query_status": {
+                "In Correct": 2,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Adelaide_Hospital_(Dublin)",
+            "seed_label": "Adelaide Hospital",
+            "dialogue": [
+                "What is the founding date of Adelaide Hospital?",
+                "When was the hospital founded?",
+                "What is the dissolution date of the hospital?",
+                "What is the founding date of the hospital?"
+            ],
+            "original": [
+                "What is the founding date of Adelaide Hospital?",
+                "When was Adelaide Hospital founded?",
+                "What is the dissolution date of Adelaide Hospital?",
+                "What is the founding date of Adelaide Hospital?"
+            ],
+            "queries": [
+                "SELECT?x WHERE { <http://yago-knowledge.org/resource/Adelaide_Hospital_(Dublin)> <http://schema.org/foundingDate>?x. }",
+                "SELECT?foundingDate WHERE { <http://yago-knowledge.org/resource/Adelaide_Hospital_(Dublin)> <http://schema.org/foundingDate>?foundingDate. }",
+                "SELECT?dissolutionDate WHERE { <http://yago-knowledge.org/resource/Adelaide_Hospital_(Dublin)> <http://schema.org/dissolutionDate>?dissolutionDate. }",
+                "SELECT?foundingDate WHERE { <http://yago-knowledge.org/resource/Adelaide_Hospital_(Dublin)> <http://schema.org/foundingDate>?foundingDate. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Adelaide_Hospital_(Dublin)",
+                        "http://schema.org/foundingDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Adelaide_Hospital_(Dublin)",
+                        "http://schema.org/foundingDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Adelaide_Hospital_(Dublin)",
+                        "http://schema.org/dissolutionDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Adelaide_Hospital_(Dublin)",
+                        "http://schema.org/foundingDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2756,
+                "prompt_tokens": 1902,
+                "completion_tokens": 854
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/...And_Justice_for_All.",
+            "seed_label": "...And Justice for All.",
+            "dialogue": [
+                "Who starred in...And Justice for All.?",
+                "What is the production company for the movie?",
+                "What is the date published for the movie?"
+            ],
+            "original": [
+                "Who starred in...And Justice for All.?",
+                "What is the production company for...And Justice for All.?",
+                "What is the date published for...And Justice for All.?"
+            ],
+            "queries": [
+                "SELECT?x WHERE { <http://yago-knowledge.org/resource/...And_Justice_for_All.> <http://schema.org/actor>?x }",
+                "SELECT?productionCompany WHERE { <http://yago-knowledge.org/resource/...And_Justice_for_All.> <http://schema.org/productionCompany>?productionCompany }",
+                "SELECT?datePublished WHERE { <http://yago-knowledge.org/resource/...And_Justice_for_All.> <http://schema.org/datePublished>?datePublished }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/...And_Justice_for_All.",
+                        "http://schema.org/actor",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/...And_Justice_for_All.",
+                        "http://schema.org/productionCompany",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/...And_Justice_for_All.",
+                        "http://schema.org/datePublished",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2501,
+                "prompt_tokens": 1445,
+                "completion_tokens": 1056
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 2
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abigail_Goodrich_Whittelsey",
+            "seed_label": "Abigail Goodrich Whittelsey",
+            "dialogue": [
+                "What is Abigail Goodrich Whittelsey's birth date?",
+                "What is her birth place?",
+                "What is her death date?",
+                "What is her nationality?"
+            ],
+            "original": [
+                "What is Abigail Goodrich Whittelsey's birth date?",
+                "What is Abigail Goodrich Whittelsey's birth place?",
+                "What is Abigail Goodrich Whittelsey's death date?",
+                "What is Abigail Goodrich Whittelsey's nationality?"
+            ],
+            "queries": [
+                "SELECT?x WHERE { <http://yago-knowledge.org/resource/Abigail_Goodrich_Whittelsey> <http://schema.org/birthDate>?x }",
+                "SELECT?birthPlace WHERE { <http://yago-knowledge.org/resource/Abigail_Goodrich_Whittelsey> <http://schema.org/birthPlace>?birthPlace. }",
+                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> \nPREFIX schema: <http://schema.org/> \nSELECT?deathDate WHERE { \n    <http://yago-knowledge.org/resource/Abigail_Goodrich_Whittelsey> schema:deathDate?deathDate. \n}",
+                "SELECT?nationality WHERE { <http://yago-knowledge.org/resource/Abigail_Goodrich_Whittelsey> <http://schema.org/nationality>?nationality }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abigail_Goodrich_Whittelsey",
+                        "http://schema.org/birthDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abigail_Goodrich_Whittelsey",
+                        "http://schema.org/birthPlace",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abigail_Goodrich_Whittelsey",
+                        "http://schema.org/deathDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abigail_Goodrich_Whittelsey",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2645,
+                "prompt_tokens": 1478,
+                "completion_tokens": 1167
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Adam_Air",
+            "seed_label": "Adam Air",
+            "dialogue": [
+                "When did Adam Air start?",
+                "When did it end?",
+                "What is its ICAO code?"
+            ],
+            "original": [
+                "When did Adam Air start?",
+                "When did Adam Air end?",
+                "What is Adam Air's ICAO code?"
+            ],
+            "queries": [
+                "SELECT?date WHERE { <http://yago-knowledge.org/resource/Adam_Air> <http://schema.org/foundingDate>?date }",
+                "SELECT?d WHERE { <http://yago-knowledge.org/resource/Adam_Air> <http://schema.org/dissolutionDate>?d.}",
+                "SELECT?icaoCode WHERE { <http://yago-knowledge.org/resource/Adam_Air> <http://schema.org/icaoCode>?icaoCode. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Adam_Air",
+                        "http://schema.org/foundingDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Adam_Air",
+                        "http://schema.org/dissolutionDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Adam_Air",
+                        "http://schema.org/icaoCode",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3635,
+                "prompt_tokens": 1591,
+                "completion_tokens": 2044
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 1,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Agugliaro",
+            "seed_label": "Agugliaro",
+            "dialogue": [
+                "What is the elevation of Agugliaro?",
+                "What is the elevation of it?",
+                "What is the elevation of it?"
+            ],
+            "original": [
+                "What is the elevation of Agugliaro?",
+                "What is the elevation of Agugliaro?",
+                "What is the elevation of Agugliaro?"
+            ],
+            "queries": [
+                "SELECT?elevation WHERE { <http://yago-knowledge.org/resource/Agugliaro> <http://schema.org/elevation>?elevation }",
+                "SELECT?elevation WHERE { <http://yago-knowledge.org/resource/Agugliaro> <http://schema.org/elevation>?elevation }",
+                "SELECT?elevation WHERE { <http://yago-knowledge.org/resource/Agugliaro> <http://schema.org/elevation>?elevation }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Agugliaro",
+                        "http://schema.org/elevation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Agugliaro",
+                        "http://schema.org/elevation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Agugliaro",
+                        "http://schema.org/elevation",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3884,
+                "prompt_tokens": 1797,
+                "completion_tokens": 2087
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 2
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abraham_Bogardus",
+            "seed_label": "Abraham Bogardus",
+            "dialogue": [
+                "What is the birth place of Abraham Bogardus?",
+                "What is the nationality of the person?",
+                "What is the death date of the person?"
+            ],
+            "original": [
+                "What is the birth place of Abraham Bogardus?",
+                "What is the nationality of Abraham Bogardus?",
+                "What is the death date of Abraham Bogardus?"
+            ],
+            "queries": [
+                "SELECT?birthPlace WHERE { <http://yago-knowledge.org/resource/Abraham_Bogardus> <http://schema.org/birthPlace>?birthPlace. }",
+                "SELECT?nationality WHERE { <http://yago-knowledge.org/resource/Abraham_Bogardus> <http://schema.org/nationality>?nationality. }",
+                "SELECT?deathDate WHERE { <http://yago-knowledge.org/resource/Abraham_Bogardus> <http://schema.org/deathDate>?deathDate. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Bogardus",
+                        "http://schema.org/birthPlace",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Bogardus",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Bogardus",
+                        "http://schema.org/deathDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2320,
+                "prompt_tokens": 1416,
+                "completion_tokens": 904
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 2
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abraham_Hoagland",
+            "seed_label": "Abraham Hoagland",
+            "dialogue": [
+                "How many people named Abraham Hoagland are there?",
+                "When did Abraham Lincoln die?",
+                "When was Abraham Lincoln born?"
+            ],
+            "original": [
+                "How many people named Abraham Hoagland are there?",
+                "When did Abraham Hoagland die?",
+                "When was Abraham Hoagland born?"
+            ],
+            "queries": [
+                "SELECT (COUNT(*) AS?count) WHERE {?s <http://schema.org/nationality>?o. FILTER(?s = <http://yago-knowledge.org/resource/Abraham_Hoagland>) }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?deathDate WHERE { yago:Abraham_Hoagland schema:deathDate?deathDate. }",
+                "PREFIX schema: <http://schema.org/> PREFIX yago: <http://yago-knowledge.org/resource/> SELECT?birthDate WHERE { yago:Abraham_Hoagland schema:birthDate?birthDate }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Hoagland",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Hoagland",
+                        "http://schema.org/deathDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Hoagland",
+                        "http://schema.org/birthDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2843,
+                "prompt_tokens": 1643,
+                "completion_tokens": 1200
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 1,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abraham_Kidunaia",
+            "seed_label": "Abraham Kidunaia",
+            "dialogue": [
+                "What is Abraham Kidunaia's death date?",
+                "What is his birth date?",
+                "What is his death place?"
+            ],
+            "original": [
+                "What is Abraham Kidunaia's death date?",
+                "What is Abraham Kidunaia's birth date?",
+                "What is Abraham Kidunaia's death place?"
+            ],
+            "queries": [
+                "SELECT?deathDate WHERE { <http://yago-knowledge.org/resource/Abraham_Kidunaia> <http://schema.org/deathDate>?deathDate. }",
+                "SELECT?x WHERE { <http://yago-knowledge.org/resource/Abraham_Kidunaia> <http://schema.org/birthDate>?x. }",
+                "PREFIX schema: <http://schema.org/> SELECT?o WHERE { <http://yago-knowledge.org/resource/Abraham_Kidunaia> schema:deathPlace?o }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Kidunaia",
+                        "http://schema.org/deathDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Kidunaia",
+                        "http://schema.org/birthDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Kidunaia",
+                        "http://schema.org/deathPlace",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2954,
+                "prompt_tokens": 1373,
+                "completion_tokens": 1581
+            },
+            "query_status": {
+                "In Correct": 2,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abraham_Ulrikab",
+            "seed_label": "Abraham Ulrikab",
+            "dialogue": [
+                "What is Abraham Ulrikab's nationality?",
+                "When did he die?",
+                "What is his given name?"
+            ],
+            "original": [
+                "What is Abraham Ulrikab's nationality?",
+                "When did Abraham Ulrikab die?",
+                "What is Abraham Ulrikab's given name?"
+            ],
+            "queries": [
+                "SELECT?nationality WHERE { <http://yago-knowledge.org/resource/Abraham_Ulrikab> <http://schema.org/nationality>?nationality }",
+                "PREFIX schema: <http://schema.org/>\nSELECT?deathDate WHERE {\n    <http://yago-knowledge.org/resource/Abraham_Ulrikab> schema:deathDate?deathDate\n}",
+                "SELECT?givenName WHERE { <http://yago-knowledge.org/resource/Abraham_Ulrikab> <http://schema.org/givenName>?givenName. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Ulrikab",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Ulrikab",
+                        "http://schema.org/deathDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abraham_Ulrikab",
+                        "http://schema.org/givenName",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3037,
+                "prompt_tokens": 1379,
+                "completion_tokens": 1658
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 1,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Al-Qoubaiyat",
+            "seed_label": "Al Qoubaiyat",
+            "dialogue": [
+                "What is the elevation of Al Qoubaiyat?",
+                "What is the elevation of it?",
+                "What is the elevation of it?"
+            ],
+            "original": [
+                "What is the elevation of Al Qoubaiyat?",
+                "What is the elevation of Al Qoubaiyat?",
+                "What is the elevation of Al Qoubaiyat?"
+            ],
+            "queries": [
+                "SELECT?elevation WHERE { <http://yago-knowledge.org/resource/Al-Qoubaiyat> <http://schema.org/elevation>?elevation. }",
+                "SELECT?elevation WHERE { <http://yago-knowledge.org/resource/Al-Qoubaiyat> <http://schema.org/elevation>?elevation. }",
+                "SELECT?elevation WHERE { <http://yago-knowledge.org/resource/Al-Qoubaiyat> <http://schema.org/elevation>?elevation. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Al-Qoubaiyat",
+                        "http://schema.org/elevation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Al-Qoubaiyat",
+                        "http://schema.org/elevation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Al-Qoubaiyat",
+                        "http://schema.org/elevation",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3613,
+                "prompt_tokens": 1901,
+                "completion_tokens": 1712
+            },
+            "query_status": {
+                "In Correct": 2,
+                "Correct": 3
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "In which": 1,
+            "When was": 5,
+            "Who wrote": 1,
+            "What is": 41,
+            "Where did": 1,
+            "What was": 5,
+            "When did": 6,
+            "What language": 1,
+            "Where is": 1,
+            "Who is": 1,
+            "Who starred": 1,
+            "How many": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 2957.45,
+                "prompt_tokens": 1587.85,
+                "completion_tokens": 1369.6
+            },
+            "Minimum": {
+                "total_tokens": 2142,
+                "prompt_tokens": 1346,
+                "completion_tokens": 774
+            },
+            "Maximum": {
+                "total_tokens": 3884,
+                "prompt_tokens": 1914,
+                "completion_tokens": 2087
+            },
+            "Total": {
+                "total_tokens": 59149,
+                "prompt_tokens": 31757,
+                "completion_tokens": 27392
+            }
+        },
+        "execution": {
+            "In Correct": 24,
+            "Correct": 65,
+            "Syntax Error": 11
+        }
+    },
+    "cost": {
+        "total_tokens": 359378,
+        "prompt_tokens": 198685,
+        "completion_tokens": 160693
+    },
+    "total_time": 877.3250689506531,
+    "average_time": 43.86625344753266,
+    "Context Length Error": 0,
+    "Question Validation Error": 2,
+    "Question Json Error": 0,
+    "Triples Validation Error": 2,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 124,
+    "Sparql Json Error": 0,
+    "Dialogue Validation Error": 9,
+    "Dialogue Json Error": 0
+}

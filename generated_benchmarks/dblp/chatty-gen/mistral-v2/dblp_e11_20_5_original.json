@@ -1,0 +1,156 @@
+{
+    "seeds_used": 501,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/pid/08/6743",
+            "seed_label": "Michael A. Kochte",
+            "dialogue": [
+                "What is the primary Homepage of Michael A. Kochte?",
+                "What is the other Full Creator Name of [PRONOUN]?",
+                "What is the webpage of [PRONOUN]?"
+            ],
+            "original": [
+                "What is the primary Homepage of Michael A. Kochte?",
+                "What is the other Full Creator Name of Michael A. Kochte?",
+                "What is the webpage of Michael A. Kochte?"
+            ],
+            "queries": [
+                "select?homepage where { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#primaryHomepage>?homepage }",
+                "SELECT DISTINCT?otherFullCreatorName WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#otherFullCreatorName>?otherFullCreatorName. }",
+                "SELECT?webpage WHERE { <https://dblp.org/pid/08/6743> <https://dblp.org/rdf/schema#webpage>?webpage. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/08/6743",
+                        "https://dblp.org/rdf/schema#primaryHomepage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/08/6743",
+                        "https://dblp.org/rdf/schema#otherFullCreatorName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/08/6743",
+                        "https://dblp.org/rdf/schema#webpage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3175,
+                "prompt_tokens": 1694,
+                "completion_tokens": 1481
+            },
+            "query_status": {
+                "Syntax Error": 1,
+                "Correct": 3,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/pid/163/5141",
+            "seed_label": "Francesco Kriegel",
+            "dialogue": [
+                "What is Francesco Kriegel's ORCID?",
+                "What is his primary affiliation?",
+                "What is his webpage?"
+            ],
+            "original": [
+                "What is Francesco Kriegel's ORCID?",
+                "What is Francesco Kriegel's primary affiliation?",
+                "What is Francesco Kriegel's webpage?"
+            ],
+            "queries": [
+                "SELECT DISTINCT?orcid WHERE {\n  <https://dblp.org/pid/163/5141> <https://dblp.org/rdf/schema#orcid>?orcid.\n}",
+                "SELECT?primaryAffiliation WHERE { <https://dblp.org/pid/163/5141> <https://dblp.org/rdf/schema#primaryAffiliation>?primaryAffiliation. }",
+                "select?webpage where { <https://dblp.org/pid/163/5141> <https://dblp.org/rdf/schema#webpage>?webpage }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/163/5141",
+                        "https://dblp.org/rdf/schema#orcid",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/163/5141",
+                        "https://dblp.org/rdf/schema#primaryAffiliation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/163/5141",
+                        "https://dblp.org/rdf/schema#webpage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2947,
+                "prompt_tokens": 1655,
+                "completion_tokens": 1292
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 2
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 6
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 3061.0,
+                "prompt_tokens": 1674.5,
+                "completion_tokens": 1386.5
+            },
+            "Minimum": {
+                "total_tokens": 2947,
+                "prompt_tokens": 1655,
+                "completion_tokens": 1292
+            },
+            "Maximum": {
+                "total_tokens": 3175,
+                "prompt_tokens": 1694,
+                "completion_tokens": 1481
+            },
+            "Total": {
+                "total_tokens": 6122,
+                "prompt_tokens": 3349,
+                "completion_tokens": 2773
+            }
+        },
+        "execution": {
+            "Syntax Error": 3,
+            "Correct": 6,
+            "In Correct": 1
+        }
+    },
+    "cost": {
+        "total_tokens": 1297164,
+        "prompt_tokens": 840130,
+        "completion_tokens": 457034
+    },
+    "total_time": 106.32389760017395,
+    "average_time": 53.161948800086975,
+    "Context Length Error": 0,
+    "Question Validation Error": 28,
+    "Question Json Error": 19,
+    "Triples Validation Error": 43,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 409,
+    "Sparql Json Error": 0,
+    "Dialogue Validation Error": 0,
+    "Dialogue Json Error": 0
+}

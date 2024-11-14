@@ -1,0 +1,1324 @@
+{
+    "seeds_used": 20,
+    "data": [
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/1886_Wimbledon_Championships",
+            "seed_label": "1886 Wimbledon Championships",
+            "dialogue": [
+                "What is the start date of the 1886 Wimbledon Championships?",
+                "What is the end date of it?",
+                "What are the alternate names of it?",
+                "How many sub events does it have?",
+                "When did it take place?"
+            ],
+            "original": [
+                "What is the start date of the 1886 Wimbledon Championships?",
+                "What is the end date of the 1886 Wimbledon Championships?",
+                "What are the alternate names of the 1886 Wimbledon Championships?",
+                "How many sub events does the 1886 Wimbledon Championships have?",
+                "When did the 1886 Wimbledon Championships take place?"
+            ],
+            "queries": [
+                "SELECT DISTINCT?x0 WHERE {<http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/startDate>?x0.}",
+                "SELECT?v0 WHERE { <http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/endDate>?v0 }",
+                "SELECT?v WHERE {<http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/alternateName>?v. }",
+                "SELECT (COUNT(DISTINCT?subEvent) AS?count) WHERE {<http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/subEvent>?subEvent}",
+                "SELECT?v0 WHERE {<http://yago-knowledge.org/resource/1886_Wimbledon_Championships> <http://schema.org/startDate>?v0}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1886_Wimbledon_Championships",
+                        "http://schema.org/startDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1886_Wimbledon_Championships",
+                        "http://schema.org/endDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1886_Wimbledon_Championships",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1886_Wimbledon_Championships",
+                        "http://schema.org/subEvent",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1886_Wimbledon_Championships",
+                        "http://schema.org/startDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2908,
+                "prompt_tokens": 1404,
+                "completion_tokens": 1504
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/1930_FIFA_World_Cup",
+            "seed_label": "1930 FIFA World Cup",
+            "dialogue": [
+                "What is the start date of the 1930 FIFA World Cup?",
+                "What is the end date of the tournament?",
+                "Where was the tournament held?",
+                "What are the alternate names for the tournament?",
+                "What is the sub event of the tournament?"
+            ],
+            "original": [
+                "What is the start date of the 1930 FIFA World Cup?",
+                "What is the end date of the 1930 FIFA World Cup?",
+                "Where was the 1930 FIFA World Cup held?",
+                "What are the alternate names for the 1930 FIFA World Cup?",
+                "What is the sub event of the 1930 FIFA World Cup?"
+            ],
+            "queries": [
+                "SELECT?x0 WHERE {<http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/startDate>?x0}",
+                "SELECT?x0 WHERE {<http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/endDate>?x0}",
+                "SELECT?location WHERE {<http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/location>?location.}",
+                "SELECT?v0 WHERE {<http://yago-knowledge.org/resource/1930_FIFA_World_Cup> <http://schema.org/alternateName>?v0 }",
+                "PREFIX schema: <http://schema.org/> SELECT?s WHERE {<http://yago-knowledge.org/resource/1930_FIFA_World_Cup> schema:subEvent?s.}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1930_FIFA_World_Cup",
+                        "http://schema.org/startDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1930_FIFA_World_Cup",
+                        "http://schema.org/endDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1930_FIFA_World_Cup",
+                        "http://schema.org/location",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1930_FIFA_World_Cup",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1930_FIFA_World_Cup",
+                        "http://schema.org/subEvent",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 4765,
+                "prompt_tokens": 2334,
+                "completion_tokens": 2431
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/1970_Formula_One_season",
+            "seed_label": "1970 Formula One season",
+            "dialogue": [
+                "What is the start date of the 1970 Formula One season?",
+                "What is the end date of the season?",
+                "When did the season start and end?"
+            ],
+            "original": [
+                "What is the start date of the 1970 Formula One season?",
+                "What is the end date of the 1970 Formula One season?",
+                "When did the 1970 Formula One season start and end?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> SELECT?date WHERE { <http://yago-knowledge.org/resource/1970_Formula_One_season> schema:startDate?date }",
+                "SELECT?endDate WHERE { <http://yago-knowledge.org/resource/1970_Formula_One_season> <http://schema.org/endDate>?endDate }",
+                "SELECT?startDate WHERE { <http://yago-knowledge.org/resource/1970_Formula_One_season> <http://schema.org/startDate>?startDate }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1970_Formula_One_season",
+                        "http://schema.org/startDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1970_Formula_One_season",
+                        "http://schema.org/endDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/1970_Formula_One_season",
+                        "http://schema.org/startDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2660,
+                "prompt_tokens": 1383,
+                "completion_tokens": 1277
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 2
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+            "seed_label": "2009 Andalucia Tennis Experience",
+            "dialogue": [
+                "What is the start date of the 2009 Andalucia Tennis Experience?",
+                "What is the end date of it?",
+                "What are the names of the events that are alternatives to it?",
+                "Is it a sub event?",
+                "What is the duration of it?"
+            ],
+            "original": [
+                "What is the start date of the 2009 Andalucia Tennis Experience?",
+                "What is the end date of the 2009 Andalucia Tennis Experience?",
+                "What are the names of the events that are alternatives to the 2009 Andalucia Tennis Experience?",
+                "Is the 2009 Andalucia Tennis Experience a sub event?",
+                "What is the duration of the 2009 Andalucia Tennis Experience?"
+            ],
+            "queries": [
+                "SELECT?startDate WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/startDate>?startDate }",
+                "SELECT?v WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/endDate>?v }",
+                "SELECT?name WHERE {<http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/alternateName>?name}",
+                "ASK WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/subEvent>?v0 }",
+                "SELECT DISTINCT?duration WHERE { <http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience> <http://schema.org/endDate>?duration. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+                        "http://schema.org/startDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+                        "http://schema.org/endDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+                        "http://schema.org/subEvent",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2009_Andalucia_Tennis_Experience",
+                        "http://schema.org/endDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3013,
+                "prompt_tokens": 1487,
+                "completion_tokens": 1526
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2010_Wimbledon_Championships",
+            "seed_label": "2010 Wimbledon Championships",
+            "dialogue": [
+                "What is the start date of the 2010 Wimbledon Championships?",
+                "When did it start?",
+                "What is the end date of it?",
+                "What are the alternate names of it?"
+            ],
+            "original": [
+                "What is the start date of the 2010 Wimbledon Championships?",
+                "When did the 2010 Wimbledon Championships start?",
+                "What is the end date of the 2010 Wimbledon Championships?",
+                "What are the alternate names of the 2010 Wimbledon Championships?"
+            ],
+            "queries": [
+                "SELECT DISTINCT?v0 WHERE { <http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/startDate>?v0. }",
+                "SELECT?v0 WHERE { <http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/startDate>?v0 }",
+                "SELECT?v WHERE { <http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/endDate>?v }",
+                "SELECT DISTINCT?object WHERE {<http://yago-knowledge.org/resource/2010_Wimbledon_Championships> <http://schema.org/alternateName>?object}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2010_Wimbledon_Championships",
+                        "http://schema.org/startDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2010_Wimbledon_Championships",
+                        "http://schema.org/startDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2010_Wimbledon_Championships",
+                        "http://schema.org/endDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2010_Wimbledon_Championships",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2496,
+                "prompt_tokens": 1387,
+                "completion_tokens": 1109
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience",
+            "seed_label": "2011 Andalucia Tennis Experience",
+            "dialogue": [
+                "What is the start date of the 2011 Andalucia Tennis Experience?",
+                "What is the end date of it?",
+                "What is the alternate name of it?"
+            ],
+            "original": [
+                "What is the start date of the 2011 Andalucia Tennis Experience?",
+                "What is the end date of the 2011 Andalucia Tennis Experience?",
+                "What is the alternate name of the 2011 Andalucia Tennis Experience?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/>\nSELECT?startDate\nWHERE {\n  <http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> schema:startDate?startDate\n}",
+                "SELECT?endDate WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/endDate>?endDate.}",
+                "SELECT?name WHERE {<http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience> <http://schema.org/alternateName>?name}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience",
+                        "http://schema.org/startDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience",
+                        "http://schema.org/endDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2011_Andalucia_Tennis_Experience",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2973,
+                "prompt_tokens": 1455,
+                "completion_tokens": 1518
+            },
+            "query_status": {
+                "Correct": 3,
+                "In Correct": 2
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship",
+            "seed_label": "2011 World Men's Handball Championship",
+            "dialogue": [
+                "What is the location of the 2011 World Men's Handball Championship?",
+                "When did it start?",
+                "What is the alternate name of it?",
+                "When did it end?"
+            ],
+            "original": [
+                "What is the location of the 2011 World Men's Handball Championship?",
+                "When did the 2011 World Men's Handball Championship start?",
+                "What is the alternate name of the 2011 World Men's Handball Championship?",
+                "When did the 2011 World Men's Handball Championship end?"
+            ],
+            "queries": [
+                "SELECT?x WHERE {<http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship> <http://schema.org/location>?x}",
+                "SELECT?v0 WHERE {<http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship> <http://schema.org/startDate>?v0.}",
+                "SELECT?alternateName WHERE { <http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship> <http://schema.org/alternateName>?alternateName. }",
+                "SELECT?endDate WHERE { <http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship> <http://schema.org/endDate>?endDate }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship",
+                        "http://schema.org/location",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship",
+                        "http://schema.org/startDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2011_World_Men's_Handball_Championship",
+                        "http://schema.org/endDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2603,
+                "prompt_tokens": 1461,
+                "completion_tokens": 1142
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain",
+            "seed_label": "2018 Grand Prix de Denain",
+            "dialogue": [
+                "What is another name for the 2018 Grand Prix de Denain?",
+                "What sport is the race?",
+                "Is the race a super event?",
+                "How many competitors are there in the race?"
+            ],
+            "original": [
+                "What is another name for the 2018 Grand Prix de Denain?",
+                "What sport is the 2018 Grand Prix de Denain?",
+                "Is the 2018 Grand Prix de Denain a super event?",
+                "How many competitors are there in the 2018 Grand Prix de Denain?"
+            ],
+            "queries": [
+                "SELECT?x WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/alternateName>?x. }",
+                "SELECT?sport WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/sport>?sport }",
+                "ASK WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/superEvent>?s. }",
+                "SELECT?x WHERE { <http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain> <http://schema.org/competitor>?x }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain",
+                        "http://schema.org/sport",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain",
+                        "http://schema.org/superEvent",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Grand_Prix_de_Denain",
+                        "http://schema.org/competitor",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2862,
+                "prompt_tokens": 1441,
+                "completion_tokens": 1421
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2018_Paris\u2013Nice",
+            "seed_label": "2018 Paris-Nice",
+            "dialogue": [
+                "What is the sport associated with the 2018 Paris-Nice?",
+                "Who were the competitors in it?",
+                "What is the alternate name of it?",
+                "What are the start and end dates of it?"
+            ],
+            "original": [
+                "What is the sport associated with the 2018 Paris-Nice?",
+                "Who were the competitors in the 2018 Paris-Nice?",
+                "What is the alternate name of the 2018 Paris-Nice?",
+                "What are the start and end dates of the 2018 Paris-Nice?"
+            ],
+            "queries": [
+                "SELECT DISTINCT?sport WHERE {<http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/sport>?sport}",
+                "SELECT?s WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/competitor>?s }",
+                "SELECT?s?sLabel WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/alternateName>?s. OPTIONAL {?s <http://www.w3.org/2000/01/rdf-schema#label>?sLabel. FILTER (lang(?sLabel) = 'en') } }",
+                "SELECT DISTINCT?x WHERE { <http://yago-knowledge.org/resource/2018_Paris\u2013Nice> <http://schema.org/endDate>?x. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Paris\u2013Nice",
+                        "http://schema.org/sport",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Paris\u2013Nice",
+                        "http://schema.org/competitor",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Paris\u2013Nice",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Paris\u2013Nice",
+                        "http://schema.org/endDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2596,
+                "prompt_tokens": 1419,
+                "completion_tokens": 1177
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/A._A._Heaps",
+            "seed_label": "Abraham Albert Heaps",
+            "dialogue": [
+                "What is the birth place of Abraham Albert Heaps?",
+                "What is the nationality of him?",
+                "What is the occupation of him?",
+                "When was he born?",
+                "What is the death place of him?"
+            ],
+            "original": [
+                "What is the birth place of Abraham Albert Heaps?",
+                "What is the nationality of Abraham Albert Heaps?",
+                "What is the occupation of Abraham Albert Heaps?",
+                "When was Abraham Albert Heaps born?",
+                "What is the death place of Abraham Albert Heaps?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nSELECT?birthPlace WHERE {\n\t?s schema:birthPlace?birthPlace.\n\t?s rdf:type schema:Person.\n\tFILTER (?s = <http://yago-knowledge.org/resource/A._A._Heaps>)\n}",
+                "SELECT?x0 WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/nationality>?x0. }",
+                "SELECT?occupation WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/hasOccupation>?occupation }",
+                "SELECT?birthDate WHERE {<http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/birthDate>?birthDate}",
+                "SELECT DISTINCT?deathPlace WHERE { <http://yago-knowledge.org/resource/A._A._Heaps> <http://schema.org/deathPlace>?deathPlace }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._A._Heaps",
+                        "http://schema.org/birthPlace",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._A._Heaps",
+                        "http://schema.org/nationality",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._A._Heaps",
+                        "http://schema.org/hasOccupation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._A._Heaps",
+                        "http://schema.org/birthDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._A._Heaps",
+                        "http://schema.org/deathPlace",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2964,
+                "prompt_tokens": 1428,
+                "completion_tokens": 1536
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/A._C._Bonnell",
+            "seed_label": "Allison C. Bonnell",
+            "dialogue": [
+                "How many occupations did Allison C. Bonnell have?",
+                "Is she deceased?",
+                "What is her birth date?",
+                "Where did she die?"
+            ],
+            "original": [
+                "How many occupations did Allison C. Bonnell have?",
+                "Is Allison C. Bonnell deceased?",
+                "What is the birth date of Allison C. Bonnell?",
+                "Where did Allison C. Bonnell die?"
+            ],
+            "queries": [
+                "SELECT?x0 WHERE {<http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/hasOccupation>?x0}",
+                "ASK WHERE {\n?x schema:deathDate [].\n}",
+                "SELECT?birthDate WHERE {<http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/birthDate>?birthDate.}",
+                "SELECT?deathPlace WHERE { <http://yago-knowledge.org/resource/A._C._Bonnell> <http://schema.org/deathPlace>?deathPlace. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._C._Bonnell",
+                        "http://schema.org/hasOccupation",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._C._Bonnell",
+                        "http://schema.org/deathDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._C._Bonnell",
+                        "http://schema.org/birthDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._C._Bonnell",
+                        "http://schema.org/deathPlace",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2946,
+                "prompt_tokens": 1393,
+                "completion_tokens": 1553
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/A._S._M._Hutchinson",
+            "seed_label": "Arthur Stuart-Menteth Hutchinson",
+            "dialogue": [
+                "What is the birth place of Arthur Stuart-Menteth Hutchinson?",
+                "Is he alive?",
+                "What is his given name?",
+                "When was he born?"
+            ],
+            "original": [
+                "What is the birth place of Arthur Stuart-Menteth Hutchinson?",
+                "Is Arthur Stuart-Menteth Hutchinson alive?",
+                "What is the given name of Arthur Stuart-Menteth Hutchinson?",
+                "When was Arthur Stuart-Menteth Hutchinson born?"
+            ],
+            "queries": [
+                "SELECT?x WHERE {<http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/birthPlace>?x. }",
+                "ASK WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> <http://schema.org/deathDate>?deathDate. }",
+                "PREFIX schema: <http://schema.org/> SELECT?givenName WHERE { <http://yago-knowledge.org/resource/A._S._M._Hutchinson> schema:givenName?givenName }",
+                "PREFIX schema: <http://schema.org/>\nSELECT?date\nWHERE {\n  <http://yago-knowledge.org/resource/A._S._M._Hutchinson> schema:birthDate?date\n}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._S._M._Hutchinson",
+                        "http://schema.org/birthPlace",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._S._M._Hutchinson",
+                        "http://schema.org/deathDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._S._M._Hutchinson",
+                        "http://schema.org/givenName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A._S._M._Hutchinson",
+                        "http://schema.org/birthDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2989,
+                "prompt_tokens": 1439,
+                "completion_tokens": 1550
+            },
+            "query_status": {
+                "Correct": 4,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abda,_Hungary",
+            "seed_label": "Abda",
+            "dialogue": [
+                "What are the alternate names of Abda?",
+                "What is the geo of it?",
+                "Where is it located?",
+                "In which place is it contained?",
+                "What is the geo of its contained place?"
+            ],
+            "original": [
+                "What are the alternate names of Abda?",
+                "What is the geo of Abda?",
+                "Where is Abda located?",
+                "In which place is Abda contained?",
+                "What is the geo of Abda's contained place?"
+            ],
+            "queries": [
+                "SELECT?s WHERE {<http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/alternateName>?s}",
+                "SELECT?v0 WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/geo>?v0 }",
+                "SELECT?location WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/location>?location }",
+                "SELECT DISTINCT?answer WHERE { <http://yago-knowledge.org/resource/Abda,_Hungary> <http://schema.org/containedInPlace>?answer }",
+                "PREFIX schema: <http://schema.org/>\nSELECT?v0 WHERE {\n<http://yago-knowledge.org/resource/Abda,_Hungary> schema:containedInPlace?v0.\n}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abda,_Hungary",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abda,_Hungary",
+                        "http://schema.org/geo",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abda,_Hungary",
+                        "http://schema.org/location",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abda,_Hungary",
+                        "http://schema.org/containedInPlace",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abda,_Hungary",
+                        "http://schema.org/containedInPlace",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2727,
+                "prompt_tokens": 1345,
+                "completion_tokens": 1382
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+            "seed_label": "A Princess of Mars",
+            "dialogue": [
+                "When was A Princess of Mars published?",
+                "What language is it written in?",
+                "Who is the author of it?",
+                "When was it created?"
+            ],
+            "original": [
+                "When was A Princess of Mars published?",
+                "What language is A Princess of Mars written in?",
+                "Who is the author of A Princess of Mars?",
+                "When was A Princess of Mars created?"
+            ],
+            "queries": [
+                "SELECT DISTINCT?datePublished WHERE {<http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/datePublished>?datePublished.}",
+                "PREFIX schema: <http://schema.org/>\nSELECT DISTINCT?v0\nWHERE {\n    <http://yago-knowledge.org/resource/A_Princess_of_Mars> schema:inLanguage?v0.\n}",
+                "SELECT DISTINCT?x0 WHERE {<http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/author>?x0.}",
+                "SELECT?dateCreated WHERE { <http://yago-knowledge.org/resource/A_Princess_of_Mars> <http://schema.org/dateCreated>?dateCreated }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                        "http://schema.org/datePublished",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                        "http://schema.org/inLanguage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                        "http://schema.org/author",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/A_Princess_of_Mars",
+                        "http://schema.org/dateCreated",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2885,
+                "prompt_tokens": 1364,
+                "completion_tokens": 1521
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abeno_Cues_Town",
+            "seed_label": "Abeno Cues Town",
+            "dialogue": [
+                "When was Abeno Cues Town founded?",
+                "Where is it located?",
+                "What is the location of it?"
+            ],
+            "original": [
+                "When was Abeno Cues Town founded?",
+                "Where is Abeno Cues Town located?",
+                "What is the location of Abeno Cues Town?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/> SELECT?foundingDate WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> schema:foundingDate?foundingDate }",
+                "SELECT?x?y WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/geo>?x }",
+                "SELECT?x WHERE { <http://yago-knowledge.org/resource/Abeno_Cues_Town> <http://schema.org/location>?x }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abeno_Cues_Town",
+                        "http://schema.org/foundingDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abeno_Cues_Town",
+                        "http://schema.org/geo",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abeno_Cues_Town",
+                        "http://schema.org/location",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2733,
+                "prompt_tokens": 1375,
+                "completion_tokens": 1358
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 3,
+                "Syntax Error": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+            "seed_label": "2018 Tour of Norway",
+            "dialogue": [
+                "What sport is the 2018 Tour of Norway?",
+                "Is it a super event?",
+                "Who competed in it?",
+                "What is the start date of it?"
+            ],
+            "original": [
+                "What sport is the 2018 Tour of Norway?",
+                "Is the 2018 Tour of Norway a super event?",
+                "Who competed in the 2018 Tour of Norway?",
+                "What is the start date of the 2018 Tour of Norway?"
+            ],
+            "queries": [
+                "SELECT?x WHERE {<http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/sport>?x}",
+                "ASK WHERE {\n  <http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/superEvent>?superEvent\n}",
+                "SELECT?x WHERE {<http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/competitor>?x}",
+                "SELECT?x0 WHERE {<http://yago-knowledge.org/resource/2018_Tour_of_Norway> <http://schema.org/startDate>?x0}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                        "http://schema.org/sport",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                        "http://schema.org/superEvent",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                        "http://schema.org/competitor",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/2018_Tour_of_Norway",
+                        "http://schema.org/startDate",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2946,
+                "prompt_tokens": 1425,
+                "completion_tokens": 1521
+            },
+            "query_status": {
+                "In Correct": 1,
+                "Correct": 4
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aberbargoed_Hospital",
+            "seed_label": "Aberbargoed Hospital",
+            "dialogue": [
+                "When was Aberbargoed Hospital founded?",
+                "Where is it located?",
+                "What is the dissolution date of it?",
+                "What is the geo location of it?"
+            ],
+            "original": [
+                "When was Aberbargoed Hospital founded?",
+                "Where is Aberbargoed Hospital located?",
+                "What is the dissolution date of Aberbargoed Hospital?",
+                "What is the geo location of Aberbargoed Hospital?"
+            ],
+            "queries": [
+                "SELECT?x WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/foundingDate>?x. }",
+                "SELECT?v0 WHERE { <http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/location>?v0. }",
+                "SELECT?x0 WHERE {<http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/dissolutionDate>?x0}",
+                "SELECT?v0 WHERE {<http://yago-knowledge.org/resource/Aberbargoed_Hospital> <http://schema.org/geo>?v0.}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aberbargoed_Hospital",
+                        "http://schema.org/foundingDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aberbargoed_Hospital",
+                        "http://schema.org/location",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aberbargoed_Hospital",
+                        "http://schema.org/dissolutionDate",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aberbargoed_Hospital",
+                        "http://schema.org/geo",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2931,
+                "prompt_tokens": 1398,
+                "completion_tokens": 1533
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/The_White_Haired_Girl",
+            "seed_label": "The White-Haired Girl",
+            "dialogue": [
+                "When was The White-Haired Girl created?",
+                "When was she published?",
+                "What is the genre of her?",
+                "Who is the author of her?",
+                "Where is the content of her located?"
+            ],
+            "original": [
+                "When was The White-Haired Girl created?",
+                "When was The White-Haired Girl published?",
+                "What is the genre of The White-Haired Girl?",
+                "Who is the author of The White-Haired Girl?",
+                "Where is the content of The White-Haired Girl located?"
+            ],
+            "queries": [
+                "PREFIX schema: <http://schema.org/>\nSELECT?dateCreated WHERE {\n  <http://yago-knowledge.org/resource/The_White_Haired_Girl> schema:dateCreated?dateCreated.\n}",
+                "SELECT DISTINCT?datePublished WHERE { <http://yago-knowledge.org/resource/The_White_Haired_Girl> <http://schema.org/datePublished>?datePublished. }",
+                "SELECT?x WHERE { <http://yago-knowledge.org/resource/The_White_Haired_Girl> <http://schema.org/genre>?x }",
+                "SELECT DISTINCT?v0 WHERE { <http://yago-knowledge.org/resource/The_White_Haired_Girl> <http://schema.org/author>?v0 }",
+                "SELECT DISTINCT?v WHERE { <http://yago-knowledge.org/resource/The_White_Haired_Girl> <http://schema.org/contentLocation>?v }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/The_White_Haired_Girl",
+                        "http://schema.org/dateCreated",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/The_White_Haired_Girl",
+                        "http://schema.org/datePublished",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/The_White_Haired_Girl",
+                        "http://schema.org/genre",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/The_White_Haired_Girl",
+                        "http://schema.org/author",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/The_White_Haired_Girl",
+                        "http://schema.org/contentLocation",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2921,
+                "prompt_tokens": 1395,
+                "completion_tokens": 1526
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Aberbeeg",
+            "seed_label": "Aberbeeg",
+            "dialogue": [
+                "What is the alternate name of Aberbeeg?",
+                "What is the geo location of it?",
+                "In which place is it contained?",
+                "What is the geo location of the place that contains it?"
+            ],
+            "original": [
+                "What is the alternate name of Aberbeeg?",
+                "What is the geo location of Aberbeeg?",
+                "In which place is Aberbeeg contained?",
+                "What is the geo location of the place that contains Aberbeeg?"
+            ],
+            "queries": [
+                "SELECT?alternateName WHERE {<http://yago-knowledge.org/resource/Aberbeeg> <http://schema.org/alternateName>?alternateName.}",
+                "SELECT?x WHERE { <http://yago-knowledge.org/resource/Aberbeeg> <http://schema.org/geo>?x }",
+                "SELECT?x WHERE {<http://yago-knowledge.org/resource/Aberbeeg> <http://schema.org/containedInPlace>?x}",
+                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX schema: <http://schema.org/> SELECT DISTINCT?v WHERE { <http://yago-knowledge.org/resource/Aberbeeg> schema:geo?v }"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aberbeeg",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aberbeeg",
+                        "http://schema.org/geo",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aberbeeg",
+                        "http://schema.org/containedInPlace",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Aberbeeg",
+                        "http://schema.org/geo",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2324,
+                "prompt_tokens": 1346,
+                "completion_tokens": 978
+            },
+            "query_status": {
+                "Correct": 4,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "http://yago-knowledge.org/resource/Abony",
+            "seed_label": "Abony",
+            "dialogue": [
+                "What is the alternate name of Abony?",
+                "What is the location of it?",
+                "Is it contained in a place?",
+                "What is the geo information of it?",
+                "What is the name of the place where it is contained?"
+            ],
+            "original": [
+                "What is the alternate name of Abony?",
+                "What is the location of Abony?",
+                "Is Abony contained in a place?",
+                "What is the geo information of Abony?",
+                "What is the name of the place where Abony is contained?"
+            ],
+            "queries": [
+                "SELECT?alternateName WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/alternateName>?alternateName.}",
+                "SELECT DISTINCT?location WHERE { <http://yago-knowledge.org/resource/Abony> <http://schema.org/location>?location }",
+                "ASK WHERE { <http://yago-knowledge.org/resource/Abony> <http://schema.org/containedInPlace>?p. }",
+                "SELECT?item WHERE { <http://yago-knowledge.org/resource/Abony> <http://schema.org/geo>?item. }",
+                "SELECT?x WHERE {<http://yago-knowledge.org/resource/Abony> <http://schema.org/containedInPlace>?x.}"
+            ],
+            "triples": [
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abony",
+                        "http://schema.org/alternateName",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abony",
+                        "http://schema.org/location",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abony",
+                        "http://schema.org/containedInPlace",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abony",
+                        "http://schema.org/geo",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "http://yago-knowledge.org/resource/Abony",
+                        "http://schema.org/containedInPlace",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2464,
+                "prompt_tokens": 1340,
+                "completion_tokens": 1124
+            },
+            "query_status": {
+                "Correct": 5
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "What is": 41,
+            "What are": 6,
+            "How many": 3,
+            "When did": 5,
+            "Where was": 1,
+            "Is it": 3,
+            "What sport": 2,
+            "Is the": 1,
+            "Who were": 1,
+            "When was": 8,
+            "Is she": 1,
+            "Where did": 1,
+            "Is he": 1,
+            "Where is": 4,
+            "In which": 2,
+            "What language": 1,
+            "Who is": 2,
+            "Who competed": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 2885.3,
+                "prompt_tokens": 1450.95,
+                "completion_tokens": 1434.35
+            },
+            "Minimum": {
+                "total_tokens": 2324,
+                "prompt_tokens": 1340,
+                "completion_tokens": 978
+            },
+            "Maximum": {
+                "total_tokens": 4765,
+                "prompt_tokens": 2334,
+                "completion_tokens": 2431
+            },
+            "Total": {
+                "total_tokens": 57706,
+                "prompt_tokens": 29019,
+                "completion_tokens": 28687
+            }
+        },
+        "execution": {
+            "Correct": 84,
+            "In Correct": 11,
+            "Syntax Error": 5
+        }
+    },
+    "cost": {
+        "total_tokens": 57706,
+        "prompt_tokens": 29019,
+        "completion_tokens": 28687
+    },
+    "total_time": 1073.0397641658783,
+    "average_time": 53.651988208293915,
+    "Context Length Error": 0,
+    "Question Validation Error": 0,
+    "Question Json Error": 0,
+    "Triples Validation Error": 0,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 0,
+    "Sparql Json Error": 0,
+    "Dialogue Validation Error": 0,
+    "Dialogue Json Error": 0
+}

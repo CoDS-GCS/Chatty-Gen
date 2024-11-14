@@ -1,0 +1,212 @@
+{
+    "seeds_used": 501,
+    "data": [
+        {
+            "seed_entity": "https://dblp.org/pid/120/3207",
+            "seed_label": "Max Kemman",
+            "dialogue": [
+                "Which ORCID identifier does Max Kemman have?",
+                "What is the primary homepage for him?",
+                "What is the URL for his webpage?"
+            ],
+            "original": [
+                "Which ORCID identifier does Max Kemman have?",
+                "What is the primary homepage for Max Kemman?",
+                "What is the URL for Max Kemman's webpage?"
+            ],
+            "queries": [
+                "SELECT?orcid WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#orcid>?orcid. }",
+                "SELECT?homepage WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#primaryHomepage>?homepage. }",
+                "SELECT?webpage WHERE { <https://dblp.org/pid/120/3207> <https://dblp.org/rdf/schema#webpage>?webpage. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/pid/120/3207",
+                        "https://dblp.org/rdf/schema#orcid",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/120/3207",
+                        "https://dblp.org/rdf/schema#primaryHomepage",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/pid/120/3207",
+                        "https://dblp.org/rdf/schema#webpage",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3790,
+                "prompt_tokens": 2262,
+                "completion_tokens": 1528
+            },
+            "query_status": {
+                "Correct": 3,
+                "Syntax Error": 1,
+                "In Correct": 1
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Schnall18",
+            "seed_label": "Speaker adaptation for word prominence detection.",
+            "dialogue": [
+                "In which year was 'Speaker adaptation for word prominence detection.' published?",
+                "Which publisher published it?",
+                "What is its ISBN number?"
+            ],
+            "original": [
+                "In which year was 'Speaker adaptation for word prominence detection.' published?",
+                "Which publisher published 'Speaker adaptation for word prominence detection.'?",
+                "What is the ISBN number for 'Speaker adaptation for word prominence detection.'?"
+            ],
+            "queries": [
+                "SELECT?year {\n\t<https://dblp.org/rec/phd/dnb/Schnall18> <https://dblp.org/rdf/schema#yearOfPublication>?year.\n}",
+                "SELECT?publisher WHERE {\n  <https://dblp.org/rec/phd/dnb/Schnall18> <https://dblp.org/rdf/schema#publishedBy>?publisher.\n}",
+                "SELECT?isbn WHERE {\n  <https://dblp.org/rec/phd/dnb/Schnall18> <https://dblp.org/rdf/schema#isbn>?isbn.\n}"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Schnall18",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Schnall18",
+                        "https://dblp.org/rdf/schema#publishedBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Schnall18",
+                        "https://dblp.org/rdf/schema#isbn",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 2543,
+                "prompt_tokens": 1494,
+                "completion_tokens": 1049
+            },
+            "query_status": {
+                "Syntax Error": 1,
+                "Correct": 3
+            }
+        },
+        {
+            "seed_entity": "https://dblp.org/rec/phd/dnb/Sojer13",
+            "seed_label": "Synthesis of online diagnostic techniques for embedded systems.",
+            "dialogue": [
+                "Who are the creators of the thesis on Synthesis of online diagnostic techniques for embedded systems?",
+                "Is the thesis it an electronic or print edition?",
+                "When was the thesis it published?"
+            ],
+            "original": [
+                "Who are the creators of the thesis on Synthesis of online diagnostic techniques for embedded systems?",
+                "Is the thesis on Synthesis of online diagnostic techniques for embedded systems an electronic or print edition?",
+                "When was the thesis on Synthesis of online diagnostic techniques for embedded systems published?"
+            ],
+            "queries": [
+                "SELECT?creator WHERE {\n  <https://dblp.org/rec/phd/dnb/Sojer13> <https://dblp.org/rdf/schema#authoredBy>?creator.\n}",
+                "ASK WHERE { <https://dblp.org/rec/phd/dnb/Sojer13> <https://dblp.org/rdf/schema#primaryElectronicEdition>?edition. }",
+                "SELECT?publicationYear WHERE { <https://dblp.org/rec/phd/dnb/Sojer13> <https://dblp.org/rdf/schema#yearOfPublication>?publicationYear. }"
+            ],
+            "triples": [
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Sojer13",
+                        "https://dblp.org/rdf/schema#authoredBy",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Sojer13",
+                        "https://dblp.org/rdf/schema#primaryElectronicEdition",
+                        ""
+                    ]
+                ],
+                [
+                    [
+                        "https://dblp.org/rec/phd/dnb/Sojer13",
+                        "https://dblp.org/rdf/schema#yearOfPublication",
+                        ""
+                    ]
+                ]
+            ],
+            "cost": {
+                "total_tokens": 3740,
+                "prompt_tokens": 2135,
+                "completion_tokens": 1605
+            },
+            "query_status": {
+                "Correct": 3
+            }
+        }
+    ],
+    "analysis": {
+        "types": {
+            "Which ORCID": 1,
+            "What is": 3,
+            "In which": 1,
+            "Which publisher": 1,
+            "Who are": 1,
+            "Is the": 1,
+            "When was": 1
+        },
+        "cost": {
+            "Average": {
+                "total_tokens": 3357.6666666666665,
+                "prompt_tokens": 1963.6666666666667,
+                "completion_tokens": 1394.0
+            },
+            "Minimum": {
+                "total_tokens": 2543,
+                "prompt_tokens": 1494,
+                "completion_tokens": 1049
+            },
+            "Maximum": {
+                "total_tokens": 3790,
+                "prompt_tokens": 2262,
+                "completion_tokens": 1605
+            },
+            "Total": {
+                "total_tokens": 10073,
+                "prompt_tokens": 5891,
+                "completion_tokens": 4182
+            }
+        },
+        "execution": {
+            "Correct": 9,
+            "Syntax Error": 2,
+            "In Correct": 1
+        }
+    },
+    "cost": {
+        "total_tokens": 1106594,
+        "prompt_tokens": 717945,
+        "completion_tokens": 388649
+    },
+    "total_time": 123.36686563491821,
+    "average_time": 41.12228854497274,
+    "Context Length Error": 0,
+    "Question Validation Error": 10,
+    "Question Json Error": 7,
+    "Triples Validation Error": 9,
+    "Triples Json Error": 0,
+    "Sparql Validation Error": 411,
+    "Sparql Json Error": 61,
+    "Dialogue Validation Error": 0,
+    "Dialogue Json Error": 0
+}
