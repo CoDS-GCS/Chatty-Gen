@@ -336,6 +336,10 @@ def generate_dialogues_from_subgraph(
 
     cost = { "total_tokens": 0, "prompt_tokens": 0, "completion_tokens": 0}
     for idx, seed in enumerate(seed_nodes):
+        # Gemini with lower limits
+        if config.time_sleep:
+            print("TIME SLEEP of 30.0 seconds")
+            time.sleep(30)
         if idx > 500:
             break
         start_time = time.time()
@@ -851,6 +855,10 @@ def generate_dialogues_from_summarized_subgraph(
     cost = { "total_tokens": 0, "prompt_tokens": 0, "completion_tokens": 0}
 
     for idx, seed in enumerate(seed_nodes):
+        # Gemini with lower limits
+        if config.time_sleep:
+            print("TIME SLEEP of 30.0 seconds")
+            time.sleep(30)
         if idx > 500:
             break
         start_time = time.time()
@@ -1542,9 +1550,10 @@ def generate_dialogues_from_singleshot(
                 parsing_error = False
                 unequal_length = False
                 try:
-                    # Uncomment when running with Gemini
-                    # print("TIME SLEEP of 30.0 seconds")
-                    # time.sleep(30)
+                    # Gemini with lower limits
+                    if config.time_sleep:
+                        print("TIME SLEEP of 30.0 seconds")
+                        time.sleep(30)
 
                     llm_result = ch.generate([{"query_subgraph": query_subgraph_str, "entity_label": seed_label, "n": n}], None)
                     raw_benchmark_sample.append({

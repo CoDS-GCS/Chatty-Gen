@@ -57,6 +57,8 @@ class Config:
     tracing: bool = True
     logging: bool = True
 
+    time_sleep: bool = False
+
     comman_model: Optional[LLMInfo] = None
 
     # redis
@@ -89,6 +91,9 @@ class Config:
                 config_data[field_name] = LLMInfo.from_dict(
                     comman_model_dict if comman_model_dict else config_data.get(field_name)
                     )
+
+                if config_data[field_name].model_type == ModelType.GOOGLE:
+                    config_data["time_sleep"] = True
 
             return cls(**config_data)
 
