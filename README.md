@@ -1,4 +1,4 @@
-# Chatty-Gen Resources
+This repository is dedicated to our paper titled "Dialogue Benchmark Generation from Knowledge Graphs with Cost-Effective Retrieval-Augmented LLMs" published in SIGMOD 2025. The full paper can be accessed [here](https://dl.acm.org/doi/abs/10.1145/3709681).
 
 ## Table of Contents
 
