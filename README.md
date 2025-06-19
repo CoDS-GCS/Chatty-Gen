@@ -74,3 +74,21 @@ logging: true
 ### Run experiments with docker
 - make sure you have updated the `runconfig-yaml` and its path in `benchmark/appconfig.py`
 - run `docker compose up --build`
+
+Citing Our Work
+-
+- - - -
+```
+@article{chattygen,
+author = {Reham Omar, Omij Mangukiya, and Essam Mansour },
+title = {Dialogue Benchmark Generation from Knowledge Graphs with Cost-Effective Retrieval-Augmented LLMs},
+year = {2025},
+doi = {10.1145/3709681},
+journal = {Proceedings ACM Management Data(SIGMOD)},
+}
+}
+```
+Contact:
+-
+- - - -
+For any queries, feel free to send an e-mail to `reham.omar@mail.concordia.ca` or `essam.mansour@concordia.ca`. We look forward to receiving your feedback.
