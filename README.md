@@ -86,7 +86,6 @@ year = {2025},
 doi = {10.1145/3709681},
 journal = {Proceedings ACM Management Data(SIGMOD)},
 }
-}
 ```
 Contact:
 -
